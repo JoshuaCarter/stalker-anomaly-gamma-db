@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-05-18",
+    "entries": [
+      { "type": "added", "text": "Weapon Mechanics Guide explaining what each stat actually does, accessible from the weapon list and from the Stats section of any weapon's detail modal.", "credits": [{ "name": "Evincars", "role": "code" }] }
+    ]
+  },
+  {
     "date": "2026-05-17",
     "entries": [
       { "type": "added", "text": "Weapon detail modal now includes a Max Upgraded Stats section showing the best achievable values with all upgrades applied.", "credits": [{ "name": "Evincars", "role": "code" }] },

@@ -460,6 +460,7 @@
     :modal-open="modalOpen"
     :modal-item="modalItem"
     :modal-category="modalCategory"
+    :is-modal-weapon-item="isModalWeaponItem"
     :modal-loading="modalLoading"
     :modal-stat-rows="modalStatRows"
     :modal-heal-groups="modalHealGroups"

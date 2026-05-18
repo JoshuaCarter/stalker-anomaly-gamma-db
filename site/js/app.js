@@ -497,6 +497,10 @@ export const appDefinition = {
             return WEAPON_CATEGORIES.includes(this.activeCategory) || this.activeCategory === CAT.ALL_WEAPONS;
         },
 
+        isModalWeaponItem() {
+            return WEAPON_CATEGORIES.includes(this.modalCategory) || this.modalCategory === CAT.ALL_WEAPONS;
+        },
+
         versionComparePropertyKeys() {
             const keys = new Set();
             for (const group of this.versionCompareResults) {

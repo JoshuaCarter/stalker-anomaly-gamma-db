@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="drop-sources" :class="{ collapsed: isCollapsed('stats') }">
-                    <h2 class="section-toggle" @click="toggleSection('stats')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_stats') }}<button v-if="isWeaponItem" class="stats-help-btn" @click.stop="$emit('openWeaponHelp')" v-tooltip="t('app_label_weapon_mechanics_help')"><LucideInfo :size="13" /></button></h2>
+                    <h2 class="section-toggle" @click="toggleSection('stats')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_stats') }}<button v-if="isModalWeaponItem" class="stats-help-btn" @click.stop="$emit('openWeaponHelp')" v-tooltip="t('app_label_weapon_mechanics_help')"><LucideInfo :size="13" /></button></h2>
                     <div class="stat-grid">
                         <div v-for="row in modalStatRows" :key="row.key" :class="row.isSection ? 'stat-section' : 'stat-row'">
                             <template v-if="row.isSection">
@@ -401,6 +401,7 @@ export default {
     modalOpen: Boolean,
     modalItem: Object,
     modalCategory: String,
+    isModalWeaponItem: Boolean,
     modalLoading: Boolean,
     modalStatRows: Array,
     modalHealGroups: Array,
@@ -462,10 +463,6 @@ export default {
     hasWeaponAddons() {
       const a = this.modalWeaponAddons;
       return a.scopes.length > 0 || a.silencers.length > 0 || a.launchers.length > 0 || a.kits.length > 0;
-    },
-    isWeaponItem() {
-      const WEAPON_CATS = new Set(['Pistols','SMGs','Shotguns','Rifles','Snipers','Launchers','Melee','All Weapons']);
-      return WEAPON_CATS.has(this.modalCategory);
     },
     isAddonItem() {
       return ['Scopes', 'Silencers', 'Grenade Launchers', 'Tactical Kits'].includes(this.modalCategory);
