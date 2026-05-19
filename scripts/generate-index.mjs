@@ -823,10 +823,27 @@ try {
     }
   }
 
-  // Mark items with hasUpgrades
+  // Mark items with hasUpgrades, and recompute outfit_artefact_count_max from
+  // upgrade values. The game exporter undercounts when an upgrade contributes
+  // more than +1 (e.g. "Two-compartment Armor Attachment Module" gives +2).
   for (const [, data] of categoryData) {
     for (const item of data.items) {
       if (item.id in upgrades) item.hasUpgrades = true;
+
+      const baseStr = item["ui_inv_outfit_artefact_count"];
+      if (baseStr === undefined || baseStr === null || baseStr === "") continue;
+      const nodes = upgrades[item.id];
+      if (!nodes) continue;
+      let sum = 0;
+      for (const node of nodes) {
+        if (node.prop !== "st_prop_artefact") continue;
+        const v = parseInt(node.val, 10);
+        if (Number.isFinite(v)) sum += v;
+      }
+      if (sum > 0) {
+        const base = parseInt(baseStr, 10) || 0;
+        item["st_data_export_outfit_artefact_count_max"] = String(base + sum);
+      }
     }
   }
 
