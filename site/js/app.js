@@ -180,16 +180,10 @@ export const appDefinition = {
             _chordTimer: null,
             hasUnseenReleaseNotes: false,
 
-            // What's New & Feature Callouts
+            // What's New
             whatsNewVisible: false,
             whatsNewEntries: [],
             whatsNewTotalCount: 0,
-            calloutActive: false,
-            calloutCurrent: null,
-            calloutSpotlightStyle: {},
-            calloutPopoverStyle: {},
-            calloutArrowSide: "top",
-            calloutArrowStyle: {},
             buildOutfit: null,
             buildHelmet: null,
             buildBackpack: null,
@@ -253,14 +247,6 @@ export const appDefinition = {
     },
 
     computed: {
-        calloutTitle() {
-            if (!this.calloutCurrent) return "";
-            return this.calloutCurrent.titleKey ? this.t(this.calloutCurrent.titleKey) : (this.calloutCurrent.title || "");
-        },
-        calloutDesc() {
-            if (!this.calloutCurrent) return "";
-            return this.calloutCurrent.descKey ? this.t(this.calloutCurrent.descKey) : (this.calloutCurrent.description || "");
-        },
         dataBasePath() {
             if (!this.activePack) return "/data";
             return `/data/${this.activePack.id}`;
@@ -2211,7 +2197,6 @@ export const appDefinition = {
             }
             if (!this._restoringUrl) this.pushUrlState(true);
             else this.pushUrlState();
-            this.$nextTick(() => this.checkCallouts());
 
             if (cat === CAT.ALL_WEAPONS) {
                 const slug = "all-weapons";
@@ -2490,7 +2475,6 @@ export const appDefinition = {
             }
             this.modalLoading = false;
             if (this.crossPackId) this.loadCrossPackItem(this.crossPackId);
-            this.$nextTick(() => this.checkCallouts());
         },
 
         showToast(message, type = "error", duration = 3000) {
@@ -4838,8 +4822,6 @@ export const appDefinition = {
         handleEscape() {
             if (this.quickNavOpen) {
                 this.quickNavOpen = false;
-            } else if (this.calloutActive) {
-                this.dismissCallout();
             } else if (this.whatsNewVisible) {
                 this.dismissWhatsNew();
             } else if (this.shortcutHelpOpen) {
@@ -4951,7 +4933,6 @@ export const appDefinition = {
             this.buildWeaponCompareSlot = localStorage.getItem("buildWeaponCompareSlot") || "primary";
             if (!this._restoringUrl) this.pushUrlState(true);
             else this.pushUrlState();
-            this.$nextTick(() => this.checkCallouts());
         },
 
         async openDamageSim() {
@@ -5432,7 +5413,7 @@ export const appDefinition = {
             return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 12);
         },
 
-        // ── What's New & Feature Callouts ──
+        // ── What's New ──
 
         initWhatsNew(rnData, hash) {
             const lastSeenDate = localStorage.getItem("whatsNewLastDate") || "";
@@ -5440,32 +5421,19 @@ export const appDefinition = {
             // Only show entries from releases newer than lastSeenDate
             let totalCount = 0;
             const highlighted = [];
-            const callouts = [];
             for (const release of rnData) {
                 if (release.date <= lastSeenDate) continue;
                 totalCount += release.entries.length;
                 for (const entry of release.entries) {
                     if (entry.highlight) highlighted.push(entry);
-                    if (entry.callout) callouts.push(entry.callout);
                 }
             }
-            if (!highlighted.length && !callouts.length) return;
+            if (!highlighted.length) return;
 
             this._whatsNewLatestDate = rnData.length ? rnData[0].date : "";
             this.whatsNewTotalCount = totalCount;
             this.whatsNewEntries = highlighted;
-            if (highlighted.length) this.whatsNewVisible = true;
-
-            // Collect callout definitions from all entries
-            this._calloutDefs = callouts;
-
-            // Load previously dismissed callouts
-            try {
-                this._calloutDismissed = new Set(JSON.parse(localStorage.getItem("calloutsDismissed") || "[]"));
-            } catch (e) { this._calloutDismissed = new Set(); }
-
-            // Show first visible callout after a short delay
-            this.$nextTick(() => this.checkCallouts());
+            this.whatsNewVisible = true;
         },
 
         whatsNewEmoji(type) {
@@ -5497,80 +5465,6 @@ export const appDefinition = {
             try {
                 if (this._whatsNewLatestDate) localStorage.setItem("whatsNewLastDate", this._whatsNewLatestDate);
             } catch (e) { /* quota */ }
-        },
-
-        checkCallouts() {
-            if (!this._calloutDefs || this.calloutActive) return;
-            for (const step of this._calloutDefs) {
-                if (this._calloutDismissed.has(step.selector)) continue;
-                const target = document.querySelector(step.selector);
-                if (target && target.offsetParent !== null) {
-                    this.calloutCurrent = step;
-                    this.calloutActive = true;
-                    this.$nextTick(() => this.positionCallout());
-                    return;
-                }
-            }
-        },
-
-        dismissCallout() {
-            if (this.calloutCurrent) {
-                this._calloutDismissed.add(this.calloutCurrent.selector);
-                try {
-                    localStorage.setItem("calloutsDismissed", JSON.stringify([...this._calloutDismissed]));
-                } catch (e) { /* quota */ }
-            }
-            this.calloutActive = false;
-            this.calloutCurrent = null;
-        },
-
-        positionCallout() {
-            const step = this.calloutCurrent;
-            if (!step) return;
-            const target = document.querySelector(step.selector);
-            if (!target || target.offsetParent === null) {
-                this.dismissCallout();
-                return;
-            }
-
-            const rect = target.getBoundingClientRect();
-            const pad = 6;
-
-            this.calloutSpotlightStyle = {
-                top: (rect.top - pad) + "px",
-                left: (rect.left - pad) + "px",
-                width: (rect.width + pad * 2) + "px",
-                height: (rect.height + pad * 2) + "px",
-            };
-
-            const popover = this.$refs.calloutPopover;
-            const arrowEl = this.$refs.calloutArrow;
-            if (!popover) return;
-
-            FloatingUIDOM.computePosition(target, popover, {
-                placement: step.placement || "bottom",
-                middleware: [
-                    FloatingUIDOM.offset(16),
-                    FloatingUIDOM.flip({ fallbackPlacements: ["top", "right", "left"] }),
-                    FloatingUIDOM.shift({ padding: 12 }),
-                    FloatingUIDOM.arrow({ element: arrowEl }),
-                ],
-            }).then(({ x, y, placement, middlewareData }) => {
-                this.calloutPopoverStyle = {
-                    top: y + "px",
-                    left: x + "px",
-                };
-                const side = { top: "bottom", bottom: "top", left: "right", right: "left" }[placement.split("-")[0]];
-                this.calloutArrowSide = side;
-                if (middlewareData.arrow) {
-                    const ax = middlewareData.arrow.x;
-                    const ay = middlewareData.arrow.y;
-                    this.calloutArrowStyle = {
-                        left: ax != null ? ax + "px" : "",
-                        top: ay != null ? ay + "px" : "",
-                    };
-                }
-            });
         },
 
         getBuildShareData() {
@@ -7064,11 +6958,6 @@ export const appDefinition = {
             this.restoreUrlState(window.location.search, window.location.pathname);
             this._restoringUrl = false;
         });
-
-        // Reposition callout on resize/scroll
-        this._repositionCallout = () => { if (this.calloutActive) this.positionCallout(); };
-        window.addEventListener("resize", this._repositionCallout);
-        window.addEventListener("scroll", this._repositionCallout, true);
 
         // 8. Check for unseen release notes & init What's New
         try {

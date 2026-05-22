@@ -6951,101 +6951,6 @@ kbd {
 .whats-new-enter-from,
 .whats-new-leave-to { opacity: 0; transform: translateY(1rem); }
 
-/* ── Feature callout spotlight ── */
-.callout-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 10002;
-    transition: opacity 0.25s ease;
-}
-.callout-spotlight {
-    position: absolute;
-    border-radius: 6px;
-    box-shadow: 0 0 0 9999px var(--color-overlay-black-55);
-    transition: top 0.3s ease, left 0.3s ease, width 0.3s ease, height 0.3s ease;
-    pointer-events: none;
-}
-.callout-spotlight::after {
-    content: "";
-    position: absolute;
-    inset: -4px;
-    border-radius: 8px;
-    border: 2px solid var(--accent);
-    animation: callout-pulse 2s ease-in-out infinite;
-}
-@keyframes callout-pulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.02); }
-}
-.callout-popover {
-    position: absolute;
-    z-index: 10003;
-    width: 280px;
-    max-width: calc(100vw - 2rem);
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px var(--color-overlay-black-50);
-    padding: 0.85rem;
-    transition: top 0.3s ease, left 0.3s ease;
-}
-.callout-popover-title {
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--accent);
-    margin-bottom: 0.35rem;
-}
-.callout-popover-desc {
-    font-size: 0.78rem;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    margin-bottom: 0.65rem;
-}
-.callout-popover-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-.callout-popover-next {
-    background: var(--accent);
-    color: var(--color-card);
-    border: none;
-    border-radius: 4px;
-    padding: 0.3rem 0.85rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-.callout-popover-next:hover { filter: brightness(1.1); }
-.callout-arrow {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    transform: rotate(45deg);
-}
-.callout-arrow[data-side="top"] {
-    top: -6px;
-    border-bottom: none;
-    border-right: none;
-}
-.callout-arrow[data-side="bottom"] {
-    bottom: -6px;
-    border-top: none;
-    border-left: none;
-}
-.callout-arrow[data-side="left"] {
-    right: -6px;
-    border-bottom: none;
-    border-left: none;
-}
-.callout-arrow[data-side="right"] {
-    left: -6px;
-    border-top: none;
-    border-right: none;
-}
-
 @media (max-width: 600px) {
     .whats-new-banner {
         right: 0.5rem;
@@ -7053,9 +6958,6 @@ kbd {
         left: 0.5rem;
         width: auto;
         max-width: none;
-    }
-    .callout-popover {
-        width: 240px;
     }
 }
 

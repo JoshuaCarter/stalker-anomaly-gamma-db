@@ -25,19 +25,6 @@
     </div>
 </transition>
 
-<!-- Feature callout spotlight -->
-<div v-if="calloutActive" class="callout-overlay" @click.self="dismissCallout()">
-    <div class="callout-spotlight" :style="calloutSpotlightStyle"></div>
-    <div class="callout-popover" ref="calloutPopover" :style="calloutPopoverStyle">
-        <div class="callout-arrow" ref="calloutArrow" :data-side="calloutArrowSide" :style="calloutArrowStyle"></div>
-        <div class="callout-popover-title">{{ calloutTitle }}</div>
-        <div class="callout-popover-desc">{{ calloutDesc }}</div>
-        <div class="callout-popover-actions">
-            <button class="callout-popover-next" @click="dismissCallout()">{{ t('app_callout_done') }}</button>
-        </div>
-    </div>
-</div>
-
 <HeaderBar
     ref="headerBar"
     :translations="translations"
