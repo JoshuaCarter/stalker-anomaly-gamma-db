@@ -18,14 +18,15 @@ export const FILTER_DEFS = [
     { key: "st_data_export_used_in_crafting", type: "flag", label: "app_filter_craft_material" },
     { key: "st_data_export_has_perk", type: "flag", label: "app_filter_has_perk" },
     { key: "st_data_export_is_junk", type: "flag", label: "app_filter_is_junk" },
-    { key: "st_data_export_cuts_thick_skin", type: "flag", label: "app_filter_cuts_thick_skin" },
+    { key: "st_data_export_cuts_thick_skin", type: "present", label: "app_filter_cuts_thick_skin" },
     { key: "ui_mcm_menu_exo", type: "flag", label: "app_filter_powered_exo" },
     { key: "st_data_export_can_be_cooked", type: "flag", label: "app_filter_cookable" },
     { key: "st_data_export_used_in_cooking", type: "flag", label: "app_filter_ingredient" },
     { key: "Type", type: "discrete", label: "app_filter_weapon_type", dynamic: true },
     { key: "factions", type: "discrete", label: "app_filter_origin", values: ["nato", "wp", "other"], displayMap: { nato: "NATO", wp: "WP", other: "Other" }, arrayField: true },
     { key: "_effects", type: "has-effect", label: "app_filter_provides_effect", fields: EFFECT_FIELDS },
-    { key: "_has_launcher", type: "flag", label: "app_filter_has_launcher" },
+    { key: "_has_launcher", type: "present", label: "app_filter_has_launcher" },
+    { key: "st_data_export_ammo_types_alt", type: "present", label: "app_filter_has_alt_ammo" },
 ];
 
 export const NAME_TAG_COLS = new Set(["st_data_export_has_perk", "st_data_export_is_junk", "st_data_export_can_be_crafted", "ui_mcm_menu_exo", "st_data_export_can_be_cooked", "st_data_export_used_in_cooking", "st_data_export_used_in_crafting", "st_data_export_cuts_thick_skin"]);

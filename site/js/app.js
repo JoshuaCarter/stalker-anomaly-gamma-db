@@ -140,6 +140,9 @@ export const appDefinition = {
             copyModalLinkFeedback: false,
             copyLinkFeedback: false,
             _restoringUrl: false,
+            // Modal cross-category navigation history
+            _modalNavBackStack: [],
+            _modalNavFwdStack: [],
 
             // Cross-pack comparison
             crossPackId: localStorage.getItem("crossPackId") || null,
@@ -930,12 +933,15 @@ export const appDefinition = {
                     return [...def.fields].some(f => headers.includes(f) || raw.includes(f));
                 }
                 if (def.type === "flag") {
+                    return raw.includes(def.key);
+                }
+                if (def.type === "present") {
                     if (def.key === "_has_launcher") {
                         const isWeaponCat = WEAPON_CATEGORIES.includes(this.activeCategory) || this.activeCategory === CAT.ALL_WEAPONS;
                         return isWeaponCat && !!this.weaponAddonsCache &&
                             Object.values(this.weaponAddonsCache).some(a => a.launchers && a.launchers.length > 0);
                     }
-                    return raw.includes(def.key);
+                    return raw.includes(def.key) && items.some(i => i[def.key]);
                 }
                 if (def.key === "ui_st_community") return raw.includes("ui_st_community");
                 if (def.arrayField) return items.some(i => Array.isArray(i[def.key]) && i[def.key].length > 0);
@@ -1115,6 +1121,8 @@ export const appDefinition = {
                 if (!def) continue;
                 if (def.type === "flag" && (val === true || val === false)) {
                     chips.push({ key, label: def.label, value: val, display: val ? this.t("app_label_yes") : this.t("app_label_no"), type: "flag" });
+                } else if (def.type === "present" && val === true) {
+                    chips.push({ key, label: def.label, value: null, type: "flag" });
                 } else if (Array.isArray(val)) {
                     for (const v of val) {
                         const display = this.filterValueLabel(def, v);
@@ -2517,6 +2525,8 @@ export const appDefinition = {
         closeModal() {
             this.modalOpen = false;
             this.modalItem = null;
+            this._modalNavBackStack = [];
+            this._modalNavFwdStack = [];
             document.body.style.overflow = "";
             if (window.location.hash) {
                 history.pushState(null, "", window.location.pathname + window.location.search);
@@ -2745,6 +2755,22 @@ export const appDefinition = {
 
         navigateModal(direction) {
             if (!this.modalOpen || !this.modalItem || this.modalLoading) return;
+
+            // History-based back/forward for cross-category navigation
+            if (direction === -1 && this._modalNavBackStack.length > 0) {
+                const prevId = this._modalNavBackStack.pop();
+                this._modalNavFwdStack.push(this.modalItem.id);
+                this.navigateToItem(prevId, true);
+                return;
+            }
+            if (direction === 1 && this._modalNavFwdStack.length > 0) {
+                const nextId = this._modalNavFwdStack.pop();
+                this._modalNavBackStack.push(this.modalItem.id);
+                this.navigateToItem(nextId, true);
+                return;
+            }
+
+            // Fallback: navigate within the current sorted list
             let items;
             if (this.versionCompareActive) {
                 items = this.filteredVersionCompareResults.flatMap(g => g.items);
@@ -3618,6 +3644,8 @@ export const appDefinition = {
                         if (item[key] !== "Y") return false;
                     } else if (def.type === "flag" && val === false) {
                         if (item[key] === "Y") return false;
+                    } else if (def.type === "present" && val === true) {
+                        if (!item[key]) return false;
                     } else if (def.type === "has-effect" && Array.isArray(val) && val.length > 0) {
                         for (const field of val) {
                             if (!isNonZero(item[field])) return false;
@@ -3825,8 +3853,12 @@ export const appDefinition = {
             return entry ? entry.id : null;
         },
 
-        navigateToItem(id) {
+        navigateToItem(id, _fromHistory = false) {
             if (!this.indexById[id]) return;
+            if (!_fromHistory && this.modalOpen && this.modalItem) {
+                this._modalNavBackStack.push(this.modalItem.id);
+                this._modalNavFwdStack = [];
+            }
             this.openItem(id);
             history.pushState(null, "", `${window.location.pathname}${window.location.search}#${id}`);
         },

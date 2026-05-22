@@ -22,8 +22,16 @@
                         </div>
                         <template v-for="def in availableFilters" :key="def.key">
                             <div v-if="def.type !== 'range'" class="filter-group">
-                                <div class="filter-group-label">{{ t(def.label) }}</div>
-                                <div v-if="def.type === 'discrete'" class="filter-chips">
+                                <div class="filter-group-label">
+                                    {{ t(def.label) }}
+                                    <a v-if="def.key === 'ui_ammo_types'"
+                                       href="#"
+                                       class="filter-group-collapse-link"
+                                       @click.prevent="toggleAmmoTypesCollapsed()">
+                                        {{ ammoTypesCollapsed ? t('app_label_show') : t('app_label_hide') }}
+                                    </a>
+                                </div>
+                                <div v-if="def.type === 'discrete'" v-show="def.key !== 'ui_ammo_types' || !ammoTypesCollapsed" class="filter-chips">
                                     <button
                                         v-if="def.key === 'ui_ammo_types'"
                                         class="filter-chip filter-chip-alt"
@@ -59,6 +67,14 @@
                                         :class="{ active: activeFilters[def.key] === false }"
                                         @click="$emit('toggleFlagFilter', def.key, false)"
                                     >{{ t('app_label_no') }}</button>
+                                </div>
+                                <div v-else-if="def.type === 'present'"
+                                     class="filter-toggle-wrap"
+                                     :class="{ active: activeFilters[def.key] === true }"
+                                     @click="$emit('toggleFlagFilter', def.key, true)">
+                                    <span class="toggle-switch" :class="{ on: activeFilters[def.key] === true }">
+                                        <span class="toggle-knob"></span>
+                                    </span>
                                 </div>
                             </div>
                         </template>
@@ -187,6 +203,8 @@
                 <span class="item-count" v-if="!isOutfitExchange && !isCrafting">{{ sortedItems.length }} {{ t('app_label_items') }}</span>
                 <span class="item-count" v-if="isCrafting">{{ craftingItemCount }} {{ t('app_label_recipes') }}</span>
                 <span class="item-count" v-if="isOutfitExchange && outfitExchange">{{ filteredExchanges.length }} {{ t('app_label_exchanges') }}</span>
+                <!-- Spacer: grows on desktop to push right-side controls to the far right -->
+                <span class="filter-bar-spacer" aria-hidden="true"></span>
                 <button v-if="isWeaponSection" class="weapon-help-btn" @click="$emit('openWeaponHelp')" v-tooltip="t('app_label_weapon_mechanics_help')">
                     <LucideInfo :size="16" />
                 </button>
@@ -332,6 +350,7 @@ export default {
             settingsOpen: false,
             _filterPanelCleanup: null,
             _settingsPos: { top: 0, right: 0 },
+            ammoTypesCollapsed: localStorage.getItem('filterAmmoTypesCollapsed') === 'true',
         };
     },
     methods: {
@@ -416,6 +435,10 @@ export default {
         onDownload(format) {
             this.downloadMenuOpen = false;
             this.$emit('downloadData', format);
+        },
+        toggleAmmoTypesCollapsed() {
+            this.ammoTypesCollapsed = !this.ammoTypesCollapsed;
+            localStorage.setItem('filterAmmoTypesCollapsed', String(this.ammoTypesCollapsed));
         },
         /** Called by parent (via ref) to close all open panels — used by handleEscape */
         closeAllPanels() {

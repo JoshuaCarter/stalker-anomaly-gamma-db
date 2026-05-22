@@ -1,8 +1,8 @@
 <template>
 <Transition name="fade">
 <div class="modal-backdrop" v-if="modalOpen" @click.self="$emit('closeModal')">
-    <button class="modal-nav modal-nav-prev" @click="$emit('navigateModal', -1)" v-tooltip="'&#8592;'">&lsaquo;</button>
-    <button class="modal-nav modal-nav-next" @click="$emit('navigateModal', 1)" v-tooltip="'&#8594;'">&rsaquo;</button>
+    <button class="modal-nav modal-nav-prev" @click="$emit('navigateModal', -1)" v-tooltip="'&#8592;'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="modal-nav modal-nav-next" @click="$emit('navigateModal', 1)" v-tooltip="'&#8594;'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
     <button class="modal-close" @click="$emit('closeModal')">&times;</button>
     <Transition name="modal" appear>
     <div class="modal" v-if="modalOpen">
@@ -245,6 +245,17 @@
                     </div>
                 </div>
 
+                <!-- Compatible Tactical Kits (on weapon detail) -->
+                <div v-if="modalWeaponAddons.kits && modalWeaponAddons.kits.length" class="drop-sources" :class="{ collapsed: isCollapsed('kits') }">
+                    <h2 class="section-toggle" @click="toggleSection('kits')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_kits') }}</h2>
+                    <div class="addon-tile-grid">
+                        <a v-for="addon in modalWeaponAddons.kits" :key="addon.id" href="#" class="addon-img-tile addon-img-tile-kit" @mouseenter="showItemHover(addon, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', addon.id)">
+                            <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-name">{{ t(addon.pda_encyclopedia_name) }}</span>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Upgrade Tree -->
                 <div v-if="modalUpgradeNodes && modalUpgradeNodes.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('upgrades') }">
                     <h2 class="section-toggle" @click="toggleSection('upgrades')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_upgrades') }}</h2>
@@ -421,7 +432,7 @@ export default {
     parsedDescription: Object,
     parsedPerk: Object,
     pbaConstants: { type: Object, default: () => ({}) },
-    modalWeaponAddons: { type: Object, default: () => ({ scopes: [], silencers: [], launchers: [] }) },
+    modalWeaponAddons: { type: Object, default: () => ({ scopes: [], silencers: [], launchers: [], kits: [] }) },
     modalAddonCompatibleWeapons: { type: Array, default: () => [] },
     favoriteIds: Array,
     pinnedIds: Array,
