@@ -14,7 +14,7 @@
   "food.json": "310e2a37",
   "grenade-launchers.json": "39e0b654",
   "helmets.json": "441431fc",
-  "index.json": "2a08a050",
+  "index.json": "a90531b7",
   "item-drops.json": "6c6d2dd7",
   "item-stash-chance.json": "d54a8fe7",
   "items-common.json": "b247a010",
@@ -27,14 +27,14 @@
   "outfits.json": "53af4c71",
   "pistols.json": "163bb3af",
   "rifles.json": "a0a00651",
-  "scopes.json": "3e69334a",
+  "scopes.json": "cdedffd8",
   "shotguns.json": "a2434bfc",
   "silencers.json": "a413b431",
   "smgs.json": "f5ddbb92",
   "snipers.json": "5c4144e6",
-  "tactical-kits.json": "f4542430",
+  "tactical-kits.json": "ce3e8704",
   "traders-meta.json": "54964d23",
   "translations.json": "c3f91dd3",
   "upgrades.json": "e55a536b",
-  "weapon-addons.json": "6c3681c7"
+  "weapon-addons.json": "223197cd"
 }

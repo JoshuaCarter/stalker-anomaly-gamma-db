@@ -56,6 +56,21 @@
       ]
     },
     {
+      "id": "admin",
+      "pda_encyclopedia_name": "st_addon_admin_upgr_kit",
+      "st_data_export_description": "st_addon_admin_upgr_kit_descr",
+      "st_prop_weight": "1.50",
+      "st_upgr_cost": "17000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_admin_upgr_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato"
+      ]
+    },
+    {
       "id": "apsabigo",
       "pda_encyclopedia_name": "st_addon_scope_apsabigo",
       "st_data_export_description": "st_addon_scope_apsabigo_descr",
@@ -79,6 +94,21 @@
       "st_data_export_zoom_factor": "",
       "st_data_export_magnifications": "",
       "displayName": "st_addon_scope_archangel",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato"
+      ]
+    },
+    {
+      "id": "bd",
+      "pda_encyclopedia_name": "st_addon_bd_upgr_kit",
+      "st_data_export_description": "st_addon_bd_upgr_kit_descr",
+      "st_prop_weight": "1.50",
+      "st_upgr_cost": "17000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_bd_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
@@ -131,21 +161,6 @@
       ]
     },
     {
-      "id": "kashtan_rmr",
-      "pda_encyclopedia_name": "st_addon_scope_kashtan_rmr",
-      "st_data_export_description": "st_addon_scope_kashtan_rmr_descr",
-      "st_prop_weight": "0.76",
-      "st_upgr_cost": "12000",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "2.8",
-      "displayName": "st_addon_scope_kashtan_rmr",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "wp"
-      ]
-    },
-    {
       "id": "kit_aus_tri",
       "pda_encyclopedia_name": "st_addon_scope_kit_aus_tri",
       "st_data_export_description": "st_addon_scope_kit_aus_tri_descr",
@@ -191,18 +206,18 @@
       ]
     },
     {
-      "id": "kp_sr2",
-      "pda_encyclopedia_name": "st_addon_scope_kp_sr2",
-      "st_data_export_description": "st_addon_scope_kp_sr2_descr",
-      "st_prop_weight": "0.03",
-      "st_upgr_cost": "4500",
+      "id": "kurtz",
+      "pda_encyclopedia_name": "st_addon_kurtz_kit",
+      "st_data_export_description": "st_addon_kurtz_descr",
+      "st_prop_weight": "1.25",
+      "st_upgr_cost": "13650",
       "st_data_export_zoom_factor": "",
       "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_kp_sr2",
+      "displayName": "st_addon_kurtz_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "wp"
+        "nato"
       ]
     },
     {
@@ -221,19 +236,18 @@
       ]
     },
     {
-      "id": "lazup_pl15",
-      "pda_encyclopedia_name": "st_addon_scope_lazup_generic",
-      "st_data_export_description": "st_addon_scope_lazup_generic_descr",
-      "st_prop_weight": "0.09",
-      "st_upgr_cost": "12300",
+      "id": "m9_upgr_kit",
+      "pda_encyclopedia_name": "st_addon_scope_m9_upgr_kit",
+      "st_data_export_description": "st_addon_scope_m9_upgr_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "9000",
       "st_data_export_zoom_factor": "",
       "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_lazup_generic",
+      "displayName": "st_addon_scope_m9_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "nato",
-        "wp"
+        "nato"
       ]
     },
     {
@@ -249,38 +263,6 @@
       "hasDisassemble": false,
       "factions": [
         "nato"
-      ]
-    },
-    {
-      "id": "march_f_shorty_alt",
-      "pda_encyclopedia_name": "st_addon_scope_march_f_shorty_alt",
-      "st_data_export_description": "st_addon_scope_march_f_shorty_alt_descr",
-      "st_prop_weight": "0.59",
-      "st_upgr_cost": "55000",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "1-10",
-      "displayName": "st_addon_scope_march_f_shorty_alt",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "nato",
-        "wp"
-      ]
-    },
-    {
-      "id": "mark8_rmr",
-      "pda_encyclopedia_name": "st_addon_scope_mark8_rmr",
-      "st_data_export_description": "st_addon_scope_mark8_rmr_descr",
-      "st_prop_weight": "0.71",
-      "st_upgr_cost": "48000",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "1-8",
-      "displayName": "st_addon_scope_mark8_rmr",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "nato",
-        "wp"
       ]
     },
     {
@@ -359,6 +341,21 @@
       ]
     },
     {
+      "id": "pb_upgr_kit",
+      "pda_encyclopedia_name": "st_addon_scope_pb_upgr_kit",
+      "st_data_export_description": "st_addon_scope_pb_upgr_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "7800",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_pb_upgr_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "wp"
+      ]
+    },
+    {
       "id": "pl15_scolaz",
       "pda_encyclopedia_name": "st_addon_scope_pl15_scolaz_new",
       "st_data_export_description": "st_addon_scope_pl15_scolaz_new_descr",
@@ -374,14 +371,14 @@
       ]
     },
     {
-      "id": "pritseldob",
-      "pda_encyclopedia_name": "st_addon_scope_psicho_rmr",
-      "st_data_export_description": "st_addon_scope_psicho_rmr_descr",
-      "st_prop_weight": "0.66",
-      "st_upgr_cost": "36000",
+      "id": "pm_upgr_kit",
+      "pda_encyclopedia_name": "st_addon_scope_pm_upgr_kit",
+      "st_data_export_description": "st_addon_scope_pm_upgr_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "6200",
       "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "4",
-      "displayName": "st_addon_scope_psicho_rmr",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_pm_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
@@ -400,38 +397,6 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "wp"
-      ]
-    },
-    {
-      "id": "side",
-      "pda_encyclopedia_name": "st_addon_scope_side",
-      "st_data_export_description": "st_addon_scope_side_descr",
-      "st_prop_weight": "0.51",
-      "st_upgr_cost": "14000",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "3.5",
-      "displayName": "st_addon_scope_side",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "nato"
-      ]
-    },
-    {
-      "id": "spec_alt",
-      "pda_encyclopedia_name": "st_addon_scope_spec_alt",
-      "st_data_export_description": "st_addon_scope_spec_alt_descr",
-      "st_prop_weight": "0.71",
-      "st_upgr_cost": "35000",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "1,4",
-      "displayName": "st_addon_scope_spec_alt",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "nato",
-        "other",
         "wp"
       ]
     },
@@ -512,19 +477,17 @@
       ]
     },
     {
-      "id": "triji",
-      "pda_encyclopedia_name": "st_addon_scope_trijicon_rmr",
-      "st_data_export_description": "st_addon_scope_trijicon_rmr_descr",
-      "st_prop_weight": "0.56",
-      "st_upgr_cost": "29500",
+      "id": "tt_upgr_kit",
+      "pda_encyclopedia_name": "st_addon_scope_tt_upgr_kit",
+      "st_data_export_description": "st_addon_scope_tt_upgr_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "6200",
       "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "2.8",
-      "displayName": "st_addon_scope_trijicon_rmr",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_tt_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "nato",
-        "other",
         "wp"
       ]
     },
@@ -552,6 +515,21 @@
       "st_data_export_zoom_factor": "",
       "st_data_export_magnifications": "",
       "displayName": "st_addon_scope_upg220",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato"
+      ]
+    },
+    {
+      "id": "vitup",
+      "pda_encyclopedia_name": "st_addon_scope_vitup_kit",
+      "st_data_export_description": "st_addon_scope_vitup_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "14200",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_vitup_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [

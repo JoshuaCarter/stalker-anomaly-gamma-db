@@ -16,7 +16,7 @@
   "gbo-constants.json": "68dc53eb",
   "grenade-launchers.json": "8534ea7c",
   "helmets.json": "026fe93f",
-  "index.json": "66cc767a",
+  "index.json": "f76e91e1",
   "item-drops.json": "9f043dbf",
   "item-loadouts.json": "34f00583",
   "items-common.json": "107c386b",
@@ -34,16 +34,16 @@
   "pistols.json": "d4006e99",
   "recipes.json": "8efed94c",
   "rifles.json": "4814003d",
-  "scopes.json": "5a4ce32b",
+  "scopes.json": "28fbd6a2",
   "shotguns.json": "d79a76ee",
   "silencers.json": "4e5ccc41",
   "smgs.json": "e81bffa0",
   "snipers.json": "646bdc4d",
   "starting-loadouts.json": "4bda2375",
-  "tactical-kits.json": "6d97ce68",
+  "tactical-kits.json": "541ad3fa",
   "toolkit-rates.json": "022b557e",
   "traders-meta.json": "8fa89e62",
   "translations.json": "0807e0fb",
   "upgrades.json": "686c1124",
-  "weapon-addons.json": "db28fa66"
+  "weapon-addons.json": "38a2ecf5"
 }

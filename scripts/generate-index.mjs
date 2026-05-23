@@ -336,24 +336,38 @@ if (existsSync(syntheticPath)) {
 
 // ── Split tactical/conversion kits out of the Scopes category ────────────────
 // The game exporter lumps all weapon addons (optics + body kits) into the scopes
-// CSV. These IDs are weapon conversion / body-kit items, not optical sights.
-const TACTICAL_KIT_IDS = new Set([
-  "226sig_kit", "23_up", "5c_tik", "apsabigo", "archangel",
-  "gurza_up", "infiltrator_tactical_kit", "kab_up", "kashtan_rmr",
-  "kit_aus_tri", "kit_fal_leup", "kit_sa5x_spec", "kp_sr2", "lapua700",
-  "lazup_pl15", "magpul_pro", "march_f_shorty_alt", "mark8_rmr",
-  "mauser_kit", "mod9", "mod_x_gen3", "mono_kit", "none",
-  "ots2_upgr_kit", "pl15_scolaz", "pritseldob", "shakal", "side",
-  "spec_alt", "spectre_tactical_kit", "sr1upgr1", "sr2_upkit",
-  "sup", "swamp", "triji", "u2p2g0r", "upg220", "vorkuta",
-]);
+// CSV. Detect kits by either naming (`_kit` / `_upgr_kit` suffix) or by the
+// existence of a `<base_weapon>_<addonId>` variant in the weapon CSVs — that
+// rename only happens when a kit is applied. NON_KIT_OVERRIDES carries known
+// false positives where the variant rule would mis-fire (e.g. `silen98` is a
+// silencer that the exporter mis-files into the scopes CSV, but a modified
+// k98 variant `wpn_k98_mod_silen98` exists).
+const NON_KIT_OVERRIDES = new Set(["silen98"]);
+
+const WEAPON_SLUGS_FOR_KIT_DETECTION = ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"];
+const weaponIdsForKitDetection = new Set();
+for (const slug of WEAPON_SLUGS_FOR_KIT_DETECTION) {
+  for (const it of categoryData.get(slug)?.items || []) {
+    weaponIdsForKitDetection.add(it.id);
+  }
+}
+
+function isTacticalKit(addonId) {
+  if (NON_KIT_OVERRIDES.has(addonId)) return false;
+  if (/_upgr_kit$|_kit$|^kit_/.test(addonId)) return true;
+  const suffix = "_" + addonId;
+  for (const wid of weaponIdsForKitDetection) {
+    if (wid.endsWith(suffix) && wid.length > suffix.length) return true;
+  }
+  return false;
+}
 
 const scopeData = categoryData.get("scopes");
 if (scopeData) {
   const kits = [];
   const realScopes = [];
   for (const item of scopeData.items) {
-    if (TACTICAL_KIT_IDS.has(item.id)) kits.push(item);
+    if (isTacticalKit(item.id)) kits.push(item);
     else realScopes.push(item);
   }
   if (kits.length) {
