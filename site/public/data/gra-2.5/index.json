@@ -1726,7 +1726,7 @@
   {
     "id": "kashtan_rmr",
     "name": "st_addon_scope_kashtan_rmr",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_kashtan_rmr"
   },
   {
@@ -1816,7 +1816,7 @@
   {
     "id": "pritseldob",
     "name": "st_addon_scope_pritseldob",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_pritseldob"
   },
   {
@@ -1846,7 +1846,7 @@
   {
     "id": "silen98",
     "name": "st_addon_scope_silen98",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_silen98"
   },
   {

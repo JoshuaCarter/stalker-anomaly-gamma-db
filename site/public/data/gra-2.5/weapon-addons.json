@@ -317,15 +317,15 @@
     "kits": []
   },
   "wpn_ak74_pmc": {
-    "scopes": [
-      "pritseldob",
-      "kashtan_rmr"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_atg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_ak74_rpk": {
     "scopes": [],
@@ -352,15 +352,15 @@
     "kits": []
   },
   "wpn_ak74m_beard": {
-    "scopes": [
-      "pritseldob",
-      "kashtan_rmr"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_tgp-a"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_ak74m_camo": {
     "scopes": [],
@@ -469,15 +469,15 @@
     "kits": []
   },
   "wpn_ak74u_tac": {
-    "scopes": [
-      "pritseldob",
-      "kashtan_rmr"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_pbs4"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_akm": {
     "scopes": [],
@@ -1260,24 +1260,24 @@
     "kits": []
   },
   "wpn_k98_mod": {
-    "scopes": [
-      "silen98"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_forester"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "silen98"
+    ]
   },
   "wpn_k98_mod_silen98": {
-    "scopes": [
-      "silen98"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_forester"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "silen98"
+    ]
   },
   "wpn_kar98_retrotac": {
     "scopes": [
@@ -1290,24 +1290,24 @@
     "kits": []
   },
   "wpn_karabiner98k": {
-    "scopes": [
-      "silen98"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_forester"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "silen98"
+    ]
   },
   "wpn_karabiner98k_silen98": {
-    "scopes": [
-      "silen98"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_forester"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "silen98"
+    ]
   },
   "wpn_kiparis": {
     "scopes": [],
@@ -2484,15 +2484,15 @@
     "kits": []
   },
   "wpn_sks_tac": {
-    "scopes": [
-      "pritseldob",
-      "kashtan_rmr"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_hexagon"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_sr1m": {
     "scopes": [],
@@ -2837,14 +2837,14 @@
     "kits": []
   },
   "wpn_vintorez_m2": {
-    "scopes": [
-      "pritseldob"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_addon_silencer"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob"
+    ]
   },
   "wpn_vintorez_n1": {
     "scopes": [],

@@ -179,6 +179,21 @@
       ]
     },
     {
+      "id": "kashtan_rmr",
+      "pda_encyclopedia_name": "st_addon_scope_kashtan_rmr",
+      "st_data_export_description": "st_addon_scope_kashtan_rmr_descr",
+      "st_prop_weight": "0.76",
+      "st_upgr_cost": "48950",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "2.8",
+      "displayName": "st_addon_scope_kashtan_rmr",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "wp"
+      ]
+    },
+    {
       "id": "kit_aus_tri",
       "pda_encyclopedia_name": "st_addon_scope_kit_aus_tri",
       "st_data_export_description": "st_addon_scope_kit_aus_tri_descr",
@@ -251,6 +266,38 @@
       "hasDisassemble": false,
       "factions": [
         "nato"
+      ]
+    },
+    {
+      "id": "march_f_shorty_alt",
+      "pda_encyclopedia_name": "st_addon_scope_march_f_shorty_alt",
+      "st_data_export_description": "st_addon_scope_march_f_shorty_alt_descr",
+      "st_prop_weight": "0.59",
+      "st_upgr_cost": "64280",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "1-8",
+      "displayName": "st_addon_scope_march_f_shorty_alt",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato",
+        "wp"
+      ]
+    },
+    {
+      "id": "mark8_rmr",
+      "pda_encyclopedia_name": "st_addon_scope_mark8_rmr",
+      "st_data_export_description": "st_addon_scope_mark8_rmr_descr",
+      "st_prop_weight": "0.71",
+      "st_upgr_cost": "69950",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "1-8",
+      "displayName": "st_addon_scope_mark8_rmr",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato",
+        "wp"
       ]
     },
     {
@@ -329,6 +376,21 @@
       ]
     },
     {
+      "id": "pritseldob",
+      "pda_encyclopedia_name": "st_addon_scope_psicho_rmr",
+      "st_data_export_description": "st_addon_scope_psicho_rmr_descr",
+      "st_prop_weight": "0.66",
+      "st_upgr_cost": "45950",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "4",
+      "displayName": "st_addon_scope_psicho_rmr",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "wp"
+      ]
+    },
+    {
       "id": "rmr",
       "pda_encyclopedia_name": "st_addon_scope_rmr",
       "st_data_export_description": "st_addon_scope_rmr_descr",
@@ -356,6 +418,37 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
+        "wp"
+      ]
+    },
+    {
+      "id": "silen98",
+      "pda_encyclopedia_name": "st_addon_scope_silen98",
+      "st_data_export_description": "st_addon_scope_silen98_descr",
+      "st_prop_weight": "0.10",
+      "st_upgr_cost": "7150",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_silen98",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "other"
+      ]
+    },
+    {
+      "id": "spec_alt",
+      "pda_encyclopedia_name": "st_addon_scope_spec_alt",
+      "st_data_export_description": "st_addon_scope_spec_alt_descr",
+      "st_prop_weight": "0.71",
+      "st_upgr_cost": "61950",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "1,4",
+      "displayName": "st_addon_scope_spec_alt",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato",
         "wp"
       ]
     },
@@ -432,6 +525,22 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
+        "wp"
+      ]
+    },
+    {
+      "id": "triji",
+      "pda_encyclopedia_name": "st_addon_scope_trijicon_rmr",
+      "st_data_export_description": "st_addon_scope_trijicon_rmr_descr",
+      "st_prop_weight": "0.56",
+      "st_upgr_cost": "58000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "2.8",
+      "displayName": "st_addon_scope_trijicon_rmr",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato",
         "wp"
       ]
     },

@@ -1580,7 +1580,7 @@
   {
     "id": "kashtan_rmr",
     "name": "st_addon_scope_kashtan_rmr",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_kashtan_rmr"
   },
   {
@@ -1670,7 +1670,7 @@
   {
     "id": "march_f_shorty_alt",
     "name": "st_addon_scope_march_f_shorty_alt",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_march_f_shorty_alt"
   },
   {
@@ -1682,7 +1682,7 @@
   {
     "id": "mark8_rmr",
     "name": "st_addon_scope_mark8_rmr",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_mark8_rmr"
   },
   {
@@ -1796,7 +1796,7 @@
   {
     "id": "pritseldob",
     "name": "st_addon_scope_psicho_rmr",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_psicho_rmr"
   },
   {
@@ -1874,7 +1874,7 @@
   {
     "id": "silen98",
     "name": "st_addon_scope_silen98",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_silen98"
   },
   {
@@ -1886,7 +1886,7 @@
   {
     "id": "spec_alt",
     "name": "st_addon_scope_spec_alt",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_spec_alt"
   },
   {
@@ -1958,7 +1958,7 @@
   {
     "id": "triji",
     "name": "st_addon_scope_trijicon_rmr",
-    "category": "Scopes",
+    "category": "Tactical Kits",
     "displayName": "st_addon_scope_trijicon_rmr"
   },
   {

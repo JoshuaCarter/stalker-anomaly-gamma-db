@@ -90,7 +90,6 @@
       "kemper",
       "leupold",
       "marchf",
-      "mark8_rmr",
       "mepro",
       "pn23",
       "rmr",
@@ -101,21 +100,23 @@
       "exps3",
       "romeo4",
       "gee36",
-      "triji",
-      "spec_alt",
       "t12",
       "bossxe",
       "hamr",
       "ps320",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "e0t2_magd"
     ],
     "silencers": [
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr",
+      "triji",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_ace52": {
     "scopes": [
@@ -134,7 +135,6 @@
       "kemper",
       "leupold",
       "marchf",
-      "mark8_rmr",
       "mepro",
       "pn23",
       "rmr",
@@ -145,21 +145,23 @@
       "exps3",
       "romeo4",
       "gee36",
-      "triji",
-      "spec_alt",
       "t12",
       "bossxe",
       "hamr",
       "ps320",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "e0t2_magd"
     ],
     "silencers": [
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr",
+      "triji",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_adar2_15": {
     "scopes": [
@@ -361,9 +363,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "ekp8_18",
       "0kp2",
       "1p87",
@@ -385,7 +384,11 @@
       "wpn_sil_geks545"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak104_alfa": {
     "scopes": [
@@ -402,9 +405,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "ekp8_18",
       "0kp2",
       "1p87",
@@ -426,7 +426,11 @@
       "wpn_sil_geks545"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak105": {
     "scopes": [
@@ -480,17 +484,13 @@
       "leupold",
       "marchf",
       "march_f_shorty",
-      "march_f_shorty_alt",
-      "mark8_rmr",
       "mepro",
       "pk6",
       "pn23",
       "ps320",
       "romeo4",
-      "spec_alt",
       "specter",
       "t12",
-      "triji",
       "uh1_magd",
       "uh2"
     ],
@@ -498,7 +498,12 @@
       "wpn_sil_geks545"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "mark8_rmr",
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_ak105_sp": {
     "scopes": [
@@ -540,17 +545,13 @@
       "leupold",
       "marchf",
       "march_f_shorty",
-      "march_f_shorty_alt",
-      "mark8_rmr",
       "mepro",
       "pk6",
       "pn23",
       "ps320",
       "romeo4",
-      "spec_alt",
       "specter",
       "t12",
-      "triji",
       "uh1_magd",
       "uh2"
     ],
@@ -558,7 +559,12 @@
       "wpn_sil_geks545"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "mark8_rmr",
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_ak12": {
     "scopes": [
@@ -574,9 +580,6 @@
       "rmr",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "1p87",
@@ -595,7 +598,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak12_custom": {
     "scopes": [
@@ -620,9 +627,6 @@
       "rakurs",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -631,6 +635,9 @@
     ],
     "launchers": [],
     "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
       "mono_kit"
     ]
   },
@@ -658,9 +665,6 @@
       "rmr",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "1p87",
@@ -679,7 +683,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak5c_bas": {
     "scopes": [
@@ -701,9 +709,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "he510",
@@ -714,7 +719,6 @@
       "t12",
       "bossxe",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "e0t2_magd"
     ],
     "silencers": [
@@ -722,7 +726,11 @@
     ],
     "launchers": [],
     "kits": [
-      "5c_tik"
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "5c_tik",
+      "march_f_shorty_alt"
     ]
   },
   "wpn_ak5c_bas_5c_tik": {
@@ -745,9 +753,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "he510",
@@ -757,7 +762,6 @@
       "hco",
       "t12",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "e0t2_magd",
       "devo",
       "echo1",
@@ -767,7 +771,12 @@
       "wpn_sil_spec_isg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_ak5c_isg": {
     "scopes": [
@@ -832,7 +841,6 @@
       "uh1_magd",
       "e0t2_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "acog",
       "specter",
       "c-more",
@@ -849,9 +857,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "t12",
@@ -863,7 +868,12 @@
       "wpn_sil_spec_isg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak74_n": {
     "scopes": [
@@ -908,13 +918,8 @@
       "susat",
       "kemper",
       "usp1",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "1p76",
       "mepro",
-      "pritseldob",
-      "kashtan_rmr",
       "p1x42",
       "pk6",
       "1p87",
@@ -930,7 +935,13 @@
       "wpn_sil_atg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_ak74m": {
     "scopes": [
@@ -982,8 +993,6 @@
       "1p76",
       "mepro",
       "ekp8_18",
-      "pritseldob",
-      "kashtan_rmr",
       "1p63",
       "1p59",
       "pso1m21",
@@ -999,7 +1008,10 @@
       "wpn_sil_atg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_ak74m_camo": {
     "scopes": [
@@ -1075,7 +1087,6 @@
       "uh1_magd",
       "e0t2_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "acog",
       "specter",
       "c-more",
@@ -1092,9 +1103,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "t12",
@@ -1106,7 +1114,12 @@
       "wpn_sil_spec_isg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak74u_m1_isg": {
     "scopes": [
@@ -1115,7 +1128,6 @@
       "uh1_magd",
       "e0t2_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "acog",
       "specter",
       "c-more",
@@ -1132,9 +1144,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "t12",
@@ -1146,7 +1155,12 @@
       "wpn_sil_spec_isg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_ak74u_n1": {
     "scopes": [
@@ -1190,8 +1204,6 @@
       "1p78gs",
       "1pn93n2_1gs",
       "usp1",
-      "pritseldob",
-      "kashtan_rmr",
       "p1x42",
       "pk6",
       "pso1m21",
@@ -1201,7 +1213,10 @@
       "wpn_sil_pbs4"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "pritseldob",
+      "kashtan_rmr"
+    ]
   },
   "wpn_akm": {
     "scopes": [
@@ -1228,9 +1243,6 @@
       "gauss_sight",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "eot",
@@ -1252,7 +1264,11 @@
       "wpn_sil_spec_isg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_akm_bas": {
     "scopes": [],
@@ -1269,7 +1285,6 @@
       "uh1_magd",
       "e0t2_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "acog",
       "specter",
       "c-more",
@@ -1286,9 +1301,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "ekp8_18",
       "mepro",
       "t12",
@@ -1300,7 +1312,12 @@
       "wpn_sil_spec_isg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_akms": {
     "scopes": [
@@ -1393,9 +1410,6 @@
       "point_aimpro",
       "e0t2",
       "compm4s",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "rmr",
@@ -1406,7 +1420,11 @@
       "wpn_sil_atg"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_amb17": {
     "scopes": [
@@ -1419,9 +1437,6 @@
       "aim_low",
       "e0t2",
       "compm4s",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "kemper",
@@ -1445,7 +1460,11 @@
       "wpn_addon_silencer"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_aps": {
     "scopes": [],
@@ -1520,12 +1539,9 @@
       "cortex",
       "gee36",
       "gauss_sight",
-      "triji",
       "leupold",
-      "mark8_rmr",
       "ps320",
       "specter",
-      "spec_alt",
       "t12",
       "ekp8_18",
       "wpn_addon_scope"
@@ -1533,7 +1549,10 @@
     "silencers": [],
     "launchers": [],
     "kits": [
-      "sup"
+      "sup",
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
     ]
   },
   "wpn_ash12_sup": {
@@ -1555,12 +1574,9 @@
       "cortex",
       "gee36",
       "gauss_sight",
-      "triji",
       "leupold",
-      "mark8_rmr",
       "ps320",
       "specter",
-      "spec_alt",
       "t12",
       "echo1",
       "uh1_magd",
@@ -1572,7 +1588,11 @@
       "wpn_sil_ash12"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_aug": {
     "scopes": [
@@ -1634,7 +1654,6 @@
       "rakurs",
       "marchf",
       "kemper",
-      "mark8_rmr",
       "mepro",
       "ekp8_18"
     ],
@@ -1642,7 +1661,9 @@
       "wpn_sil_auga"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr"
+    ]
   },
   "wpn_aug_a3_custom_bas": {
     "scopes": [],
@@ -1705,9 +1726,6 @@
       "he510",
       "p1x42",
       "romeo4",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "gee36",
       "gauss_sight",
       "t12",
@@ -1727,7 +1745,11 @@
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_aug_modern": {
     "scopes": [
@@ -1840,9 +1862,6 @@
       "gauss_sight",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "rmr",
@@ -1861,14 +1880,18 @@
       "uh1_magd",
       "devo",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "hamr"
     ],
     "silencers": [
       "wpn_sil_surfire"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_colt1911": {
     "scopes": [],
@@ -2001,9 +2024,6 @@
       "uh1_magd",
       "razorhd",
       "cortex",
-      "mark8_rmr",
-      "triji",
-      "spec_alt",
       "echo1"
     ],
     "silencers": [
@@ -2011,6 +2031,9 @@
     ],
     "launchers": [],
     "kits": [
+      "mark8_rmr",
+      "triji",
+      "spec_alt",
       "sup"
     ]
   },
@@ -2038,16 +2061,17 @@
       "uh1_magd",
       "razorhd",
       "cortex",
-      "mark8_rmr",
-      "triji",
-      "spec_alt",
       "echo1"
     ],
     "silencers": [
       "wpn_sil_aac762"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr",
+      "triji",
+      "spec_alt"
+    ]
   },
   "wpn_dtmdr_sup": {
     "scopes": [],
@@ -2210,9 +2234,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "romeo4",
       "hco",
       "uh2",
@@ -2223,7 +2244,6 @@
       "t12",
       "cortex",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "e0t2_magd",
       "echo1",
       "tac30",
@@ -2234,7 +2254,12 @@
       "wpn_sil_aac762"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_famas3": {
     "scopes": [
@@ -2297,9 +2322,6 @@
       "gauss_sight",
       "t12",
       "gee36",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "razorhd",
       "uh1_magd",
       "hamr",
@@ -2311,7 +2333,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_fn57": {
     "scopes": [
@@ -2425,9 +2451,6 @@
       "aim_acro",
       "lco1",
       "exps3",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "pn23",
       "gauss_sight",
       "t12",
@@ -2447,7 +2470,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_g36c_rwap": {
     "scopes": [],
@@ -2496,9 +2523,6 @@
       "aim_acro",
       "lco1",
       "exps3",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "pn23",
       "gauss_sight",
       "t12",
@@ -2518,7 +2542,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_g36nimble_rwap": {
     "scopes": [
@@ -2538,16 +2566,12 @@
       "hco",
       "uh2",
       "romeo8",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "pn23",
       "gauss_sight",
       "t12",
       "e0t2_magd",
       "uh1_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "echo1",
       "tac30",
       "ps320",
@@ -2559,7 +2583,12 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_g36v_rwap": {
     "scopes": [],
@@ -2671,9 +2700,6 @@
       "exps3",
       "hco",
       "echo1",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "c79",
       "cortex",
       "razorhd",
@@ -2686,7 +2712,11 @@
       "wpn_sil_grot"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_grot_short": {
     "scopes": [
@@ -2778,9 +2808,6 @@
       "exps3",
       "hco",
       "echo1",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "c79",
       "cortex",
       "razorhd",
@@ -2793,7 +2820,11 @@
       "wpn_sil_grot"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_groza": {
     "scopes": [
@@ -2880,7 +2911,6 @@
       "kemper",
       "leupold",
       "marchf",
-      "mark8_rmr",
       "mepro",
       "p1x42",
       "pn23",
@@ -2888,16 +2918,18 @@
       "ps320",
       "razorhd",
       "romeo4",
-      "spec_alt",
       "specter",
-      "t12",
-      "triji"
+      "t12"
     ],
     "silencers": [
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr",
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_hk416": {
     "scopes": [
@@ -2929,7 +2961,6 @@
   "wpn_howa20": {
     "scopes": [
       "march_f_shorty",
-      "march_f_shorty_alt",
       "uh1_magd",
       "e0t2_magd",
       "uh2",
@@ -2947,9 +2978,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "ekp8_18",
       "0kp2",
       "t12",
@@ -2967,7 +2995,12 @@
       "wpn_sil_kac4"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "march_f_shorty_alt",
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_hpsa": {
     "scopes": [],
@@ -3013,14 +3046,15 @@
   },
   "wpn_k98_mod": {
     "scopes": [
-      "silen98",
       "skeet"
     ],
     "silencers": [
       "wpn_sil_forester"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "silen98"
+    ]
   },
   "wpn_k98_mod_silen98": {
     "scopes": [
@@ -3212,9 +3246,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "t12",
@@ -3225,7 +3256,6 @@
       "razorhd",
       "e0t2_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "c79",
       "cortex"
     ],
@@ -3233,7 +3263,12 @@
       "wpn_sil_m42k"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_l85_m3": {
     "scopes": [
@@ -3281,9 +3316,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "t12",
@@ -3294,7 +3326,6 @@
       "razorhd",
       "e0t2_magd",
       "march_f_shorty",
-      "march_f_shorty_alt",
       "c79",
       "cortex"
     ],
@@ -3302,7 +3333,12 @@
       "wpn_sil_m42k"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_l96a1": {
     "scopes": [
@@ -3341,9 +3377,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -3353,7 +3386,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_lr300_camo": {
     "scopes": [
@@ -3372,9 +3409,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -3384,7 +3418,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_m16": {
     "scopes": [
@@ -3442,15 +3480,16 @@
       "uh1_magd",
       "e0t2_magd",
       "trihawk",
-      "echo1",
-      "triji",
-      "march_f_shorty_alt"
+      "echo1"
     ],
     "silencers": [
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_m4": {
     "scopes": [
@@ -3553,9 +3592,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "0kp2",
@@ -3577,7 +3613,11 @@
       "wpn_sil_surfire"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_m4a1_camo": {
     "scopes": [
@@ -3596,9 +3636,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -3608,7 +3645,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_m4a1_siber": {
     "scopes": [
@@ -3627,9 +3668,6 @@
       "susat",
       "compm4s",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -3639,7 +3677,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_m203"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_m60": {
     "scopes": [],
@@ -3702,7 +3744,6 @@
       "eot",
       "gauss_sight",
       "specter",
-      "spec_alt",
       "c-more",
       "0kp2",
       "ac10632",
@@ -3713,10 +3754,8 @@
       "pn23",
       "e0t2",
       "marchf",
-      "mark8_rmr",
       "kemper",
       "ekp8_18",
-      "triji",
       "susat",
       "rmr",
       "t12",
@@ -3734,6 +3773,9 @@
     ],
     "launchers": [],
     "kits": [
+      "spec_alt",
+      "mark8_rmr",
+      "triji",
       "sup"
     ]
   },
@@ -3748,7 +3790,6 @@
       "eot",
       "gauss_sight",
       "specter",
-      "spec_alt",
       "c-more",
       "0kp2",
       "ac10632",
@@ -3759,10 +3800,8 @@
       "pn23",
       "e0t2",
       "marchf",
-      "mark8_rmr",
       "kemper",
       "ekp8_18",
-      "triji",
       "susat",
       "rmr",
       "t12",
@@ -3779,7 +3818,11 @@
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "spec_alt",
+      "mark8_rmr",
+      "triji"
+    ]
   },
   "wpn_mosin": {
     "scopes": [
@@ -4202,16 +4245,17 @@
       "tac30",
       "razorhd",
       "cortex",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "uh2"
     ],
     "silencers": [
       "wpn_sil_tgpv"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_pkm_zulus": {
     "scopes": [
@@ -4243,16 +4287,17 @@
       "tac30",
       "razorhd",
       "cortex",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "uh2"
     ],
     "silencers": [
       "wpn_sil_tgpv"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_pkp": {
     "scopes": [
@@ -4505,9 +4550,7 @@
       "echo1",
       "e0t2_magd",
       "specter",
-      "spec_alt",
       "acog",
-      "triji",
       "monstrum",
       "c79",
       "tac30",
@@ -4516,7 +4559,10 @@
     ],
     "silencers": [],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_raptr": {
     "scopes": [
@@ -4540,14 +4586,15 @@
       "trihawk",
       "monstrum",
       "t12",
-      "e0t2_magd",
-      "spec_alt"
+      "e0t2_magd"
     ],
     "silencers": [
       "wpn_sil_kek12"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "spec_alt"
+    ]
   },
   "wpn_remington700": {
     "scopes": [],
@@ -4699,9 +4746,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "1p87",
@@ -4725,7 +4769,11 @@
       "wpn_sil_geks545"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_rpk74_16_drum": {
     "scopes": [
@@ -4733,11 +4781,8 @@
       "c-more",
       "eot",
       "acog",
-      "triji",
       "specter",
-      "spec_alt",
       "leupold",
-      "mark8_rmr",
       "pn23",
       "ps320",
       "gauss_sight",
@@ -4760,7 +4805,11 @@
       "wpn_sil_tgp-a"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_saiga12s": {
     "scopes": [
@@ -4800,8 +4849,6 @@
       "trihawk",
       "monstrum",
       "t12",
-      "spec_alt",
-      "triji",
       "echo1",
       "1pn93n2_1gs",
       "e0t2_magd"
@@ -4810,7 +4857,10 @@
       "wpn_sil_salvo"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_saiga12s_m1": {
     "scopes": [
@@ -4853,8 +4903,6 @@
       "bossxe",
       "p1x42",
       "pk6",
-      "spec_alt",
-      "triji",
       "acog",
       "specter",
       "tac30",
@@ -4866,7 +4914,10 @@
       "wpn_sil_salvo"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_scar_new": {
     "scopes": [
@@ -4884,9 +4935,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "bossxe",
@@ -4903,8 +4951,7 @@
       "hamr",
       "devo",
       "tac30",
-      "march_f_shorty",
-      "march_f_shorty_alt"
+      "march_f_shorty"
     ],
     "silencers": [
       "wpn_sil_aac762"
@@ -4912,7 +4959,12 @@
     "launchers": [
       "wpn_addon_grenade_launcher_scar"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_scar_siber": {
     "scopes": [
@@ -4930,9 +4982,6 @@
       "susat",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
       "bossxe",
@@ -4949,8 +4998,7 @@
       "hamr",
       "devo",
       "tac30",
-      "march_f_shorty",
-      "march_f_shorty_alt"
+      "march_f_shorty"
     ],
     "silencers": [
       "wpn_sil_aac762"
@@ -4958,7 +5006,12 @@
     "launchers": [
       "wpn_addon_grenade_launcher_scar"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_scar_siber_black": {
     "scopes": [
@@ -4978,9 +5031,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -4990,7 +5040,11 @@
     "launchers": [
       "wpn_addon_grenade_launcher_scar"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_scar_siber_m1": {
     "scopes": [
@@ -5010,9 +5064,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -5020,7 +5071,11 @@
       "wpn_sil_aac762"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_scar_siber_m1_black": {
     "scopes": [
@@ -5040,9 +5095,6 @@
       "compm4s",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -5050,7 +5102,11 @@
       "wpn_sil_aac762"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_scar_siber_m2": {
     "scopes": [
@@ -5102,9 +5158,6 @@
       "rakurs",
       "marchf",
       "kemper",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18"
     ],
@@ -5112,7 +5165,11 @@
       "wpn_sil_aac762"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_sig220": {
     "scopes": [],
@@ -5479,17 +5536,18 @@
       "kemper",
       "pso1m21",
       "usp1",
-      "kashtan_rmr",
       "1p76",
       "mepro",
-      "ekp8_18",
-      "pritseldob"
+      "ekp8_18"
     ],
     "silencers": [
       "wpn_sil_hexagon"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "kashtan_rmr",
+      "pritseldob"
+    ]
   },
   "wpn_spas12": {
     "scopes": [],
@@ -5566,9 +5624,6 @@
       "t12",
       "e0t2_magd",
       "uh1_magd",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "c79",
       "razorhd"
     ],
@@ -5576,7 +5631,11 @@
       "wpn_sil_sr25"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt"
+    ]
   },
   "wpn_sr2_m1": {
     "scopes": [
@@ -5946,8 +6005,6 @@
       "t12",
       "echo1",
       "c79",
-      "triji",
-      "spec_alt",
       "mepro",
       "bossxe"
     ],
@@ -5955,7 +6012,10 @@
       "wpn_sil_gemtech"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt"
+    ]
   },
   "wpn_ump45": {
     "scopes": [
@@ -5975,7 +6035,6 @@
       "rakurs",
       "marchf",
       "kemper",
-      "mark8_rmr",
       "mepro",
       "ekp8_18"
     ],
@@ -5983,7 +6042,9 @@
       "wpn_sil_gemtech"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr"
+    ]
   },
   "wpn_ump45_custom": {
     "scopes": [
@@ -6041,14 +6102,15 @@
       "trihawk",
       "monstrum",
       "t12",
-      "e0t2_magd",
-      "spec_alt"
+      "e0t2_magd"
     ],
     "silencers": [
       "wpn_sil_kek12"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "spec_alt"
+    ]
   },
   "wpn_usp": {
     "scopes": [],
@@ -6298,11 +6360,7 @@
       "echo1",
       "devo",
       "c79",
-      "ps320",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
-      "march_f_shorty_alt"
+      "ps320"
     ],
     "silencers": [
       "wpn_addon_silencer"
@@ -6310,7 +6368,12 @@
     "launchers": [
       "wpn_addon_grenade_launcher_monolit"
     ],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "march_f_shorty_alt"
+    ]
   },
   "wpn_vintorez_m1": {
     "scopes": [
@@ -6392,19 +6455,20 @@
       "kemper",
       "ps01",
       "usp1",
-      "triji",
-      "mark8_rmr",
-      "spec_alt",
       "mepro",
       "ekp8_18",
-      "1p76",
-      "pritseldob"
+      "1p76"
     ],
     "silencers": [
       "wpn_addon_silencer"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "mark8_rmr",
+      "spec_alt",
+      "pritseldob"
+    ]
   },
   "wpn_vintorez_n1": {
     "scopes": [
@@ -6562,15 +6626,16 @@
       "ado",
       "tac30",
       "specter",
-      "triji",
-      "spec_alt",
-      "mark8_rmr",
       "1p59",
       "wpn_addon_scope"
     ],
     "silencers": [],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt",
+      "mark8_rmr"
+    ]
   },
   "wpn_vz61": {
     "scopes": [],

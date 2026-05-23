@@ -240,21 +240,6 @@
       ]
     },
     {
-      "id": "kashtan_rmr",
-      "pda_encyclopedia_name": "st_addon_scope_kashtan_rmr",
-      "st_data_export_description": "st_addon_scope_kashtan_rmr_descr",
-      "st_prop_weight": "0.57",
-      "st_upgr_cost": "14200",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_kashtan_rmr",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "wp"
-      ]
-    },
-    {
       "id": "kobra",
       "pda_encyclopedia_name": "st_addon_scope_kobra",
       "st_data_export_description": "st_addon_scope_kobra_descr",
@@ -346,21 +331,6 @@
       ]
     },
     {
-      "id": "pritseldob",
-      "pda_encyclopedia_name": "st_addon_scope_pritseldob",
-      "st_data_export_description": "st_addon_scope_pritseldob_descr",
-      "st_prop_weight": "0.68",
-      "st_upgr_cost": "14200",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_pritseldob",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "wp"
-      ]
-    },
-    {
       "id": "ps01",
       "pda_encyclopedia_name": "st_addon_scope",
       "st_data_export_description": "st_addon_scope_descr",
@@ -403,21 +373,6 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
-    },
-    {
-      "id": "silen98",
-      "pda_encyclopedia_name": "st_addon_scope_silen98",
-      "st_data_export_description": "st_addon_scope_silen98_descr",
-      "st_prop_weight": "0.10",
-      "st_upgr_cost": "1400",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_silen98",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "other"
       ]
     },
     {

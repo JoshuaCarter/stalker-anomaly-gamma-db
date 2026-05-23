@@ -336,13 +336,15 @@ if (existsSync(syntheticPath)) {
 
 // ── Split tactical/conversion kits out of the Scopes category ────────────────
 // The game exporter lumps all weapon addons (optics + body kits) into the scopes
-// CSV. Detect kits by either naming (`_kit` / `_upgr_kit` suffix) or by the
-// existence of a `<base_weapon>_<addonId>` variant in the weapon CSVs — that
-// rename only happens when a kit is applied. NON_KIT_OVERRIDES carries known
-// false positives where the variant rule would mis-fire (e.g. `silen98` is a
-// silencer that the exporter mis-files into the scopes CSV, but a modified
-// k98 variant `wpn_k98_mod_silen98` exists).
-const NON_KIT_OVERRIDES = new Set(["silen98"]);
+// CSV. Three detection rules, any of which qualifies an item as a kit:
+//   1. ID matches `^kit_` / `_kit$` / `_upgr_kit$`
+//   2. A `<base_weapon>_<addonId>` variant exists in the weapon CSVs (the
+//      in-game rename that happens when a kit is applied)
+//   3. The English PDA name contains the word "Kit" (catches the RDS-style
+//      optical kits like "ACOG + 1x RDS Kit" / "Suppressor Adapter Kit" that
+//      attach without renaming and don't follow the ID convention)
+const earlyTranslations = loadTranslations(CSV_DIR);
+const enTranslations = earlyTranslations.en || {};
 
 const WEAPON_SLUGS_FOR_KIT_DETECTION = ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"];
 const weaponIdsForKitDetection = new Set();
@@ -352,13 +354,15 @@ for (const slug of WEAPON_SLUGS_FOR_KIT_DETECTION) {
   }
 }
 
-function isTacticalKit(addonId) {
-  if (NON_KIT_OVERRIDES.has(addonId)) return false;
-  if (/_upgr_kit$|_kit$|^kit_/.test(addonId)) return true;
-  const suffix = "_" + addonId;
+function isTacticalKit(item) {
+  if (/_upgr_kit$|_kit$|^kit_/.test(item.id)) return true;
+  const suffix = "_" + item.id;
   for (const wid of weaponIdsForKitDetection) {
     if (wid.endsWith(suffix) && wid.length > suffix.length) return true;
   }
+  const nameKey = (item.pda_encyclopedia_name || "").toLowerCase();
+  const displayName = enTranslations[nameKey] || "";
+  if (/\bkit\b/i.test(displayName)) return true;
   return false;
 }
 
@@ -367,7 +371,7 @@ if (scopeData) {
   const kits = [];
   const realScopes = [];
   for (const item of scopeData.items) {
-    if (isTacticalKit(item.id)) kits.push(item);
+    if (isTacticalKit(item)) kits.push(item);
     else realScopes.push(item);
   }
   if (kits.length) {
@@ -1726,8 +1730,9 @@ if (kitItems.length) {
   console.log(`Wrote ${Object.keys(kitWeapons).length} kit→weapon mappings to ${kwOut}`);
 }
 
-// Generate translations.json from translation CSVs + supplementary
-const translations = loadTranslations(CSV_DIR);
+// Generate translations.json from translation CSVs + supplementary.
+// Reuses the early load done for kit-detection above.
+const translations = earlyTranslations;
 const suppPath = join(CSV_DIR, "..", "supplementary_translations.json");
 if (existsSync(suppPath)) {
   const supp = JSON.parse(readFileSync(suppPath, "utf-8"));

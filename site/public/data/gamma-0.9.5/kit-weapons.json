@@ -82,6 +82,9 @@
   "mauser_kit": [
     "wpn_k98_mauser_kit"
   ],
+  "silen98": [
+    "wpn_k98_mod_silen98"
+  ],
   "archangel": [
     "wpn_remington700_archangel"
   ],
