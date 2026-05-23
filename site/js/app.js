@@ -5417,12 +5417,14 @@ export const appDefinition = {
 
         initWhatsNew(rnData, hash) {
             const lastSeenDate = localStorage.getItem("whatsNewLastDate") || "";
+            const cutoff = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
 
-            // Only show entries from releases newer than lastSeenDate
+            // Only show entries from releases newer than lastSeenDate and within the recency window
             let totalCount = 0;
             const highlighted = [];
             for (const release of rnData) {
                 if (release.date <= lastSeenDate) continue;
+                if (release.date < cutoff) continue;
                 totalCount += release.entries.length;
                 for (const entry of release.entries) {
                     if (entry.highlight) highlighted.push(entry);
