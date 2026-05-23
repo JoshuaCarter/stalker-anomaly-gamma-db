@@ -979,7 +979,8 @@
       "hasUpgrades": true,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -1159,7 +1160,7 @@
       "hasUpgrades": true,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1189,7 +1190,7 @@
       "hasUpgrades": true,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1369,7 +1370,7 @@
       "hasUpgrades": true,
       "unobtainable": false,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1549,7 +1550,7 @@
       "hasUpgrades": true,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1579,7 +1580,7 @@
       "hasUpgrades": true,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1609,7 +1610,7 @@
       "hasUpgrades": true,
       "unobtainable": false,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1639,7 +1640,7 @@
       "hasUpgrades": true,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {

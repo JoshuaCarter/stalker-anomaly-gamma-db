@@ -44,8 +44,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 20,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_11.43x23_hydro",
@@ -70,8 +72,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 10,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_12.7x55_ap",
@@ -149,7 +153,8 @@
       "st_data_export_ap": 3,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_12x70_buck_self",
@@ -253,7 +258,8 @@
       "st_data_export_ap": 24,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_20x70_buck",
@@ -279,7 +285,8 @@
       "st_data_export_ap": 3,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_23_eco",
@@ -408,8 +415,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 19,
       "factions": [
-        "other"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_4.6x30_fmj",
@@ -695,7 +704,8 @@
       "st_data_export_ap": 8,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.62x25_ps",
@@ -721,7 +731,8 @@
       "st_data_export_ap": 25,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.62x39_ap",
@@ -929,7 +940,8 @@
       "st_data_export_ap": 39,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.92x33_fmj",
@@ -955,7 +967,8 @@
       "st_data_export_ap": 27,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_ap",
@@ -981,7 +994,8 @@
       "st_data_export_ap": 26,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_fmj",
@@ -1007,7 +1021,8 @@
       "st_data_export_ap": 14,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_pmm",
@@ -1033,7 +1048,8 @@
       "st_data_export_ap": 8,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_ap",
@@ -1058,8 +1074,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 35,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_fmj",
@@ -1084,8 +1102,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 17,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_pbp",
@@ -1110,8 +1130,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 10,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x21_sp10",

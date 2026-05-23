@@ -498,7 +498,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -528,7 +528,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -978,7 +978,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1008,7 +1008,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1038,7 +1038,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "factions": [
-        "nato"
+        "wp"
       ]
     },
     {
@@ -1068,7 +1068,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "factions": [
-        "nato"
+        "wp"
       ]
     }
   ]

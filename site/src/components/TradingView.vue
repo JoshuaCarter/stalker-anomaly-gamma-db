@@ -86,22 +86,11 @@
                     <div class="trading-trader-card-sub">
                         <span class="trading-trader-card-faction">{{ factionLabel(factionOf(selectedTraderObj.id)) }}</span>
                         <span class="trading-trader-card-stock" v-if="stockedCount">
-                            <span class="trading-trader-card-dot">·</span>
                             <span class="trading-trader-card-stock-n">{{ stockedCount }}</span>
                             {{ t('app_trading_in_stock') || 'in stock' }}
                         </span>
-                        <span class="trading-trader-card-origins" v-if="originCounts.wp || originCounts.nato">
-                            <span class="trading-trader-card-dot">·</span>
-                            <span v-if="originCounts.wp" class="trading-trader-origin trading-trader-origin--wp">
-                                <span class="trading-trader-origin-dot"></span>
-                                <span class="trading-trader-origin-n">{{ originCounts.wp }}</span>
-                                WP
-                            </span>
-                            <span v-if="originCounts.nato" class="trading-trader-origin trading-trader-origin--nato">
-                                <span class="trading-trader-origin-dot"></span>
-                                <span class="trading-trader-origin-n">{{ originCounts.nato }}</span>
-                                NATO
-                            </span>
+                        <span class="trading-trader-card-origins" v-if="primaryOriginBadge">
+                            <span class="badge-flag trading-trader-origin-badge" :class="primaryOriginBadge.cls">{{ primaryOriginBadge.label }}</span>
                         </span>
                     </div>
                 </div>
@@ -386,16 +375,13 @@ export default {
         stockedCount() {
             return this.allEntries.filter(e => e.stocked).length;
         },
-        originCounts() {
-            const c = { nato: 0, wp: 0 };
-            for (const e of this.allEntries) {
-                if (!e.stocked) continue;
-                const f = this.originById[e.id];
-                if (!Array.isArray(f)) continue;
-                if (f.includes('nato')) c.nato++;
-                if (f.includes('wp')) c.wp++;
-            }
-            return c;
+        primaryOriginBadge() {
+            const p = this.selectedTraderObj?.primaryOrigin;
+            if (!p || p === 'neutral') return null;
+            if (p === 'nato') return { cls: 'badge-origin-nato', label: 'NATO' };
+            if (p === 'wp') return { cls: 'badge-origin-wp', label: 'WP' };
+            if (p === 'mixed') return { cls: 'badge-origin-mixed', label: this.t('app_origin_mixed') || 'Mixed' };
+            return null;
         },
         hasRates() {
             return !!(this.traderData?.discounts && this.traderData.discounts.length);
@@ -1706,9 +1692,9 @@ export default {
 .trading-content.scrolled .trading-rate { flex-direction: row; align-items: center; gap: 0.5rem; padding: 0.25rem 0.65rem; min-width: 0; }
 .trading-content.scrolled .trading-rate-value { font-size: 0.72rem; }
 .trading-content.scrolled .trading-rate-label { font-size: 0.45rem; letter-spacing: 0.08em; }
-/* Collapsed: hide the noisier sub-line entries (stock count, WP/NATO origin counts) to keep the bar short. */
-.trading-content.scrolled .trading-trader-card-stock,
-.trading-content.scrolled .trading-trader-card-origins { display: none; }
+/* Collapsed: hide the stock count to keep the bar short. The WP/NATO origin
+   badge stays — it's a compact glanceable signal. */
+.trading-content.scrolled .trading-trader-card-stock { display: none; }
 .trading-trader-card-bar {
     position: absolute;
     left: 0;
@@ -1750,7 +1736,6 @@ export default {
     letter-spacing: 0.1em;
     font-size: 0.65rem;
 }
-.trading-trader-card-dot { opacity: 0.5; }
 .trading-trader-card-stock-n {
     font-family: var(--mono);
     font-variant-numeric: tabular-nums;
@@ -1759,36 +1744,17 @@ export default {
 }
 .trading-trader-card-origins {
     display: inline-flex;
-    align-items: baseline;
-    gap: 0.35rem;
-}
-.trading-trader-origin {
-    display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    font-family: var(--font-display);
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    gap: 0.35rem;
+    align-self: center;
 }
-.trading-trader-origin-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    display: inline-block;
+.trading-trader-origin-badge {
+    padding: 0 0.3rem;
+    margin-left: 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
 }
-.trading-trader-origin-n {
-    font-family: var(--mono);
-    font-variant-numeric: tabular-nums;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0;
-}
-/* Match the WP / NATO origin badge palette used on item-view badges. */
-.trading-trader-origin--wp   .trading-trader-origin-dot { background: var(--color-accent-tan); }
-.trading-trader-origin--wp                              { color: var(--color-accent-tan); }
-.trading-trader-origin--nato .trading-trader-origin-dot { background: var(--color-teal); }
-.trading-trader-origin--nato                            { color: var(--color-teal); }
 .trading-trader-card-rates {
     display: flex;
     gap: 0.45rem;

@@ -44,8 +44,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 0,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_11.43x23_hydro",
@@ -70,8 +72,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 0,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_12.7x55_ap",
@@ -434,7 +438,8 @@
       "hasDisassemble": false,
       "st_data_export_ap": 0,
       "factions": [
-        "other"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -1007,7 +1012,8 @@
       "st_data_export_ap": 0,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_fmj",
@@ -1033,7 +1039,8 @@
       "st_data_export_ap": 0,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_pmm",
@@ -1059,7 +1066,8 @@
       "st_data_export_ap": 0,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_ap",
@@ -1084,8 +1092,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 0,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_fmj",
@@ -1110,8 +1120,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 0,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_pbp",
@@ -1136,8 +1148,10 @@
       "hasDisassemble": false,
       "st_data_export_ap": 0,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x21_sp10",

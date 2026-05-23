@@ -1220,6 +1220,10 @@ if (ammoDataPre) {
 // Faction classification (NATO / WP / other) based on weapon caliber.
 // The xray engine and game LTX have no faction concept — this is a static
 // caliber-to-faction lookup derived from the ammo translation keys.
+// Calibers marked "dual" (9x19, .45 ACP, .357) are used by both blocs in real
+// life and across trader stock — ammo gets both tags; weapons fall back to
+// design lineage so e.g. PP Vityaz (Russian) classifies as WP while MP5
+// (German) classifies as NATO.
 const FACTION_BY_CALIBER = {
   // Warsaw Pact / Soviet
   "5.45x39": "wp",
@@ -1239,22 +1243,28 @@ const FACTION_BY_CALIBER = {
   // NATO / Western
   "5.56x45": "nato",
   "7.62x51": "nato",
-  "9x19": "nato",
-  "11.43x23": "nato",
   "338": "nato",
   "5.7x28": "nato",
   "4.6x30": "nato",
   "50": "nato",
   "m209": "nato",
   "magnum": "nato", // .300 Win Mag — used by USSOCOM / UK SF
+  // Dual-use (manufactured and consumed by both blocs)
+  "9x19": "dual",
+  "11.43x23": "dual",
+  "357": "dual",
   // Pre-bloc / shared / civilian
   "12x70": "other",
   "12x76": "other",
   "20x70": "other",
-  "357": "other",
   "7.92x33": "other",
   "gauss": "other",
 };
+
+function expandFaction(f) {
+  if (f === "dual") return ["nato", "wp"];
+  return f ? [f] : [];
+}
 
 // Shotguns are bloc-neutral by caliber (12/20-gauge shells are used everywhere),
 // so we classify them by design lineage instead. Anything unmatched falls back
@@ -1266,14 +1276,18 @@ function shotgunDesignFaction(id) {
   return null;
 }
 
-// Design-lineage override for non-shotgun weapons whose caliber alone placed
-// them in "other" (civilian/pre-bloc rounds like .357, .300 WinMag pre-fix).
-// Returns null when no design hint is available, leaving the caliber-derived
-// classification untouched.
+// Design-lineage classifier for non-shotgun weapons. Used when caliber alone
+// can't pin the bloc — either the caliber is dual-use (9x19/.45/.357) or
+// "other" (.300 WinMag pre-fix). Returns null when no design hint is
+// available, leaving the caliber-derived classification untouched.
 function nonShotgunDesignFaction(id) {
   const s = id.toLowerCase();
+  // Russian / Warsaw Pact / Eastern designs (in dual-use calibers)
+  if (/^wpn_(gsh18|mp443|pp2000|vityaz|vz61|mp412|pl15)/.test(s)) return "wp";
+  // Western / NATO designs (also rescues "other" calibers: Desert Eagle .357,
+  // .300 WinMag Winchester rifles).
   if (/colt|desert_eagle|winchester|m1911/.test(s)) return "nato";
-  if (/mp412/.test(s)) return "wp";
+  if (/^wpn_(beretta|cz75|glock|hpsa|mp5|mp7|mp9|usp|walther|fnp45|fnx45|sig\d|ump45|kriss|m45a1|thompson|udp9|uzi|korth|aug)/.test(s)) return "nato";
   return null;
 }
 
@@ -1286,15 +1300,20 @@ function ammoTokenToCaliber(token) {
 
 function classifyAmmoTypes(...fields) {
   const factions = new Set();
+  let sawDualUseOnly = true;
+  let sawAny = false;
   for (const raw of fields) {
     if (!raw) continue;
     for (const tok of raw.split(";").map(s => s.trim()).filter(Boolean)) {
       const cal = ammoTokenToCaliber(tok);
       const f = FACTION_BY_CALIBER[cal];
-      if (f) factions.add(f);
+      if (!f) continue;
+      sawAny = true;
+      if (f !== "dual") sawDualUseOnly = false;
+      for (const x of expandFaction(f)) factions.add(x);
     }
   }
-  return [...factions].sort();
+  return { factions: [...factions].sort(), onlyDualUse: sawAny && sawDualUseOnly };
 }
 
 const WEAPON_FACTIONS = new Map();
@@ -1309,10 +1328,13 @@ for (const slug of WEAPON_SLUGS_FOR_FACTIONS) {
       // used worldwide. Fall back to "other" when design lineage is unknown.
       factions = [shotgunDesignFaction(wpn.id) || "other"];
     } else {
-      factions = classifyAmmoTypes(wpn["ui_ammo_types"]);
-      // If caliber landed the weapon in "other" only, prefer design lineage
-      // when we recognise the manufacturer (e.g. Desert Eagle .357 → NATO).
-      if (factions.length === 1 && factions[0] === "other") {
+      const result = classifyAmmoTypes(wpn["ui_ammo_types"]);
+      factions = result.factions;
+      // Design lineage takes over when caliber alone is ambiguous:
+      //   - "other" only (e.g. Desert Eagle .357 → NATO under old rule)
+      //   - dual-use only (e.g. PP Vityaz 9x19 → WP, MP5 9x19 → NATO)
+      const onlyOther = factions.length === 1 && factions[0] === "other";
+      if (onlyOther || result.onlyDualUse) {
         const ovr = nonShotgunDesignFaction(wpn.id);
         if (ovr) factions = [ovr];
       }
@@ -1328,8 +1350,8 @@ const ammoFactionCat = categoryData.get("ammo");
 if (ammoFactionCat) {
   for (const ammo of ammoFactionCat.items) {
     const cal = ammoTokenToCaliber(ammo.id);
-    const f = FACTION_BY_CALIBER[cal];
-    if (f) ammo.factions = [f];
+    const fs = expandFaction(FACTION_BY_CALIBER[cal]);
+    if (fs.length) ammo.factions = fs;
   }
 }
 
@@ -1758,6 +1780,107 @@ console.log(`Wrote translations (${Object.keys(translations.en).length} en, ${Ob
 // Generate manifest.json with content hashes for cache busting
 const manifest = {};
 generateTraders(pack);
+
+// Trader origin enrichment:
+//   1. Tag items sold by ≥70% of combat-traders with `shared: true` — these are
+//      the universal-supply rounds (basic FMJ for every common caliber, plus
+//      shotgun shells / .357) that ignore bloc.
+//   2. Tag each trader in traders-meta.json with `primaryOrigin` derived from
+//      the dominant bloc of their *non-shared* combat stock. ≥65% dominance
+//      → that bloc; otherwise `mixed`. Traders with no weapons/ammo get
+//      `neutral`.
+{
+  const SHARED_PCT = 0.7;
+  const PRIMARY_PCT = 0.65;
+  const tradersOutDir = join(OUT_DIR, "traders");
+  const itemFactions = new Map(); // id -> factions[]
+  const itemCategory = new Map(); // id -> category slug
+  for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers", "ammo"]) {
+    const cat = categoryData.get(slug);
+    if (!cat) continue;
+    for (const it of cat.items) {
+      if (Array.isArray(it.factions)) itemFactions.set(it.id, it.factions);
+      itemCategory.set(it.id, slug);
+    }
+  }
+
+  const stockByTrader = new Map(); // trader -> Set<itemId>
+  const traderFiles = readdirSync(tradersOutDir).filter(f => f.endsWith(".json"));
+  for (const f of traderFiles) {
+    const traderId = f.replace(/\.json$/, "");
+    const j = JSON.parse(readFileSync(join(tradersOutDir, f), "utf-8"));
+    const set = new Set();
+    for (const key of Object.keys(j)) {
+      if (!key.startsWith("supplies_")) continue;
+      for (const row of (j[key] || [])) {
+        const id = row[0];
+        if (itemCategory.has(id)) set.add(id);
+      }
+    }
+    if (set.size > 0) stockByTrader.set(traderId, set);
+  }
+  const combatTraderCount = stockByTrader.size;
+  const sharedThreshold = Math.ceil(SHARED_PCT * combatTraderCount);
+
+  // Per-item trader count → shared set
+  const itemTraderCount = new Map();
+  for (const set of stockByTrader.values()) {
+    for (const id of set) itemTraderCount.set(id, (itemTraderCount.get(id) || 0) + 1);
+  }
+  const sharedIds = new Set();
+  for (const [id, count] of itemTraderCount) {
+    if (count >= sharedThreshold) sharedIds.add(id);
+  }
+
+  // Apply shared:true to category items in memory, then re-write affected JSONs.
+  const dirtyCats = new Set();
+  for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers", "ammo"]) {
+    const cat = categoryData.get(slug);
+    if (!cat) continue;
+    for (const it of cat.items) {
+      if (sharedIds.has(it.id)) {
+        it.shared = true;
+        dirtyCats.add(slug);
+      }
+    }
+  }
+  for (const slug of dirtyCats) {
+    const cat = categoryData.get(slug);
+    writeFileSync(join(OUT_DIR, `${slug}.json`), JSON.stringify(cat, null, 2));
+  }
+  console.log(`Tagged ${sharedIds.size} items shared:true across ${dirtyCats.size} categories (threshold ≥${sharedThreshold}/${combatTraderCount} traders)`);
+
+  // Compute primaryOrigin per trader from non-shared stock.
+  const primaryByTrader = new Map();
+  for (const [traderId, set] of stockByTrader) {
+    let nato = 0, wp = 0;
+    for (const id of set) {
+      if (sharedIds.has(id)) continue;
+      const f = itemFactions.get(id);
+      if (!Array.isArray(f) || f.length !== 1) continue;
+      if (f[0] === "nato") nato++;
+      else if (f[0] === "wp") wp++;
+    }
+    const total = nato + wp;
+    if (total === 0) { primaryByTrader.set(traderId, "neutral"); continue; }
+    if (nato / total >= PRIMARY_PCT) primaryByTrader.set(traderId, "nato");
+    else if (wp / total >= PRIMARY_PCT) primaryByTrader.set(traderId, "wp");
+    else primaryByTrader.set(traderId, "mixed");
+  }
+
+  // Merge primaryOrigin into traders-meta.json (preserving manual fields like color).
+  const metaPath = join(OUT_DIR, "traders-meta.json");
+  if (existsSync(metaPath)) {
+    const meta = JSON.parse(readFileSync(metaPath, "utf-8"));
+    for (const entry of meta) {
+      entry.primaryOrigin = primaryByTrader.get(entry.id) || "neutral";
+    }
+    writeFileSync(metaPath, JSON.stringify(meta, null, 2));
+    const counts = { nato: 0, wp: 0, mixed: 0, neutral: 0 };
+    for (const v of primaryByTrader.values()) counts[v] = (counts[v] || 0) + 1;
+    console.log(`Tagged traders-meta primaryOrigin: nato=${counts.nato}, wp=${counts.wp}, mixed=${counts.mixed}, neutral=${counts.neutral} (+${meta.length - primaryByTrader.size} non-combat)`);
+  }
+}
 
 for (const file of readdirSync(OUT_DIR).filter(f => f.endsWith(".json") && f !== "manifest.json")) {
   const content = readFileSync(join(OUT_DIR, file));

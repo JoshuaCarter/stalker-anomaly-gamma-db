@@ -41,8 +41,10 @@
       "displayName": "ammo-11.43x23-fmj [default]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_11.43x23_fmj_bad",
@@ -65,7 +67,8 @@
       "displayName": "ammo-11.43x23-fmj [bad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -89,7 +92,8 @@
       "displayName": "ammo-11.43x23-fmj [verybad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -113,7 +117,8 @@
       "displayName": "ammo-11.43x23-hydro [default]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -137,7 +142,8 @@
       "displayName": "ammo-11.43x23-hydro [bad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -161,7 +167,8 @@
       "displayName": "ammo-11.43x23-hydro [verybad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -330,7 +337,8 @@
       "hasDisassemble": false,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_12x70_buck_bad",
@@ -522,7 +530,8 @@
       "hasDisassemble": false,
       "factions": [
         "other"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_12x76_zhekan_bad",
@@ -593,8 +602,10 @@
       "displayName": "ammo-357-hp [default]",
       "hasDisassemble": false,
       "factions": [
-        "other"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_357_hp_mag_bad",
@@ -617,7 +628,8 @@
       "displayName": "ammo-357-hp [bad]",
       "hasDisassemble": false,
       "factions": [
-        "other"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -641,7 +653,8 @@
       "displayName": "ammo-357-hp [verybad]",
       "hasDisassemble": false,
       "factions": [
-        "other"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -882,7 +895,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_5.45x39_fmj_bad",
@@ -1026,7 +1040,8 @@
       "hasDisassemble": false,
       "factions": [
         "nato"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_5.56x45_fmj_bad",
@@ -1098,7 +1113,8 @@
       "hasDisassemble": false,
       "factions": [
         "nato"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_5.56x45_ss190_bad",
@@ -1386,7 +1402,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.62x25_p_bad",
@@ -1602,7 +1619,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.62x39_fmj_bad",
@@ -1746,7 +1764,8 @@
       "hasDisassemble": false,
       "factions": [
         "nato"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.62x51_fmj_bad",
@@ -1818,7 +1837,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_7.62x54_7h14",
@@ -2250,7 +2270,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_fmj_bad",
@@ -2322,7 +2343,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x18_pmm_bad",
@@ -2393,7 +2415,8 @@
       "displayName": "ammo-9x19-ap [default]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2417,7 +2440,8 @@
       "displayName": "ammo-9x19-ap [bad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2441,7 +2465,8 @@
       "displayName": "ammo-9x19-ap [verybad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2465,8 +2490,10 @@
       "displayName": "ammo-9x19-fmj [default]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_fmj_bad",
@@ -2489,7 +2516,8 @@
       "displayName": "ammo-9x19-fmj [bad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2513,7 +2541,8 @@
       "displayName": "ammo-9x19-fmj [verybad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2537,8 +2566,10 @@
       "displayName": "ammo-9x19-pbp [default]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
-      ]
+        "nato",
+        "wp"
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x19_pbp_bad",
@@ -2561,7 +2592,8 @@
       "displayName": "ammo-9x19-pbp [bad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2585,7 +2617,8 @@
       "displayName": "ammo-9x19-pbp [verybad]",
       "hasDisassemble": false,
       "factions": [
-        "nato"
+        "nato",
+        "wp"
       ]
     },
     {
@@ -2682,7 +2715,8 @@
       "hasDisassemble": false,
       "factions": [
         "wp"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_9x39_pab9_bad",
@@ -2922,7 +2956,8 @@
       "hasDisassemble": false,
       "factions": [
         "nato"
-      ]
+      ],
+      "shared": true
     },
     {
       "id": "ammo_magnum_300_bad",
