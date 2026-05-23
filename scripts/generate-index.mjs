@@ -1697,6 +1697,35 @@ try {
   console.log("No weapon addon map CSV found, skipping weapon-addons.json");
 }
 
+// Generate kit-weapons.json: kit ID → modified weapon IDs.
+// The relationship is implicit in the game's naming convention: applying a kit
+// renames the weapon to `<base_weapon_id>_<kit_id>`. Scan every obtainability-
+// tracked weapon for IDs that end in `_<kitId>` for some known kit.
+const kitItems = categoryData.get("tactical-kits")?.items || [];
+if (kitItems.length) {
+  const kitIds = kitItems.map(i => i.id);
+  const allWeaponIds = [];
+  for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
+    for (const it of categoryData.get(slug)?.items || []) allWeaponIds.push(it.id);
+  }
+  // Match longest kit-suffix first so e.g. `wpn_kiparis_ots2_upgr_kit` is
+  // attributed to `ots2_upgr_kit` rather than the shorter generic `_kit`.
+  const sortedKitIds = [...kitIds].sort((a, b) => b.length - a.length);
+  const kitWeapons = {};
+  for (const wid of allWeaponIds) {
+    for (const kitId of sortedKitIds) {
+      const suffix = "_" + kitId;
+      if (wid.endsWith(suffix) && wid.length > suffix.length) {
+        (kitWeapons[kitId] ||= []).push(wid);
+        break;
+      }
+    }
+  }
+  const kwOut = join(OUT_DIR, "kit-weapons.json");
+  writeFileSync(kwOut, JSON.stringify(kitWeapons, null, 2));
+  console.log(`Wrote ${Object.keys(kitWeapons).length} kit→weapon mappings to ${kwOut}`);
+}
+
 // Generate translations.json from translation CSVs + supplementary
 const translations = loadTranslations(CSV_DIR);
 const suppPath = join(CSV_DIR, "..", "supplementary_translations.json");

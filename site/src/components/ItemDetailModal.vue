@@ -256,6 +256,17 @@
                     </div>
                 </div>
 
+                <!-- Modified weapons produced by this kit (on kit detail) -->
+                <div v-if="modalKitWeapons.length" class="drop-sources" :class="{ collapsed: isCollapsed('kit-variants') }">
+                    <h2 class="section-toggle" @click="toggleSection('kit-variants')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_kit_variants') }}</h2>
+                    <div class="addon-tile-grid">
+                        <a v-for="weapon in modalKitWeapons" :key="weapon.id" href="#" class="addon-img-tile" @mouseenter="showItemHover(weapon, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', weapon.id)">
+                            <img class="addon-img-tile-icon" :src="'img/icons/' + weapon.id + '.png'" :alt="t(weapon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-name">{{ t(weapon.pda_encyclopedia_name) }}</span>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Upgrade Tree -->
                 <div v-if="modalUpgradeNodes && modalUpgradeNodes.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('upgrades') }">
                     <h2 class="section-toggle" @click="toggleSection('upgrades')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_upgrades') }}</h2>
@@ -433,6 +444,7 @@ export default {
     parsedPerk: Object,
     pbaConstants: { type: Object, default: () => ({}) },
     modalWeaponAddons: { type: Object, default: () => ({ scopes: [], silencers: [], launchers: [], kits: [] }) },
+    modalKitWeapons: { type: Array, default: () => [] },
     modalAddonCompatibleWeapons: { type: Array, default: () => [] },
     favoriteIds: Array,
     pinnedIds: Array,

@@ -1,0 +1,80 @@
+{
+  "apsabigo": [
+    "wpn_aps_bas_apsabigo"
+  ],
+  "d0cter": [
+    "wpn_beretta_modern_d0cter"
+  ],
+  "deltapoint": [
+    "wpn_beretta_modern_deltapoint"
+  ],
+  "rmr": [
+    "wpn_beretta_modern_rmr"
+  ],
+  "pl15_scolaz": [
+    "wpn_pl15_pl15_scolaz",
+    "wpn_pl15_tan_pl15_scolaz"
+  ],
+  "u2p2g0r": [
+    "wpn_sig220_n_u2p2g0r"
+  ],
+  "upg220": [
+    "wpn_sig220_n_upg220"
+  ],
+  "226sig_kit": [
+    "wpn_sig226_226sig_kit"
+  ],
+  "gurza_up": [
+    "wpn_sr1m_gurza_up"
+  ],
+  "sr1upgr1": [
+    "wpn_sr1m_sr1upgr1"
+  ],
+  "mod9": [
+    "wpn_walther_p99_mod9"
+  ],
+  "sr2_upkit": [
+    "wpn_sr2_veresk_sr2_upkit"
+  ],
+  "23_up": [
+    "wpn_ks23_23_up"
+  ],
+  "kab_up": [
+    "wpn_ks23_kaban_kab_up"
+  ],
+  "shakal": [
+    "wpn_ak105_shakal"
+  ],
+  "swamp": [
+    "wpn_ak105_swamp"
+  ],
+  "mono_kit": [
+    "wpn_ak12_custom_mono_kit"
+  ],
+  "5c_tik": [
+    "wpn_ak5c_bas_5c_tik"
+  ],
+  "sup": [
+    "wpn_ash12_sup",
+    "wpn_dtmdr_black_sup",
+    "wpn_dtmdr_sup"
+  ],
+  "1pn93": [
+    "wpn_vintorez_1pn93"
+  ],
+  "mauser_kit": [
+    "wpn_k98_mauser_kit"
+  ],
+  "archangel": [
+    "wpn_remington700_archangel"
+  ],
+  "lapua700": [
+    "wpn_remington700_lapua700"
+  ],
+  "magpul_pro": [
+    "wpn_remington700_magpul_pro"
+  ],
+  "mod_x_gen3": [
+    "wpn_remington700_mod_x_gen3"
+  ]
+}

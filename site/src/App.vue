@@ -468,6 +468,7 @@
     :parsed-perk="parsedPerk"
     :pba-constants="pbaConstantsCache || {}"
     :modal-weapon-addons="modalWeaponAddons"
+    :modal-kit-weapons="modalKitWeapons"
     :modal-addon-compatible-weapons="modalAddonCompatibleWeapons"
     :favorite-ids="favoriteIds"
     :pinned-ids="pinnedIds"

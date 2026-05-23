@@ -95,6 +95,7 @@ export const appDefinition = {
             disassembleCache: null,
             ammoWeaponsCache: null,
             weaponAddonsCache: null,
+            kitWeaponsCache: null,
             mutantProfilesCache: null,
             npcArmorProfilesCache: null,
             gboConstantsCache: null,
@@ -411,6 +412,17 @@ export const appDefinition = {
                 launchers: (addons.launchers || []).map(id => launcherMap[id]).filter(Boolean),
                 kits: (addons.kits || []).map(id => kitMap[id]).filter(Boolean),
             };
+        },
+
+        modalKitWeapons() {
+            if (!this.modalItem || this.modalCategory !== CAT.TACTICAL_KITS) return [];
+            const ids = this.kitWeaponsCache?.[this.modalItem.id] || [];
+            if (!ids.length) return [];
+            const lookup = new Map();
+            for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
+                for (const it of this.categoryItems[slug] || []) lookup.set(it.id, it);
+            }
+            return ids.map(wid => lookup.get(wid)).filter(Boolean);
         },
 
         modalAddonCompatibleWeapons() {
@@ -1761,6 +1773,10 @@ export const appDefinition = {
             return this.fetchJsonCached("weaponAddonsCache", "weapon-addons.json");
         },
 
+        fetchKitWeapons() {
+            return this.fetchJsonCached("kitWeaponsCache", "kit-weapons.json");
+        },
+
         fetchMutantProfiles() {
             return this.fetchJsonCached("mutantProfilesCache", "mutant-profiles.json");
         },
@@ -1961,6 +1977,7 @@ export const appDefinition = {
             this.upgradesCache = null;
             this.ammoWeaponsCache = null;
             this.weaponAddonsCache = null;
+            this.kitWeaponsCache = null;
             this.outfitExchange = null;
             this.startingLoadoutsCache = null;
             this.displayLabels = {};
@@ -2450,7 +2467,11 @@ export const appDefinition = {
                 // weapon category data so the modal can show rich stat tooltips on each weapon.
                 if ([CAT.SCOPES, CAT.SILENCERS, CAT.GRENADE_LAUNCHERS, CAT.TACTICAL_KITS].includes(entry.category)) {
                     await this.fetchWeaponAddons();
-                    const weaponIds = this.addonCompatibleWeaponsMap[id] || [];
+                    if (entry.category === CAT.TACTICAL_KITS) await this.fetchKitWeapons();
+                    const weaponIds = [
+                        ...(this.addonCompatibleWeaponsMap[id] || []),
+                        ...(entry.category === CAT.TACTICAL_KITS ? (this.kitWeaponsCache?.[id] || []) : []),
+                    ];
                     if (weaponIds.length) {
                         const idxMap = new Map(this.index.map(i => [i.id, i]));
                         const slugsToLoad = [...new Set(
