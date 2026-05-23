@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-05-23",
+    "entries": [
+      { "type": "added", "text": "Tactical kits now show the modified weapon they produce.", "credits": [{ "name": "Icarus", "role": "suggestion" }] }
+    ]
+  },
+  {
     "date": "2026-05-18",
     "entries": [
       { "type": "added", "text": "Weapon Mechanics Guide explaining what each stat actually does, accessible from the weapon list and from the Stats section of any weapon's detail modal.", "credits": [{ "name": "Evincars", "role": "code" }] }
