@@ -48,7 +48,8 @@
                             :class="'uptree-node--' + propCategory(node.prop)"
                             @mouseenter="showHover(node, $event)"
                             @mousemove="moveHover($event)"
-                            @mouseleave="hideHover"
+                            @mouseleave="onNodeLeave"
+                            @click="tapNode(node)"
                         >
                             <div class="uptree-node-inner">
                                 <div class="uptree-node-row1">
@@ -242,17 +243,35 @@ export default {
             return row.cols.find((c) => c.colNum === colNum) || null;
         },
         showHover(node, event) {
+            // Desktop only. Touch opens the drawer from a tap (tapNode); ignoring the
+            // synthesized `mouseenter` here is what keeps the popover click-driven on
+            // touch, so a tap on the drawer backdrop can't re-arm a covered node.
+            if (prefersTouchHover()) return;
             clearTimeout(this._hoverTimeout);
             const anchor = event.currentTarget;
             this._hoverTimeout = setTimeout(() => {
-                this.hoverSheet = prefersTouchHover();
                 this.hoverNode = node;
-                if (this.hoverSheet) return;   // drawer is positioned by CSS
-                this.$nextTick(() => this.positionHover(anchor));
+                this.$nextTick(() => this.positionHover(anchor));   // drawer is positioned by CSS
             }, 200);
         },
         moveHover() {
             // Anchored popover stays put — autoUpdate tracks resize/scroll.
+        },
+        tapNode(node) {
+            // Touch: open the bottom-drawer popover on tap. Mirrors how the item
+            // modal works — click-driven, not hover-driven. Using `click` (not
+            // `mouseenter`) means the browser does tap-vs-scroll discrimination for
+            // us and the drawer never re-opens from synthesized hover events.
+            if (!prefersTouchHover()) return;   // desktop keeps the hover popover
+            clearTimeout(this._hoverTimeout);
+            this.hoverSheet = true;
+            this.hoverNode = node;
+        },
+        onNodeLeave() {
+            // In drawer (touch) mode the sheet is dismissed by tapping its backdrop,
+            // not by the synthesized `mouseleave` touch fires right after a tap.
+            if (this.hoverSheet) return;
+            this.hideHover();
         },
         hideHover() {
             clearTimeout(this._hoverTimeout);
