@@ -69,6 +69,9 @@
             <a v-if="hasToolkitRates" :href="categoryHref(toolkitRatesCategory)" :class="{ active: activeCategory === toolkitRatesCategory && !favoritesViewActive && !recentViewActive && !versionCompareActive && !startingLoadoutsActive }" @click.prevent="$emit('selectCategory', toolkitRatesCategory)">
                 <span class="cat-label">{{ t('app_cat_toolkit_rates') }}</span>
             </a>
+            <a v-if="hasOutfitExchange" :href="categoryHref(outfitExchangeCategory)" :class="{ active: activeCategory === outfitExchangeCategory && !favoritesViewActive && !recentViewActive && !versionCompareActive && !startingLoadoutsActive }" @click.prevent="$emit('selectCategory', outfitExchangeCategory)">
+                <span class="cat-label">{{ t('app_cat_outfit_exchange') }}</span>
+            </a>
         </div>
     </div>
     <div v-for="group in groupedCategories" :key="group.name" class="sidebar-group" :class="'sidebar-group--' + group.name.replace(/\s+/g, '-').toLowerCase()">
@@ -116,6 +119,8 @@ export default {
         hasStartingLoadouts: { type: Boolean, default: false },
         hasToolkitRates: { type: Boolean, default: false },
         toolkitRatesCategory: { type: String, default: null },
+        hasOutfitExchange: { type: Boolean, default: false },
+        outfitExchangeCategory: { type: String, default: null },
         favoritesViewActive: { type: Boolean, default: false },
         recentViewActive: { type: Boolean, default: false },
     },

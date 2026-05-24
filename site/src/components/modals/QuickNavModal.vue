@@ -58,6 +58,7 @@ export default {
         recentIds: Array,
         hasStartingLoadouts: { type: Boolean, default: false },
         hasToolkitRates: { type: Boolean, default: false },
+        hasOutfitExchange: { type: Boolean, default: false },
         craftingRecipeCategories: { type: Array, default: () => [] },
         craftingDisassemblyCategories: { type: Array, default: () => [] },
     },
@@ -121,6 +122,9 @@ export default {
             }
             if (this.hasToolkitRates) {
                 pages.push({ id: "toolkit-rates", label: this.t("app_cat_toolkit_rates"), group: toolsGroup, action: "category", cat: "Toolkit Rates" });
+            }
+            if (this.hasOutfitExchange) {
+                pages.push({ id: "outfit-exchange", label: this.t("app_cat_outfit_exchange"), group: toolsGroup, action: "category", cat: "Outfit Exchange" });
             }
 
             return pages;
