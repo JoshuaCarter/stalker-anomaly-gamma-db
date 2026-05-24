@@ -4357,6 +4357,11 @@ kbd {
         grid-template-columns: 1fr;
         padding-right: 0.75rem;
     }
+    /* Let the card shrink to its column (grid items default to min-width:auto) and
+       wrap the header badges, so a heavily-flagged item can't force the grid wider
+       than the viewport and trigger horizontal scrolling. */
+    .tile-card { min-width: 0; }
+    .tile-card-header { flex-wrap: wrap; }
 
     /* Active filters / exchange chips: reduce right padding */
     .active-filters { padding-right: 0.75rem; }
