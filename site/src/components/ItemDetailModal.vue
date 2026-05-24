@@ -832,7 +832,10 @@ export default {
     opacity: 0.4;
     cursor: default;
 }
-@media (max-width: 768px) {
+/* Collapse the toolbar into the overflow menu well before the buttons would
+   crowd the title — the modal is only calc(100vw - 16rem) wide, so the full
+   5-button row runs out of room while there's still plenty of viewport. */
+@media (max-width: 900px) {
     .item-toolbar--full { display: none; }
     .item-toolbar--compact {
         display: flex;
@@ -842,14 +845,12 @@ export default {
     }
     /* The inline close replaces the absolutely-positioned corner × on mobile. */
     .modal-close { display: none; }
-    /* Let a long title ellipsis-truncate rather than force horizontal scroll.
-       Scoped via .modal-sticky-bar so this outranks the base .modal-sticky-title
-       rule that is defined later in this file (equal specificity would lose). */
-    .modal-sticky-bar .modal-sticky-title { flex: 1 1 auto; min-width: 0; }
     /* Name takes the whole first row (so it ellipsis-truncates); the type badge
        and item code then wrap together onto the second row. */
     .modal-sticky-bar .modal-sticky-name-text { flex-basis: 100%; }
     .modal-sticky-bar .modal-sticky-id { flex-basis: auto; }
+}
+@media (max-width: 768px) {
     /* Body padding is 1rem on mobile (vs 0.75/1.5 on desktop); realign the
        sticky bar's negative margins and stick offset to match, or a strip of
        scrolled content shows through above it. */
@@ -895,7 +896,9 @@ export default {
     column-gap: 0.4rem;
     row-gap: 0.15rem;
     min-width: 0;
-    flex-shrink: 0;
+    /* Shrinkable so a long name ellipsis-truncates instead of pushing the toolbar
+       past the modal edge and triggering horizontal scroll. */
+    flex-shrink: 1;
 }
 /* The name truncates; the type badge beside it keeps its full width. */
 .modal-sticky-name-text {

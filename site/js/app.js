@@ -4539,6 +4539,12 @@ export const appDefinition = {
             const el = document.querySelector('.item-hover-popover-global') || document.querySelector('.item-compare-popover');
             const mouse = this._hoverMouse;
             if (!el || !mouse) return;
+            // The popover is a single shared instance, so the size middleware's inline
+            // max-width/height from the previous hover would otherwise constrain this
+            // measurement and place the first position offscreen until a mousemove
+            // recomputes. Reset before measuring so the element is sized naturally.
+            el.style.maxWidth = '';
+            el.style.maxHeight = '';
             const ref = anchor || { getBoundingClientRect: () => ({ x: mouse.x, y: mouse.y, top: mouse.y, left: mouse.x, bottom: mouse.y, right: mouse.x, width: 0, height: 0 }) };
             FloatingUIDOM.computePosition(ref, el, {
                 placement: 'right-start',
