@@ -245,25 +245,32 @@
     </a>
     <div class="nav-bar-spacer"></div>
     <OnlineCounter class="nav-bar-online" />
-    <div class="settings-wrap" v-click-outside="() => settingsOpen = false">
-        <button class="settings-btn" @click.stop="settingsOpen = !settingsOpen" v-tooltip="t('app_label_settings')">
+    <div class="settings-wrap">
+        <button class="settings-btn" @click.stop="toggleSettings($event)" v-tooltip="t('app_label_settings')">
             <LucideSettings :size="16" />
         </button>
-        <div class="settings-menu" v-show="settingsOpen">
-            <div class="settings-header">{{ t('app_label_display') }}</div>
-            <div class="settings-item" @click.stop="$emit('toggleHideNoDrop')">
-                <span class="toggle-switch" :class="{ on: hideNoDrop }"><span class="toggle-knob"></span></span>
-                <span>{{ t('app_label_hide_no_drop') }}</span>
+        <!-- Menu is Teleported to <body> so it escapes the nav-bar's overflow clipping on mobile -->
+        <Teleport to="body">
+            <div v-if="settingsOpen" class="settings-menu-backdrop" @click="settingsOpen = false"></div>
+            <div v-if="settingsOpen"
+                 class="settings-menu"
+                 :style="{ position: 'fixed', top: _settingsPos.top + 'px', right: _settingsPos.right + 'px', zIndex: 201 }"
+                 @click.stop>
+                <div class="settings-header">{{ t('app_label_display') }}</div>
+                <div class="settings-item" @click.stop="$emit('toggleHideNoDrop')">
+                    <span class="toggle-switch" :class="{ on: hideNoDrop }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_hide_no_drop') }}</span>
+                </div>
+                <div class="settings-item" @click.stop="$emit('toggleHideUnusedAmmo')">
+                    <span class="toggle-switch" :class="{ on: hideUnusedAmmo }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_hide_unused_ammo') }}</span>
+                </div>
+                <div class="settings-item" @click.stop="$emit('toggleShowTileIcons')">
+                    <span class="toggle-switch" :class="{ on: showTileIcons }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_show_tile_icons') }}</span>
+                </div>
             </div>
-            <div class="settings-item" @click.stop="$emit('toggleHideUnusedAmmo')">
-                <span class="toggle-switch" :class="{ on: hideUnusedAmmo }"><span class="toggle-knob"></span></span>
-                <span>{{ t('app_label_hide_unused_ammo') }}</span>
-            </div>
-            <div class="settings-item" @click.stop="$emit('toggleShowTileIcons')">
-                <span class="toggle-switch" :class="{ on: showTileIcons }"><span class="toggle-knob"></span></span>
-                <span>{{ t('app_label_show_tile_icons') }}</span>
-            </div>
-        </div>
+        </Teleport>
     </div>
 </nav>
 </template>
@@ -324,6 +331,7 @@ export default {
             overflowOpen: false,
             mobileSearchOpen: false,
             settingsOpen: false,
+            _settingsPos: { top: 0, right: 0 },
             activeSearchIdx: 0,
             iconMap,
         };
@@ -347,6 +355,15 @@ export default {
         },
     },
     methods: {
+        toggleSettings(event) {
+            if (this.settingsOpen) { this.settingsOpen = false; return; }
+            const rect = event.currentTarget.getBoundingClientRect();
+            this._settingsPos = {
+                top: rect.bottom + 6,
+                right: window.innerWidth - rect.right,
+            };
+            this.settingsOpen = true;
+        },
         focusSearch() {
             if (this.mobileSearchOpen) {
                 this.$refs.mobileSearchInput?.focus();

@@ -1576,6 +1576,12 @@ a.tile-card-name:hover {
         animation: none;
     }
 }
+/* Invisible full-screen catcher for the Teleported settings menu's outside clicks */
+.settings-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+}
 .settings-menu {
     position: absolute;
     top: calc(100% + 0.35rem);
