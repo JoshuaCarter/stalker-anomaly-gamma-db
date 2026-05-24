@@ -6,7 +6,7 @@
     <button class="modal-close" @click="$emit('closeModal')">&times;</button>
     <Transition name="modal" appear>
     <div class="modal" v-if="modalOpen">
-        <div class="modal-body">
+        <div class="modal-body" ref="modalBody">
             <p v-show="modalLoading" class="loading">{{ t('app_label_loading') }}</p>
 
             <div v-if="modalItem && !modalLoading">
@@ -514,6 +514,9 @@ export default {
       this.hideItemHover();
       this.stickyVisible = false;
       this.overflowMenuOpen = false;
+      // Reset scroll to the top whenever the modal opens or navigates to another
+      // item, so it doesn't inherit the previous item's scroll position.
+      this.$nextTick(() => { if (this.$refs.modalBody) this.$refs.modalBody.scrollTop = 0; });
     },
     modalLoading(val) {
       if (!val && this.modalItem) {
