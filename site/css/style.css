@@ -1069,13 +1069,16 @@ button.header-link {
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
     padding-right: calc(1rem + 8px);
 }
 .filter-input-group {
     display: flex;
     align-items: center;
-    width: 100%;
+    /* Fixed basis (not 100%) so enabling wrap doesn't force the controls onto a
+       second row on wide screens; the mobile rule overrides this to full width. */
+    flex: 0 1 14rem;
     max-width: 14rem;
     height: 1.75rem;
     background: var(--color-surface-1);
@@ -1501,16 +1504,6 @@ a.tile-card-name:hover {
 /* Settings menu */
 .settings-wrap {
     position: relative;
-}
-/* Filter-bar mobile settings button: hidden on desktop (nav-bar has it there) */
-.filter-bar-settings-btn {
-    display: none;
-}
-/* Backdrop for the Teleported filter-bar settings panel */
-.filter-bar-settings-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
 }
 .settings-btn {
     display: inline-flex;
@@ -4301,10 +4294,6 @@ kbd {
         pointer-events: auto;
     }
     .nav-bar .settings-wrap .settings-menu { right: 0.25rem; }
-    /* On mobile the settings icon moves into the filter-bar; hide it from the nav-bar */
-    .nav-bar .settings-wrap { display: none; }
-    /* Show the filter-bar settings button only on mobile */
-    .filter-bar-settings-btn { display: inline-flex; }
 
     /* What's New banner: center horizontally */
     .whats-new-banner { left: 0.75rem; right: 0.75rem; width: auto; max-width: none; }
@@ -4343,9 +4332,12 @@ kbd {
     .filter-bar .item-count { display: none; }
     /* On mobile: spacer is hidden so individual auto-margins handle alignment */
     .filter-bar-spacer { display: none; }
-    .weapon-help-btn { margin-left: auto; }
-    .view-toggle { order: 3; margin-left: auto; }
-    .utility-group { order: 4; }
+    .weapon-help-btn { order: 3; margin-left: auto; }
+    .view-toggle { order: 4; margin-left: auto; }
+    /* When the weapon-help button is present it owns the right-edge margin; keep the
+       view-toggle tucked next to it instead of splitting the free space between them. */
+    .weapon-help-btn + .view-toggle { margin-left: 0; }
+    .utility-group { order: 5; }
 
     /* Tile grid: single-column on small screens */
     .tile-grid {

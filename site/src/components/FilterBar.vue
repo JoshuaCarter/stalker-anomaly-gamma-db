@@ -208,39 +208,6 @@
                 <button v-if="isWeaponSection" class="weapon-help-btn" @click="$emit('openWeaponHelp')" v-tooltip="t('app_label_weapon_mechanics_help')">
                     <LucideInfo :size="16" />
                 </button>
-                <!-- Mobile-only settings button: hidden on desktop (nav-bar has settings there).
-                     Only shown on Items tab (not crafting, not outfit exchange).        -->
-                <button
-                    v-if="!isCrafting && !isOutfitExchange"
-                    class="settings-btn filter-bar-settings-btn"
-                    @click.stop="openSettings($event)"
-                    v-tooltip="t('app_label_settings')">
-                    <LucideSettings :size="16" />
-                </button>
-                <!-- Settings panel – Teleported to <body> so it escapes overflow:hidden ancestors -->
-                <Teleport to="body">
-                    <!-- Invisible backdrop: catches outside clicks to close -->
-                    <div v-if="settingsOpen" class="filter-bar-settings-backdrop" @click="closeSettings()"></div>
-                    <!-- Panel positioned via fixed coords computed on open -->
-                    <div v-if="settingsOpen"
-                         class="settings-menu filter-bar-settings-panel"
-                         :style="{ position: 'fixed', top: _settingsPos.top + 'px', right: _settingsPos.right + 'px', zIndex: 201 }"
-                         @click.stop>
-                        <div class="settings-header">{{ t('app_label_display') }}</div>
-                        <div class="settings-item" @click.stop="$emit('toggleHideNoDrop')">
-                            <span class="toggle-switch" :class="{ on: hideNoDrop }"><span class="toggle-knob"></span></span>
-                            <span>{{ t('app_label_hide_no_drop') }}</span>
-                        </div>
-                        <div class="settings-item" @click.stop="$emit('toggleHideUnusedAmmo')">
-                            <span class="toggle-switch" :class="{ on: hideUnusedAmmo }"><span class="toggle-knob"></span></span>
-                            <span>{{ t('app_label_hide_unused_ammo') }}</span>
-                        </div>
-                        <div class="settings-item" @click.stop="$emit('toggleShowTileIcons')">
-                            <span class="toggle-switch" :class="{ on: showTileIcons }"><span class="toggle-knob"></span></span>
-                            <span>{{ t('app_label_show_tile_icons') }}</span>
-                        </div>
-                    </div>
-                </Teleport>
                 <div class="view-toggle" v-show="!favoritesViewActive && !recentViewActive && !isOutfitExchange && !isCrafting && !isToolkitRates">
                     <button :class="{ active: viewMode === 'table' }" @click="$emit('setViewMode', 'table')" v-tooltip="t('app_label_table_view')">
                         <LucideList :size="16" />
@@ -307,9 +274,6 @@ export default {
         isToolkitRates: { type: Boolean, default: false },
         outfitExchange: { type: Object, default: null },
         filteredExchanges: { type: Array, default: () => [] },
-        hideNoDrop: { type: Boolean, default: false },
-        hideUnusedAmmo: { type: Boolean, default: false },
-        showTileIcons: { type: Boolean, default: true },
         toolkitRates: { type: Object, default: null },
         toolkitSortCol: { type: String, default: '' },
         toolkitSortAsc: { type: Boolean, default: true },
@@ -337,9 +301,6 @@ export default {
         'setViewMode',
         'copyLink',
         'downloadData',
-        'toggleHideNoDrop',
-        'toggleHideUnusedAmmo',
-        'toggleShowTileIcons',
         'openWeaponHelp',
     ],
     data() {
@@ -347,9 +308,7 @@ export default {
             filterPanelOpen: false,
             sortMenuOpen: false,
             downloadMenuOpen: false,
-            settingsOpen: false,
             _filterPanelCleanup: null,
-            _settingsPos: { top: 0, right: 0 },
             ammoTypesCollapsed: localStorage.getItem('filterAmmoTypesCollapsed') === 'true',
         };
     },
@@ -415,19 +374,6 @@ export default {
         closeDownloadMenu() {
             this.downloadMenuOpen = false;
         },
-        closeSettings() {
-            this.settingsOpen = false;
-        },
-        openSettings(event) {
-            if (this.settingsOpen) { this.closeSettings(); return; }
-            const btn = event.currentTarget;
-            const rect = btn.getBoundingClientRect();
-            this._settingsPos = {
-                top: rect.bottom + 4,
-                right: window.innerWidth - rect.right,
-            };
-            this.settingsOpen = true;
-        },
         onPickSort(col) {
             this.sortMenuOpen = false;
             this.$emit('pickSort', col);
@@ -450,10 +396,6 @@ export default {
                 this.downloadMenuOpen = false;
                 return true;
             }
-            if (this.settingsOpen) {
-                this.settingsOpen = false;
-                return true;
-            }
             if (this.filterPanelOpen) {
                 this.closeFilterPanel();
                 return true;
@@ -462,7 +404,7 @@ export default {
         },
         /** Returns true if any panel is currently open */
         hasOpenPanel() {
-            return this.filterPanelOpen || this.sortMenuOpen || this.downloadMenuOpen || this.settingsOpen;
+            return this.filterPanelOpen || this.sortMenuOpen || this.downloadMenuOpen;
         },
     },
 };

@@ -167,9 +167,6 @@
                 :is-toolkit-rates="isToolkitRates"
                 :outfit-exchange="outfitExchange"
                 :filtered-exchanges="filteredExchanges"
-                :hide-no-drop="hideNoDrop"
-                :hide-unused-ammo="hideUnusedAmmo"
-                :show-tile-icons="showTileIcons"
                 :toolkit-rates="toolkitRates"
                 :toolkit-sort-col="toolkitSortCol"
                 :toolkit-sort-asc="toolkitSortAsc"
@@ -195,9 +192,6 @@
                 @set-view-mode="(mode) => setViewMode(mode)"
                 @copy-link="copyLink()"
                 @download-data="(format) => downloadData(format)"
-                @toggle-hide-no-drop="toggleHideNoDrop()"
-                @toggle-hide-unused-ammo="toggleHideUnusedAmmo()"
-                @toggle-show-tile-icons="toggleShowTileIcons()"
                 @open-weapon-help="weaponMechanicsOpen = true"
             />
             <div v-if="favoritesViewActive && favoriteIds.length === 0" class="favorites-empty">
