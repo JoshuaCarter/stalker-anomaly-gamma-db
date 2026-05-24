@@ -142,6 +142,16 @@
                     </div>
                 </div>
                 <div class="filter-panel-backdrop" v-show="filterPanelOpen" @click="closeFilterPanel()"></div>
+                <!-- Mobile-only: collapses the secondary controls below into an expandable row -->
+                <button class="filter-expand-btn" :class="{ expanded: controlsExpanded }"
+                        @click="controlsExpanded = !controlsExpanded"
+                        :aria-expanded="controlsExpanded"
+                        v-tooltip="controlsExpanded ? t('app_label_hide') : t('app_label_show')">
+                    <LucideChevronDown :size="16" />
+                </button>
+                <!-- On desktop this is display:contents so children flow into the bar unchanged;
+                     on mobile it becomes the collapsible second row. -->
+                <div class="filter-controls" :class="{ expanded: controlsExpanded }">
                 <div class="sort-wrap" v-show="!favoritesViewActive && !recentViewActive && !isOutfitExchange && !isCrafting && !isToolkitRates" v-click-outside="closeSortMenu">
                     <button class="sort-btn" @click.stop="sortMenuOpen = !sortMenuOpen" v-tooltip="t('app_label_sort')">
                         <LucideArrowUpDown :size="14" />
@@ -232,6 +242,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
             <div class="active-filters" v-if="activeFilterChips.length > 0">
                 <span v-for="(chip, idx) in activeFilterChips" :key="idx" class="active-filter-chip">
@@ -308,6 +319,7 @@ export default {
             filterPanelOpen: false,
             sortMenuOpen: false,
             downloadMenuOpen: false,
+            controlsExpanded: false,
             _filterPanelCleanup: null,
             ammoTypesCollapsed: localStorage.getItem('filterAmmoTypesCollapsed') === 'true',
         };

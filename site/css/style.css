@@ -1142,6 +1142,37 @@ button.header-link {
     white-space: nowrap;
 }
 
+/* Secondary-controls wrapper: transparent on desktop (children flow into the
+   filter bar exactly as before); becomes a collapsible second row on mobile. */
+.filter-controls {
+    display: contents;
+}
+/* Mobile-only toggle that expands/collapses .filter-controls */
+.filter-expand-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+}
+.filter-expand-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+.filter-expand-btn svg {
+    transition: transform 0.2s ease;
+}
+.filter-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
 /* View toggle */
 /* Spacer: takes all leftover flex space on desktop, pushing right-side controls to the edge */
 .filter-bar-spacer {
@@ -4262,6 +4293,44 @@ kbd {
     opacity: 0;
 }
 
+/* Filter bar: collapse the secondary controls into an expandable second row
+   before the single-line layout would otherwise wrap. The wrap point depends on
+   the sidebar (220px) plus the control widths, so this triggers wider than the
+   768px mobile breakpoint. */
+@media (max-width: 960px) {
+    .filter-bar { flex-wrap: wrap; gap: 0 0.5rem; }
+    .filter-input-group { flex: 1 1 auto; max-width: none; min-width: 0; order: 1; }
+    /* align-self: stretch matches the button height to the search input across
+       breakpoints (35px base, 44px touch target on mobile). */
+    .filter-expand-btn { display: inline-flex; order: 2; align-self: stretch; width: 2.25rem; }
+    .filter-bar .item-count { display: none; }
+    .filter-bar-spacer { display: none; }
+
+    /* Collapsible second row holding the secondary controls */
+    .filter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1 1 100%;
+        order: 3;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.28s ease, opacity 0.18s ease, margin-top 0.28s ease;
+    }
+    .filter-controls.expanded {
+        max-height: 12rem;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+    /* Within the controls row: sort sits left, the rest is pushed to the right edge */
+    .filter-controls .weapon-help-btn { order: 3; margin-left: auto; }
+    .filter-controls .view-toggle { order: 4; margin-left: auto; }
+    .filter-controls .weapon-help-btn + .view-toggle { margin-left: 0; }
+    .filter-controls .utility-group { order: 5; }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     /* Hamburger visible */
@@ -4340,19 +4409,10 @@ kbd {
     /* Filter bar wrapper: re-anchor to edges at mobile padding */
     .filter-bar-wrapper { margin: -0.75rem 0 0.75rem -0.75rem; padding: 0.5rem 0 0.5rem 0.75rem; }
 
-    /* Filter bar: two rows — search, then controls */
-    .filter-bar { flex-wrap: wrap; gap: 0.5rem; padding-right: 0.75rem; }
-    .filter-input-group { flex: 1 1 100%; max-width: none; min-width: 0; order: 1; }
-    .sort-wrap { order: 2; }
-    .filter-bar .item-count { display: none; }
-    /* On mobile: spacer is hidden so individual auto-margins handle alignment */
-    .filter-bar-spacer { display: none; }
-    .weapon-help-btn { order: 3; margin-left: auto; }
-    .view-toggle { order: 4; margin-left: auto; }
-    /* When the weapon-help button is present it owns the right-edge margin; keep the
-       view-toggle tucked next to it instead of splitting the free space between them. */
-    .weapon-help-btn + .view-toggle { margin-left: 0; }
-    .utility-group { order: 5; }
+    /* Filter-bar single-row + collapsible controls live in their own wider
+       breakpoint (see @media max-width: 960px) so the toggle appears before the
+       bar would wrap. Only the edge-padding tweak is mobile-specific here. */
+    .filter-bar { padding-right: 0.75rem; }
 
     /* Tile grid: single-column on small screens */
     .tile-grid {
