@@ -224,6 +224,9 @@ export default {
     user-select: none;
     cursor: default;
     outline: none;
+    /* Keep the label on one line and don't let the nav squeeze it */
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 .online-dot {
     width: 10px;

@@ -729,6 +729,9 @@ button.header-link {
     .header-utils.header-desktop-items { display: none !important; }
     .global-search.header-desktop-items { display: none !important; }
     .header-search-btn { display: flex; margin-left: auto; }
+    /* Hide the online counter before the nav tab strip gets crowded enough to
+       squeeze it (it's still hidden at the <=768px scroll breakpoint too). */
+    .nav-bar-online { display: none; }
 }
 
 /* Global search */
