@@ -4277,22 +4277,27 @@ kbd {
     text-align: center;
 }
 
-/* Shared hover "drawer" for touch devices: the hover popover (item, crafting,
-   upgrade tree) becomes a full-width card docked to the bottom edge behind a
-   dismissable backdrop. Applied generically — the popover's positioned root gets
-   .hover-sheet and its direct child is the card. */
+/* Hover "drawer" for touch devices: a non-navigating hover popover (the upgrade
+   tree, whose nodes have no tap action) becomes a full-width card docked to the
+   bottom edge behind a dismissable backdrop. Hovers whose triggers navigate on
+   tap are suppressed on touch instead. Applied generically — the popover's
+   positioned root gets .hover-sheet and its direct child is the card. */
 .hover-sheet {
     position: fixed !important;
     inset: 0 !important;
     z-index: 400;
     display: flex;
     align-items: flex-end;
-    pointer-events: auto;
+    /* !important so the backdrop captures the tap (closing the drawer) and clicks
+       don't fall through to the controls underneath — the popover's own scoped
+       `pointer-events: none` would otherwise win on specificity. */
+    pointer-events: auto !important;
     max-height: none;
     overflow: visible;
     background: var(--color-overlay-black-50);
 }
 .hover-sheet > * {
+    pointer-events: auto;
     width: 100%;
     min-width: 0;
     max-width: 100%;

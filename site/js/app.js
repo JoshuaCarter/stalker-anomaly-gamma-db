@@ -237,7 +237,6 @@ export const appDefinition = {
             hoverItem: null,
             hoverPos: null,
             hoverCompareItem: null,
-            hoverSheet: false,   // render as a bottom drawer on touch devices
 
             buildWeaponCompareSlot: "primary",  // "primary" | "secondary" | "sidearm"
 
@@ -4514,15 +4513,14 @@ export const appDefinition = {
 
         showItemHover(item, event, compareItem) {
             clearTimeout(this._hoverShowTimeout);
+            // Every trigger for this popover navigates on tap, so on touch we let the
+            // tap open the item. (A drawer would also swallow the delayed synthetic
+            // click on real devices, blocking navigation entirely.)
+            if (prefersTouchHover()) return;
             this._hoverAnchor = event.currentTarget || null;
             this._hoverShowTimeout = setTimeout(() => {
-                // The comparison popover stays anchored even on touch (it's reached from
-                // build-planner slots, not a tap-to-open list); only the plain hover
-                // becomes a drawer.
-                this.hoverSheet = !compareItem && prefersTouchHover();
                 this.hoverItem = item;
                 this.hoverCompareItem = compareItem || null;
-                if (this.hoverSheet) return;   // drawer is positioned by CSS
                 this.$nextTick(() => this._positionHoverPopover());
             }, 250);
         },
@@ -4538,7 +4536,6 @@ export const appDefinition = {
             this.hoverItem = null;
             this.hoverPos = null;
             this.hoverCompareItem = null;
-            this.hoverSheet = false;
         },
 
         _positionHoverPopover() {

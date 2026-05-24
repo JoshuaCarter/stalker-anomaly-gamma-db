@@ -400,8 +400,6 @@
     class="item-hover-popover-global"
     :item="!hoverCompareItem ? hoverItem : null"
     :pos="hoverPos"
-    :sheet="hoverSheet"
-    @close="hideItemHover"
 />
 
 <!-- Item comparison popover (build planner equipped vs inventory) -->

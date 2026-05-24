@@ -80,9 +80,7 @@
             <div
                 v-if="hoverItem"
                 class="build-hover-popover"
-                :class="{ 'hover-sheet': hoverSheet }"
                 :style="hoverPos"
-                @click.self="hoverSheet && hideHover()"
             >
                 <div class="tile-card build-hover-tile">
                     <div class="tile-card-header">
@@ -155,7 +153,6 @@ export default {
         return {
             hoverItem: null,
             hoverPos: {},
-            hoverSheet: false,
             _hoverTimeout: null,
             craftingViewMode,
             visibleCount: PAGE_SIZE,
@@ -301,13 +298,14 @@ export default {
 
         showHover(name, event) {
             clearTimeout(this._hoverTimeout);
+            // Crafting rows/titles navigate on tap, so on touch let the tap open the
+            // item rather than showing a hover that would swallow the click.
+            if (prefersTouchHover()) return;
             const item = this.findFullItemByName(name);
             if (!item) return;
             const anchor = event.currentTarget;
             this._hoverTimeout = setTimeout(() => {
-                this.hoverSheet = prefersTouchHover();
                 this.hoverItem = item;
-                if (this.hoverSheet) return;   // drawer is positioned by CSS
                 this.$nextTick(() => this._positionHover(anchor));
             }, 220);
         },
@@ -320,7 +318,6 @@ export default {
             clearTimeout(this._hoverTimeout);
             if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
             this.hoverItem = null;
-            this.hoverSheet = false;
             this.hoverPos = {};
         },
 

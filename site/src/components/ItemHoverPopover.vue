@@ -1,5 +1,5 @@
 <template>
-<div v-if="item" class="item-hover-popover" :class="{ 'hover-sheet': sheet }" :style="posStyle" @click.self="sheet && $emit('close')">
+<div v-if="item" class="item-hover-popover" :style="posStyle">
     <div class="item-hover-card">
         <div class="item-hover-header">
             <span class="item-hover-name">{{ tItemName(item) }}</span>
@@ -48,15 +48,12 @@ interface HoverPos {
 export default defineComponent({
   name: 'ItemHoverPopover',
   inject: ['t', 'tItemName', 'headerLabel', 'formatValue', 'displayStyle', 'displayLabel', 'statClass', 'statStyle', 'cellValue', 'getItemFields', 'parseDescription', 'caliberName', 'originBadge'],
-  emits: ['close'],
   props: {
     item: { type: Object, default: null },
     pos: { type: Object as PropType<HoverPos | null>, default: null },
-    sheet: { type: Boolean, default: false },
   },
   computed: {
     posStyle(): Record<string, string> {
-      if (this.sheet) return {};   // positioned by CSS as a bottom drawer
       if (!this.pos) return { visibility: 'hidden' };
       return { top: this.pos.top + 'px', left: this.pos.left + 'px' };
     },
