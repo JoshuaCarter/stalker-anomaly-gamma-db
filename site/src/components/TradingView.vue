@@ -1031,7 +1031,10 @@ export default {
     border-bottom: none;
     border-radius: 6px 6px 0 0;
 }
-.trading-filter-group { width: 100%; max-width: none; }
+/* The shared .filter-input-group sets flex: 0 1 14rem for its row context in
+   FilterBar; here the strip is a column, so that basis would become a 14rem
+   height. Reset to auto basis so the input keeps its own 1.75rem height. */
+.trading-filter-group { width: 100%; max-width: none; flex: 0 0 auto; }
 /* Active-filters chip strip inside the trader strip-controls: tighten top margin so it
    hugs the search bar (item-page rule has margin-top: 0.4rem inherited from .filter-bar context). */
 .trading-strip-controls .active-filters { margin-top: 0; padding-right: 0; }
