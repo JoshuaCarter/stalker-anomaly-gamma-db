@@ -13,7 +13,8 @@
                 <!-- Sticky title bar -->
                 <div class="modal-sticky-bar modal-sticky-bar--visible">
                     <span class="modal-sticky-title">
-                        <span class="modal-sticky-name">{{ tName(modalItem) }} <span class="modal-sticky-cat">{{ t(singularCategory(modalCategory)) || tCat(modalCategory) }}</span></span>
+                        <span class="modal-sticky-name-text">{{ tName(modalItem) }}</span>
+                        <span class="modal-sticky-cat">{{ t(singularCategory(modalCategory)) || tCat(modalCategory) }}</span>
                         <span class="modal-sticky-id">{{ modalItem.id }}</span>
                     </span>
                     <div class="modal-sticky-actions">
@@ -841,9 +842,14 @@ export default {
     }
     /* The inline close replaces the absolutely-positioned corner × on mobile. */
     .modal-close { display: none; }
-    /* Let a long title ellipsis-truncate rather than force horizontal scroll. */
-    .modal-sticky-title { flex: 1 1 auto; min-width: 0; }
-    .modal-sticky-name { overflow: hidden; text-overflow: ellipsis; }
+    /* Let a long title ellipsis-truncate rather than force horizontal scroll.
+       Scoped via .modal-sticky-bar so this outranks the base .modal-sticky-title
+       rule that is defined later in this file (equal specificity would lose). */
+    .modal-sticky-bar .modal-sticky-title { flex: 1 1 auto; min-width: 0; }
+    /* Name takes the whole first row (so it ellipsis-truncates); the type badge
+       and item code then wrap together onto the second row. */
+    .modal-sticky-bar .modal-sticky-name-text { flex-basis: 100%; }
+    .modal-sticky-bar .modal-sticky-id { flex-basis: auto; }
     /* Body padding is 1rem on mobile (vs 0.75/1.5 on desktop); realign the
        sticky bar's negative margins and stick offset to match, or a strip of
        scrolled content shows through above it. */
@@ -876,22 +882,31 @@ export default {
     color: var(--text-secondary);
     font-family: var(--mono, monospace);
     line-height: 1;
+    /* Sits on its own row beneath the name + type badge on desktop. */
+    flex-basis: 100%;
 }
 .modal-sticky-actions .item-toolbar {
     margin: 0;
 }
 .modal-sticky-title {
     display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.4rem;
+    row-gap: 0.15rem;
+    min-width: 0;
     flex-shrink: 0;
 }
-.modal-sticky-name {
+/* The name truncates; the type badge beside it keeps its full width. */
+.modal-sticky-name-text {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--color-text);
-    white-space: nowrap;
     line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 .modal-sticky-cat {
     font-size: 0.55rem;
@@ -905,7 +920,6 @@ export default {
     flex-shrink: 0;
     white-space: nowrap;
     vertical-align: middle;
-    margin-left: 0.4rem;
 }
 
 /* ── Max Upgraded Stats section ─────────────────────────── */
