@@ -25,7 +25,12 @@ body {
     color: var(--text);
     font-family: var(--font-body);
     line-height: 1.5;
+    /* Fallback for browsers without dynamic viewport units, then dvh so the layout
+       tracks the visible viewport as the mobile address bar shows/hides. */
     height: 100vh;
+    height: 100dvh;
+    /* Keep content clear of the home indicator on notched devices (0 elsewhere). */
+    padding-bottom: env(safe-area-inset-bottom);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -2737,6 +2742,7 @@ input.range-input {
     width: 100%;
     max-width: calc(100vw - 16rem);
     height: calc(100vh - 4rem);
+    height: calc(100dvh - 4rem);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -3595,6 +3601,7 @@ input.range-input {
     width: 100%;
     max-width: 60rem;
     height: calc(100vh - 4rem);
+    height: calc(100dvh - 4rem);
 }
 .compare-header {
     padding: 1.5rem 2rem 0;
@@ -4355,13 +4362,13 @@ kbd {
 
     /* Modals: near full-screen */
     .modal-backdrop { padding: 0.5rem; }
-    .modal { max-width: none; max-height: calc(100vh - 1rem); border-radius: 6px; }
+    .modal { max-width: none; max-height: calc(100vh - 1rem); max-height: calc(100dvh - 1rem); border-radius: 6px; }
     .modal-nav { display: none; }
     .modal-body { padding: 1rem; }
     /* Reserve clearance for the floating close (×) so it doesn't cover the share button */
     .modal-sticky-bar { padding-right: 3rem; }
     .modal-title { font-size: 1.15rem; }
-    .compare-modal { height: calc(100vh - 1rem); max-width: none; border-radius: 6px; }
+    .compare-modal { height: calc(100vh - 1rem); height: calc(100dvh - 1rem); max-width: none; border-radius: 6px; }
     .compare-header { padding: 0.75rem 1rem 0; flex-wrap: wrap; gap: 0.5rem; }
     .compare-content { padding: 0.5rem 0.5rem 1rem; }
     .compare-title { font-size: 0.95rem; }
@@ -5430,6 +5437,7 @@ kbd {
     width: 100%;
     height: auto;
     max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 4rem);
     overflow: hidden;
 }
 .save-import-header {
