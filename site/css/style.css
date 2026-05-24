@@ -4307,6 +4307,8 @@ kbd {
         pointer-events: auto;
     }
     .nav-bar .settings-wrap .settings-menu { right: 0.25rem; }
+    /* Compact gear in the nav tab strip (smaller than the 44px touch target default) */
+    .nav-bar .settings-btn { width: 1.5rem; height: 1.5rem; }
 
     /* What's New banner: center horizontally */
     .whats-new-banner { left: 0.75rem; right: 0.75rem; width: auto; max-width: none; }
@@ -4405,7 +4407,7 @@ kbd {
     .site-footer a svg { margin-right: 0; }
 
     /* Touch targets: 44px minimum */
-    .settings-btn, .sort-btn, .filter-input-group,
+    .sort-btn, .filter-input-group,
     .view-toggle button, .copy-link-btn, .download-btn, .header-link { min-width: 44px; min-height: 44px; }
     .compare-btn, .compare-clear-btn { min-height: 44px; padding-left: 1rem; padding-right: 1rem; }
 
