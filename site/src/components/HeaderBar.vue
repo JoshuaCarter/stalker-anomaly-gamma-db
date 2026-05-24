@@ -1,6 +1,6 @@
 <template>
 <header class="site-header" v-show="translations">
-    <button class="hamburger-btn" @click="sidebarCollapsed ? $emit('toggleSidebarCollapse') : $emit('toggleSidebar')" :class="{ active: sidebarOpen, 'show-desktop': sidebarCollapsed }">
+    <button class="hamburger-btn" @click="sidebarCollapsed ? $emit('toggleSidebarCollapse') : $emit('toggleSidebar')" :class="{ active: sidebarOpen, 'show-desktop': sidebarCollapsed, 'hamburger-hidden': sidebarUnavailable }">
         <span></span><span></span><span></span>
     </button>
     <div class="header-brand" v-click-outside="() => packOpen = false">
@@ -309,6 +309,11 @@ export default {
     computed: {
         sortedPacks() {
             return [...this.packs].sort((a, b) => a.name.localeCompare(b.name));
+        },
+        // Full-width tool sections collapse the sidebar (App.vue's `sidebar-hidden`),
+        // so the mobile hamburger would open an empty drawer — hide it for those.
+        sidebarUnavailable() {
+            return this.buildPlannerActive || this.mapsActive || this.damageSimActive || this.tradingActive;
         },
     },
     data() {
