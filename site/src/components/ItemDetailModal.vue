@@ -17,7 +17,7 @@
                         <span class="modal-sticky-id">{{ modalItem.id }}</span>
                     </span>
                     <div class="modal-sticky-actions">
-                        <div class="item-toolbar">
+                        <div class="item-toolbar item-toolbar--full">
                             <div v-if="packs.length > 1" class="compare-wrap" v-click-outside="closeCompareMenu">
                                 <button class="copy-link-btn cross-pack-btn" :class="{ active: crossPackId }" @click.stop="compareMenuOpen = !compareMenuOpen" v-tooltip="t('app_label_compare_with')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
@@ -54,6 +54,45 @@
                                     <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                                 </button>
                             </div>
+                        </div>
+                        <!-- Mobile: collapse the toolbar into one overflow menu, with the
+                             close button as the right-most action (replaces the corner ×). -->
+                        <div class="item-toolbar item-toolbar--compact">
+                            <div class="compare-wrap" v-click-outside="closeOverflowMenu">
+                                <button class="copy-link-btn" :class="{ active: overflowMenuOpen }" @click.stop="overflowMenuOpen = !overflowMenuOpen" aria-label="More actions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg>
+                                </button>
+                                <div class="compare-menu" v-show="overflowMenuOpen" @click.stop>
+                                    <button class="sort-menu-item" :class="{ active: isFavorited(modalItem.id) }" @click="$emit('toggleFavorite', modalItem.id)">
+                                        <span class="sort-menu-check">{{ isFavorited(modalItem.id) ? '★' : '' }}</span>
+                                        <span>{{ isFavorited(modalItem.id) ? t('app_tooltip_remove_fav') : t('app_tooltip_add_fav') }}</span>
+                                    </button>
+                                    <button class="sort-menu-item" :class="{ active: isPinned(modalItem.id) }" :disabled="!isPinned(modalItem.id) && pinnedIds.length >= 5" @click="$emit('togglePin', modalItem.id)">
+                                        <span class="sort-menu-check">{{ isPinned(modalItem.id) ? '✓' : '' }}</span>
+                                        <span>{{ isPinned(modalItem.id) ? t('app_tooltip_unpin') : t('app_tooltip_pin') }}</span>
+                                    </button>
+                                    <button class="sort-menu-item" :class="{ active: copyIdFeedback }" @click="$emit('copyItemId', modalItem.id)">
+                                        <span class="sort-menu-check">{{ copyIdFeedback ? '✓' : '' }}</span>
+                                        <span>{{ copyIdFeedback ? t('app_label_copied') : t('app_tooltip_copy_id') }}</span>
+                                    </button>
+                                    <button class="sort-menu-item" :class="{ active: copyModalLinkFeedback }" @click="$emit('copyModalLink')">
+                                        <span class="sort-menu-check">{{ copyModalLinkFeedback ? '✓' : '' }}</span>
+                                        <span>{{ copyModalLinkFeedback ? t('app_label_copied') : t('app_label_copy_link') }}</span>
+                                    </button>
+                                    <template v-if="packs.length > 1">
+                                        <div class="sort-menu-divider"></div>
+                                        <button v-for="p in crossPackOptions" :key="'ov-' + p.id" class="sort-menu-item" :class="{ active: crossPackId === p.id }" @click="$emit('pickComparePack', p.id)">
+                                            <span class="sort-menu-check">{{ crossPackId === p.id ? '✓' : '' }}</span>
+                                            <span>{{ t('app_label_compare_with') }}: {{ p.name }}</span>
+                                        </button>
+                                        <button v-if="crossPackId" class="sort-menu-item" @click="$emit('pickComparePack', null)">
+                                            <span class="sort-menu-check"></span>
+                                            <span>{{ t('app_label_clear') }}</span>
+                                        </button>
+                                    </template>
+                                </div>
+                            </div>
+                            <button class="copy-link-btn modal-close-inline" @click="$emit('closeModal')" aria-label="Close">&times;</button>
                         </div>
                     </div>
                 </div>
@@ -465,6 +504,7 @@ export default {
   data() {
     return {
       compareMenuOpen: false,
+      overflowMenuOpen: false,
       collapsedSections: this._loadCollapsedSections(),
     };
   },
@@ -472,6 +512,7 @@ export default {
     modalItem() {
       this.hideItemHover();
       this.stickyVisible = false;
+      this.overflowMenuOpen = false;
     },
     modalLoading(val) {
       if (!val && this.modalItem) {
@@ -624,6 +665,9 @@ export default {
     closeCompareMenu() {
       this.compareMenuOpen = false;
     },
+    closeOverflowMenu() {
+      this.overflowMenuOpen = false;
+    },
     _esc(s) {
       return String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
     },
@@ -773,6 +817,42 @@ export default {
     align-items: center;
     gap: 0.6rem;
     flex-shrink: 0;
+}
+/* Compact (overflow + inline close) toolbar is mobile-only. */
+.item-toolbar--compact {
+    display: none;
+}
+.modal-close-inline {
+    font-size: 1.4rem;
+    line-height: 1;
+    border-radius: 4px;
+}
+.item-toolbar--compact .sort-menu-item:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+@media (max-width: 768px) {
+    .item-toolbar--full { display: none; }
+    .item-toolbar--compact {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin: 0;
+    }
+    /* The inline close replaces the absolutely-positioned corner × on mobile. */
+    .modal-close { display: none; }
+    /* Let a long title ellipsis-truncate rather than force horizontal scroll. */
+    .modal-sticky-title { flex: 1 1 auto; min-width: 0; }
+    .modal-sticky-name { overflow: hidden; text-overflow: ellipsis; }
+    /* Body padding is 1rem on mobile (vs 0.75/1.5 on desktop); realign the
+       sticky bar's negative margins and stick offset to match, or a strip of
+       scrolled content shows through above it. */
+    .modal-sticky-bar {
+        top: -1rem;
+        margin: -1rem -1rem 0.75rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 .modal-desc-img-float {
     float: right;

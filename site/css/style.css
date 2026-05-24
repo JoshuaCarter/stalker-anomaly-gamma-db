@@ -4449,13 +4449,12 @@ kbd {
     /* Table */
     .item-table { font-size: 0.7rem; }
 
-    /* Modals: near full-screen */
+    /* Modals: near full-screen — fill height too (base height is 100dvh-4rem),
+       leaving only the 0.5rem backdrop padding as top/bottom spacing. */
     .modal-backdrop { padding: 0.5rem; }
-    .modal { max-width: none; max-height: calc(100vh - 1rem); max-height: calc(100dvh - 1rem); border-radius: 6px; }
+    .modal { max-width: none; height: calc(100vh - 1rem); height: calc(100dvh - 1rem); max-height: calc(100vh - 1rem); max-height: calc(100dvh - 1rem); border-radius: 6px; }
     .modal-nav { display: none; }
     .modal-body { padding: 1rem; }
-    /* Reserve clearance for the floating close (×) so it doesn't cover the share button */
-    .modal-sticky-bar { padding-right: 3rem; }
     .modal-title { font-size: 1.15rem; }
     .compare-modal { height: calc(100vh - 1rem); height: calc(100dvh - 1rem); max-width: none; border-radius: 6px; }
     .compare-header { padding: 0.75rem 1rem 0; flex-wrap: wrap; gap: 0.5rem; }
