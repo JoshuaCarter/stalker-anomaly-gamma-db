@@ -4497,6 +4497,9 @@ export const appDefinition = {
         },
 
         showItemHoverFromCaliber(caliberId, event) {
+            // Skip on touch devices: tapping an ammo badge already opens the item,
+            // so the hover preview is redundant and would render offscreen.
+            if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
             const cal = (caliberId || "").trim();
             if (!cal) return;
             const entry = this.calibers[cal];
@@ -4543,7 +4546,20 @@ export const appDefinition = {
                 middleware: [
                     FloatingUIDOM.offset(16),
                     FloatingUIDOM.flip({ fallbackPlacements: ['left-start', 'right-end', 'left-end'] }),
-                    FloatingUIDOM.shift({ padding: 8 }),
+                    // crossAxis shift keeps the popover on-screen vertically too, so a
+                    // tall card anchored low on a small (mobile) viewport isn't clipped.
+                    FloatingUIDOM.shift({ padding: 8, crossAxis: true }),
+                    // Clamp the card to the available space so it never overflows the
+                    // viewport on narrow screens.
+                    FloatingUIDOM.size({
+                        padding: 8,
+                        apply({ availableWidth, availableHeight, elements }) {
+                            Object.assign(elements.floating.style, {
+                                maxWidth: `${Math.max(0, availableWidth)}px`,
+                                maxHeight: `${Math.max(0, availableHeight)}px`,
+                            });
+                        },
+                    }),
                 ],
             }).then(({ x, y }) => {
                 this.hoverPos = { top: y, left: x };
@@ -6590,6 +6606,11 @@ export const appDefinition = {
     },
 
     watch: {
+        modalOpen(open) {
+            // Close any lingering hover preview when the item modal opens, regardless
+            // of which path opened it.
+            if (open) this.hideItemHover();
+        },
         crossPackId(val) {
             if (val) localStorage.setItem("crossPackId", val);
             else localStorage.removeItem("crossPackId");
