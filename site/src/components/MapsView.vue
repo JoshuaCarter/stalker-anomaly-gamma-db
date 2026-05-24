@@ -218,18 +218,6 @@
         <span>Drop save file to import</span>
       </div>
     </div>
-
-    <div v-if="!debugMode" class="maps-banner">
-      <LucideInfo :size="14" />
-      <span class="maps-banner-text">{{ t('app_maps_wip_banner') }}</span>
-      <a href="https://discord.com/channels/912320241713958912/1484195028891861022" target="_blank" rel="noopener" class="maps-banner-link">
-        <LucideMessageCircle :size="12" />
-        {{ t('app_maps_discord_link') }}
-      </a>
-      <a href="https://discord.gg/stalker-gamma" target="_blank" rel="noopener" class="maps-banner-link">
-        {{ t('app_maps_discord_join') }}
-      </a>
-    </div>
   </div>
 </template>
 
@@ -2228,51 +2216,6 @@ export default defineComponent({
   z-index: 0;
 }
 
-.maps-banner {
-  position: absolute;
-  bottom: 0.6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.75rem;
-  background: var(--color-overlay-black-70);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(200, 168, 78, 0.25);
-  border-radius: 6px;
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .maps-banner-text {
-    display: none;
-  }
-  .maps-banner-link:first-of-type {
-    border-left: none;
-    margin-left: 0;
-    padding-left: 0;
-  }
-}
-
-.maps-banner-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-left: 0.5rem;
-  padding-left: 0.5rem;
-  border-left: 1px solid rgba(200, 168, 78, 0.25);
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.maps-banner-link:hover {
-  text-decoration: underline;
-}
-
 .map-debug-overlay {
   position: absolute;
   bottom: 0.6rem;
@@ -2872,6 +2815,14 @@ export default defineComponent({
 /* Leaflet overrides — must be unscoped to affect Leaflet's DOM */
 .leaflet-container {
   background: var(--color-black) !important;
+}
+
+/* On mobile the search bar spans the full top edge, so push the top-left
+   zoom controls down to clear it (0.6rem top + ~2.1rem search bar height). */
+@media (max-width: 768px) {
+  .maps-view .leaflet-top {
+    top: 3.25rem;
+  }
 }
 
 .map-level-label {
