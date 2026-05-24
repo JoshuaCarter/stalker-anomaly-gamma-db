@@ -1566,6 +1566,12 @@ a.tile-card-name:hover {
 .header-mobile-items.has-unseen {
     color: var(--accent);
 }
+/* Anchor the unseen-notes dot to the mobile overflow button — .header-link isn't
+   positioned by default, so the absolute badge would otherwise float to the header
+   (appearing where the now-hidden release-notes button used to be). */
+.header-mobile-items {
+    position: relative;
+}
 .release-notes-badge {
     position: absolute;
     top: 0;
@@ -4300,9 +4306,10 @@ kbd {
 @media (max-width: 960px) {
     .filter-bar { flex-wrap: wrap; gap: 0 0.5rem; }
     .filter-input-group { flex: 1 1 auto; max-width: none; min-width: 0; order: 1; }
-    /* align-self: stretch matches the button height to the search input across
-       breakpoints (35px base, 44px touch target on mobile). */
-    .filter-expand-btn { display: inline-flex; order: 2; align-self: stretch; width: 2.25rem; }
+    /* height:auto lets align-self:stretch match the button to the search input
+       height across breakpoints (35px base, 44px touch target on mobile);
+       a definite height would otherwise defeat the stretch. */
+    .filter-expand-btn { display: inline-flex; order: 2; align-self: stretch; height: auto; width: 2.25rem; }
     .filter-bar .item-count { display: none; }
     .filter-bar-spacer { display: none; }
 
