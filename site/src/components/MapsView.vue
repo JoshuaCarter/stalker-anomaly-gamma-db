@@ -2792,7 +2792,11 @@ export default defineComponent({
 
 @media (max-width: 768px) {
   .maps-view {
+    /* dvh tracks the visible viewport as the mobile address bar shows/hides;
+       plain 100vh overshoots, pushing the bottom-anchored controls (the layers
+       button is the lowest) below the clipped edge. vh kept as a fallback. */
     min-height: calc(100vh - 6rem);
+    min-height: calc(100dvh - 6rem);
   }
 
   .map-controls-col {
