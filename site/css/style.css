@@ -1262,6 +1262,12 @@ button.header-link {
     cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
     position: relative;
+    /* Skip layout/paint for off-screen cards so scrolling stays smooth on
+       weaker (mobile) GPUs. Intrinsic size is a placeholder height for
+       not-yet-rendered cards; keep it near a typical card height to minimise
+       scrollbar drift. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 140px;
 }
 .tile-card:hover {
     border-color: var(--accent-dim);
