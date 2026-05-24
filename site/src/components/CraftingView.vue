@@ -17,7 +17,7 @@
         <CraftingInnerTreeView
             v-if="craftingViewMode === 'tree'"
             :filtered-crafting-trees="filteredCraftingTrees"
-            @navigate-to-item="(id) => $emit('navigateToItem', id)"
+            @navigate-to-item="(id) => navigateAndHide(id)"
             @hover-enter="(name, ev) => showHover(name, ev)"
             @hover-move="moveHover"
             @hover-leave="hideHover"
@@ -62,8 +62,8 @@
                         :tier-class="tree.toolTier ? 'tier-' + tree.toolTier : ''"
                         :rows="treeRows(tree)"
                         :footer="tree.recipeReqName ? t(tree.recipeReqName) : ''"
-                        @click-title="$emit('navigateToItem', tree.id)"
-                        @click-row="(row) => row.itemId && $emit('navigateToItem', row.itemId)"
+                        @click-title="navigateAndHide(tree.id)"
+                        @click-row="(row) => row.itemId && navigateAndHide(row.itemId)"
                         @toggle-expand="(path) => $emit('toggleTreeNode', path)"
                         @hover-enter="(ev, row) => showHover(row ? row.hoverName : tree.name, ev)"
                         @hover-move="moveHover"
@@ -80,7 +80,9 @@
             <div
                 v-if="hoverItem"
                 class="build-hover-popover"
+                :class="{ 'hover-sheet': hoverSheet }"
                 :style="hoverPos"
+                @click.self="hoverSheet && hideHover()"
             >
                 <div class="tile-card build-hover-tile">
                     <div class="tile-card-header">
@@ -117,6 +119,7 @@
 <script>
 import CraftingInnerTreeView from "./crafting-trees-page/CraftingInnerTreeView.vue";
 import CraftingRecipeCard from "./CraftingRecipeCard.vue";
+import { attachHoverPosition, prefersTouchHover } from "../hover-popover.js";
 
 const HOVER_SKIP = new Set([
     "id", "name", "displayName", "pda_encyclopedia_name", "category", "localeName",
@@ -152,6 +155,7 @@ export default {
         return {
             hoverItem: null,
             hoverPos: {},
+            hoverSheet: false,
             _hoverTimeout: null,
             craftingViewMode,
             visibleCount: PAGE_SIZE,
@@ -213,8 +217,17 @@ export default {
             this._observer.disconnect();
             this._observer = null;
         }
+        if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
     },
     methods: {
+        // Navigating opens the item modal; close any pending/shown hover first so a
+        // touch tap (which both navigates and triggers the hover) can't leave the
+        // drawer popping up over the modal.
+        navigateAndHide(id) {
+            this.hideHover();
+            this.$emit("navigateToItem", id);
+        },
+
         setInnerTab(mode) {
             this.craftingViewMode = mode;
             this.visibleCount = PAGE_SIZE;
@@ -290,28 +303,34 @@ export default {
             clearTimeout(this._hoverTimeout);
             const item = this.findFullItemByName(name);
             if (!item) return;
+            const anchor = event.currentTarget;
             this._hoverTimeout = setTimeout(() => {
+                this.hoverSheet = prefersTouchHover();
                 this.hoverItem = item;
-                this._positionHover(event.clientX, event.clientY);
+                if (this.hoverSheet) return;   // drawer is positioned by CSS
+                this.$nextTick(() => this._positionHover(anchor));
             }, 220);
         },
 
-        moveHover(event) {
-            if (!this.hoverItem) return;
-            this._positionHover(event.clientX, event.clientY);
+        moveHover() {
+            // Anchored popover stays put — autoUpdate tracks resize/scroll.
         },
 
         hideHover() {
             clearTimeout(this._hoverTimeout);
+            if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
             this.hoverItem = null;
+            this.hoverSheet = false;
+            this.hoverPos = {};
         },
 
-        _positionHover(x, y) {
-            const offset = 14;
-            const pw = 260;
-            const left = x + offset + pw > window.innerWidth ? x - pw - offset : x + offset;
-            const top = Math.min(y + offset, window.innerHeight - 32);
-            this.hoverPos = { position: "fixed", top: top + "px", left: left + "px", zIndex: 400 };
+        _positionHover(anchor) {
+            const el = document.querySelector(".build-hover-popover");
+            if (!el || !anchor) return;
+            if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
+            this._hoverCleanup = attachHoverPosition(anchor, el, (pos) => {
+                this.hoverPos = { position: "fixed", top: pos.top + "px", left: pos.left + "px", zIndex: 400 };
+            });
         },
     },
 };

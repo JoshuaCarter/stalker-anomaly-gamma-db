@@ -4277,6 +4277,31 @@ kbd {
     text-align: center;
 }
 
+/* Shared hover "drawer" for touch devices: the hover popover (item, crafting,
+   upgrade tree) becomes a full-width card docked to the bottom edge behind a
+   dismissable backdrop. Applied generically — the popover's positioned root gets
+   .hover-sheet and its direct child is the card. */
+.hover-sheet {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 400;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: auto;
+    max-height: none;
+    overflow: visible;
+    background: var(--color-overlay-black-50);
+}
+.hover-sheet > * {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 12px 12px 0 0;
+    padding-bottom: calc(0.6rem + env(safe-area-inset-bottom));
+}
+
 /* Vue transitions */
 /* Fade (backdrops) */
 .fade-enter-active,

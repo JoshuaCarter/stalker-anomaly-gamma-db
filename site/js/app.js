@@ -1,4 +1,5 @@
 import '../src/globals.js';
+import { attachHoverPosition, prefersTouchHover } from '../src/hover-popover.js';
 import {
     EFFECT_FIELDS, FILTER_DEFS, NAME_TAG_COLS, BADGE_COLS, MODAL_BADGE_KEYS,
     SKIP_KEYS, MAX_PINS, BUILD_HASH_PREFIX,
@@ -236,6 +237,7 @@ export const appDefinition = {
             hoverItem: null,
             hoverPos: null,
             hoverCompareItem: null,
+            hoverSheet: false,   // render as a bottom drawer on touch devices
 
             buildWeaponCompareSlot: "primary",  // "primary" | "secondary" | "sidearm"
 
@@ -4513,74 +4515,37 @@ export const appDefinition = {
         showItemHover(item, event, compareItem) {
             clearTimeout(this._hoverShowTimeout);
             this._hoverAnchor = event.currentTarget || null;
-            this._hoverMouse = { x: event.clientX, y: event.clientY };
             this._hoverShowTimeout = setTimeout(() => {
+                // The comparison popover stays anchored even on touch (it's reached from
+                // build-planner slots, not a tap-to-open list); only the plain hover
+                // becomes a drawer.
+                this.hoverSheet = !compareItem && prefersTouchHover();
                 this.hoverItem = item;
                 this.hoverCompareItem = compareItem || null;
+                if (this.hoverSheet) return;   // drawer is positioned by CSS
                 this.$nextTick(() => this._positionHoverPopover());
             }, 250);
         },
 
-        moveItemHover(event) {
-            this._hoverMouse = { x: event.clientX, y: event.clientY };
-            // Anchored popovers stay put (autoUpdate tracks resize/scroll); only the
-            // anchorless fallback follows the cursor.
-            if (this.hoverItem && !this._hoverAnchor) this._positionHoverPopover();
+        moveItemHover() {
+            // Anchored popovers stay put — autoUpdate tracks resize/scroll.
         },
 
         hideItemHover() {
             clearTimeout(this._hoverShowTimeout);
             if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
-            this._hoverMouse = null;
             this._hoverAnchor = null;
             this.hoverItem = null;
             this.hoverPos = null;
             this.hoverCompareItem = null;
+            this.hoverSheet = false;
         },
 
         _positionHoverPopover() {
             const el = document.querySelector('.item-hover-popover-global') || document.querySelector('.item-compare-popover');
-            if (!el) return;
-            const mouse = this._hoverMouse;
-            const ref = this._hoverAnchor || (mouse ? { getBoundingClientRect: () => ({ x: mouse.x, y: mouse.y, top: mouse.y, left: mouse.x, bottom: mouse.y, right: mouse.x, width: 0, height: 0 }) } : null);
-            if (!ref) return;
-            // The popover is a single shared instance, so clear any size clamp left by
-            // the previous hover once up front; the size middleware re-applies it. Doing
-            // this only on setup (not in the update loop) avoids a clamp/grow oscillation.
-            el.style.maxWidth = '';
-            el.style.maxHeight = '';
+            if (!el || !this._hoverAnchor) return;
             if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
-            const update = () => {
-                FloatingUIDOM.computePosition(ref, el, {
-                    placement: 'right-start',
-                    strategy: 'fixed',
-                    middleware: [
-                        FloatingUIDOM.offset(16),
-                        FloatingUIDOM.flip({ fallbackPlacements: ['left-start', 'right-end', 'left-end'] }),
-                        // crossAxis shift keeps the popover on-screen vertically too, so a
-                        // tall card anchored low on a small (mobile) viewport isn't clipped.
-                        FloatingUIDOM.shift({ padding: 8, crossAxis: true }),
-                        // Clamp the card to the available space so it never overflows the
-                        // viewport on narrow screens.
-                        FloatingUIDOM.size({
-                            padding: 8,
-                            apply({ availableWidth, availableHeight, elements }) {
-                                Object.assign(elements.floating.style, {
-                                    maxWidth: `${Math.max(0, availableWidth)}px`,
-                                    maxHeight: `${Math.max(0, availableHeight)}px`,
-                                });
-                            },
-                        }),
-                    ],
-                }).then(({ x, y }) => {
-                    this.hoverPos = { top: y, left: x };
-                });
-            };
-            // autoUpdate re-runs `update` when the popover resizes — e.g. its icon image
-            // finishes loading on a brand-new hover, which previously left the first
-            // position computed for the wrong size until a mousemove corrected it — as
-            // well as on scroll/resize.
-            this._hoverCleanup = FloatingUIDOM.autoUpdate(ref, el, update);
+            this._hoverCleanup = attachHoverPosition(this._hoverAnchor, el, (pos) => { this.hoverPos = pos; });
         },
 
         navHref(page) {

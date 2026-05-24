@@ -80,7 +80,7 @@
     </div>
 
     <!-- Hover popover -->
-    <div v-if="hoverNode" class="uptree-hover" :style="hoverStyle">
+    <div v-if="hoverNode" class="uptree-hover" :class="{ 'hover-sheet': hoverSheet }" :style="hoverStyle" @click.self="hoverSheet && hideHover()">
         <div class="uptree-hover-card" :class="'uptree-hover-card--' + propCategory(hoverNode.prop)">
             <div class="uptree-hover-head">
                 <span class="uptree-hover-cat-dot"></span>
@@ -104,6 +104,8 @@
 </template>
 
 <script>
+import { attachHoverPosition, prefersTouchHover } from "../hover-popover.js";
+
 const STAT_DISPLAY_MAP = {
     rpm: "RPM",
 };
@@ -168,6 +170,7 @@ export default {
         return {
             hoverNode: null,
             hoverPos: null,
+            hoverSheet: false,
             _hoverTimeout: null,
         };
     },
@@ -206,6 +209,7 @@ export default {
             return this.formatValue("st_upgr_cost", this.totalCost);
         },
         hoverStyle() {
+            if (this.hoverSheet) return {};   // positioned by CSS as a bottom drawer
             if (!this.hoverPos) return { display: 'none' };
             return { top: this.hoverPos.top + 'px', left: this.hoverPos.left + 'px' };
         },
@@ -220,9 +224,11 @@ export default {
     },
     watch: {
         nodes() {
-            this.hoverNode = null;
-            this.hoverPos = null;
+            this.hideHover();
         },
+    },
+    beforeUnmount() {
+        if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
     },
     methods: {
         propCategory(prop) {
@@ -237,30 +243,29 @@ export default {
         },
         showHover(node, event) {
             clearTimeout(this._hoverTimeout);
+            const anchor = event.currentTarget;
             this._hoverTimeout = setTimeout(() => {
+                this.hoverSheet = prefersTouchHover();
                 this.hoverNode = node;
-                this.$nextTick(() => this.positionHover(event));
+                if (this.hoverSheet) return;   // drawer is positioned by CSS
+                this.$nextTick(() => this.positionHover(anchor));
             }, 200);
         },
-        moveHover(event) {
-            if (this.hoverNode) this.positionHover(event);
+        moveHover() {
+            // Anchored popover stays put — autoUpdate tracks resize/scroll.
         },
         hideHover() {
             clearTimeout(this._hoverTimeout);
+            if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
             this.hoverNode = null;
             this.hoverPos = null;
+            this.hoverSheet = false;
         },
-        positionHover(event) {
+        positionHover(anchor) {
             const el = this.$el.querySelector('.uptree-hover');
-            if (!el) return;
-            const rect = el.getBoundingClientRect();
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-            let x = event.clientX + 12;
-            let y = event.clientY + 12;
-            if (x + rect.width > vw - 8) x = event.clientX - rect.width - 12;
-            if (y + rect.height > vh - 8) y = event.clientY - rect.height - 12;
-            this.hoverPos = { top: y, left: x };
+            if (!el || !anchor) return;
+            if (this._hoverCleanup) { this._hoverCleanup(); this._hoverCleanup = null; }
+            this._hoverCleanup = attachHoverPosition(anchor, el, (pos) => { this.hoverPos = pos; });
         },
         statLabel(key) {
             if (STAT_DISPLAY_MAP[key]) return STAT_DISPLAY_MAP[key];
