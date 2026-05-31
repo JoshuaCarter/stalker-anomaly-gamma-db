@@ -9,3 +9,7 @@
 - [ ] (From: 𝖉𝖗𝖆𝖎𝖓𝖊𝖗 𝟙𝟜/𝖞.𝖔) Add achievement requirements and buffs - perhaps a "library" tab?.
 - [ ] GAMMA Manual, Monsters, Factions, Characters, etc
 - [ ] Save files not loading on map?
+- [ ] Trader "what's new" filter (supply-level tier chips already exist in TradingView)
+- [ ] Armour mitigation table is blocked on adding raw export fields to the outfit/helmet CSVs (hit_fraction_actor, br_class, bone_armor_spine/head, fire_/wound_protection_raw)
+- [ ] Remove dead crafting graph/expand code (craftingGraphView, _craftingTreeViewExpandAll, craftingExpandLabel, setCraftingGraphView, toggleCraftingExpand, CraftingTreesTreeView.vue)
+- [ ] Guard fetchCraftRecipes against duplicate in-flight fetches (in-flight promise via ??=)
