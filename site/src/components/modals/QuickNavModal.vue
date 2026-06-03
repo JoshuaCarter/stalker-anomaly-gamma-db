@@ -57,6 +57,7 @@ export default {
         favoriteIds: Array,
         recentIds: Array,
         hasStartingLoadouts: { type: Boolean, default: false },
+        hasFactionPools: { type: Boolean, default: false },
         hasToolkitRates: { type: Boolean, default: false },
         hasOutfitExchange: { type: Boolean, default: false },
         craftingRecipeCategories: { type: Array, default: () => [] },
@@ -71,6 +72,7 @@ export default {
         "open-ballistics",
         "open-trading",
         "open-starting-loadouts",
+        "open-faction-pools",
         "open-version-compare",
         "select-favorites",
         "select-recent",
@@ -119,6 +121,9 @@ export default {
             pages.push({ id: "version-compare",  label: this.t("app_cat_version_compare"),  group: toolsGroup, action: "version-compare" });
             if (this.hasStartingLoadouts) {
                 pages.push({ id: "starting-loadouts", label: this.t("app_cat_starting_loadouts"), group: toolsGroup, action: "starting-loadouts" });
+            }
+            if (this.hasFactionPools) {
+                pages.push({ id: "faction-drops", label: this.t("app_cat_faction_drops"), group: toolsGroup, action: "faction-drops" });
             }
             if (this.hasToolkitRates) {
                 pages.push({ id: "toolkit-rates", label: this.t("app_cat_toolkit_rates"), group: toolsGroup, action: "category", cat: "Toolkit Rates" });
@@ -196,6 +201,8 @@ export default {
                 this.$emit("open-version-compare");
             } else if (page.action === "starting-loadouts") {
                 this.$emit("open-starting-loadouts");
+            } else if (page.action === "faction-drops") {
+                this.$emit("open-faction-pools");
             }
             this.$emit("close");
         },

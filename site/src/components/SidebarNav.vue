@@ -66,6 +66,9 @@
             <a v-if="hasStartingLoadouts" :href="navHref('starting-loadouts')" :class="{ active: startingLoadoutsActive }" @click.prevent="$emit('openStartingLoadouts')">
                 <span class="cat-label">{{ t('app_cat_starting_loadouts') }}</span>
             </a>
+            <a v-if="hasFactionPools" :href="navHref('faction-drops')" :class="{ active: factionPoolsActive }" @click.prevent="$emit('openFactionPools')">
+                <span class="cat-label">{{ t('app_cat_faction_drops') }}</span>
+            </a>
             <a v-if="hasToolkitRates" :href="categoryHref(toolkitRatesCategory)" :class="{ active: activeCategory === toolkitRatesCategory && !favoritesViewActive && !recentViewActive && !versionCompareActive && !startingLoadoutsActive }" @click.prevent="$emit('selectCategory', toolkitRatesCategory)">
                 <span class="cat-label">{{ t('app_cat_toolkit_rates') }}</span>
             </a>
@@ -117,6 +120,8 @@ export default {
         versionCompareActive: { type: Boolean, default: false },
         startingLoadoutsActive: { type: Boolean, default: false },
         hasStartingLoadouts: { type: Boolean, default: false },
+        factionPoolsActive: { type: Boolean, default: false },
+        hasFactionPools: { type: Boolean, default: false },
         hasToolkitRates: { type: Boolean, default: false },
         toolkitRatesCategory: { type: String, default: null },
         hasOutfitExchange: { type: Boolean, default: false },
@@ -126,7 +131,7 @@ export default {
     },
     emits: [
         'toggleGroup', 'selectFavorites', 'selectRecent', 'openVersionCompare',
-        'openStartingLoadouts', 'selectCategory', 'selectCraftingCategory', 'toggleSidebarCollapse',
+        'openStartingLoadouts', 'openFactionPools', 'selectCategory', 'selectCraftingCategory', 'toggleSidebarCollapse',
     ],
     inject: ['t', 'tCat', 'categoryHref', 'navHref', 'craftingHref'],
 };

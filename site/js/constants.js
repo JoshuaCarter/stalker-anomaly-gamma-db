@@ -222,6 +222,7 @@ export const FACTION_COLORS = {
     "renegade": "#c87840",
     "greh": "#8b4a8b",
     "isg": "#7a8b6a",
+    "zombied": "#9aa05a",
     "st_data_export_unknown": "#b0b0b0",
 };
 

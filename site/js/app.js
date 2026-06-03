@@ -170,6 +170,8 @@ export const appDefinition = {
             startingLoadoutsCache: null,
             startingLoadoutsFaction: null,
             startingLoadoutsDifficulty: 0,
+            factionPoolsActive: false,
+            factionPoolsFaction: null,
             versionCompareLoading: false,
             versionCompareResults: [],
             versionCompareFilter: "",
@@ -1916,6 +1918,8 @@ export const appDefinition = {
                         // Defer to restoreUrlState
                     } else if (urlCat === "starting-loadouts" || pathParsed.startingLoadouts) {
                         await this.openStartingLoadouts();
+                    } else if (urlCat === "faction-drops" || pathParsed.factionPools) {
+                        await this.openFactionPools();
                     } else if (urlCat === "favorites" || pathParsed.favorites) {
                         this.favoritesViewActive = true;
                         this.activeCategory = null;
@@ -2186,6 +2190,7 @@ export const appDefinition = {
             this.damageSimActive = false;
             this.versionCompareActive = false;
             this.startingLoadoutsActive = false;
+            this.factionPoolsActive = false;
             this.favoritesViewActive = false;
             this.recentViewActive = false;
             this.showFavoritesOnly = false;
@@ -2656,6 +2661,37 @@ export const appDefinition = {
             await this.fetchJsonCached("startingLoadoutsCache", "starting-loadouts.json");
         },
 
+        async openFactionPools() {
+            this.resetViewState();
+            this.factionPoolsActive = true;
+            this.pushUrlState(true);
+            const drops = await this.fetchDrops();
+            // Preload category data for pool weapons so the origin filter has
+            // each weapon's factions[] (origin) available
+            if (drops) {
+                const slugs = new Set();
+                for (const id of Object.keys(drops)) {
+                    const entry = this.indexById[id];
+                    if (entry) slugs.add(categorySlug(entry.category));
+                }
+                await Promise.all([...slugs].map((slug) => this.ensureCategoryItems(slug)));
+            }
+        },
+
+        async ensureCategoryItems(slug) {
+            if (this.categoryItems[slug]) return;
+            try {
+                const res = await fetch(this.dataUrl(`${slug}.json`));
+                const data = await res.json();
+                if (this.categoryItems[slug]) return;
+                for (const item of data.items) item.localeName = this.tName(item);
+                this.categoryItems[slug] = data.items;
+                this.categoryHeaders[slug] = data.headers;
+            } catch (e) {
+                console.warn(`Failed to load category data for ${slug}:`, e);
+            }
+        },
+
         async loadoutItemHover(id, event) {
             const entry = this.indexById[id];
             if (!entry) return;
@@ -2868,6 +2904,7 @@ export const appDefinition = {
             this.damageSimActive = false;
             this.versionCompareActive = false;
             this.startingLoadoutsActive = false;
+            this.factionPoolsActive = false;
             this.favoritesViewActive = false;
             this.recentViewActive = false;
             this.showFavoritesOnly = false;
@@ -4626,6 +4663,7 @@ export const appDefinition = {
                 recent: this.recentViewActive,
                 versionCompare: this.versionCompareActive,
                 startingLoadouts: this.startingLoadoutsActive,
+                factionPools: this.factionPoolsActive,
             };
             url.pathname = buildPathUrl(pathState);
 
@@ -4751,6 +4789,8 @@ export const appDefinition = {
                 if (this.crossPackId) this.loadVersionCompareData();
             } else if (parsed.startingLoadouts || legacyCat === "starting-loadouts") {
                 this.openStartingLoadouts();
+            } else if (parsed.factionPools || legacyCat === "faction-drops") {
+                this.openFactionPools();
             } else if (parsed.favorites || legacyCat === "favorites") {
                 this.favoritesViewActive = true;
                 this.activeCategory = null;
@@ -5475,6 +5515,8 @@ export const appDefinition = {
                 this.selectCategory(CAT.SCOPES);
             } else if (entry.action === "startingLoadouts") {
                 this.openStartingLoadouts();
+            } else if (entry.action === "factionPools") {
+                this.openFactionPools();
             }
         },
 
@@ -6965,6 +7007,8 @@ export const appDefinition = {
                 }
             } else if (parsed.startingLoadouts) {
                 if (!this.startingLoadoutsActive) await this.openStartingLoadouts();
+            } else if (parsed.factionPools) {
+                if (!this.factionPoolsActive) await this.openFactionPools();
             } else if (parsed.cat && CRAFTING_SUBCATEGORIES.has(parsed.cat)) {
                 await this.selectCategory(CAT.CRAFTING);
                 this.craftingCategory = parsed.cat;

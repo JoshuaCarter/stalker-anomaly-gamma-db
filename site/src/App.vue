@@ -88,6 +88,8 @@
         :version-compare-active="versionCompareActive"
         :starting-loadouts-active="startingLoadoutsActive"
         :has-starting-loadouts="!!fileManifest['starting-loadouts.json']"
+        :faction-pools-active="factionPoolsActive"
+        :has-faction-pools="!!fileManifest['drops.json']"
         :has-toolkit-rates="!!fileManifest['toolkit-rates.json']"
         :toolkit-rates-category="'Toolkit Rates'"
         :has-outfit-exchange="!!fileManifest['outfit-exchange.json']"
@@ -97,6 +99,7 @@
         @toggle-group="toggleGroup"
         @open-version-compare="openVersionCompare()"
         @open-starting-loadouts="openStartingLoadouts()"
+        @open-faction-pools="openFactionPools()"
         @select-favorites="selectFavorites()"
         @select-recent="selectRecent()"
         @select-category="selectCategory"
@@ -173,6 +176,7 @@
                 :build-planner-active="buildPlannerActive"
                 :version-compare-active="versionCompareActive"
                 :starting-loadouts-active="startingLoadoutsActive"
+                :faction-pools-active="factionPoolsActive"
                 :is-weapon-section="isWeaponSection"
                 @update:filter-input="filterInput = $event"
                 @clear-filter-input="filterInput = ''; filterQuery = ''"
@@ -275,6 +279,19 @@
                 @hide-item-hover="hideBuildHover()"
             />
 
+            <FactionDropsView
+                :active="factionPoolsActive"
+                :drops="dropsCache"
+                :faction="factionPoolsFaction"
+                :index-by-id="indexById"
+                :category-items="categoryItems"
+                @update:faction="factionPoolsFaction = $event"
+                @navigate-to-item="navigateToItem"
+                @show-item-hover="loadoutItemHover"
+                @move-item-hover="(event) => moveBuildHover(event)"
+                @hide-item-hover="hideBuildHover()"
+            />
+
             <!-- Build Planner view -->
             <BuildPlanner
                 v-if="buildPlannerMounted"
@@ -364,7 +381,7 @@
             />
 
             <ItemTable
-                v-show="viewMode === 'table' && !favoritesViewActive && !recentViewActive && !isOutfitExchange && !isCrafting && !isToolkitRates && !buildPlannerActive && !versionCompareActive && !startingLoadoutsActive"
+                v-show="viewMode === 'table' && !favoritesViewActive && !recentViewActive && !isOutfitExchange && !isCrafting && !isToolkitRates && !buildPlannerActive && !versionCompareActive && !startingLoadoutsActive && !factionPoolsActive"
                 :items="sortedItems"
                 :table-columns="tableColumns"
                 :sort-col="sortCol"
@@ -378,7 +395,7 @@
                 @toggle-sort="toggleSort"
             />
             <ItemGrid
-                v-show="(viewMode === 'tiles' || favoritesViewActive || recentViewActive) && !isOutfitExchange && !isCrafting && !isToolkitRates && !buildPlannerActive && !versionCompareActive && !startingLoadoutsActive"
+                v-show="(viewMode === 'tiles' || favoritesViewActive || recentViewActive) && !isOutfitExchange && !isCrafting && !isToolkitRates && !buildPlannerActive && !versionCompareActive && !startingLoadoutsActive && !factionPoolsActive"
                 :items="sortedItems"
                 :tile-fields="tileFields"
                 :tile-heal-groups="tileHealGroups"
@@ -557,6 +574,7 @@
     :favoriteIds="favoriteIds"
     :recentIds="recentIds"
     :hasStartingLoadouts="!!fileManifest['starting-loadouts.json']"
+    :hasFactionPools="!!fileManifest['drops.json']"
     :hasToolkitRates="!!fileManifest['toolkit-rates.json']"
     :hasOutfitExchange="!!fileManifest['outfit-exchange.json']"
     :craftingRecipeCategories="craftingRecipeCategories"
@@ -572,6 +590,7 @@
     @open-trading="openTrading()"
     @open-version-compare="openVersionCompare()"
     @open-starting-loadouts="openStartingLoadouts()"
+    @open-faction-pools="openFactionPools()"
 />
 
 <FooterBar />
@@ -601,6 +620,7 @@ import OutfitExchangeView from "./components/OutfitExchangeView.vue";
 import ToolkitRatesView from "./components/ToolkitRatesView.vue";
 import VersionCompareView from "./components/VersionCompareView.vue";
 const StartingLoadoutsView = defineAsyncComponent(() => import('./components/StartingLoadoutsView.vue'));
+const FactionDropsView = defineAsyncComponent(() => import('./components/FactionDropsView.vue'));
 import BuildImportCodeModal from "./components/modals/BuildImportCodeModal.vue";
 import BuildSaveModal from "./components/modals/BuildSaveModal.vue";
 import SaveImportModal from "./components/modals/SaveImportModal.vue";
@@ -639,6 +659,7 @@ export default {
     ToolkitRatesView,
     VersionCompareView,
     StartingLoadoutsView,
+    FactionDropsView,
   },
   provide() {
     return {

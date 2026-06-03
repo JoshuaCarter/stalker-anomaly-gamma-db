@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-06-03",
+    "entries": [
+      { "type": "added", "text": "Faction Drops view - browse every faction's NPC weapon pool as a rank-by-rank matrix from Novice to Legend. See which weapons are exclusive to a faction, which are carried by special units like snipers and black ops, and filter by category, rank, and origin.", "highlight": true, "summaryKey": "app_whats_new_faction_drops", "action": "factionPools", "credits": [{ "name": "Conact", "role": "suggestion" }] }
+    ]
+  },
+  {
     "date": "2026-05-23",
     "entries": [
       { "type": "added", "text": "Tactical kits now show the modified weapon they produce.", "credits": [{ "name": "Icarus", "role": "suggestion" }] }
