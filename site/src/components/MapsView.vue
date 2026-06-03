@@ -954,7 +954,7 @@ export default defineComponent({
       if (!mapContainer.value) return;
       const myId = ++initMapId; // guard against concurrent inits from pack changes
 
-      const TILES_BASE = localTiles.value ? '/tiles' : 'https://tiles.stalker-anomaly-db.com/v2';
+      const TILES_BASE = localTiles.value ? '/tiles' : 'https://tiles.stalker-gamma-db.com/v2';
 
       let meta: TileMetadata;
       try {
