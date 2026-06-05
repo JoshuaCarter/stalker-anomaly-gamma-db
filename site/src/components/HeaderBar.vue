@@ -68,6 +68,10 @@
             <LucideScale :size="16" />
             <span>{{ t('app_nav_trading') }}</span>
         </a>
+        <a class="header-drawer-item" :class="{ active: playerInventoryActive }" :href="navHref('inventory')" @click.prevent="$emit('openPlayerInventory'); overflowOpen = false">
+            <LucidePackage :size="16" />
+            <span>{{ t('app_nav_inventory') }}</span>
+        </a>
         <div class="header-drawer-divider"></div>
         <template v-if="packs.length > 1">
             <div class="header-drawer-label">{{ t('app_drawer_pack') || 'Pack' }}</div>
@@ -243,6 +247,10 @@
         <LucideScale :size="14" />
         {{ t('app_nav_trading') }}
     </a>
+    <a class="nav-bar-item" :class="{ active: playerInventoryActive }" :href="navHref('inventory')" @click.prevent="$emit('openPlayerInventory')">
+        <LucidePackage :size="14" />
+        {{ t('app_nav_inventory') }}
+    </a>
     <div class="nav-bar-spacer"></div>
     <OnlineCounter class="nav-bar-online" />
     <div class="settings-wrap">
@@ -302,6 +310,7 @@ export default {
         damageSimActive: { type: Boolean, default: false },
         mapsActive: { type: Boolean, default: false },
         tradingActive: { type: Boolean, default: false },
+        playerInventoryActive: { type: Boolean, default: false },
         itemDbActive: { type: Boolean, default: false },
         hideNoDrop: { type: Boolean, default: false },
         hideTacticalKit: { type: Boolean, default: false },
@@ -313,7 +322,7 @@ export default {
         'changeLocale', 'openShortcutHelp', 'clearGlobalQuery',
         'update:globalQuery', 'search', 'escapeSearch', 'selectSearchResult',
         'selectSearchResultInSection',
-        'openItemDb', 'openMaps', 'openTrading', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
+        'openItemDb', 'openMaps', 'openTrading', 'openPlayerInventory', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
         'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons',
         'selectCraftingSearchResult',
     ],

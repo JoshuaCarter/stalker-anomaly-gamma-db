@@ -164,6 +164,11 @@ export const appDefinition = {
             mapsMounted: false,
             tradingActive: false,
             tradingMounted: false,
+            playerInventoryActive: false,
+            playerInventoryMounted: false,
+            playerInventoryParseResult: null,
+            playerInventoryParsing: false,
+            playerInventoryError: "",
             damageSimActive: false,
             damageSimMounted: false,
             versionCompareActive: false,
@@ -1659,8 +1664,14 @@ export const appDefinition = {
             const translated = this.t(nameKey);
             const display = item.displayName || nameKey;
             const bracket = display.lastIndexOf(" [");
-            if (bracket >= 0) return translated + display.slice(bracket);
-            return translated;
+            if (bracket < 0) return translated;
+            // Kit-derived weapons get a localized suffix instead of the raw ID suffix;
+            // groups with several kit variants carry a #N qualifier to stay distinct
+            if (item.kitSuffix === true) {
+                const num = item.kitSuffixNum ? ` #${item.kitSuffixNum}` : "";
+                return `${translated} [${this.t('app_suffix_kit')}${num}]`;
+            }
+            return translated + display.slice(bracket);
         },
 
         rebuildGlobalFuse() {
@@ -1920,6 +1931,11 @@ export const appDefinition = {
                         this.tradingActive = true;
                         this.tradingMounted = true;
                         this.activeCategory = null;
+                    } else if (urlCat === "inventory" || pathParsed.playerInventory) {
+                        this.playerInventoryActive = true;
+                        this.playerInventoryMounted = true;
+                        this.activeCategory = null;
+                        this.loadPlayerInventoryFromStorage();
                     } else if (urlCat === "version-compare" || pathParsed.versionCompare) {
                         // Defer to restoreUrlState
                     } else if (urlCat === "starting-loadouts" || pathParsed.startingLoadouts) {
@@ -2194,6 +2210,7 @@ export const appDefinition = {
             this.buildPlannerActive = false;
             this.mapsActive = false;
             this.tradingActive = false;
+            this.playerInventoryActive = false;
             this.damageSimActive = false;
             this.versionCompareActive = false;
             this.startingLoadoutsActive = false;
@@ -2908,6 +2925,7 @@ export const appDefinition = {
             this.buildPlannerActive = false;
             this.mapsActive = false;
             this.tradingActive = false;
+            this.playerInventoryActive = false;
             this.damageSimActive = false;
             this.versionCompareActive = false;
             this.startingLoadoutsActive = false;
@@ -2944,6 +2962,14 @@ export const appDefinition = {
             this.resetViewState();
             this.tradingActive = true;
             this.tradingMounted = true;
+            this.pushUrlState(true);
+        },
+
+        openPlayerInventory() {
+            this.resetViewState();
+            this.playerInventoryActive = true;
+            this.playerInventoryMounted = true;
+            if (!this.playerInventoryParseResult) this.loadPlayerInventoryFromStorage();
             this.pushUrlState(true);
         },
 
@@ -4671,6 +4697,7 @@ export const appDefinition = {
                 damageSim: this.damageSimActive,
                 maps: this.mapsActive,
                 trading: this.tradingActive,
+                playerInventory: this.playerInventoryActive,
                 favorites: this.favoritesViewActive,
                 recent: this.recentViewActive,
                 versionCompare: this.versionCompareActive,
@@ -4789,6 +4816,11 @@ export const appDefinition = {
                 this.tradingActive = true;
                 this.tradingMounted = true;
                 this.activeCategory = null;
+            } else if (parsed.playerInventory || legacyCat === "inventory") {
+                this.playerInventoryActive = true;
+                this.playerInventoryMounted = true;
+                this.activeCategory = null;
+                this.loadPlayerInventoryFromStorage();
             } else if (parsed.versionCompare || legacyCat === "version-compare") {
                 this.versionCompareActive = true;
                 this.activeCategory = null;
@@ -5523,6 +5555,8 @@ export const appDefinition = {
                 this.openDamageSim();
             } else if (entry.action === "trading") {
                 this.openTrading();
+            } else if (entry.action === "playerInventory") {
+                this.openPlayerInventory();
             } else if (entry.action === "attachments") {
                 this.selectCategory(CAT.SCOPES);
             } else if (entry.action === "startingLoadouts") {
@@ -5899,6 +5933,141 @@ export const appDefinition = {
         saveImportHover(sectionName, event) {
             const item = this.saveImportResolveItem(sectionName);
             if (item) this.showBuildHover(item, event);
+        },
+
+        // ─── Save Inventory page ─────────────────────────────────────────
+
+        handlePlayerInventoryFiles(fileList) {
+            let scopFile = null, scocFile = null;
+            for (const f of fileList) {
+                const name = f.name.toLowerCase();
+                if (name.endsWith(".scop")) scopFile = f;
+                else if (name.endsWith(".scoc")) scocFile = f;
+            }
+            if (!scopFile) {
+                this.playerInventoryError = this.t("app_save_import_error_filetype") || "Please select a .scop save file";
+                return;
+            }
+            if (scopFile.size > 50 * 1024 * 1024) {
+                this.playerInventoryError = this.t("app_save_import_error_size") || "Save file too large (>50 MB)";
+                return;
+            }
+            this.parsePlayerInventory(scopFile, scocFile);
+        },
+
+        async parsePlayerInventory(scopFile, scocFile) {
+            this.playerInventoryParsing = true;
+            this.playerInventoryError = "";
+            try {
+                const buffer = await scopFile.arrayBuffer();
+                const knownIds = new Set(this.index.map(e => e.id));
+                const result = ScopParser.parse(buffer, knownIds);
+
+                // Parse .scoc for belt/equipped state if provided (optional)
+                let scocData = null;
+                if (scocFile) {
+                    try {
+                        scocData = ScocParser.parse(await scocFile.arrayBuffer());
+                    } catch (e) { /* .scoc parsing is optional */ }
+                }
+
+                if (result.items.length === 0 && result.stashItems.length === 0) {
+                    this.playerInventoryError = this.t("app_save_import_error_empty") || "No recognized items found in actor inventory or stash";
+                    return;
+                }
+
+                const model = this.buildPlayerInventoryModel(result, scocData, scopFile.name);
+                await this.ensurePlayerInventoryCategories(model);
+                this.playerInventoryParseResult = model;
+                this.savePlayerInventoryToStorage();
+            } catch (e) {
+                this.playerInventoryError = e.message || String(e);
+            } finally {
+                this.playerInventoryParsing = false;
+            }
+        },
+
+        buildPlayerInventoryModel(result, scocData, fileName) {
+            const beltIds = scocData ? scocData.beltItemIds : null;
+            // Aggregate duplicate sections into one entry with a quantity.
+            // Note: an ammo box is a single object — qty counts boxes, not rounds.
+            const aggregate = (list) => {
+                const bySection = new Map();
+                for (const it of list) {
+                    let agg = bySection.get(it.sectionName);
+                    if (!agg) {
+                        agg = { s: it.sectionName, q: 0, c: -1, e: false };
+                        bySection.set(it.sectionName, agg);
+                    }
+                    agg.q++;
+                    const cond = (it.condition >= 0 && it.condition <= 1) ? it.condition : -1;
+                    if (cond > agg.c) agg.c = cond;
+                    if (it.equipSlot > 0 || (beltIds && beltIds.has(it.id))) agg.e = true;
+                }
+                return [...bySection.values()];
+            };
+
+            const containers = [];
+            for (const cont of result.stashContainers) {
+                const contItems = result.stashItems.filter(it => it.parentId === cont.id);
+                if (!contItems.length) continue;
+                containers.push({ id: cont.id, levelId: cont.levelId, items: aggregate(contItems) });
+            }
+
+            return {
+                v: 1,
+                fileName,
+                savedAt: Date.now(),
+                actor: {
+                    name: this.extractCharNameFromFilename(fileName) || result.actorPosition?.name || "",
+                    levelId: result.actorPosition?.levelId || null,
+                },
+                actorItems: aggregate(result.items),
+                containers,
+                totalItems: result.items.length,
+                stashCount: containers.length,
+            };
+        },
+
+        async ensurePlayerInventoryCategories(model) {
+            const byId = new Map(this.index.map(e => [e.id, e]));
+            const cats = new Set();
+            const collect = (items) => {
+                for (const it of items) {
+                    const entry = byId.get(it.s);
+                    if (entry) cats.add(categorySlug(entry.category));
+                }
+            };
+            collect(model.actorItems);
+            for (const cont of model.containers) collect(cont.items);
+            await Promise.all([...cats].map(slug => this.ensureCategoryLoaded(slug)));
+        },
+
+        savePlayerInventoryToStorage() {
+            if (!this.activePack || !this.playerInventoryParseResult) return;
+            try {
+                localStorage.setItem(`playerInventory:${this.activePack.id}`, JSON.stringify(this.playerInventoryParseResult));
+            } catch (e) { /* quota or private mode */ }
+        },
+
+        loadPlayerInventoryFromStorage() {
+            if (!this.activePack) return;
+            try {
+                const raw = localStorage.getItem(`playerInventory:${this.activePack.id}`);
+                if (!raw) return;
+                const model = JSON.parse(raw);
+                if (!model || model.v !== 1) return;
+                this.playerInventoryParseResult = model;
+                this.ensurePlayerInventoryCategories(model);
+            } catch (e) { /* corrupted payload — start empty */ }
+        },
+
+        clearPlayerInventory() {
+            this.playerInventoryParseResult = null;
+            this.playerInventoryError = "";
+            if (this.activePack) {
+                try { localStorage.removeItem(`playerInventory:${this.activePack.id}`); } catch (e) { /* ignore */ }
+            }
         },
 
         confirmSaveImport() {
@@ -6720,9 +6889,10 @@ export const appDefinition = {
             // Alt+ArrowLeft / Alt+ArrowRight: cycle through nav-bar tabs
             if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
                 e.preventDefault();
-                const NAV_TABS = ['db', 'crafting', 'build-planner', 'ballistics', 'maps', 'trading'];
+                const NAV_TABS = ['db', 'crafting', 'build-planner', 'ballistics', 'maps', 'trading', 'inventory'];
                 let current;
-                if (this.tradingActive)       current = 'trading';
+                if (this.playerInventoryActive) current = 'inventory';
+                else if (this.tradingActive)   current = 'trading';
                 else if (this.mapsActive)      current = 'maps';
                 else if (this.damageSimActive) current = 'ballistics';
                 else if (this.buildPlannerActive) current = 'build-planner';
@@ -6736,6 +6906,7 @@ export const appDefinition = {
                 else if (next === 'ballistics')    this.openDamageSim();
                 else if (next === 'maps')          this.openMaps();
                 else if (next === 'trading')       this.openTrading();
+                else if (next === 'inventory')     this.openPlayerInventory();
                 return;
             }
 
@@ -7011,6 +7182,8 @@ export const appDefinition = {
                 if (!this.damageSimActive) await this.openDamageSim();
             } else if (parsed.trading) {
                 if (!this.tradingActive) this.openTrading();
+            } else if (parsed.playerInventory) {
+                if (!this.playerInventoryActive) this.openPlayerInventory();
             } else if (parsed.favorites) {
                 this.resetViewState();
                 this.favoritesViewActive = true;

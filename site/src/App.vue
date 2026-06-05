@@ -43,7 +43,8 @@
     :damage-sim-active="damageSimActive"
     :maps-active="mapsActive"
     :trading-active="tradingActive"
-    :item-db-active="!buildPlannerActive && !mapsActive && !damageSimActive && !isCrafting && !tradingActive"
+    :player-inventory-active="playerInventoryActive"
+    :item-db-active="!buildPlannerActive && !mapsActive && !damageSimActive && !isCrafting && !tradingActive && !playerInventoryActive"
     :hide-no-drop="hideNoDrop"
     :hide-tactical-kit="hideTacticalKit"
     :hide-unused-ammo="hideUnusedAmmo"
@@ -53,6 +54,7 @@
     @open-item-db="openItemDb()"
     @open-maps="openMaps()"
     @open-trading="openTrading()"
+    @open-player-inventory="openPlayerInventory()"
     @open-build-planner="openBuildPlanner()"
     @open-crafting="openCrafting()"
     @open-damage-sim="openDamageSim()"
@@ -122,6 +124,23 @@
             @move-item-hover="(event) => moveItemHover(event)"
             @hide-item-hover="hideItemHover()"
         />
+        <PlayerInventoryView
+            v-if="playerInventoryMounted"
+            v-show="playerInventoryActive"
+            :active="playerInventoryActive"
+            :parse-result="playerInventoryParseResult"
+            :parsing="playerInventoryParsing"
+            :error="playerInventoryError"
+            :index="index"
+            :category-items="categoryItems"
+            @parse-save="handlePlayerInventoryFiles"
+            @clear-save="clearPlayerInventory"
+            @dismiss-error="playerInventoryError = ''"
+            @navigate-to-item="navigateToItem"
+            @show-item-hover="(id, event) => loadoutItemHover(id, event)"
+            @move-item-hover="(event) => moveItemHover(event)"
+            @hide-item-hover="hideItemHover()"
+        />
         <DamageSimulator
             v-if="damageSimMounted"
             v-show="damageSimActive"
@@ -140,11 +159,11 @@
             @move-build-hover="(event) => moveBuildHover(event)"
             @hide-build-hover="hideBuildHover()"
         />
-        <div v-show="showContentSpinner && !mapsActive && !tradingActive" class="loading-screen">
+        <div v-show="showContentSpinner && !mapsActive && !tradingActive && !playerInventoryActive" class="loading-screen">
             <div class="loading-spinner"></div>
             <p class="loading-text">{{ t('app_label_loading') }}</p>
         </div>
-        <div v-show="!loading && !mapsActive && !damageSimActive && !tradingActive" class="content-inner">
+        <div v-show="!loading && !mapsActive && !damageSimActive && !tradingActive && !playerInventoryActive" class="content-inner">
             <FilterBar
                 ref="filterBar"
                 :filter-input="filterInput"
@@ -617,6 +636,7 @@ import ItemHoverPopover from "./components/ItemHoverPopover.vue";
 import ItemComparePopover from "./components/ItemComparePopover.vue";
 const MapsView = defineAsyncComponent(() => import('./components/MapsView.vue'));
 const TradingView = defineAsyncComponent(() => import('./components/TradingView.vue'));
+const PlayerInventoryView = defineAsyncComponent(() => import('./components/PlayerInventoryView.vue'));
 import ComparePanel from "./components/ComparePanel.vue";
 import CraftingView from "./components/CraftingView.vue";
 import OutfitExchangeView from "./components/OutfitExchangeView.vue";
@@ -653,6 +673,7 @@ export default {
     ItemDetailModal,
     MapsView,
     TradingView,
+    PlayerInventoryView,
     OutfitExchangeView,
     QuickNavModal,
     SaveImportModal,

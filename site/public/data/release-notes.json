@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-06-06",
+    "entries": [
+      { "type": "added", "text": "Inventory view - import a save file to browse your character's inventory and player stashes", "highlight": true, "summaryKey": "app_whats_new_player_inventory", "action": "playerInventory" }
+    ]
+  },
+  {
+    "date": "2026-06-05",
+    "entries": [
+      { "type": "changed", "text": "Weapons only obtainable by applying a tactical kit are now badged Tactical Kit instead of Unobtainable, with a new setting to hide them. Kit-derived duplicates now show a [Kit] name suffix instead of a raw ID.", "credits": [{ "name": "Icarus", "role": "suggestion" }] }
+    ]
+  },
+  {
     "date": "2026-06-03",
     "entries": [
       { "type": "added", "text": "Faction Drops view - browse every faction's NPC weapon pool as a rank-by-rank matrix from Novice to Legend. See which weapons are exclusive to a faction, which are carried by special units like snipers and black ops, and filter by category, rank, and origin.", "highlight": true, "summaryKey": "app_whats_new_faction_drops", "action": "factionPools", "credits": [{ "name": "Conact", "role": "suggestion" }] }

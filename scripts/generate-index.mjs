@@ -421,7 +421,9 @@ function addDisplayNames(items, idKey, nameKey) {
     const prefix = commonPrefix(ids);
     for (const item of group) {
       const suffix = item[idKey].slice(prefix.length).replace(/^[_-]+/, "");
-      item.displayName = suffix ? `${name} [${suffix}]` : `${name} [default]`;
+      // The base item (empty suffix) keeps its plain name — the variants'
+      // bracket suffixes are unique within the group, so no marker is needed.
+      item.displayName = suffix ? `${name} [${suffix}]` : name;
     }
   }
 }
@@ -1163,6 +1165,35 @@ const kitDerivedWeaponIds = new Set();
   }
 }
 
+// Mark kit-derived weapons in duplicate-name groups so the UI can render a
+// localized "[Kit Upgrade]" suffix instead of the raw ID suffix baked into
+// displayName. Groups with more than one kit-derived variant (e.g. the
+// Walther P99 mod9 pair) get a stable #N qualifier (ordered by weapon ID)
+// so the generic label still disambiguates them.
+for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
+  const data = categoryData.get(slug);
+  if (!data) continue;
+  const groups = new Map();
+  for (const item of data.items) {
+    const name = item.pda_encyclopedia_name || "";
+    if (!groups.has(name)) groups.set(name, []);
+    groups.get(name).push(item);
+  }
+  for (const group of groups.values()) {
+    if (group.length < 2) continue;
+    const kitVariants = group.filter(i => kitDerivedWeaponIds.has(i.id));
+    if (kitVariants.length === 1) {
+      kitVariants[0].kitSuffix = true;
+    } else if (kitVariants.length > 1) {
+      kitVariants.sort((a, b) => a.id.localeCompare(b.id));
+      kitVariants.forEach((item, i) => {
+        item.kitSuffix = true;
+        item.kitSuffixNum = i + 1;
+      });
+    }
+  }
+}
+
 // Compute the derived `unobtainable` / `tacticalKit` flags for weapons/explosives
 // and propagate hasNpcWeaponDrop / hasStashDrop / inStartingLoadout / unobtainable
 // / tacticalKit from category items into the index entries. Runs after stash-drop
@@ -1191,6 +1222,8 @@ for (const [slug, data] of categoryData) {
       inStartingLoadout: item.inStartingLoadout === true,
       unobtainable: item.unobtainable === true,
       tacticalKit: item.tacticalKit === true,
+      kitSuffix: item.kitSuffix === true,
+      kitSuffixNum: item.kitSuffixNum,
     });
   }
 }
@@ -1202,6 +1235,8 @@ for (const entry of index) {
   entry.inStartingLoadout = flags.inStartingLoadout;
   entry.unobtainable = flags.unobtainable;
   entry.tacticalKit = flags.tacticalKit;
+  if (flags.kitSuffix) entry.kitSuffix = true;
+  if (flags.kitSuffixNum) entry.kitSuffixNum = flags.kitSuffixNum;
 }
 
 // Write index.json (deferred from earlier so obtainability flags are included).
@@ -1506,6 +1541,8 @@ if (ammoData) {
           };
           if (wpn.unobtainable === true) ref.noDrop = true;
           if (wpn.tacticalKit === true) ref.tacticalKit = true;
+          if (wpn.kitSuffix === true) ref.kitSuffix = true;
+          if (wpn.kitSuffixNum) ref.kitSuffixNum = wpn.kitSuffixNum;
           weaponsByAmmoVal.get(val).push(ref);
         }
       }

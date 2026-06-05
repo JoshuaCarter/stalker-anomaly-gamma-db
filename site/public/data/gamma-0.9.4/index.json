@@ -854,7 +854,7 @@
     "id": "wpn_dtmdr",
     "name": "MDR",
     "category": "Rifles",
-    "displayName": "MDR [default]",
+    "displayName": "MDR",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -870,13 +870,14 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true
   },
   {
     "id": "wpn_dtmdr_black",
     "name": "MDR_black",
     "category": "Rifles",
-    "displayName": "MDR_black [default]",
+    "displayName": "MDR_black",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
@@ -892,7 +893,8 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true
   },
   {
     "id": "merc_combat_scientific_outfit",
@@ -3263,7 +3265,7 @@
     "id": "helm_hardhat",
     "name": "st_helm_hardhat",
     "category": "Helmets",
-    "displayName": "st_helm_hardhat [default]"
+    "displayName": "st_helm_hardhat"
   },
   {
     "id": "helm_hardhat_snag",
@@ -3299,7 +3301,7 @@
     "id": "helm_respirator",
     "name": "st_helm_respirator",
     "category": "Helmets",
-    "displayName": "st_helm_respirator [default]"
+    "displayName": "st_helm_respirator"
   },
   {
     "id": "helm_respirator_old",
@@ -3392,10 +3394,10 @@
     "displayName": "st_hide_psysucker_name"
   },
   {
-    "id": "ied_blow",
+    "id": "ied",
     "name": "st_ied",
     "category": "Explosives",
-    "displayName": "st_ied [blow]",
+    "displayName": "st_ied",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -3403,10 +3405,10 @@
     "tacticalKit": false
   },
   {
-    "id": "ied",
+    "id": "ied_blow",
     "name": "st_ied",
     "category": "Explosives",
-    "displayName": "st_ied [default]",
+    "displayName": "st_ied [blow]",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -3526,6 +3528,12 @@
     "displayName": "st_marijuana"
   },
   {
+    "id": "meat_bloodsucker",
+    "name": "st_meat_bloodsucker",
+    "category": "Food",
+    "displayName": "st_meat_bloodsucker"
+  },
+  {
     "id": "meat_bloodsucker_a",
     "name": "st_meat_bloodsucker",
     "category": "Food",
@@ -3538,10 +3546,10 @@
     "displayName": "st_meat_bloodsucker [b]"
   },
   {
-    "id": "meat_bloodsucker",
-    "name": "st_meat_bloodsucker",
+    "id": "meat_boar",
+    "name": "st_meat_boar",
     "category": "Food",
-    "displayName": "st_meat_bloodsucker [default]"
+    "displayName": "st_meat_boar"
   },
   {
     "id": "meat_boar_a",
@@ -3556,10 +3564,10 @@
     "displayName": "st_meat_boar [b]"
   },
   {
-    "id": "meat_boar",
-    "name": "st_meat_boar",
+    "id": "meat_chimera",
+    "name": "st_meat_chimera",
     "category": "Food",
-    "displayName": "st_meat_boar [default]"
+    "displayName": "st_meat_chimera"
   },
   {
     "id": "meat_chimera_a",
@@ -3574,10 +3582,10 @@
     "displayName": "st_meat_chimera [b]"
   },
   {
-    "id": "meat_chimera",
-    "name": "st_meat_chimera",
+    "id": "meat_dog",
+    "name": "st_meat_dog",
     "category": "Food",
-    "displayName": "st_meat_chimera [default]"
+    "displayName": "st_meat_dog"
   },
   {
     "id": "meat_dog_a",
@@ -3592,10 +3600,10 @@
     "displayName": "st_meat_dog [b]"
   },
   {
-    "id": "meat_dog",
-    "name": "st_meat_dog",
+    "id": "meat_flesh",
+    "name": "st_meat_flesh",
     "category": "Food",
-    "displayName": "st_meat_dog [default]"
+    "displayName": "st_meat_flesh"
   },
   {
     "id": "meat_flesh_a",
@@ -3610,10 +3618,10 @@
     "displayName": "st_meat_flesh [b]"
   },
   {
-    "id": "meat_flesh",
-    "name": "st_meat_flesh",
+    "id": "meat_lurker",
+    "name": "st_meat_lurker",
     "category": "Food",
-    "displayName": "st_meat_flesh [default]"
+    "displayName": "st_meat_lurker"
   },
   {
     "id": "meat_lurker_a",
@@ -3628,10 +3636,10 @@
     "displayName": "st_meat_lurker [b]"
   },
   {
-    "id": "meat_lurker",
-    "name": "st_meat_lurker",
+    "id": "meat_pseudodog",
+    "name": "st_meat_pseudodog",
     "category": "Food",
-    "displayName": "st_meat_lurker [default]"
+    "displayName": "st_meat_pseudodog"
   },
   {
     "id": "meat_pseudodog_a",
@@ -3646,10 +3654,10 @@
     "displayName": "st_meat_pseudodog [b]"
   },
   {
-    "id": "meat_pseudodog",
-    "name": "st_meat_pseudodog",
+    "id": "meat_psysucker",
+    "name": "st_meat_psysucker",
     "category": "Food",
-    "displayName": "st_meat_pseudodog [default]"
+    "displayName": "st_meat_psysucker"
   },
   {
     "id": "meat_psysucker_a",
@@ -3664,10 +3672,10 @@
     "displayName": "st_meat_psysucker [b]"
   },
   {
-    "id": "meat_psysucker",
-    "name": "st_meat_psysucker",
+    "id": "meat_snork",
+    "name": "st_meat_snork",
     "category": "Food",
-    "displayName": "st_meat_psysucker [default]"
+    "displayName": "st_meat_snork"
   },
   {
     "id": "meat_snork_a",
@@ -3682,10 +3690,10 @@
     "displayName": "st_meat_snork [b]"
   },
   {
-    "id": "meat_snork",
-    "name": "st_meat_snork",
+    "id": "meat_tushkano",
+    "name": "st_meat_tushkano",
     "category": "Food",
-    "displayName": "st_meat_snork [default]"
+    "displayName": "st_meat_tushkano"
   },
   {
     "id": "meat_tushkano_a",
@@ -3698,12 +3706,6 @@
     "name": "st_meat_tushkano",
     "category": "Food",
     "displayName": "st_meat_tushkano [b]"
-  },
-  {
-    "id": "meat_tushkano",
-    "name": "st_meat_tushkano",
-    "category": "Food",
-    "displayName": "st_meat_tushkano [default]"
   },
   {
     "id": "medkit",
@@ -4869,7 +4871,7 @@
     "id": "wpn_ash12",
     "name": "st_wpn_ash12",
     "category": "Rifles",
-    "displayName": "st_wpn_ash12 [default]",
+    "displayName": "st_wpn_ash12",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
@@ -4885,7 +4887,8 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true
   },
   {
     "id": "wpn_aug_freedom",
@@ -5012,7 +5015,7 @@
     "id": "wpn_beretta",
     "name": "st_wpn_beretta",
     "category": "Pistols",
-    "displayName": "st_wpn_beretta [default]",
+    "displayName": "st_wpn_beretta",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -5028,7 +5031,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 1
   },
   {
     "id": "wpn_beretta_modern_deltapoint",
@@ -5039,7 +5044,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 2
   },
   {
     "id": "wpn_beretta_modern_rmr",
@@ -5050,7 +5057,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 3
   },
   {
     "id": "wpn_beretta_modern",
@@ -5540,7 +5549,7 @@
     "id": "wpn_g36",
     "name": "st_wpn_g36new",
     "category": "Rifles",
-    "displayName": "st_wpn_g36new [default]",
+    "displayName": "st_wpn_g36new",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -5900,6 +5909,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_ithacam37_stakeout",
+    "name": "st_wpn_ithacam37_stakeout",
+    "category": "Shotguns",
+    "displayName": "st_wpn_ithacam37_stakeout",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_ithacam37_stakeout_20x70",
     "name": "st_wpn_ithacam37_stakeout",
     "category": "Shotguns",
@@ -5908,17 +5928,6 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
-  },
-  {
-    "id": "wpn_ithacam37_stakeout",
-    "name": "st_wpn_ithacam37_stakeout",
-    "category": "Shotguns",
-    "displayName": "st_wpn_ithacam37_stakeout [default]",
-    "hasNpcWeaponDrop": false,
-    "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": true,
     "tacticalKit": false
   },
   {
@@ -5963,7 +5972,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 1
   },
   {
     "id": "wpn_k98_mod_silen98",
@@ -5974,7 +5985,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 2
   },
   {
     "id": "wpn_kiparis",
@@ -6684,7 +6697,7 @@
     "id": "wpn_p90",
     "name": "st_wpn_p90",
     "category": "SMGs",
-    "displayName": "st_wpn_p90 [default]",
+    "displayName": "st_wpn_p90",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -6816,7 +6829,7 @@
     "id": "wpn_pl15",
     "name": "st_wpn_pl15",
     "category": "Pistols",
-    "displayName": "st_wpn_pl15 [default]",
+    "displayName": "st_wpn_pl15",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
@@ -6843,7 +6856,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 1
   },
   {
     "id": "wpn_pl15_tan_pl15_scolaz",
@@ -6854,7 +6869,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 2
   },
   {
     "id": "wpn_pm",
@@ -7146,7 +7163,7 @@
     "id": "wpn_rpk74_16",
     "name": "st_wpn_rpk74_16",
     "category": "Rifles",
-    "displayName": "st_wpn_rpk74_16 [default]",
+    "displayName": "st_wpn_rpk74_16",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
@@ -7517,23 +7534,23 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_spas12",
+    "name": "st_wpn_spas12_new",
+    "category": "Shotguns",
+    "displayName": "st_wpn_spas12_new",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": true,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_spas12_custom",
     "name": "st_wpn_spas12_new",
     "category": "Shotguns",
     "displayName": "st_wpn_spas12_new [custom]",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": false,
-    "tacticalKit": false
-  },
-  {
-    "id": "wpn_spas12",
-    "name": "st_wpn_spas12_new",
-    "category": "Shotguns",
-    "displayName": "st_wpn_spas12_new [default]",
-    "hasNpcWeaponDrop": true,
-    "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": false
@@ -7569,7 +7586,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 1
   },
   {
     "id": "wpn_sr1m_sr1upgr1",
@@ -7580,7 +7599,9 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 2
   },
   {
     "id": "wpn_sr2_m1",
@@ -7649,6 +7670,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_protecta",
+    "name": "st_wpn_streetsweeper",
+    "category": "Shotguns",
+    "displayName": "st_wpn_streetsweeper",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": true,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_protecta_camo",
     "name": "st_wpn_streetsweeper",
     "category": "Shotguns",
@@ -7668,17 +7700,6 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": true,
-    "tacticalKit": false
-  },
-  {
-    "id": "wpn_protecta",
-    "name": "st_wpn_streetsweeper",
-    "category": "Shotguns",
-    "displayName": "st_wpn_streetsweeper [default]",
-    "hasNpcWeaponDrop": true,
-    "hasStashDrop": true,
-    "inStartingLoadout": false,
-    "unobtainable": false,
     "tacticalKit": false
   },
   {
@@ -7905,7 +7926,7 @@
     "id": "wpn_wincheaster1300",
     "name": "st_wpn_toz194",
     "category": "Shotguns",
-    "displayName": "st_wpn_toz194 [default]",
+    "displayName": "st_wpn_toz194",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
@@ -8155,6 +8176,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_usp_tac",
+    "name": "st_wpn_usp_tac",
+    "category": "Pistols",
+    "displayName": "st_wpn_usp_tac",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_usp_tac_45",
     "name": "st_wpn_usp_tac",
     "category": "Pistols",
@@ -8163,17 +8195,6 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
-  },
-  {
-    "id": "wpn_usp_tac",
-    "name": "st_wpn_usp_tac",
-    "category": "Pistols",
-    "displayName": "st_wpn_usp_tac [default]",
-    "hasNpcWeaponDrop": false,
-    "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": true,
     "tacticalKit": false
   },
   {
@@ -8232,6 +8253,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_vintorez",
+    "name": "st_wpn_vintorez",
+    "category": "Rifles",
+    "displayName": "st_wpn_vintorez",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_vintorez_1pn93",
     "name": "st_wpn_vintorez",
     "category": "Rifles",
@@ -8240,18 +8272,8 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
-  },
-  {
-    "id": "wpn_vintorez",
-    "name": "st_wpn_vintorez",
-    "category": "Rifles",
-    "displayName": "st_wpn_vintorez [default]",
-    "hasNpcWeaponDrop": false,
-    "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "tacticalKit": true,
+    "kitSuffix": true
   },
   {
     "id": "wpn_vintorez_alt",

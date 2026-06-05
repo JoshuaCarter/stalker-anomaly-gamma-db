@@ -445,7 +445,7 @@
       "ui_ammo_types": "ammo-5.7x28-ss190;ammo-5.7x28-ss195",
       "st_data_export_ammo_types_alt": "",
       "st_data_export_hit_power": "0.5",
-      "displayName": "st_wpn_p90 [default]",
+      "displayName": "st_wpn_p90",
       "hasNpcWeaponDrop": true,
       "hasStashDrop": false,
       "hasDisassemble": false,

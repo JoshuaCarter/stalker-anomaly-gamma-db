@@ -96,7 +96,7 @@
       "st_data_export_fragments": "5",
       "st_data_fragment_damage": "0.06",
       "st_detonation_time": "0",
-      "displayName": "st_ied [default]",
+      "displayName": "st_ied",
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,

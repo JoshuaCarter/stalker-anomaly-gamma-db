@@ -24,8 +24,9 @@ const ScopParser = (() => {
      *
      * @param {ArrayBuffer} buffer   Raw .scop file contents.
      * @param {Set<string>} knownIds Set of known item section names from index.json.
-     * @returns {{ items: Array<{sectionName: string, id: number}>,
-     *             stashItems: Array<{sectionName: string, id: number}>,
+     * @returns {{ items: Array<{sectionName: string, id: number, parentId: number, ammoTypeIndex: number, equipSlot: number, condition: number}>,
+     *             stashItems: Array<{sectionName: string, id: number, parentId: number, ammoTypeIndex: number, equipSlot: number, condition: number}>,
+     *             stashContainers: Array<{id: number, levelId: string | null, x: number, z: number}>,
      *             objectCount: number,
      *             actorPosition: {x: number, y: number, z: number, graphId: number, levelId: string} | null }}
      */
@@ -168,14 +169,16 @@ const ScopParser = (() => {
             }
         }
 
-        // Player stash position(s)
+        // Player stash position(s) and container descriptors
         const stashPositions = [];
+        const stashContainers = [];
         for (const spawn of allSpawns) {
-            if (STASH_SECTIONS.has(spawn.sectionName) && spawn.graphId >= 0) {
-                const levelId = resolveLevel(spawn.graphId);
+            if (STASH_SECTIONS.has(spawn.sectionName)) {
+                const levelId = spawn.graphId >= 0 ? resolveLevel(spawn.graphId) : null;
                 if (levelId) {
                     stashPositions.push({ x: spawn.posX, z: spawn.posZ, levelId });
                 }
+                stashContainers.push({ id: spawn.id, levelId, x: spawn.posX, z: spawn.posZ });
             }
         }
 
@@ -221,13 +224,13 @@ const ScopParser = (() => {
         for (const spawn of allSpawns) {
             const resolved = resolveSection(spawn.sectionName);
             if (spawn.parentId === ACTOR_ID && spawn.id !== ACTOR_ID && resolved) {
-                items.push({ sectionName: resolved, id: spawn.id, ammoTypeIndex: spawn.ammoTypeIndex, equipSlot: spawn.equipSlot });
+                items.push({ sectionName: resolved, id: spawn.id, parentId: spawn.parentId, ammoTypeIndex: spawn.ammoTypeIndex, equipSlot: spawn.equipSlot, condition: spawn.condition });
             } else if (stashIds.has(spawn.parentId) && resolved) {
-                stashItems.push({ sectionName: resolved, id: spawn.id, ammoTypeIndex: spawn.ammoTypeIndex, equipSlot: spawn.equipSlot });
+                stashItems.push({ sectionName: resolved, id: spawn.id, parentId: spawn.parentId, ammoTypeIndex: spawn.ammoTypeIndex, equipSlot: spawn.equipSlot, condition: spawn.condition });
             }
         }
 
-        return { items, stashItems, objectCount, actorPosition, stashPositions, anomalies };
+        return { items, stashItems, stashContainers, objectCount, actorPosition, stashPositions, anomalies };
     }
 
     // Level prefix → level ID mapping for resolving object names to levels
@@ -289,7 +292,7 @@ const ScopParser = (() => {
             // u16 ID_Parent
             const parentId = readU16(data, p); p += 2;
 
-            const result = { sectionName, nameReplace, id, parentId, posX, posY, posZ, graphId: -1, ammoTypeIndex: -1, equipSlot: -1 };
+            const result = { sectionName, nameReplace, id, parentId, posX, posY, posZ, graphId: -1, ammoTypeIndex: -1, equipSlot: -1, condition: -1 };
 
             // Skip: ID_Phantom(2) + s_flags(2) + SPAWN_VERSION(2) + m_gameType(2) + script_server_object_version(2)
             p += 10;
@@ -336,6 +339,7 @@ const ScopParser = (() => {
             sp += 1; // visual flags
             // CSE_ALifeInventoryItem: condition(4) + upgrade_count(4) + upgrades[]
             if (sp + 8 > stateEnd) return result;
+            result.condition = readF32(data, sp);
             sp += 4; // condition
             const upgCount = readU32(data, sp); sp += 4;
             for (let u = 0; u < upgCount && sp < stateEnd; u++) {

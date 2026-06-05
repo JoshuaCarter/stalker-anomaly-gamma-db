@@ -264,6 +264,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 1,
       "tacticalKit": true,
       "unobtainable": false,
       "factions": [
@@ -326,6 +328,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 2,
       "tacticalKit": true,
       "unobtainable": false,
       "factions": [
