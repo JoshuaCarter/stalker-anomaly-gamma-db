@@ -404,6 +404,7 @@ export default defineComponent({
     calibersData: { type: Object, default: () => ({}) },
     ballisticRanges: { type: Object as PropType<{ maxDamage?: number, maxAp?: number, maxDps?: number }>, default: () => ({}) },
     hideNoDrop: { type: Boolean, default: true },
+    hideTacticalKit: { type: Boolean, default: false },
     hideUnusedAmmo: { type: Boolean, default: true },
     ammoWeaponsCache: { type: Object as PropType<Record<string, any[]>>, default: () => ({}) },
   },
@@ -453,6 +454,7 @@ export default defineComponent({
         for (const item of items) {
           if (!item.ui_ammo_types || seen.has(item.id)) continue;
           if (this.hideNoDrop && item.unobtainable === true) continue;
+          if (this.hideTacticalKit && item.tacticalKit === true) continue;
           seen.add(item.id);
           weapons.push(item);
         }
@@ -553,6 +555,7 @@ export default defineComponent({
         if (!Array.isArray(items)) continue;
         for (const w of items) {
           if (this.hideNoDrop && w.unobtainable === true) continue;
+          if (this.hideTacticalKit && w.tacticalKit === true) continue;
           if (w.ui_ammo_types) weapons.push(w);
         }
       }
@@ -731,7 +734,7 @@ export default defineComponent({
         if (this.hideUnusedAmmo && this.ammoWeaponsCache) {
           const weapons = this.ammoWeaponsCache[a.id];
           if (!weapons || weapons.length === 0) return false;
-          if (this.hideNoDrop && !weapons.some((w: any) => !w.noDrop)) return false;
+          if (!weapons.some((w: any) => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit))) return false;
         }
         return true;
       }).sort((a, b) => ((this as any).tName(a) || a.id).localeCompare((this as any).tName(b) || b.id));

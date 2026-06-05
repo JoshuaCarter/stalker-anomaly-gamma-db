@@ -118,6 +118,7 @@ export const appDefinition = {
             sidebarCollapsed: false,
             collapsedGroups: {},
             hideNoDrop: true,
+            hideTacticalKit: false,
             hideUnusedAmmo: true,
             showTileIcons: true,
 
@@ -276,10 +277,11 @@ export const appDefinition = {
             const counts = {};
             for (const item of this.index) {
                 if (this.hideNoDrop && item.unobtainable === true) continue;
+                if (this.hideTacticalKit && item.tacticalKit === true) continue;
                 if (this.hideUnusedAmmo && item.category === 'Ammo' && this.ammoWeaponsCache) {
                     const weapons = this.ammoWeaponsCache[item.id];
                     if (!weapons || weapons.length === 0) continue;
-                    if (this.hideNoDrop && !weapons.some(w => !w.noDrop)) continue;
+                    if (!weapons.some(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit))) continue;
                 }
                 counts[item.category] = (counts[item.category] || 0) + 1;
             }
@@ -754,6 +756,7 @@ export const appDefinition = {
             const indexMap = new Map((this.index || []).map(i => [i.id, i]));
             let weapons = weaponIds.map(wid => indexMap.get(wid)).filter(Boolean);
             if (this.hideNoDrop) weapons = weapons.filter(w => w.unobtainable !== true);
+            if (this.hideTacticalKit) weapons = weapons.filter(w => w.tacticalKit !== true);
             return weapons.sort((a, b) => (this.tName(a) || '').localeCompare(this.tName(b) || ''));
         },
 
@@ -806,7 +809,7 @@ export const appDefinition = {
 
         modalUsedByWeapons() {
             if (!this.modalAmmoWeapons) return [];
-            const list = this.hideNoDrop ? this.modalAmmoWeapons.filter(w => !w.noDrop) : [...this.modalAmmoWeapons];
+            const list = this.modalAmmoWeapons.filter(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit));
             list.sort((a, b) => a.name.localeCompare(b.name));
             return list;
         },
@@ -1165,15 +1168,16 @@ export const appDefinition = {
             if (!this.activeCategory) return [];
             const slug = categorySlug(this.activeCategory);
             let items = this.categoryItems[slug] || [];
-            if (this.hideNoDrop) {
-                items = items.filter((i) => i.unobtainable !== true);
+            if (this.hideNoDrop || this.hideTacticalKit) {
+                if (this.hideNoDrop) items = items.filter((i) => i.unobtainable !== true);
+                if (this.hideTacticalKit) items = items.filter((i) => i.tacticalKit !== true);
                 if (this.isAddonCategory) {
                     const indexMap = new Map((this.index || []).map(i => [i.id, i]));
                     items = items.filter(i => {
                         const weaponIds = (this.addonCompatibleWeaponsMap || {})[i.id] || [];
                         return weaponIds.some(wid => {
                             const w = indexMap.get(wid);
-                            return w && w.unobtainable !== true;
+                            return w && !(this.hideNoDrop && w.unobtainable === true) && !(this.hideTacticalKit && w.tacticalKit === true);
                         });
                     });
                 }
@@ -1182,8 +1186,7 @@ export const appDefinition = {
                 items = items.filter(i => {
                     const weapons = this.ammoWeaponsCache[i.id];
                     if (!weapons || weapons.length === 0) return false;
-                    if (this.hideNoDrop) return weapons.some(w => !w.noDrop);
-                    return true;
+                    return weapons.some(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit));
                 });
             }
             items = this.applyFilters(items);
@@ -1577,6 +1580,7 @@ export const appDefinition = {
                 let items = [];
                 for (const slug of slugs) items = items.concat(this.categoryItems[slug] || []);
                 if (this.hideNoDrop) items = items.filter(i => i.unobtainable !== true);
+                if (this.hideTacticalKit) items = items.filter(i => i.tacticalKit !== true);
                 return items;
             };
 
@@ -1607,6 +1611,7 @@ export const appDefinition = {
                 const artItems = this.categoryItems["artefacts"] || [];
                 let items = beltItems.concat(artItems);
                 if (this.hideNoDrop) items = items.filter(i => i.unobtainable !== true);
+                if (this.hideTacticalKit) items = items.filter(i => i.tacticalKit !== true);
                 return searchOrSort(items);
             }
 
@@ -1615,6 +1620,7 @@ export const appDefinition = {
             const slug = categorySlug(cat);
             let items = this.categoryItems[slug] || [];
             if (this.hideNoDrop) items = items.filter(i => i.unobtainable !== true);
+            if (this.hideTacticalKit) items = items.filter(i => i.tacticalKit !== true);
             if (slotType === "backpack") items = items.filter(i => isBackpack(i));
             return searchOrSort(items);
         },
@@ -2050,10 +2056,11 @@ export const appDefinition = {
         globalSearchFilter(items) {
             return items.filter(item => {
                 if (this.hideNoDrop && item.unobtainable === true) return false;
+                if (this.hideTacticalKit && item.tacticalKit === true) return false;
                 if (this.hideUnusedAmmo && item.category === 'Ammo' && this.ammoWeaponsCache) {
                     const weapons = this.ammoWeaponsCache[item.id];
                     if (!weapons || weapons.length === 0) return false;
-                    if (this.hideNoDrop && !weapons.some(w => !w.noDrop)) return false;
+                    if (!weapons.some(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit))) return false;
                 }
                 return true;
             });
@@ -3860,6 +3867,11 @@ export const appDefinition = {
             localStorage.setItem("hideNoDrop", JSON.stringify(this.hideNoDrop));
         },
 
+        toggleHideTacticalKit() {
+            this.hideTacticalKit = !this.hideTacticalKit;
+            localStorage.setItem("hideTacticalKit", JSON.stringify(this.hideTacticalKit));
+        },
+
         toggleHideUnusedAmmo() {
             this.hideUnusedAmmo = !this.hideUnusedAmmo;
             localStorage.setItem("hideUnusedAmmo", JSON.stringify(this.hideUnusedAmmo));
@@ -4202,11 +4214,11 @@ export const appDefinition = {
             }
             if (field === "_compatible_weapons") {
                 let weapons = (this.addonCompatibleWeaponsMap || {})[item.id] || [];
-                if (this.hideNoDrop && weapons.length) {
+                if ((this.hideNoDrop || this.hideTacticalKit) && weapons.length) {
                     const indexMap = new Map((this.index || []).map(i => [i.id, i]));
                     weapons = weapons.filter(wid => {
                         const w = indexMap.get(wid);
-                        return w && w.unobtainable !== true;
+                        return w && !(this.hideNoDrop && w.unobtainable === true) && !(this.hideTacticalKit && w.tacticalKit === true);
                     });
                 }
                 return weapons.length;
@@ -6918,6 +6930,12 @@ export const appDefinition = {
         try {
             const savedHide = localStorage.getItem("hideNoDrop");
             if (savedHide !== null) this.hideNoDrop = JSON.parse(savedHide);
+        } catch (e) { /* ignore */ }
+
+        // 6aa. Restore hideTacticalKit from localStorage
+        try {
+            const savedHideKit = localStorage.getItem("hideTacticalKit");
+            if (savedHideKit !== null) this.hideTacticalKit = JSON.parse(savedHideKit);
         } catch (e) { /* ignore */ }
 
         // 6a. Restore hideUnusedAmmo from localStorage

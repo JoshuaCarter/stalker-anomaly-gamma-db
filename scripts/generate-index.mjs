@@ -1134,17 +1134,50 @@ try {
   console.log("No starting loadouts LTX found, skipping starting-loadouts.json");
 }
 
-// Compute the derived `unobtainable` flag for weapons/explosives and propagate
-// hasNpcWeaponDrop / hasStashDrop / inStartingLoadout / unobtainable from
-// category items into the index entries. Runs after stash-drop and loadout
-// blocks so all three input flags are available.
+// Build the kit→weapon mapping (kit ID → modified weapon IDs). The relationship
+// is implicit in the game's naming convention: applying a kit renames the weapon
+// to `<base_weapon_id>_<kit_id>`. Scan every obtainability-tracked weapon for
+// IDs that end in `_<kitId>` for some known kit. Computed here (before the
+// obtainability pass) so kit-derived weapons can be flagged `tacticalKit`
+// instead of `unobtainable`; also written out as kit-weapons.json later.
+const kitWeapons = {};
+const kitDerivedWeaponIds = new Set();
+{
+  const kitIds = (categoryData.get("tactical-kits")?.items || []).map(i => i.id);
+  const allWeaponIds = [];
+  for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
+    for (const it of categoryData.get(slug)?.items || []) allWeaponIds.push(it.id);
+  }
+  // Match longest kit-suffix first so e.g. `wpn_kiparis_ots2_upgr_kit` is
+  // attributed to `ots2_upgr_kit` rather than the shorter generic `_kit`.
+  const sortedKitIds = [...kitIds].sort((a, b) => b.length - a.length);
+  for (const wid of allWeaponIds) {
+    for (const kitId of sortedKitIds) {
+      const suffix = "_" + kitId;
+      if (wid.endsWith(suffix) && wid.length > suffix.length) {
+        (kitWeapons[kitId] ||= []).push(wid);
+        kitDerivedWeaponIds.add(wid);
+        break;
+      }
+    }
+  }
+}
+
+// Compute the derived `unobtainable` / `tacticalKit` flags for weapons/explosives
+// and propagate hasNpcWeaponDrop / hasStashDrop / inStartingLoadout / unobtainable
+// / tacticalKit from category items into the index entries. Runs after stash-drop
+// and loadout blocks so all three input flags are available. Weapons with no drop
+// source that exist only as the result of applying a tactical kit are flagged
+// `tacticalKit` rather than `unobtainable`.
 const obtainabilityCategories = new Set(["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers", "explosives"]);
 for (const [slug, data] of categoryData) {
   if (!obtainabilityCategories.has(slug)) continue;
   for (const item of data.items) {
-    item.unobtainable = item.hasNpcWeaponDrop !== true
+    const noSource = item.hasNpcWeaponDrop !== true
       && item.hasStashDrop !== true
       && item.inStartingLoadout !== true;
+    item.tacticalKit = noSource && kitDerivedWeaponIds.has(item.id);
+    item.unobtainable = noSource && !item.tacticalKit;
   }
 }
 
@@ -1157,6 +1190,7 @@ for (const [slug, data] of categoryData) {
       hasStashDrop: item.hasStashDrop,
       inStartingLoadout: item.inStartingLoadout === true,
       unobtainable: item.unobtainable === true,
+      tacticalKit: item.tacticalKit === true,
     });
   }
 }
@@ -1167,6 +1201,7 @@ for (const entry of index) {
   entry.hasStashDrop = flags.hasStashDrop;
   entry.inStartingLoadout = flags.inStartingLoadout;
   entry.unobtainable = flags.unobtainable;
+  entry.tacticalKit = flags.tacticalKit;
 }
 
 // Write index.json (deferred from earlier so obtainability flags are included).
@@ -1470,6 +1505,7 @@ if (ammoData) {
             isAlt: field === "st_data_export_ammo_types_alt",
           };
           if (wpn.unobtainable === true) ref.noDrop = true;
+          if (wpn.tacticalKit === true) ref.tacticalKit = true;
           weaponsByAmmoVal.get(val).push(ref);
         }
       }
@@ -1723,30 +1759,10 @@ try {
   console.log("No weapon addon map CSV found, skipping weapon-addons.json");
 }
 
-// Generate kit-weapons.json: kit ID → modified weapon IDs.
-// The relationship is implicit in the game's naming convention: applying a kit
-// renames the weapon to `<base_weapon_id>_<kit_id>`. Scan every obtainability-
-// tracked weapon for IDs that end in `_<kitId>` for some known kit.
-const kitItems = categoryData.get("tactical-kits")?.items || [];
-if (kitItems.length) {
-  const kitIds = kitItems.map(i => i.id);
-  const allWeaponIds = [];
-  for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
-    for (const it of categoryData.get(slug)?.items || []) allWeaponIds.push(it.id);
-  }
-  // Match longest kit-suffix first so e.g. `wpn_kiparis_ots2_upgr_kit` is
-  // attributed to `ots2_upgr_kit` rather than the shorter generic `_kit`.
-  const sortedKitIds = [...kitIds].sort((a, b) => b.length - a.length);
-  const kitWeapons = {};
-  for (const wid of allWeaponIds) {
-    for (const kitId of sortedKitIds) {
-      const suffix = "_" + kitId;
-      if (wid.endsWith(suffix) && wid.length > suffix.length) {
-        (kitWeapons[kitId] ||= []).push(wid);
-        break;
-      }
-    }
-  }
+// Write kit-weapons.json: kit ID → modified weapon IDs. The mapping itself is
+// computed earlier (before the obtainability pass) so the `tacticalKit` flag
+// can reuse it.
+if ((categoryData.get("tactical-kits")?.items || []).length) {
   const kwOut = join(OUT_DIR, "kit-weapons.json");
   writeFileSync(kwOut, JSON.stringify(kitWeapons, null, 2));
   console.log(`Wrote ${Object.keys(kitWeapons).length} kit→weapon mappings to ${kwOut}`);

@@ -2143,6 +2143,20 @@ input.range-input {
 .badge-no-drop s {
     text-decoration: line-through;
 }
+.badge-tactical-kit {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 0.05rem 0.3rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--color-blue-tint-18);
+    color: var(--color-blue-soft);
+    margin-left: 0.35rem;
+    vertical-align: middle;
+}
 .badge-unused {
     display: inline-block;
     font-family: var(--font-display);

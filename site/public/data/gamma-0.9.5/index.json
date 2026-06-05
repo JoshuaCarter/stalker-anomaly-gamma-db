@@ -847,7 +847,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_dtmdr",
@@ -857,7 +858,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_dtmdr_sup",
@@ -867,7 +869,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_dtmdr_black",
@@ -877,7 +880,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_dtmdr_black_sup",
@@ -887,7 +891,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "merc_combat_scientific_outfit",
@@ -1179,7 +1184,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "nomad_outfit",
@@ -3241,7 +3247,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_addon_grenade_launcher",
@@ -3281,7 +3288,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "grenade_smoke",
@@ -3291,7 +3299,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "grenade_gd-05",
@@ -3301,7 +3310,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "ground_coffee",
@@ -3479,7 +3489,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "ied",
@@ -3489,7 +3500,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "ied_new_blow",
@@ -3499,7 +3511,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "ied_rpg",
@@ -3509,7 +3522,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "artefact_container",
@@ -3813,7 +3827,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "mineral_water",
@@ -4195,7 +4210,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_9a91",
@@ -4205,7 +4221,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_abakan",
@@ -4215,7 +4232,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_abakan_n",
@@ -4225,7 +4243,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ace21",
@@ -4235,7 +4254,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ace52",
@@ -4245,7 +4265,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_adar2_15",
@@ -4255,7 +4276,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_xm4_admin",
@@ -4265,7 +4287,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_aek",
@@ -4275,7 +4298,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak",
@@ -4285,7 +4309,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak101",
@@ -4295,7 +4320,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak102",
@@ -4305,7 +4331,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak101_camo",
@@ -4315,7 +4342,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak103",
@@ -4325,7 +4353,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak103_camo",
@@ -4335,7 +4364,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak104_alfa",
@@ -4345,7 +4375,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak104",
@@ -4355,7 +4386,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak105",
@@ -4365,7 +4397,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak105_shakal",
@@ -4375,7 +4408,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_ak105_sp",
@@ -4385,7 +4419,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak105_swamp",
@@ -4395,7 +4430,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak12_custom",
@@ -4405,7 +4441,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak12",
@@ -4415,7 +4452,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak12_m1",
@@ -4425,7 +4463,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak12_custom_mono_kit",
@@ -4435,7 +4474,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_ak5c_bas",
@@ -4445,7 +4485,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak5c_bas_5c_tik",
@@ -4455,7 +4496,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_ak5c_isg",
@@ -4465,7 +4507,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74",
@@ -4475,7 +4518,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aks74_new",
@@ -4485,7 +4529,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74_isg",
@@ -4495,7 +4540,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74_n",
@@ -4505,7 +4551,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74_pmc",
@@ -4515,7 +4562,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74m_camo",
@@ -4525,7 +4573,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74m",
@@ -4535,7 +4584,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74m_beard",
@@ -4545,7 +4595,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74m_n",
@@ -4555,7 +4606,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74u",
@@ -4565,7 +4617,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74u_isg",
@@ -4575,7 +4628,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74u_m1_isg",
@@ -4585,7 +4639,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74u_n1",
@@ -4595,7 +4650,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ak74u_tac",
@@ -4605,7 +4661,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akm",
@@ -4615,7 +4672,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akm_alfa",
@@ -4625,7 +4683,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akm_bas",
@@ -4635,7 +4694,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akm_isg",
@@ -4645,7 +4705,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akms",
@@ -4655,7 +4716,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akms_alt",
@@ -4665,7 +4727,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_akms_bas",
@@ -4675,7 +4738,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aks",
@@ -4685,7 +4749,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_am17",
@@ -4695,7 +4760,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_amb17",
@@ -4705,7 +4771,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aps",
@@ -4715,7 +4782,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aps_bas",
@@ -4725,7 +4793,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aps_bas_apsabigo",
@@ -4735,7 +4804,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_ar15_freedom",
@@ -4745,7 +4815,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ash12",
@@ -4755,7 +4826,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_freedom",
@@ -4765,7 +4837,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug",
@@ -4775,7 +4848,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_modern",
@@ -4785,7 +4859,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_a1_bas",
@@ -4795,7 +4870,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_a1_custom_bas",
@@ -4805,7 +4881,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_a3",
@@ -4815,7 +4892,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_a3_bas",
@@ -4825,7 +4903,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_a3_custom_bas",
@@ -4835,7 +4914,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_aug_merc",
@@ -4845,7 +4925,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_benelli_m1014",
@@ -4855,7 +4936,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_beretta",
@@ -4865,7 +4947,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_beretta_m9_upgr_kit",
@@ -4875,7 +4958,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_beretta_camo",
@@ -4885,7 +4969,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_bizon",
@@ -4895,7 +4980,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_bm16",
@@ -4905,7 +4991,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_bm16_alt",
@@ -4915,7 +5002,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_bm16_full",
@@ -4925,7 +5013,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_bm16_full_alt",
@@ -4935,7 +5024,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_bm16_full_alt_23",
@@ -4945,7 +5035,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_brn180",
@@ -4955,7 +5046,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_xm4",
@@ -4965,7 +5057,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_xm4_bd",
@@ -4975,7 +5068,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_colt1911_anarchy",
@@ -4985,7 +5079,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_colt1911",
@@ -4995,7 +5090,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_colt1911_duty",
@@ -5005,7 +5101,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_colt1911_n",
@@ -5015,7 +5112,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_cz75",
@@ -5025,7 +5123,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_desert_eagle",
@@ -5035,7 +5134,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_desert_eagle_nimble",
@@ -5045,7 +5145,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_dvl10",
@@ -5055,7 +5156,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_dvl10_m1",
@@ -5065,7 +5167,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_eft_mts_255",
@@ -5075,7 +5178,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fal",
@@ -5085,7 +5189,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fal_aus",
@@ -5095,7 +5200,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fal_sa58_osw",
@@ -5105,7 +5211,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_famas3",
@@ -5115,7 +5222,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fn2000",
@@ -5125,7 +5233,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fn2000_camo",
@@ -5135,7 +5244,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fn2000_custom",
@@ -5145,7 +5255,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fn2000_nimble",
@@ -5155,7 +5266,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fn57",
@@ -5165,7 +5277,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fnc",
@@ -5175,7 +5288,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fnp45",
@@ -5185,7 +5299,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fnx45_custom",
@@ -5195,7 +5310,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fnx45",
@@ -5205,7 +5321,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fort_snag",
@@ -5215,7 +5332,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fort",
@@ -5225,7 +5343,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fort17",
@@ -5235,7 +5354,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_gsh18_custom",
@@ -5245,7 +5365,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_gsh18",
@@ -5255,7 +5376,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_fort500",
@@ -5265,7 +5387,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g3",
@@ -5275,7 +5398,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36",
@@ -5285,7 +5409,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36v_rwap",
@@ -5295,7 +5420,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36c_rwap",
@@ -5305,7 +5431,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36_camo",
@@ -5315,7 +5442,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36k_rwap",
@@ -5325,7 +5453,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36ka4_rwap",
@@ -5335,7 +5464,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g36nimble_rwap",
@@ -5345,7 +5475,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g3sg1",
@@ -5355,7 +5486,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_g43",
@@ -5365,7 +5497,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_gauss",
@@ -5375,7 +5508,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_glock",
@@ -5385,7 +5519,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_glock_modern",
@@ -5395,7 +5530,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_glock17",
@@ -5405,7 +5541,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_glock17_m1",
@@ -5415,7 +5552,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp443",
@@ -5425,7 +5563,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_grot",
@@ -5435,7 +5574,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_grot_short",
@@ -5445,7 +5585,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_grot_short_tan",
@@ -5455,7 +5596,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_grot_tan",
@@ -5465,7 +5607,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_groza_nimble",
@@ -5475,7 +5618,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_groza",
@@ -5485,7 +5629,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_hk21",
@@ -5495,7 +5640,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_hk416",
@@ -5505,7 +5651,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_hk417",
@@ -5515,7 +5662,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_howa20",
@@ -5525,7 +5673,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_glock_custom",
@@ -5535,7 +5684,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ithacam37",
@@ -5545,7 +5695,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ithacam37_mag",
@@ -5555,7 +5706,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ithacam37_sawnoff",
@@ -5565,7 +5717,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ithacam37_stakeout_20x70",
@@ -5575,7 +5728,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ithacam37_stakeout",
@@ -5585,7 +5739,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ithacam37_trench",
@@ -5595,7 +5750,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_k98",
@@ -5605,7 +5761,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_k98_mod",
@@ -5615,7 +5772,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_k98_mauser_kit",
@@ -5625,7 +5783,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_k98_mod_silen98",
@@ -5635,7 +5794,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_kiparis",
@@ -5645,7 +5805,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_kiparis_ots2_upgr_kit",
@@ -5655,7 +5816,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_korth",
@@ -5665,7 +5827,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_kriss_vector",
@@ -5675,7 +5838,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ks23",
@@ -5685,7 +5849,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ks23_23_up",
@@ -5695,7 +5860,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ks23_ecolog",
@@ -5705,7 +5871,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ks23_kaban",
@@ -5715,7 +5882,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ks23_kaban_kab_up",
@@ -5725,7 +5893,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_ks23_vorkuta",
@@ -5735,7 +5904,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_ksg23",
@@ -5745,7 +5915,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l85_m1",
@@ -5755,7 +5926,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l85",
@@ -5765,7 +5937,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l85_m2",
@@ -5775,7 +5948,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l85_modern",
@@ -5785,7 +5959,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l85_m3",
@@ -5795,7 +5970,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l96a1",
@@ -5805,7 +5981,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_l96a1m",
@@ -5815,7 +5992,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_colt1911_camo",
@@ -5825,7 +6003,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m16",
@@ -5835,7 +6014,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m16a2",
@@ -5845,7 +6025,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m24",
@@ -5855,7 +6036,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m249",
@@ -5865,7 +6047,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m4",
@@ -5875,7 +6058,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m4_butcher",
@@ -5885,7 +6069,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m4_ru556",
@@ -5895,7 +6080,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m4_tac",
@@ -5905,7 +6091,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m45a1",
@@ -5915,7 +6102,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_lr300_camo",
@@ -5925,7 +6113,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_lr300",
@@ -5935,7 +6124,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m4a1_camo",
@@ -5945,7 +6135,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m4a1_siber",
@@ -5955,7 +6146,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m60",
@@ -5965,7 +6157,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m79",
@@ -5975,7 +6168,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m82",
@@ -5985,7 +6179,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m98b",
@@ -5995,7 +6190,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mac10",
@@ -6005,7 +6201,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mk14",
@@ -6015,7 +6212,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_usp",
@@ -6025,7 +6223,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mk47",
@@ -6035,7 +6234,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mk47_sup",
@@ -6045,7 +6245,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_mosin",
@@ -6055,7 +6256,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mossberg590",
@@ -6065,7 +6267,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mossberg590_rail",
@@ -6075,7 +6278,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp133",
@@ -6085,7 +6289,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp153",
@@ -6095,7 +6300,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp153_m1",
@@ -6105,7 +6311,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp155",
@@ -6115,7 +6322,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp412",
@@ -6125,7 +6333,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp5",
@@ -6135,7 +6344,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp5_kurtz",
@@ -6145,7 +6355,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_mp5_nimble",
@@ -6155,7 +6366,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp5sd",
@@ -6165,7 +6377,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp7",
@@ -6175,7 +6388,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_mp9",
@@ -6185,7 +6399,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_oc33",
@@ -6195,7 +6410,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_p90",
@@ -6205,7 +6421,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_p90gamma",
@@ -6215,7 +6432,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_p90_gs",
@@ -6225,7 +6443,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pb_bas",
@@ -6235,7 +6454,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pb_bas_custom",
@@ -6245,7 +6465,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pb",
@@ -6255,7 +6476,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pkm",
@@ -6265,7 +6487,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pkm_siber",
@@ -6275,7 +6498,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pkm_zenit_siber",
@@ -6285,7 +6509,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pkm_zulus",
@@ -6295,7 +6520,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pkp",
@@ -6305,7 +6531,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pkp_siber",
@@ -6315,7 +6542,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pl15",
@@ -6325,7 +6553,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pl15_tan",
@@ -6335,7 +6564,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pl15_pl15_scolaz",
@@ -6345,7 +6575,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_pl15_tan_pl15_scolaz",
@@ -6355,7 +6586,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_pm_bas",
@@ -6365,7 +6597,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pm_bas_actor",
@@ -6375,7 +6608,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pm_bas_custom",
@@ -6385,7 +6619,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pm_actor",
@@ -6395,7 +6630,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pm_custom",
@@ -6405,7 +6641,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pm",
@@ -6415,7 +6652,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pmm_bas",
@@ -6425,7 +6663,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pp2000_operator",
@@ -6435,7 +6674,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_pp2000",
@@ -6445,7 +6685,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ppsh41",
@@ -6455,7 +6696,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ppsh41_rednew",
@@ -6465,7 +6707,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ppsh41_woodnew",
@@ -6475,7 +6718,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_korth_custom",
@@ -6485,7 +6729,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_raptr",
@@ -6495,7 +6740,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_usas12",
@@ -6505,7 +6751,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_remington700",
@@ -6515,7 +6762,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_remington700_archangel",
@@ -6525,7 +6773,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_remington700_lapua700",
@@ -6535,7 +6784,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_trg",
@@ -6545,7 +6795,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_remington700_magpul_pro",
@@ -6555,7 +6806,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_remington700_mod_x_gen3",
@@ -6565,7 +6817,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_remington870",
@@ -6575,7 +6828,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rg-6",
@@ -6585,7 +6839,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rpd",
@@ -6595,7 +6850,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rpg7",
@@ -6605,7 +6861,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rpk",
@@ -6615,7 +6872,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rpk74",
@@ -6625,7 +6883,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rpk74_16",
@@ -6635,7 +6894,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_rpk74_16_drum",
@@ -6645,7 +6905,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_eft_rsh12",
@@ -6655,7 +6916,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_saiga12s",
@@ -6665,7 +6927,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_saiga12s_isg",
@@ -6675,7 +6938,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_saiga12s_m1",
@@ -6685,7 +6949,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vepr",
@@ -6695,7 +6960,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_saiga12s_m2",
@@ -6705,7 +6971,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_new",
@@ -6715,7 +6982,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_siber",
@@ -6725,7 +6993,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_siber_black",
@@ -6735,7 +7004,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_siber_m1",
@@ -6745,7 +7015,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_siber_m1_black",
@@ -6755,7 +7026,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_siber_m2",
@@ -6765,7 +7037,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_scar_siber_m2_custom",
@@ -6775,7 +7048,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ash12_sup",
@@ -6785,7 +7059,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sig220",
@@ -6795,7 +7070,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig220_n",
@@ -6805,7 +7081,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig220_n_u2p2g0r",
@@ -6815,7 +7092,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sig220_u2p2g0r",
@@ -6825,7 +7103,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sig220_n_upg220",
@@ -6835,7 +7114,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig220_upg220",
@@ -6845,7 +7125,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_hpsa",
@@ -6855,7 +7136,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig226",
@@ -6865,7 +7147,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_hpsa_226sig_kit",
@@ -6875,7 +7158,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sig226_226sig_kit",
@@ -6885,7 +7169,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sig550_camo",
@@ -6895,7 +7180,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig550_sniper",
@@ -6905,7 +7191,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig550",
@@ -6915,7 +7202,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig552",
@@ -6925,7 +7213,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig550_custom",
@@ -6935,7 +7224,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig550_luckygun",
@@ -6945,7 +7235,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sks",
@@ -6955,7 +7246,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sks_b",
@@ -6965,7 +7257,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sks_modern",
@@ -6975,7 +7268,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sks_molot",
@@ -6985,7 +7279,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sks_tac",
@@ -6995,7 +7290,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_spas12_custom",
@@ -7005,7 +7301,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_spas12",
@@ -7015,7 +7312,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_spas12_nimble",
@@ -7025,7 +7323,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sr1m_sr1upgr1",
@@ -7035,7 +7334,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sr1m",
@@ -7045,7 +7345,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sr1m_gurza_up",
@@ -7055,7 +7356,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sr2_m1",
@@ -7065,7 +7367,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sr2_veresk",
@@ -7075,7 +7378,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sr2_veresk_sr2_upkit",
@@ -7085,7 +7389,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_sr25",
@@ -7095,7 +7400,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_steyr_scout_big",
@@ -7105,7 +7411,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_protecta_camo",
@@ -7115,7 +7422,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_protecta_custom",
@@ -7125,7 +7433,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_protecta",
@@ -7135,7 +7444,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_protecta_aim",
@@ -7145,7 +7455,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_protecta_nimble",
@@ -7155,7 +7466,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sv98",
@@ -7165,7 +7477,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sv98_custom",
@@ -7175,7 +7488,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svd",
@@ -7185,7 +7499,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svd_m1",
@@ -7195,7 +7510,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svd_nimble",
@@ -7205,7 +7521,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svds",
@@ -7215,7 +7532,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svds_pmc",
@@ -7225,7 +7543,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svt40",
@@ -7235,7 +7554,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svu",
@@ -7245,7 +7565,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svu_alt",
@@ -7255,7 +7576,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_svu_nimble",
@@ -7265,7 +7587,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_thompson_1921",
@@ -7275,7 +7598,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_thompson_m1a1",
@@ -7285,7 +7609,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz106",
@@ -7295,7 +7620,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz106_m1",
@@ -7305,7 +7631,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_wincheaster1300",
@@ -7315,7 +7642,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_wincheaster1300_trapper",
@@ -7325,7 +7653,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34",
@@ -7335,7 +7664,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_bull",
@@ -7345,7 +7675,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_custom",
@@ -7355,7 +7686,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_decor",
@@ -7365,7 +7697,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_mark4",
@@ -7375,7 +7708,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_mark4_23",
@@ -7385,7 +7719,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_obrez",
@@ -7395,7 +7730,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_obrez_custom",
@@ -7405,7 +7741,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_toz34_obrez_decor",
@@ -7415,7 +7752,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_tt33",
@@ -7425,7 +7763,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_tt33_modern",
@@ -7435,7 +7774,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_tt33_modern_tt_upgr_kit",
@@ -7445,7 +7785,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_type63",
@@ -7455,7 +7796,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_udp9",
@@ -7465,7 +7807,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "pri_a17_gauss_rifle",
@@ -7475,7 +7818,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ump45",
@@ -7485,7 +7829,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_ump45_custom",
@@ -7495,7 +7840,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_usp_tac",
@@ -7505,7 +7851,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_usp_tac_45",
@@ -7515,7 +7862,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_uzi",
@@ -7525,7 +7873,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_uzi_micro",
@@ -7535,7 +7884,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_uzi_mini",
@@ -7545,7 +7895,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_val",
@@ -7555,7 +7906,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_val_modern",
@@ -7565,7 +7917,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_val_tac",
@@ -7575,7 +7928,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vihr",
@@ -7585,7 +7939,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vintorez_isg",
@@ -7595,7 +7950,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vintorez_m1",
@@ -7605,7 +7961,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vintorez_m2",
@@ -7615,7 +7972,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vintorez",
@@ -7625,7 +7983,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vintorez_n1",
@@ -7635,7 +7994,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vintorez_nimble",
@@ -7645,7 +8005,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vityaz",
@@ -7655,7 +8016,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vityaz_vitup",
@@ -7665,7 +8027,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_vsk94",
@@ -7675,7 +8038,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vssk",
@@ -7685,7 +8049,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vz61_alt",
@@ -7695,7 +8060,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_vz61",
@@ -7705,7 +8071,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_wa2000",
@@ -7715,7 +8082,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_walther",
@@ -7725,7 +8093,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_walther_p99",
@@ -7735,7 +8104,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": false,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_walther_mod9",
@@ -7745,7 +8115,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_walther_p99_mod9",
@@ -7755,7 +8126,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": false,
+    "tacticalKit": true
   },
   {
     "id": "wpn_winchester1873",
@@ -7765,7 +8137,8 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
     "inStartingLoadout": true,
-    "unobtainable": false
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_xm8",
@@ -7775,7 +8148,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "yadylin",

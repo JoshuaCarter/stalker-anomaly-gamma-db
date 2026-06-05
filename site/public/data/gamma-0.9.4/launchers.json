@@ -46,6 +46,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true,
       "factions": [
         "nato"
@@ -75,6 +76,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true,
       "factions": [
         "wp"
@@ -104,6 +106,7 @@
       "hasNpcWeaponDrop": true,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"

@@ -261,6 +261,10 @@
                     <span class="toggle-switch" :class="{ on: hideNoDrop }"><span class="toggle-knob"></span></span>
                     <span>{{ t('app_label_hide_no_drop') }}</span>
                 </div>
+                <div class="settings-item" @click.stop="$emit('toggleHideTacticalKit')">
+                    <span class="toggle-switch" :class="{ on: hideTacticalKit }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_hide_tactical_kit') }}</span>
+                </div>
                 <div class="settings-item" @click.stop="$emit('toggleHideUnusedAmmo')">
                     <span class="toggle-switch" :class="{ on: hideUnusedAmmo }"><span class="toggle-knob"></span></span>
                     <span>{{ t('app_label_hide_unused_ammo') }}</span>
@@ -300,6 +304,7 @@ export default {
         tradingActive: { type: Boolean, default: false },
         itemDbActive: { type: Boolean, default: false },
         hideNoDrop: { type: Boolean, default: false },
+        hideTacticalKit: { type: Boolean, default: false },
         hideUnusedAmmo: { type: Boolean, default: false },
         showTileIcons: { type: Boolean, default: true },
     },
@@ -309,7 +314,7 @@ export default {
         'update:globalQuery', 'search', 'escapeSearch', 'selectSearchResult',
         'selectSearchResultInSection',
         'openItemDb', 'openMaps', 'openTrading', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
-        'toggleHideNoDrop', 'toggleHideUnusedAmmo', 'toggleShowTileIcons',
+        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons',
         'selectCraftingSearchResult',
     ],
     inject: ['t', 'tName', 'tCat', 'navHref'],

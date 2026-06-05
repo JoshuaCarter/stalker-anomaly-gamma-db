@@ -6,6 +6,7 @@
             <span class="pin-icon" :class="{ pinned: isPinned(item.id), 'pin-disabled': !isPinned(item.id) && pinnedIds.length >= 5 }" @click.stop="$emit('togglePin', item.id)">&#x1F4CC;</span>
             <a :href="itemHref(item.id)" @click.prevent.stop="$emit('navigateToItem', item.id)" class="tile-card-name">{{ tItemName(item) }}</a>
             <span v-if="item.unobtainable === true" class="badge-no-drop" v-tooltip="t('app_tooltip_not_dropped')">{{ t('app_badge_no_drop') }}</span>
+            <span v-if="item.tacticalKit === true" class="badge-tactical-kit" v-tooltip="t('app_tooltip_tactical_kit')">{{ t('app_badge_tactical_kit') }}</span>
             <span v-if="isUnusedAmmo(item)" class="badge-unused" v-tooltip="t('app_tooltip_unused_ammo')">{{ t('app_badge_unused') }}</span>
             <span v-if="item.Type" class="badge-flag badge-type">{{ t(singularType(item.Type)) }}</span>
             <span v-if="originBadge(item.factions)" class="badge-flag" :class="originBadge(item.factions).cls">{{ originBadge(item.factions).label }}</span>
