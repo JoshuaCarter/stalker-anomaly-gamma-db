@@ -1942,3 +1942,15 @@ for (const file of readdirSync(OUT_DIR).filter(f => f.endsWith(".json") && f !==
 const manifestOut = join(OUT_DIR, "manifest.json");
 writeFileSync(manifestOut, JSON.stringify(manifest, null, 2));
 console.log(`Wrote manifest (${Object.keys(manifest).length} entries) to ${manifestOut}`);
+
+// Global data manifest: content hashes for pack-independent JSONs in site/public/data/
+// (release-notes.json is excluded — it is hand-edited and fetched with cache: "no-cache")
+const GLOBAL_DIR = join(OUT_DIR, "..");
+const globalManifest = {};
+for (const file of readdirSync(GLOBAL_DIR).filter(f => f.endsWith(".json") && f !== "manifest.json" && f !== "release-notes.json")) {
+  const content = readFileSync(join(GLOBAL_DIR, file));
+  globalManifest[file] = createHash("md5").update(content).digest("hex").slice(0, 8);
+}
+const globalManifestOut = join(GLOBAL_DIR, "manifest.json");
+writeFileSync(globalManifestOut, JSON.stringify(globalManifest, null, 2));
+console.log(`Wrote global manifest (${Object.keys(globalManifest).length} entries) to ${globalManifestOut}`);

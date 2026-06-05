@@ -6995,15 +6995,23 @@ export const appDefinition = {
             }
         }
 
+        // 0. Load global data manifest (content hashes for cache busting of pack-independent JSONs)
+        let globalManifest = {};
+        try {
+            const gmRes = await fetch("/data/manifest.json", { cache: "no-cache" });
+            if (gmRes.ok) globalManifest = await gmRes.json();
+        } catch { /* ignore */ }
+        const globalDataUrl = (f) => `/data/${f}${globalManifest[f] ? "?v=" + globalManifest[f] : ""}`;
+
         // 1. Load app translations (pack-independent UI strings)
         try {
-            const appTrRes = await fetch("/data/app_translations.json");
+            const appTrRes = await fetch(globalDataUrl("app_translations.json"));
             if (appTrRes.ok) this.appTranslations = await appTrRes.json();
         } catch { /* ignore */ }
 
         // 2. Load pack manifest
         try {
-            const packRes = await fetch("/data/packs.json");
+            const packRes = await fetch(globalDataUrl("packs.json"));
             const manifest = await packRes.json();
             this.packs = manifest.packs;
             this.globalHiddenFields = manifest.hiddenFields || [];
