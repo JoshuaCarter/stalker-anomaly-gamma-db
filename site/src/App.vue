@@ -74,7 +74,7 @@
     @select-crafting-search-result="(result) => selectCraftingSearchResult(result)"
 />
 
-<div class="layout" :class="{ 'sidebar-collapsed': sidebarCollapsed, 'sidebar-hidden': buildPlannerActive || mapsActive || damageSimActive || tradingActive }">
+<div class="layout" :class="{ 'sidebar-collapsed': sidebarCollapsed, 'sidebar-hidden': buildPlannerActive || mapsActive || damageSimActive || tradingActive || playerInventoryActive }">
     <SidebarNav
         :translations="translations"
         :sidebar-open="sidebarOpen"
