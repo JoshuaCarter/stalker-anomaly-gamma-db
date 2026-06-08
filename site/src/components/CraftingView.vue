@@ -121,7 +121,7 @@ import { attachHoverPosition, prefersTouchHover } from "../hover-popover.js";
 
 const HOVER_SKIP = new Set([
     "id", "name", "displayName", "pda_encyclopedia_name", "category", "localeName",
-    "hasNpcWeaponDrop", "hasStashDrop", "inStartingLoadout", "unobtainable", "tacticalKit", "kitSuffix", "kitSuffixNum", "hasDisassemble", "st_data_export_description",
+    "hasNpcWeaponDrop", "hasStashDrop", "inStartingLoadout", "unobtainable", "tacticalKit", "kitSuffix", "kitSuffixNum", "nameSuffixKey", "nameSuffixNum", "hasDisassemble", "st_data_export_description",
     "st_data_export_is_junk", "st_data_export_has_perk", "st_data_export_can_be_crafted",
     "st_data_export_used_in_crafting",
 ]);

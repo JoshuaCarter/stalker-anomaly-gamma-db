@@ -37,6 +37,7 @@
       "displayName": "st_addon_scope_226sig_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_sig226_226sig_kit",
       "factions": [
         "nato"
       ]
@@ -67,6 +68,7 @@
       "displayName": "st_addon_scope_5c_tik",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_ak5c_bas_5c_tik",
       "factions": [
         "nato"
       ]
@@ -82,6 +84,7 @@
       "displayName": "st_addon_scope_apsabigo",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_aps_bas_apsabigo",
       "factions": [
         "wp"
       ]
@@ -97,6 +100,7 @@
       "displayName": "st_addon_scope_archangel",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_remington700_archangel",
       "factions": [
         "nato"
       ]
@@ -144,6 +148,8 @@
       "displayName": "st_addon_scope_gurza_up",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_sr1m_sr1upgr1",
+      "nameSuffixNum": 1,
       "factions": [
         "wp"
       ]
@@ -174,6 +180,7 @@
       "displayName": "st_addon_scope_kab_up",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_ks23_kaban_kab_up",
       "factions": [
         "wp"
       ]
@@ -204,6 +211,8 @@
       "displayName": "st_addon_scope_kit_aus_tri",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_fal_aus",
+      "nameSuffixNum": 1,
       "factions": [
         "nato"
       ]
@@ -219,6 +228,8 @@
       "displayName": "st_addon_scope_kit_fal_leup",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_fal_aus",
+      "nameSuffixNum": 2,
       "factions": [
         "nato"
       ]
@@ -234,6 +245,8 @@
       "displayName": "st_addon_scope_kit_sa5x_spec",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_fal_aus",
+      "nameSuffixNum": 3,
       "factions": [
         "nato"
       ]
@@ -249,6 +262,7 @@
       "displayName": "st_addon_scope_lapua700",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_remington700_lapua700",
       "factions": [
         "nato"
       ]
@@ -264,6 +278,7 @@
       "displayName": "st_addon_scope_magpul_pro",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_remington700_magpul_pro",
       "factions": [
         "nato"
       ]
@@ -311,6 +326,7 @@
       "displayName": "st_addon_scope_mauser_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_k98_mod_silen98",
       "factions": [
         "other"
       ]
@@ -326,6 +342,7 @@
       "displayName": "st_addon_scope_mod9",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_walther_p99_mod9",
       "factions": [
         "nato"
       ]
@@ -341,6 +358,7 @@
       "displayName": "st_addon_scope_mod_x_gen3",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_remington700_mod_x_gen3",
       "factions": [
         "nato"
       ]
@@ -356,6 +374,7 @@
       "displayName": "st_addon_scope_mono_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_ak12_mono_kit",
       "factions": [
         "wp"
       ]
@@ -371,6 +390,7 @@
       "displayName": "st_addon_scope_pl15_scolaz",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_pl15_pl15_scolaz",
       "factions": [
         "wp"
       ]
@@ -478,6 +498,8 @@
       "displayName": "st_addon_scope_sr1upgr1",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_sr1m_sr1upgr1",
+      "nameSuffixNum": 2,
       "factions": [
         "wp"
       ]
@@ -493,6 +515,7 @@
       "displayName": "st_addon_scope_sr2_upkit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_sr2_veresk_sr2_upkit",
       "factions": [
         "wp"
       ]
@@ -524,6 +547,7 @@
       "displayName": "st_addon_scope_swamp",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_ak105_swamp",
       "factions": [
         "wp"
       ]
@@ -555,6 +579,7 @@
       "displayName": "st_addon_scope_u2p2g0r",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_sig220_n_u2p2g0r",
       "factions": [
         "nato"
       ]
@@ -570,6 +595,7 @@
       "displayName": "st_addon_scope_upg220",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "nameSuffixKey": "st_wpn_sig220_n_upg220",
       "factions": [
         "nato"
       ]

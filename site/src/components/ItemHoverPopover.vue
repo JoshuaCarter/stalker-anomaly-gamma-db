@@ -24,6 +24,12 @@
                 </template>
             </div>
         </div>
+        <div v-if="extras && extras.rows && extras.rows.length" class="item-hover-extras">
+            <div v-for="row in extras.rows" :key="row.label" class="item-hover-stat-row">
+                <span class="item-hover-stat-label">{{ row.label }}</span>
+                <span class="item-hover-stat-value" :class="row.cls">{{ row.value }}</span>
+            </div>
+        </div>
         <div class="item-hover-desc">
             <img class="item-hover-icon" :src="'img/icons/' + item.id + '.png'" @error="($event.target as HTMLElement).style.display='none'">
             <p v-if="description" class="item-hover-desc-text">{{ description.text }}</p>
@@ -51,6 +57,8 @@ export default defineComponent({
   props: {
     item: { type: Object, default: null },
     pos: { type: Object as PropType<HoverPos | null>, default: null },
+    // Optional caller-supplied context rows: { rows: [{ label, value, cls? }] }
+    extras: { type: Object as PropType<{ rows: Array<{ label: string; value: string; cls?: string }> } | null>, default: null },
   },
   computed: {
     posStyle(): Record<string, string> {
@@ -159,6 +167,17 @@ export default defineComponent({
 }
 .item-hover-ammo-list .badge-ammo {
   white-space: nowrap;
+}
+.item-hover-extras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.1rem 0.75rem;
+  padding-top: 0.3rem;
+  margin-top: 0.35rem;
+  border-top: 1px solid var(--color-accent-tint-20);
+}
+.item-hover-extras .item-hover-stat-value {
+  color: var(--accent);
 }
 .item-hover-desc {
   padding: 0.4rem 0 0;

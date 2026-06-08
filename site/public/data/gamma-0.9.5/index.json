@@ -1355,7 +1355,8 @@
     "id": "226sig_kit",
     "name": "st_addon_scope_226sig_kit",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_226sig_kit"
+    "displayName": "st_addon_scope_226sig_kit",
+    "nameSuffixKey": "st_wpn_sig226_226sig_kit"
   },
   {
     "id": "23_up",
@@ -1367,7 +1368,8 @@
     "id": "5c_tik",
     "name": "st_addon_scope_5c_tik",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_5c_tik"
+    "displayName": "st_addon_scope_5c_tik",
+    "nameSuffixKey": "st_wpn_ak5c_bas_5c_tik"
   },
   {
     "id": "ac10632",
@@ -1427,13 +1429,15 @@
     "id": "apsabigo",
     "name": "st_addon_scope_apsabigo",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_apsabigo"
+    "displayName": "st_addon_scope_apsabigo",
+    "nameSuffixKey": "st_wpn_aps_bas_apsabigo"
   },
   {
     "id": "archangel",
     "name": "st_addon_scope_archangel",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_archangel"
+    "displayName": "st_addon_scope_archangel",
+    "nameSuffixKey": "st_wpn_remington700_archangel"
   },
   {
     "id": "bossxe",
@@ -1583,7 +1587,8 @@
     "id": "kab_up",
     "name": "st_addon_scope_kab_up",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_kab_up"
+    "displayName": "st_addon_scope_kab_up",
+    "nameSuffixKey": "st_wpn_ks23_kaban_kab_up"
   },
   {
     "id": "kashtan_rmr",
@@ -1601,19 +1606,25 @@
     "id": "kit_aus_tri",
     "name": "st_addon_scope_kit_aus_tri",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_kit_aus_tri"
+    "displayName": "st_addon_scope_kit_aus_tri",
+    "nameSuffixKey": "st_wpn_fal_aus",
+    "nameSuffixNum": 1
   },
   {
     "id": "kit_fal_leup",
     "name": "st_addon_scope_kit_fal_leup",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_kit_fal_leup"
+    "displayName": "st_addon_scope_kit_fal_leup",
+    "nameSuffixKey": "st_wpn_fal_aus",
+    "nameSuffixNum": 2
   },
   {
     "id": "kit_sa5x_spec",
     "name": "st_addon_scope_kit_sa5x_spec",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_kit_sa5x_spec"
+    "displayName": "st_addon_scope_kit_sa5x_spec",
+    "nameSuffixKey": "st_wpn_fal_aus",
+    "nameSuffixNum": 3
   },
   {
     "id": "kobra",
@@ -1631,7 +1642,8 @@
     "id": "lapua700",
     "name": "st_addon_scope_lapua700",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_lapua700"
+    "displayName": "st_addon_scope_lapua700",
+    "nameSuffixKey": "st_wpn_remington700_lapua700"
   },
   {
     "id": "lazup_pl15",
@@ -1667,7 +1679,8 @@
     "id": "magpul_pro",
     "name": "st_addon_scope_magpul_pro",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_magpul_pro"
+    "displayName": "st_addon_scope_magpul_pro",
+    "nameSuffixKey": "st_wpn_remington700_magpul_pro"
   },
   {
     "id": "march_f_shorty",
@@ -1697,7 +1710,8 @@
     "id": "mauser_kit",
     "name": "st_addon_scope_mauser_kit",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_mauser_kit"
+    "displayName": "st_addon_scope_mauser_kit",
+    "nameSuffixKey": "st_wpn_k98_mod_silen98"
   },
   {
     "id": "mepro",
@@ -1709,19 +1723,22 @@
     "id": "mod_x_gen3",
     "name": "st_addon_scope_mod_x_gen3",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_mod_x_gen3"
+    "displayName": "st_addon_scope_mod_x_gen3",
+    "nameSuffixKey": "st_wpn_remington700_mod_x_gen3"
   },
   {
     "id": "mod9",
     "name": "st_addon_scope_mod9",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_mod9"
+    "displayName": "st_addon_scope_mod9",
+    "nameSuffixKey": "st_wpn_walther_p99_mod9"
   },
   {
     "id": "mono_kit",
     "name": "st_addon_scope_mono_kit",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_mono_kit"
+    "displayName": "st_addon_scope_mono_kit",
+    "nameSuffixKey": "st_wpn_ak12_mono_kit"
   },
   {
     "id": "monstrum",
@@ -1925,7 +1942,8 @@
     "id": "sr2_upkit",
     "name": "st_addon_scope_sr2_upkit",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_sr2_upkit"
+    "displayName": "st_addon_scope_sr2_upkit",
+    "nameSuffixKey": "st_wpn_sr2_veresk_sr2_upkit"
   },
   {
     "id": "sup",
@@ -1949,7 +1967,8 @@
     "id": "swamp",
     "name": "st_addon_scope_swamp",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_swamp"
+    "displayName": "st_addon_scope_swamp",
+    "nameSuffixKey": "st_wpn_ak105_swamp"
   },
   {
     "id": "t12",
@@ -1979,13 +1998,15 @@
     "id": "u2p2g0r",
     "name": "st_addon_scope_u2p2g0r",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_u2p2g0r"
+    "displayName": "st_addon_scope_u2p2g0r",
+    "nameSuffixKey": "st_wpn_sig220_n_u2p2g0r"
   },
   {
     "id": "upg220",
     "name": "st_addon_scope_upg220",
     "category": "Tactical Kits",
-    "displayName": "st_addon_scope_upg220"
+    "displayName": "st_addon_scope_upg220",
+    "nameSuffixKey": "st_wpn_sig220_n_upg220"
   },
   {
     "id": "usp1",

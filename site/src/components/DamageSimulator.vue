@@ -292,7 +292,7 @@
 
   <!-- Picker Modals -->
   <ItemPickerModal :open="weaponPickerSlot >= 0" :title="t('app_sim_weapon')" :placeholder="t('app_sim_search_weapon')" :empty-text="t('app_sim_no_results')" :items="pickerWeapons" :label-fn="(w: any) => tName(w) || w.id" :filter-fn="weaponFilter" @close="weaponPickerSlot = -1; weaponStartingFilter = false" @select="selectWeapon">
-    <template #toolbar>
+    <template #toolbar v-if="!restrictedToInitial">
       <button class="damage-sim-picker-filter" :class="{ active: weaponStartingFilter }" @click.stop="toggleStartingFilter()">
         <LucideSlidersHorizontal :size="12" />
         {{ t('app_sim_starting_loadouts') }}
@@ -407,6 +407,8 @@ export default defineComponent({
     hideTacticalKit: { type: Boolean, default: false },
     hideUnusedAmmo: { type: Boolean, default: true },
     ammoWeaponsCache: { type: Object as PropType<Record<string, any[]>>, default: () => ({}) },
+    /** When set, overrides restored loadouts with these weapons (e.g. inventory ballistics modal). */
+    initialWeaponIds: { type: Array as PropType<string[]>, default: null },
   },
   emits: ['showBuildHover', 'moveBuildHover', 'hideBuildHover'],
   inject: ['t', 'tName', 'shortAmmoName'],
@@ -506,7 +508,16 @@ export default defineComponent({
       return this.loadouts.map((_, i) => this.calcForSlot(i));
     },
 
+    /** Launched with an explicit weapon list (inventory modal) — pickers stay within it */
+    restrictedToInitial(): boolean {
+      return !!this.initialWeaponIds && this.initialWeaponIds.length > 0;
+    },
+
     pickerWeapons(): GameItem[] {
+      if (this.restrictedToInitial) {
+        const ids = new Set(this.initialWeaponIds);
+        return this.allWeapons.filter(w => ids.has(w.id));
+      }
       if (this.weaponStartingFilter && this.startingLoadoutIds) {
         const ids = this.startingLoadoutIds;
         return this.allWeapons.filter(w => ids.has(w.id));
@@ -1096,6 +1107,17 @@ export default defineComponent({
       return null;
     },
 
+    applyInitialWeapons(): void {
+      if (!this.initialWeaponIds || this.initialWeaponIds.length === 0) return;
+      const ids = this.initialWeaponIds.slice(0, MAX_LOADOUTS);
+      this.loadouts = ids.map(() => ({ weapon: null, ammoId: '', silenced: false }));
+      (this as any)._savedLoadouts = ids.map(id => ({ weaponId: id, ammoId: '', silenced: false }));
+      // Let the allWeapons watcher retry if weapon data hasn't arrived yet
+      this._restored = false;
+      this.restoreWeaponsFromStorage();
+      if (this._restored) this.saveToStorage();
+    },
+
     restoreWeaponsFromStorage(): void {
       const saved = (this as any)._savedLoadouts;
       if (!saved) return;
@@ -1248,6 +1270,7 @@ export default defineComponent({
   },
   mounted() {
     this.restoreFromStorage();
+    this.applyInitialWeapons();
   },
   beforeUnmount() {
     if ((this as any)._radarChart) {

@@ -112,7 +112,7 @@
     />
     <div class="sidebar-backdrop" v-show="sidebarOpen" @click="closeSidebar()"></div>
 
-    <main class="content" :class="{ 'content-maps': mapsActive }">
+    <main class="content" :class="{ 'content-maps': mapsActive, 'content-inventory': playerInventoryActive }">
         <MapsView v-if="mapsMounted" v-show="mapsActive" :pack-id="activePack?.id" :visible="mapsActive" />
         <TradingView
             v-if="tradingMounted"
@@ -133,11 +133,18 @@
             :error="playerInventoryError"
             :index="index"
             :category-items="categoryItems"
+            :craft-recipes="craftRecipes"
+            :pack-id="activePack?.id"
             @parse-save="handlePlayerInventoryFiles"
             @clear-save="clearPlayerInventory"
+            @start-blank="startBlankPlayerInventory"
+            @adjust-item="adjustPlayerInventoryItem"
             @dismiss-error="playerInventoryError = ''"
+            @ensure-craft-recipes="ensureCraftRecipes"
+            @open-crafting-recipe="selectCraftingSearchResult"
+            @open-ballistics="openBallisticsModal"
             @navigate-to-item="navigateToItem"
-            @show-item-hover="(id, event) => loadoutItemHover(id, event)"
+            @show-item-hover="(id, event, extras) => loadoutItemHover(id, event, extras)"
             @move-item-hover="(event) => moveItemHover(event)"
             @hide-item-hover="hideItemHover()"
         />
@@ -159,6 +166,26 @@
             @move-build-hover="(event) => moveBuildHover(event)"
             @hide-build-hover="hideBuildHover()"
         />
+        <BallisticsModal :open="ballisticsModalOpen" @close="closeBallisticsModal">
+            <DamageSimulator
+                v-if="ballisticsModalOpen"
+                :weapon-categories="categoryItems"
+                :ammo-items="categoryItems['ammo'] || []"
+                :mutant-profiles="mutantProfilesCache || []"
+                :npc-armor-profiles="npcArmorProfilesCache || []"
+                :gbo-constants="gboConstantsCache || {}"
+                :calibers-data="calibersCache || {}"
+                :ballistic-ranges="ballisticRangesCache || {}"
+                :hide-no-drop="hideNoDrop"
+                :hide-tactical-kit="hideTacticalKit"
+                :hide-unused-ammo="hideUnusedAmmo"
+                :ammo-weapons-cache="ammoWeaponsCache || {}"
+                :initial-weapon-ids="ballisticsModalWeaponIds"
+                @show-build-hover="(item, event) => showBuildHover(item, event)"
+                @move-build-hover="(event) => moveBuildHover(event)"
+                @hide-build-hover="hideBuildHover()"
+            />
+        </BallisticsModal>
         <div v-show="showContentSpinner && !mapsActive && !tradingActive && !playerInventoryActive" class="loading-screen">
             <div class="loading-spinner"></div>
             <p class="loading-text">{{ t('app_label_loading') }}</p>
@@ -439,6 +466,7 @@
     class="item-hover-popover-global"
     :item="!hoverCompareItem ? hoverItem : null"
     :pos="hoverPos"
+    :extras="!hoverCompareItem ? hoverExtras : null"
 />
 
 <!-- Item comparison popover (build planner equipped vs inventory) -->
@@ -651,6 +679,7 @@ import BuildPickerModal from "./components/modals/BuildPickerModal.vue";
 import QuickNavModal from "./components/modals/QuickNavModal.vue";
 import ShortcutHelpModal from "./components/modals/ShortcutHelpModal.vue";
 import WeaponMechanicsModal from "./components/modals/WeaponMechanicsModal.vue";
+import BallisticsModal from "./components/modals/BallisticsModal.vue";
 
 export default {
   ...appDefinition,
@@ -679,6 +708,7 @@ export default {
     SaveImportModal,
     ShortcutHelpModal,
     WeaponMechanicsModal,
+    BallisticsModal,
     SidebarNav,
     ToolkitRatesView,
     VersionCompareView,

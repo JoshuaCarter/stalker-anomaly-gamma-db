@@ -47,6 +47,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": true,
       "factions": [
         "other"
@@ -77,6 +78,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -107,6 +109,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -137,6 +140,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -167,6 +171,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -197,6 +202,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -227,6 +233,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": true,
       "factions": [
         "other"
@@ -257,6 +264,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -287,6 +295,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -317,7 +326,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
-      "unobtainable": true,
+      "tacticalKit": true,
+      "unobtainable": false,
       "factions": [
         "other"
       ]
@@ -346,6 +356,7 @@
       "hasNpcWeaponDrop": true,
       "hasStashDrop": true,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -376,6 +387,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -406,6 +418,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "other"
@@ -436,6 +449,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -466,6 +480,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -496,6 +511,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -526,6 +542,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -556,6 +573,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -586,6 +604,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -616,6 +635,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -646,6 +666,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -676,6 +697,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -706,6 +728,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -736,6 +759,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -766,6 +790,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -796,6 +821,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -826,6 +852,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -856,6 +883,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -886,6 +914,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -916,6 +945,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -946,6 +976,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -976,6 +1007,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1006,6 +1038,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1036,6 +1069,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -1066,6 +1100,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1096,6 +1131,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1126,6 +1162,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1156,6 +1193,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1186,6 +1224,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1216,6 +1255,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1246,6 +1286,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1276,6 +1317,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1306,6 +1348,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1336,6 +1379,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1366,6 +1410,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1396,6 +1441,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1426,6 +1472,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1456,6 +1503,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"
@@ -1486,6 +1534,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "wp"
@@ -1516,6 +1565,7 @@
       "hasStashDrop": true,
       "hasDisassemble": false,
       "hasUpgrades": true,
+      "tacticalKit": false,
       "unobtainable": false,
       "factions": [
         "nato"

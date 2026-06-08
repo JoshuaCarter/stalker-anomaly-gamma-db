@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP — Loadout inspector panel (3 variants)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ── Palette (mirrors site/css/color-palette.css) ───────────── */
+:root {
+    --bg:            #0d0d0d;
+    --surface-1:     #0f0f0f;
+    --surface-2:     #121212;
+    --surface-3:     #141414;
+    --card:          #1a1a1a;
+    --border:        #2a2a2a;
+    --text:          #d4d4d4;
+    --text-secondary:#888;
+    --accent:        #c8a84e;
+    --accent-dim:    #a08030;
+    --accent-t5:  rgba(200,168,78,.05);
+    --accent-t8:  rgba(200,168,78,.08);
+    --accent-t12: rgba(200,168,78,.12);
+    --accent-t20: rgba(200,168,78,.20);
+    --accent-t35: rgba(200,168,78,.35);
+    --green:      #6ec87a;
+    --green-t15:  rgba(110,200,122,.15);
+    --green-t30:  rgba(92,184,92,.30);
+    --red:        #c87e7e;
+    --blue:       #7ea6c8;
+    --font-display: "Chakra Petch", sans-serif;
+    --mono: "JetBrains Mono", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-display); font-size: 14px; }
+
+.mock-banner {
+    background: repeating-linear-gradient(-45deg, var(--accent-t12) 0 12px, transparent 12px 24px);
+    border-bottom: 1px solid var(--border);
+    padding: .4rem 1rem;
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--accent); text-align: center;
+}
+.page { max-width: 1180px; margin: 0 auto; padding: 1.4rem .9rem 4rem; }
+.intro { color: var(--text-secondary); font-size: .82rem; line-height: 1.55; max-width: 72ch; }
+.intro b { color: var(--text); }
+.intro .dot { display:inline-block; width:7px; height:7px; border-radius:50%; vertical-align:baseline; }
+
+.opt { margin-top: 2.6rem; }
+.opt-head { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: .8rem; }
+.opt-num {
+    flex-shrink: 0; width: 2rem; height: 2rem; display: grid; place-items: center;
+    font-family: var(--mono); font-weight: 600; font-size: .95rem; color: var(--accent);
+    border: 1px solid var(--accent-t35); background: var(--accent-t8); border-radius: 4px;
+}
+.opt-head h2 { margin: 0; font-size: 1rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.opt-sub { margin: .2rem 0 0; color: var(--text-secondary); font-size: .78rem; max-width: 76ch; line-height: 1.5; }
+.opt-sub b { color: var(--text); }
+
+.frame { border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); overflow: hidden; box-shadow: 0 14px 34px -18px #000; }
+.chrome { display: flex; align-items: center; gap: .45rem; padding: .35rem .6rem; border-bottom: 1px solid var(--border); background: var(--surface-3); }
+.chrome i { width: 9px; height: 9px; border-radius: 50%; background: #333; }
+.chrome span { font-family: var(--mono); font-size: .62rem; color: var(--text-secondary); margin-left: .3rem; }
+.chrome em { font-style: normal; margin-left: auto; font-family: var(--mono); font-size: .6rem; color: var(--accent-dim); letter-spacing: .12em; }
+
+.app { display: flex; height: 580px; position: relative; overflow: hidden; background: var(--bg); }
+.content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.bar { display: flex; align-items: center; gap: .55rem; padding: .55rem .8rem; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, var(--surface-3), #101010); }
+.bar-title { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.bar-stats { font-family: var(--mono); font-size: .64rem; color: var(--text-secondary); }
+.bar-stats b { color: var(--accent); font-weight: 600; }
+.bar-hint { margin-left: auto; font-family: var(--mono); font-size: .58rem; color: var(--accent-dim); letter-spacing: .08em; text-transform: uppercase; }
+
+/* inventory grid */
+.grid { flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: .4rem; padding: .65rem .8rem; align-content: start; }
+.cell {
+    position: relative; display: flex; flex-direction: column; align-items: center; gap: .28rem;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px;
+    padding: .5rem .25rem .4rem; cursor: grab; transition: border-color .15s, opacity .15s;
+}
+.cell:hover { border-color: var(--accent-dim); }
+.cell:active { cursor: grabbing; }
+.cell.drag-src { opacity: .35; }
+.swatch {
+    width: 38px; height: 30px; border-radius: 3px;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: .56rem; font-weight: 600; color: rgba(255,255,255,.75);
+    background: linear-gradient(135deg, rgba(255,255,255,.10), transparent 55%), var(--sw, #3a3a3a);
+    border: 1px solid rgba(255,255,255,.07);
+}
+.cell-name { font-size: .58rem; line-height: 1.25; color: var(--text-secondary); text-align: center; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.eq-dot { position: absolute; top: 4px; left: 4px; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 4px var(--green); }
+
+/* rail */
+.rail { flex-shrink: 0; width: 42px; display: flex; flex-direction: column; align-items: stretch; gap: .15rem; padding-top: .4rem; border-left: 1px solid var(--border); background: var(--surface-3); }
+.rail-btn { position: relative; height: 38px; display: grid; place-items: center; background: none; border: none; color: var(--text-secondary); cursor: pointer; }
+.rail-btn svg { width: 15px; height: 15px; }
+.rail-btn.active { color: var(--accent); background: var(--accent-t12); }
+.rail-btn.active::before { content: ""; position: absolute; right: 0; top: 6px; bottom: 6px; width: 2px; border-radius: 1px; background: var(--accent); }
+
+/* ── Panel shell ───────────────────────────────────────────── */
+.panel { flex-shrink: 0; width: 390px; border-left: 1px solid var(--border); background: var(--surface-1); display: flex; flex-direction: column; }
+.p-head {
+    display: flex; align-items: center; gap: .5rem; padding: .55rem .8rem .5rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--accent-t8), transparent);
+}
+.p-head svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+.p-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.p-reset {
+    margin-left: auto; background: none; border: none; cursor: pointer;
+    font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--text-secondary); opacity: .35; pointer-events: none; transition: opacity .2s, color .15s;
+}
+.p-reset.on { opacity: 1; color: var(--accent); pointer-events: auto; }
+.p-reset.on:hover { color: var(--text); }
+.p-close { background: none; border: none; color: var(--text-secondary); font-size: 1.05rem; cursor: pointer; line-height: 1; padding: 0 .1rem; }
+.p-close:hover { color: var(--text); }
+
+/* provenance legend */
+.p-legend { display: flex; gap: .9rem; padding: .4rem .8rem; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.p-legend span { display: inline-flex; align-items: center; gap: .3rem; font-family: var(--mono); font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); }
+.p-legend i { width: 6px; height: 6px; border-radius: 50%; }
+.i-save { background: var(--green); box-shadow: 0 0 4px var(--green); }
+.i-mod { background: var(--accent); box-shadow: 0 0 4px var(--accent); }
+
+.p-body { flex: 1; overflow-y: auto; min-height: 0; }
+
+/* section headers */
+.sect { display: flex; align-items: center; gap: .5rem; margin: .7rem .8rem .4rem; font-size: .58rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.sect::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.sect small { font-family: var(--mono); color: var(--text-secondary); font-weight: 400; letter-spacing: 0; }
+
+/* ── generic slot states ───────────────────────────────────── */
+.slot { position: relative; transition: border-color .15s, background .15s, box-shadow .15s, opacity .15s; }
+.slot .prov { position: absolute; top: 4px; left: 4px; width: 6px; height: 6px; border-radius: 50%; display: none; }
+.slot.filled.saved .prov { display: block; background: var(--green); box-shadow: 0 0 4px var(--green); }
+.slot.filled.modified .prov { display: block; background: var(--accent); box-shadow: 0 0 4px var(--accent); }
+/* drag eligibility */
+.app.dragging .slot.eligible { border-color: var(--accent-dim); border-style: dashed; box-shadow: inset 0 0 14px var(--accent-t8); animation: slotPulse 1.1s ease-in-out infinite; }
+.app.dragging .slot:not(.eligible) { opacity: .35; }
+.slot.over { border-color: var(--accent) !important; border-style: solid !important; background: var(--accent-t12) !important; box-shadow: 0 0 0 1px var(--accent), inset 0 0 18px var(--accent-t12) !important; }
+@keyframes slotPulse { 50% { box-shadow: inset 0 0 14px var(--accent-t20); } }
+
+/* ════ VARIANT A: manifest list ══════════════════════════════ */
+.row-slot {
+    display: flex; align-items: center; gap: .55rem;
+    margin: 0 .8rem .35rem; padding: .4rem .55rem;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px;
+    min-height: 46px; cursor: pointer;
+}
+.row-slot .rs-swatch {
+    width: 40px; height: 30px; border-radius: 3px; flex-shrink: 0;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: .56rem; font-weight: 600; color: rgba(255,255,255,.75);
+    background: linear-gradient(135deg, rgba(255,255,255,.10), transparent 55%), var(--sw, #222);
+    border: 1px solid rgba(255,255,255,.07);
+}
+.row-slot.empty .rs-swatch { background: transparent; border: 1px dashed var(--border); color: var(--text-secondary); }
+.rs-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .12rem; }
+.rs-tag { font-family: var(--mono); font-size: .54rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.rs-name { font-size: .72rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row-slot.empty .rs-name { color: var(--text-secondary); font-weight: 400; }
+.rs-meta { font-family: var(--mono); font-size: .6rem; color: var(--text-secondary); flex-shrink: 0; }
+.rs-cond { width: 34px; height: 3px; border-radius: 1px; background: rgba(255,255,255,.08); overflow: hidden; flex-shrink: 0; }
+.rs-cond i { display: block; height: 100%; background: var(--green); }
+.rs-x { background: none; border: none; color: var(--text-secondary); font-size: .9rem; cursor: pointer; padding: 0 .15rem; line-height: 1; opacity: 0; transition: opacity .15s; }
+.row-slot:hover .rs-x { opacity: 1; }
+
+/* belt strip */
+.belt-strip { display: flex; gap: .35rem; margin: 0 .8rem .4rem; }
+.belt-slot {
+    flex: 1; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 4px;
+    background: var(--surface-2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem;
+    font-size: .54rem; color: var(--text-secondary); text-align: center; padding: .15rem; cursor: pointer;
+}
+.belt-slot.filled { color: var(--text); border-color: rgba(126,166,200,.35); }
+.belt-slot .bs-mono { font-family: var(--mono); font-size: .62rem; font-weight: 600; color: var(--blue); }
+.belt-slot.locked { opacity: .3; border-style: dashed; cursor: default; }
+
+/* stat tiles (BuildPlanner DNA) */
+.tile-stat {
+    display: flex; align-items: center; gap: .5rem;
+    margin: 0 .8rem .25rem; padding: .34rem .55rem;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px;
+}
+.tile-stat .ts-label { flex: 1; font-size: .66rem; color: var(--text-secondary); }
+.tile-stat .ts-value { font-family: var(--mono); font-size: .7rem; color: var(--accent); }
+.tile-bar { flex: 0 0 84px; height: 3px; border-radius: 1px; background: rgba(255,255,255,.08); overflow: hidden; }
+.tile-bar i { display: block; height: 100%; background: var(--accent); }
+
+/* ════ VARIANT B: paper doll ═════════════════════════════════ */
+.doll {
+    position: relative; display: grid;
+    grid-template-columns: 1fr 1fr 1fr; gap: .45rem;
+    padding: .75rem .8rem .5rem;
+}
+.doll-sil {
+    position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; opacity: .14;
+}
+.doll-col { display: flex; flex-direction: column; gap: .45rem; }
+.sq-slot {
+    border: 1px solid var(--border); border-radius: 5px; background: var(--surface-2);
+    min-height: 72px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .25rem;
+    padding: .35rem .25rem; cursor: pointer; text-align: center;
+}
+.sq-tag { font-family: var(--mono); font-size: .52rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.sq-swatch {
+    width: 40px; height: 28px; border-radius: 3px;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: .56rem; font-weight: 600; color: rgba(255,255,255,.75);
+    background: linear-gradient(135deg, rgba(255,255,255,.10), transparent 55%), var(--sw, #222);
+    border: 1px solid rgba(255,255,255,.07);
+}
+.sq-slot.empty .sq-swatch { background: transparent; border: 1px dashed var(--border); }
+.sq-name { font-size: .58rem; line-height: 1.2; max-width: 100%; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.sq-slot.empty .sq-name { color: var(--text-secondary); }
+
+/* sticky stat dock */
+.stat-dock {
+    flex-shrink: 0; border-top: 1px solid var(--accent-t20);
+    background: linear-gradient(180deg, var(--surface-3), #101010);
+    padding: .55rem .8rem .65rem;
+}
+.dock-row1 { display: flex; align-items: baseline; gap: 1.1rem; margin-bottom: .5rem; }
+.dock-stat { display: flex; flex-direction: column; gap: .1rem; }
+.dock-stat b { font-family: var(--mono); font-size: .82rem; color: var(--accent); font-weight: 600; }
+.dock-stat span { font-size: .54rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
+.dock-weight { flex: 1; }
+.dock-gauge { height: 4px; border-radius: 2px; background: rgba(255,255,255,.08); overflow: hidden; margin-top: .25rem; }
+.dock-gauge i { display: block; height: 100%; width: 38%; background: linear-gradient(90deg, var(--green), var(--accent)); }
+.dock-prots { display: flex; gap: .45rem; }
+.dock-prot { flex: 1; display: flex; flex-direction: column; gap: .2rem; }
+.dock-prot span { font-family: var(--mono); font-size: .52rem; letter-spacing: .08em; color: var(--text-secondary); text-align: center; }
+.dock-prot .pbar { height: 3px; border-radius: 1px; background: rgba(255,255,255,.08); overflow: hidden; }
+.dock-prot .pbar i { display: block; height: 100%; background: var(--accent); }
+.dock-expand { margin-top: .45rem; text-align: center; }
+.dock-expand a { font-family: var(--mono); font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dim); text-decoration: none; }
+.dock-expand a:hover { color: var(--accent); }
+
+/* ════ VARIANT C: sub-tabs ═══════════════════════════════════ */
+.sub-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.sub-tab {
+    flex: 1; background: none; border: none; border-bottom: 2px solid transparent;
+    color: var(--text-secondary); font-family: var(--font-display);
+    font-size: .62rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    padding: .5rem 0 .42rem; cursor: pointer;
+}
+.sub-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-page { display: none; }
+.tab-page.active { display: block; }
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; padding: .65rem .8rem; }
+.card-grid .sq-slot { min-height: 84px; }
+.card-grid .span2 { grid-column: span 2; }
+.cstat { margin: 0 .8rem .45rem; }
+.cstat-row { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .18rem; }
+.cstat-row span { flex: 1; font-size: .68rem; color: var(--text-secondary); }
+.cstat-row b { font-family: var(--mono); font-size: .7rem; color: var(--accent); font-weight: 600; }
+.cstat .cbar { height: 4px; border-radius: 2px; background: rgba(255,255,255,.08); overflow: hidden; }
+.cstat .cbar i { display: block; height: 100%; background: var(--accent); }
+
+/* verdict + reco */
+.verdict { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; padding: 0; margin: .7rem 0 0; }
+.verdict li { font-size: .68rem; padding: .22rem .55rem; border-radius: 3px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--surface-2); }
+.verdict .pro { border-color: var(--green-t30); color: var(--green); background: var(--green-t15); }
+.verdict .con { border-color: rgba(184,92,92,.35); color: var(--red); background: rgba(184,92,92,.10); }
+.reco {
+    margin-top: 3rem; border: 1px solid var(--accent-t35); border-radius: 8px;
+    background: linear-gradient(180deg, var(--accent-t8), transparent 60%), var(--surface-1);
+    padding: 1.1rem 1.3rem 1.2rem;
+}
+.reco h2 { margin: 0 0 .5rem; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.reco p { margin: .35rem 0; font-size: .8rem; line-height: 1.6; max-width: 80ch; }
+.reco p b { color: var(--accent); }
+.reco small { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Mockup &mdash; Loadout inspector panel &middot; 3 variants &middot; drag items from the grid into the panel</div>
+
+<div class="page">
+    <p class="intro">
+        New <b>Loadout</b> entry in the inspector rail. It opens pre-filled with what the save says is
+        equipped (<span class="dot" style="background:var(--green)"></span> green dot), lets you drag items from the
+        inventory grid into slots to experiment (<span class="dot" style="background:var(--accent)"></span> gold dot =
+        changed from save, with a <b>Reset to save</b> escape hatch), and shows the combined stats.
+        While dragging, compatible slots glow and everything else dims. All three variants share that interaction
+        model — they differ in how slots and stats divide the 390px panel.
+    </p>
+
+    <!-- ════════════ VARIANT A ════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">A</span>
+            <div>
+                <h2>Manifest list &middot; everything in one scroll</h2>
+                <p class="opt-sub">BuildPlanner's slot-group DNA compressed to one column: Gear → Weapons → Belt → Statistics,
+                top to bottom. Dense, familiar, and stats use the same tile rows as the Build Planner.</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>VARIANT A</em></div>
+            <div class="app" data-app>
+                <div class="content">
+                    <div class="bar"><span class="bar-title">Field Manifest</span><span class="bar-stats"><b>247</b> items</span><span class="bar-hint">⇠ drag an item into the panel</span></div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <div class="rail">
+                    <button class="rail-btn active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M8 21v-5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5"/></svg></button>
+                    <button class="rail-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></button>
+                    <button class="rail-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></button>
+                </div>
+                <aside class="panel">
+                    <div class="p-head">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>
+                        <span class="p-title">Loadout</span>
+                        <button class="p-reset" data-reset>↺ Reset to save</button>
+                        <button class="p-close">&times;</button>
+                    </div>
+                    <div class="p-legend">
+                        <span><i class="i-save"></i> equipped in save</span>
+                        <span><i class="i-mod"></i> changed here</span>
+                    </div>
+                    <div class="p-body">
+                        <div class="sect">Gear</div>
+                        <div class="row-slot slot empty" data-accept="helmet">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch>+</span>
+                            <div class="rs-main"><span class="rs-tag">Helmet</span><span class="rs-name" data-item>Drop or click to equip</span></div>
+                        </div>
+                        <div class="row-slot slot filled saved" data-accept="outfit">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch style="--sw:#3a4a3a">SU</span>
+                            <div class="rs-main"><span class="rs-tag">Outfit</span><span class="rs-name" data-item>Sunrise Suit</span></div>
+                            <span class="rs-meta" data-meta>5.0 kg</span>
+                            <span class="rs-cond"><i style="width:74%"></i></span>
+                            <button class="rs-x">&times;</button>
+                        </div>
+                        <div class="row-slot slot empty" data-accept="backpack">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch>+</span>
+                            <div class="rs-main"><span class="rs-tag">Backpack</span><span class="rs-name" data-item>Drop or click to equip</span></div>
+                        </div>
+
+                        <div class="sect">Weapons</div>
+                        <div class="row-slot slot filled saved" data-accept="long">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch style="--sw:#5a4a32">AK</span>
+                            <div class="rs-main"><span class="rs-tag">Primary</span><span class="rs-name" data-item>AKM</span></div>
+                            <span class="rs-meta" data-meta>3.6 kg</span>
+                            <span class="rs-cond"><i style="width:58%"></i></span>
+                            <button class="rs-x">&times;</button>
+                        </div>
+                        <div class="row-slot slot empty" data-accept="long">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch>+</span>
+                            <div class="rs-main"><span class="rs-tag">Secondary</span><span class="rs-name" data-item>Drop or click to equip</span></div>
+                        </div>
+                        <div class="row-slot slot filled saved" data-accept="pistol">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch style="--sw:#4a4a52">PM</span>
+                            <div class="rs-main"><span class="rs-tag">Sidearm</span><span class="rs-name" data-item>PMm</span></div>
+                            <span class="rs-meta" data-meta>0.9 kg</span>
+                            <span class="rs-cond"><i style="width:91%"></i></span>
+                            <button class="rs-x">&times;</button>
+                        </div>
+                        <div class="row-slot slot empty" data-accept="grenade">
+                            <span class="prov"></span>
+                            <span class="rs-swatch" data-swatch>+</span>
+                            <div class="rs-main"><span class="rs-tag">Grenade</span><span class="rs-name" data-item>Drop or click to equip</span></div>
+                        </div>
+
+                        <div class="sect">Belt <small>1/5</small></div>
+                        <div class="belt-strip">
+                            <div class="belt-slot slot filled saved" data-accept="belt"><span class="prov"></span><span class="bs-mono" data-item>Soul</span></div>
+                            <div class="belt-slot slot empty" data-accept="belt"><span class="prov"></span><span data-item>+</span></div>
+                            <div class="belt-slot slot empty" data-accept="belt"><span class="prov"></span><span data-item>+</span></div>
+                            <div class="belt-slot locked">✕</div>
+                            <div class="belt-slot locked">✕</div>
+                        </div>
+
+                        <div class="sect">Statistics</div>
+                        <div class="tile-stat"><span class="ts-label">Weight</span><span class="tile-bar"><i style="width:38%"></i></span><span class="ts-value">18.4 / 52 kg</span></div>
+                        <div class="tile-stat"><span class="ts-label">Armor Points</span><span class="ts-value">4.2</span></div>
+                        <div class="tile-stat"><span class="ts-label">Ballistic</span><span class="tile-bar"><i style="width:32%"></i></span><span class="ts-value">32%</span></div>
+                        <div class="tile-stat"><span class="ts-label">Burn</span><span class="tile-bar"><i style="width:18%"></i></span><span class="ts-value">18%</span></div>
+                        <div class="tile-stat"><span class="ts-label">Chemical</span><span class="tile-bar"><i style="width:22%"></i></span><span class="ts-value">22%</span></div>
+                        <div class="tile-stat"><span class="ts-label">Radiation</span><span class="tile-bar"><i style="width:40%"></i></span><span class="ts-value">40%</span></div>
+                        <div class="tile-stat" style="margin-bottom:.8rem"><span class="ts-label">Psi</span><span class="tile-bar"><i style="width:12%"></i></span><span class="ts-value">12%</span></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ everything visible in one scroll — no mode switching</li>
+            <li class="pro">✓ reuses Build Planner slot-row + stat-tile patterns directly</li>
+            <li class="con">✗ stats live below the fold once slots fill up</li>
+            <li class="con">✗ least visually distinctive</li>
+        </ul>
+    </section>
+
+    <!-- ════════════ VARIANT B ════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">B</span>
+            <div>
+                <h2>Paper doll &middot; sticky stat dock</h2>
+                <p class="opt-sub">Slots arranged around a faint stalker silhouette — the in-game inventory mental model.
+                Weapons left, body gear centre, utility right, belt underneath. Stats live in a <b>pinned dock</b> at the
+                bottom: weight gauge, armor, and protection micro-bars always visible while you drag — you see numbers
+                move without scrolling.</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>VARIANT B</em></div>
+            <div class="app" data-app>
+                <div class="content">
+                    <div class="bar"><span class="bar-title">Field Manifest</span><span class="bar-stats"><b>247</b> items</span><span class="bar-hint">⇠ drag an item into the panel</span></div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <div class="rail">
+                    <button class="rail-btn active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M8 21v-5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5"/></svg></button>
+                    <button class="rail-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></button>
+                    <button class="rail-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></button>
+                </div>
+                <aside class="panel">
+                    <div class="p-head">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>
+                        <span class="p-title">Loadout</span>
+                        <button class="p-reset" data-reset>↺ Reset to save</button>
+                        <button class="p-close">&times;</button>
+                    </div>
+                    <div class="p-legend">
+                        <span><i class="i-save"></i> equipped in save</span>
+                        <span><i class="i-mod"></i> changed here</span>
+                    </div>
+                    <div class="p-body">
+                        <div class="doll">
+                            <div class="doll-sil">
+                                <svg width="120" height="280" viewBox="0 0 120 280" fill="none" stroke="#c8a84e" stroke-width="1.5" stroke-dasharray="4 4">
+                                    <circle cx="60" cy="30" r="18"/>
+                                    <path d="M40 56 h40 l8 30 v60 l-10 8 v90 h-12 v-80 h-12 v80 H42 v-90 l-10-8 v-60 z"/>
+                                    <path d="M32 86 l-14 50 M88 86 l14 50"/>
+                                </svg>
+                            </div>
+                            <div class="doll-col">
+                                <div class="sq-slot slot filled saved" data-accept="long"><span class="prov"></span><span class="sq-tag">Primary</span><span class="sq-swatch" data-swatch style="--sw:#5a4a32">AK</span><span class="sq-name" data-item>AKM</span></div>
+                                <div class="sq-slot slot empty" data-accept="long"><span class="prov"></span><span class="sq-tag">Secondary</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                            </div>
+                            <div class="doll-col">
+                                <div class="sq-slot slot empty" data-accept="helmet"><span class="prov"></span><span class="sq-tag">Helmet</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                                <div class="sq-slot slot filled saved" data-accept="outfit"><span class="prov"></span><span class="sq-tag">Outfit</span><span class="sq-swatch" data-swatch style="--sw:#3a4a3a">SU</span><span class="sq-name" data-item>Sunrise Suit</span></div>
+                                <div class="sq-slot slot empty" data-accept="backpack"><span class="prov"></span><span class="sq-tag">Backpack</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                            </div>
+                            <div class="doll-col">
+                                <div class="sq-slot slot filled saved" data-accept="pistol"><span class="prov"></span><span class="sq-tag">Sidearm</span><span class="sq-swatch" data-swatch style="--sw:#4a4a52">PM</span><span class="sq-name" data-item>PMm</span></div>
+                                <div class="sq-slot slot empty" data-accept="grenade"><span class="prov"></span><span class="sq-tag">Grenade</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                            </div>
+                        </div>
+                        <div class="sect">Belt <small>1/5</small></div>
+                        <div class="belt-strip">
+                            <div class="belt-slot slot filled saved" data-accept="belt"><span class="prov"></span><span class="bs-mono" data-item>Soul</span></div>
+                            <div class="belt-slot slot empty" data-accept="belt"><span class="prov"></span><span data-item>+</span></div>
+                            <div class="belt-slot slot empty" data-accept="belt"><span class="prov"></span><span data-item>+</span></div>
+                            <div class="belt-slot locked">✕</div>
+                            <div class="belt-slot locked">✕</div>
+                        </div>
+                    </div>
+                    <div class="stat-dock">
+                        <div class="dock-row1">
+                            <div class="dock-stat dock-weight">
+                                <b>18.4 / 52 kg</b><span>Weight</span>
+                                <div class="dock-gauge"><i></i></div>
+                            </div>
+                            <div class="dock-stat"><b>4.2</b><span>Armor</span></div>
+                            <div class="dock-stat"><b>+12 kg</b><span>Carry</span></div>
+                        </div>
+                        <div class="dock-prots">
+                            <div class="dock-prot"><span>BAL</span><div class="pbar"><i style="width:32%"></i></div></div>
+                            <div class="dock-prot"><span>BRN</span><div class="pbar"><i style="width:18%"></i></div></div>
+                            <div class="dock-prot"><span>CHM</span><div class="pbar"><i style="width:22%"></i></div></div>
+                            <div class="dock-prot"><span>RAD</span><div class="pbar"><i style="width:40%"></i></div></div>
+                            <div class="dock-prot"><span>PSI</span><div class="pbar"><i style="width:12%"></i></div></div>
+                        </div>
+                        <div class="dock-expand"><a href="#" onclick="return false">Full breakdown ▾</a></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ matches the in-game inventory mental model — instantly readable</li>
+            <li class="pro">✓ stats always visible while dragging (pinned dock)</li>
+            <li class="pro">✓ most distinctive; silhouette gives it real character</li>
+            <li class="con">✗ square slots truncate long item names</li>
+            <li class="con">✗ full stat breakdown needs a second level (expand)</li>
+        </ul>
+    </section>
+
+    <!-- ════════════ VARIANT C ════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">C</span>
+            <div>
+                <h2>Sub-tabs &middot; Slots / Stats</h2>
+                <p class="opt-sub">Two sub-views inside the panel. <b>Slots</b> gets the full height for a roomy card grid;
+                <b>Stats</b> gets the full height for the complete BuildPlanner-style breakdown with bars. Maximum room
+                for each — but you can't see stats react while dragging.</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>VARIANT C</em></div>
+            <div class="app" data-app>
+                <div class="content">
+                    <div class="bar"><span class="bar-title">Field Manifest</span><span class="bar-stats"><b>247</b> items</span><span class="bar-hint">⇠ drag an item into the panel</span></div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <div class="rail">
+                    <button class="rail-btn active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M8 21v-5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5"/></svg></button>
+                    <button class="rail-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></button>
+                    <button class="rail-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></button>
+                </div>
+                <aside class="panel">
+                    <div class="p-head">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>
+                        <span class="p-title">Loadout</span>
+                        <button class="p-reset" data-reset>↺ Reset to save</button>
+                        <button class="p-close">&times;</button>
+                    </div>
+                    <div class="sub-tabs" data-tabs>
+                        <button class="sub-tab active" data-tabbtn="slots">Slots</button>
+                        <button class="sub-tab" data-tabbtn="stats">Stats</button>
+                    </div>
+                    <div class="p-body">
+                        <div class="tab-page active" data-tabpage="slots">
+                            <div class="p-legend" style="border-top:none">
+                                <span><i class="i-save"></i> equipped in save</span>
+                                <span><i class="i-mod"></i> changed here</span>
+                            </div>
+                            <div class="card-grid">
+                                <div class="sq-slot slot empty" data-accept="helmet"><span class="prov"></span><span class="sq-tag">Helmet</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                                <div class="sq-slot slot filled saved" data-accept="outfit"><span class="prov"></span><span class="sq-tag">Outfit</span><span class="sq-swatch" data-swatch style="--sw:#3a4a3a">SU</span><span class="sq-name" data-item>Sunrise Suit</span></div>
+                                <div class="sq-slot slot filled saved" data-accept="long"><span class="prov"></span><span class="sq-tag">Primary</span><span class="sq-swatch" data-swatch style="--sw:#5a4a32">AK</span><span class="sq-name" data-item>AKM</span></div>
+                                <div class="sq-slot slot empty" data-accept="long"><span class="prov"></span><span class="sq-tag">Secondary</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                                <div class="sq-slot slot filled saved" data-accept="pistol"><span class="prov"></span><span class="sq-tag">Sidearm</span><span class="sq-swatch" data-swatch style="--sw:#4a4a52">PM</span><span class="sq-name" data-item>PMm</span></div>
+                                <div class="sq-slot slot empty" data-accept="grenade"><span class="prov"></span><span class="sq-tag">Grenade</span><span class="sq-swatch" data-swatch>+</span><span class="sq-name" data-item>Empty</span></div>
+                                <div class="sq-slot slot empty span2" data-accept="backpack" style="min-height:56px"><span class="prov"></span><span class="sq-tag">Backpack</span><span class="sq-name" data-item>Empty</span></div>
+                            </div>
+                            <div class="sect">Belt <small>1/5</small></div>
+                            <div class="belt-strip" style="margin-bottom:.8rem">
+                                <div class="belt-slot slot filled saved" data-accept="belt"><span class="prov"></span><span class="bs-mono" data-item>Soul</span></div>
+                                <div class="belt-slot slot empty" data-accept="belt"><span class="prov"></span><span data-item>+</span></div>
+                                <div class="belt-slot slot empty" data-accept="belt"><span class="prov"></span><span data-item>+</span></div>
+                                <div class="belt-slot locked">✕</div>
+                                <div class="belt-slot locked">✕</div>
+                            </div>
+                        </div>
+                        <div class="tab-page" data-tabpage="stats">
+                            <div class="sect">Carry</div>
+                            <div class="cstat"><div class="cstat-row"><span>Weight</span><b>18.4 / 52 kg</b></div><div class="cbar"><i style="width:38%"></i></div></div>
+                            <div class="cstat"><div class="cstat-row"><span>Carry bonus</span><b>+12 kg</b></div></div>
+                            <div class="sect">Protection</div>
+                            <div class="cstat"><div class="cstat-row"><span>Armor Points</span><b>4.2</b></div></div>
+                            <div class="cstat"><div class="cstat-row"><span>Ballistic</span><b>32%</b></div><div class="cbar"><i style="width:32%"></i></div></div>
+                            <div class="cstat"><div class="cstat-row"><span>Burn</span><b>18%</b></div><div class="cbar"><i style="width:18%"></i></div></div>
+                            <div class="cstat"><div class="cstat-row"><span>Chemical</span><b>22%</b></div><div class="cbar"><i style="width:22%"></i></div></div>
+                            <div class="cstat"><div class="cstat-row"><span>Radiation</span><b>40%</b></div><div class="cbar"><i style="width:40%"></i></div></div>
+                            <div class="cstat" style="margin-bottom:.9rem"><div class="cstat-row"><span>Psi</span><b>12%</b></div><div class="cbar"><i style="width:12%"></i></div></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ most room for both slots and full stat breakdowns</li>
+            <li class="con">✗ stats invisible while dragging — the core feedback loop breaks</li>
+            <li class="con">✗ tabs-inside-a-panel-inside-a-rail = three levels of navigation</li>
+        </ul>
+    </section>
+
+    <!-- ════════════ RECOMMENDATION ════════════ -->
+    <section class="reco">
+        <h2>Recommendation</h2>
+        <p><b>Variant B</b>. The whole point of dragging gear into a loadout is watching the numbers respond —
+        the pinned stat dock keeps weight/armor/protections on screen during every drag, which neither A
+        (stats below the fold) nor C (stats on another tab) can do. The paper-doll arrangement also matches
+        the game's own inventory screen, so slot meaning is instant. The "Full breakdown ▾" expander can reuse
+        BuildPlanner's tile + breakdown rows for the deep dive.</p>
+        <p>If you'd rather ship something simpler first, <b>A</b> is the low-risk version of the same model and
+        can evolve into B later (the slot/drag plumbing is identical — only the layout differs).</p>
+        <p><small>Shared mechanics in all variants: panel opens pre-filled from the save's equipped flags (green dots);
+        drops mark slots as modified (gold dots) and arm "Reset to save"; while dragging, only compatible slots stay
+        lit; clicking an empty slot falls back to a picker (same as BuildPlanner) so the feature works without
+        drag-and-drop on touch devices.</small></p>
+    </section>
+</div>
+
+<script>
+// ── Inventory items: name, type (slot acceptance), color, monogram ──
+const ITEMS = [
+    ["Sphere-12",        "helmet",  "#36404e", "S12"],
+    ["SEVA Suit",        "outfit",  "#3a4a3a", "SV"],
+    ["Mountain Backpack","backpack","#5e4e3e", "MB"],
+    ["AKM",              "long",    "#5a4a32", "AK"],
+    ["TOZ-34",           "long",    "#4a4236", "TZ"],
+    ["PMm",              "pistol",  "#4a4a52", "PM"],
+    ["Fort-12",          "pistol",  "#3e4650", "F12"],
+    ["F1 Grenade",       "grenade", "#3a3a2a", "F1"],
+    ["RGD-5",            "grenade", "#3e4a36", "RG"],
+    ["Soul",             "belt",    "#324e5e", "SL"],
+    ["Thorn",            "belt",    "#4e3636", "TH"],
+    ["Medkit",           "",        "#7a3434", "MK"],
+    ["Bandage",          "",        "#8a6a4a", "BD"],
+    ["Canned Meat",      "",        "#5e4e3e", "CM"],
+    ["9×39 SP-5",        "",        "#6a5a2a", "9·39"],
+    ["Vodka",            "",        "#4a5a6a", "VK"],
+];
+// AKM / Sunrise / PMm / Soul are flagged equipped (green dot) to mirror the save
+const EQUIPPED = new Set(["AKM", "PMm", "Soul"]);
+
+document.querySelectorAll("[data-grid]").forEach(grid => {
+    grid.innerHTML = ITEMS.map(([n, type, c, mono], i) => `
+        <div class="cell" draggable="true" data-i="${i}">
+            ${EQUIPPED.has(n) ? '<span class="eq-dot"></span>' : ''}
+            <span class="swatch" style="--sw:${c}">${mono}</span>
+            <span class="cell-name">${n}</span>
+        </div>`).join("");
+});
+
+// ── Drag & drop wiring (per demo frame) ─────────────────────
+let dragItem = null;
+
+document.querySelectorAll("[data-app]").forEach(app => {
+    app.querySelectorAll(".cell").forEach(cell => {
+        cell.addEventListener("dragstart", e => {
+            const [name, type, color, mono] = ITEMS[+cell.dataset.i];
+            dragItem = { name, type, color, mono };
+            cell.classList.add("drag-src");
+            app.classList.add("dragging");
+            // light up compatible slots
+            app.querySelectorAll(".slot[data-accept]").forEach(s => {
+                s.classList.toggle("eligible", s.dataset.accept === type && !!type);
+            });
+            e.dataTransfer.effectAllowed = "copy";
+            e.dataTransfer.setData("text/plain", name);
+        });
+        cell.addEventListener("dragend", () => {
+            dragItem = null;
+            cell.classList.remove("drag-src");
+            app.classList.remove("dragging");
+            app.querySelectorAll(".slot").forEach(s => s.classList.remove("eligible", "over"));
+        });
+    });
+
+    app.querySelectorAll(".slot[data-accept]").forEach(slot => {
+        slot.addEventListener("dragover", e => {
+            if (dragItem && slot.dataset.accept === dragItem.type) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = "copy";
+                slot.classList.add("over");
+            }
+        });
+        slot.addEventListener("dragleave", () => slot.classList.remove("over"));
+        slot.addEventListener("drop", e => {
+            if (!dragItem || slot.dataset.accept !== dragItem.type) return;
+            e.preventDefault();
+            slot.classList.remove("over", "empty", "saved");
+            slot.classList.add("filled", "modified");
+            slot.querySelectorAll("[data-item]").forEach(el => el.textContent = dragItem.name);
+            const sw = slot.querySelector("[data-swatch]");
+            if (sw) { sw.style.setProperty("--sw", dragItem.color); sw.textContent = dragItem.mono; }
+            const meta = slot.querySelector("[data-meta]");
+            if (meta) meta.textContent = "— kg";
+            const reset = app.querySelector("[data-reset]");
+            if (reset) reset.classList.add("on");
+        });
+    });
+
+    // sub-tabs (variant C)
+    app.querySelectorAll("[data-tabbtn]").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const key = btn.dataset.tabbtn;
+            app.querySelectorAll("[data-tabbtn]").forEach(b => b.classList.toggle("active", b === btn));
+            app.querySelectorAll("[data-tabpage]").forEach(p => p.classList.toggle("active", p.dataset.tabpage === key));
+        });
+    });
+});
+</script>
+</body>
+</html>

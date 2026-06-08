@@ -1019,6 +1019,11 @@ button.header-link {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
 }
+/* Player inventory manages its own right edge — the inspector rail
+   must sit flush against the viewport */
+.layout.sidebar-hidden .content.content-inventory {
+    padding-right: 0;
+}
 .hamburger-btn.show-desktop {
     display: flex;
 }

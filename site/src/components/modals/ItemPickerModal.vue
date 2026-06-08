@@ -24,6 +24,9 @@
                 </div>
                 <div v-if="displayItems.length === 0" class="build-picker-empty">{{ emptyText }}</div>
             </div>
+            <div v-if="$slots.footer" class="build-picker-footer">
+                <slot name="footer"></slot>
+            </div>
         </div>
     </div>
     </Transition>
@@ -104,3 +107,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.build-picker-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+}
+</style>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP — Inventory side panels (4 patterns)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ── Palette (mirrors site/css/color-palette.css) ───────────── */
+:root {
+    --bg:            #0d0d0d;
+    --surface-1:     #0f0f0f;
+    --surface-2:     #121212;
+    --surface-3:     #141414;
+    --card:          #1a1a1a;
+    --border:        #2a2a2a;
+    --text:          #d4d4d4;
+    --text-secondary:#888;
+    --accent:        #c8a84e;
+    --accent-dim:    #a08030;
+    --accent-t5:  rgba(200,168,78,.05);
+    --accent-t8:  rgba(200,168,78,.08);
+    --accent-t12: rgba(200,168,78,.12);
+    --accent-t20: rgba(200,168,78,.20);
+    --accent-t35: rgba(200,168,78,.35);
+    --green:      #6ec87a;
+    --green-t15:  rgba(110,200,122,.15);
+    --green-t30:  rgba(92,184,92,.30);
+    --red:        #c87e7e;
+    --font-display: "Chakra Petch", sans-serif;
+    --mono: "JetBrains Mono", monospace;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 14px;
+    min-height: 100vh;
+}
+
+.mock-banner {
+    background: repeating-linear-gradient(-45deg, var(--accent-t12) 0 12px, transparent 12px 24px);
+    border-bottom: 1px solid var(--border);
+    padding: .4rem 1rem;
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+}
+
+.page { max-width: 1080px; margin: 0 auto; padding: 1.4rem .9rem 4rem; }
+
+.intro { color: var(--text-secondary); font-size: .82rem; line-height: 1.55; max-width: 64ch; }
+.intro b { color: var(--text); }
+
+/* ── Option sections ────────────────────────────────────────── */
+.opt { margin-top: 2.6rem; }
+
+.opt-head { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: .8rem; }
+
+.opt-num {
+    flex-shrink: 0;
+    width: 2rem; height: 2rem;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-weight: 600; font-size: .95rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-t35);
+    background: var(--accent-t8);
+    border-radius: 4px;
+}
+
+.opt-head h2 {
+    margin: 0;
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+}
+.opt-sub { margin: .2rem 0 0; color: var(--text-secondary); font-size: .78rem; max-width: 70ch; line-height: 1.5; }
+.opt-sub b { color: var(--text); font-weight: 600; }
+
+/* ── Demo frame: a miniature of the inventory view ──────────── */
+.frame {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-1);
+    overflow: hidden;
+    box-shadow: 0 14px 34px -18px #000;
+}
+
+.chrome {
+    display: flex; align-items: center; gap: .45rem;
+    padding: .35rem .6rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-3);
+}
+.chrome i { width: 9px; height: 9px; border-radius: 50%; background: #333; }
+.chrome span { font-family: var(--mono); font-size: .62rem; color: var(--text-secondary); margin-left: .3rem; }
+.chrome em { font-style: normal; margin-left: auto; font-family: var(--mono); font-size: .6rem; color: var(--accent-dim); letter-spacing: .12em; }
+
+.app { display: flex; height: 430px; position: relative; overflow: hidden; background: var(--bg); }
+
+/* content column */
+.content { flex: 1; min-width: 0; display: flex; flex-direction: column; transition: margin .25s ease; }
+
+.bar {
+    display: flex; align-items: center; gap: .55rem;
+    padding: .55rem .8rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--surface-3), #101010);
+}
+.bar-title { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.bar-stats { font-family: var(--mono); font-size: .64rem; color: var(--text-secondary); }
+.bar-stats b { color: var(--accent); font-weight: 600; }
+.bar-spacer { flex: 1; }
+
+.tbtn {
+    position: relative;
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); border-radius: 4px;
+    height: 1.7rem; padding: 0 .65rem;
+    font-size: .72rem; font-family: inherit; cursor: pointer;
+    transition: color .15s, border-color .15s, background .15s;
+}
+.tbtn:hover { color: var(--accent); border-color: var(--accent-dim); }
+.tbtn svg { width: 13px; height: 13px; }
+.badge {
+    font-family: var(--mono); font-size: .62rem; font-weight: 600; font-style: normal;
+    color: var(--green); background: var(--green-t15);
+    border: 1px solid var(--green-t30); border-radius: 3px;
+    padding: 0 4px; line-height: 1rem;
+}
+/* active state — driven by data-open on .app */
+.app[data-open="wb"] .tbtn[data-panel="wb"],
+.app[data-open="st"] .tbtn[data-panel="st"] {
+    color: var(--accent); background: var(--accent-t12); border-color: var(--accent-t35);
+}
+
+/* item grid */
+.grid {
+    flex: 1; overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+    gap: .4rem; padding: .65rem .8rem;
+    align-content: start;
+}
+.cell {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: .28rem;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 4px; padding: .5rem .25rem .4rem;
+    transition: border-color .15s;
+}
+.cell:hover { border-color: var(--accent-dim); }
+.swatch {
+    width: 38px; height: 30px; border-radius: 3px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.10), transparent 55%),
+        var(--sw, #3a3a3a);
+    border: 1px solid rgba(255,255,255,.07);
+}
+.cell-name {
+    font-size: .58rem; line-height: 1.25; color: var(--text-secondary);
+    text-align: center; max-width: 100%;
+    overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.qty {
+    position: absolute; top: 3px; right: 3px;
+    font-family: var(--mono); font-size: .56rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-t12);
+    border: 1px solid var(--accent-t20); border-radius: 3px;
+    padding: 0 3px; line-height: 12px;
+}
+
+/* ── Shared panel guts ──────────────────────────────────────── */
+.panel { background: var(--surface-1); }
+.p-inner { width: 290px; height: 100%; display: flex; flex-direction: column; }
+
+.p-head {
+    display: flex; align-items: center; gap: .45rem;
+    padding: .55rem .7rem .5rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--accent-t8), transparent);
+}
+.p-head svg { width: 13px; height: 13px; color: var(--accent); flex-shrink: 0; }
+.p-title { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.p-close {
+    margin-left: auto; background: none; border: none;
+    color: var(--text-secondary); font-size: 1rem; cursor: pointer; line-height: 1; padding: 0 .15rem;
+    font-family: inherit;
+}
+.p-close:hover { color: var(--text); }
+
+.p-body { flex: 1; overflow-y: auto; padding: .55rem .7rem .8rem; }
+
+.kit-strip { display: flex; gap: .3rem; margin-bottom: .55rem; }
+.kit {
+    flex: 1; height: 26px; border-radius: 3px;
+    border: 1px solid var(--border); background: var(--surface-2);
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: .6rem; font-weight: 600;
+}
+.kit.ok { border-color: var(--green-t30); color: var(--green); }
+.kit.no { opacity: .4; color: var(--red); }
+
+.sect {
+    display: flex; align-items: center; gap: .5rem;
+    margin: .6rem 0 .35rem;
+    font-size: .56rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+}
+.sect::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.sect.ready { color: var(--green); }
+.sect.close { color: var(--accent); }
+
+.recipe {
+    border: 1px solid var(--border); border-radius: 4px;
+    background: var(--surface-2); margin-bottom: .35rem; overflow: hidden;
+}
+.r-row { display: flex; align-items: center; gap: .5rem; padding: .4rem .55rem; }
+.r-name { flex: 1; font-size: .68rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.r-pct { font-family: var(--mono); font-size: .62rem; }
+.r-pct.ok { color: var(--green); } .r-pct.mid { color: var(--accent); } .r-pct.low { color: var(--text-secondary); }
+.r-bar { height: 3px; background: rgba(255,255,255,.06); }
+.r-fill { height: 100%; }
+.r-fill.ok { background: var(--green); } .r-fill.mid { background: var(--accent); } .r-fill.low { background: #555; }
+
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; }
+.tile {
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px;
+    padding: .35rem .5rem; display: flex; flex-direction: column; gap: .1rem;
+}
+.tile b { font-family: var(--mono); font-size: .8rem; color: var(--accent); font-weight: 600; }
+.tile span { font-size: .54rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); }
+
+/* ════ A: toolbar toggles + OVERLAY drawer ═══════════════════ */
+.demo-a .panel {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    border-left: 1px solid var(--border);
+    box-shadow: -16px 0 32px -18px #000;
+    transform: translateX(105%); visibility: hidden;
+    transition: transform .25s ease, visibility 0s linear .25s;
+}
+.demo-a[data-open="wb"] .panel[data-name="wb"],
+.demo-a[data-open="st"] .panel[data-name="st"] {
+    transform: none; visibility: visible;
+    transition: transform .25s ease;
+}
+
+/* ════ B / D: toolbar toggles + DOCKED split panel ═══════════ */
+.demo-b .panel, .demo-d .panel {
+    flex-shrink: 0; width: 0; overflow: hidden;
+    border-left: 0 solid var(--border);
+    transition: width .25s ease, border-left-width .25s ease;
+}
+.demo-b[data-open="wb"] .panel[data-name="wb"],
+.demo-b[data-open="st"] .panel[data-name="st"],
+.demo-d[data-open] .panel { width: 290px; border-left-width: 1px; }
+.demo-d:not([data-open]) .panel, .demo-d[data-open=""] .panel { width: 0; border-left-width: 0; }
+
+/* ════ C: icon activity bar + docked panel ═══════════════════ */
+.rail {
+    flex-shrink: 0; width: 42px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: .3rem; padding-top: .5rem;
+    border-left: 1px solid var(--border);
+    background: var(--surface-3);
+}
+.rail-btn {
+    position: relative;
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    background: none; border: 1px solid transparent; border-radius: 5px;
+    color: var(--text-secondary); cursor: pointer;
+    transition: color .15s, background .15s, border-color .15s;
+}
+.rail-btn svg { width: 15px; height: 15px; }
+.rail-btn:hover { color: var(--text); background: rgba(255,255,255,.05); }
+.app[data-open="wb"] .rail-btn[data-panel="wb"],
+.app[data-open="st"] .rail-btn[data-panel="st"] {
+    color: var(--accent); background: var(--accent-t12); border-color: var(--accent-t35);
+}
+/* active indicator bar on the outer edge (VS Code convention) */
+.rail-btn::after {
+    content: ""; position: absolute; right: -6px; top: 6px; bottom: 6px;
+    width: 2px; border-radius: 1px; background: var(--accent);
+    opacity: 0; transition: opacity .15s;
+}
+.app[data-open="wb"] .rail-btn[data-panel="wb"]::after,
+.app[data-open="st"] .rail-btn[data-panel="st"]::after { opacity: 1; }
+/* ready-count dot */
+.rail-dot {
+    position: absolute; top: 1px; right: 1px;
+    min-width: 13px; height: 13px; padding: 0 2px;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: .5rem; font-weight: 600;
+    color: #0d0d0d; background: var(--green);
+    border-radius: 7px; line-height: 1;
+}
+/* CSS tooltip */
+.rail-btn::before {
+    content: attr(data-tip);
+    position: absolute; right: calc(100% + 10px); top: 50%;
+    transform: translateY(-50%) translateX(4px);
+    background: #1d1d1d; border: 1px solid var(--border);
+    color: var(--text); font-size: .62rem; font-family: var(--font-display);
+    padding: .22rem .5rem; border-radius: 4px; white-space: nowrap;
+    opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s;
+    z-index: 5;
+}
+.rail-btn:hover::before { opacity: 1; transform: translateY(-50%); }
+.demo-c .panel {
+    flex-shrink: 0; width: 0; overflow: hidden;
+    border-left: 0 solid var(--border);
+    transition: width .25s ease, border-left-width .25s ease;
+}
+.demo-c[data-open="wb"] .panel[data-name="wb"],
+.demo-c[data-open="st"] .panel[data-name="st"] { width: 290px; border-left-width: 1px; }
+
+/* ════ D: single inspector with internal tabs ════════════════ */
+.ptabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.ptab {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    color: var(--text-secondary); font-family: inherit;
+    font-size: .64rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    padding: .45rem 0 .4rem; cursor: pointer;
+    transition: color .15s, border-color .15s;
+}
+.ptab svg { width: 12px; height: 12px; }
+.ptab:hover { color: var(--text); }
+.demo-d[data-open="wb"] .ptab[data-tab="wb"],
+.demo-d[data-open="st"] .ptab[data-tab="st"] { color: var(--accent); border-bottom-color: var(--accent); }
+.demo-d .p-page { display: none; }
+.demo-d[data-open="wb"] .p-page[data-page="wb"],
+.demo-d[data-open="st"] .p-page[data-page="st"] { display: block; }
+
+/* ── Verdict chips ──────────────────────────────────────────── */
+.verdict { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; padding: 0; margin: .7rem 0 0; }
+.verdict li {
+    font-size: .68rem; padding: .22rem .55rem;
+    border-radius: 3px; border: 1px solid var(--border);
+    color: var(--text-secondary); background: var(--surface-2);
+}
+.verdict .pro { border-color: var(--green-t30); color: var(--green); background: var(--green-t15); }
+.verdict .con { border-color: rgba(184,92,92,.35); color: var(--red); background: rgba(184,92,92,.10); }
+
+/* ── Recommendation block ───────────────────────────────────── */
+.reco {
+    margin-top: 3rem;
+    border: 1px solid var(--accent-t35);
+    border-radius: 8px;
+    background: linear-gradient(180deg, var(--accent-t8), transparent 60%), var(--surface-1);
+    padding: 1.1rem 1.3rem 1.2rem;
+}
+.reco h2 {
+    margin: 0 0 .5rem; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent);
+}
+.reco p { margin: .35rem 0; font-size: .8rem; line-height: 1.6; color: var(--text); max-width: 78ch; }
+.reco p b { color: var(--accent); }
+.reco small { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">Mockup &mdash; inventory side-panel toggles &middot; 4 patterns &middot; click the buttons in each frame</div>
+
+<div class="page">
+    <p class="intro">
+        Current state: vertical-text tabs in a reserved right gutter. Two UX problems remain:
+        <b>rotated labels are slow to read</b>, and the toggles sit far from the toolbar where every other
+        action lives. Below are four conventional patterns, each as a working miniature. All keep the
+        ready-count badge, Esc-to-close and one-panel-at-a-time behaviour.
+    </p>
+
+    <!-- ════════════════════ OPTION A ════════════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">A</span>
+            <div>
+                <h2>Toolbar toggles &middot; overlay drawer</h2>
+                <p class="opt-sub">Workbench / Stats become ordinary buttons in the manifest toolbar — horizontal labels,
+                grouped with the other actions. The drawer still slides <b>over</b> the grid (closest to today's behaviour).</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>OPTION A</em></div>
+            <div class="app demo-a" data-demo>
+                <div class="content">
+                    <div class="bar">
+                        <span class="bar-title">Field Manifest</span>
+                        <span class="bar-stats"><b>247</b> items &middot; <b>2</b> stashes</span>
+                        <span class="bar-spacer"></span>
+                        <button class="tbtn" data-panel="wb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Workbench <b class="badge">4</b></button>
+                        <button class="tbtn" data-panel="st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Stats</button>
+                    </div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <aside class="panel" data-name="wb"><div class="p-inner" data-fill="wb"></div></aside>
+                <aside class="panel" data-name="st"><div class="p-inner" data-fill="st"></div></aside>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ readable horizontal labels</li>
+            <li class="pro">✓ toggles live with the other actions (predictable)</li>
+            <li class="pro">✓ smallest change from current code</li>
+            <li class="con">✗ drawer covers the grid it refers to</li>
+        </ul>
+    </section>
+
+    <!-- ════════════════════ OPTION B ════════════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">B</span>
+            <div>
+                <h2>Toolbar toggles &middot; docked split panel</h2>
+                <p class="opt-sub">Same toolbar buttons, but the panel <b>docks</b>: the grid reflows beside it instead of
+                being covered. Best when you cross-reference recipes against visible items (the workbench use case).</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>OPTION B</em></div>
+            <div class="app demo-b" data-demo>
+                <div class="content">
+                    <div class="bar">
+                        <span class="bar-title">Field Manifest</span>
+                        <span class="bar-stats"><b>247</b> items &middot; <b>2</b> stashes</span>
+                        <span class="bar-spacer"></span>
+                        <button class="tbtn" data-panel="wb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Workbench <b class="badge">4</b></button>
+                        <button class="tbtn" data-panel="st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Stats</button>
+                    </div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <aside class="panel" data-name="wb"><div class="p-inner" data-fill="wb"></div></aside>
+                <aside class="panel" data-name="st"><div class="p-inner" data-fill="st"></div></aside>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ no occlusion — grid stays fully visible &amp; interactive</li>
+            <li class="pro">✓ readable labels, predictable toolbar placement</li>
+            <li class="pro">✓ grid is responsive (auto-fill) so reflow is cheap</li>
+            <li class="con">✗ on narrow screens it must fall back to overlay</li>
+        </ul>
+    </section>
+
+    <!-- ════════════════════ OPTION C ════════════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">C</span>
+            <div>
+                <h2>Icon activity bar &middot; docked panel</h2>
+                <p class="opt-sub">The IDE pattern (VS Code): a slim icon-only rail, always visible, with count badges and
+                tooltips. The panel docks between the grid and the rail. Scales well if more panels arrive later
+                (loadout, map, notes…).</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>OPTION C</em></div>
+            <div class="app demo-c" data-demo>
+                <div class="content">
+                    <div class="bar">
+                        <span class="bar-title">Field Manifest</span>
+                        <span class="bar-stats"><b>247</b> items &middot; <b>2</b> stashes</span>
+                        <span class="bar-spacer"></span>
+                    </div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <aside class="panel" data-name="wb"><div class="p-inner" data-fill="wb"></div></aside>
+                <aside class="panel" data-name="st"><div class="p-inner" data-fill="st"></div></aside>
+                <div class="rail">
+                    <button class="rail-btn" data-panel="wb" data-tip="Workbench — 4 craftable">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        <span class="rail-dot">4</span>
+                    </button>
+                    <button class="rail-btn" data-panel="st" data-tip="Statistics">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ compact, always visible, scales to more panels</li>
+            <li class="pro">✓ familiar IDE convention; badge + tooltip carry the meaning</li>
+            <li class="con">✗ icon-only = lower discoverability for casual visitors</li>
+            <li class="con">✗ still spends a permanent gutter even when unused</li>
+        </ul>
+    </section>
+
+    <!-- ════════════════════ OPTION D ════════════════════ -->
+    <section class="opt">
+        <div class="opt-head">
+            <span class="opt-num">D</span>
+            <div>
+                <h2>Single tabbed inspector</h2>
+                <p class="opt-sub">Since only one panel can be open at a time anyway, merge them: <b>one docked inspector
+                with tabs inside</b>. Toolbar buttons deep-link to a tab; switching tabs never moves the panel.
+                Cleanest mental model, one close button, one width.</p>
+            </div>
+        </div>
+        <div class="frame">
+            <div class="chrome"><i></i><i></i><i></i><span>gamma-tools / inventory</span><em>OPTION D</em></div>
+            <div class="app demo-d" data-demo>
+                <div class="content">
+                    <div class="bar">
+                        <span class="bar-title">Field Manifest</span>
+                        <span class="bar-stats"><b>247</b> items &middot; <b>2</b> stashes</span>
+                        <span class="bar-spacer"></span>
+                        <button class="tbtn" data-panel="wb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Workbench <b class="badge">4</b></button>
+                        <button class="tbtn" data-panel="st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Stats</button>
+                    </div>
+                    <div class="grid" data-grid></div>
+                </div>
+                <aside class="panel" data-name="inspector">
+                    <div class="p-inner">
+                        <div class="p-head">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M15 3v18"/></svg>
+                            <span class="p-title">Inspector</span>
+                            <button class="p-close" data-close>&times;</button>
+                        </div>
+                        <div class="ptabs">
+                            <button class="ptab" data-tab="wb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Workbench</button>
+                            <button class="ptab" data-tab="st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Stats</button>
+                        </div>
+                        <div class="p-body">
+                            <div class="p-page" data-page="wb" data-fill="wb-body"></div>
+                            <div class="p-page" data-page="st" data-fill="st-body"></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <ul class="verdict">
+            <li class="pro">✓ one panel, one width, one close — simplest mental model</li>
+            <li class="pro">✓ switching Workbench ↔ Stats never shifts layout</li>
+            <li class="pro">✓ no occlusion (docked) + readable toolbar entry points</li>
+            <li class="con">✗ slightly more refactor (merge two drawers into one shell)</li>
+        </ul>
+    </section>
+
+    <!-- ════════════════════ RECOMMENDATION ════════════════════ -->
+    <section class="reco">
+        <h2>Recommendation</h2>
+        <p><b>Option D</b> is the strongest fit: the two drawers are already mutually exclusive in the code
+        (<span style="font-family:var(--mono);font-size:.74rem">activeDrawer</span>), so one tabbed inspector matches
+        the real model. It fixes both original issues — vertical text and orphaned controls — and the docked layout
+        means the workbench can be read against a fully visible grid.</p>
+        <p><b>Option B</b> is the runner-up if you prefer keeping two separate drawers. <b>C</b> only earns its
+        permanent gutter if more panels are coming.</p>
+        <p><small>All docked variants fall back to overlay below ~900px viewport width, where there isn't room to split.</small></p>
+    </section>
+</div>
+
+<script>
+// ── Fake inventory items ─────────────────────────────────────
+const ITEMS = [
+    ["AKM", "", "#5a4a32"], ["Medkit", "×3", "#7a3434"], ["9×39 SP-5", "×120", "#6a5a2a"],
+    ["Bandage", "×6", "#8a6a4a"], ["Sunrise Suit", "", "#3a4a3a"], ["F1 Grenade", "×2", "#3a3a2a"],
+    ["Vodka", "×2", "#4a5a6a"], ["Toolkit", "", "#5a5242"], ["Bread", "", "#7a6a3a"],
+    ["TOZ-34", "", "#4a4236"], ["Cloth", "×8", "#5a5a5a"], ["Sewing Kit", "", "#465046"],
+    ["5.45×39 PS", "×90", "#6a5a2a"], ["Antirad", "×2", "#3a5a4a"], ["Detector", "", "#32424e"],
+    ["Repair Kit", "", "#564e3e"], ["Canned Meat", "×4", "#5e4e3e"], ["Battery", "×5", "#3e4e5e"],
+    ["Gun Oil", "×2", "#4e463e"], ["Scope PSO-1", "", "#36402e"], ["Knife", "", "#4a4a52"],
+    ["Wire", "×7", "#52524a"], ["Duct Tape", "×3", "#5a564a"], ["Fuel Canister", "", "#5e3e36"],
+];
+const grid = ITEMS.map(([n, q, c]) =>
+    `<div class="cell"><span class="swatch" style="--sw:${c}"></span><span class="cell-name">${n}</span>${q ? `<span class="qty">${q}</span>` : ""}</div>`
+).join("");
+document.querySelectorAll("[data-grid]").forEach(el => el.innerHTML = grid);
+
+// ── Shared panel guts ────────────────────────────────────────
+const WRENCH = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`;
+const CHART  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>`;
+
+const recipe = (name, pct, cls) => `
+    <div class="recipe">
+        <div class="r-row"><span class="r-name">${name}</span><span class="r-pct ${cls}">${pct}%</span></div>
+        <div class="r-bar"><div class="r-fill ${cls}" style="width:${pct}%"></div></div>
+    </div>`;
+
+const WB_BODY = `
+    <div class="kit-strip">
+        <span class="kit ok">✓</span><span class="kit ok">✓</span><span class="kit no">✗</span>
+        <span class="kit ok">✓</span><span class="kit no">✗</span><span class="kit no">✗</span>
+    </div>
+    <div class="sect ready">Ready</div>
+    ${recipe("Improvised Medkit", 100, "ok")}
+    ${recipe("Cleaning Kit", 100, "ok")}
+    ${recipe("AP Rounds 5.45", 100, "ok")}
+    ${recipe("Smoked Meat", 100, "ok")}
+    <div class="sect close">Close</div>
+    ${recipe("Advanced Toolkit", 72, "mid")}
+    ${recipe("SEVA Patch Kit", 58, "mid")}
+    ${recipe("Anomaly Detector Mk2", 35, "low")}`;
+
+const ST_BODY = `
+    <div class="tiles">
+        <div class="tile"><b>312</b><span>Stalkers killed</span></div>
+        <div class="tile"><b>871</b><span>Mutants killed</span></div>
+        <div class="tile"><b>64</b><span>Tasks done</span></div>
+        <div class="tile"><b>17</b><span>Artefacts found</span></div>
+        <div class="tile"><b>23 / 31</b><span>Levels visited</span></div>
+        <div class="tile"><b>105 / 313</b><span>Stashes found</span></div>
+    </div>`;
+
+const shell = (icon, title, body) => `
+    <div class="p-head">${icon}<span class="p-title">${title}</span><button class="p-close" data-close>&times;</button></div>
+    <div class="p-body">${body}</div>`;
+
+document.querySelectorAll('[data-fill="wb"]').forEach(el => el.innerHTML = shell(WRENCH, "Workbench", WB_BODY));
+document.querySelectorAll('[data-fill="st"]').forEach(el => el.innerHTML = shell(CHART, "Statistics", ST_BODY));
+document.querySelectorAll('[data-fill="wb-body"]').forEach(el => el.innerHTML = WB_BODY);
+document.querySelectorAll('[data-fill="st-body"]').forEach(el => el.innerHTML = ST_BODY);
+
+// ── Per-demo toggle wiring ───────────────────────────────────
+document.querySelectorAll("[data-demo]").forEach(app => {
+    app.addEventListener("click", e => {
+        const toggle = e.target.closest("[data-panel]");
+        const tab    = e.target.closest("[data-tab]");
+        const close  = e.target.closest("[data-close]");
+        if (toggle) {
+            const k = toggle.dataset.panel;
+            if (app.dataset.open === k) delete app.dataset.open;
+            else app.dataset.open = k;
+        } else if (tab) {
+            app.dataset.open = tab.dataset.tab;
+        } else if (close) {
+            delete app.dataset.open;
+        }
+    });
+});
+</script>
+</body>
+</html>

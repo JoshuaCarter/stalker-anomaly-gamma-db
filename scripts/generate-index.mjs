@@ -1194,6 +1194,81 @@ for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launche
   }
 }
 
+// Disambiguate tactical kits that share a translated display name — many are
+// literally just "Tactical Kit". Their translation keys are unique, so the
+// generic displayName pass never catches them; group by EN-translated name
+// instead and tag each duplicate with the name key of the weapon the kit
+// produces (from kitWeapons), rendered by the UI as a localized
+// "Tactical Kit [Weapon]" suffix. Kits with no weapon mapping fall back to
+// the weapon listed in their description's COMPATIBILITY section. Kits whose
+// suffix still collides (e.g. the three SA-58 AUS sight kits) get a stable
+// #N qualifier (ordered by kit ID), mirroring the kit-derived weapon handling.
+const kitNameSuffixes = new Map(); // kit id -> { key, num }
+{
+  const kitData = categoryData.get("tactical-kits");
+  if (kitData) {
+    const weaponNameKeyById = new Map();
+    const weaponKeyByEnName = new Map();
+    for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
+      for (const it of categoryData.get(slug)?.items || []) {
+        const key = it.pda_encyclopedia_name;
+        if (!key) continue;
+        weaponNameKeyById.set(it.id, key);
+        const enName = enTranslations[key.toLowerCase()];
+        if (enName && !weaponKeyByEnName.has(enName)) weaponKeyByEnName.set(enName, key);
+      }
+    }
+
+    // Fallback for kits that attach without renaming: the EN description ends
+    // with a COMPATIBILITY section listing weapon display names as bullets.
+    function compatibilityWeaponKey(item) {
+      const descr = enTranslations[(item.st_data_export_description || "").toLowerCase()] || "";
+      const compat = descr.split(/COMPATIBILITY:/i)[1];
+      if (!compat) return undefined;
+      for (const line of compat.split("\\n")) {
+        const name = line.replace(/^[\s•]+/, "").trim();
+        if (name && weaponKeyByEnName.has(name)) return weaponKeyByEnName.get(name);
+      }
+      return undefined;
+    }
+
+    const groups = new Map();
+    for (const item of kitData.items) {
+      const enName = enTranslations[(item.pda_encyclopedia_name || "").toLowerCase()] || item.pda_encyclopedia_name || "";
+      if (!groups.has(enName)) groups.set(enName, []);
+      groups.get(enName).push(item);
+    }
+    for (const group of groups.values()) {
+      if (group.length < 2) continue;
+      const bySuffix = new Map();
+      for (const item of group) {
+        const wid = [...(kitWeapons[item.id] || [])].sort()[0];
+        const key = (wid && weaponNameKeyById.get(wid)) || compatibilityWeaponKey(item);
+        if (!key) {
+          console.warn(`Ambiguous tactical kit ${item.id} has no weapon to disambiguate by`);
+          continue;
+        }
+        item.nameSuffixKey = key;
+        if (!bySuffix.has(key)) bySuffix.set(key, []);
+        bySuffix.get(key).push(item);
+      }
+      for (const sameSuffix of bySuffix.values()) {
+        if (sameSuffix.length < 2) continue;
+        sameSuffix.sort((a, b) => a.id.localeCompare(b.id));
+        sameSuffix.forEach((item, i) => {
+          item.nameSuffixNum = i + 1;
+        });
+      }
+    }
+    for (const item of kitData.items) {
+      if (item.nameSuffixKey) kitNameSuffixes.set(item.id, { key: item.nameSuffixKey, num: item.nameSuffixNum });
+    }
+    if (kitNameSuffixes.size > 0) {
+      console.log(`Disambiguated ${kitNameSuffixes.size} tactical kits with weapon-name suffixes`);
+    }
+  }
+}
+
 // Compute the derived `unobtainable` / `tacticalKit` flags for weapons/explosives
 // and propagate hasNpcWeaponDrop / hasStashDrop / inStartingLoadout / unobtainable
 // / tacticalKit from category items into the index entries. Runs after stash-drop
@@ -1237,6 +1312,14 @@ for (const entry of index) {
   entry.tacticalKit = flags.tacticalKit;
   if (flags.kitSuffix) entry.kitSuffix = true;
   if (flags.kitSuffixNum) entry.kitSuffixNum = flags.kitSuffixNum;
+}
+// Mirror tactical-kit name suffixes onto index entries so global search
+// renders the same disambiguated labels.
+for (const entry of index) {
+  const suffix = kitNameSuffixes.get(entry.id);
+  if (!suffix) continue;
+  entry.nameSuffixKey = suffix.key;
+  if (suffix.num) entry.nameSuffixNum = suffix.num;
 }
 
 // Write index.json (deferred from earlier so obtainability flags are included).

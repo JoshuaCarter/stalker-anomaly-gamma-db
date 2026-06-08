@@ -171,6 +171,8 @@ export const appDefinition = {
             playerInventoryError: "",
             damageSimActive: false,
             damageSimMounted: false,
+            ballisticsModalOpen: false,
+            ballisticsModalWeaponIds: null,
             versionCompareActive: false,
             startingLoadoutsActive: false,
             startingLoadoutsCache: null,
@@ -245,6 +247,7 @@ export const appDefinition = {
             hoverItem: null,
             hoverPos: null,
             hoverCompareItem: null,
+            hoverExtras: null,
 
             buildWeaponCompareSlot: "primary",  // "primary" | "secondary" | "sidearm"
 
@@ -1662,6 +1665,14 @@ export const appDefinition = {
             if (!item) return "";
             const nameKey = item.pda_encyclopedia_name || item.name;
             const translated = this.t(nameKey);
+            // Items sharing a translated name (e.g. the many addons all named
+            // "Tactical Kit") carry the name key of the weapon they apply to,
+            // rendered as a localized suffix; collisions within the same
+            // weapon carry a #N qualifier
+            if (item.nameSuffixKey) {
+                const num = item.nameSuffixNum ? ` #${item.nameSuffixNum}` : "";
+                return `${translated} [${this.t(item.nameSuffixKey)}${num}]`;
+            }
             const display = item.displayName || nameKey;
             const bracket = display.lastIndexOf(" [");
             if (bracket < 0) return translated;
@@ -1775,6 +1786,18 @@ export const appDefinition = {
 
         fetchCraftRecipes() {
             return this.fetchJsonCached("craftRecipesCache", "craft-recipes.json");
+        },
+
+        /** Lazy-load craft recipes outside the Crafting tab (e.g. inventory workbench). */
+        ensureCraftRecipes() {
+            if (this.craftRecipes || !this.fileManifest || !this.fileManifest['craft-recipes.json']) return;
+            this.fetchCraftRecipes().then(craftData => {
+                if (!craftData) return;
+                this.craftRecipes = craftData;
+                if (this.craftingTrees.length === 0) {
+                    this.buildCraftingTreeData(craftData);
+                }
+            }).catch(() => {});
         },
 
         fetchDisassemble() {
@@ -2716,7 +2739,7 @@ export const appDefinition = {
             }
         },
 
-        async loadoutItemHover(id, event) {
+        async loadoutItemHover(id, event, extras) {
             const entry = this.indexById[id];
             if (!entry) return;
             const slug = categorySlug(entry.category);
@@ -2730,7 +2753,7 @@ export const appDefinition = {
                 } catch { return; }
             }
             const item = (this.categoryItems[slug] || []).find(i => i.id === id);
-            if (item) this.showItemHover(item, event);
+            if (item) this.showItemHover(item, event, null, extras);
         },
 
         async loadVersionCompareData() {
@@ -4586,7 +4609,7 @@ export const appDefinition = {
             this.showItemHover(full || variant, event);
         },
 
-        showItemHover(item, event, compareItem) {
+        showItemHover(item, event, compareItem, extras) {
             clearTimeout(this._hoverShowTimeout);
             // Every trigger for this popover navigates on tap, so on touch we let the
             // tap open the item. (A drawer would also swallow the delayed synthetic
@@ -4596,6 +4619,7 @@ export const appDefinition = {
             this._hoverShowTimeout = setTimeout(() => {
                 this.hoverItem = item;
                 this.hoverCompareItem = compareItem || null;
+                this.hoverExtras = extras || null;
                 this.$nextTick(() => this._positionHoverPopover());
             }, 250);
         },
@@ -4611,6 +4635,7 @@ export const appDefinition = {
             this.hoverItem = null;
             this.hoverPos = null;
             this.hoverCompareItem = null;
+            this.hoverExtras = null;
         },
 
         _positionHoverPopover() {
@@ -5035,11 +5060,7 @@ export const appDefinition = {
             else this.pushUrlState();
         },
 
-        async openDamageSim() {
-            this.resetViewState();
-            this.damageSimActive = true;
-            this.damageSimMounted = true;
-
+        async loadDamageSimData() {
             const cats = [...WEAPON_CATEGORY_SLUGS, "ammo"];
             await Promise.all([
                 ...cats.map(async (slug) => {
@@ -5070,9 +5091,28 @@ export const appDefinition = {
                 this.fetchAmmoWeapons(),
                 this.fetchJsonCached("ballisticRangesCache", "ballistic-ranges.json"),
             ]);
+        },
+
+        async openDamageSim() {
+            this.resetViewState();
+            this.damageSimActive = true;
+            this.damageSimMounted = true;
+
+            await this.loadDamageSimData();
 
             if (!this._restoringUrl) this.pushUrlState(true);
             else this.pushUrlState();
+        },
+
+        async openBallisticsModal(weaponIds) {
+            this.ballisticsModalWeaponIds = weaponIds;
+            await this.loadDamageSimData();
+            this.ballisticsModalOpen = true;
+        },
+
+        closeBallisticsModal() {
+            this.ballisticsModalOpen = false;
+            this.ballisticsModalWeaponIds = null;
         },
 
         isAltAmmo(weapon, ammoItem) {
@@ -6026,6 +6066,7 @@ export const appDefinition = {
                 containers,
                 totalItems: result.items.length,
                 stashCount: containers.length,
+                stats: (scocData && scocData.stats) || null,
             };
         },
 
@@ -6041,6 +6082,42 @@ export const appDefinition = {
             collect(model.actorItems);
             for (const cont of model.containers) collect(cont.items);
             await Promise.all([...cats].map(slug => this.ensureCategoryLoaded(slug)));
+        },
+
+        startBlankPlayerInventory() {
+            this.playerInventoryParseResult = {
+                v: 1,
+                manual: true,
+                fileName: "",
+                savedAt: Date.now(),
+                actor: { name: "", levelId: null },
+                actorItems: [],
+                containers: [],
+                totalItems: 0,
+                stashCount: 0,
+            };
+            this.playerInventoryError = "";
+            this.savePlayerInventoryToStorage();
+        },
+
+        /** Manual-stash editing: add/remove `delta` of an item in the actor inventory. */
+        async adjustPlayerInventoryItem(itemId, delta) {
+            const model = this.playerInventoryParseResult;
+            if (!model) return;
+            let item = model.actorItems.find(i => i.s === itemId);
+            if (!item) {
+                if (delta <= 0) return;
+                item = { s: itemId, q: 0, c: -1, e: false };
+                model.actorItems.push(item);
+                const entry = this.indexById[itemId];
+                if (entry) await this.ensureCategoryLoaded(categorySlug(entry.category));
+            }
+            item.q += delta;
+            if (item.q <= 0) {
+                model.actorItems.splice(model.actorItems.indexOf(item), 1);
+            }
+            model.totalItems = model.actorItems.reduce((n, i) => n + i.q, 0);
+            this.savePlayerInventoryToStorage();
         },
 
         savePlayerInventoryToStorage() {

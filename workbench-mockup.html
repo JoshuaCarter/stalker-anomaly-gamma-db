@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP — Inventory Workbench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ── Palette (mirrors site/css/color-palette.css) ───────────── */
+:root {
+    --bg:            #0d0d0d;
+    --surface-1:     #0f0f0f;
+    --surface-2:     #121212;
+    --surface-3:     #141414;
+    --card:          #1a1a1a;
+    --border:        #2a2a2a;
+    --text:          #d4d4d4;
+    --text-secondary:#888;
+    --accent:        #c8a84e;
+    --accent-dim:    #a08030;
+    --accent-t5:  rgba(200,168,78,.05);
+    --accent-t8:  rgba(200,168,78,.08);
+    --accent-t12: rgba(200,168,78,.12);
+    --accent-t20: rgba(200,168,78,.20);
+    --accent-t35: rgba(200,168,78,.35);
+    --green:      #6ec87a;
+    --green-t15:  rgba(110,200,122,.15);
+    --green-t30:  rgba(92,184,92,.30);
+    --red:        #c87e7e;
+    --red-muted:  #b85c5c;
+    --red-t12:    rgba(184,92,92,.12);
+    --font-display: "Chakra Petch", sans-serif;
+    --mono: "JetBrains Mono", monospace;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 14px;
+    min-height: 100vh;
+}
+img.icon { image-rendering: pixelated; object-fit: contain; }
+
+/* ── Mockup banner ──────────────────────────────────────────── */
+.mock-banner {
+    background: repeating-linear-gradient(-45deg, var(--accent-t12) 0 12px, transparent 12px 24px);
+    border-bottom: 1px solid var(--border);
+    padding: .4rem 1rem;
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem .75rem 3rem;
+    transition: padding-right .25s ease;
+}
+body.drawer-open .page { padding-right: 400px; }
+@media (max-width: 1500px) { body.drawer-open .page { padding-right: .75rem; } }
+
+/* ── PI header (existing, abbreviated) ──────────────────────── */
+.pi-header {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--surface-3) 0%, #101010 100%);
+    box-shadow: 0 4px 12px -8px rgba(0,0,0,.8);
+    margin-bottom: .85rem;
+}
+.pi-header::before {
+    content: "";
+    display: block;
+    height: 2px;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(90deg, var(--accent-t35) 0%, var(--accent-t8) 45%, transparent 100%);
+}
+.pi-summary { display: flex; flex-wrap: wrap; align-items: center; padding: .6rem .9rem; }
+.stat { display: flex; flex-direction: column; gap: .15rem; padding-right: 1.4rem; }
+.stat + .stat { border-left: 1px solid var(--border); padding-left: 1.4rem; }
+.stat-label { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.stat-value { font-family: var(--mono); font-size: .88rem; color: var(--accent); white-space: nowrap; }
+.pi-file { margin-left: auto; font-family: var(--mono); font-size: .7rem; color: var(--text-secondary); padding-right: .75rem; }
+.pi-actions { display: flex; gap: .4rem; }
+.pi-btn {
+    display: inline-flex; align-items: center; gap: .35rem;
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    border-radius: 4px; height: 1.75rem; padding: 0 .7rem;
+    font-size: .75rem; font-family: inherit; cursor: pointer;
+    transition: color .15s, border-color .15s;
+}
+.pi-btn:hover { color: var(--accent); border-color: var(--accent-dim); }
+
+/* ── NEW: Workbench button w/ ready badge ───────────────────── */
+.wb-btn { position: relative; border-color: var(--accent-t35); color: var(--accent); }
+.wb-btn .wb-count {
+    font-family: var(--mono); font-size: .68rem; font-weight: 600;
+    background: var(--accent-t12); border: 1px solid var(--accent-t20);
+    border-radius: 3px; padding: 0 4px; line-height: 1.1rem; color: var(--accent);
+}
+.wb-btn::after {
+    content: ""; position: absolute; top: -3px; right: -3px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 6px var(--green);
+    animation: pulse 2s infinite;
+}
+@keyframes pulse { 50% { opacity: .35; } }
+
+/* ── NEW: Craftable Now panel ───────────────────────────────── */
+.craft-panel {
+    border: 1px solid var(--accent-t20);
+    border-radius: 6px;
+    background:
+        linear-gradient(180deg, var(--accent-t5), transparent 60%),
+        var(--card);
+    overflow: hidden;
+    margin-bottom: .85rem;
+}
+.craft-panel-header {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .5rem .75rem;
+    cursor: pointer; user-select: none;
+    border-bottom: 1px solid var(--border);
+}
+.craft-panel-title {
+    margin: 0;
+    font-size: .82rem; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+}
+.craft-panel-header .glyph { color: var(--accent); }
+.ready-badge {
+    margin-left: auto;
+    font-family: var(--mono); font-size: .72rem; font-weight: 600;
+    color: var(--green);
+    background: var(--green-t15); border: 1px solid var(--green-t30);
+    border-radius: 3px; padding: 0 .45rem; line-height: 1.35rem;
+    letter-spacing: .08em;
+}
+.craft-panel-body { padding: .65rem; }
+
+.craft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: .55rem;
+}
+.craft-card {
+    display: flex; align-items: center; gap: .65rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--green);
+    border-radius: 4px;
+    padding: .5rem .65rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, transform .15s;
+    animation: rise .35s ease backwards;
+}
+.craft-card:nth-child(2) { animation-delay: .06s; }
+.craft-card:nth-child(3) { animation-delay: .12s; }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+.craft-card:hover { border-color: var(--accent-dim); background: var(--accent-t5); transform: translateY(-1px); }
+.craft-card > img.icon { height: 38px; width: 52px; flex-shrink: 0; }
+.craft-card-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .3rem; }
+.craft-card-name { font-size: .78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.craft-card-meta { display: flex; align-items: center; gap: .45rem; }
+.tier-badge {
+    display: inline-flex; align-items: center; gap: .25rem;
+    font-family: var(--mono); font-size: .62rem; font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-t8); border: 1px solid var(--accent-t20);
+    border-radius: 3px; padding: 1px 5px;
+}
+.tier-badge img.icon { height: 13px; width: 18px; }
+.tier-badge .ok { color: var(--green); }
+.ing-row { display: flex; gap: .3rem; }
+.ing {
+    position: relative;
+    display: inline-flex; align-items: center; gap: .2rem;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 3px; padding: 2px 4px;
+}
+.ing img.icon { height: 16px; width: 22px; }
+.ing .cnt { font-family: var(--mono); font-size: .6rem; color: var(--green); }
+.ing.short { border-color: var(--red-muted); background: var(--red-t12); }
+.ing.short .cnt { color: var(--red); }
+
+/* almost-craftable strip */
+.almost-divider {
+    display: flex; align-items: center; gap: .6rem;
+    margin: .75rem 0 .55rem;
+    font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer; user-select: none;
+}
+.almost-divider::before, .almost-divider::after {
+    content: ""; flex: 1; height: 1px; background: var(--border);
+}
+.craft-card.almost {
+    border-left-color: var(--red-muted);
+    opacity: .82;
+}
+.craft-card.almost:hover { opacity: 1; }
+.missing-note { font-family: var(--mono); font-size: .62rem; color: var(--red); }
+
+/* ── Existing inventory panel (abbreviated) ─────────────────── */
+.pi-panel { border: 1px solid var(--border); border-radius: 6px; background: var(--card); overflow: hidden; margin-bottom: .75rem; }
+.pi-panel-header {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .5rem .75rem; border-bottom: 1px solid var(--border);
+    cursor: pointer; user-select: none;
+}
+.pi-panel-title { margin: 0; font-size: .82rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.pi-panel-count {
+    margin-left: auto; font-family: var(--mono); font-size: .75rem;
+    color: var(--accent); background: var(--accent-t8);
+    border: 1px solid var(--accent-t20); border-radius: 3px;
+    padding: 0 .4rem; line-height: 1.3rem;
+}
+.chev { color: var(--text-secondary); font-size: .7rem; }
+.pi-panel-body { padding: .65rem; }
+.pi-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: .45rem; }
+.cell {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: .3rem;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 4px; padding: .5rem .3rem .4rem;
+    cursor: pointer; transition: border-color .15s, background .15s;
+}
+.cell:hover { border-color: var(--accent-dim); background: var(--accent-t5); }
+.cell img.icon { height: 42px; max-width: 100%; }
+.cell-name {
+    font-size: .64rem; line-height: 1.2; color: var(--text-secondary); text-align: center;
+    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+}
+.qty {
+    position: absolute; top: 3px; right: 3px;
+    font-family: var(--mono); font-size: .62rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-t12);
+    border: 1px solid var(--accent-t20); border-radius: 3px;
+    padding: 0 3px; line-height: 14px;
+}
+/* NEW: subtle wrench tick on items that feed a READY recipe */
+.cell .wb-tick {
+    position: absolute; top: 4px; left: 4px;
+    color: var(--green); opacity: .9;
+    filter: drop-shadow(0 0 3px rgba(110,200,122,.6));
+}
+
+/* ── NEW: Workbench drawer ──────────────────────────────────── */
+.drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 390px; max-width: 92vw;
+    background: var(--surface-1);
+    border-left: 1px solid var(--border);
+    box-shadow: -18px 0 40px -20px #000;
+    display: flex; flex-direction: column;
+    transform: translateX(102%);
+    transition: transform .25s ease;
+    z-index: 60;
+}
+body.drawer-open .drawer { transform: none; }
+.drawer-header {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .7rem .9rem .6rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--accent-t8), transparent);
+}
+.drawer-title { margin: 0; font-size: .85rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.drawer-close {
+    margin-left: auto; background: none; border: none;
+    color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; line-height: 1;
+}
+.drawer-close:hover { color: var(--text); }
+
+/* toolkit ownership strip */
+.kit-strip {
+    display: flex; gap: .4rem;
+    padding: .55rem .9rem;
+    border-bottom: 1px solid var(--border);
+}
+.kit {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center; gap: .15rem;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 4px; padding: .3rem .2rem .25rem;
+}
+.kit img.icon { height: 20px; width: 30px; }
+.kit-mark { font-family: var(--mono); font-size: .6rem; font-weight: 600; }
+.kit.have { border-color: var(--green-t30); }
+.kit.have .kit-mark { color: var(--green); }
+.kit.lack { opacity: .45; }
+.kit.lack .kit-mark { color: var(--red); }
+
+/* controls */
+.drawer-controls { display: flex; gap: .45rem; padding: .55rem .9rem; border-bottom: 1px solid var(--border); }
+.d-search {
+    flex: 1; display: flex; align-items: center;
+    background: var(--surface-2); border: 1px solid var(--bg); border-radius: 4px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.6);
+    height: 1.7rem; padding: 0 .5rem;
+    color: var(--text-secondary); font-size: .72rem; gap: .35rem;
+}
+.scope-toggle { display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.scope-toggle button {
+    background: var(--surface-2); border: none; color: var(--text-secondary);
+    font-family: inherit; font-size: .66rem; padding: 0 .55rem; cursor: pointer;
+}
+.scope-toggle button.active { background: var(--accent-t12); color: var(--accent); }
+
+.drawer-body { flex: 1; overflow-y: auto; padding: .6rem .9rem 1rem; }
+.d-section {
+    display: flex; align-items: center; gap: .55rem;
+    margin: .65rem 0 .45rem;
+    font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+}
+.d-section::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.d-section .n { font-family: var(--mono); color: var(--text-secondary); font-weight: 400; }
+.d-section.s-ready { color: var(--green); }
+.d-section.s-close { color: var(--accent); }
+.d-section.s-far { color: var(--text-secondary); }
+
+.d-recipe {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 4px; margin-bottom: .4rem; overflow: hidden;
+    cursor: pointer; transition: border-color .15s;
+}
+.d-recipe:hover { border-color: var(--accent-dim); }
+.d-recipe-row { display: flex; align-items: center; gap: .55rem; padding: .45rem .6rem; }
+.d-recipe-row img.icon { height: 26px; width: 38px; flex-shrink: 0; }
+.d-recipe-name { font-size: .74rem; font-weight: 600; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.d-pct { font-family: var(--mono); font-size: .68rem; }
+.d-pct.ok { color: var(--green); }
+.d-pct.mid { color: var(--accent); }
+.d-pct.low { color: var(--text-secondary); }
+.d-bar { height: 3px; background: rgba(255,255,255,.06); }
+.d-bar-fill { height: 100%; transition: width .4s ease; }
+.f-ok { background: var(--green); }
+.f-mid { background: var(--accent); }
+.f-low { background: var(--text-secondary); opacity: .5; }
+
+/* expanded checklist */
+.d-checklist { border-top: 1px solid var(--border); padding: .45rem .6rem .55rem; background: var(--surface-1); }
+.d-check {
+    display: flex; align-items: center; gap: .45rem;
+    font-size: .7rem; padding: .22rem 0;
+    font-family: var(--mono);
+}
+.d-check img.icon { height: 18px; width: 26px; }
+.d-check .mark { width: 1em; text-align: center; }
+.d-check.have .mark { color: var(--green); }
+.d-check.lack .mark { color: var(--red); }
+.d-check .c-name { flex: 1; font-family: var(--font-display); color: var(--text); }
+.d-check.lack .c-name { color: var(--red); text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
+.d-check .c-have { color: var(--text-secondary); }
+.d-check.have .c-have { color: var(--green); }
+.d-check .c-need { color: var(--red); font-size: .64rem; }
+.d-foot {
+    margin-top: .35rem; padding-top: .4rem; border-top: 1px dashed var(--border);
+    display: flex; gap: .5rem; align-items: center;
+    font-size: .64rem; color: var(--text-secondary);
+}
+.d-foot a { color: var(--accent); text-decoration: none; }
+.d-foot a:hover { text-decoration: underline; }
+
+.far-stub { opacity: .55; }
+
+/* scrollbar */
+.drawer-body::-webkit-scrollbar { width: 8px; }
+.drawer-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+svg { flex-shrink: 0; }
+</style>
+</head>
+<body class="drawer-open">
+
+<div class="mock-banner">mockup · inventory workbench · readiness drawer</div>
+
+<div class="page">
+
+    <!-- ════ Existing header + NEW workbench button ════ -->
+    <div class="pi-header">
+        <div class="pi-summary">
+            <div class="stat"><span class="stat-label">Actor</span><span class="stat-value">strelok</span></div>
+            <div class="stat"><span class="stat-label">Location</span><span class="stat-value">Rostok</span></div>
+            <div class="stat"><span class="stat-label">Total items</span><span class="stat-value">412</span></div>
+            <div class="stat"><span class="stat-label">Stashes</span><span class="stat-value">2</span></div>
+            <div class="stat"><span class="stat-label">Carry weight</span><span class="stat-value">38.4 kg</span></div>
+            <div class="pi-file">rostok_autosave_03.scop</div>
+            <div class="pi-actions">
+                <!-- NEW -->
+                <button class="pi-btn wb-btn" onclick="document.body.classList.toggle('drawer-open')">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <span>Workbench</span>
+                    <span class="wb-count">3</span>
+                </button>
+                <button class="pi-btn">Re-import</button>
+                <button class="pi-btn">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════ Existing actor inventory panel (sample) ════ -->
+    <section class="pi-panel">
+        <header class="pi-panel-header">
+            <span class="chev">▼</span>
+            <h3 class="pi-panel-title">Actor inventory</h3>
+            <span class="pi-panel-count">183</span>
+        </header>
+        <div class="pi-panel-body">
+            <div class="pi-icon-grid">
+                <div class="cell">
+                    <svg class="wb-tick" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <img class="icon" src="site/public/img/icons/prt_i_resistors.png" alt=""><span class="cell-name">Electronic Resistors</span><span class="qty">×14</span>
+                </div>
+                <div class="cell">
+                    <svg class="wb-tick" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <img class="icon" src="site/public/img/icons/prt_i_transistors.png" alt=""><span class="cell-name">Transistors</span><span class="qty">×5</span>
+                </div>
+                <div class="cell">
+                    <svg class="wb-tick" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <img class="icon" src="site/public/img/icons/detector_simple.png" alt=""><span class="cell-name">Echo Detector</span>
+                </div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/prt_i_copper.png" alt=""><span class="cell-name">Copper Wire</span><span class="qty">×1</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/prt_i_capacitors.png" alt=""><span class="cell-name">Capacitors</span><span class="qty">×3</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/prt_i_scrap.png" alt=""><span class="cell-name">Scrap Metal</span><span class="qty">×7</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/medkit.png" alt=""><span class="cell-name">Medkit</span><span class="qty">×2</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/bandage.png" alt=""><span class="cell-name">Bandage</span><span class="qty">×6</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/vodka.png" alt=""><span class="cell-name">Vodka</span><span class="qty">×2</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/itm_basickit.png" alt=""><span class="cell-name">Basic Tools</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt=""><span class="cell-name">Medical Tools</span></div>
+                <div class="cell"><img class="icon" src="site/public/img/icons/ammo_5.45x39_fmj.png" alt=""><span class="cell-name">5.45×39 FMJ</span><span class="qty">×120</span></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ════ NEW: Workbench drawer ════ -->
+<aside class="drawer">
+    <header class="drawer-header">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c8a84e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <h2 class="drawer-title">Workbench</h2>
+        <button class="drawer-close" onclick="document.body.classList.remove('drawer-open')">×</button>
+    </header>
+
+    <!-- toolkit ownership -->
+    <div class="kit-strip">
+        <div class="kit have"><img class="icon" src="site/public/img/icons/itm_basickit.png" alt=""><span class="kit-mark">✓</span></div>
+        <div class="kit lack"><img class="icon" src="site/public/img/icons/itm_advancedkit.png" alt=""><span class="kit-mark">✗</span></div>
+        <div class="kit lack"><img class="icon" src="site/public/img/icons/itm_expertkit.png" alt=""><span class="kit-mark">✗</span></div>
+        <div class="kit have"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt=""><span class="kit-mark">✓</span></div>
+        <div class="kit lack"><img class="icon" src="site/public/img/icons/itm_ammokit.png" alt=""><span class="kit-mark">✗</span></div>
+    </div>
+
+    <div class="drawer-controls">
+        <div class="d-search">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            Filter recipes…
+        </div>
+        <div class="scope-toggle">
+            <button>Carried</button>
+            <button class="active">+ Stashes</button>
+        </div>
+    </div>
+
+    <div class="drawer-body">
+
+        <div class="d-section s-ready">Ready <span class="n">3</span></div>
+
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/detector_advanced.png" alt="">
+                <span class="d-recipe-name">Echo Detector "Bear"</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_basickit.png" alt="">T1</span>
+                <span class="d-pct ok">100%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-ok" style="width:100%"></div></div>
+        </div>
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/medkit_army.png" alt="">
+                <span class="d-recipe-name">Army Medkit</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt="">MED</span>
+                <span class="d-pct ok">100%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-ok" style="width:100%"></div></div>
+        </div>
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/antirad.png" alt="">
+                <span class="d-recipe-name">Anti-radiation Drug</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt="">MED</span>
+                <span class="d-pct ok">100%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-ok" style="width:100%"></div></div>
+        </div>
+
+        <div class="d-section s-close">Close <span class="n">4</span></div>
+
+        <!-- expanded recipe w/ checklist -->
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/medkit_scientic.png" alt="">
+                <span class="d-recipe-name">Scientific Medkit</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt="">MED</span>
+                <span class="d-pct mid">75%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-mid" style="width:75%"></div></div>
+            <div class="d-checklist">
+                <div class="d-check have">
+                    <span class="mark">✓</span>
+                    <img class="icon" src="site/public/img/icons/medkit.png" alt="">
+                    <span class="c-name">Medkit</span>
+                    <span class="c-have">2/2</span>
+                </div>
+                <div class="d-check have">
+                    <span class="mark">✓</span>
+                    <img class="icon" src="site/public/img/icons/drug_radioprotector.png" alt="">
+                    <span class="c-name">Radioprotector</span>
+                    <span class="c-have">1/1</span>
+                </div>
+                <div class="d-check lack">
+                    <span class="mark">✗</span>
+                    <img class="icon" src="site/public/img/icons/antirad.png" alt="">
+                    <span class="c-name">Anti-rad</span>
+                    <span class="c-have">1/3</span>
+                    <span class="c-need">need 2</span>
+                </div>
+                <div class="d-foot">
+                    <span>2 of 3 components in stash · 1 carried</span>
+                    <a href="#" style="margin-left:auto">View recipe tree →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/stimpack.png" alt="">
+                <span class="d-recipe-name">Stimpack</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt="">MED</span>
+                <span class="d-pct mid">66%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-mid" style="width:66%"></div></div>
+        </div>
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/detector_scientific.png" alt="">
+                <span class="d-recipe-name">Svarog Detector</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_advancedkit.png" alt="">T2 ✗</span>
+                <span class="d-pct mid">58%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-mid" style="width:58%"></div></div>
+        </div>
+        <div class="d-recipe">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/medkit_ai2.png" alt="">
+                <span class="d-recipe-name">AI-2 Medkit</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt="">MED</span>
+                <span class="d-pct mid">50%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-mid" style="width:50%"></div></div>
+        </div>
+
+        <div class="d-section s-far">Far <span class="n">38</span></div>
+
+        <div class="d-recipe far-stub">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/detector_elite.png" alt="">
+                <span class="d-recipe-name">Veles Detector</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_expertkit.png" alt="">T3 ✗</span>
+                <span class="d-pct low">22%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-low" style="width:22%"></div></div>
+        </div>
+        <div class="d-recipe far-stub">
+            <div class="d-recipe-row">
+                <img class="icon" src="site/public/img/icons/drug_anabiotic.png" alt="">
+                <span class="d-recipe-name">Anabiotics</span>
+                <span class="tier-badge"><img class="icon" src="site/public/img/icons/itm_drugkit.png" alt="">MED</span>
+                <span class="d-pct low">12%</span>
+            </div>
+            <div class="d-bar"><div class="d-bar-fill f-low" style="width:12%"></div></div>
+        </div>
+
+    </div>
+</aside>
+
+</body>
+</html>

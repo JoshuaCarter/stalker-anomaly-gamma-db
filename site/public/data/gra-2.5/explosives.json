@@ -28,6 +28,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -45,6 +46,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -62,6 +64,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -79,6 +82,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -96,6 +100,7 @@
       "hasNpcWeaponDrop": true,
       "hasStashDrop": true,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": false
     },
     {
@@ -113,6 +118,7 @@
       "hasNpcWeaponDrop": true,
       "hasStashDrop": true,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": false
     },
     {
@@ -130,6 +136,7 @@
       "hasNpcWeaponDrop": true,
       "hasStashDrop": true,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": false
     },
     {
@@ -147,6 +154,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": true,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": false
     },
     {
@@ -164,6 +172,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -181,6 +190,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -198,6 +208,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     },
     {
@@ -215,6 +226,7 @@
       "hasNpcWeaponDrop": false,
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "tacticalKit": false,
       "unobtainable": true
     }
   ]
