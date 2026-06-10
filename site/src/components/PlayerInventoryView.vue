@@ -1,5 +1,5 @@
 <template>
-<div class="player-inventory-view" @dragenter.prevent="onDragEnter" @dragover.prevent @dragleave.prevent="onDragLeave" @drop.prevent="onDrop">
+<div class="player-inventory-view">
 
     <!-- Parsing -->
     <div v-if="parsing" class="pi-loading">
@@ -14,8 +14,8 @@
             <button class="pi-btn" @click="$emit('dismissError')">{{ t('app_save_import_retry') }}</button>
         </div>
 
-        <!-- Empty state: hero dropzone -->
-        <div v-if="!parseResult" class="pi-empty">
+        <!-- Empty state: hero dropzone (file drag-drop is scoped here so it can't clash with item dragging once loaded) -->
+        <div v-if="!parseResult" class="pi-empty" @dragenter.prevent="onDragEnter" @dragover.prevent @dragleave.prevent="onDragLeave" @drop.prevent="onDrop">
             <div class="pi-dropzone" :class="{ 'pi-dragover': dragOver }">
                 <span class="pi-corner pi-corner-tl"></span>
                 <span class="pi-corner pi-corner-tr"></span>
@@ -31,7 +31,7 @@
                 </label>
                 <p class="pi-drop-hint">{{ t('app_save_inv_hint') }}</p>
                 <div class="pi-drop-divider">{{ t('app_save_inv_or') }}</div>
-                <button class="pi-btn" @click="$emit('startBlank')">
+                <button class="pi-btn" @click="onStartBlank">
                     <LucidePlus :size="13" />
                     <span>{{ t('app_save_inv_start_blank') }}</span>
                 </button>
@@ -41,7 +41,13 @@
         <!-- Loaded -->
         <div v-else class="pi-loaded" :style="{ '--pi-insp-w': inspWidthCss }">
             <!-- Scrollable manifest column (header + container panels) -->
-            <div class="pi-scroll">
+            <div
+                class="pi-scroll"
+                :class="{ 'pi-scroll-drop': inventoryDropActive }"
+                @dragover="onInventoryDragOver"
+                @dragleave="onInventoryDragLeave"
+                @drop="onInventoryDrop"
+            >
                 <!-- Manifest header: summary strip + controls -->
                 <div class="pi-header">
                     <div class="pi-summary">
@@ -65,9 +71,8 @@
                             <span class="pi-summary-label">{{ t('app_save_inv_weight') }}</span>
                             <span class="pi-summary-value">{{ carryWeight.toFixed(1) }} {{ t('unit_kg') }}</span>
                         </div>
-                        <div v-if="parseResult.fileName" class="pi-summary-file" :title="parseResult.fileName">{{ parseResult.fileName }}</div>
-                        <div class="pi-summary-actions" :class="{ 'pi-actions-grow': !parseResult.fileName }">
-                            <button v-if="parseResult.manual" class="pi-btn pi-btn-accent" @click="addPickerOpen = true">
+                        <div class="pi-summary-actions pi-actions-grow">
+                            <button class="pi-btn pi-btn-accent" @click="addPickerOpen = true">
                                 <LucidePlus :size="13" />
                                 <span>{{ t('app_save_inv_add_items') }}</span>
                             </button>
@@ -76,7 +81,7 @@
                                 <span>{{ t('app_save_inv_reimport') }}</span>
                                 <input type="file" accept=".scop,.scoc" multiple @change="onFileInput" style="display:none">
                             </label>
-                            <button class="pi-btn pi-btn-danger" @click="$emit('clearSave')">
+                            <button class="pi-btn pi-btn-danger" @click="onClearSave">
                                 <LucideTrash2 :size="13" />
                                 <span>{{ t('app_save_inv_clear') }}</span>
                             </button>
@@ -86,8 +91,8 @@
                     <div class="pi-controls">
                         <div class="pi-search" v-click-outside="closeFilterPanel">
                             <LucideSearch :size="14" class="pi-search-icon" />
-                            <input type="text" v-model="search" :placeholder="t('app_label_filter_placeholder')">
-                            <button v-if="search" class="pi-search-clear" @click="search = ''">&times;</button>
+                            <input type="text" v-model="searchInput" :placeholder="t('app_label_filter_placeholder')">
+                            <button v-if="searchInput" class="pi-search-clear" @click="clearSearch">&times;</button>
                             <button class="filter-btn" @click.stop="filterPanelOpen = !filterPanelOpen" v-tooltip="t('app_label_filters')">
                                 <LucideSlidersHorizontal :size="14" />
                                 <span v-if="activeCategories.length > 0" class="filter-badge">{{ activeCategories.length }}</span>
@@ -131,6 +136,15 @@
                                 </button>
                             </div>
                         </div>
+                        <button
+                            class="sort-btn pi-equip-toggle"
+                            :class="{ active: equipableOnly }"
+                            @click="equipableOnly = !equipableOnly"
+                            v-tooltip="t('app_save_inv_equipable')"
+                        >
+                            <LucideShield :size="14" />
+                            <span class="sort-btn-label">{{ t('app_save_inv_equipable') }}</span>
+                        </button>
                         <div class="pi-active-chips" v-if="activeCategories.length">
                             <button
                                 v-for="cat in activeCategories"
@@ -154,9 +168,10 @@
                         </header>
                         <div v-show="!collapsed[panel.key]" class="pi-panel-body">
                             <div v-if="panel.items.length === 0" class="pi-panel-empty">{{ t('app_label_no_results') }}</div>
-                            <div v-else class="pi-icon-grid">
+                            <template v-else>
+                            <div class="pi-icon-grid">
                                 <a
-                                    v-for="item in panel.items"
+                                    v-for="item in panel.items.slice(0, revealCount(panel.key))"
                                     :key="item.id"
                                     :href="itemHref(item.id)"
                                     class="pi-icon-cell"
@@ -169,10 +184,11 @@
                                     @mousemove="onCellMove($event)"
                                     @mouseleave="$emit('hideItemHover')"
                                 >
-                                    <img :src="'img/icons/' + item.id + '.png'" :alt="tItemName(item)" loading="lazy" @error="$event.target.style.visibility = 'hidden'">
-                                    <span class="pi-icon-name">{{ tItemName(item) }}</span>
+                                    <img :src="'img/icons/' + item.id + '.png'" :alt="item._name" loading="lazy" @error="$event.target.style.visibility = 'hidden'">
+                                    <span class="pi-icon-name">{{ item._name }}</span>
                                     <span v-if="item._qty > 1" class="pi-qty">&times;{{ item._qty }}</span>
                                     <span v-if="item._equipped" class="pi-equip" v-tooltip="t('app_save_inv_equipped')"></span>
+                                    <span v-else-if="item._modified && !parseResult.manual" class="pi-mod" v-tooltip="t('app_save_inv_loadout_modified')"></span>
                                     <LucideWrench v-if="item._wbTick && !item._equipped" :size="10" class="pi-wb-tick" v-tooltip="t('app_save_inv_wb_ready_ingredient')" />
                                     <span v-if="parseResult.manual" class="pi-cell-edit">
                                         <button class="pi-cell-btn" @click.stop.prevent="$emit('adjustItem', item.id, $event.shiftKey ? -10 : -1)">&minus;</button>
@@ -183,6 +199,12 @@
                                     </span>
                                 </a>
                             </div>
+                            <div
+                                v-if="panel.items.length > revealCount(panel.key)"
+                                class="pi-reveal-sentinel"
+                                :data-panel-key="panel.key"
+                            ></div>
+                            </template>
                         </div>
                     </section>
                 </div>
@@ -201,6 +223,16 @@
                     <span>{{ t('app_nav_damage_sim') }}</span>
                     <span v-if="selectedWeaponIds.length" class="pi-wb-count">{{ selectedWeaponIds.length }}</span>
                 </button>
+                <button
+                    class="pi-btn"
+                    :disabled="selectedComparableIds.length < 2"
+                    v-tooltip="selectedComparableIds.length > compareCount ? t('app_save_inv_compare_max') : null"
+                    @click="openComparison"
+                >
+                    <LucideScale :size="13" />
+                    <span>{{ t('app_label_compare') }}</span>
+                    <span v-if="compareCount > 1" class="pi-wb-count">{{ compareCount }}</span>
+                </button>
                 <button class="pi-btn" @click="clearSelection">
                     <LucideX :size="13" />
                     <span>{{ t('app_save_inv_clear_selection') }}</span>
@@ -215,10 +247,19 @@
                         <h3 class="pi-insp-title">{{ activeRailPanel ? activeRailPanel.label : '' }}</h3>
                         <button
                             class="pi-insp-size"
-                            v-tooltip="inspWidth === '50' ? t('app_save_inv_panel_shrink') : t('app_save_inv_panel_expand')"
-                            @click="toggleInspWidth"
+                            v-tooltip="t('app_save_inv_panel_expand')"
+                            :disabled="inspWidth === '75'"
+                            @click="stepInspWidth(1)"
                         >
-                            <component :is="inspWidth === '50' ? 'LucideChevronsRight' : 'LucideChevronsLeft'" :size="14" />
+                            <LucideChevronsLeft :size="14" />
+                        </button>
+                        <button
+                            class="pi-insp-size"
+                            v-tooltip="t('app_save_inv_panel_shrink')"
+                            :disabled="inspWidth === '33'"
+                            @click="stepInspWidth(-1)"
+                        >
+                            <LucideChevronsRight :size="14" />
                         </button>
                         <button class="pi-insp-close" @click="activeDrawer = null">&times;</button>
                     </div>
@@ -227,9 +268,14 @@
                             v-show="activeDrawer === 'loadout'"
                             :open="activeDrawer === 'loadout'"
                             :actor-items="parseResult.actorItems"
+                            :weapon-ammo-idx="parseResult.weaponAmmoIdx || {}"
+                            :saved-ammo="parseResult.loadoutAmmo || {}"
                             :index-by-id="indexById"
                             :resolve-full="resolveFull"
                             :drag-item="loadoutDragItem"
+                            :manual="!!parseResult.manual"
+                            @equip-loadout="$emit('equipLoadout', $event)"
+                            @set-ammo="$emit('setLoadoutAmmo', $event)"
                             @close="activeDrawer = null"
                             @show-item-hover="(id, event) => $emit('showItemHover', id, event, null)"
                             @move-item-hover="$emit('moveItemHover', $event)"
@@ -243,6 +289,7 @@
                             :scope="workbenchScope"
                             @close="activeDrawer = null"
                             @set-scope="setWorkbenchScope"
+                            @toggle-kit="toggleKit"
                             @navigate-to-item="$emit('navigateToItem', $event)"
                             @open-recipe-tree="openRecipeTree"
                             @show-item-hover="(id, event) => $emit('showItemHover', id, event, null)"
@@ -254,6 +301,14 @@
                             :open="activeDrawer === 'stats'"
                             :stats="parseResult.stats"
                             :level-names="levelNames"
+                            @close="activeDrawer = null"
+                        />
+                        <GoodwillDrawer
+                            v-show="activeDrawer === 'goodwill'"
+                            :open="activeDrawer === 'goodwill'"
+                            :goodwill="parseResult.goodwill || null"
+                            :factions="parseResult.stats?.factions || []"
+                            :actor-faction="parseResult.stats?.faction || ''"
                             @close="activeDrawer = null"
                         />
                     </div>
@@ -285,6 +340,9 @@
                 :label-fn="(item) => tItemName(item)"
                 @close="closeAddPicker"
                 @select="togglePickerChecked"
+                @item-hover="(item, event) => $emit('showItemHover', item.id, event, null)"
+                @item-move="(event) => $emit('moveItemHover', event)"
+                @item-leave="$emit('hideItemHover')"
             >
                 <template #item="{ item }">
                     <span class="pi-picker-check" :class="{ 'pi-picker-checked': addPickerChecked.has(item.id) }">✓</span>
@@ -299,26 +357,31 @@
                     <button class="pi-btn pi-btn-accent" :disabled="addPickerChecked.size === 0" @click="confirmAddItems">{{ t('app_label_add') }}</button>
                 </template>
             </ItemPickerModal>
-
-            <!-- Drag overlay while a re-import drag is in progress -->
-            <div v-if="dragOver" class="pi-drag-overlay">
-                <LucideFileUp :size="36" />
-                <p>{{ t('app_save_inv_drop') }}</p>
-            </div>
         </div>
     </template>
 </div>
 </template>
 
 <script>
-import { categorySlug } from '../../js/utils.js';
+import { categorySlug, debounce } from '../../js/utils.js';
+import { MAX_PINS, CAT, PRIMARY_WEAPON_SLUGS, SIDEARM_SLUGS } from '../../js/constants.js';
 import LoadoutDrawer from './LoadoutDrawer.vue';
 import WorkbenchDrawer from './WorkbenchDrawer.vue';
 import StatsDrawer from './StatsDrawer.vue';
+import GoodwillDrawer from './GoodwillDrawer.vue';
 import ItemPickerModal from './modals/ItemPickerModal.vue';
 
 /** Weapon categories the damage simulator can compare. */
 const SIM_WEAPON_CATEGORIES = new Set(['Pistols', 'SMGs', 'Shotguns', 'Rifles', 'Snipers']);
+
+/** Gear categories that occupy a loadout slot (weapons handled separately via slugs). */
+const EQUIPABLE_CATEGORIES = new Set([CAT.HELMETS, CAT.OUTFITS, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS, CAT.EXPLOSIVES, CAT.AMMO]);
+
+/** Default sort sinks these categories to the end, in this order. */
+const DEFAULT_SORT_LAST = [CAT.AMMO, CAT.MEDICINE, CAT.MATERIALS];
+
+/** Icon-grid cells rendered per reveal step (initial render + each scroll page). */
+const REVEAL_PAGE = 80;
 
 /** Toolkit item section required for each craft-recipe toolTier. */
 const TIER_KITS = {
@@ -331,7 +394,7 @@ const TIER_KITS = {
 };
 
 export default {
-    components: { LoadoutDrawer, WorkbenchDrawer, StatsDrawer, ItemPickerModal },
+    components: { LoadoutDrawer, WorkbenchDrawer, StatsDrawer, GoodwillDrawer, ItemPickerModal },
     props: {
         active: { type: Boolean, default: false },
         parseResult: { type: Object, default: null },
@@ -341,15 +404,19 @@ export default {
         categoryItems: { type: Object, default: () => ({}) },
         craftRecipes: { type: Object, default: null },
         packId: { type: String, default: '' },
+        // Global catalog filters (hide unobtainable / tactical-kit weapons)
+        hideNoDrop: { type: Boolean, default: false },
+        hideTacticalKit: { type: Boolean, default: false },
     },
     emits: [
         'parseSave', 'clearSave', 'dismissError',
-        'startBlank', 'adjustItem',
+        'startBlank', 'adjustItem', 'equipLoadout', 'setLoadoutAmmo',
         'navigateToItem',
         'showItemHover', 'moveItemHover', 'hideItemHover',
         'ensureCraftRecipes', 'openCraftingRecipe', 'openBallistics',
+        'openComparison',
     ],
-    inject: ['t', 'tCat', 'tItemName', 'itemHref', 'headerLabel'],
+    inject: ['t', 'tCat', 'tItemName', 'itemHref', 'headerLabel', 'factionIcon', 'factionColor'],
     data() {
         let sortMode = 'default';
         try {
@@ -362,19 +429,41 @@ export default {
         } catch { /* private mode */ }
         let inspWidth = '33';
         try {
-            if (localStorage.getItem('inventoryInspectorWidth') === '50') inspWidth = '50';
+            const stored = localStorage.getItem('inventoryInspectorWidth');
+            if (['50', '75'].includes(stored)) inspWidth = stored;
         } catch { /* private mode */ }
+        // Restore the last-open inspector tab (null = collapsed). Validity vs the
+        // available rail panels is reconciled by the railPanels watcher.
+        let activeDrawer = null;
+        try {
+            const stored = localStorage.getItem('inventoryActiveDrawer');
+            if (['loadout', 'workbench', 'stats', 'goodwill'].includes(stored)) activeDrawer = stored;
+        } catch { /* private mode */ }
+        // Toolkits the user has manually marked as owned. Layered over the kits
+        // detected in the inventory so the workbench works for blank builds too.
+        let ownedKits = [];
+        try {
+            const stored = JSON.parse(localStorage.getItem('workbenchOwnedKits'));
+            if (Array.isArray(stored)) ownedKits = stored.filter(id => typeof id === 'string');
+        } catch { /* private mode / corrupt value */ }
         return {
+            // searchInput drives the field; search (debounced) drives the panel rebuild
+            searchInput: '',
             search: '',
             activeCategories: [],
+            equipableOnly: false,
             filterPanelOpen: false,
             sortMode,
             sortMenuOpen: false,
             collapsed: {},
+            // panelKey → number of grid cells revealed (incremental scroll reveal)
+            revealCaps: {},
             dragOver: false,
             _dragDepth: 0,
+            // True while a paper-doll item is being dragged over the inventory column
+            inventoryDropActive: false,
             levelNames: {},
-            activeDrawer: null,
+            activeDrawer,
             workbenchScope,
             inspWidth,
             selectedIds: new Set(),
@@ -386,9 +475,19 @@ export default {
             // Universal section → { name, price } map (covers items outside the DB index)
             itemsCommon: {},
             _itemsCommonPack: null,
+            ownedKits: new Set(ownedKits),
         };
     },
     watch: {
+        searchInput(val) {
+            this._applySearch(val);
+        },
+        // Re-start the icon-grid reveal from the top whenever the result set changes
+        search() { this.revealCaps = {}; },
+        sortMode() { this.revealCaps = {}; },
+        activeCategories: { deep: true, handler() { this.revealCaps = {}; } },
+        equipableOnly() { this.revealCaps = {}; },
+        parseResult() { this.revealCaps = {}; },
         craftDataWanted: {
             immediate: true,
             handler(wanted) {
@@ -400,6 +499,20 @@ export default {
             handler(wanted) {
                 if (wanted) this.loadItemsCommon();
             },
+        },
+        // Persist the open tab (or collapsed state) so the inspector reopens where the user left it
+        activeDrawer(val) {
+            try {
+                if (val) localStorage.setItem('inventoryActiveDrawer', val);
+                else localStorage.removeItem('inventoryActiveDrawer');
+            } catch { /* private mode */ }
+        },
+        // Close a restored tab that has no matching rail panel (e.g. workbench with no
+        // craftable recipes). Hold off while the workbench's recipes are still loading.
+        railPanels(panels) {
+            if (!this.activeDrawer || panels.some(p => p.key === this.activeDrawer)) return;
+            if (this.activeDrawer === 'workbench' && this.workbenchDataWanted && !this.craftRecipes) return;
+            this.activeDrawer = null;
         },
         packId() {
             this._itemsCommonPack = null;
@@ -426,6 +539,16 @@ export default {
             }
             return map;
         },
+        fullById() {
+            // section id → full item object, built once per data change.
+            // Scoped to categories actually present in the inventory so it
+            // covers exactly the items resolveFull is asked for.
+            const map = new Map();
+            for (const cat of this.presentCategories) {
+                for (const it of this.categoryItems[categorySlug(cat)] || []) map.set(it.id, it);
+            }
+            return map;
+        },
         craftDataWanted() {
             return this.active && !!this.parseResult && !this.craftRecipes;
         },
@@ -449,11 +572,16 @@ export default {
             return counts;
         },
         workbenchKits() {
-            return Object.entries(TIER_KITS).map(([tier, id]) => ({
-                tier: Number(tier),
-                id,
-                have: this.workbenchCounts.has(id),
-            }));
+            return Object.entries(TIER_KITS).map(([tier, id]) => {
+                const detected = this.workbenchCounts.has(id);
+                return {
+                    tier: Number(tier),
+                    id,
+                    detected,
+                    owned: this.ownedKits.has(id),
+                    have: detected || this.ownedKits.has(id),
+                };
+            });
         },
         workbenchRecipes() {
             if (!this.craftRecipes || !this.parseResult) return [];
@@ -478,16 +606,22 @@ export default {
                             have,
                         };
                     });
+                    const kitId = TIER_KITS[r.toolTier] || null;
+                    const kitHave = counts.has(kitId) || (!!kitId && this.ownedKits.has(kitId));
+                    // A missing required toolkit blocks crafting outright, so a recipe
+                    // counts as craftable only with the kit in hand (recipes needing no kit pass).
+                    const kitOk = !kitId || kitHave;
                     recipes.push({
                         id: r.id,
                         nameKey: r.pda_encyclopedia_name,
                         craftCategory: cat,
                         tier: r.toolTier,
-                        kitId: TIER_KITS[r.toolTier] || null,
-                        kitHave: counts.has(TIER_KITS[r.toolTier]),
+                        kitId,
+                        kitHave,
+                        kitOk,
                         ingredients,
                         completion: totalNeed > 0 ? totalHave / totalNeed : 0,
-                        ready: ingredients.every(i => i.have >= i.need),
+                        ready: kitOk && ingredients.every(i => i.have >= i.need),
                         inIndex: this.indexById.has(r.id),
                     });
                 }
@@ -514,22 +648,36 @@ export default {
                     badge: this.workbenchReadyCount,
                 });
             }
-            if (this.hasStats) {
+            panels.push({
+                key: 'stats',
+                icon: 'LucideChartColumn',
+                label: this.t('app_save_inv_stats'),
+                badge: 0,
+            });
+            if (this.hasGoodwill) {
                 panels.push({
-                    key: 'stats',
-                    icon: 'LucideChartColumn',
-                    label: this.t('app_save_inv_stats'),
+                    key: 'goodwill',
+                    icon: 'LucideHandshake',
+                    label: this.t('app_save_inv_goodwill'),
                     badge: 0,
                 });
             }
             return panels;
+        },
+        // Faction goodwill tab appears when the save yields relations and/or MilPDA reputation
+        hasGoodwill() {
+            const pr = this.parseResult;
+            if (!pr) return false;
+            const gw = pr.goodwill && Object.keys(pr.goodwill).length > 0;
+            const rep = pr.stats?.factions?.length > 0;
+            return gw || rep;
         },
         activeRailPanel() {
             return this.railPanels.find(p => p.key === this.activeDrawer) || null;
         },
         inspWidthCss() {
             // Never narrower than 380px regardless of percentage choice
-            return this.inspWidth === '50' ? 'max(380px, 50%)' : 'max(380px, 33%)';
+            return `max(380px, ${this.inspWidth}%)`;
         },
         workbenchReadyIngredientIds() {
             const ids = new Set();
@@ -542,7 +690,13 @@ export default {
             return ids;
         },
         pickerItems() {
-            return [...this.index].sort((a, b) => this.tItemName(a).localeCompare(this.tItemName(b)));
+            // Only the (manual-mode) add picker consumes this, and only while open —
+            // sorting the full ~8k index eagerly on every load would be wasted work.
+            if (!this.addPickerOpen) return [];
+            // Respect the global catalog filters so hidden weapons stay hidden here too.
+            return this.index
+                .filter(e => !(this.hideNoDrop && e.unobtainable === true) && !(this.hideTacticalKit && e.tacticalKit === true))
+                .sort((a, b) => this.tItemName(a).localeCompare(this.tItemName(b)));
         },
         actorItemCounts() {
             const counts = new Map();
@@ -558,6 +712,18 @@ export default {
                 if (entry && SIM_WEAPON_CATEGORIES.has(entry.category)) ids.push(id);
             }
             return ids;
+        },
+        // Selected items the DB index can resolve (the compare modal needs full item data).
+        selectedComparableIds() {
+            const ids = [];
+            for (const id of this.selectedIds) {
+                if (this.indexById.has(id)) ids.push(id);
+            }
+            return ids;
+        },
+        // Compare caps at MAX_PINS, mirroring the pinned-item comparison elsewhere.
+        compareCount() {
+            return Math.min(this.selectedComparableIds.length, MAX_PINS);
         },
         presentCategories() {
             if (!this.parseResult) return [];
@@ -610,16 +776,33 @@ export default {
             return panels;
         },
     },
+    created() {
+        // Debounce the panel rebuild that search drives; the input stays responsive.
+        this._applySearch = debounce((val) => { this.search = val; }, 180);
+        // Tracks which sentinel nodes are already observed (non-reactive on purpose).
+        this._observedSentinels = new WeakSet();
+        this._revealObserver = null;
+    },
     mounted() {
         this.loadLevelNames();
         window.addEventListener('keydown', this.onWindowKeydown);
         window.addEventListener('keyup', this.onWindowKeyup);
         window.addEventListener('blur', this.onWindowBlur);
+        if (typeof IntersectionObserver !== 'undefined') {
+            // Prefetch a page ahead so reveals feel seamless while scrolling.
+            this._revealObserver = new IntersectionObserver(this.onRevealIntersect, { rootMargin: '400px 0px' });
+            this.observeSentinels();
+        }
+    },
+    updated() {
+        // Panels/sentinels are dynamic; pick up any newly rendered sentinels.
+        this.observeSentinels();
     },
     beforeUnmount() {
         window.removeEventListener('keydown', this.onWindowKeydown);
         window.removeEventListener('keyup', this.onWindowKeyup);
         window.removeEventListener('blur', this.onWindowBlur);
+        if (this._revealObserver) this._revealObserver.disconnect();
     },
     methods: {
         async loadLevelNames() {
@@ -637,10 +820,7 @@ export default {
             return this.levelNames[levelId] || levelId;
         },
         resolveFull(sectionName) {
-            const entry = this.indexById.get(sectionName);
-            if (!entry) return null;
-            const slug = categorySlug(entry.category);
-            return (this.categoryItems[slug] || []).find(i => i.id === sectionName) || null;
+            return this.fullById.get(sectionName) || null;
         },
         makePanel(key, title, levelId, storedItems) {
             const items = [];
@@ -649,20 +829,26 @@ export default {
                 const entry = this.indexById.get(st.s);
                 const category = entry ? entry.category : null;
                 if (this.activeCategories.length && !this.activeCategories.includes(category)) continue;
+                if (this.equipableOnly && !this.isEquipable(category)) continue;
                 const full = this.resolveFull(st.s);
                 const display = full
                     ? { ...full, category }
                     : { id: st.s, name: entry?.name || st.s, displayName: entry?.displayName, category };
-                if (q && !this.tItemName(display).toLowerCase().includes(q) && !st.s.includes(q)) continue;
+                // Resolve the display name once — reused by the filter test, the sort
+                // comparators below, and the template cell (avoids n·log n tItemName calls).
+                display._name = this.tItemName(display);
+                display._nameLower = display._name.toLowerCase();
+                if (q && !display._nameLower.includes(q) && !st.s.includes(q)) continue;
                 display._qty = st.q;
                 display._cond = st.c;
                 display._equipped = !!st.e;
+                display._modified = !!st.m;
                 display._wbTick = this.workbenchReadyIngredientIds.has(st.s);
                 const unitWeight = parseFloat(display.st_prop_weight);
                 display._stackWeight = isNaN(unitWeight) ? -1 : unitWeight * st.q;
                 items.push(display);
             }
-            const byName = (a, b) => this.tItemName(a).localeCompare(this.tItemName(b));
+            const byName = (a, b) => a._name.localeCompare(b._name);
             if (this.sortMode === 'name') {
                 items.sort(byName);
             } else if (this.sortMode === 'weight') {
@@ -670,9 +856,15 @@ export default {
             } else if (this.sortMode === 'qty') {
                 items.sort((a, b) => (b._qty - a._qty) || byName(a, b));
             } else {
-                // Default: equipped gear first, then group by category, then by name
+                // Default: equipped gear first, then group by category (with Ammo,
+                // Medicine, Materials sunk to the end in that order), then by name
+                const catRank = (cat) => {
+                    const i = DEFAULT_SORT_LAST.indexOf(cat);
+                    return i === -1 ? 0 : i + 1;
+                };
                 items.sort((a, b) =>
                     (b._equipped - a._equipped) ||
+                    (catRank(a.category) - catRank(b.category)) ||
                     (a.category || '').localeCompare(b.category || '') ||
                     byName(a, b)
                 );
@@ -688,6 +880,13 @@ export default {
             // Only meaningful for degradable gear; hide pristine/unknown values
             return item._cond >= 0 && item._cond < 0.995;
         },
+        /** Can this category occupy a loadout slot? (drives the "Equippable only" filter) */
+        isEquipable(category) {
+            if (!category) return false;
+            if (EQUIPABLE_CATEGORIES.has(category)) return true;
+            const slug = categorySlug(category);
+            return PRIMARY_WEAPON_SLUGS.includes(slug) || SIDEARM_SLUGS.includes(slug);
+        },
         conditionClass(cond) {
             if (cond >= 0.7) return 'pi-cond-good';
             if (cond >= 0.4) return 'pi-cond-worn';
@@ -700,6 +899,10 @@ export default {
         },
         closeFilterPanel() {
             this.filterPanelOpen = false;
+        },
+        clearSearch() {
+            this.searchInput = '';
+            this.search = '';
         },
         setSortMode(mode) {
             this.sortMode = mode;
@@ -757,6 +960,10 @@ export default {
             // The sim caps loadouts at 5, but gets the full selection so its picker can swap among them
             this.$emit('openBallistics', this.selectedWeaponIds);
         },
+        openComparison() {
+            if (this.selectedComparableIds.length < 2) return;
+            this.$emit('openComparison', this.selectedComparableIds.slice(0, MAX_PINS));
+        },
         async loadItemsCommon() {
             if (!this.packId || this._itemsCommonPack === this.packId) return;
             this._itemsCommonPack = this.packId;
@@ -777,6 +984,7 @@ export default {
         closeAddPicker() {
             this.addPickerOpen = false;
             this.addPickerChecked.clear();
+            this.$emit('hideItemHover');
         },
         confirmAddItems() {
             for (const id of this.addPickerChecked) {
@@ -787,13 +995,34 @@ export default {
         toggleDrawer(name) {
             this.activeDrawer = this.activeDrawer === name ? null : name;
         },
-        toggleInspWidth() {
-            this.inspWidth = this.inspWidth === '50' ? '33' : '50';
+        stepInspWidth(dir) {
+            const order = ['33', '50', '75'];
+            const next = order[order.indexOf(this.inspWidth) + dir];
+            if (!next) return; // clamp at the ends
+            this.inspWidth = next;
             try { localStorage.setItem('inventoryInspectorWidth', this.inspWidth); } catch { /* private mode */ }
         },
         setWorkbenchScope(scope) {
             this.workbenchScope = scope;
             try { localStorage.setItem('workbenchScope', scope); } catch { /* private mode */ }
+        },
+        toggleKit(id) {
+            if (this.ownedKits.has(id)) this.ownedKits.delete(id);
+            else this.ownedKits.add(id);
+            try { localStorage.setItem('workbenchOwnedKits', JSON.stringify([...this.ownedKits])); } catch { /* private mode */ }
+        },
+        // Manual kit marks belong to the loaded inventory, so they reset whenever it does.
+        resetOwnedKits() {
+            this.ownedKits.clear();
+            try { localStorage.removeItem('workbenchOwnedKits'); } catch { /* private mode */ }
+        },
+        onClearSave() {
+            this.resetOwnedKits();
+            this.$emit('clearSave');
+        },
+        onStartBlank() {
+            this.resetOwnedKits();
+            this.$emit('startBlank');
         },
         openRecipeTree(recipe) {
             this.activeDrawer = null;
@@ -827,10 +1056,60 @@ export default {
         togglePanel(key) {
             this.collapsed[key] = !this.collapsed[key];
         },
+        revealCount(key) {
+            return this.revealCaps[key] || REVEAL_PAGE;
+        },
+        observeSentinels() {
+            if (!this._revealObserver || !this.$el?.querySelectorAll) return;
+            for (const node of this.$el.querySelectorAll('.pi-reveal-sentinel')) {
+                if (!this._observedSentinels.has(node)) {
+                    this._observedSentinels.add(node);
+                    this._revealObserver.observe(node);
+                }
+            }
+        },
+        onRevealIntersect(entries) {
+            for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                const el = entry.target;
+                const key = el.dataset.panelKey;
+                if (!key) continue;
+                this.revealCaps[key] = (this.revealCaps[key] || REVEAL_PAGE) + REVEAL_PAGE;
+                // Re-arm: if the sentinel is still in view after more cells render,
+                // re-observing fires a fresh callback so we keep revealing until it scrolls off.
+                this._revealObserver.unobserve(el);
+                this._observedSentinels.delete(el);
+                this.$nextTick(() => this.observeSentinels());
+            }
+        },
         onFileInput(event) {
             const files = event.target?.files;
-            if (files?.length) this.$emit('parseSave', files);
+            if (files?.length) {
+                this.resetOwnedKits();
+                this.$emit('parseSave', files);
+            }
             event.target.value = '';
+        },
+        // ── Loadout → inventory drop (unequip): mirror of the inventory → loadout drag ──
+        isLoadoutDrag(event) {
+            return [...(event.dataTransfer?.types || [])].includes('application/x-gamma-loadout-item');
+        },
+        onInventoryDragOver(event) {
+            if (!this.isLoadoutDrag(event)) return;
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'move';
+            this.inventoryDropActive = true;
+        },
+        onInventoryDragLeave(event) {
+            // Only clear when the pointer truly leaves the column, not its children
+            if (!event.currentTarget.contains(event.relatedTarget)) this.inventoryDropActive = false;
+        },
+        onInventoryDrop(event) {
+            if (!this.isLoadoutDrag(event)) return;
+            // Accept the drop so dropEffect resolves to 'move'; LoadoutDrawer clears
+            // the source slot on its dragend.
+            event.preventDefault();
+            this.inventoryDropActive = false;
         },
         hasFiles(event) {
             return [...(event.dataTransfer?.types || [])].includes('Files');
@@ -848,7 +1127,10 @@ export default {
             this._dragDepth = 0;
             this.dragOver = false;
             const files = event.dataTransfer?.files;
-            if (files?.length) this.$emit('parseSave', files);
+            if (files?.length) {
+                this.resetOwnedKits();
+                this.$emit('parseSave', files);
+            }
         },
     },
 };
@@ -867,7 +1149,7 @@ export default {
 /* ── Loaded layout: manifest + docked inspector + icon rail ── */
 .pi-loaded {
     --pi-rail-w: 2.6rem; /* activity-rail gutter width */
-    --pi-insp-w: max(380px, 33%); /* docked inspector width; overridden inline by the 33%/50% toggle */
+    --pi-insp-w: max(380px, 33%); /* docked inspector width; overridden inline by the 33%/50%/75% toggle */
     position: relative;
     display: flex;
     flex: 1;
@@ -880,6 +1162,12 @@ export default {
     min-width: 0;
     overflow-y: auto;
     padding: 0 0.75rem 0.5rem 0;
+}
+
+/* Highlight the inventory column as a drop target while unequipping from the loadout */
+.pi-scroll-drop {
+    box-shadow: inset 0 0 0 2px var(--color-accent-tint-35);
+    border-radius: 6px;
 }
 
 /* ── Loading / error ───────────────────────────────────────── */
@@ -1072,6 +1360,7 @@ export default {
     align-items: stretch;
     gap: 0.15rem;
     padding-top: 0.4rem;
+    border-top: 1px solid var(--border);
     border-left: 1px solid var(--border);
     background: var(--color-surface-3);
 }
@@ -1133,6 +1422,7 @@ export default {
     flex-shrink: 0;
     width: 0;
     overflow: hidden;
+    border-top: 1px solid var(--border);
     border-left: 0 solid var(--border);
     background: var(--color-surface-1);
     transition: width 0.25s ease, border-left-width 0.25s ease;
@@ -1176,9 +1466,8 @@ export default {
     color: var(--text);
 }
 
-/* Width toggle: cycles the docked panel between 33% and 50% */
+/* Width controls: expand / contract the docked panel between 33%, 50% and 75% */
 .pi-insp-size {
-    margin-left: auto;
     display: inline-flex;
     align-items: center;
     background: none;
@@ -1189,8 +1478,22 @@ export default {
     transition: color 0.15s;
 }
 
+/* First control pushes the whole control cluster to the right edge */
+.pi-insp-size:first-of-type {
+    margin-left: auto;
+}
+
 .pi-insp-size:hover {
     color: var(--text);
+}
+
+.pi-insp-size:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.pi-insp-size:disabled:hover {
+    color: var(--text-secondary);
 }
 
 .pi-insp-close {
@@ -1499,6 +1802,11 @@ export default {
     gap: 0.45rem;
 }
 
+/* Scroll trigger for incremental icon-grid reveal (no visual footprint) */
+.pi-reveal-sentinel {
+    height: 1px;
+}
+
 .pi-icon-cell {
     position: relative;
     display: flex;
@@ -1579,6 +1887,28 @@ export default {
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 0 4px var(--accent);
+}
+
+/* Added/changed since import — mirrors the loadout's blue "Modified" dot */
+.pi-mod {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-blue-bright);
+    box-shadow: 0 0 4px var(--color-blue-bright);
+}
+
+/* Equippable-only toggle: accent treatment while active */
+.pi-equip-toggle.active {
+    color: var(--accent);
+    border-color: var(--color-accent-tint-35);
+}
+
+.pi-equip-toggle.active .sort-btn-label {
+    color: var(--accent);
 }
 
 /* ── Manual mode: cell quantity steppers ──────────────────── */
@@ -1734,25 +2064,6 @@ export default {
 .pi-btn:disabled:hover {
     color: var(--text);
     border-color: var(--border);
-}
-
-/* ── Drag overlay ─────────────────────────────────────────── */
-.pi-drag-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    background: rgba(0, 0, 0, 0.65);
-    color: var(--accent);
-    pointer-events: none;
-    font-family: var(--font-display);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
 @media (max-width: 720px) {

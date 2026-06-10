@@ -17,7 +17,15 @@
                 </div>
             </div>
             <div class="build-picker-list">
-                <div v-for="item in displayItems" :key="itemKey(item)" class="build-picker-item" @click="$emit('select', item)">
+                <div
+                    v-for="item in displayItems"
+                    :key="itemKey(item)"
+                    class="build-picker-item"
+                    @click="$emit('select', item)"
+                    @mouseenter="$emit('itemHover', item, $event)"
+                    @mousemove="$emit('itemMove', $event)"
+                    @mouseleave="$emit('itemLeave')"
+                >
                     <slot name="item" :item="item">
                         <span class="build-picker-item-name">{{ itemLabel(item) }}</span>
                     </slot>
@@ -57,7 +65,7 @@ export default defineComponent({
     labelFn: { type: Function as PropType<(item: PickerItem) => string>, default: null },
     keyFn: { type: Function as PropType<(item: PickerItem) => string>, default: null },
   },
-  emits: ['close', 'select', 'update:query'],
+  emits: ['close', 'select', 'update:query', 'itemHover', 'itemMove', 'itemLeave'],
   data() {
     return { localQuery: '' };
   },

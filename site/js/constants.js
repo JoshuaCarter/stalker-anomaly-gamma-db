@@ -228,3 +228,25 @@ export const FACTION_COLORS = {
 
 export const FACTION_LIST = ["stalker", "dolg", "freedom", "csky", "ecolog", "army", "killer", "bandit", "monolith", "renegade", "greh", "isg"];
 
+// Base community-to-community standing from GAMMA game_relations.ltx
+// ([communities_relations], the actor_<faction> rows). The save's relations
+// registry only stores the player's *personally earned* goodwill; the underlying
+// faction war state lives here. Combined attitude ≈ personal goodwill + this base
+// value. Keyed by the player's faction → { targetFaction: baseRelation }.
+// (-2000 = at war, 0 = neutral, +300/+2000 = allied.)
+export const FACTION_BASE_RELATIONS = {
+    stalker: { bandit: -2000, dolg: 0, ecolog: 0, freedom: 0, killer: -2000, army: -2000, monolith: -2000, greh: -2000, stalker: 0, zombied: -2000, csky: 0, isg: -2000, renegade: -2000 },
+    bandit: { bandit: 300, dolg: -2000, ecolog: -2000, freedom: 0, killer: 0, army: -2000, monolith: -2000, greh: -2000, stalker: -2000, zombied: -2000, csky: -2000, isg: -2000, renegade: 300 },
+    dolg: { bandit: -2000, dolg: 300, ecolog: 0, freedom: -2000, killer: -2000, army: 0, monolith: -2000, greh: -2000, stalker: 0, zombied: -2000, csky: -2000, isg: -2000, renegade: -2000 },
+    freedom: { bandit: 0, dolg: -2000, ecolog: 0, freedom: 300, killer: 0, army: -2000, monolith: -2000, greh: -2000, stalker: 0, zombied: -2000, csky: 0, isg: -2000, renegade: -2000 },
+    csky: { bandit: -2000, dolg: -2000, ecolog: 0, freedom: 0, killer: 0, army: -2000, monolith: -2000, greh: -2000, stalker: 0, zombied: -2000, csky: 300, isg: -2000, renegade: -2000 },
+    ecolog: { bandit: -2000, dolg: 0, ecolog: 300, freedom: 0, killer: 0, army: 0, monolith: -2000, greh: -2000, stalker: 0, zombied: -2000, csky: 0, isg: -2000, renegade: -2000 },
+    killer: { bandit: 0, dolg: -2000, ecolog: 0, freedom: 0, killer: 300, army: -2000, monolith: -2000, greh: -2000, stalker: -2000, zombied: -2000, csky: 0, isg: 0, renegade: -2000 },
+    army: { bandit: -2000, dolg: 0, ecolog: 0, freedom: -2000, killer: -2000, army: 300, monolith: -2000, greh: -2000, stalker: -2000, zombied: -2000, csky: -2000, isg: -2000, renegade: -2000 },
+    monolith: { bandit: -2000, dolg: -2000, ecolog: -2000, freedom: -2000, killer: -2000, army: -2000, monolith: 2000, greh: 300, stalker: -2000, zombied: 0, csky: -2000, isg: -2000, renegade: -2000 },
+    zombied: { bandit: -2000, dolg: -2000, ecolog: -2000, freedom: -2000, killer: -2000, army: -2000, monolith: 300, greh: 300, stalker: -2000, zombied: 300, csky: -2000, isg: -2000, renegade: -2000 },
+    greh: { bandit: -2000, dolg: -2000, ecolog: -2000, freedom: -2000, killer: -2000, army: -2000, monolith: 300, greh: 300, stalker: -2000, zombied: 300, csky: -2000, isg: -2000, renegade: -2000 },
+    isg: { bandit: -2000, dolg: -2000, ecolog: -2000, freedom: -2000, killer: 0, army: -2000, monolith: -2000, greh: -2000, stalker: -2000, zombied: -2000, csky: -2000, isg: 300, renegade: -2000 },
+    renegade: { bandit: 300, dolg: -2000, ecolog: -2000, freedom: -2000, killer: -2000, army: -2000, monolith: -2000, greh: -2000, stalker: -2000, zombied: -2000, csky: -2000, isg: -2000, renegade: 300 },
+};
+

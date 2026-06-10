@@ -78,6 +78,11 @@
             </div>
         </template>
     </div>
+
+    <div v-else class="sd-empty">
+        <LucideChartColumn :size="32" class="sd-empty-icon" />
+        <p>{{ t('app_save_stats_empty') }}</p>
+    </div>
 </div>
 </template>
 
@@ -196,6 +201,29 @@ export default {
     flex: 1;
     overflow-y: auto;
     padding: 0.6rem 0.9rem 1rem;
+}
+
+/* ── Empty state (no save imported) ───────────────────────── */
+.sd-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.sd-empty-icon {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.sd-empty p {
+    margin: 0;
+    font-size: 0.8rem;
 }
 
 .sd-faction-strip {

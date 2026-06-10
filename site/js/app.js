@@ -1,4 +1,5 @@
 import '../src/globals.js';
+import { markRaw } from 'vue';
 import { attachHoverPosition, prefersTouchHover } from '../src/hover-popover.js';
 import {
     EFFECT_FIELDS, FILTER_DEFS, NAME_TAG_COLS, BADGE_COLS, MODAL_BADGE_KEYS,
@@ -1757,7 +1758,7 @@ export const appDefinition = {
                 const res = await fetch(this.dataUrl(filename));
                 if (!res.ok) { console.warn(`Failed to load category ${slug}: HTTP ${res.status}`); return; }
                 const data = await res.json();
-                if (data.items) this.categoryItems[slug] = data.items;
+                if (data.items) this.categoryItems[slug] = markRaw(data.items);
                 if (data.headers) this.categoryHeaders[slug] = data.headers;
             } catch (e) {
                 console.warn(`Failed to load category ${slug}:`, e);
@@ -1793,7 +1794,7 @@ export const appDefinition = {
             if (this.craftRecipes || !this.fileManifest || !this.fileManifest['craft-recipes.json']) return;
             this.fetchCraftRecipes().then(craftData => {
                 if (!craftData) return;
-                this.craftRecipes = craftData;
+                this.craftRecipes = markRaw(craftData);
                 if (this.craftingTrees.length === 0) {
                     this.buildCraftingTreeData(craftData);
                 }
@@ -1927,7 +1928,7 @@ export const appDefinition = {
                 ]);
                 try { this.translations = trRes.ok ? await trRes.json() : null; } catch { this.translations = null; }
                 try { this.displayLabels = dlRes.ok ? await dlRes.json() : {}; } catch { this.displayLabels = {}; }
-                this.index = await indexRes.json();
+                this.index = markRaw(await indexRes.json());
                 this.categories = catRes.ok
                     ? await catRes.json()
                     : [...new Set(this.index.map((i) => i.category))].sort();
@@ -3069,6 +3070,19 @@ export const appDefinition = {
             document.body.style.overflow = "hidden";
 
             const results = await Promise.all(this.pinnedIds.map((id) => this.loadItemById(id)));
+            this.compareData = results.filter(Boolean);
+        },
+
+        // Open the comparison modal for an explicit set of ids (e.g. the player
+        // inventory's multi-select), without disturbing the user's pinned items.
+        async compareSelectedItems(ids) {
+            const unique = [...new Set(ids)].slice(0, MAX_PINS);
+            if (unique.length < 2) return;
+            this.compareOpen = true;
+            this.compareData = [];
+            document.body.style.overflow = "hidden";
+
+            const results = await Promise.all(unique.map((id) => this.loadItemById(id)));
             this.compareData = results.filter(Boolean);
         },
 
@@ -6054,6 +6068,17 @@ export const appDefinition = {
                 containers.push({ id: cont.id, levelId: cont.levelId, items: aggregate(contItems) });
             }
 
+            // Per-weapon loaded-ammo index, keyed by resolved section. The LoadoutDrawer
+            // resolves it against each weapon's ammo type list to pre-fill ammo slots.
+            // Prefer an equipped weapon's value when a section appears more than once.
+            const weaponAmmoIdx = {};
+            for (const it of result.items) {
+                if (it.ammoTypeIndex < 0) continue;
+                if (it.equipSlot > 0 || !(it.sectionName in weaponAmmoIdx)) {
+                    weaponAmmoIdx[it.sectionName] = it.ammoTypeIndex;
+                }
+            }
+
             return {
                 v: 1,
                 fileName,
@@ -6063,10 +6088,13 @@ export const appDefinition = {
                     levelId: result.actorPosition?.levelId || null,
                 },
                 actorItems: aggregate(result.items),
+                weaponAmmoIdx,
                 containers,
                 totalItems: result.items.length,
                 stashCount: containers.length,
                 stats: (scocData && scocData.stats) || null,
+                // Per-faction goodwill from the .scop relations registry (may be null)
+                goodwill: result.communityGoodwill || null,
             };
         },
 
@@ -6112,11 +6140,53 @@ export const appDefinition = {
                 const entry = this.indexById[itemId];
                 if (entry) await this.ensureCategoryLoaded(categorySlug(entry.category));
             }
+            // Mark as differing from the imported save (shows the blue "modified" dot)
+            item.m = true;
             item.q += delta;
             if (item.q <= 0) {
                 model.actorItems.splice(model.actorItems.indexOf(item), 1);
             }
             model.totalItems = model.actorItems.reduce((n, i) => n + i.q, 0);
+            this.savePlayerInventoryToStorage();
+        },
+
+        /** Manual-stash editing: reconcile equipped flags to a loadout the user
+            built in the LOADOUT panel. Equipped gear is marked `e`, and any piece
+            the stash doesn't already hold is added (qty 1) so it persists and its
+            category loads (enabling outfit-derived belt slots). */
+        async setManualLoadout(loadout) {
+            const model = this.playerInventoryParseResult;
+            if (!model || !model.manual) return;
+            const equipped = new Set();
+            for (const key of ["helmet", "outfit", "backpack", "primary", "secondary", "sidearm", "grenade"]) {
+                if (loadout[key]) equipped.add(loadout[key]);
+            }
+            for (const id of loadout.belt || []) if (id) equipped.add(id);
+
+            for (const it of model.actorItems) it.e = equipped.has(it.s);
+            for (const id of equipped) {
+                if (!model.actorItems.some(it => it.s === id)) {
+                    model.actorItems.push({ s: id, q: 1, c: -1, e: true });
+                }
+            }
+            model.totalItems = model.actorItems.reduce((n, i) => n + i.q, 0);
+            this.savePlayerInventoryToStorage();
+            // Load full data for any newly-equipped categories so resolveFull can
+            // read the outfit's artefact capacity (drives the belt slot count).
+            await this.ensurePlayerInventoryCategories(model);
+        },
+
+        /** Manual-stash editing: persist the loadout's per-weapon loaded ammo. Ammo
+            isn't "equipped" gear, so it lives on its own field rather than the
+            equipped-flag reconciliation in setManualLoadout. */
+        setManualLoadoutAmmo(ammo) {
+            const model = this.playerInventoryParseResult;
+            if (!model || !model.manual) return;
+            model.loadoutAmmo = {
+                primary: ammo.primary || null,
+                secondary: ammo.secondary || null,
+                sidearm: ammo.sidearm || null,
+            };
             this.savePlayerInventoryToStorage();
         },
 

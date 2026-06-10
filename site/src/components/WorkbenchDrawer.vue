@@ -1,17 +1,23 @@
 <template>
 <div class="wb-drawer">
-    <!-- Toolkit ownership strip -->
+    <!-- Toolkit ownership strip — click a kit to mark it owned (kits found in the
+         save are locked on; the override only fills in ones you didn't import) -->
     <div class="wb-kits">
-        <div
+        <button
             v-for="kit in kits"
             :key="kit.tier"
+            type="button"
             class="wb-kit"
-            :class="kit.have ? 'wb-kit-have' : 'wb-kit-lack'"
-            v-tooltip="t('app_craft_tool_tier') + ': ' + t('app_craft_toolkit_' + kit.tier)"
+            :class="[kit.have ? 'wb-kit-have' : 'wb-kit-lack', { 'wb-kit-manual': kit.owned && !kit.detected, 'wb-kit-locked': kit.detected }]"
+            :disabled="kit.detected"
+            v-tooltip="kit.detected
+                ? t('app_craft_toolkit_' + kit.tier)
+                : t('app_craft_toolkit_' + kit.tier) + ' — ' + t('app_save_inv_wb_own_toolkit')"
+            @click="$emit('toggleKit', kit.id)"
         >
             <img :src="'img/icons/' + kit.id + '.png'" alt="" loading="lazy" @error="$event.target.style.visibility = 'hidden'">
             <span class="wb-kit-mark">{{ kit.have ? '✓' : '✗' }}</span>
-        </div>
+        </button>
     </div>
 
     <div class="wb-controls">
@@ -108,7 +114,7 @@ export default {
         kits: { type: Array, default: () => [] },
         scope: { type: String, default: 'all' },
     },
-    emits: ['close', 'setScope', 'navigateToItem', 'openRecipeTree', 'showItemHover', 'moveItemHover', 'hideItemHover'],
+    emits: ['close', 'setScope', 'toggleKit', 'navigateToItem', 'openRecipeTree', 'showItemHover', 'moveItemHover', 'hideItemHover'],
     inject: ['t'],
     data() {
         let activeCategories = [];
@@ -151,7 +157,7 @@ export default {
             for (const r of this.filtered) {
                 if (this.tracked.has(r.id)) tracked.push(r);
                 else if (r.ready) ready.push(r);
-                else if (r.completion >= 0.5) close.push(r);
+                else if (r.completion >= 0.5 && r.kitOk) close.push(r);
                 else far.push(r);
             }
             const byName = (a, b) => this.t(a.nameKey).localeCompare(this.t(b.nameKey));
@@ -242,6 +248,19 @@ export default {
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 0.3rem 0.2rem 0.25rem;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s;
+}
+
+.wb-kit:hover:not(:disabled) {
+    border-color: var(--accent-dim);
+}
+
+/* Kits imported from the save are owned for real — not user-toggleable */
+.wb-kit-locked {
+    cursor: default;
 }
 
 .wb-kit img {
@@ -267,8 +286,21 @@ export default {
     opacity: 0.45;
 }
 
+.wb-kit-lack:hover {
+    opacity: 0.8;
+}
+
 .wb-kit-lack .wb-kit-mark {
     color: var(--color-red-soft);
+}
+
+/* Manually marked as owned (vs. detected from the save) — accent, not green */
+.wb-kit-manual {
+    border-color: var(--color-accent-tint-35);
+}
+
+.wb-kit-manual .wb-kit-mark {
+    color: var(--accent);
 }
 
 /* ── Controls ─────────────────────────────────────────────── */

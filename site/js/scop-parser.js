@@ -11,6 +11,7 @@ const ScopParser = (() => {
 
     const ALIFE_VERSION = 6;
     const OBJECT_CHUNK_ID = 2;
+    const REGISTRY_CHUNK_ID = 9; // alife_registry_container (relations, infoportions, …)
     const CFS_COMPRESS_MARK = 0x80000000;
     const M_SPAWN = 1;
     const NO_PARENT = 0xFFFF;
@@ -18,6 +19,24 @@ const ScopParser = (() => {
     const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
 
     const STASH_SECTIONS = new Set(["workshop_stash"]);
+
+    // [communities] order from GAMMA 0.9.5 game_relations.ltx. The relations
+    // registry stores faction goodwill keyed by this numeric index, not by name.
+    // Indices 5–17 are the player-facing factions; the rest are engine-internal
+    // (actor/monster/trader, the DoctorX actor_* relation rows, arena_enemy).
+    const COMMUNITY_NAMES = [
+        "actor", "monster", "trader", "army_npc", "greh_npc", "bandit", "dolg",
+        "ecolog", "freedom", "killer", "army", "monolith", "greh", "stalker",
+        "zombied", "csky", "isg", "renegade", "actor_stalker", "actor_bandit",
+        "actor_dolg", "actor_freedom", "actor_csky", "actor_ecolog", "actor_killer",
+        "actor_army", "actor_monolith", "actor_zombied", "actor_greh", "actor_isg",
+        "actor_renegade", "arena_enemy",
+    ];
+    const DISPLAY_COMMUNITY_MIN = 5;
+    const DISPLAY_COMMUNITY_MAX = 17;
+    // community_goodwill_limits from game_relations.ltx — values outside this
+    // (with slack) signal a misaligned parse, so we bail rather than show garbage.
+    const GOODWILL_SANITY = 100000;
 
     /**
      * Parse a .scop file and extract actor inventory, stash items, and actor position.
@@ -66,7 +85,127 @@ const ScopParser = (() => {
         }
 
         // Parse object entries
-        return parseObjects(objData, knownIds);
+        const parsed = parseObjects(objData, knownIds);
+        // Best-effort: actor faction goodwill from the relations registry (chunk 9).
+        // Null if the chunk is absent, LZHUF-compressed, or fails sanity checks —
+        // the UI falls back to MilPDA reputation in that case.
+        parsed.communityGoodwill = parseActorGoodwill(decompressed);
+        return parsed;
+    }
+
+    /**
+     * Locate a chunk and report whether it is LZHUF-compressed (without throwing).
+     */
+    function findChunkInfo(data, targetId) {
+        let pos = 0;
+        while (pos + 8 <= data.length) {
+            const rawId = readU32(data, pos);
+            const chunkSize = readU32(data, pos + 4);
+            const id = rawId & 0x7FFFFFFF;
+            if (id === targetId) {
+                return {
+                    data: data.subarray(pos + 8, pos + 8 + chunkSize),
+                    isCompressed: (rawId & CFS_COMPRESS_MARK) !== 0,
+                };
+            }
+            pos += 8 + chunkSize;
+        }
+        return null;
+    }
+
+    /**
+     * Extract the actor's per-faction goodwill from the registry container (chunk 9).
+     *
+     * Layout (alife_registry_container.cpp, see docs/save-progression-data.md):
+     *   Registry 0 InfoPortions  — skipped to reach Relations
+     *   Registry 1 Relations     — per-owner personal + community goodwill
+     *
+     * @returns {{ [factionId: string]: number } | null} goodwill keyed by faction,
+     *          or null when unavailable / the parse looks misaligned.
+     */
+    function parseActorGoodwill(decompressed) {
+        try {
+            const info = findChunkInfo(decompressed, REGISTRY_CHUNK_ID);
+            // We have no LZHUF decoder, so a compressed registry can't be read here.
+            if (!info || info.isCompressed) return null;
+            const d = info.data;
+            const afterInfoPortions = skipInfoPortionsRegistry(d, 0);
+            if (afterInfoPortions < 0) return null;
+            return readActorCommunityGoodwill(d, afterInfoPortions);
+        } catch (e) {
+            return null; // goodwill is strictly best-effort
+        }
+    }
+
+    /**
+     * Walk past Registry 0 (InfoPortions) to the start of Registry 1 (Relations).
+     * Returns the new offset, or -1 if the data looks malformed.
+     *
+     *   u32 entry_count
+     *   per entry: u16 owner_id, u32 info_count, info_count × stringZ
+     */
+    function skipInfoPortionsRegistry(d, pos) {
+        const entryCount = readU32(d, pos); pos += 4;
+        if (entryCount > 200000) return -1;
+        for (let i = 0; i < entryCount; i++) {
+            if (pos + 6 > d.length) return -1;
+            pos += 2; // owner_id
+            const infoCount = readU32(d, pos); pos += 4;
+            if (infoCount > 200000) return -1;
+            for (let j = 0; j < infoCount; j++) {
+                const nul = findNull(d, pos, d.length);
+                if (nul < 0) return -1;
+                pos = nul + 1;
+            }
+        }
+        return pos;
+    }
+
+    /**
+     * Read Registry 1 (Relations) and return the actor's community goodwill.
+     *
+     *   u32 entry_count
+     *   per entry: u16 owner_id
+     *     u32 personal_count,  personal_count × (u16 target_id, s32 goodwill)
+     *     u32 community_count, community_count × (s32 community_index, s32 goodwill)
+     */
+    function readActorCommunityGoodwill(d, pos) {
+        const entryCount = readU32(d, pos); pos += 4;
+        if (entryCount > 200000) return null;
+        for (let i = 0; i < entryCount; i++) {
+            if (pos + 2 > d.length) return null;
+            const ownerId = readU16(d, pos); pos += 2;
+
+            const personalCount = readU32(d, pos); pos += 4;
+            if (personalCount > 200000) return null;
+            pos += personalCount * 6; // u16 + s32 per personal relation
+
+            if (pos + 4 > d.length) return null;
+            const communityCount = readU32(d, pos); pos += 4;
+            // Legit saves carry ~32 communities; anything wild means we drifted.
+            if (communityCount > 256) return null;
+            if (pos + communityCount * 8 > d.length) return null;
+
+            if (ownerId !== ACTOR_ID) {
+                pos += communityCount * 8;
+                continue;
+            }
+
+            const goodwill = {};
+            for (let c = 0; c < communityCount; c++) {
+                const idx = readS32(d, pos); pos += 4;
+                const value = readS32(d, pos); pos += 4;
+                // Out-of-range index or value ⇒ misaligned parse: discard entirely.
+                if (idx < 0 || idx > 255) return null;
+                if (value < -GOODWILL_SANITY || value > GOODWILL_SANITY) return null;
+                const name = COMMUNITY_NAMES[idx];
+                if (name && idx >= DISPLAY_COMMUNITY_MIN && idx <= DISPLAY_COMMUNITY_MAX) {
+                    goodwill[name] = value;
+                }
+            }
+            return Object.keys(goodwill).length ? goodwill : null;
+        }
+        return null;
     }
 
     /**
@@ -377,6 +516,11 @@ const ScopParser = (() => {
 
     function readU32(data, offset) {
         return (data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24)) >>> 0;
+    }
+
+    function readS32(data, offset) {
+        // The | 0 coercion keeps the high-bit sign, unlike readU32's >>> 0.
+        return (data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24)) | 0;
     }
 
     const _f32buf = new ArrayBuffer(4);
