@@ -1,0 +1,1010 @@
+{
+  "af_magpouch_l": {
+    "provider": "magpouch",
+    "small": 4,
+    "medium": 3,
+    "large": 2
+  },
+  "af_magpouch_m": {
+    "provider": "magpouch",
+    "small": 3,
+    "medium": 2,
+    "large": 1
+  },
+  "af_magpouch_s": {
+    "provider": "magpouch",
+    "small": 3,
+    "medium": 1,
+    "large": 0
+  },
+  "army_nosorog_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "army_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "bandit_exo_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "bandit_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "bandit_nbc_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 1
+  },
+  "bandit_novice_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "bandit_novice_outfit_alt": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "bandit_ps5_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "bandit_scientific_dark_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "bandit_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "bandit_sun_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "banditmerc_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "cs_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "cs_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "cs_heavy_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "cs_light_novice_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 2,
+    "large": 0
+  },
+  "cs_light_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "cs_medium_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "cs_nbc_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "cs_novice_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "cs_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "cs_scientific_outfit_good": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "cs_stalker_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "cs_stalker_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "dolg_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "dolg_heavy_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "dolg_heavy_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "dolg_heavy_redline_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "dolg_nosorog_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "dolg_novice_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "dolg_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_pantsir_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "dolg_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_red_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_scientific_red_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_scientific_wood_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_scout_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "dolg_specops_red_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "dolg_voin_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "ecolog_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "ecolog_guard_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "ecolog_outfit_blue": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 2,
+    "large": 0
+  },
+  "ecolog_outfit_green": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 2,
+    "large": 0
+  },
+  "ecolog_outfit_orange": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "ecolog_outfit_red": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 2,
+    "large": 0
+  },
+  "ecolog_outfit_white": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "ecolog_outfit_yello": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "ecolog_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "equ_military_pack": {
+    "provider": "backpack",
+    "small": 2,
+    "medium": 2,
+    "large": 0
+  },
+  "equ_small_military_pack": {
+    "provider": "backpack",
+    "small": 1,
+    "medium": 1,
+    "large": 0
+  },
+  "equ_small_pack": {
+    "provider": "backpack",
+    "small": 1,
+    "medium": 0,
+    "large": 0
+  },
+  "equ_tourist_pack": {
+    "provider": "backpack",
+    "small": 2,
+    "medium": 2,
+    "large": 1
+  },
+  "exo_dolg_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_dolg_red_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_dolg_urban_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_dolg_wood_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_merc_grass_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_merc_urban_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_merc_wood_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exo_wood_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "freedom_exo_vineleaf_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "freedom_nosorog_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "ghillie_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "greh_armored_camo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "greh_armored_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "greh_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "greh_ps5_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "greh_trenchcoat_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "hybrid_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 0
+  },
+  "isg_camo_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "isg_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "isg_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "isg_lcs_camo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "isg_lcs_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "isg_lcs_urban_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "isg_nosorog_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "isg_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "isg_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "isg_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_dolg_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_freedom_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_isg_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_loner_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_merc_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_monolit_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "light_voen_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_ace_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_combat_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_coyote_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "merc_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "merc_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "merc_fighter_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_jackal_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "merc_nighthunter_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 2
+  },
+  "merc_nosorog_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "merc_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "merc_scientific_armored_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "merc_scout_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_sun_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "merc_sunset_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "merc_wolven_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "military_bandit_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "military_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "military_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "military_freedom_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "military_merc_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "military_monolit_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "military_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "military_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "military_sky_outfit": {
+    "provider": "outfit",
+    "small": 6,
+    "medium": 6,
+    "large": 2
+  },
+  "monolith_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "monolith_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "monolith_nbc_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 1
+  },
+  "monolith_nosorog_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "monolith_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "monolith_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "monolith_scientific_light_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "monolith_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "monolith_trenchcoat_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 1
+  },
+  "nbc_dolg_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "nbc_freedom_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 1
+  },
+  "nbc_merc_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "nbc_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "nomad_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "novice_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "novice_outfit_camo": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 1
+  },
+  "novice_outfit_tourist": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "redline_novice_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "renegade_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "renegade_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "renegademerc_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "specops_bandit_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "specops_dolg_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "specops_merc_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "specops_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "stalker_autumn_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_bear_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_drought_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_graphite_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_predator_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_salamander_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "stalker_tigerstripe_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  },
+  "svoboda_exo_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "svoboda_exolight_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "svoboda_heavy_outfit": {
+    "provider": "outfit",
+    "small": 5,
+    "medium": 5,
+    "large": 2
+  },
+  "svoboda_heavy_outfit_2": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "svoboda_light_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "svoboda_light_proto_exo_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "svoboda_novice_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 2,
+    "large": 0
+  },
+  "svoboda_scientific_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 0
+  },
+  "travel_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "trenchcoat_brown_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "trenchcoat_dolg_brown_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "trenchcoat_freedom_brown_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "trenchcoat_green_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 4,
+    "large": 1
+  },
+  "trenchcoat_outfit": {
+    "provider": "outfit",
+    "small": 4,
+    "medium": 3,
+    "large": 1
+  },
+  "wastelander_outfit": {
+    "provider": "outfit",
+    "small": 3,
+    "medium": 3,
+    "large": 0
+  }
+}

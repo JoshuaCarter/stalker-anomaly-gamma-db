@@ -120,6 +120,21 @@
       ]
     },
     {
+      "id": "cut_kit",
+      "pda_encyclopedia_name": "st_addon_cut_kit",
+      "st_data_export_description": "st_addon_cut_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "63500",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_cut_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "factions": [
+        "nato"
+      ]
+    },
+    {
       "id": "gurza_up",
       "pda_encyclopedia_name": "st_addon_scope_gurza_up_new",
       "st_data_export_description": "st_addon_scope_gurza_up_new_descr",
@@ -603,21 +618,6 @@
       "factions": [
         "nato",
         "other",
-        "wp"
-      ]
-    },
-    {
-      "id": "tt_upgr_kit",
-      "pda_encyclopedia_name": "st_addon_scope_tt_upgr_kit",
-      "st_data_export_description": "st_addon_scope_tt_upgr_kit_descr",
-      "st_prop_weight": "2.00",
-      "st_upgr_cost": "6200",
-      "st_data_export_zoom_factor": "",
-      "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_tt_upgr_kit",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
         "wp"
       ]
     },

@@ -648,6 +648,30 @@
     "displayName": "exolight_outfit_name"
   },
   {
+    "id": "mag_colt1911_extended",
+    "name": "ext_mag_colt1911_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "ext_mag_colt1911_11.43x23_fmj"
+  },
+  {
+    "id": "mag_kriss_11.43x23_ext",
+    "name": "ext_mag_kriss_drum",
+    "category": "Magazines",
+    "displayName": "ext_mag_kriss_drum"
+  },
+  {
+    "id": "mag_kriss_9x19_ext",
+    "name": "ext_mag_kriss9_drum",
+    "category": "Magazines",
+    "displayName": "ext_mag_kriss9_drum"
+  },
+  {
+    "id": "mag_coonan_357_ext",
+    "name": "ext_mag_ppp_1911_357_fmj",
+    "category": "Magazines",
+    "displayName": "ext_mag_ppp_1911_357_fmj"
+  },
+  {
     "id": "freedom_exo_vineleaf_outfit",
     "name": "freedom_exo_vineleaf_outfit_name",
     "category": "Outfits",
@@ -849,6 +873,24 @@
     "inStartingLoadout": false,
     "unobtainable": true,
     "tacticalKit": false
+  },
+  {
+    "id": "mag_kriss_11.43x23_default",
+    "name": "mag_kriss45",
+    "category": "Magazines",
+    "displayName": "mag_kriss45"
+  },
+  {
+    "id": "mag_kriss_9x19_default",
+    "name": "mag_kriss9",
+    "category": "Magazines",
+    "displayName": "mag_kriss9"
+  },
+  {
+    "id": "mag_raptr_12x76_default",
+    "name": "mag_raptr",
+    "category": "Magazines",
+    "displayName": "mag_raptr"
   },
   {
     "id": "wpn_dtmdr",
@@ -1101,10 +1143,76 @@
     "displayName": "mutant_boar_chop"
   },
   {
+    "id": "mutant_part_boar_leg",
+    "name": "mutant_boar_leg",
+    "category": "Mutant Parts",
+    "displayName": "mutant_boar_leg"
+  },
+  {
+    "id": "mutant_part_brain_burer",
+    "name": "mutant_brain_burer",
+    "category": "Mutant Parts",
+    "displayName": "mutant_brain_burer"
+  },
+  {
+    "id": "mutant_part_burer_hand",
+    "name": "mutant_burer_hand",
+    "category": "Mutant Parts",
+    "displayName": "mutant_burer_hand"
+  },
+  {
+    "id": "mutant_part_cat_claw",
+    "name": "mutant_cat_claw",
+    "category": "Mutant Parts",
+    "displayName": "mutant_cat_claw"
+  },
+  {
+    "id": "mutant_part_cat_tail",
+    "name": "mutant_cat_tail",
+    "category": "Mutant Parts",
+    "displayName": "mutant_cat_tail"
+  },
+  {
+    "id": "mutant_part_cat_thyroid",
+    "name": "mutant_cat_thyroid",
+    "category": "Mutant Parts",
+    "displayName": "mutant_cat_thyroid"
+  },
+  {
+    "id": "mutant_part_chimera_claw",
+    "name": "mutant_chimera_claw",
+    "category": "Mutant Parts",
+    "displayName": "mutant_chimera_claw"
+  },
+  {
+    "id": "mutant_part_chimera_kogot",
+    "name": "mutant_chimera_cogot",
+    "category": "Mutant Parts",
+    "displayName": "mutant_chimera_cogot"
+  },
+  {
     "id": "mutant_part_chimera_meat",
     "name": "mutant_chimera_meat",
     "category": "Food",
     "displayName": "mutant_chimera_meat"
+  },
+  {
+    "id": "mutant_part_controller_hand",
+    "name": "mutant_controller_hand",
+    "category": "Mutant Parts",
+    "displayName": "mutant_controller_hand"
+  },
+  {
+    "id": "mutant_part_dog_heart",
+    "name": "mutant_dog_heart",
+    "category": "Mutant Parts",
+    "displayName": "mutant_dog_heart"
+  },
+  {
+    "id": "mutant_part_dog_liver",
+    "name": "mutant_dog_liver",
+    "category": "Mutant Parts",
+    "displayName": "mutant_dog_liver"
   },
   {
     "id": "mutant_part_dog_meat",
@@ -1113,10 +1221,52 @@
     "displayName": "mutant_dog_meat"
   },
   {
+    "id": "mutant_part_dog_tail",
+    "name": "mutant_dog_tail",
+    "category": "Mutant Parts",
+    "displayName": "mutant_dog_tail"
+  },
+  {
+    "id": "mutant_part_fang_psevdodog",
+    "name": "mutant_fang_psevdodog",
+    "category": "Mutant Parts",
+    "displayName": "mutant_fang_psevdodog"
+  },
+  {
+    "id": "mutant_part_flesh_eye",
+    "name": "mutant_flesh_eye",
+    "category": "Mutant Parts",
+    "displayName": "mutant_flesh_eye"
+  },
+  {
     "id": "mutant_part_flesh_meat",
     "name": "mutant_flesh_meat",
     "category": "Food",
     "displayName": "mutant_flesh_meat"
+  },
+  {
+    "id": "mutant_part_fracture_hand",
+    "name": "mutant_fracture_hand",
+    "category": "Mutant Parts",
+    "displayName": "mutant_fracture_hand"
+  },
+  {
+    "id": "mutant_part_heart_bloodsucker",
+    "name": "mutant_heart_bloodsucker",
+    "category": "Mutant Parts",
+    "displayName": "mutant_heart_bloodsucker"
+  },
+  {
+    "id": "mutant_part_heart_chimera",
+    "name": "mutant_heart_chimera",
+    "category": "Mutant Parts",
+    "displayName": "mutant_heart_chimera"
+  },
+  {
+    "id": "mutant_part_krovosos_jaw",
+    "name": "mutant_krovosos_jaw",
+    "category": "Mutant Parts",
+    "displayName": "mutant_krovosos_jaw"
   },
   {
     "id": "mutant_part_krovosos_meat",
@@ -1125,16 +1275,58 @@
     "displayName": "mutant_krovosos_meat"
   },
   {
+    "id": "mutant_part_lurker_eye",
+    "name": "mutant_lurker_eye",
+    "category": "Mutant Parts",
+    "displayName": "mutant_lurker_eye"
+  },
+  {
     "id": "mutant_part_lurker_meat",
     "name": "mutant_lurker_meat",
     "category": "Food",
     "displayName": "mutant_lurker_meat"
   },
   {
+    "id": "mutant_part_lurker_tail",
+    "name": "mutant_lurker_tail",
+    "category": "Mutant Parts",
+    "displayName": "mutant_lurker_tail"
+  },
+  {
+    "id": "mutant_part_controller_glass",
+    "name": "mutant_part_controller_brain_tissue",
+    "category": "Mutant Parts",
+    "displayName": "mutant_part_controller_brain_tissue"
+  },
+  {
+    "id": "mutant_part_pseudogigant_eye",
+    "name": "mutant_pseudogigant_eye",
+    "category": "Mutant Parts",
+    "displayName": "mutant_pseudogigant_eye"
+  },
+  {
+    "id": "mutant_part_pseudogigant_hand",
+    "name": "mutant_pseudogigant_hand",
+    "category": "Mutant Parts",
+    "displayName": "mutant_pseudogigant_hand"
+  },
+  {
     "id": "mutant_part_psevdodog_meat",
     "name": "mutant_psevdodog_meat",
     "category": "Food",
     "displayName": "mutant_psevdodog_meat"
+  },
+  {
+    "id": "mutant_part_psevdodog_tail",
+    "name": "mutant_psevdodog_tail",
+    "category": "Mutant Parts",
+    "displayName": "mutant_psevdodog_tail"
+  },
+  {
+    "id": "mutant_part_psysucker_hand",
+    "name": "mutant_psysucker_hand",
+    "category": "Mutant Parts",
+    "displayName": "mutant_psysucker_hand"
   },
   {
     "id": "mutant_part_psysucker_meat",
@@ -1149,10 +1341,40 @@
     "displayName": "mutant_snork_hand"
   },
   {
+    "id": "mutant_part_snork_leg",
+    "name": "mutant_snork_leg",
+    "category": "Mutant Parts",
+    "displayName": "mutant_snork_leg"
+  },
+  {
+    "id": "mutant_part_snork_mask",
+    "name": "mutant_snork_mask",
+    "category": "Mutant Parts",
+    "displayName": "mutant_snork_mask"
+  },
+  {
+    "id": "mutant_part_tushkano_head",
+    "name": "mutant_tushkano_head",
+    "category": "Mutant Parts",
+    "displayName": "mutant_tushkano_head"
+  },
+  {
     "id": "mutant_part_tushkano_meat",
     "name": "mutant_tushkano_meat",
     "category": "Food",
     "displayName": "mutant_tushkano_meat"
+  },
+  {
+    "id": "mutant_part_tusk_boar",
+    "name": "mutant_tusk_boar",
+    "category": "Mutant Parts",
+    "displayName": "mutant_tusk_boar"
+  },
+  {
+    "id": "mutant_part_zombi_hand",
+    "name": "mutant_zombi_hand",
+    "category": "Mutant Parts",
+    "displayName": "mutant_zombi_hand"
   },
   {
     "id": "nbc_dolg_outfit",
@@ -1278,6 +1500,12 @@
     "name": "st_addon_bd_upgr_kit",
     "category": "Tactical Kits",
     "displayName": "st_addon_bd_upgr_kit"
+  },
+  {
+    "id": "cut_kit",
+    "name": "st_addon_cut_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_cut_kit"
   },
   {
     "id": "kurtz",
@@ -1987,12 +2215,6 @@
     "name": "st_addon_scope_trijicon_rmr",
     "category": "Tactical Kits",
     "displayName": "st_addon_scope_trijicon_rmr"
-  },
-  {
-    "id": "tt_upgr_kit",
-    "name": "st_addon_scope_tt_upgr_kit",
-    "category": "Tactical Kits",
-    "displayName": "st_addon_scope_tt_upgr_kit"
   },
   {
     "id": "u2p2g0r",
@@ -2753,6 +2975,24 @@
     "displayName": "st_af_lucifer_name"
   },
   {
+    "id": "af_magpouch_l",
+    "name": "st_af_magpouch_l_name",
+    "category": "Belt Attachments",
+    "displayName": "st_af_magpouch_l_name"
+  },
+  {
+    "id": "af_magpouch_m",
+    "name": "st_af_magpouch_m_name",
+    "category": "Belt Attachments",
+    "displayName": "st_af_magpouch_m_name"
+  },
+  {
+    "id": "af_magpouch_s",
+    "name": "st_af_magpouch_s_name",
+    "category": "Belt Attachments",
+    "displayName": "st_af_magpouch_s_name"
+  },
+  {
     "id": "af_medallion",
     "name": "st_af_medallion_name",
     "category": "Artefacts",
@@ -3505,6 +3745,18 @@
     "displayName": "st_hide_psysucker_name"
   },
   {
+    "id": "hideout_cat",
+    "name": "st_hideout_cat",
+    "category": "Mutant Parts",
+    "displayName": "st_hideout_cat"
+  },
+  {
+    "id": "hideout_cat_bed",
+    "name": "st_hideout_cat_bed",
+    "category": "Mutant Parts",
+    "displayName": "st_hideout_cat_bed"
+  },
+  {
     "id": "ied",
     "name": "st_ied",
     "category": "Explosives",
@@ -3631,6 +3883,1218 @@
     "name": "st_kukri",
     "category": "Melee",
     "displayName": "st_kukri"
+  },
+  {
+    "id": "mag_1921_11.43x23_default",
+    "name": "st_mag_1921_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_1921_11.43x23_fmj"
+  },
+  {
+    "id": "mag_ace21_5.56x45_default",
+    "name": "st_mag_ace21_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_ace21_5.56x45"
+  },
+  {
+    "id": "mag_ak_7.62x39_default",
+    "name": "st_mag_ak_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ak_7.62x39"
+  },
+  {
+    "id": "mag_ak_5.56x45_modern",
+    "name": "st_mag_ak101_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_ak101_5.56x45"
+  },
+  {
+    "id": "mag_ak_7.62x39_modern",
+    "name": "st_mag_ak103_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ak103_7.62x39"
+  },
+  {
+    "id": "mag_ak_7.62x39_fast",
+    "name": "st_mag_ak103_fast_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ak103_fast_7.62x39"
+  },
+  {
+    "id": "mag_ak_5.45x39_default",
+    "name": "st_mag_ak74_5.45x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ak74_5.45x39"
+  },
+  {
+    "id": "mag_ak_5.45x39_extended",
+    "name": "st_mag_ak74_5.45x39_extended",
+    "category": "Magazines",
+    "displayName": "st_mag_ak74_5.45x39_extended"
+  },
+  {
+    "id": "mag_ak_5.45x39_fast",
+    "name": "st_mag_ak74_fast_5.45x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ak74_fast_5.45x39"
+  },
+  {
+    "id": "mag_ak_5.45x39_modern",
+    "name": "st_mag_ak74m_5.45x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ak74m_5.45x39"
+  },
+  {
+    "id": "mag_akalfa_5.56x45_bas",
+    "name": "st_mag_akalfa_5.56x45_bas",
+    "category": "Magazines",
+    "displayName": "st_mag_akalfa_5.56x45_bas"
+  },
+  {
+    "id": "mag_akalfa_7.62x39_bas",
+    "name": "st_mag_akalfa_7.62x39_bas",
+    "category": "Magazines",
+    "displayName": "st_mag_akalfa_7.62x39_bas"
+  },
+  {
+    "id": "mag_aps_9x18_default",
+    "name": "st_mag_aps_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_aps_9x18_fmj"
+  },
+  {
+    "id": "mag_aps_9x19_alt",
+    "name": "st_mag_aps_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_aps_9x19_fmj"
+  },
+  {
+    "id": "mag_7.62x39_ar15",
+    "name": "st_mag_ar15_762x39",
+    "category": "Magazines",
+    "displayName": "st_mag_ar15_762x39"
+  },
+  {
+    "id": "mag_ash_12.7x55_default",
+    "name": "st_mag_ash12_12.7x55",
+    "category": "Magazines",
+    "displayName": "st_mag_ash12_12.7x55"
+  },
+  {
+    "id": "mag_ash_12.7x55_extended",
+    "name": "st_mag_ash12_ext_12.7x55",
+    "category": "Magazines",
+    "displayName": "st_mag_ash12_ext_12.7x55"
+  },
+  {
+    "id": "mag_aug_5.56x45_default",
+    "name": "st_mag_aug_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_aug_5.56x45"
+  },
+  {
+    "id": "mag_aug_5.56x45_extended",
+    "name": "st_mag_aug_5.56x45_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_aug_5.56x45_ext"
+  },
+  {
+    "id": "mag_aug_9x19_default",
+    "name": "st_mag_aug_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_aug_9x19_fmj"
+  },
+  {
+    "id": "mag_baskiparis_9x18_20",
+    "name": "st_mag_baskiparis_9x18_20",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x18_20"
+  },
+  {
+    "id": "mag_baskiparis_9x18_40",
+    "name": "st_mag_baskiparis_9x18_40",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x18_40"
+  },
+  {
+    "id": "mag_baskiparis_9x18_81",
+    "name": "st_mag_baskiparis_9x18_81",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x18_81 [baskiparis_9x18_81]"
+  },
+  {
+    "id": "mag_kiparis_9x18_50",
+    "name": "st_mag_baskiparis_9x18_81",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x18_81 [kiparis_9x18_50]"
+  },
+  {
+    "id": "mag_baskiparis_9x19_20",
+    "name": "st_mag_baskiparis_9x19_20",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x19_20"
+  },
+  {
+    "id": "mag_baskiparis_9x19_40",
+    "name": "st_mag_baskiparis_9x19_40",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x19_40"
+  },
+  {
+    "id": "mag_baskiparis_9x19_81",
+    "name": "st_mag_baskiparis_9x19_81",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x19_81 [baskiparis_9x19_81]"
+  },
+  {
+    "id": "mag_kiparis_9x19_50",
+    "name": "st_mag_baskiparis_9x19_81",
+    "category": "Magazines",
+    "displayName": "st_mag_baskiparis_9x19_81 [kiparis_9x19_50]"
+  },
+  {
+    "id": "mag_remington700_7.62x51",
+    "name": "st_mag_basremington700_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_basremington700_7.62x51"
+  },
+  {
+    "id": "mag_basvz61_9x18_30",
+    "name": "st_mag_basvz61_9x18_30",
+    "category": "Magazines",
+    "displayName": "st_mag_basvz61_9x18_30"
+  },
+  {
+    "id": "mag_basvz61_9x18_60",
+    "name": "st_mag_basvz61_9x18_60",
+    "category": "Magazines",
+    "displayName": "st_mag_basvz61_9x18_60"
+  },
+  {
+    "id": "mag_basvz61_9x19_30",
+    "name": "st_mag_basvz61_9x19_30",
+    "category": "Magazines",
+    "displayName": "st_mag_basvz61_9x19_30"
+  },
+  {
+    "id": "mag_basvz61_9x19_60",
+    "name": "st_mag_basvz61_9x19_60",
+    "category": "Magazines",
+    "displayName": "st_mag_basvz61_9x19_60"
+  },
+  {
+    "id": "mag_beretta_9x18_alt",
+    "name": "st_mag_beretta_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_beretta_9x18_fmj"
+  },
+  {
+    "id": "mag_beretta_9x19_default",
+    "name": "st_mag_beretta_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_beretta_9x19_fmj"
+  },
+  {
+    "id": "mag_bizon_7.62x25_alt",
+    "name": "st_mag_bizon_7.62x25_p",
+    "category": "Magazines",
+    "displayName": "st_mag_bizon_7.62x25_p"
+  },
+  {
+    "id": "mag_bizon_9x18_defalt",
+    "name": "st_mag_bizon_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_bizon_9x18_fmj"
+  },
+  {
+    "id": "mag_bizon_9x19_alt",
+    "name": "st_mag_bizon_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_bizon_9x19_fmj"
+  },
+  {
+    "id": "mag_colt1911_default",
+    "name": "st_mag_colt1911_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_colt1911_11.43x23_fmj"
+  },
+  {
+    "id": "mag_cz52_default",
+    "name": "st_mag_cz52_7.62x25_p",
+    "category": "Magazines",
+    "displayName": "st_mag_cz52_7.62x25_p"
+  },
+  {
+    "id": "mag_cz75_9x18_alt",
+    "name": "st_mag_cz75_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_cz75_9x18_fmj"
+  },
+  {
+    "id": "mag_cz75_9x19_default",
+    "name": "st_mag_cz75_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_cz75_9x19_fmj"
+  },
+  {
+    "id": "mag_deserteagal_default",
+    "name": "st_mag_desert_eagle_357_hp",
+    "category": "Magazines",
+    "displayName": "st_mag_desert_eagle_357_hp"
+  },
+  {
+    "id": "mag_dvl_338fed",
+    "name": "st_mag_dvl_338",
+    "category": "Magazines",
+    "displayName": "st_mag_dvl_338"
+  },
+  {
+    "id": "mag_dvl_7.62x51",
+    "name": "st_mag_dvl_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_dvl_7.62x51"
+  },
+  {
+    "id": "mag_bas_toz106m1",
+    "name": "st_mag_etoz106_20x70_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_etoz106_20x70_fmj"
+  },
+  {
+    "id": "mag_bas_toz106m1_zhekan",
+    "name": "st_mag_etoz106_20x70_zhekan_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_etoz106_20x70_zhekan_fmj"
+  },
+  {
+    "id": "mag_fn57_default",
+    "name": "st_mag_fn57_5.7x28_ss190",
+    "category": "Magazines",
+    "displayName": "st_mag_fn57_5.7x28_ss190"
+  },
+  {
+    "id": "mag_fnp45_default",
+    "name": "st_mag_fnp45_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_fnp45_11.43x23_fmj"
+  },
+  {
+    "id": "mag_fnx45_default",
+    "name": "st_mag_fnx45_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_fnx45_11.43x23_fmj"
+  },
+  {
+    "id": "mag_fort_9x18_default",
+    "name": "st_mag_fort_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_fort_9x18_fmj"
+  },
+  {
+    "id": "mag_fort_9x19_alt",
+    "name": "st_mag_fort_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_fort_9x19_fmj"
+  },
+  {
+    "id": "mag_g36_5.56x45_default",
+    "name": "st_mag_g36_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_g36_5.56x45"
+  },
+  {
+    "id": "mag_g43_7.92x33_default",
+    "name": "st_mag_g43_7.92x33",
+    "category": "Magazines",
+    "displayName": "st_mag_g43_7.92x33"
+  },
+  {
+    "id": "mag_galil_7.62x51_default",
+    "name": "st_mag_galil_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_galil_7.62x51"
+  },
+  {
+    "id": "mag_galil_7.62x54_7h1_default",
+    "name": "st_mag_galil_7.62x54_7h1",
+    "category": "Magazines",
+    "displayName": "st_mag_galil_7.62x54_7h1"
+  },
+  {
+    "id": "mag_glock_9x18_alt",
+    "name": "st_mag_glock_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_glock_9x18_fmj"
+  },
+  {
+    "id": "mag_glock_9x19_default",
+    "name": "st_mag_glock_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_glock_9x19_fmj"
+  },
+  {
+    "id": "mag_grot",
+    "name": "st_mag_grot",
+    "category": "Magazines",
+    "displayName": "st_mag_grot"
+  },
+  {
+    "id": "mag_ots_9x39_default",
+    "name": "st_mag_groza_9x39_pab9",
+    "category": "Magazines",
+    "displayName": "st_mag_groza_9x39_pab9"
+  },
+  {
+    "id": "mag_gsh18_9x19_default",
+    "name": "st_mag_gsh18_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_gsh18_9x19_fmj"
+  },
+  {
+    "id": "mag_hinge_7.62x51_default",
+    "name": "st_mag_hinge_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_hinge_7.62x51"
+  },
+  {
+    "id": "mag_hinge_7.62x51_extended",
+    "name": "st_mag_hinge_ext_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_hinge_ext_7.62x51"
+  },
+  {
+    "id": "mag_hk21_7.62x51_default",
+    "name": "st_mag_hk21_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_hk21_7.62x51"
+  },
+  {
+    "id": "mag_hpsa_9x18_alt",
+    "name": "st_mag_hpsa_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_hpsa_9x18_fmj"
+  },
+  {
+    "id": "mag_hpsa_9x19_default",
+    "name": "st_mag_hpsa_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_hpsa_9x19_fmj"
+  },
+  {
+    "id": "mag_k98_7.62x51",
+    "name": "st_mag_k98_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_k98_7.62x51"
+  },
+  {
+    "id": "mag_k98_7.62x54",
+    "name": "st_mag_k98_7.62x54",
+    "category": "Magazines",
+    "displayName": "st_mag_k98_7.62x54"
+  },
+  {
+    "id": "mag_k98_7.92x33",
+    "name": "st_mag_k98_7.92x33",
+    "category": "Magazines",
+    "displayName": "st_mag_k98_7.92x33"
+  },
+  {
+    "id": "mag_kiparis_9x18_default",
+    "name": "st_mag_kiparis_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_kiparis_9x18_fmj"
+  },
+  {
+    "id": "mag_kiparis_9x19_alt",
+    "name": "st_mag_kiparis_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_kiparis_9x19_fmj"
+  },
+  {
+    "id": "mag_l96a1_7.62x51_default",
+    "name": "st_mag_l96a1_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_l96a1_7.62x51"
+  },
+  {
+    "id": "mag_196a1_7.62x54_alt",
+    "name": "st_mag_l96a1_pkm",
+    "category": "Magazines",
+    "displayName": "st_mag_l96a1_pkm"
+  },
+  {
+    "id": "mag_lancer",
+    "name": "st_mag_lancer",
+    "category": "Magazines",
+    "displayName": "st_mag_lancer"
+  },
+  {
+    "id": "mag_m1a1_11.43x23_default",
+    "name": "st_mag_m1a1_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_m1a1_11.43x23_fmj"
+  },
+  {
+    "id": "mag_m249_5.56x45_default",
+    "name": "st_mag_m249_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_m249_5.56x45"
+  },
+  {
+    "id": "mag_m82_12.7x55_default",
+    "name": "st_mag_m82_12.7x55",
+    "category": "Magazines",
+    "displayName": "st_mag_m82_12.7x55"
+  },
+  {
+    "id": "mag_m98b_300_default",
+    "name": "st_mag_m98b_magnum_300",
+    "category": "Magazines",
+    "displayName": "st_mag_m98b_magnum_300"
+  },
+  {
+    "id": "mag_mac10_9x18_ext_alt",
+    "name": "st_mag_mac10_9x18_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_mac10_9x18_ext"
+  },
+  {
+    "id": "mag_mac10_9x18_alt",
+    "name": "st_mag_mac10_9x18_standard",
+    "category": "Magazines",
+    "displayName": "st_mag_mac10_9x18_standard"
+  },
+  {
+    "id": "mag_mac10_9x19_ext",
+    "name": "st_mag_mac10_9x19_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_mac10_9x19_ext"
+  },
+  {
+    "id": "mag_mac10_9x19_standard",
+    "name": "st_mag_mac10_9x19_standard",
+    "category": "Magazines",
+    "displayName": "st_mag_mac10_9x19_standard"
+  },
+  {
+    "id": "mag_mp443_9x18_alt",
+    "name": "st_mag_mp443_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp443_9x18_fmj"
+  },
+  {
+    "id": "mag_mp443_9x19_default",
+    "name": "st_mag_mp443_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp443_9x19_fmj"
+  },
+  {
+    "id": "mag_frasier_11.43x23_default",
+    "name": "st_mag_mp5_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_11.43x23_fmj"
+  },
+  {
+    "id": "mag_mp5_9x18_alt",
+    "name": "st_mag_mp5_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_9x18_fmj"
+  },
+  {
+    "id": "mag_mp5_9x18_extended",
+    "name": "st_mag_mp5_9x18_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_9x18_fmjext"
+  },
+  {
+    "id": "mag_mp5_9x18_extended50",
+    "name": "st_mag_mp5_9x18_fmjext50",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_9x18_fmjext50"
+  },
+  {
+    "id": "mag_mp5_9x19_default",
+    "name": "st_mag_mp5_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_9x19_fmj"
+  },
+  {
+    "id": "mag_mp5_9x19_extended",
+    "name": "st_mag_mp5_9x19_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_9x19_fmjext"
+  },
+  {
+    "id": "mag_mp5_9x19_extended50",
+    "name": "st_mag_mp5_9x19_fmjext50",
+    "category": "Magazines",
+    "displayName": "st_mag_mp5_9x19_fmjext50"
+  },
+  {
+    "id": "mag_mp7_5.7x28_small",
+    "name": "st_mag_mp7_5.7x28_short",
+    "category": "Magazines",
+    "displayName": "st_mag_mp7_5.7x28_short"
+  },
+  {
+    "id": "mag_mp7_5.7x28_default",
+    "name": "st_mag_mp7_5.7x28_ss190",
+    "category": "Magazines",
+    "displayName": "st_mag_mp7_5.7x28_ss190"
+  },
+  {
+    "id": "mag_mp7_9x18_alt",
+    "name": "st_mag_mp7_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp7_9x18_fmj"
+  },
+  {
+    "id": "mag_mp7_9x19_default",
+    "name": "st_mag_mp7_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_mp7_9x19_fmj"
+  },
+  {
+    "id": "mag_mp9iwp",
+    "name": "st_mag_mp9iwp",
+    "category": "Magazines",
+    "displayName": "st_mag_mp9iwp"
+  },
+  {
+    "id": "mag_mp9iwp_9x18",
+    "name": "st_mag_mp9iwp_9x18",
+    "category": "Magazines",
+    "displayName": "st_mag_mp9iwp_9x18"
+  },
+  {
+    "id": "mag_mp9iwp_9x18_ext",
+    "name": "st_mag_mp9iwp_9x18_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_mp9iwp_9x18_ext"
+  },
+  {
+    "id": "mag_mp9iwp_ext",
+    "name": "st_mag_mp9iwp_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_mp9iwp_ext"
+  },
+  {
+    "id": "mag_nato_5.45x39_alt",
+    "name": "st_mag_nato_5.45x39",
+    "category": "Magazines",
+    "displayName": "st_mag_nato_5.45x39"
+  },
+  {
+    "id": "mag_nato_5.56x45_casket",
+    "name": "st_mag_nato_5.56x45_casket",
+    "category": "Magazines",
+    "displayName": "st_mag_nato_5.56x45_casket"
+  },
+  {
+    "id": "mag_nato_5.56x45_drum",
+    "name": "st_mag_nato_5.56x45_drum",
+    "category": "Magazines",
+    "displayName": "st_mag_nato_5.56x45_drum"
+  },
+  {
+    "id": "mag_nato_5.56x45_drum_ext",
+    "name": "st_mag_nato_5.56x45_drum_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_nato_5.56x45_drum_ext"
+  },
+  {
+    "id": "mag_nato_5.56x45_extended",
+    "name": "st_mag_nato_5.56x45_extended",
+    "category": "Magazines",
+    "displayName": "st_mag_nato_5.56x45_extended"
+  },
+  {
+    "id": "mag_nato_5.56x45_fast",
+    "name": "st_mag_nato_5.56x45_fast",
+    "category": "Magazines",
+    "displayName": "st_mag_nato_5.56x45_fast"
+  },
+  {
+    "id": "mag_oc_9x18_default",
+    "name": "st_mag_oc33_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_oc33_9x18_fmj"
+  },
+  {
+    "id": "mag_oc_9x19_alt",
+    "name": "st_mag_oc33_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_oc33_9x19_fmj"
+  },
+  {
+    "id": "mag_50_762x51_drum_hinge",
+    "name": "st_mag_overlylarge_50_762x51_drum",
+    "category": "Magazines",
+    "displayName": "st_mag_overlylarge_50_762x51_drum"
+  },
+  {
+    "id": "mag_50_762x51_drum",
+    "name": "st_mag_overlylarge_50_762x51_drum2",
+    "category": "Magazines",
+    "displayName": "st_mag_overlylarge_50_762x51_drum2"
+  },
+  {
+    "id": "mag_75_762x39_drum",
+    "name": "st_mag_overlylarge_75_762x39_drum",
+    "category": "Magazines",
+    "displayName": "st_mag_overlylarge_75_762x39_drum"
+  },
+  {
+    "id": "mag_95_545x39_drum",
+    "name": "st_mag_overlylarge_95_545_drum",
+    "category": "Magazines",
+    "displayName": "st_mag_overlylarge_95_545_drum"
+  },
+  {
+    "id": "mag_95_5.56x45_drum",
+    "name": "st_mag_overlylarge_95_556_drum",
+    "category": "Magazines",
+    "displayName": "st_mag_overlylarge_95_556_drum"
+  },
+  {
+    "id": "mag_p220_9x19_u2p2bas",
+    "name": "st_mag_p220_9x19_u2p2bas",
+    "category": "Magazines",
+    "displayName": "st_mag_p220_9x19_u2p2bas"
+  },
+  {
+    "id": "mag_p90_5.7x28_default",
+    "name": "st_mag_p90_5.7x28_ss190",
+    "category": "Magazines",
+    "displayName": "st_mag_p90_5.7x28_ss190"
+  },
+  {
+    "id": "mag_p90_5.7x28_ext",
+    "name": "st_mag_p90_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_p90_ext"
+  },
+  {
+    "id": "mag_pkp_pkm_default",
+    "name": "st_mag_pkm_pkm",
+    "category": "Magazines",
+    "displayName": "st_mag_pkm_pkm"
+  },
+  {
+    "id": "mag_bas_pl15_9x19",
+    "name": "st_mag_pl15_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pl15_9x19_fmj"
+  },
+  {
+    "id": "mag_bas_pl15_9x19_extended",
+    "name": "st_mag_pl15_9x19_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_pl15_9x19_fmjext"
+  },
+  {
+    "id": "mag_pm_9x18_default",
+    "name": "st_mag_pm_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pm_9x18_fmj"
+  },
+  {
+    "id": "mag_pm_9x19_alt",
+    "name": "st_mag_pm_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pm_9x19_fmj"
+  },
+  {
+    "id": "mag_pmm_9x18_default",
+    "name": "st_mag_pmm_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pmm_9x18_fmj"
+  },
+  {
+    "id": "mag_pmm_9x19_alt",
+    "name": "st_mag_pmm_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pmm_9x19_fmj"
+  },
+  {
+    "id": "mag_pp2000_9x18_ext_alt",
+    "name": "st_mag_pp2000_9x18_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_pp2000_9x18_ext"
+  },
+  {
+    "id": "mag_pp2000_9x18_alt",
+    "name": "st_mag_pp2000_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pp2000_9x18_fmj"
+  },
+  {
+    "id": "mag_pp2000_9x19_ext",
+    "name": "st_mag_pp2000_9x19_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_pp2000_9x19_ext"
+  },
+  {
+    "id": "mag_pp2000_9x19_default",
+    "name": "st_mag_pp2000_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_pp2000_9x19_fmj"
+  },
+  {
+    "id": "mag_coonan_357_default",
+    "name": "st_mag_ppp_1911_357_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_1911_357_fmj"
+  },
+  {
+    "id": "mag_mk23_45",
+    "name": "st_mag_ppp_mk23_45",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_mk23_45"
+  },
+  {
+    "id": "mag_px4_45_default",
+    "name": "st_mag_ppp_px4_45",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_px4_45"
+  },
+  {
+    "id": "mag_px4_9x19_default",
+    "name": "st_mag_ppp_px4_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_px4_9x19_fmj"
+  },
+  {
+    "id": "mag_legion_9x19",
+    "name": "st_mag_ppp_sig_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_sig_9x19_fmj"
+  },
+  {
+    "id": "mag_rxp_45",
+    "name": "st_mag_ppp_signimble_45_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_signimble_45_fmj"
+  },
+  {
+    "id": "mag_rxp_9x19",
+    "name": "st_mag_ppp_signimble_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_signimble_9x19_fmj"
+  },
+  {
+    "id": "mag_svi_45",
+    "name": "st_mag_ppp_svi_45",
+    "category": "Magazines",
+    "displayName": "st_mag_ppp_svi_45"
+  },
+  {
+    "id": "mag_ppsh_7.62x25_default",
+    "name": "st_mag_ppsh41_7.62x25_p",
+    "category": "Magazines",
+    "displayName": "st_mag_ppsh41_7.62x25_p"
+  },
+  {
+    "id": "mag_ppsh_7.62x25_stick",
+    "name": "st_mag_ppsh41_7.62x25_stick",
+    "category": "Magazines",
+    "displayName": "st_mag_ppsh41_7.62x25_stick"
+  },
+  {
+    "id": "mag_rem_7.62x51_default",
+    "name": "st_mag_remington700_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_remington700_7.62x51"
+  },
+  {
+    "id": "mag_remingtonarchangel_7.62x51",
+    "name": "st_mag_remingtonarchangel_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_remingtonarchangel_7.62x51"
+  },
+  {
+    "id": "mag_remingtonla_300",
+    "name": "st_mag_remingtonla_300",
+    "category": "Magazines",
+    "displayName": "st_mag_remingtonla_300"
+  },
+  {
+    "id": "mag_remingtonla_300_gamma",
+    "name": "st_mag_remingtonla_300",
+    "category": "Magazines",
+    "displayName": "st_mag_remingtonla_300 [gamma]"
+  },
+  {
+    "id": "mag_rpd_7.62x39_default",
+    "name": "st_mag_rpd_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_rpd_7.62x39"
+  },
+  {
+    "id": "mag_rpk_7.62x39_default",
+    "name": "st_mag_rpk_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_rpk_7.62x39"
+  },
+  {
+    "id": "mag_rpk_5.45x39_default",
+    "name": "st_mag_rpk74_5.45x39",
+    "category": "Magazines",
+    "displayName": "st_mag_rpk74_5.45x39"
+  },
+  {
+    "id": "mag_rpk_5.56x45_default",
+    "name": "st_mag_rpk74_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_rpk74_5.56x45"
+  },
+  {
+    "id": "mag_saiga12_drum",
+    "name": "st_mag_saiga12_drum",
+    "category": "Magazines",
+    "displayName": "st_mag_saiga12_drum"
+  },
+  {
+    "id": "mag_saiga12s_12x70_default",
+    "name": "st_mag_saiga12s_12x70",
+    "category": "Magazines",
+    "displayName": "st_mag_saiga12s_12x70"
+  },
+  {
+    "id": "mag_saiga12s_12x70_extended",
+    "name": "st_mag_saiga12s_ext_12x70",
+    "category": "Magazines",
+    "displayName": "st_mag_saiga12s_ext_12x70"
+  },
+  {
+    "id": "mag_bas_sig226_9x19",
+    "name": "st_mag_sig226_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_sig226_9x19_fmj"
+  },
+  {
+    "id": "mag_bas_sig226_9x19_extended",
+    "name": "st_mag_sig226_9x19_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_sig226_9x19_fmjext"
+  },
+  {
+    "id": "mag_sig_5.56x45_default",
+    "name": "st_mag_sig550_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_sig550_5.56x45"
+  },
+  {
+    "id": "mag_sig_5.56x45_sniper",
+    "name": "st_mag_sig550_sniper_5.56x45",
+    "category": "Magazines",
+    "displayName": "st_mag_sig550_sniper_5.56x45"
+  },
+  {
+    "id": "mag_sigp220_default",
+    "name": "st_mag_sigp220_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_sigp220_11.43x23_fmj"
+  },
+  {
+    "id": "mag_sigp220_extended",
+    "name": "st_mag_sigp220_11.43x23_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_sigp220_11.43x23_fmjext"
+  },
+  {
+    "id": "mag_sks_7.62x39",
+    "name": "st_mag_sks_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_sks_7.62x39"
+  },
+  {
+    "id": "mag_sks_7.62x54",
+    "name": "st_mag_sks_7.62x54",
+    "category": "Magazines",
+    "displayName": "st_mag_sks_7.62x54"
+  },
+  {
+    "id": "mag_sks_7.62x54_extended",
+    "name": "st_mag_sks_7.62x54ext",
+    "category": "Magazines",
+    "displayName": "st_mag_sks_7.62x54ext"
+  },
+  {
+    "id": "mag_sks_7.62x39_extended",
+    "name": "st_mag_sksext_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_sksext_7.62x39"
+  },
+  {
+    "id": "mag_sr1m_9x21_default",
+    "name": "st_mag_sr1m_9x21",
+    "category": "Magazines",
+    "displayName": "st_mag_sr1m_9x21"
+  },
+  {
+    "id": "mag_sr1m_9x21_extended",
+    "name": "st_mag_sr1m_9x21ext",
+    "category": "Magazines",
+    "displayName": "st_mag_sr1m_9x21ext"
+  },
+  {
+    "id": "mag_sr2m_9x18_veresk",
+    "name": "st_mag_sr2m_9x18_veresk",
+    "category": "Magazines",
+    "displayName": "st_mag_sr2m_9x18_veresk"
+  },
+  {
+    "id": "mag_sr2m_9x21_veresk",
+    "name": "st_mag_sr2m_9x21_veresk",
+    "category": "Magazines",
+    "displayName": "st_mag_sr2m_9x21_veresk"
+  },
+  {
+    "id": "mag_nato_5.56x45_default",
+    "name": "st_mag_stanag",
+    "category": "Magazines",
+    "displayName": "st_mag_stanag"
+  },
+  {
+    "id": "mag_stanag_7.62x51_default",
+    "name": "st_mag_stanag_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_stanag_7.62x51"
+  },
+  {
+    "id": "mag_stanag_7.62x51_extended",
+    "name": "st_mag_stanag_7.62x51_ext",
+    "category": "Magazines",
+    "displayName": "st_mag_stanag_7.62x51_ext"
+  },
+  {
+    "id": "mag_stanag_7.62x51_short",
+    "name": "st_mag_stanag_7.62x51_short",
+    "category": "Magazines",
+    "displayName": "st_mag_stanag_7.62x51_short"
+  },
+  {
+    "id": "mag_stanag_7.62x51_fast",
+    "name": "st_mag_stanag_fast_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_stanag_fast_7.62x51"
+  },
+  {
+    "id": "mag_nato_5.56x45_short",
+    "name": "st_mag_stanag_short",
+    "category": "Magazines",
+    "displayName": "st_mag_stanag_short"
+  },
+  {
+    "id": "mag_steyr_556",
+    "name": "st_mag_steyr_556",
+    "category": "Magazines",
+    "displayName": "st_mag_steyr_556"
+  },
+  {
+    "id": "mag_steyr_762",
+    "name": "st_mag_steyr_762",
+    "category": "Magazines",
+    "displayName": "st_mag_steyr_762"
+  },
+  {
+    "id": "mag_sv98_7.62x54_default",
+    "name": "st_mag_sv98_7.62x54",
+    "category": "Magazines",
+    "displayName": "st_mag_sv98_7.62x54"
+  },
+  {
+    "id": "mag_svd_7.62x54_default",
+    "name": "st_mag_svd_7.62x54",
+    "category": "Magazines",
+    "displayName": "st_mag_svd_7.62x54"
+  },
+  {
+    "id": "mag_svd_7.62x54_extended",
+    "name": "st_mag_svd_7.62x54_extended",
+    "category": "Magazines",
+    "displayName": "st_mag_svd_7.62x54_extended"
+  },
+  {
+    "id": "mag_svt_7.62x39_alt",
+    "name": "st_mag_svt40_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_svt40_7.62x39"
+  },
+  {
+    "id": "mag_svt_7.62x54_default",
+    "name": "st_mag_svt40_7.62x54",
+    "category": "Magazines",
+    "displayName": "st_mag_svt40_7.62x54"
+  },
+  {
+    "id": "mag_bas_toz106",
+    "name": "st_mag_toz106_20x70_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_toz106_20x70_fmj"
+  },
+  {
+    "id": "mag_bas_toz106_zhekan",
+    "name": "st_mag_toz106_20x70_zhekan_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_toz106_20x70_zhekan_fmj"
+  },
+  {
+    "id": "mag_bolt_300_default",
+    "name": "st_mag_trg_magnum_300",
+    "category": "Magazines",
+    "displayName": "st_mag_trg_magnum_300"
+  },
+  {
+    "id": "mag_tt33_7.62x25_default",
+    "name": "st_mag_tt33_7.62x25_p",
+    "category": "Magazines",
+    "displayName": "st_mag_tt33_7.62x25_p [default]"
+  },
+  {
+    "id": "mag_tt33_7.62x25_ext",
+    "name": "st_mag_tt33_7.62x25_p",
+    "category": "Magazines",
+    "displayName": "st_mag_tt33_7.62x25_p [ext]"
+  },
+  {
+    "id": "mag_t63_7.62x39_default",
+    "name": "st_mag_type63_7.62x39",
+    "category": "Magazines",
+    "displayName": "st_mag_type63_7.62x39"
+  },
+  {
+    "id": "mag_t63_7.62x54_alt",
+    "name": "st_mag_type63_7.62x54",
+    "category": "Magazines",
+    "displayName": "st_mag_type63_7.62x54"
+  },
+  {
+    "id": "mag_ump45_11.43x23_default",
+    "name": "st_mag_ump45_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_ump45_11.43x23_fmj"
+  },
+  {
+    "id": "mag_usas12_12x70_default",
+    "name": "st_mag_usas12_12x70",
+    "category": "Magazines",
+    "displayName": "st_mag_usas12_12x70"
+  },
+  {
+    "id": "mag_usp_11.43x23_default",
+    "name": "st_mag_usp_11.43x23_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_usp_11.43x23_fmj"
+  },
+  {
+    "id": "mag_usptac_9x19",
+    "name": "st_mag_usptac_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_usptac_9x19_fmj"
+  },
+  {
+    "id": "mag_usptac_9x19_extended",
+    "name": "st_mag_usptac_9x19_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_usptac_9x19_fmjext"
+  },
+  {
+    "id": "mag_uzi_9x19_default",
+    "name": "st_mag_uzi_9x19",
+    "category": "Magazines",
+    "displayName": "st_mag_uzi_9x19"
+  },
+  {
+    "id": "mag_uzi_9x19_extended",
+    "name": "st_mag_uzi_9x19_extended",
+    "category": "Magazines",
+    "displayName": "st_mag_uzi_9x19_extended"
+  },
+  {
+    "id": "mag_val_9x39_default",
+    "name": "st_mag_val_9x39_pab9",
+    "category": "Magazines",
+    "displayName": "st_mag_val_9x39_pab9"
+  },
+  {
+    "id": "mag_vepr_12x70_default",
+    "name": "st_mag_vepr_12x70",
+    "category": "Magazines",
+    "displayName": "st_mag_vepr_12x70"
+  },
+  {
+    "id": "mag_vepr_12x70_compact",
+    "name": "st_mag_vepr_compact_12x70",
+    "category": "Magazines",
+    "displayName": "st_mag_vepr_compact_12x70"
+  },
+  {
+    "id": "mag_vihr_9x39_default",
+    "name": "st_mag_vihr_9x39_pab9",
+    "category": "Magazines",
+    "displayName": "st_mag_vihr_9x39_pab9"
+  },
+  {
+    "id": "mag_vss_9x39_default",
+    "name": "st_mag_vintorez_9x39_pab9",
+    "category": "Magazines",
+    "displayName": "st_mag_vintorez_9x39_pab9"
+  },
+  {
+    "id": "mag_vityaz_9x18_alt",
+    "name": "st_mag_vityaz_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_vityaz_9x18_fmj"
+  },
+  {
+    "id": "mag_vityaz_9x19_default",
+    "name": "st_mag_vityaz_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_vityaz_9x19_fmj"
+  },
+  {
+    "id": "mag_vsk_9x39_default",
+    "name": "st_mag_vsk94_9x39_pab9",
+    "category": "Magazines",
+    "displayName": "st_mag_vsk94_9x39_pab9"
+  },
+  {
+    "id": "mag_vsk_12.7x55_default",
+    "name": "st_mag_vssk_12.7x55",
+    "category": "Magazines",
+    "displayName": "st_mag_vssk_12.7x55"
+  },
+  {
+    "id": "mag_vz61_9x18_alt",
+    "name": "st_mag_vz61_9x18_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_vz61_9x18_fmj"
+  },
+  {
+    "id": "mag_vz61_9x19_default",
+    "name": "st_mag_vz61_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_vz61_9x19_fmj"
+  },
+  {
+    "id": "mag_wa_7.62x51_default",
+    "name": "st_mag_wa2000_7.62x51",
+    "category": "Magazines",
+    "displayName": "st_mag_wa2000_7.62x51"
+  },
+  {
+    "id": "mag_wp99_9x19",
+    "name": "st_mag_wp99_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_mag_wp99_9x19_fmj"
+  },
+  {
+    "id": "mag_wp99_9x19_extended",
+    "name": "st_mag_wp99_9x19_fmjext",
+    "category": "Magazines",
+    "displayName": "st_mag_wp99_9x19_fmjext"
   },
   {
     "id": "marijuana",
@@ -3878,6 +5342,12 @@
     "displayName": "st_mre"
   },
   {
+    "id": "mutant_part_crow_beak",
+    "name": "st_mutant_part_crow_beak",
+    "category": "Mutant Parts",
+    "displayName": "st_mutant_part_crow_beak"
+  },
+  {
     "id": "nuts",
     "name": "st_nuts",
     "category": "Food",
@@ -3906,6 +5376,36 @@
     "name": "st_powder_rifle",
     "category": "Materials",
     "displayName": "st_powder_rifle"
+  },
+  {
+    "id": "mag_colt1911_762x25",
+    "name": "st_ppp_colt1911_762x25_fmj",
+    "category": "Magazines",
+    "displayName": "st_ppp_colt1911_762x25_fmj"
+  },
+  {
+    "id": "mag_ppp_glock_45_default",
+    "name": "st_ppp_glock_45_fmj",
+    "category": "Magazines",
+    "displayName": "st_ppp_glock_45_fmj"
+  },
+  {
+    "id": "mag_sw_45_default",
+    "name": "st_ppp_sw_45_fmj",
+    "category": "Magazines",
+    "displayName": "st_ppp_sw_45_fmj"
+  },
+  {
+    "id": "mag_sw_919_default",
+    "name": "st_ppp_sw_919_fmj",
+    "category": "Magazines",
+    "displayName": "st_ppp_sw_919_fmj"
+  },
+  {
+    "id": "mag_xd9_9x19_default",
+    "name": "st_ppp_xd9_9x19_fmj",
+    "category": "Magazines",
+    "displayName": "st_ppp_xd9_9x19_fmj"
   },
   {
     "id": "protein",
@@ -4128,6 +5628,18 @@
     "name": "st_sleepingpills",
     "category": "Medicine",
     "displayName": "st_sleepingpills"
+  },
+  {
+    "id": "side_saddle_rifle",
+    "name": "st_speed_rifle",
+    "category": "Belt Attachments",
+    "displayName": "st_speed_rifle"
+  },
+  {
+    "id": "side_saddle_shotgun",
+    "name": "st_speed_shotgun",
+    "category": "Belt Attachments",
+    "displayName": "st_speed_shotgun"
   },
   {
     "id": "stimpack",
@@ -5426,6 +6938,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_g36v_rwap_cut_kit",
+    "name": "st_wpn_g36c_spec",
+    "category": "Rifles",
+    "displayName": "st_wpn_g36c_spec",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": true
+  },
+  {
     "id": "wpn_g36",
     "name": "st_wpn_g36new",
     "category": "Rifles",
@@ -5445,17 +6968,6 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
-  },
-  {
-    "id": "wpn_g36c_rwap",
-    "name": "st_wpn_g36new_c",
-    "category": "Rifles",
-    "displayName": "st_wpn_g36new_c",
-    "hasNpcWeaponDrop": false,
-    "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": true,
     "tacticalKit": false
   },
   {
@@ -6600,23 +8112,27 @@
     "id": "wpn_pl15_pl15_scolaz",
     "name": "st_wpn_pl15_pl15_scolaz",
     "category": "Pistols",
-    "displayName": "st_wpn_pl15_pl15_scolaz",
+    "displayName": "st_wpn_pl15_pl15_scolaz [pl15_scolaz]",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 1
   },
   {
     "id": "wpn_pl15_tan_pl15_scolaz",
-    "name": "st_wpn_pl15_upgr",
+    "name": "st_wpn_pl15_pl15_scolaz",
     "category": "Pistols",
-    "displayName": "st_wpn_pl15_upgr",
+    "displayName": "st_wpn_pl15_pl15_scolaz [tan_pl15_scolaz]",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 2
   },
   {
     "id": "wpn_pm_bas",
@@ -7369,15 +8885,30 @@
     "tacticalKit": false
   },
   {
-    "id": "wpn_sr1m_sr1upgr1",
-    "name": "st_wpn_sr1mp_las",
+    "id": "wpn_sr1m_gurza_up",
+    "name": "st_wpn_sr1m_sr1upgr1",
     "category": "Pistols",
-    "displayName": "st_wpn_sr1mp_las",
+    "displayName": "st_wpn_sr1m_sr1upgr1 [gurza_up]",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": true
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 1
+  },
+  {
+    "id": "wpn_sr1m_sr1upgr1",
+    "name": "st_wpn_sr1m_sr1upgr1",
+    "category": "Pistols",
+    "displayName": "st_wpn_sr1m_sr1upgr1 [sr1upgr1]",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": true,
+    "kitSuffix": true,
+    "kitSuffixNum": 2
   },
   {
     "id": "wpn_sr1m",
@@ -7389,17 +8920,6 @@
     "inStartingLoadout": true,
     "unobtainable": false,
     "tacticalKit": false
-  },
-  {
-    "id": "wpn_sr1m_gurza_up",
-    "name": "st_wpn_sr1mp_upgr",
-    "category": "Pistols",
-    "displayName": "st_wpn_sr1mp_upgr",
-    "hasNpcWeaponDrop": false,
-    "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": false,
-    "tacticalKit": true
   },
   {
     "id": "wpn_sr2_m1",
@@ -7823,12 +9343,23 @@
     "id": "wpn_tt33_modern_tt_upgr_kit",
     "name": "st_wpn_tt33_custom_upgr",
     "category": "Pistols",
-    "displayName": "st_wpn_tt33_custom_upgr",
+    "displayName": "st_wpn_tt33_custom_upgr [modern_tt_upgr_kit]",
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false,
-    "tacticalKit": true
+    "unobtainable": true,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_tt33_tt_upgr_kit",
+    "name": "st_wpn_tt33_custom_upgr",
+    "category": "Pistols",
+    "displayName": "st_wpn_tt33_custom_upgr [tt_upgr_kit]",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_type63",

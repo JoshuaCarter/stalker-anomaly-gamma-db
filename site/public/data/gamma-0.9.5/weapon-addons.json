@@ -2125,29 +2125,20 @@
   },
   "wpn_eft_mts_255": {
     "scopes": [
-      "0kp2",
       "ac10632",
       "aim_low",
-      "aimpoint",
-      "point_aimpro",
       "c-more",
-      "compm4s",
       "deltapoint",
       "d0cter",
       "e0t2",
-      "exps3",
-      "he510",
       "kemper",
       "rmr",
-      "ekp8_18",
       "p1x42",
       "romeo4",
-      "lco1",
       "pk6",
       "aim_acro",
       "hco",
-      "1p87",
-      "uh2"
+      "ekp8_18"
     ],
     "silencers": [],
     "launchers": [],
@@ -2248,7 +2239,8 @@
       "echo1",
       "tac30",
       "razorhd",
-      "devo"
+      "devo",
+      "c79"
     ],
     "silencers": [
       "wpn_sil_aac762"
@@ -2432,7 +2424,9 @@
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "cut_kit"
+    ]
   },
   "wpn_g36_camo": {
     "scopes": [
@@ -2475,14 +2469,6 @@
       "mark8_rmr",
       "spec_alt"
     ]
-  },
-  "wpn_g36c_rwap": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_nato"
-    ],
-    "launchers": [],
-    "kits": []
   },
   "wpn_g36k_rwap": {
     "scopes": [
@@ -2591,6 +2577,16 @@
     ]
   },
   "wpn_g36v_rwap": {
+    "scopes": [],
+    "silencers": [
+      "wpn_sil_nato"
+    ],
+    "launchers": [],
+    "kits": [
+      "cut_kit"
+    ]
+  },
+  "wpn_g36v_rwap_cut_kit": {
     "scopes": [],
     "silencers": [
       "wpn_sil_nato"
@@ -2874,7 +2870,11 @@
     ],
     "silencers": [],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "mark8_rmr",
+      "spec_alt",
+      "triji"
+    ]
   },
   "wpn_gsh18": {
     "scopes": [],
@@ -2922,7 +2922,7 @@
       "t12"
     ],
     "silencers": [
-      "wpn_sil_nato"
+      "wpn_sil_aac762"
     ],
     "launchers": [],
     "kits": [
@@ -3209,7 +3209,10 @@
       "wpn_sil_hex23"
     ],
     "launchers": [],
-    "kits": []
+    "kits": [
+      "triji",
+      "spec_alt"
+    ]
   },
   "wpn_l85": {
     "scopes": [],
@@ -4384,21 +4387,15 @@
     ]
   },
   "wpn_pl15_tan_pl15_scolaz": {
-    "scopes": [
-      "lazup_pl15"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_pl15"
     ],
     "launchers": [],
-    "kits": [
-      "pl15_scolaz"
-    ]
+    "kits": []
   },
   "wpn_pm": {
-    "scopes": [
-      "lazup_pl15"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_9mm"
     ],
@@ -4408,9 +4405,7 @@
     ]
   },
   "wpn_pm_actor": {
-    "scopes": [
-      "lazup_pl15"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_9mm"
     ],
@@ -5951,9 +5946,7 @@
       "wpn_sil_9mm"
     ],
     "launchers": [],
-    "kits": [
-      "tt_upgr_kit"
-    ]
+    "kits": []
   },
   "wpn_tt33_modern": {
     "scopes": [
@@ -5963,21 +5956,23 @@
       "wpn_sil_9mm"
     ],
     "launchers": [],
-    "kits": [
-      "tt_upgr_kit"
-    ]
+    "kits": []
   },
   "wpn_tt33_modern_tt_upgr_kit": {
-    "scopes": [
-      "lazup_pl15"
-    ],
+    "scopes": [],
     "silencers": [
       "wpn_sil_9mm"
     ],
     "launchers": [],
-    "kits": [
-      "tt_upgr_kit"
-    ]
+    "kits": []
+  },
+  "wpn_tt33_tt_upgr_kit": {
+    "scopes": [],
+    "silencers": [
+      "wpn_sil_9mm"
+    ],
+    "launchers": [],
+    "kits": []
   },
   "wpn_udp9": {
     "scopes": [

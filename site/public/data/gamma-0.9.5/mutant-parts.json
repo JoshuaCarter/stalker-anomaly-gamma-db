@@ -285,6 +285,24 @@
       "displayName": "st_mutant_part_crow_beak",
       "hasStashDrop": false,
       "hasDisassemble": false
+    },
+    {
+      "id": "hideout_cat",
+      "pda_encyclopedia_name": "st_hideout_cat",
+      "yan_st_sakharov_name": "204",
+      "hunter_gar_trader_name": "117",
+      "displayName": "st_hideout_cat",
+      "hasStashDrop": false,
+      "hasDisassemble": false
+    },
+    {
+      "id": "hideout_cat_bed",
+      "pda_encyclopedia_name": "st_hideout_cat_bed",
+      "yan_st_sakharov_name": "91",
+      "hunter_gar_trader_name": "52",
+      "displayName": "st_hideout_cat_bed",
+      "hasStashDrop": false,
+      "hasDisassemble": false
     }
   ]
 }

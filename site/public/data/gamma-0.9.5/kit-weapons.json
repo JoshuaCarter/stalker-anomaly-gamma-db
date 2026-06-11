@@ -27,9 +27,6 @@
   "sr1upgr1": [
     "wpn_sr1m_sr1upgr1"
   ],
-  "tt_upgr_kit": [
-    "wpn_tt33_modern_tt_upgr_kit"
-  ],
   "mod9": [
     "wpn_walther_mod9",
     "wpn_walther_p99_mod9"
@@ -72,6 +69,9 @@
     "wpn_dtmdr_black_sup",
     "wpn_dtmdr_sup",
     "wpn_mk47_sup"
+  ],
+  "cut_kit": [
+    "wpn_g36v_rwap_cut_kit"
   ],
   "admin": [
     "wpn_xm4_admin"

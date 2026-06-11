@@ -303,10 +303,13 @@
 </template>
 
 <script>
+import { CAT } from '../../js/constants.js';
+
 export default {
     props: {
         packId: { type: String, default: null },
         indexById: { type: Object, default: () => ({}) },
+        showMagazines: { type: Boolean, default: false },
     },
     inject: ['t', 'tName', 'tCat', 'tCatSingular', 'tItemName'],
     emits: ['navigateToItem', 'showItemHover', 'moveItemHover', 'hideItemHover'],
@@ -427,6 +430,8 @@ export default {
             const filtered = this.allEntries.filter(entry => {
                 if (this.stockedOnly && !entry.stocked) return false;
                 if (this.hideMisc && !this.resolveItem(entry.id)) return false;
+                // Magazines (GAMMA Mags Reloaded) are opt-in: hide from traders unless enabled.
+                if (!this.showMagazines && this.resolveItem(entry.id)?.category === CAT.MAGAZINES) return false;
                 const id = entry.id;
                 if (q) {
                     const idMatch = id.toLowerCase().includes(q);
@@ -470,7 +475,9 @@ export default {
             const cats = new Set();
             for (const e of this.allEntries) {
                 const resolved = this.resolveItem(e.id);
-                if (resolved?.category) cats.add(resolved.category);
+                if (!resolved?.category) continue;
+                if (!this.showMagazines && resolved.category === CAT.MAGAZINES) continue;
+                cats.add(resolved.category);
             }
             return [...cats].sort((a, b) => (this.tCat(a) || a).localeCompare(this.tCat(b) || b));
         },

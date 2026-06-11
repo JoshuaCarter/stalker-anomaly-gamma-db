@@ -363,6 +363,105 @@
       "hasDisassemble": true
     },
     {
+      "id": "af_magpouch_l",
+      "pda_encyclopedia_name": "st_af_magpouch_l_name",
+      "st_prop_weight": "2.25",
+      "st_upgr_cost": "6000",
+      "pda_encyclopedia_tier": "1",
+      "st_data_export_is_backpack": "N",
+      "st_data_export_jump_height": "0",
+      "st_data_export_bonus_mutant_part_chance": "0%",
+      "ui_inv_outfit_fire_wound_protection": "0%",
+      "ui_inv_outfit_wound_protection": "0%",
+      "ui_inv_outfit_burn_protection": "0%",
+      "ui_inv_outfit_shock_protection": "0%",
+      "ui_inv_outfit_chemical_burn_protection": "0%",
+      "ui_inv_outfit_radiation_protection": "0%",
+      "ui_inv_outfit_telepatic_protection": "0%",
+      "ui_inv_outfit_strike_protection": "0%",
+      "ui_inv_outfit_explosion_protection": "0%",
+      "st_prop_restore_health": "0",
+      "ui_inv_satiety": "0%",
+      "st_prop_restore_bleeding": "0",
+      "st_data_export_restore_radiation": "0",
+      "ui_inv_outfit_power_restore": "-90%",
+      "ui_inv_outfit_additional_weight": "0",
+      "displayName": "st_af_magpouch_l_name",
+      "hasStashDrop": false,
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 4,
+        "medium": 3,
+        "large": 2
+      }
+    },
+    {
+      "id": "af_magpouch_m",
+      "pda_encyclopedia_name": "st_af_magpouch_m_name",
+      "st_prop_weight": "1.75",
+      "st_upgr_cost": "4000",
+      "pda_encyclopedia_tier": "1",
+      "st_data_export_is_backpack": "N",
+      "st_data_export_jump_height": "0",
+      "st_data_export_bonus_mutant_part_chance": "0%",
+      "ui_inv_outfit_fire_wound_protection": "0%",
+      "ui_inv_outfit_wound_protection": "0%",
+      "ui_inv_outfit_burn_protection": "0%",
+      "ui_inv_outfit_shock_protection": "0%",
+      "ui_inv_outfit_chemical_burn_protection": "0%",
+      "ui_inv_outfit_radiation_protection": "0%",
+      "ui_inv_outfit_telepatic_protection": "0%",
+      "ui_inv_outfit_strike_protection": "0%",
+      "ui_inv_outfit_explosion_protection": "0%",
+      "st_prop_restore_health": "0",
+      "ui_inv_satiety": "0%",
+      "st_prop_restore_bleeding": "0",
+      "st_data_export_restore_radiation": "0",
+      "ui_inv_outfit_power_restore": "-60%",
+      "ui_inv_outfit_additional_weight": "0",
+      "displayName": "st_af_magpouch_m_name",
+      "hasStashDrop": false,
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 3,
+        "medium": 2,
+        "large": 1
+      }
+    },
+    {
+      "id": "af_magpouch_s",
+      "pda_encyclopedia_name": "st_af_magpouch_s_name",
+      "st_prop_weight": "1.25",
+      "st_upgr_cost": "2000",
+      "pda_encyclopedia_tier": "1",
+      "st_data_export_is_backpack": "N",
+      "st_data_export_jump_height": "0",
+      "st_data_export_bonus_mutant_part_chance": "0%",
+      "ui_inv_outfit_fire_wound_protection": "0%",
+      "ui_inv_outfit_wound_protection": "0%",
+      "ui_inv_outfit_burn_protection": "0%",
+      "ui_inv_outfit_shock_protection": "0%",
+      "ui_inv_outfit_chemical_burn_protection": "0%",
+      "ui_inv_outfit_radiation_protection": "0%",
+      "ui_inv_outfit_telepatic_protection": "0%",
+      "ui_inv_outfit_strike_protection": "0%",
+      "ui_inv_outfit_explosion_protection": "0%",
+      "st_prop_restore_health": "0",
+      "ui_inv_satiety": "0%",
+      "st_prop_restore_bleeding": "0",
+      "st_data_export_restore_radiation": "0",
+      "ui_inv_outfit_power_restore": "-30%",
+      "ui_inv_outfit_additional_weight": "0",
+      "displayName": "st_af_magpouch_s_name",
+      "hasStashDrop": false,
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 3,
+        "medium": 1,
+        "large": 0
+      }
+    },
+    {
       "id": "af_plates",
       "pda_encyclopedia_name": "st_af_plates_name",
       "st_prop_weight": "1.85",
@@ -449,7 +548,7 @@
     {
       "id": "af_surge_up",
       "pda_encyclopedia_name": "st_af_surge_up_name",
-      "st_prop_weight": "4.95",
+      "st_prop_weight": "1.00",
       "st_upgr_cost": "25000",
       "pda_encyclopedia_tier": "4",
       "st_data_export_is_backpack": "N",
@@ -528,7 +627,12 @@
       "ui_inv_outfit_additional_weight": "41",
       "displayName": "st_equ_milpack_name",
       "hasStashDrop": false,
-      "hasDisassemble": true
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 2,
+        "medium": 2,
+        "large": 0
+      }
     },
     {
       "id": "equ_small_military_pack",
@@ -556,7 +660,12 @@
       "ui_inv_outfit_additional_weight": "34",
       "displayName": "st_equ_smilpack_name",
       "hasStashDrop": false,
-      "hasDisassemble": true
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 1,
+        "medium": 1,
+        "large": 0
+      }
     },
     {
       "id": "equ_small_pack",
@@ -584,7 +693,12 @@
       "ui_inv_outfit_additional_weight": "28",
       "displayName": "st_equ_smallpack_name",
       "hasStashDrop": false,
-      "hasDisassemble": true
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 1,
+        "medium": 0,
+        "large": 0
+      }
     },
     {
       "id": "equ_tourist_pack",
@@ -612,7 +726,12 @@
       "ui_inv_outfit_additional_weight": "47",
       "displayName": "st_equ_touristpack_name",
       "hasStashDrop": false,
-      "hasDisassemble": true
+      "hasDisassemble": true,
+      "magCapacity": {
+        "small": 2,
+        "medium": 2,
+        "large": 1
+      }
     },
     {
       "id": "hide_bloodsucker",
@@ -1003,6 +1122,62 @@
       "ui_inv_outfit_power_restore": "0%",
       "ui_inv_outfit_additional_weight": "0",
       "displayName": "st_powder_poltergeist",
+      "hasStashDrop": false,
+      "hasDisassemble": false
+    },
+    {
+      "id": "side_saddle_rifle",
+      "pda_encyclopedia_name": "st_speed_rifle",
+      "st_prop_weight": "0.05",
+      "st_upgr_cost": "7500",
+      "pda_encyclopedia_tier": "1",
+      "st_data_export_is_backpack": "N",
+      "st_data_export_jump_height": "0",
+      "st_data_export_bonus_mutant_part_chance": "0%",
+      "ui_inv_outfit_fire_wound_protection": "0%",
+      "ui_inv_outfit_wound_protection": "0%",
+      "ui_inv_outfit_burn_protection": "0%",
+      "ui_inv_outfit_shock_protection": "0%",
+      "ui_inv_outfit_chemical_burn_protection": "0%",
+      "ui_inv_outfit_radiation_protection": "0%",
+      "ui_inv_outfit_telepatic_protection": "0%",
+      "ui_inv_outfit_strike_protection": "0%",
+      "ui_inv_outfit_explosion_protection": "0%",
+      "st_prop_restore_health": "0",
+      "ui_inv_satiety": "0%",
+      "st_prop_restore_bleeding": "0",
+      "st_data_export_restore_radiation": "0",
+      "ui_inv_outfit_power_restore": "-30%",
+      "ui_inv_outfit_additional_weight": "0",
+      "displayName": "st_speed_rifle",
+      "hasStashDrop": false,
+      "hasDisassemble": false
+    },
+    {
+      "id": "side_saddle_shotgun",
+      "pda_encyclopedia_name": "st_speed_shotgun",
+      "st_prop_weight": "0.05",
+      "st_upgr_cost": "7500",
+      "pda_encyclopedia_tier": "1",
+      "st_data_export_is_backpack": "N",
+      "st_data_export_jump_height": "0",
+      "st_data_export_bonus_mutant_part_chance": "0%",
+      "ui_inv_outfit_fire_wound_protection": "0%",
+      "ui_inv_outfit_wound_protection": "0%",
+      "ui_inv_outfit_burn_protection": "0%",
+      "ui_inv_outfit_shock_protection": "0%",
+      "ui_inv_outfit_chemical_burn_protection": "0%",
+      "ui_inv_outfit_radiation_protection": "0%",
+      "ui_inv_outfit_telepatic_protection": "0%",
+      "ui_inv_outfit_strike_protection": "0%",
+      "ui_inv_outfit_explosion_protection": "0%",
+      "st_prop_restore_health": "0",
+      "ui_inv_satiety": "0%",
+      "st_prop_restore_bleeding": "0",
+      "st_data_export_restore_radiation": "0",
+      "ui_inv_outfit_power_restore": "-30%",
+      "ui_inv_outfit_additional_weight": "0",
+      "displayName": "st_speed_shotgun",
       "hasStashDrop": false,
       "hasDisassemble": false
     }

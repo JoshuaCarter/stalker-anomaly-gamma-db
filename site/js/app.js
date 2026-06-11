@@ -97,6 +97,7 @@ export const appDefinition = {
             disassembleCache: null,
             ammoWeaponsCache: null,
             weaponAddonsCache: null,
+            weaponMagazinesCache: null,
             kitWeaponsCache: null,
             mutantProfilesCache: null,
             npcArmorProfilesCache: null,
@@ -122,6 +123,9 @@ export const appDefinition = {
             hideTacticalKit: false,
             hideUnusedAmmo: true,
             showTileIcons: true,
+            // Opt-in: the Magazines mod isn't universal, so its category is hidden
+            // until the user enables it. Persisted; default off.
+            showMagazines: (() => { try { return localStorage.getItem("showMagazines") === "1"; } catch { return false; } })(),
 
             // Filter & Sort
             activeFilters: {},
@@ -428,6 +432,33 @@ export const appDefinition = {
             };
         },
 
+        modalCompatibleMagazines() {
+            // Gated by the Magazines feature toggle; empty unless GAMMA Mags Reloaded data is present.
+            if (!this.showMagazines || !this.modalItem || !this.weaponMagazinesCache) return [];
+            const ids = this.weaponMagazinesCache[this.modalItem.id];
+            if (!ids || !ids.length) return [];
+            const magMap = Object.fromEntries((this.categoryItems[categorySlug(CAT.MAGAZINES)] || []).map(i => [i.id, i]));
+            return ids.map(id => magMap[id]).filter(Boolean);
+        },
+
+        modalMagazineCompatibleWeapons() {
+            // Compatible weapons shown on a magazine's modal (reverse lookup). Gated by toggle.
+            if (!this.showMagazines || !this.modalItem || this.modalCategory !== CAT.MAGAZINES) return [];
+            const weaponIds = [...new Set(this.magazineCompatibleWeaponsMap[this.modalItem.id] || [])];
+            if (!weaponIds.length) return [];
+            const indexMap = new Map((this.index || []).map(i => [i.id, i]));
+            return weaponIds
+                .map(id => {
+                    const indexItem = indexMap.get(id);
+                    if (!indexItem) return null;
+                    const slug = categorySlug(indexItem.category);
+                    const full = this.categoryItems[slug]?.find(i => i.id === id);
+                    return full || indexItem;
+                })
+                .filter(Boolean)
+                .sort((a, b) => (this.tName(a) || "").localeCompare(this.tName(b) || ""));
+        },
+
         modalKitWeapons() {
             if (!this.modalItem || this.modalCategory !== CAT.TACTICAL_KITS) return [];
             const ids = this.kitWeaponsCache?.[this.modalItem.id] || [];
@@ -477,6 +508,12 @@ export const appDefinition = {
                 if (cpr !== undefined) {
                     rows.splice(costIdx + 1, 0, { key: "_cost_per_round", value: cpr, isSection: false });
                 }
+            }
+            if (this.showMagazines && this.modalItem?.magCapacity) {
+                const wIdx = rows.findIndex(r => r.key === "st_prop_weight");
+                const row = { key: "_mag_capacity", value: this.cellValue(this.modalItem, "_mag_capacity"), isSection: false };
+                if (wIdx >= 0) rows.splice(wIdx + 1, 0, row);
+                else rows.push(row);
             }
             return rows;
         },
@@ -758,6 +795,19 @@ export const appDefinition = {
             return map;
         },
 
+        magazineCompatibleWeaponsMap() {
+            // Reverse of weapon-magazines.json: magazine id → [weapon ids]. Derived at
+            // runtime, no extra exported data needed.
+            if (!this.weaponMagazinesCache) return {};
+            const map = {};
+            for (const [weaponId, magIds] of Object.entries(this.weaponMagazinesCache)) {
+                for (const id of magIds || []) {
+                    (map[id] = map[id] || []).push(weaponId);
+                }
+            }
+            return map;
+        },
+
         weaponListPopoverWeapons() {
             if (!this.weaponListPopoverItem) return [];
             const weaponIds = [...new Set((this.addonCompatibleWeaponsMap || {})[this.weaponListPopoverItem.id] || [])];
@@ -913,6 +963,13 @@ export const appDefinition = {
             const reliIdx = filtered.indexOf("ui_inv_reli");
             if (reliIdx >= 0) {
                 filtered.splice(reliIdx + 1, 0, "_malfunction_chance");
+            }
+
+            // Inject magazine carry capacity (Magazines mod) when enabled and present
+            if (this.showMagazines && items.some((i) => i.magCapacity)) {
+                const wIdx = filtered.indexOf("st_prop_weight");
+                if (wIdx >= 0) filtered.splice(wIdx + 1, 0, "_mag_capacity");
+                else filtered.push("_mag_capacity");
             }
 
             // Inject compatible weapons count for addon categories
@@ -1817,6 +1874,10 @@ export const appDefinition = {
             return this.fetchJsonCached("weaponAddonsCache", "weapon-addons.json");
         },
 
+        fetchWeaponMagazines() {
+            return this.fetchJsonCached("weaponMagazinesCache", "weapon-magazines.json");
+        },
+
         fetchKitWeapons() {
             return this.fetchJsonCached("kitWeaponsCache", "kit-weapons.json");
         },
@@ -1932,13 +1993,7 @@ export const appDefinition = {
                 this.categories = catRes.ok
                     ? await catRes.json()
                     : [...new Set(this.index.map((i) => i.category))].sort();
-                const catSet = new Set(this.categories);
-                this.groupedCategories = CATEGORY_GROUPS
-                    .map((g) => ({
-                        name: g.name,
-                        categories: g.categories.filter((c) => catSet.has(c) || (VIRTUAL_CATEGORIES.has(c) && this.isVirtualCategoryAvailable(c))),
-                    }))
-                    .filter((g) => g.categories.length > 0);
+                this.buildGroupedCategories();
                 this.rebuildGlobalFuse();
                 if (this.groupedCategories.length > 0) {
                     const pathParsed = parsePathUrl(window.location.pathname);
@@ -2028,6 +2083,7 @@ export const appDefinition = {
             this.upgradesCache = null;
             this.ammoWeaponsCache = null;
             this.weaponAddonsCache = null;
+            this.weaponMagazinesCache = null;
             this.kitWeaponsCache = null;
             this.outfitExchange = null;
             this.startingLoadoutsCache = null;
@@ -2508,6 +2564,10 @@ export const appDefinition = {
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.SILENCERS)) : Promise.resolve(),
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.GRENADE_LAUNCHERS)) : Promise.resolve(),
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.TACTICAL_KITS)) : Promise.resolve(),
+                    isWeapon && this.showMagazines ? this.ensureCategoryLoaded(categorySlug(CAT.MAGAZINES)) : Promise.resolve(),
+                    isWeapon && this.showMagazines ? this.fetchWeaponMagazines() : Promise.resolve(),
+                    // Magazine modal: reverse lookup needs the weapon→magazine map (weapons resolve from index).
+                    entry.category === CAT.MAGAZINES && this.showMagazines ? this.fetchWeaponMagazines() : Promise.resolve(),
                 ]);
                 this.modalDrops = drops[id] || null;
                 this.modalItemDrops = itemDrops[id] || null;
@@ -3945,6 +4005,34 @@ export const appDefinition = {
             localStorage.setItem("showTileIcons", JSON.stringify(this.showTileIcons));
         },
 
+        // Build the sidebar groups from the loaded categories. Magazines is gated
+        // behind the opt-in showMagazines pref; everything else shows when present
+        // (or, for virtual categories, when derivable).
+        buildGroupedCategories() {
+            const catSet = new Set(this.categories);
+            this.groupedCategories = CATEGORY_GROUPS
+                .map((g) => ({
+                    name: g.name,
+                    categories: g.categories.filter((c) =>
+                        c === CAT.MAGAZINES
+                            ? (catSet.has(c) && this.showMagazines)
+                            : (catSet.has(c) || (VIRTUAL_CATEGORIES.has(c) && this.isVirtualCategoryAvailable(c)))
+                    ),
+                }))
+                .filter((g) => g.categories.length > 0);
+        },
+
+        toggleShowMagazines() {
+            this.showMagazines = !this.showMagazines;
+            try { localStorage.setItem("showMagazines", this.showMagazines ? "1" : ""); } catch {}
+            this.buildGroupedCategories();
+            // If we just hid the category we're viewing, fall back to a valid one.
+            if (!this.showMagazines && this.activeCategory === CAT.MAGAZINES) {
+                const first = this.groupedCategories[0]?.categories[0];
+                if (first) this.selectCategory(first);
+            }
+        },
+
         isUnusedAmmo(item, category) {
             if ((category || this.activeCategory) !== 'Ammo') return false;
             if (!this.ammoWeaponsCache) return false;
@@ -3997,6 +4085,9 @@ export const appDefinition = {
             if (h === "_cost_per_round") return this.t("_cost_per_round");
             if (h === "_compatible_weapons") return this.t("app_label_compatible_weapons");
             if (h === "_num_scopes") return this.t("app_label_num_scopes");
+            if (h === "_mag_capacity") return this.t("app_label_mag_capacity");
+            if (h === "magSize") return this.t("app_label_mag_size");
+            if (h === "magRounds") return this.t("app_label_mag_rounds");
             if (h === "factions") return this.t("app_filter_origin");
             if (h === "st_upgr_cost" && this.activeCategory === CAT.AMMO) return this.t("_cost_per_pack");
             if (h === "ui_inv_damage" && this.activeCategory === CAT.AMMO) return this.t("st_data_export_damage_mult");
@@ -4290,6 +4381,10 @@ export const appDefinition = {
                 const addons = (this.weaponAddonsCache || {})[item.id];
                 return addons ? addons.scopes.length : 0;
             }
+            if (field === "_mag_capacity") {
+                const c = item.magCapacity;
+                return c ? `${c.small} / ${c.medium} / ${c.large}` : undefined;
+            }
             return item[field];
         },
 
@@ -4306,6 +4401,12 @@ export const appDefinition = {
             }
             if (h === "_compatible_weapons") return String(val);
             if (h === "_num_scopes") return String(val);
+            if (h === "_mag_capacity") return String(val);
+            if (h === "magSize") {
+                const key = "app_mag_size_" + String(val).toLowerCase();
+                const label = this.t(key);
+                return label !== key ? label : String(val);
+            }
             if (h === "ui_ammo_types" || h === "st_data_export_ammo_types_alt") return this.caliberName(val);
             if (h === "ui_st_community") return this.t(val);
             if (h === "st_data_export_zoom_factor" || h === "st_data_export_magnifications") return `${val}x`;

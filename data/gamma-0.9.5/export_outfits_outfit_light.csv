@@ -9,7 +9,7 @@ cs_light_outfit,csky,csky_light_outfit_name,csky_light_outfit_description,9.00,4
 cs_nbc_outfit,csky,cs_nbc_outfit_name,cs_nbc_outfit_description,7.00,67798,L,N,23,14%,8%,12%,13%,25%,11%,6%,21%,11%,3,4,34,109%
 cs_novice_outfit,csky,csky_novice_outfit_name,csky_novice_outfit_description,5.00,6534,F,N,8,4%,7%,8%,8%,13%,6%,4%,11%,4%,1,1,12,108%
 dolg_novice_outfit,dolg,dolg_novice_outfit_name,dolg_novice_outfit_description,4.50,7494,F,N,8,4%,14%,8%,7%,11%,5%,3%,8%,4%,1,1,12,109%
-dolg_red_outfit,dolg,dolg_red_outfit_name,dolg_red_outfit_description,8.10,30570,L,N,23,16%,18%,8%,26%,16%,7%,5%,21%,16%,3,3,16,107%
+dolg_red_outfit,dolg,dolg_red_outfit_name,dolg_red_outfit_description,8.10,45855,L,N,23,16%,18%,8%,26%,16%,7%,5%,21%,16%,3,3,16,107%
 ghillie_outfit,st_data_export_unknown,ghillie_outfit_name,ghillie_outfit_description,5.00,67100,L,N,17,12%,20%,12%,13%,21%,7%,9%,8%,6%,4,5,14,110%
 isg_lcs_camo_outfit,isg,isg_lcs_camo_outfit_name,isg_lcs_camo_outfit_description,12.00,53390,L,N,30,17%,9%,6%,6%,6%,4%,16%,4%,21%,3,5,12,95%
 merc_fighter_outfit,killer,merc_fighter_outfit_name,merc_fighter_outfit_description,16.00,43872,L,N,30,21%,9%,6%,8%,6%,3%,16%,6%,25%,2,4,10,96%

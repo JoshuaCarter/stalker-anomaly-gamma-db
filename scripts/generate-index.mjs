@@ -42,6 +42,9 @@ const SKIP_FILES = new Set([
   "item_chance_in_stash.csv",
   "export_item_chance_in_stash.csv",
   "export_items_common_data.csv",
+  "export_mag_capacity.csv",
+  "export_magazine_info.csv",
+  "export_weapon_magazine_map.csv",
   "export_mutant_profiles.csv",
   "export_npc_armor_profiles.csv",
   "export_addon_weapon_map.csv",
@@ -274,6 +277,39 @@ const files = readdirSync(CSV_DIR).filter((f) => f.endsWith(".csv"));
 const index = [];
 const seen = new Set();
 const categoryData = new Map(); // slug -> { category, headers, items }
+let disassembleIndex = null;    // id -> materials; populated below, reused for magazines
+
+// ── Detect "Magazines" mod items ─────────────────────────────────────────────
+// The Magazines mod adds physical magazine items that the exporter mis-files as
+// ammo (spawn kind "w_ammo") even though they're attachments (st_class
+// "II_ATTCH"). Detect them by that class signature — the single source of truth
+// for "is a magazine" — so they can be pulled out of the shared Ammo category and
+// given their own opt-in "Magazines" category. Not every player runs the mod.
+const MAGAZINE_CATEGORY = "Magazines";
+const magazineRows = new Map(); // id -> base fields (from items_common_data)
+{
+  const icFile = join(CSV_DIR, "export_items_common_data.csv");
+  if (existsSync(icFile)) {
+    const lines = readFileSync(icFile, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCsvLine(lines[i]);
+      const id = cols[0]?.trim();
+      if (!id || cols[1]?.trim() !== "II_ATTCH" || cols[2]?.trim() !== "w_ammo") continue;
+      // Skip abstract base/template sections (the mod's "tch_" technical-section
+      // convention, e.g. tch_mag_base): they aren't real lootable magazines and
+      // have no valid inventory icon. Real magazines are all "mag_*".
+      if (id.startsWith("tch_")) continue;
+      magazineRows.set(id, {
+        id,
+        pda_encyclopedia_name: cols[3]?.trim() || "",
+        st_data_export_description: cols[4]?.trim() || "",
+        st_prop_weight: cols[5]?.trim() || "",
+        st_upgr_cost: cols[6]?.trim() || "",
+      });
+    }
+  }
+}
+const magazineIds = new Set(magazineRows.keys());
 
 for (const file of files) {
   if (SKIP_FILES.has(file)) continue;
@@ -299,6 +335,7 @@ for (const file of files) {
   const catEntry = categoryData.get(slug);
 
   for (const item of items) {
+    if (magazineIds.has(item.id)) continue; // magazines get their own category, not Ammo
     if (!seen.has(item.id)) {
       seen.add(item.id);
       index.push({ id: item.id, name: item.pda_encyclopedia_name || item[headers[config.nameCol ?? 1]], category: config.category });
@@ -754,6 +791,8 @@ try {
         disassemble[id] = materials;
       }
     }
+
+    disassembleIndex = disassemble;
 
     // Mark items with hasDisassemble
     for (const [slug, data] of categoryData) {
@@ -1322,13 +1361,8 @@ for (const entry of index) {
   if (suffix.num) entry.nameSuffixNum = suffix.num;
 }
 
-// Write index.json (deferred from earlier so obtainability flags are included).
-// Re-run addDisplayNames here because entries added after the initial pass
-// (e.g. Materials at the disassembles step) wouldn't otherwise have it set.
-addDisplayNames(index, "id", "name");
-index.sort((a, b) => a.displayName.localeCompare(b.displayName));
-writeFileSync(OUT_FILE, JSON.stringify(index, null, 2));
-console.log(`\nWrote ${index.length} items to ${OUT_FILE}`);
+// index.json is written further below — deferred past the Magazines block so its
+// items are included in the index (needed for category counts and modal navigation).
 
 // Inject AP value into ammo items before writing category files
 const ammoDataPre = categoryData.get("ammo");
@@ -1535,6 +1569,132 @@ try {
   }
 } catch (e) {
   if (e.code !== "ENOENT") throw e;
+}
+
+// ── Build the optional "Magazines" category (non-destructive, durable store) ──
+// magazines.json doubles as a committed store: union the magazines found in THIS
+// extract with whatever is already committed, so regenerating from an extract
+// taken WITHOUT the Magazines mod never drops them. Registered here so the write
+// loop below emits magazines.json and lists it; the app hides it behind an
+// opt-in toggle. (Post-loop passes only touch fixed weapon/ammo slugs, so a
+// Magazines entry added now is left untouched by them.)
+{
+  const magOutFile = join(OUT_DIR, "magazines.json");
+  const merged = new Map();
+  if (existsSync(magOutFile)) {
+    try {
+      for (const it of (JSON.parse(readFileSync(magOutFile, "utf-8")).items ?? [])) {
+        if (it.id?.startsWith("tch_")) continue; // evict template rows from older stores
+        merged.set(it.id, it);
+      }
+    } catch (e) {
+      console.warn(`Could not read existing magazines.json: ${e.message}`);
+    }
+  }
+  // export_magazine_info.csv carries each magazine's size class (small/medium/large)
+  // and round capacity — fields the Magazines mod sets but items_common_data omits.
+  // Absent without the mod, so we carry prior values forward (below) to stay durable.
+  const magInfo = new Map(); // id -> { magSize, magRounds }
+  const magInfoFile = join(CSV_DIR, "export_magazine_info.csv");
+  if (existsSync(magInfoFile)) {
+    const lines = readFileSync(magInfoFile, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCsvLine(lines[i]);
+      const id = cols[0]?.trim();
+      if (!id) continue;
+      magInfo.set(id, {
+        magSize: cols[2]?.trim() || "",
+        magRounds: parseInt(cols[3], 10) || 0,
+      });
+    }
+  }
+  for (const [id, row] of magazineRows) {
+    const cal = id.match(/(\d+\.?\d*x\d+)/);
+    const prev = merged.get(id);          // prior committed entry (durable store)
+    const info = magInfo.get(id);         // fresh extract (overrides prior)
+    const magSize = info?.magSize || prev?.magSize || "";
+    const magRounds = info?.magRounds ?? prev?.magRounds ?? 0;
+    merged.set(id, {
+      ...row,
+      caliber: cal ? cal[1] : "",
+      magSize,
+      magRounds,
+      displayName: row.pda_encyclopedia_name,
+      hasDisassemble: disassembleIndex ? id in disassembleIndex : false,
+    });
+  }
+  if (merged.size > 0) {
+    const items = [...merged.values()].sort((a, b) => a.id.localeCompare(b.id));
+    categoryData.set(categorySlug(MAGAZINE_CATEGORY), {
+      category: MAGAZINE_CATEGORY,
+      headers: ["id", "pda_encyclopedia_name", "st_data_export_description", "st_prop_weight", "st_upgr_cost", "caliber", "magSize", "magRounds"],
+      items,
+    });
+    // Register in the global index so the category gets a count and items are
+    // navigable/openable (the app resolves modal navigation through index.json).
+    for (const it of items) {
+      index.push({ id: it.id, name: it.pda_encyclopedia_name || it.displayName, category: MAGAZINE_CATEGORY });
+    }
+    console.log(`Magazines: ${magazineRows.size} from extract, ${items.length} total after merge`);
+  }
+}
+
+// Write index.json (deferred so obtainability flags and the Magazines category are
+// included). Re-run addDisplayNames because entries added after the initial pass
+// (Materials at the disassembles step, Magazines here) wouldn't otherwise have it set.
+addDisplayNames(index, "id", "name");
+index.sort((a, b) => a.displayName.localeCompare(b.displayName));
+writeFileSync(OUT_FILE, JSON.stringify(index, null, 2));
+console.log(`\nWrote ${index.length} items to ${OUT_FILE}`);
+
+// ── Magazine carry capacity per gear item (Magazines mod) ────────────────────
+// export_mag_capacity.csv lists the small/medium/large magazine slots granted by
+// outfits, backpacks and belt mag-pouch artefacts (they stack additively in-game).
+// Emitted as an id-keyed lookup (mag-capacity.json) and attached inline to the
+// matching category items as `magCapacity`. Like magazines.json, the lookup is a
+// committed durable store: merged non-destructively so regenerating from an extract
+// taken WITHOUT the mod never drops it. Skips cleanly when the CSV is absent.
+{
+  const magCapOutFile = join(OUT_DIR, "mag-capacity.json");
+  const magCap = {};
+  // existing committed store first (current extract overrides per id)
+  if (existsSync(magCapOutFile)) {
+    try {
+      Object.assign(magCap, JSON.parse(readFileSync(magCapOutFile, "utf-8")));
+    } catch (e) {
+      console.warn(`Could not read existing mag-capacity.json: ${e.message}`);
+    }
+  }
+  const magCapFile = join(CSV_DIR, "export_mag_capacity.csv");
+  if (existsSync(magCapFile)) {
+    const lines = readFileSync(magCapFile, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCsvLine(lines[i]);
+      const id = cols[0]?.trim();
+      if (!id) continue;
+      magCap[id] = {
+        provider: cols[2]?.trim() || "",
+        small: parseInt(cols[3], 10) || 0,
+        medium: parseInt(cols[4], 10) || 0,
+        large: parseInt(cols[5], 10) || 0,
+      };
+    }
+  }
+  if (Object.keys(magCap).length > 0) {
+    writeFileSync(magCapOutFile, JSON.stringify(magCap, null, 2));
+    // Attach inline to matching category items (outfits, belt attachments, artefacts…)
+    let attached = 0;
+    for (const [, data] of categoryData) {
+      for (const item of data.items) {
+        const cap = magCap[item.id];
+        if (cap) {
+          item.magCapacity = { small: cap.small, medium: cap.medium, large: cap.large };
+          attached++;
+        }
+      }
+    }
+    console.log(`Mag capacity: ${Object.keys(magCap).length} providers, attached to ${attached} items`);
+  }
 }
 
 // Write per-category JSON files and build categories manifest
@@ -1840,6 +2000,33 @@ try {
 } catch (e) {
   if (e.code !== "ENOENT") throw e;
   console.log("No addon weapon map CSV found, skipping addon-weapons.json");
+}
+
+// Generate weapon-magazines.json from export_weapon_magazine_map.csv (weapon ID → mag IDs).
+// Durable committed store like magazines.json: merge this extract over whatever is already
+// committed so regenerating from an extract taken WITHOUT GAMMA Mags Reloaded never drops it.
+{
+  const wmOut = join(OUT_DIR, "weapon-magazines.json");
+  const weaponMags = {};
+  if (existsSync(wmOut)) {
+    try {
+      Object.assign(weaponMags, JSON.parse(readFileSync(wmOut, "utf-8")));
+    } catch (e) {
+      console.warn(`Could not read existing weapon-magazines.json: ${e.message}`);
+    }
+  }
+  const wmFile = join(CSV_DIR, "export_weapon_magazine_map.csv");
+  if (existsSync(wmFile)) {
+    for (const line of readFileSync(wmFile, "utf-8").split(/\r?\n/)) {
+      const parts = line.split(",").map((v) => v.trim()).filter(Boolean);
+      if (parts.length < 2) continue;
+      weaponMags[parts[0]] = parts.slice(1); // current extract overrides per weapon
+    }
+  }
+  if (Object.keys(weaponMags).length > 0) {
+    writeFileSync(wmOut, JSON.stringify(weaponMags, null, 2));
+    console.log(`Wrote ${Object.keys(weaponMags).length} weapon-magazine mappings to ${wmOut}`);
+  }
 }
 
 // Generate weapon-addons.json from export_weapon_addon_map.csv (weapon ID → addons by type)

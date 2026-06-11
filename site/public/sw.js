@@ -1,6 +1,6 @@
 // Service Worker — image cache for item icons and other static images.
 // Cache name — bump the version string to force a cache refresh on deploy.
-const ICON_CACHE = 'gamma-icons-v1';
+const ICON_CACHE = 'gamma-icons-v2';
 const IMG_CACHE  = 'gamma-img-v1';
 
 // Only cache GET requests for image paths we own.

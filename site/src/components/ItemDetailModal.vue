@@ -297,6 +297,28 @@
                     </div>
                 </div>
 
+                <!-- Compatible Magazines (on weapon detail; GAMMA Mags Reloaded) -->
+                <div v-if="modalCompatibleMagazines.length" class="drop-sources" :class="{ collapsed: isCollapsed('magazines') }">
+                    <h2 class="section-toggle" @click="toggleSection('magazines')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_magazines') }}</h2>
+                    <div class="addon-tile-grid">
+                        <a v-for="mag in modalCompatibleMagazines" :key="mag.id" href="#" class="addon-img-tile" @mouseenter="showItemHover(mag, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', mag.id)">
+                            <img class="addon-img-tile-icon" :src="'img/icons/' + mag.id + '.png'" :alt="t(mag.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-name">{{ t(mag.pda_encyclopedia_name) }}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Compatible Weapons (on magazine detail; reverse of weapon→magazines) -->
+                <div v-if="modalMagazineCompatibleWeapons.length" class="drop-sources" :class="{ collapsed: isCollapsed('mag-weapons') }">
+                    <h2 class="section-toggle" @click="toggleSection('mag-weapons')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_weapons') }}</h2>
+                    <div class="addon-tile-grid">
+                        <a v-for="w in modalMagazineCompatibleWeapons" :key="w.id" href="#" class="addon-img-tile" @mouseenter="showItemHover(w, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', w.id)">
+                            <img class="addon-img-tile-icon" :src="'img/icons/' + w.id + '.png'" :alt="t(w.pda_encyclopedia_name || w.name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-name">{{ t(w.pda_encyclopedia_name || w.name) }}</span>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Modified weapons produced by this kit (on kit detail) -->
                 <div v-if="modalKitWeapons.length" class="drop-sources" :class="{ collapsed: isCollapsed('kit-variants') }">
                     <h2 class="section-toggle" @click="toggleSection('kit-variants')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_kit_variants') }}</h2>
@@ -485,6 +507,8 @@ export default {
     parsedPerk: Object,
     pbaConstants: { type: Object, default: () => ({}) },
     modalWeaponAddons: { type: Object, default: () => ({ scopes: [], silencers: [], launchers: [], kits: [] }) },
+    modalCompatibleMagazines: { type: Array, default: () => [] },
+    modalMagazineCompatibleWeapons: { type: Array, default: () => [] },
     modalKitWeapons: { type: Array, default: () => [] },
     modalAddonCompatibleWeapons: { type: Array, default: () => [] },
     favoriteIds: Array,

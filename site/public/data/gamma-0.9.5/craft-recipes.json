@@ -400,6 +400,10 @@
           {
             "name": "st_prt_o_retardant_17",
             "amount": "x8"
+          },
+          {
+            "name": "st_prt_i_copper",
+            "amount": "x8"
           }
         ]
       },
@@ -496,6 +500,10 @@
           {
             "name": "st_prt_o_retardant_6",
             "amount": "x12"
+          },
+          {
+            "name": "st_prt_i_copper",
+            "amount": "x8"
           }
         ]
       },
@@ -570,6 +578,77 @@
           },
           {
             "name": "st_prt_o_ballistic_18",
+            "amount": "x4"
+          }
+        ]
+      },
+      {
+        "id": "af_magpouch_l",
+        "pda_encyclopedia_name": "st_af_magpouch_l_name",
+        "toolTier": 2,
+        "recipeReq": "recipe_advanced_1",
+        "recipeReqName": "st_gamma_recipe_advanced_1",
+        "ingredients": [
+          {
+            "name": "st_af_magpouch_m_name",
+            "amount": "x1"
+          },
+          {
+            "name": "st_sewing_thread",
+            "amount": "x10"
+          },
+          {
+            "name": "st_prt_o_fabrics_3",
+            "amount": "x14"
+          },
+          {
+            "name": "st_prt_o_fabrics_4",
+            "amount": "x14"
+          }
+        ]
+      },
+      {
+        "id": "af_magpouch_m",
+        "pda_encyclopedia_name": "st_af_magpouch_m_name",
+        "toolTier": 2,
+        "recipeReq": "recipe_basic_1",
+        "recipeReqName": "st_gamma_recipe_basic_1",
+        "ingredients": [
+          {
+            "name": "st_af_magpouch_s_name",
+            "amount": "x1"
+          },
+          {
+            "name": "st_sewing_thread",
+            "amount": "x8"
+          },
+          {
+            "name": "st_prt_o_fabrics_2",
+            "amount": "x10"
+          },
+          {
+            "name": "st_prt_o_fabrics_3",
+            "amount": "x10"
+          }
+        ]
+      },
+      {
+        "id": "af_magpouch_s",
+        "pda_encyclopedia_name": "st_af_magpouch_s_name",
+        "toolTier": 1,
+        "recipeReq": "recipe_basic_0",
+        "recipeReqName": "",
+        "ingredients": [
+          {
+            "name": "st_sewing_thread",
+            "amount": "x6"
+          },
+          {
+            "name": "st_prt_o_fabrics_1",
+            "amount": "x4"
+          },
+          {
+            "name": "st_prt_o_fabrics_3",
             "amount": "x4"
           }
         ]
@@ -684,6 +763,10 @@
           {
             "name": "ammo-gauss",
             "amount": "x2"
+          },
+          {
+            "name": "st_prt_i_copper",
+            "amount": "x1"
           },
           {
             "name": "st_prt_i_fasteners",
@@ -1307,6 +1390,10 @@
           {
             "name": "st_rifle7_ap_rounds",
             "amount": "x6"
+          },
+          {
+            "name": "st_prt_i_copper",
+            "amount": "x8"
           }
         ]
       },
@@ -5092,6 +5179,10 @@
           {
             "name": "st_af_electra_sparkler_name",
             "amount": "x2"
+          },
+          {
+            "name": "st_prt_i_copper",
+            "amount": "x1"
           },
           {
             "name": "st_prt_i_scrap",

@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-06-11",
+    "entries": [
+      { "type": "added", "text": "GAMMA Mags Reloaded support: a new Magazines category showing each magazine's size and round capacity, compatible magazines listed on every weapon (and compatible weapons on every magazine), and magazine carry slots on outfits and belt gear. Turn it on under the new Mods menu.", "highlight": true, "summaryKey": "app_whats_new_magazines", "credits": [{ "name": "Conact", "role": "suggestion" }] }
+    ]
+  },
+  {
     "date": "2026-06-06",
     "entries": [
       { "type": "added", "text": "Inventory view - import a save file to browse your character's inventory and player stashes", "highlight": true, "summaryKey": "app_whats_new_player_inventory", "action": "playerInventory" }

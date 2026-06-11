@@ -254,6 +254,25 @@
     <div class="nav-bar-spacer"></div>
     <OnlineCounter class="nav-bar-online" />
     <div class="settings-wrap">
+        <button class="settings-btn" @click.stop="toggleMods($event)" v-tooltip="t('app_label_mods')">
+            <LucidePuzzle :size="16" />
+        </button>
+        <!-- Teleported to <body> to escape the nav-bar's overflow clipping on mobile -->
+        <Teleport to="body">
+            <div v-if="modsOpen" class="settings-menu-backdrop" @click="modsOpen = false"></div>
+            <div v-if="modsOpen"
+                 class="settings-menu"
+                 :style="{ position: 'fixed', top: _modsPos.top + 'px', right: _modsPos.right + 'px', zIndex: 201 }"
+                 @click.stop>
+                <div class="settings-header">{{ t('app_label_mods') }}</div>
+                <div class="settings-item" @click.stop="$emit('toggleShowMagazines')">
+                    <span class="toggle-switch" :class="{ on: showMagazines }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_show_magazines') }}</span>
+                </div>
+            </div>
+        </Teleport>
+    </div>
+    <div class="settings-wrap">
         <button class="settings-btn" @click.stop="toggleSettings($event)" v-tooltip="t('app_label_settings')">
             <LucideSettings :size="16" />
         </button>
@@ -316,6 +335,7 @@ export default {
         hideTacticalKit: { type: Boolean, default: false },
         hideUnusedAmmo: { type: Boolean, default: false },
         showTileIcons: { type: Boolean, default: true },
+        showMagazines: { type: Boolean, default: false },
     },
     emits: [
         'toggleSidebarCollapse', 'toggleSidebar', 'switchPack',
@@ -323,7 +343,7 @@ export default {
         'update:globalQuery', 'search', 'escapeSearch', 'selectSearchResult',
         'selectSearchResultInSection',
         'openItemDb', 'openMaps', 'openTrading', 'openPlayerInventory', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
-        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons',
+        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowMagazines',
         'selectCraftingSearchResult',
     ],
     inject: ['t', 'tName', 'tCat', 'navHref'],
@@ -346,6 +366,8 @@ export default {
             mobileSearchOpen: false,
             settingsOpen: false,
             _settingsPos: { top: 0, right: 0 },
+            modsOpen: false,
+            _modsPos: { top: 0, right: 0 },
             activeSearchIdx: 0,
             iconMap,
         };
@@ -371,12 +393,23 @@ export default {
     methods: {
         toggleSettings(event) {
             if (this.settingsOpen) { this.settingsOpen = false; return; }
+            this.modsOpen = false;
             const rect = event.currentTarget.getBoundingClientRect();
             this._settingsPos = {
                 top: rect.bottom + 6,
                 right: window.innerWidth - rect.right,
             };
             this.settingsOpen = true;
+        },
+        toggleMods(event) {
+            if (this.modsOpen) { this.modsOpen = false; return; }
+            this.settingsOpen = false;
+            const rect = event.currentTarget.getBoundingClientRect();
+            this._modsPos = {
+                top: rect.bottom + 6,
+                right: window.innerWidth - rect.right,
+            };
+            this.modsOpen = true;
         },
         focusSearch() {
             if (this.mobileSearchOpen) {

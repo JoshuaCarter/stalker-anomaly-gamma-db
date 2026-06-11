@@ -15,7 +15,7 @@ dolg_heavy_redline_outfit,dolg,dolg_heavy_redline_outfit_name,dolg_heavy_redline
 dolg_nosorog_outfit,dolg,dolg_nosorog_outfit_name,nosorog_outfit_description,76.50,189919,E,Y,63,46%,42%,59%,3%,11%,11%,29%,4%,41%,3,5,115,105%
 dolg_pantsir_outfit,dolg,dolg_pantsir_outfit_name,dolg_pantsir_outfit_description,22.50,78078,H,N,48,36%,29%,8%,6%,9%,4%,21%,8%,51%,2,3,42,104%
 dolg_proto_exo_outfit,dolg,dolg_proto_exo_outfit_name,dolg_proto_exo_outfit_description,36.00,151238,H,Y,30,25%,29%,26%,13%,35%,16%,12%,13%,11%,4,5,96,109%
-dolg_specops_red_outfit,dolg,dolg_specops_red_outfit_name,dolg_specops_red_outfit_description,21.60,109450,H,N,42,38%,49%,8%,41%,16%,7%,5%,32%,21%,2,4,28,104%
+dolg_specops_red_outfit,dolg,dolg_specops_red_outfit_name,dolg_specops_red_outfit_description,21.60,123638,H,N,42,38%,49%,8%,41%,16%,7%,5%,32%,36%,2,4,42,106%
 ecolog_exo_outfit,ecolog,ecolog_exo_outfit_name,ecolog_exo_outfit_description,56.00,192198,E,Y,47,35%,36%,48%,3%,13%,13%,37%,7%,31%,4,6,96,103%
 ecolog_proto_exo_outfit,ecolog,ecolog_proto_exo_outfit_name,ecolog_proto_exo_outfit_description,32.00,206010,H,Y,24,20%,27%,24%,15%,42%,19%,18%,18%,9%,5,7,96,108%
 exo_dolg_outfit,dolg,exo_dolg_outfit_name,exo_dolg_outfit_description,25.20,80520,H,N,51,38%,48%,47%,3%,16%,17%,21%,4%,36%,2,3,28,97%
@@ -35,7 +35,7 @@ greh_trenchcoat_outfit,greh,greh_trenchcoat_outfit_name,greh_trenchcoat_outfit_d
 hybrid_outfit,st_data_export_unknown,hybrid_outfit_name,hybrid_outfit_description,28.00,130795,H,N,46,35%,26%,35%,45%,16%,29%,11%,41%,26%,3,5,28,101%
 isg_exo_outfit,isg,isg_exo_outfit_name,isg_exo_outfit_description,84.00,144300,E,Y,71,45%,30%,41%,3%,11%,11%,31%,4%,39%,3,5,86,100%
 isg_exolight_outfit,isg,isg_exolight_outfit_name,isg_exolight_outfit_description,42.00,74250,H,N,66,42%,30%,35%,3%,16%,11%,26%,4%,36%,2,3,45,90%
-isg_nosorog_outfit,isg,isg_nosorog_outfit_name,nosorog_outfit_description,102.00,123927,E,Y,76,46%,32%,45%,3%,11%,11%,36%,4%,41%,3,5,103,101%
+isg_nosorog_outfit,isg,isg_nosorog_outfit_name,nosorog_outfit_description,102.00,154909,E,Y,76,46%,32%,45%,3%,11%,11%,36%,4%,41%,3,5,103,101%
 isg_proto_exo_outfit,isg,isg_proto_exo_outfit_name,isg_proto_exo_outfit_description,48.00,176841,H,Y,36,25%,23%,21%,13%,35%,16%,15%,9%,11%,4,7,86,105%
 light_dolg_outfit,dolg,light_dolg_outfit_name,light_dolg_outfit_description,18.00,109080,H,N,34,30%,60%,8%,36%,21%,16%,5%,32%,16%,2,4,20,108%
 light_freedom_outfit,freedom,light_freedom_outfit_name,light_freedom_outfit_description,20.00,97944,H,N,37,30%,40%,6%,36%,27%,16%,7%,41%,16%,2,4,20,106%

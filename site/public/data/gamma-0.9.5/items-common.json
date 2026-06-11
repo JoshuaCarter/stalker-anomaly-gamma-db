@@ -778,6 +778,18 @@
     "name": "st_af_lucifer_name",
     "price": 666
   },
+  "af_magpouch_l": {
+    "name": "st_af_magpouch_l_name",
+    "price": 6000
+  },
+  "af_magpouch_m": {
+    "name": "st_af_magpouch_m_name",
+    "price": 4000
+  },
+  "af_magpouch_s": {
+    "name": "st_af_magpouch_s_name",
+    "price": 2000
+  },
   "af_medallion": {
     "name": "st_af_medallion_name",
     "price": 6800
@@ -2233,6 +2245,10 @@
     "name": "st_clearsky_fp",
     "price": 650
   },
+  "cut_kit": {
+    "name": "st_addon_cut_kit",
+    "price": 63500
+  },
   "cutlery": {
     "name": "st_cutlery",
     "price": 810
@@ -2848,7 +2864,7 @@
   },
   "dolg_red_outfit": {
     "name": "dolg_red_outfit_name",
-    "price": 30570
+    "price": 45855
   },
   "dolg_scientific_outfit": {
     "name": "dolg_scientific_outfit_name",
@@ -2868,7 +2884,7 @@
   },
   "dolg_specops_red_outfit": {
     "name": "dolg_specops_red_outfit_name",
-    "price": 109450
+    "price": 123638
   },
   "dolg_voin_outfit": {
     "name": "dolg_voin_outfit_name",
@@ -3632,7 +3648,7 @@
   },
   "isg_nosorog_outfit": {
     "name": "isg_nosorog_outfit_name",
-    "price": 123927
+    "price": 154909
   },
   "isg_outfit": {
     "name": "isg_outfit_name",
@@ -4197,6 +4213,862 @@
   "m9_upgr_kit": {
     "name": "st_addon_scope_m9_upgr_kit",
     "price": 9000
+  },
+  "mag_1921_11.43x23_default": {
+    "name": "st_mag_1921_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_196a1_7.62x54_alt": {
+    "name": "st_mag_l96a1_pkm",
+    "price": 6500
+  },
+  "mag_50_762x51_drum": {
+    "name": "st_mag_overlylarge_50_762x51_drum2",
+    "price": 21200
+  },
+  "mag_50_762x51_drum_hinge": {
+    "name": "st_mag_overlylarge_50_762x51_drum",
+    "price": 21200
+  },
+  "mag_7.62x39_ar15": {
+    "name": "st_mag_ar15_762x39",
+    "price": 5500
+  },
+  "mag_75_762x39_drum": {
+    "name": "st_mag_overlylarge_75_762x39_drum",
+    "price": 15250
+  },
+  "mag_95_5.56x45_drum": {
+    "name": "st_mag_overlylarge_95_556_drum",
+    "price": 15000
+  },
+  "mag_95_545x39_drum": {
+    "name": "st_mag_overlylarge_95_545_drum",
+    "price": 19500
+  },
+  "mag_ace21_5.56x45_default": {
+    "name": "st_mag_ace21_5.56x45",
+    "price": 1125
+  },
+  "mag_ak_5.45x39_default": {
+    "name": "st_mag_ak74_5.45x39",
+    "price": 2500
+  },
+  "mag_ak_5.45x39_extended": {
+    "name": "st_mag_ak74_5.45x39_extended",
+    "price": 7500
+  },
+  "mag_ak_5.45x39_fast": {
+    "name": "st_mag_ak74_fast_5.45x39",
+    "price": 3250
+  },
+  "mag_ak_5.45x39_modern": {
+    "name": "st_mag_ak74m_5.45x39",
+    "price": 2500
+  },
+  "mag_ak_5.56x45_modern": {
+    "name": "st_mag_ak101_5.56x45",
+    "price": 2500
+  },
+  "mag_ak_7.62x39_default": {
+    "name": "st_mag_ak_7.62x39",
+    "price": 2500
+  },
+  "mag_ak_7.62x39_fast": {
+    "name": "st_mag_ak103_fast_7.62x39",
+    "price": 3250
+  },
+  "mag_ak_7.62x39_modern": {
+    "name": "st_mag_ak103_7.62x39",
+    "price": 2500
+  },
+  "mag_akalfa_5.56x45_bas": {
+    "name": "st_mag_akalfa_5.56x45_bas",
+    "price": 2500
+  },
+  "mag_akalfa_7.62x39_bas": {
+    "name": "st_mag_akalfa_7.62x39_bas",
+    "price": 2500
+  },
+  "mag_aps_9x18_default": {
+    "name": "st_mag_aps_9x18_fmj",
+    "price": 1500
+  },
+  "mag_aps_9x19_alt": {
+    "name": "st_mag_aps_9x19_fmj",
+    "price": 2000
+  },
+  "mag_ash_12.7x55_default": {
+    "name": "st_mag_ash12_12.7x55",
+    "price": 4500
+  },
+  "mag_ash_12.7x55_extended": {
+    "name": "st_mag_ash12_ext_12.7x55",
+    "price": 7500
+  },
+  "mag_aug_5.56x45_default": {
+    "name": "st_mag_aug_5.56x45",
+    "price": 2500
+  },
+  "mag_aug_5.56x45_extended": {
+    "name": "st_mag_aug_5.56x45_ext",
+    "price": 5200
+  },
+  "mag_aug_9x19_default": {
+    "name": "st_mag_aug_9x19_fmj",
+    "price": 2500
+  },
+  "mag_bas_pl15_9x19": {
+    "name": "st_mag_pl15_9x19_fmj",
+    "price": 1500
+  },
+  "mag_bas_pl15_9x19_extended": {
+    "name": "st_mag_pl15_9x19_fmjext",
+    "price": 3150
+  },
+  "mag_bas_sig226_9x19": {
+    "name": "st_mag_sig226_9x19_fmj",
+    "price": 1500
+  },
+  "mag_bas_sig226_9x19_extended": {
+    "name": "st_mag_sig226_9x19_fmjext",
+    "price": 3150
+  },
+  "mag_bas_toz106": {
+    "name": "st_mag_toz106_20x70_fmj",
+    "price": 2500
+  },
+  "mag_bas_toz106_zhekan": {
+    "name": "st_mag_toz106_20x70_zhekan_fmj",
+    "price": 450
+  },
+  "mag_bas_toz106m1": {
+    "name": "st_mag_etoz106_20x70_fmj",
+    "price": 2500
+  },
+  "mag_bas_toz106m1_zhekan": {
+    "name": "st_mag_etoz106_20x70_zhekan_fmj",
+    "price": 750
+  },
+  "mag_baskiparis_9x18_20": {
+    "name": "st_mag_baskiparis_9x18_20",
+    "price": 2500
+  },
+  "mag_baskiparis_9x18_40": {
+    "name": "st_mag_baskiparis_9x18_40",
+    "price": 5500
+  },
+  "mag_baskiparis_9x18_81": {
+    "name": "st_mag_baskiparis_9x18_81",
+    "price": 12500
+  },
+  "mag_baskiparis_9x19_20": {
+    "name": "st_mag_baskiparis_9x19_20",
+    "price": 2500
+  },
+  "mag_baskiparis_9x19_40": {
+    "name": "st_mag_baskiparis_9x19_40",
+    "price": 2500
+  },
+  "mag_baskiparis_9x19_81": {
+    "name": "st_mag_baskiparis_9x19_81",
+    "price": 2500
+  },
+  "mag_basvz61_9x18_30": {
+    "name": "st_mag_basvz61_9x18_30",
+    "price": 5500
+  },
+  "mag_basvz61_9x18_60": {
+    "name": "st_mag_basvz61_9x18_60",
+    "price": 9500
+  },
+  "mag_basvz61_9x19_30": {
+    "name": "st_mag_basvz61_9x19_30",
+    "price": 2500
+  },
+  "mag_basvz61_9x19_60": {
+    "name": "st_mag_basvz61_9x19_60",
+    "price": 2500
+  },
+  "mag_beretta_9x18_alt": {
+    "name": "st_mag_beretta_9x18_fmj",
+    "price": 1500
+  },
+  "mag_beretta_9x19_default": {
+    "name": "st_mag_beretta_9x19_fmj",
+    "price": 1500
+  },
+  "mag_bizon_7.62x25_alt": {
+    "name": "st_mag_bizon_7.62x25_p",
+    "price": 4250
+  },
+  "mag_bizon_9x18_defalt": {
+    "name": "st_mag_bizon_9x18_fmj",
+    "price": 4250
+  },
+  "mag_bizon_9x19_alt": {
+    "name": "st_mag_bizon_9x19_fmj",
+    "price": 4250
+  },
+  "mag_bolt_300_default": {
+    "name": "st_mag_trg_magnum_300",
+    "price": 8500
+  },
+  "mag_colt1911_762x25": {
+    "name": "st_ppp_colt1911_762x25_fmj",
+    "price": 1500
+  },
+  "mag_colt1911_default": {
+    "name": "st_mag_colt1911_11.43x23_fmj",
+    "price": 1850
+  },
+  "mag_colt1911_extended": {
+    "name": "ext_mag_colt1911_11.43x23_fmj",
+    "price": 4500
+  },
+  "mag_coonan_357_default": {
+    "name": "st_mag_ppp_1911_357_fmj",
+    "price": 5250
+  },
+  "mag_coonan_357_ext": {
+    "name": "ext_mag_ppp_1911_357_fmj",
+    "price": 8500
+  },
+  "mag_cz52_default": {
+    "name": "st_mag_cz52_7.62x25_p",
+    "price": 1500
+  },
+  "mag_cz75_9x18_alt": {
+    "name": "st_mag_cz75_9x18_fmj",
+    "price": 1500
+  },
+  "mag_cz75_9x19_default": {
+    "name": "st_mag_cz75_9x19_fmj",
+    "price": 1500
+  },
+  "mag_deserteagal_default": {
+    "name": "st_mag_desert_eagle_357_hp",
+    "price": 6500
+  },
+  "mag_dvl_338fed": {
+    "name": "st_mag_dvl_338",
+    "price": 8500
+  },
+  "mag_dvl_7.62x51": {
+    "name": "st_mag_dvl_7.62x51",
+    "price": 6500
+  },
+  "mag_fn57_default": {
+    "name": "st_mag_fn57_5.7x28_ss190",
+    "price": 2500
+  },
+  "mag_fnp45_default": {
+    "name": "st_mag_fnp45_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_fnx45_default": {
+    "name": "st_mag_fnx45_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_fort_9x18_default": {
+    "name": "st_mag_fort_9x18_fmj",
+    "price": 1500
+  },
+  "mag_fort_9x19_alt": {
+    "name": "st_mag_fort_9x19_fmj",
+    "price": 1500
+  },
+  "mag_frasier_11.43x23_default": {
+    "name": "st_mag_mp5_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_g36_5.56x45_default": {
+    "name": "st_mag_g36_5.56x45",
+    "price": 2500
+  },
+  "mag_g43_7.92x33_default": {
+    "name": "st_mag_g43_7.92x33",
+    "price": 3500
+  },
+  "mag_galil_7.62x51_default": {
+    "name": "st_mag_galil_7.62x51",
+    "price": 5500
+  },
+  "mag_galil_7.62x54_7h1_default": {
+    "name": "st_mag_galil_7.62x54_7h1",
+    "price": 2335
+  },
+  "mag_glock_9x18_alt": {
+    "name": "st_mag_glock_9x18_fmj",
+    "price": 1500
+  },
+  "mag_glock_9x19_default": {
+    "name": "st_mag_glock_9x19_fmj",
+    "price": 1500
+  },
+  "mag_grot": {
+    "name": "st_mag_grot",
+    "price": 4250
+  },
+  "mag_gsh18_9x19_default": {
+    "name": "st_mag_gsh18_9x19_fmj",
+    "price": 1500
+  },
+  "mag_hinge_7.62x51_default": {
+    "name": "st_mag_hinge_7.62x51",
+    "price": 4500
+  },
+  "mag_hinge_7.62x51_extended": {
+    "name": "st_mag_hinge_ext_7.62x51",
+    "price": 7500
+  },
+  "mag_hk21_7.62x51_default": {
+    "name": "st_mag_hk21_7.62x51",
+    "price": 22500
+  },
+  "mag_hpsa_9x18_alt": {
+    "name": "st_mag_hpsa_9x18_fmj",
+    "price": 2500
+  },
+  "mag_hpsa_9x19_default": {
+    "name": "st_mag_hpsa_9x19_fmj",
+    "price": 1500
+  },
+  "mag_k98_7.62x51": {
+    "name": "st_mag_k98_7.62x51",
+    "price": 5500
+  },
+  "mag_k98_7.62x54": {
+    "name": "st_mag_k98_7.62x54",
+    "price": 5500
+  },
+  "mag_k98_7.92x33": {
+    "name": "st_mag_k98_7.92x33",
+    "price": 5500
+  },
+  "mag_kiparis_9x18_50": {
+    "name": "st_mag_baskiparis_9x18_81",
+    "price": 8500
+  },
+  "mag_kiparis_9x18_default": {
+    "name": "st_mag_kiparis_9x18_fmj",
+    "price": 3500
+  },
+  "mag_kiparis_9x19_50": {
+    "name": "st_mag_baskiparis_9x19_81",
+    "price": 2500
+  },
+  "mag_kiparis_9x19_alt": {
+    "name": "st_mag_kiparis_9x19_fmj",
+    "price": 2500
+  },
+  "mag_kriss_11.43x23_default": {
+    "name": "mag_kriss45",
+    "price": 2500
+  },
+  "mag_kriss_11.43x23_ext": {
+    "name": "ext_mag_kriss_drum",
+    "price": 2500
+  },
+  "mag_kriss_9x19_default": {
+    "name": "mag_kriss9",
+    "price": 2500
+  },
+  "mag_kriss_9x19_ext": {
+    "name": "ext_mag_kriss9_drum",
+    "price": 2500
+  },
+  "mag_l96a1_7.62x51_default": {
+    "name": "st_mag_l96a1_7.62x51",
+    "price": 6500
+  },
+  "mag_lancer": {
+    "name": "st_mag_lancer",
+    "price": 6500
+  },
+  "mag_legion_9x19": {
+    "name": "st_mag_ppp_sig_9x19_fmj",
+    "price": 1500
+  },
+  "mag_m1a1_11.43x23_default": {
+    "name": "st_mag_m1a1_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_m249_5.56x45_default": {
+    "name": "st_mag_m249_5.56x45",
+    "price": 2500
+  },
+  "mag_m82_12.7x55_default": {
+    "name": "st_mag_m82_12.7x55",
+    "price": 5500
+  },
+  "mag_m98b_300_default": {
+    "name": "st_mag_m98b_magnum_300",
+    "price": 8500
+  },
+  "mag_mac10_9x18_alt": {
+    "name": "st_mag_mac10_9x18_standard",
+    "price": 3500
+  },
+  "mag_mac10_9x18_ext_alt": {
+    "name": "st_mag_mac10_9x18_ext",
+    "price": 6500
+  },
+  "mag_mac10_9x19_ext": {
+    "name": "st_mag_mac10_9x19_ext",
+    "price": 6500
+  },
+  "mag_mac10_9x19_standard": {
+    "name": "st_mag_mac10_9x19_standard",
+    "price": 3500
+  },
+  "mag_mk23_45": {
+    "name": "st_mag_ppp_mk23_45",
+    "price": 4500
+  },
+  "mag_mp443_9x18_alt": {
+    "name": "st_mag_mp443_9x18_fmj",
+    "price": 1500
+  },
+  "mag_mp443_9x19_default": {
+    "name": "st_mag_mp443_9x19_fmj",
+    "price": 1500
+  },
+  "mag_mp5_9x18_alt": {
+    "name": "st_mag_mp5_9x18_fmj",
+    "price": 4000
+  },
+  "mag_mp5_9x18_extended": {
+    "name": "st_mag_mp5_9x18_fmjext",
+    "price": 7500
+  },
+  "mag_mp5_9x18_extended50": {
+    "name": "st_mag_mp5_9x18_fmjext50",
+    "price": 12500
+  },
+  "mag_mp5_9x19_default": {
+    "name": "st_mag_mp5_9x19_fmj",
+    "price": 4000
+  },
+  "mag_mp5_9x19_extended": {
+    "name": "st_mag_mp5_9x19_fmjext",
+    "price": 7500
+  },
+  "mag_mp5_9x19_extended50": {
+    "name": "st_mag_mp5_9x19_fmjext50",
+    "price": 12500
+  },
+  "mag_mp7_5.7x28_default": {
+    "name": "st_mag_mp7_5.7x28_ss190",
+    "price": 5500
+  },
+  "mag_mp7_5.7x28_small": {
+    "name": "st_mag_mp7_5.7x28_short",
+    "price": 3500
+  },
+  "mag_mp7_9x18_alt": {
+    "name": "st_mag_mp7_9x18_fmj",
+    "price": 1754
+  },
+  "mag_mp7_9x19_default": {
+    "name": "st_mag_mp7_9x19_fmj",
+    "price": 1754
+  },
+  "mag_mp9iwp": {
+    "name": "st_mag_mp9iwp",
+    "price": 4000
+  },
+  "mag_mp9iwp_9x18": {
+    "name": "st_mag_mp9iwp_9x18",
+    "price": 4000
+  },
+  "mag_mp9iwp_9x18_ext": {
+    "name": "st_mag_mp9iwp_9x18_ext",
+    "price": 7500
+  },
+  "mag_mp9iwp_ext": {
+    "name": "st_mag_mp9iwp_ext",
+    "price": 7500
+  },
+  "mag_nato_5.45x39_alt": {
+    "name": "st_mag_nato_5.45x39",
+    "price": 2500
+  },
+  "mag_nato_5.56x45_casket": {
+    "name": "st_mag_nato_5.56x45_casket",
+    "price": 7500
+  },
+  "mag_nato_5.56x45_default": {
+    "name": "st_mag_stanag",
+    "price": 2500
+  },
+  "mag_nato_5.56x45_drum": {
+    "name": "st_mag_nato_5.56x45_drum",
+    "price": 7500
+  },
+  "mag_nato_5.56x45_drum_ext": {
+    "name": "st_mag_nato_5.56x45_drum_ext",
+    "price": 21500
+  },
+  "mag_nato_5.56x45_extended": {
+    "name": "st_mag_nato_5.56x45_extended",
+    "price": 5200
+  },
+  "mag_nato_5.56x45_fast": {
+    "name": "st_mag_nato_5.56x45_fast",
+    "price": 4250
+  },
+  "mag_nato_5.56x45_short": {
+    "name": "st_mag_stanag_short",
+    "price": 2500
+  },
+  "mag_oc_9x18_default": {
+    "name": "st_mag_oc33_9x18_fmj",
+    "price": 3500
+  },
+  "mag_oc_9x19_alt": {
+    "name": "st_mag_oc33_9x19_fmj",
+    "price": 3250
+  },
+  "mag_ots_9x39_default": {
+    "name": "st_mag_groza_9x39_pab9",
+    "price": 6500
+  },
+  "mag_p220_9x19_u2p2bas": {
+    "name": "st_mag_p220_9x19_u2p2bas",
+    "price": 1750
+  },
+  "mag_p90_5.7x28_default": {
+    "name": "st_mag_p90_5.7x28_ss190",
+    "price": 5500
+  },
+  "mag_p90_5.7x28_ext": {
+    "name": "st_mag_p90_ext",
+    "price": 15000
+  },
+  "mag_pkp_pkm_default": {
+    "name": "st_mag_pkm_pkm",
+    "price": 18500
+  },
+  "mag_pm_9x18_default": {
+    "name": "st_mag_pm_9x18_fmj",
+    "price": 1500
+  },
+  "mag_pm_9x19_alt": {
+    "name": "st_mag_pm_9x19_fmj",
+    "price": 1500
+  },
+  "mag_pmm_9x18_default": {
+    "name": "st_mag_pmm_9x18_fmj",
+    "price": 1500
+  },
+  "mag_pmm_9x19_alt": {
+    "name": "st_mag_pmm_9x19_fmj",
+    "price": 2150
+  },
+  "mag_pp2000_9x18_alt": {
+    "name": "st_mag_pp2000_9x18_fmj",
+    "price": 3500
+  },
+  "mag_pp2000_9x18_ext_alt": {
+    "name": "st_mag_pp2000_9x18_ext",
+    "price": 6250
+  },
+  "mag_pp2000_9x19_default": {
+    "name": "st_mag_pp2000_9x19_fmj",
+    "price": 3500
+  },
+  "mag_pp2000_9x19_ext": {
+    "name": "st_mag_pp2000_9x19_ext",
+    "price": 6250
+  },
+  "mag_ppp_glock_45_default": {
+    "name": "st_ppp_glock_45_fmj",
+    "price": 487
+  },
+  "mag_ppsh_7.62x25_default": {
+    "name": "st_mag_ppsh41_7.62x25_p",
+    "price": 4500
+  },
+  "mag_ppsh_7.62x25_stick": {
+    "name": "st_mag_ppsh41_7.62x25_stick",
+    "price": 2500
+  },
+  "mag_px4_45_default": {
+    "name": "st_mag_ppp_px4_45",
+    "price": 1500
+  },
+  "mag_px4_9x19_default": {
+    "name": "st_mag_ppp_px4_9x19_fmj",
+    "price": 1500
+  },
+  "mag_raptr_12x76_default": {
+    "name": "mag_raptr",
+    "price": 2500
+  },
+  "mag_rem_7.62x51_default": {
+    "name": "st_mag_remington700_7.62x51",
+    "price": 5000
+  },
+  "mag_remington700_7.62x51": {
+    "name": "st_mag_basremington700_7.62x51",
+    "price": 7500
+  },
+  "mag_remingtonarchangel_7.62x51": {
+    "name": "st_mag_remingtonarchangel_7.62x51",
+    "price": 11250
+  },
+  "mag_remingtonla_300": {
+    "name": "st_mag_remingtonla_300",
+    "price": 8250
+  },
+  "mag_remingtonla_300_gamma": {
+    "name": "st_mag_remingtonla_300",
+    "price": 8250
+  },
+  "mag_rpd_7.62x39_default": {
+    "name": "st_mag_rpd_7.62x39",
+    "price": 17500
+  },
+  "mag_rpk_5.45x39_default": {
+    "name": "st_mag_rpk74_5.45x39",
+    "price": 5000
+  },
+  "mag_rpk_5.56x45_default": {
+    "name": "st_mag_rpk74_5.56x45",
+    "price": 5000
+  },
+  "mag_rpk_7.62x39_default": {
+    "name": "st_mag_rpk_7.62x39",
+    "price": 6250
+  },
+  "mag_rxp_45": {
+    "name": "st_mag_ppp_signimble_45_fmj",
+    "price": 370
+  },
+  "mag_rxp_9x19": {
+    "name": "st_mag_ppp_signimble_9x19_fmj",
+    "price": 1500
+  },
+  "mag_saiga12_drum": {
+    "name": "st_mag_saiga12_drum",
+    "price": 15000
+  },
+  "mag_saiga12s_12x70_default": {
+    "name": "st_mag_saiga12s_12x70",
+    "price": 2500
+  },
+  "mag_saiga12s_12x70_extended": {
+    "name": "st_mag_saiga12s_ext_12x70",
+    "price": 7500
+  },
+  "mag_sig_5.56x45_default": {
+    "name": "st_mag_sig550_5.56x45",
+    "price": 2500
+  },
+  "mag_sig_5.56x45_sniper": {
+    "name": "st_mag_sig550_sniper_5.56x45",
+    "price": 2000
+  },
+  "mag_sigp220_default": {
+    "name": "st_mag_sigp220_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_sigp220_extended": {
+    "name": "st_mag_sigp220_11.43x23_fmjext",
+    "price": 7500
+  },
+  "mag_sks_7.62x39": {
+    "name": "st_mag_sks_7.62x39",
+    "price": 6500
+  },
+  "mag_sks_7.62x39_extended": {
+    "name": "st_mag_sksext_7.62x39",
+    "price": 12500
+  },
+  "mag_sks_7.62x54": {
+    "name": "st_mag_sks_7.62x54",
+    "price": 6500
+  },
+  "mag_sks_7.62x54_extended": {
+    "name": "st_mag_sks_7.62x54ext",
+    "price": 12500
+  },
+  "mag_sr1m_9x21_default": {
+    "name": "st_mag_sr1m_9x21",
+    "price": 1900
+  },
+  "mag_sr1m_9x21_extended": {
+    "name": "st_mag_sr1m_9x21ext",
+    "price": 3500
+  },
+  "mag_sr2m_9x18_veresk": {
+    "name": "st_mag_sr2m_9x18_veresk",
+    "price": 1254
+  },
+  "mag_sr2m_9x21_veresk": {
+    "name": "st_mag_sr2m_9x21_veresk",
+    "price": 6500
+  },
+  "mag_stanag_7.62x51_default": {
+    "name": "st_mag_stanag_7.62x51",
+    "price": 4525
+  },
+  "mag_stanag_7.62x51_extended": {
+    "name": "st_mag_stanag_7.62x51_ext",
+    "price": 8750
+  },
+  "mag_stanag_7.62x51_fast": {
+    "name": "st_mag_stanag_fast_7.62x51",
+    "price": 5250
+  },
+  "mag_stanag_7.62x51_short": {
+    "name": "st_mag_stanag_7.62x51_short",
+    "price": 4050
+  },
+  "mag_steyr_556": {
+    "name": "st_mag_steyr_556",
+    "price": 2500
+  },
+  "mag_steyr_762": {
+    "name": "st_mag_steyr_762",
+    "price": 6500
+  },
+  "mag_sv98_7.62x54_default": {
+    "name": "st_mag_sv98_7.62x54",
+    "price": 6500
+  },
+  "mag_svd_7.62x54_default": {
+    "name": "st_mag_svd_7.62x54",
+    "price": 6500
+  },
+  "mag_svd_7.62x54_extended": {
+    "name": "st_mag_svd_7.62x54_extended",
+    "price": 12500
+  },
+  "mag_svi_45": {
+    "name": "st_mag_ppp_svi_45",
+    "price": 1330
+  },
+  "mag_svt_7.62x39_alt": {
+    "name": "st_mag_svt40_7.62x39",
+    "price": 4500
+  },
+  "mag_svt_7.62x54_default": {
+    "name": "st_mag_svt40_7.62x54",
+    "price": 4500
+  },
+  "mag_sw_45_default": {
+    "name": "st_ppp_sw_45_fmj",
+    "price": 330
+  },
+  "mag_sw_919_default": {
+    "name": "st_ppp_sw_919_fmj",
+    "price": 330
+  },
+  "mag_t63_7.62x39_default": {
+    "name": "st_mag_type63_7.62x39",
+    "price": 3500
+  },
+  "mag_t63_7.62x54_alt": {
+    "name": "st_mag_type63_7.62x54",
+    "price": 3500
+  },
+  "mag_tt33_7.62x25_default": {
+    "name": "st_mag_tt33_7.62x25_p",
+    "price": 1500
+  },
+  "mag_tt33_7.62x25_ext": {
+    "name": "st_mag_tt33_7.62x25_p",
+    "price": 2500
+  },
+  "mag_ump45_11.43x23_default": {
+    "name": "st_mag_ump45_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_usas12_12x70_default": {
+    "name": "st_mag_usas12_12x70",
+    "price": 2500
+  },
+  "mag_usp_11.43x23_default": {
+    "name": "st_mag_usp_11.43x23_fmj",
+    "price": 2500
+  },
+  "mag_usptac_9x19": {
+    "name": "st_mag_usptac_9x19_fmj",
+    "price": 1500
+  },
+  "mag_usptac_9x19_extended": {
+    "name": "st_mag_usptac_9x19_fmjext",
+    "price": 3500
+  },
+  "mag_uzi_9x19_default": {
+    "name": "st_mag_uzi_9x19",
+    "price": 3250
+  },
+  "mag_uzi_9x19_extended": {
+    "name": "st_mag_uzi_9x19_extended",
+    "price": 5500
+  },
+  "mag_val_9x39_default": {
+    "name": "st_mag_val_9x39_pab9",
+    "price": 6500
+  },
+  "mag_vepr_12x70_compact": {
+    "name": "st_mag_vepr_compact_12x70",
+    "price": 2500
+  },
+  "mag_vepr_12x70_default": {
+    "name": "st_mag_vepr_12x70",
+    "price": 2500
+  },
+  "mag_vihr_9x39_default": {
+    "name": "st_mag_vihr_9x39_pab9",
+    "price": 12500
+  },
+  "mag_vityaz_9x18_alt": {
+    "name": "st_mag_vityaz_9x18_fmj",
+    "price": 3500
+  },
+  "mag_vityaz_9x19_default": {
+    "name": "st_mag_vityaz_9x19_fmj",
+    "price": 3500
+  },
+  "mag_vsk_12.7x55_default": {
+    "name": "st_mag_vssk_12.7x55",
+    "price": 5500
+  },
+  "mag_vsk_9x39_default": {
+    "name": "st_mag_vsk94_9x39_pab9",
+    "price": 6500
+  },
+  "mag_vss_9x39_default": {
+    "name": "st_mag_vintorez_9x39_pab9",
+    "price": 4500
+  },
+  "mag_vz61_9x18_alt": {
+    "name": "st_mag_vz61_9x18_fmj",
+    "price": 2500
+  },
+  "mag_vz61_9x19_default": {
+    "name": "st_mag_vz61_9x19_fmj",
+    "price": 2500
+  },
+  "mag_wa_7.62x51_default": {
+    "name": "st_mag_wa2000_7.62x51",
+    "price": 6500
+  },
+  "mag_wp99_9x19": {
+    "name": "st_mag_wp99_9x19_fmj",
+    "price": 1500
+  },
+  "mag_wp99_9x19_extended": {
+    "name": "st_mag_wp99_9x19_fmjext",
+    "price": 3500
+  },
+  "mag_xd9_9x19_default": {
+    "name": "st_ppp_xd9_9x19_fmj",
+    "price": 1500
   },
   "magnifier": {
     "name": "st_addon_scope_mag",
@@ -6218,6 +7090,14 @@
     "name": "st_addon_scope_side",
     "price": 14000
   },
+  "side_saddle_rifle": {
+    "name": "st_speed_rifle",
+    "price": 7500
+  },
+  "side_saddle_shotgun": {
+    "name": "st_speed_shotgun",
+    "price": 7500
+  },
   "side_x": {
     "name": "st_addon_scope_dummy",
     "price": 14000
@@ -6271,19 +7151,19 @@
   },
   "specops_bandit_outfit": {
     "name": "specops_bandit_outfit_name",
-    "price": 56779
+    "price": 72498
   },
   "specops_dolg_outfit": {
     "name": "specops_dolg_outfit_name",
-    "price": 37596
+    "price": 46043
   },
   "specops_merc_outfit": {
     "name": "specops_merc_outfit_name",
-    "price": 69216
+    "price": 85384
   },
   "specops_outfit": {
     "name": "specops_outfit_name",
-    "price": 36037
+    "price": 44431
   },
   "specter": {
     "name": "st_addon_scope_specterDR",
@@ -6414,7 +7294,7 @@
   },
   "svoboda_heavy_outfit": {
     "name": "svoboda_heavy_outfit_name",
-    "price": 51255
+    "price": 64427
   },
   "svoboda_heavy_outfit_2": {
     "name": "svoboda_heavy_outfit_2_name",
@@ -6488,6 +7368,10 @@
   "tch_letter": {
     "name": "st_recipe",
     "price": 500
+  },
+  "tch_mag_base": {
+    "name": "st_mag_base",
+    "price": 110
   },
   "tch_mapkit": {
     "name": "st_itm_mapkit",
@@ -7754,8 +8638,8 @@
     "price": 38950
   },
   "wpn_aek_1p59": {
-    "name": "st_addon_scope_1p59",
-    "price": 30000
+    "name": "st_wpn_aek971",
+    "price": 38950
   },
   "wpn_aek_1p63": {
     "name": "st_wpn_aek971",
@@ -7877,31 +8761,11 @@
     "name": "st_wpn_ak101",
     "price": 33850
   },
-  "wpn_ak101_ac10632": {
-    "name": "st_wpn_ak101",
-    "price": 33850
-  },
-  "wpn_ak101_acog": {
-    "name": "st_wpn_ak101",
-    "price": 33850
-  },
   "wpn_ak101_camo": {
     "name": "st_wpn_ak101_camo",
     "price": 38380
   },
   "wpn_ak101_camo_1p29": {
-    "name": "st_wpn_ak101_camo",
-    "price": 38380
-  },
-  "wpn_ak101_camo_ac10632": {
-    "name": "st_wpn_ak101_camo",
-    "price": 38380
-  },
-  "wpn_ak101_camo_acog": {
-    "name": "st_wpn_ak101_camo",
-    "price": 38380
-  },
-  "wpn_ak101_camo_eot": {
     "name": "st_wpn_ak101_camo",
     "price": 38380
   },
@@ -7914,10 +8778,6 @@
     "price": 38380
   },
   "wpn_ak101_ekp8_02": {
-    "name": "st_wpn_ak101",
-    "price": 33850
-  },
-  "wpn_ak101_eot": {
     "name": "st_wpn_ak101",
     "price": 33850
   },
@@ -8194,8 +9054,8 @@
     "price": 66550
   },
   "wpn_ak104_alfa_echo1": {
-    "name": "st_addon_scope_echo1",
-    "price": 145000
+    "name": "st_wpn_ak104_alfa",
+    "price": 66550
   },
   "wpn_ak104_alfa_ekp8_18": {
     "name": "st_wpn_ak104_alfa",
@@ -8314,8 +9174,8 @@
     "price": 66550
   },
   "wpn_ak104_echo1": {
-    "name": "st_addon_scope_echo1",
-    "price": 145000
+    "name": "st_wpn_ak104_alfa",
+    "price": 66550
   },
   "wpn_ak104_ekp8_18": {
     "name": "st_wpn_ak104_alfa",
@@ -9409,6 +10269,10 @@
     "name": "st_wpn_ak5c_bas",
     "price": 55560
   },
+  "wpn_ak5c_bas_march_f_shorty_alt": {
+    "name": "st_wpn_ak5c_bas",
+    "price": 55560
+  },
   "wpn_ak5c_bas_marchf": {
     "name": "st_wpn_ak5c_bas",
     "price": 55560
@@ -10178,6 +11042,14 @@
     "price": 38980
   },
   "wpn_ak74m_beard_okp": {
+    "name": "st_wpn_ak74m_beard",
+    "price": 38980
+  },
+  "wpn_ak74m_beard_p1x42": {
+    "name": "st_wpn_ak74m_beard",
+    "price": 38980
+  },
+  "wpn_ak74m_beard_pk6": {
     "name": "st_wpn_ak74m_beard",
     "price": 38980
   },
@@ -11050,8 +11922,8 @@
     "price": 75930
   },
   "wpn_akm_alfa_t12": {
-    "name": "st_addon_scope_t12",
-    "price": 85500
+    "name": "st_wpn_akm_alfa",
+    "price": 75930
   },
   "wpn_akm_alfa_triji": {
     "name": "st_wpn_akm_alfa",
@@ -11258,8 +12130,8 @@
     "price": 26540
   },
   "wpn_akms_alt_1pn93": {
-    "name": "st_addon_scope_dummy",
-    "price": 18000
+    "name": "st_wpn_akms_alt",
+    "price": 26540
   },
   "wpn_akms_alt_1pn93n2_1gs": {
     "name": "st_wpn_akms_alt",
@@ -12073,10 +12945,6 @@
     "name": "st_wpn_aug_9mm",
     "price": 36110
   },
-  "wpn_aug_freedom_gee36": {
-    "name": "st_wpn_aug_9mm",
-    "price": 36110
-  },
   "wpn_aug_freedom_hco": {
     "name": "st_wpn_aug_9mm",
     "price": 36110
@@ -12146,10 +13014,6 @@
     "price": 36110
   },
   "wpn_aug_freedom_uh2": {
-    "name": "st_wpn_aug_9mm",
-    "price": 36110
-  },
-  "wpn_aug_freedom_vulcan": {
     "name": "st_wpn_aug_9mm",
     "price": 36110
   },
@@ -12350,8 +13214,8 @@
     "price": 63500
   },
   "wpn_benelli_m1014_c79": {
-    "name": "st_addon_scope_c79",
-    "price": 14300
+    "name": "st_wpn_benelli_m1014",
+    "price": 63500
   },
   "wpn_benelli_m1014_d0cter": {
     "name": "st_wpn_benelli_m1014",
@@ -12410,8 +13274,8 @@
     "price": 63500
   },
   "wpn_benelli_m1014_vulcan": {
-    "name": "st_addon_scope_dummy",
-    "price": 15500
+    "name": "st_wpn_benelli_m1014",
+    "price": 63500
   },
   "wpn_beretta": {
     "name": "st_wpn_beretta_new",
@@ -13409,10 +14273,6 @@
     "name": "st_wpn_rsh12_shorty",
     "price": 73500
   },
-  "wpn_eft_rsh12_uh2": {
-    "name": "st_wpn_rsh12_shorty",
-    "price": 73500
-  },
   "wpn_fake_missile": {
     "name": "ammo-vog-25",
     "price": 150
@@ -13486,6 +14346,10 @@
     "price": 56380
   },
   "wpn_fal_sa58_osw_c-more": {
+    "name": "st_wpn_fal_sa58_osw",
+    "price": 56380
+  },
+  "wpn_fal_sa58_osw_c79": {
     "name": "st_wpn_fal_sa58_osw",
     "price": 56380
   },
@@ -14049,10 +14913,6 @@
     "name": "st_wpn_g36new_k",
     "price": 43850
   },
-  "wpn_g36c_rwap": {
-    "name": "st_wpn_g36new_c",
-    "price": 43580
-  },
   "wpn_g36k_rwap": {
     "name": "st_wpn_g36new_k",
     "price": 51980
@@ -14376,6 +15236,10 @@
   "wpn_g36v_rwap": {
     "name": "st_wpn_g36new",
     "price": 48850
+  },
+  "wpn_g36v_rwap_cut_kit": {
+    "name": "st_wpn_g36c_spec",
+    "price": 43580
   },
   "wpn_g3_ac10632": {
     "name": "st_wpn_g3",
@@ -14989,10 +15853,6 @@
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
-  "wpn_groza_nimble_aim_low": {
-    "name": "st_wpn_groza_guns_nimble",
-    "price": 38580
-  },
   "wpn_groza_nimble_aimpoint": {
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
@@ -15061,7 +15921,7 @@
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
-  "wpn_groza_nimble_marchf": {
+  "wpn_groza_nimble_mark8_rmr": {
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
@@ -15085,7 +15945,7 @@
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
-  "wpn_groza_nimble_rakurs": {
+  "wpn_groza_nimble_ps320": {
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
@@ -15094,6 +15954,10 @@
     "price": 38580
   },
   "wpn_groza_nimble_rmr": {
+    "name": "st_wpn_groza_guns_nimble",
+    "price": 38580
+  },
+  "wpn_groza_nimble_spec_alt": {
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
@@ -15106,6 +15970,10 @@
     "price": 38580
   },
   "wpn_groza_nimble_tac30": {
+    "name": "st_wpn_groza_guns_nimble",
+    "price": 38580
+  },
+  "wpn_groza_nimble_triji": {
     "name": "st_wpn_groza_guns_nimble",
     "price": 38580
   },
@@ -15194,6 +16062,10 @@
     "price": 56580
   },
   "wpn_hk21_leupold": {
+    "name": "st_wpn_hk21e",
+    "price": 56580
+  },
+  "wpn_hk21_marchf": {
     "name": "st_wpn_hk21e",
     "price": 56580
   },
@@ -15553,10 +16425,6 @@
     "name": "st_wpn_rapide",
     "price": 78960
   },
-  "wpn_korth_custom_e0t2": {
-    "name": "st_wpn_rapide",
-    "price": 78960
-  },
   "wpn_korth_custom_lazup_pl15": {
     "name": "st_wpn_rapide",
     "price": 78960
@@ -15825,6 +16693,10 @@
     "name": "st_wpn_ksg",
     "price": 98520
   },
+  "wpn_ksg23_spec_alt": {
+    "name": "st_wpn_ksg",
+    "price": 98520
+  },
   "wpn_ksg23_specter": {
     "name": "st_wpn_ksg",
     "price": 98520
@@ -15838,6 +16710,10 @@
     "price": 98520
   },
   "wpn_ksg23_trihawk": {
+    "name": "st_wpn_ksg",
+    "price": 98520
+  },
+  "wpn_ksg23_triji": {
     "name": "st_wpn_ksg",
     "price": 98520
   },
@@ -17541,10 +18417,6 @@
     "name": "st_wpn_mossberg590a1",
     "price": 19960
   },
-  "wpn_mossberg590_rail_leupold": {
-    "name": "st_wpn_mossberg590a1",
-    "price": 19960
-  },
   "wpn_mossberg590_rail_monstrum": {
     "name": "st_wpn_mossberg590a1",
     "price": 19960
@@ -18762,7 +19634,7 @@
     "price": 26960
   },
   "wpn_pl15_tan_pl15_scolaz": {
-    "name": "st_wpn_pl15_upgr",
+    "name": "st_wpn_pl15_pl15_scolaz",
     "price": 26960
   },
   "wpn_pm": {
@@ -18771,6 +19643,10 @@
   },
   "wpn_pm_actor": {
     "name": "st_wpn_pm_new",
+    "price": 4890
+  },
+  "wpn_pm_actor_pm_upgr_kit": {
+    "name": "st_wpn_pm_upgr",
     "price": 4890
   },
   "wpn_pm_bas": {
@@ -18794,6 +19670,10 @@
     "price": 4890
   },
   "wpn_pm_custom_pm_upgr_kit": {
+    "name": "st_wpn_pm_upgr",
+    "price": 4890
+  },
+  "wpn_pm_pm_upgr_kit": {
     "name": "st_wpn_pm_upgr",
     "price": 4890
   },
@@ -21758,11 +22638,11 @@
     "price": 26960
   },
   "wpn_sr1m_gurza_up": {
-    "name": "st_wpn_sr1mp_upgr",
+    "name": "st_wpn_sr1m_sr1upgr1",
     "price": 26960
   },
   "wpn_sr1m_sr1upgr1": {
-    "name": "st_wpn_sr1mp_las",
+    "name": "st_wpn_sr1m_sr1upgr1",
     "price": 26960
   },
   "wpn_sr25": {
@@ -22414,8 +23294,8 @@
     "price": 43860
   },
   "wpn_svu_ps01": {
-    "name": "st_addon_scope_dummy",
-    "price": 9500
+    "name": "st_wpn_svu",
+    "price": 43860
   },
   "wpn_svu_pso1m21": {
     "name": "st_wpn_svu",
@@ -22557,6 +23437,10 @@
     "name": "st_wpn_tt33_custom_upgr",
     "price": 9860
   },
+  "wpn_tt33_tt_upgr_kit": {
+    "name": "st_wpn_tt33_custom_upgr",
+    "price": 9860
+  },
   "wpn_type63": {
     "name": "st_wpn_type63",
     "price": 17880
@@ -22670,6 +23554,10 @@
     "price": 19350
   },
   "wpn_udp9_trihawk": {
+    "name": "st_wpn_udp9",
+    "price": 19350
+  },
+  "wpn_udp9_triji": {
     "name": "st_wpn_udp9",
     "price": 19350
   },

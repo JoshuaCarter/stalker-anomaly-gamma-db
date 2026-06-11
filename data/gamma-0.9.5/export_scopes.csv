@@ -32,6 +32,7 @@ c79,st_addon_scope_c79,st_addon_scope_c79_descr,0.70,14300,,3.5
 chs,st_addon_scope_chs,st_addon_scope_chs_descr,0.13,41500,,2
 compm4s,st_addon_scope_compm4s,st_addon_scope_compm4s_descr,0.27,5000,,
 cortex,st_cortex_scope,st_cortex_scope_desc,0.69,11700,,1-10
+cut_kit,st_addon_cut_kit,st_addon_cut_descr,2.00,63500,,
 d0cter,st_addon_scope_d0cter,st_addon_scope_d0cter_descr,0.03,6000,,
 deltapoint,st_addon_scope_deltapoint,st_addon_scope_deltapoint_descr,0.06,6500,,
 devo,st_addon_scope_devo,st_addon_scope_devo_descr,0.66,42000,,6
@@ -45,7 +46,7 @@ exps3,st_addon_scope_exps3,st_addon_scope_exps3_descr,0.32,7350,,
 gauss_sight,st_addon_scope_gauss_sight,st_addon_scope_gauss_sight_descr,1.40,253200,,1-10
 gee36,st_addon_scope_gee36,st_addon_scope_gee36_descr,0.50,10000,,3
 gurza_up,st_addon_scope_gurza_up_new,st_addon_scope_gurza_up_new_descr,0.10,10200,,
-hamr,st_addon_scope_hamr,st_addon_scope_hamr_descr,0.47,36000,,4
+hamr,st_addon_scope_hamr,st_addon_scope_hamr_descr,0.00,36000,,4
 hco,st_addon_scope_specter_hco,st_addon_scope_specter_hco_descr,0.43,7500,,
 he510,st_addon_scope_he510,st_addon_scope_he510_descr,0.14,7500,,
 infiltrator_tactical_kit,st_addon_scope_infiltrator_tactical_kit,st_addon_scope_infiltrator_tactical_kit_descr,2.00,25200,,
@@ -64,7 +65,7 @@ lco1,st_addon_scope_lco1,st_addon_scope_lco1_descr,0.27,7000,,
 leupold,st_addon_scope_leupold,st_addon_scope_leupold_descr,0.66,38000,,1-8
 m9_upgr_kit,st_addon_scope_m9_upgr_kit,st_addon_scope_m9_upgr_kit_descr,2.00,9000,,
 magpul_pro,st_addon_scope_magpul_pro,st_addon_scope_magpul_pro_descr,1.72,19000,,
-march_f_shorty,st_addon_scope_march_f_shorty,st_addon_scope_march_f_shorty_descr,0.54,40200,,1-8
+march_f_shorty,st_addon_scope_march_f_shorty,st_addon_scope_march_f_shorty_descr,0.54,40200,,1-10
 march_f_shorty_alt,st_addon_scope_march_f_shorty_alt,st_addon_scope_march_f_shorty_alt_descr,0.59,55000,,1-10
 marchf,st_addon_scope_marchf,st_addon_scope_marchf_descr,0.61,40200,,3-24
 mark8_rmr,st_addon_scope_mark8_rmr,st_addon_scope_mark8_rmr_descr,0.71,48000,,1-8
@@ -93,7 +94,7 @@ pso1m21,st_addon_scope_pso-1m2-01,st_addon_scope_pso-1m2-01_descr,0.62,11200,,6
 pso2,st_addon_scope_pso2,st_addon_scope_pso2_descr,0.60,9500,,4
 pso21p63,,,0.00,0,,
 rakurs,st_addon_scope_rakurs,st_addon_scope_rakurs_descr,0.30,4500,,
-razorhd,st_addon_scope_razorhd,st_addon_scope_razorhd_descr,0.62,35000,,1-6
+razorhd,st_addon_scope_razorhd,st_addon_scope_razorhd_descr,0.00,35000,,1-6
 rmr,st_addon_scope_rmr,st_addon_scope_rmr_descr,0.03,5850,,
 romeo4,st_addon_scope_romeo4,st_addon_scope_romeo4_descr,0.20,6000,,
 romeo8,st_addon_scope_romeo8,st_addon_scope_romeo8_descr,0.39,7500,,
@@ -114,7 +115,6 @@ t12,st_addon_scope_t12,st_addon_scope_t12_descr,0.06,85500,,
 tac30,st_addon_scope_burris_tac30,st_addon_scope_burris_tac30_descr,0.48,25000,,1-4
 trihawk,st_addon_scope_trihawk_3x30,st_addon_scope_trihawk_3x30_descr,0.43,10000,,3
 triji,st_addon_scope_trijicon_rmr,st_addon_scope_trijicon_rmr_descr,0.56,29500,,2.8
-tt_upgr_kit,st_addon_scope_tt_upgr_kit,st_addon_scope_tt_upgr_kit_descr,2.00,6200,,
 u2p2g0r,st_addon_scope_u2p2g0r,st_addon_scope_u2p2g0r_descr,0.26,8000,,
 uh1_magd,st_addon_scope_razor_mag,st_addon_scope_razor_mag_descr,0.63,32000,,6
 uh2,st_addon_scope_razor,st_addon_scope_razor_descr,0.33,10200,,

@@ -2815,14 +2815,6 @@
       "noDrop": true
     },
     {
-      "id": "wpn_g36c_rwap",
-      "name": "st_wpn_g36new_c",
-      "displayName": "st_wpn_g36new_c",
-      "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
-    },
-    {
       "id": "wpn_g36k_rwap",
       "name": "st_wpn_g36new_k",
       "displayName": "st_wpn_g36new_k [k_rwap]",
@@ -2851,6 +2843,14 @@
       "displayName": "st_wpn_g36new [v_rwap]",
       "category": "Rifles",
       "isAlt": false
+    },
+    {
+      "id": "wpn_g36v_rwap_cut_kit",
+      "name": "st_wpn_g36c_spec",
+      "displayName": "st_wpn_g36c_spec",
+      "category": "Rifles",
+      "isAlt": false,
+      "tacticalKit": true
     },
     {
       "id": "wpn_grot",
@@ -3453,14 +3453,6 @@
       "noDrop": true
     },
     {
-      "id": "wpn_g36c_rwap",
-      "name": "st_wpn_g36new_c",
-      "displayName": "st_wpn_g36new_c",
-      "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
-    },
-    {
       "id": "wpn_g36k_rwap",
       "name": "st_wpn_g36new_k",
       "displayName": "st_wpn_g36new_k [k_rwap]",
@@ -3489,6 +3481,14 @@
       "displayName": "st_wpn_g36new [v_rwap]",
       "category": "Rifles",
       "isAlt": false
+    },
+    {
+      "id": "wpn_g36v_rwap_cut_kit",
+      "name": "st_wpn_g36c_spec",
+      "displayName": "st_wpn_g36c_spec",
+      "category": "Rifles",
+      "isAlt": false,
+      "tacticalKit": true
     },
     {
       "id": "wpn_grot",
@@ -4091,14 +4091,6 @@
       "noDrop": true
     },
     {
-      "id": "wpn_g36c_rwap",
-      "name": "st_wpn_g36new_c",
-      "displayName": "st_wpn_g36new_c",
-      "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
-    },
-    {
       "id": "wpn_g36k_rwap",
       "name": "st_wpn_g36new_k",
       "displayName": "st_wpn_g36new_k [k_rwap]",
@@ -4127,6 +4119,14 @@
       "displayName": "st_wpn_g36new [v_rwap]",
       "category": "Rifles",
       "isAlt": false
+    },
+    {
+      "id": "wpn_g36v_rwap_cut_kit",
+      "name": "st_wpn_g36c_spec",
+      "displayName": "st_wpn_g36c_spec",
+      "category": "Rifles",
+      "isAlt": false,
+      "tacticalKit": true
     },
     {
       "id": "wpn_grot",
@@ -4489,10 +4489,18 @@
     {
       "id": "wpn_tt33_modern_tt_upgr_kit",
       "name": "st_wpn_tt33_custom_upgr",
-      "displayName": "st_wpn_tt33_custom_upgr",
+      "displayName": "st_wpn_tt33_custom_upgr [modern_tt_upgr_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
+    },
+    {
+      "id": "wpn_tt33_tt_upgr_kit",
+      "name": "st_wpn_tt33_custom_upgr",
+      "displayName": "st_wpn_tt33_custom_upgr [tt_upgr_kit]",
+      "category": "Pistols",
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_bizon",
@@ -4543,10 +4551,18 @@
     {
       "id": "wpn_tt33_modern_tt_upgr_kit",
       "name": "st_wpn_tt33_custom_upgr",
-      "displayName": "st_wpn_tt33_custom_upgr",
+      "displayName": "st_wpn_tt33_custom_upgr [modern_tt_upgr_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
+    },
+    {
+      "id": "wpn_tt33_tt_upgr_kit",
+      "name": "st_wpn_tt33_custom_upgr",
+      "displayName": "st_wpn_tt33_custom_upgr [tt_upgr_kit]",
+      "category": "Pistols",
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_bizon",
@@ -6991,10 +7007,12 @@
     {
       "id": "wpn_pl15_pl15_scolaz",
       "name": "st_wpn_pl15_pl15_scolaz",
-      "displayName": "st_wpn_pl15_pl15_scolaz",
+      "displayName": "st_wpn_pl15_pl15_scolaz [pl15_scolaz]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 1
     },
     {
       "id": "wpn_pl15_tan",
@@ -7005,11 +7023,13 @@
     },
     {
       "id": "wpn_pl15_tan_pl15_scolaz",
-      "name": "st_wpn_pl15_upgr",
-      "displayName": "st_wpn_pl15_upgr",
+      "name": "st_wpn_pl15_pl15_scolaz",
+      "displayName": "st_wpn_pl15_pl15_scolaz [tan_pl15_scolaz]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 2
     },
     {
       "id": "wpn_pm",
@@ -7159,21 +7179,6 @@
       "isAlt": true
     },
     {
-      "id": "wpn_kiparis",
-      "name": "st_wpn_kiparis",
-      "displayName": "st_wpn_kiparis",
-      "category": "SMGs",
-      "isAlt": true
-    },
-    {
-      "id": "wpn_kiparis_ots2_upgr_kit",
-      "name": "st_wpn_kiparis_upgraded",
-      "displayName": "st_wpn_kiparis_upgraded",
-      "category": "SMGs",
-      "isAlt": true,
-      "tacticalKit": true
-    },
-    {
       "id": "wpn_kriss_vector",
       "name": "st_wpn_kriss",
       "displayName": "st_wpn_kriss",
@@ -7193,6 +7198,15 @@
       "displayName": "st_wpn_mp5",
       "category": "SMGs",
       "isAlt": false
+    },
+    {
+      "id": "wpn_mp5_kurtz",
+      "name": "st_wpn_mp5",
+      "displayName": "st_wpn_mp5 [kurtz]",
+      "category": "SMGs",
+      "isAlt": false,
+      "tacticalKit": true,
+      "kitSuffix": true
     },
     {
       "id": "wpn_mp5sd",
@@ -7442,10 +7456,12 @@
     {
       "id": "wpn_pl15_pl15_scolaz",
       "name": "st_wpn_pl15_pl15_scolaz",
-      "displayName": "st_wpn_pl15_pl15_scolaz",
+      "displayName": "st_wpn_pl15_pl15_scolaz [pl15_scolaz]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 1
     },
     {
       "id": "wpn_pl15_tan",
@@ -7456,11 +7472,13 @@
     },
     {
       "id": "wpn_pl15_tan_pl15_scolaz",
-      "name": "st_wpn_pl15_upgr",
-      "displayName": "st_wpn_pl15_upgr",
+      "name": "st_wpn_pl15_pl15_scolaz",
+      "displayName": "st_wpn_pl15_pl15_scolaz [tan_pl15_scolaz]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 2
     },
     {
       "id": "wpn_pm",
@@ -7608,21 +7626,6 @@
       "displayName": "st_wpn_bizon",
       "category": "SMGs",
       "isAlt": true
-    },
-    {
-      "id": "wpn_kiparis",
-      "name": "st_wpn_kiparis",
-      "displayName": "st_wpn_kiparis",
-      "category": "SMGs",
-      "isAlt": true
-    },
-    {
-      "id": "wpn_kiparis_ots2_upgr_kit",
-      "name": "st_wpn_kiparis_upgraded",
-      "displayName": "st_wpn_kiparis_upgraded",
-      "category": "SMGs",
-      "isAlt": true,
-      "tacticalKit": true
     },
     {
       "id": "wpn_kriss_vector",
@@ -7902,10 +7905,12 @@
     {
       "id": "wpn_pl15_pl15_scolaz",
       "name": "st_wpn_pl15_pl15_scolaz",
-      "displayName": "st_wpn_pl15_pl15_scolaz",
+      "displayName": "st_wpn_pl15_pl15_scolaz [pl15_scolaz]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 1
     },
     {
       "id": "wpn_pl15_tan",
@@ -7916,11 +7921,13 @@
     },
     {
       "id": "wpn_pl15_tan_pl15_scolaz",
-      "name": "st_wpn_pl15_upgr",
-      "displayName": "st_wpn_pl15_upgr",
+      "name": "st_wpn_pl15_pl15_scolaz",
+      "displayName": "st_wpn_pl15_pl15_scolaz [tan_pl15_scolaz]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 2
     },
     {
       "id": "wpn_pm",
@@ -8070,21 +8077,6 @@
       "isAlt": true
     },
     {
-      "id": "wpn_kiparis",
-      "name": "st_wpn_kiparis",
-      "displayName": "st_wpn_kiparis",
-      "category": "SMGs",
-      "isAlt": true
-    },
-    {
-      "id": "wpn_kiparis_ots2_upgr_kit",
-      "name": "st_wpn_kiparis_upgraded",
-      "displayName": "st_wpn_kiparis_upgraded",
-      "category": "SMGs",
-      "isAlt": true,
-      "tacticalKit": true
-    },
-    {
       "id": "wpn_kriss_vector",
       "name": "st_wpn_kriss",
       "displayName": "st_wpn_kriss",
@@ -8104,6 +8096,15 @@
       "displayName": "st_wpn_mp5",
       "category": "SMGs",
       "isAlt": false
+    },
+    {
+      "id": "wpn_mp5_kurtz",
+      "name": "st_wpn_mp5",
+      "displayName": "st_wpn_mp5 [kurtz]",
+      "category": "SMGs",
+      "isAlt": false,
+      "tacticalKit": true,
+      "kitSuffix": true
     },
     {
       "id": "wpn_mp5sd",
@@ -8207,19 +8208,23 @@
     },
     {
       "id": "wpn_sr1m_gurza_up",
-      "name": "st_wpn_sr1mp_upgr",
-      "displayName": "st_wpn_sr1mp_upgr",
+      "name": "st_wpn_sr1m_sr1upgr1",
+      "displayName": "st_wpn_sr1m_sr1upgr1 [gurza_up]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 1
     },
     {
       "id": "wpn_sr1m_sr1upgr1",
-      "name": "st_wpn_sr1mp_las",
-      "displayName": "st_wpn_sr1mp_las",
+      "name": "st_wpn_sr1m_sr1upgr1",
+      "displayName": "st_wpn_sr1m_sr1upgr1 [sr1upgr1]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "tacticalKit": true,
+      "kitSuffix": true,
+      "kitSuffixNum": 2
     },
     {
       "id": "wpn_sr2_m1",

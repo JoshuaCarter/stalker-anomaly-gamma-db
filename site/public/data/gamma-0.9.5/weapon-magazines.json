@@ -1,0 +1,1667 @@
+{
+  "wpn_9a91": [
+    "mag_vsk_9x39_default"
+  ],
+  "wpn_abakan": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_abakan_n": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ace52": [
+    "mag_galil_7.62x51_default"
+  ],
+  "wpn_adar2_15": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_aek": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_ak101": [
+    "mag_95_5.56x45_drum",
+    "mag_ak_5.56x45_modern",
+    "mag_akalfa_5.56x45_bas",
+    "mag_rpk_5.56x45_default"
+  ],
+  "wpn_ak101_camo": [
+    "mag_95_5.56x45_drum",
+    "mag_ak_5.56x45_modern",
+    "mag_akalfa_5.56x45_bas",
+    "mag_rpk_5.56x45_default"
+  ],
+  "wpn_ak102": [
+    "mag_95_5.56x45_drum",
+    "mag_ak_5.56x45_modern",
+    "mag_akalfa_5.56x45_bas",
+    "mag_rpk_5.56x45_default"
+  ],
+  "wpn_ak103": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_ak103_camo": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_ak104": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_ak104_alfa": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_ak105": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak105_shakal": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak105_sp": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak105_swamp": [
+    "mag_95_5.56x45_drum",
+    "mag_ak_5.56x45_modern",
+    "mag_akalfa_5.56x45_bas",
+    "mag_rpk_5.56x45_default"
+  ],
+  "wpn_ak12": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak12_custom": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak12_custom_mono_kit": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak12_m1": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak5c_bas": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_ak5c_bas_5c_tik": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_ak5c_isg": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_ak74": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74_isg": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74_n": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74_pmc": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74m": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74m_beard": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74m_camo": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74m_n": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74u": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74u_isg": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74u_m1_isg": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_ak74u_n1": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_ak74u_tac": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_akm": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_akm_alfa": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_akm_bas": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_akm_isg": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_akms": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_akms_alt": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_akms_bas": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_aks": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_aks74_new": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_am17": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_amb17": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_aps": [
+    "mag_aps_9x18_default"
+  ],
+  "wpn_aps_bas": [
+    "mag_aps_9x18_default"
+  ],
+  "wpn_aps_bas_apsabigo": [
+    "mag_aps_9x18_default"
+  ],
+  "wpn_ar15_freedom": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_ash12": [
+    "mag_ash_12.7x55_default",
+    "mag_ash_12.7x55_extended"
+  ],
+  "wpn_ash12_sup": [
+    "mag_ash_12.7x55_default",
+    "mag_ash_12.7x55_extended"
+  ],
+  "wpn_aug": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_a1_bas": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_a1_custom_bas": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_a3": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_a3_bas": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_a3_custom_bas": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_freedom": [
+    "mag_aug_9x19_default"
+  ],
+  "wpn_aug_merc": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_aug_modern": [
+    "mag_aug_5.56x45_default",
+    "mag_aug_5.56x45_extended"
+  ],
+  "wpn_beretta": [
+    "mag_beretta_9x19_default"
+  ],
+  "wpn_beretta_camo": [
+    "mag_px4_9x19_default"
+  ],
+  "wpn_beretta_m9_upgr_kit": [
+    "mag_beretta_9x19_default"
+  ],
+  "wpn_bizon": [
+    "mag_bizon_9x18_defalt"
+  ],
+  "wpn_brn180": [
+    "mag_7.62x39_ar15"
+  ],
+  "wpn_colt1911": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_colt1911_anarchy": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_colt1911_camo": [
+    "mag_coonan_357_default",
+    "mag_coonan_357_ext"
+  ],
+  "wpn_colt1911_custom": [
+    "mag_svi_45"
+  ],
+  "wpn_colt1911_duty": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_colt1911_n": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_cz52": [
+    "mag_cz52_default"
+  ],
+  "wpn_cz75": [
+    "mag_cz75_9x19_default"
+  ],
+  "wpn_cz75_auto": [
+    "mag_cz75_9x19_default"
+  ],
+  "wpn_desert_eagle": [
+    "mag_deserteagal_default"
+  ],
+  "wpn_desert_eagle_nimble": [
+    "mag_deserteagal_default"
+  ],
+  "wpn_dtmdr": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_dtmdr_black": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_dtmdr_black_sup": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_dtmdr_sup": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_dvl10": [
+    "mag_dvl_7.62x51"
+  ],
+  "wpn_dvl10_m1": [
+    "mag_dvl_338fed"
+  ],
+  "wpn_fal": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_fal_aus": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_fal_sa58_osw": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_famas3": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_fn2000": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_fn2000_camo": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_fn2000_custom": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_fn2000_nimble": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_fn57": [
+    "mag_fn57_default"
+  ],
+  "wpn_fnc": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_fnp45": [
+    "mag_fnp45_default",
+    "mag_fnx45_default"
+  ],
+  "wpn_fnx45": [
+    "mag_fnp45_default",
+    "mag_fnx45_default"
+  ],
+  "wpn_fnx45_custom": [
+    "mag_fnp45_default",
+    "mag_fnx45_default"
+  ],
+  "wpn_fort": [
+    "mag_fort_9x18_default"
+  ],
+  "wpn_fort17": [
+    "mag_fort_9x18_default"
+  ],
+  "wpn_fort_snag": [
+    "mag_fort_9x18_default"
+  ],
+  "wpn_g3": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_g36": [
+    "mag_g36_5.56x45_default"
+  ],
+  "wpn_g36_camo": [
+    "mag_g36_5.56x45_default"
+  ],
+  "wpn_g36k_rwap": [
+    "mag_g36_5.56x45_default"
+  ],
+  "wpn_g36ka4_rwap": [
+    "mag_g36_5.56x45_default"
+  ],
+  "wpn_g36nimble_rwap": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_g36v_rwap": [
+    "mag_g36_5.56x45_default"
+  ],
+  "wpn_g36v_rwap_cut_kit": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_g3sg1": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_g43": [
+    "mag_g43_7.92x33_default"
+  ],
+  "wpn_glock": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_glock17": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_glock17_m1": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_glock_custom": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_glock_modern": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_grot": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_grot_short": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_grot_short_tan": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_grot_tan": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_groza": [
+    "mag_ots_9x39_default"
+  ],
+  "wpn_groza_nimble": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_hk21": [
+    "mag_hk21_7.62x51_default"
+  ],
+  "wpn_hk416": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_hk417": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_howa20": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_hpsa": [
+    "mag_hpsa_9x19_default"
+  ],
+  "wpn_k98_mauser_kit": [
+    "mag_k98_7.92x33"
+  ],
+  "wpn_k98_mod": [
+    "mag_k98_7.92x33"
+  ],
+  "wpn_k98_mod_silen98": [
+    "mag_k98_7.92x33"
+  ],
+  "wpn_kiparis": [
+    "mag_baskiparis_9x18_20",
+    "mag_baskiparis_9x18_40",
+    "mag_baskiparis_9x18_81",
+    "mag_kiparis_9x18_50",
+    "mag_kiparis_9x18_default"
+  ],
+  "wpn_kiparis_ots2_upgr_kit": [
+    "mag_baskiparis_9x18_20",
+    "mag_baskiparis_9x18_40",
+    "mag_baskiparis_9x18_81",
+    "mag_kiparis_9x18_50",
+    "mag_kiparis_9x18_default"
+  ],
+  "wpn_korth": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_korth_custom": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_kriss_vector": [
+    "mag_kriss_11.43x23_default",
+    "mag_kriss_11.43x23_ext",
+    "mag_ppp_glock_45_default"
+  ],
+  "wpn_l85": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_l85_m1": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_l85_m2": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_l85_m3": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_l85_modern": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_l96a1": [
+    "mag_l96a1_7.62x51_default"
+  ],
+  "wpn_l96a1m": [
+    "mag_bolt_300_default"
+  ],
+  "wpn_lr300": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_lr300_camo": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m16": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m16a2": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m24": [
+    "mag_m98b_300_default"
+  ],
+  "wpn_m249": [
+    "mag_m249_5.56x45_default"
+  ],
+  "wpn_m4": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m45a1": [
+    "mag_colt1911_default",
+    "mag_colt1911_extended"
+  ],
+  "wpn_m4_butcher": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m4_ru556": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m4_tac": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m4a1_camo": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m4a1_siber": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_m82": [
+    "mag_m82_12.7x55_default"
+  ],
+  "wpn_m98b": [
+    "mag_m98b_300_default"
+  ],
+  "wpn_mac10": [
+    "mag_mac10_9x18_alt",
+    "mag_mac10_9x18_ext_alt"
+  ],
+  "wpn_mk14": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_mk47": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_mk47_sup": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_mp443": [
+    "mag_mp443_9x19_default"
+  ],
+  "wpn_mp5": [
+    "mag_mp5_9x19_default",
+    "mag_mp5_9x19_extended",
+    "mag_mp5_9x19_extended50"
+  ],
+  "wpn_mp5_kurtz": [
+    "mag_mp5_9x19_default",
+    "mag_mp5_9x19_extended",
+    "mag_mp5_9x19_extended50"
+  ],
+  "wpn_mp5_nimble": [
+    "mag_frasier_11.43x23_default"
+  ],
+  "wpn_mp5sd": [
+    "mag_mp5_9x19_default",
+    "mag_mp5_9x19_extended",
+    "mag_mp5_9x19_extended50"
+  ],
+  "wpn_mp7": [
+    "mag_mp7_5.7x28_default",
+    "mag_mp7_5.7x28_small"
+  ],
+  "wpn_mp9": [
+    "mag_mp9iwp",
+    "mag_mp9iwp_ext"
+  ],
+  "wpn_oc33": [
+    "mag_oc_9x18_default"
+  ],
+  "wpn_p90": [
+    "mag_p90_5.7x28_default",
+    "mag_p90_5.7x28_ext"
+  ],
+  "wpn_p90_gs": [
+    "mag_p90_5.7x28_default",
+    "mag_p90_5.7x28_ext"
+  ],
+  "wpn_p90gamma": [
+    "mag_p90_5.7x28_default",
+    "mag_p90_5.7x28_ext"
+  ],
+  "wpn_pb": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pb_bas": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pb_bas_custom": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pkm": [
+    "mag_pkp_pkm_default"
+  ],
+  "wpn_pkm_siber": [
+    "mag_pkp_pkm_default"
+  ],
+  "wpn_pkm_zenit_siber": [
+    "mag_pkp_pkm_default"
+  ],
+  "wpn_pkm_zulus": [
+    "mag_pkp_pkm_default"
+  ],
+  "wpn_pkp": [
+    "mag_pkp_pkm_default"
+  ],
+  "wpn_pkp_siber": [
+    "mag_pkp_pkm_default"
+  ],
+  "wpn_pl15": [
+    "mag_bas_pl15_9x19",
+    "mag_bas_pl15_9x19_extended"
+  ],
+  "wpn_pl15_pl15_scolaz": [
+    "mag_bas_pl15_9x19",
+    "mag_bas_pl15_9x19_extended"
+  ],
+  "wpn_pl15_tan": [
+    "mag_bas_pl15_9x19",
+    "mag_bas_pl15_9x19_extended"
+  ],
+  "wpn_pl15_tan_pl15_scolaz": [
+    "mag_bas_pl15_9x19",
+    "mag_bas_pl15_9x19_extended"
+  ],
+  "wpn_pm": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pm_actor": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pm_bas": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pm_bas_actor": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pm_bas_custom": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pm_custom": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pmm_bas": [
+    "mag_pm_9x18_default",
+    "mag_pmm_9x18_default"
+  ],
+  "wpn_pp2000": [
+    "mag_pp2000_9x19_default",
+    "mag_pp2000_9x19_ext"
+  ],
+  "wpn_pp2000_operator": [
+    "mag_pp2000_9x19_default",
+    "mag_pp2000_9x19_ext"
+  ],
+  "wpn_ppsh41": [
+    "mag_ppsh_7.62x25_default",
+    "mag_ppsh_7.62x25_stick"
+  ],
+  "wpn_ppsh41_rednew": [
+    "mag_ppsh_7.62x25_default",
+    "mag_ppsh_7.62x25_stick"
+  ],
+  "wpn_ppsh41_woodnew": [
+    "mag_ppsh_7.62x25_default",
+    "mag_ppsh_7.62x25_stick"
+  ],
+  "wpn_raptr": [
+    "mag_raptr_12x76_default"
+  ],
+  "wpn_remington700": [
+    "mag_rem_7.62x51_default",
+    "mag_remington700_7.62x51"
+  ],
+  "wpn_remington700_archangel": [
+    "mag_remingtonarchangel_7.62x51"
+  ],
+  "wpn_remington700_lapua700": [
+    "mag_remingtonla_300_gamma"
+  ],
+  "wpn_remington700_magpul_pro": [
+    "mag_rem_7.62x51_default",
+    "mag_remington700_7.62x51"
+  ],
+  "wpn_remington700_mod_x_gen3": [
+    "mag_rem_7.62x51_default",
+    "mag_remington700_7.62x51"
+  ],
+  "wpn_rpd": [
+    "mag_rpd_7.62x39_default"
+  ],
+  "wpn_rpk": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_rpk74": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_rpk74_16": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_rpk74_16_drum": [
+    "mag_95_545x39_drum",
+    "mag_ak_5.45x39_default",
+    "mag_ak_5.45x39_extended",
+    "mag_ak_5.45x39_fast",
+    "mag_ak_5.45x39_modern",
+    "mag_rpk_5.45x39_default"
+  ],
+  "wpn_saiga12s": [
+    "mag_saiga12_drum",
+    "mag_saiga12s_12x70_default",
+    "mag_saiga12s_12x70_extended"
+  ],
+  "wpn_saiga12s_isg": [
+    "mag_saiga12_drum",
+    "mag_saiga12s_12x70_default",
+    "mag_saiga12s_12x70_extended"
+  ],
+  "wpn_saiga12s_m1": [
+    "mag_saiga12_drum",
+    "mag_saiga12s_12x70_default",
+    "mag_saiga12s_12x70_extended"
+  ],
+  "wpn_saiga12s_m2": [
+    "mag_saiga12_drum",
+    "mag_saiga12s_12x70_default",
+    "mag_saiga12s_12x70_extended"
+  ],
+  "wpn_scar_new": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_scar_siber": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_scar_siber_black": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_scar_siber_m1": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_scar_siber_m1_black": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_scar_siber_m2": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_scar_siber_m2_custom": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_sig220": [
+    "mag_sigp220_default",
+    "mag_sigp220_extended"
+  ],
+  "wpn_sig220_n": [
+    "mag_sigp220_default",
+    "mag_sigp220_extended"
+  ],
+  "wpn_sig220_n_u2p2g0r": [
+    "mag_p220_9x19_u2p2bas"
+  ],
+  "wpn_sig220_n_upg220": [
+    "mag_sigp220_default",
+    "mag_sigp220_extended"
+  ],
+  "wpn_sig220_u2p2g0r": [
+    "mag_p220_9x19_u2p2bas"
+  ],
+  "wpn_sig220_upg220": [
+    "mag_sigp220_default",
+    "mag_sigp220_extended"
+  ],
+  "wpn_sig226": [
+    "mag_bas_sig226_9x19",
+    "mag_bas_sig226_9x19_extended"
+  ],
+  "wpn_sig226_226sig_kit": [
+    "mag_bas_sig226_9x19",
+    "mag_bas_sig226_9x19_extended"
+  ],
+  "wpn_sig550": [
+    "mag_sig_5.56x45_default",
+    "mag_sig_5.56x45_sniper"
+  ],
+  "wpn_sig550_camo": [
+    "mag_sig_5.56x45_default",
+    "mag_sig_5.56x45_sniper"
+  ],
+  "wpn_sig550_custom": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_sig550_luckygun": [
+    "mag_sig_5.56x45_default",
+    "mag_sig_5.56x45_sniper"
+  ],
+  "wpn_sig550_sniper": [
+    "mag_sig_5.56x45_default",
+    "mag_sig_5.56x45_sniper"
+  ],
+  "wpn_sig552": [
+    "mag_sig_5.56x45_default",
+    "mag_sig_5.56x45_sniper"
+  ],
+  "wpn_sks_molot": [
+    "mag_sks_7.62x39",
+    "mag_sks_7.62x39_extended"
+  ],
+  "wpn_sks_tac": [
+    "mag_sks_7.62x39",
+    "mag_sks_7.62x39_extended"
+  ],
+  "wpn_sr1m": [
+    "mag_sr1m_9x21_default",
+    "mag_sr1m_9x21_extended"
+  ],
+  "wpn_sr1m_gurza_up": [
+    "mag_sr1m_9x21_default",
+    "mag_sr1m_9x21_extended"
+  ],
+  "wpn_sr1m_sr1upgr1": [
+    "mag_sr1m_9x21_default",
+    "mag_sr1m_9x21_extended"
+  ],
+  "wpn_sr25": [
+    "mag_50_762x51_drum",
+    "mag_lancer",
+    "mag_stanag_7.62x51_default",
+    "mag_stanag_7.62x51_extended",
+    "mag_stanag_7.62x51_fast",
+    "mag_stanag_7.62x51_short"
+  ],
+  "wpn_sr2_m1": [
+    "mag_sr2m_9x21_veresk"
+  ],
+  "wpn_sr2_veresk": [
+    "mag_sr2m_9x21_veresk"
+  ],
+  "wpn_sr2_veresk_sr2_upkit": [
+    "mag_sr2m_9x21_veresk"
+  ],
+  "wpn_steyr_scout": [
+    "mag_steyr_556"
+  ],
+  "wpn_steyr_scout_big": [
+    "mag_steyr_762"
+  ],
+  "wpn_sv98": [
+    "mag_sv98_7.62x54_default"
+  ],
+  "wpn_sv98_custom": [
+    "mag_sv98_7.62x54_default"
+  ],
+  "wpn_svd": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svd_m1": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svd_nimble": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svds": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svds_pmc": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svt40": [
+    "mag_svt_7.62x54_default"
+  ],
+  "wpn_svu": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svu_alt": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_svu_nimble": [
+    "mag_svd_7.62x54_default",
+    "mag_svd_7.62x54_extended"
+  ],
+  "wpn_thompson_1921": [
+    "mag_1921_11.43x23_default"
+  ],
+  "wpn_thompson_m1a1": [
+    "mag_m1a1_11.43x23_default"
+  ],
+  "wpn_toz106": [
+    "mag_bas_toz106",
+    "mag_bas_toz106m1"
+  ],
+  "wpn_toz106_m1": [
+    "mag_bas_toz106",
+    "mag_bas_toz106m1"
+  ],
+  "wpn_trg": [
+    "mag_remingtonla_300_gamma"
+  ],
+  "wpn_tt33": [
+    "mag_tt33_7.62x25_default",
+    "mag_tt33_7.62x25_ext"
+  ],
+  "wpn_tt33_modern": [
+    "mag_tt33_7.62x25_default",
+    "mag_tt33_7.62x25_ext"
+  ],
+  "wpn_tt33_modern_tt_upgr_kit": [
+    "mag_tt33_7.62x25_default",
+    "mag_tt33_7.62x25_ext"
+  ],
+  "wpn_tt33_tt_upgr_kit": [
+    "mag_tt33_7.62x25_default",
+    "mag_tt33_7.62x25_ext"
+  ],
+  "wpn_type63": [
+    "mag_75_762x39_drum",
+    "mag_ak_7.62x39_default",
+    "mag_ak_7.62x39_fast",
+    "mag_ak_7.62x39_modern",
+    "mag_akalfa_7.62x39_bas",
+    "mag_rpk_7.62x39_default",
+    "mag_t63_7.62x39_default"
+  ],
+  "wpn_udp9": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_ump45": [
+    "mag_ump45_11.43x23_default"
+  ],
+  "wpn_ump45_custom": [
+    "mag_ump45_11.43x23_default"
+  ],
+  "wpn_usas12": [
+    "mag_raptr_12x76_default"
+  ],
+  "wpn_usp": [
+    "mag_mk23_45",
+    "mag_usp_11.43x23_default"
+  ],
+  "wpn_usp_tac": [
+    "mag_usptac_9x19",
+    "mag_usptac_9x19_extended"
+  ],
+  "wpn_usp_tac_45": [
+    "mag_mk23_45",
+    "mag_usp_11.43x23_default"
+  ],
+  "wpn_uzi": [
+    "mag_uzi_9x19_default",
+    "mag_uzi_9x19_extended"
+  ],
+  "wpn_uzi_micro": [
+    "mag_uzi_9x19_default",
+    "mag_uzi_9x19_extended"
+  ],
+  "wpn_uzi_mini": [
+    "mag_uzi_9x19_default",
+    "mag_uzi_9x19_extended"
+  ],
+  "wpn_val": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_val_modern": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_val_tac": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vepr": [
+    "mag_vepr_12x70_compact",
+    "mag_vepr_12x70_default"
+  ],
+  "wpn_vihr": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vintorez": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vintorez_isg": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vintorez_m1": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vintorez_m2": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vintorez_n1": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vintorez_nimble": [
+    "mag_val_9x39_default",
+    "mag_vihr_9x39_default",
+    "mag_vss_9x39_default"
+  ],
+  "wpn_vityaz": [
+    "mag_vityaz_9x19_default"
+  ],
+  "wpn_vityaz_vitup": [
+    "mag_vityaz_9x19_default"
+  ],
+  "wpn_vsk94": [
+    "mag_vsk_9x39_default"
+  ],
+  "wpn_vssk": [
+    "mag_vsk_12.7x55_default"
+  ],
+  "wpn_vz61": [
+    "mag_basvz61_9x19_30",
+    "mag_basvz61_9x19_60",
+    "mag_vz61_9x19_default"
+  ],
+  "wpn_vz61_alt": [
+    "mag_basvz61_9x19_30",
+    "mag_basvz61_9x19_60",
+    "mag_vz61_9x19_default"
+  ],
+  "wpn_wa2000": [
+    "mag_wa_7.62x51_default"
+  ],
+  "wpn_walther": [
+    "mag_wp99_9x19",
+    "mag_wp99_9x19_extended"
+  ],
+  "wpn_walther_mod9": [
+    "mag_wp99_9x19",
+    "mag_wp99_9x19_extended"
+  ],
+  "wpn_walther_p99": [
+    "mag_wp99_9x19",
+    "mag_wp99_9x19_extended"
+  ],
+  "wpn_walther_p99_mod9": [
+    "mag_wp99_9x19",
+    "mag_wp99_9x19_extended"
+  ],
+  "wpn_xm4": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_xm4_admin": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_xm4_bd": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_xm8": [
+    "mag_g36_5.56x45_default"
+  ]
+}

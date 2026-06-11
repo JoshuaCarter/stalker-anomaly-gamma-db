@@ -9,7 +9,7 @@ heavy_repair_kit,st_exolight_repair_kit,2,recipe_advanced_0,,st_medium_repair_ki
 heavy_sewing_thread,st_heavy_sewing_thread,1,recipe_basic_0,,st_sewing_thread,x4,st_sewing_kit_b,x3,st_swiss,x1,,
 helm_cloth_mask,st_helm_cloth_mask,1,recipe_basic_0,,st_prt_o_fabrics_1,x5,st_prt_o_fabrics_2,x5,st_prt_o_fabrics_3,x5,st_sewing_thread,x1
 itm_advancedkit,st_itm_advancedkit_name,1,recipe_basic_0,,st_itm_basickit_name,x5,st_prt_i_scrap,x5,,,,
-itm_ammokit,st_itm_ammokit,1,recipe_basic_1,st_gamma_recipe_basic_1,st_itm_basickit_name,x2,st_powder_mag,x6,st_rifle7_ap_rounds,x6,,
+itm_ammokit,st_itm_ammokit,1,recipe_basic_1,st_gamma_recipe_basic_1,st_itm_basickit_name,x2,st_powder_mag,x6,st_rifle7_ap_rounds,x6,st_prt_i_copper,x8
 itm_drugkit,st_itm_drugkit,1,recipe_basic_1,st_gamma_recipe_basic_1,st_itm_basickit_name,x2,st_medkit_science,x3,st_rebirth,x1,st_drug_anabiotic,x1
 light_repair_kit,st_light_repair_kit,1,recipe_basic_0,,st_glue_a,x2,st_glue_b,x2,st_sewing_thread,x4,st_swiss,x3
 medium_repair_kit,st_medium_repair_kit,2,recipe_advanced_0,,st_sewing_kit_b,x3,st_heavy_sewing_thread,x2,st_glue_b,x3,st_grooming,x2
