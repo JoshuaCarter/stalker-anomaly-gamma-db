@@ -1,6 +1,9 @@
 {
   "name": "gamma-tools",
   "private": true,
+  "engines": {
+    "node": ">=20.11"
+  },
   "scripts": {
     "start": "npm run dev",
     "dev": "vite",

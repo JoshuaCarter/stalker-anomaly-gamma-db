@@ -7,7 +7,7 @@
             :key="i"
             class="loadout-diff-tab"
             :class="{ active: startingLoadoutsDifficulty === i }"
-            @click="$emit('update:startingLoadoutsDifficulty', i)"
+            @click="selectDifficulty(i)"
         >
             <span class="loadout-diff-label">{{ difficultyLabel(i) }}</span>
             <span class="loadout-diff-pts">{{ pts.toLocaleString() }} {{ t('app_loadout_points') }}</span>
@@ -62,38 +62,52 @@
                     <a href="#" @click.prevent.stop="clearAll()">{{ t('app_loadout_clear') }}</a>
                 </span>
             </div>
-            <div class="loadout-item-grid">
+            <div class="loadout-tile-grid">
                 <div
                     v-for="item in allSelectableItems"
                     :key="'p-' + item.id"
-                    class="loadout-item"
-                    :class="{ selected: getQty(item.id) > 0 }"
+                    class="loadout-tile"
+                    :class="{ selected: getQty(item.id) > 0, unaffordable: getQty(item.id) === 0 && remainingPoints < item.cost }"
                 >
-                    <!-- Checkbox for qty=1 items -->
-                    <label v-if="item.quantity === 1" class="loadout-checkbox" @click.stop>
-                        <input type="checkbox" :checked="getQty(item.id) > 0" @change="toggleItem(item.id)">
-                        <span class="loadout-checkmark"></span>
-                    </label>
-                    <!-- Stepper for qty>1 items -->
-                    <div v-else class="loadout-stepper" @click.stop>
-                        <button class="loadout-stepper-btn" :disabled="getQty(item.id) <= 0" @click="stepQty(item.id, -1, item.quantity)">&#8722;</button>
-                        <span class="loadout-stepper-val">{{ getQty(item.id) }}/{{ item.quantity }}</span>
-                        <button class="loadout-stepper-btn" :disabled="getQty(item.id) >= item.quantity" @click="stepQty(item.id, 1, item.quantity)">+</button>
+                    <!-- Cost stamp (top-left) -->
+                    <span class="loadout-tile-cost" :title="item.cost + ' ' + t('app_loadout_points')">{{ item.cost }} <span class="loadout-tile-cost-unit">{{ t('app_loadout_points') }}</span></span>
+                    <!-- Corner badges (top-right): difficulty lock + faction-only -->
+                    <div class="loadout-tile-badges">
+                        <span v-if="item.difficultyLock === 1" class="loadout-lock" :title="t('app_loadout_stalker_veteran_only')">TS</span>
+                        <span v-else-if="item.difficultyLock === 2" class="loadout-lock lock-hard" :title="t('app_loadout_stalker_only')">T</span>
+                        <span v-if="item.isFactionOnly" class="loadout-faction-tag" :title="t(activeFactionId)">
+                            <img v-if="factionIcon(activeFactionId)" :src="'/img/' + factionIcon(activeFactionId)" class="loadout-faction-tag-icon">
+                        </span>
+                    </div>
+                    <div
+                        class="loadout-tile-icon"
+                        :class="{ clickable: indexById[item.id] }"
+                        @click="indexById[item.id] && $emit('navigateToItem', item.id)"
+                        @mouseenter="indexById[item.id] && $emit('showItemHover', item.id, $event)"
+                        @mousemove="indexById[item.id] && $emit('moveItemHover', $event)"
+                        @mouseleave="$emit('hideItemHover')"
+                    >
+                        <img :src="'/img/icons/' + item.id + '.png'" :alt="itemName(item.id)" loading="lazy" @error="$event.target.style.visibility = 'hidden'">
                     </div>
                     <span
-                        class="loadout-item-name"
+                        class="loadout-tile-name"
                         :class="{ clickable: indexById[item.id] }"
                         @click="indexById[item.id] && $emit('navigateToItem', item.id)"
                         @mouseenter="indexById[item.id] && $emit('showItemHover', item.id, $event)"
                         @mousemove="indexById[item.id] && $emit('moveItemHover', $event)"
                         @mouseleave="$emit('hideItemHover')"
                     >{{ itemName(item.id) }}</span>
-                    <span v-if="item.isFactionOnly" class="loadout-faction-tag" :title="t(activeFactionId)">
-                        <img v-if="factionIcon(activeFactionId)" :src="'/img/' + factionIcon(activeFactionId)" class="loadout-faction-tag-icon">
-                    </span>
-                    <span v-if="item.difficultyLock === 1" class="loadout-lock" :title="t('app_loadout_stalker_veteran_only')">TS</span>
-                    <span v-else-if="item.difficultyLock === 2" class="loadout-lock lock-hard" :title="t('app_loadout_stalker_only')">T</span>
-                    <span class="loadout-cost">{{ item.cost }} {{ t('app_loadout_points') }}</span>
+                    <!-- Checkbox for qty=1 items -->
+                    <label v-if="item.quantity === 1" class="loadout-checkbox loadout-tile-control" @click.stop>
+                        <input type="checkbox" :checked="getQty(item.id) > 0" :disabled="getQty(item.id) === 0 && remainingPoints < item.cost" @change="toggleItem(item.id)">
+                        <span class="loadout-checkmark"></span>
+                    </label>
+                    <!-- Stepper for qty>1 items -->
+                    <div v-else class="loadout-stepper loadout-tile-control" @click.stop>
+                        <button class="loadout-stepper-btn" :disabled="getQty(item.id) <= 0" @click="stepQty(item.id, -1, item.quantity)">&#8722;</button>
+                        <span class="loadout-stepper-val">{{ getQty(item.id) }}/{{ item.quantity }}</span>
+                        <button class="loadout-stepper-btn" :disabled="getQty(item.id) >= item.quantity || remainingPoints < item.cost" @click="stepQty(item.id, 1, item.quantity)">+</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,24 +152,36 @@
                 <span>{{ t('app_loadout_free_items') }}</span>
                 <span class="loadout-section-count">{{ allFreeItems.length }}</span>
             </div>
-            <div class="loadout-item-grid">
+            <div class="loadout-tile-grid">
                 <div
                     v-for="item in allFreeItems"
                     :key="'f-' + item.id"
-                    class="loadout-item"
+                    class="loadout-tile loadout-tile-free"
                 >
+                    <span v-if="item.quantity > 1" class="loadout-tile-qty">&times;{{ item.quantity }}</span>
+                    <div class="loadout-tile-badges">
+                        <span v-if="item.isFactionOnly" class="loadout-faction-tag" :title="t(activeFactionId)">
+                            <img v-if="factionIcon(activeFactionId)" :src="'/img/' + factionIcon(activeFactionId)" class="loadout-faction-tag-icon">
+                        </span>
+                    </div>
+                    <div
+                        class="loadout-tile-icon"
+                        :class="{ clickable: indexById[item.id] }"
+                        @click="indexById[item.id] && $emit('navigateToItem', item.id)"
+                        @mouseenter="indexById[item.id] && $emit('showItemHover', item.id, $event)"
+                        @mousemove="indexById[item.id] && $emit('moveItemHover', $event)"
+                        @mouseleave="$emit('hideItemHover')"
+                    >
+                        <img :src="'/img/icons/' + item.id + '.png'" :alt="itemName(item.id)" loading="lazy" @error="$event.target.style.visibility = 'hidden'">
+                    </div>
                     <span
-                        class="loadout-item-name"
+                        class="loadout-tile-name"
                         :class="{ clickable: indexById[item.id] }"
                         @click="indexById[item.id] && $emit('navigateToItem', item.id)"
                         @mouseenter="indexById[item.id] && $emit('showItemHover', item.id, $event)"
                         @mousemove="indexById[item.id] && $emit('moveItemHover', $event)"
                         @mouseleave="$emit('hideItemHover')"
                     >{{ itemName(item.id) }}</span>
-                    <span v-if="item.quantity > 1" class="loadout-qty">&times;{{ item.quantity }}</span>
-                    <span v-if="item.isFactionOnly" class="loadout-faction-tag" :title="t(activeFactionId)">
-                        <img v-if="factionIcon(activeFactionId)" :src="'/img/' + factionIcon(activeFactionId)" class="loadout-faction-tag-icon">
-                    </span>
                 </div>
             </div>
         </div>
@@ -164,6 +190,15 @@
 </template>
 
 <script>
+import { CAT } from "../../js/constants.js";
+
+/** Ordering groups: weapons first, then armor, then everything else. */
+const WEAPON_CATEGORIES = new Set([
+    CAT.PISTOLS, CAT.SMGS, CAT.SHOTGUNS, CAT.RIFLES, CAT.SNIPERS,
+    CAT.LAUNCHERS, CAT.MELEE, CAT.GRENADE_LAUNCHERS,
+]);
+const ARMOR_CATEGORIES = new Set([CAT.OUTFITS, CAT.HELMETS]);
+
 export default {
     name: "StartingLoadoutsView",
     inject: ["t", "factionIcon"],
@@ -211,10 +246,10 @@ export default {
             ];
         },
         allFreeItems() {
-            return this.allVisibleItems.filter(i => !i.selectable).sort((a, b) => this.itemName(a.id).localeCompare(this.itemName(b.id)));
+            return this.allVisibleItems.filter(i => !i.selectable).sort((a, b) => this.compareByCategory(a, b));
         },
         allSelectableItems() {
-            return this.allVisibleItems.filter(i => i.selectable).sort((a, b) => this.itemName(a.id).localeCompare(this.itemName(b.id)));
+            return this.allVisibleItems.filter(i => i.selectable).sort((a, b) => this.compareByCategory(a, b));
         },
         selectedCost() {
             const sel = this.currentSelections;
@@ -272,8 +307,41 @@ export default {
                 }
             },
         },
+        // Restore the saved difficulty once the data (and its points array) is available
+        startingLoadoutsData: {
+            immediate: true,
+            handler(data) {
+                if (!data || this._difficultyRestored) return;
+                this._difficultyRestored = true;
+                try {
+                    const stored = parseInt(localStorage.getItem("loadoutDifficulty"), 10);
+                    const max = (data.points?.length || 1) - 1;
+                    if (!isNaN(stored) && stored >= 0 && stored <= max && stored !== this.startingLoadoutsDifficulty) {
+                        this.$emit("update:startingLoadoutsDifficulty", stored);
+                    }
+                } catch { /* private mode */ }
+            },
+        },
+    },
+    created() {
+        // Non-reactive guard so the difficulty is only restored from storage once
+        this._difficultyRestored = false;
     },
     methods: {
+        categoryRank(id) {
+            const cat = this.indexById[id]?.category;
+            if (WEAPON_CATEGORIES.has(cat)) return 0;
+            if (ARMOR_CATEGORIES.has(cat)) return 1;
+            return 2;
+        },
+        compareByCategory(a, b) {
+            return (this.categoryRank(a.id) - this.categoryRank(b.id))
+                || this.itemName(a.id).localeCompare(this.itemName(b.id));
+        },
+        selectDifficulty(i) {
+            try { localStorage.setItem("loadoutDifficulty", String(i)); } catch { /* private mode */ }
+            this.$emit("update:startingLoadoutsDifficulty", i);
+        },
         difficultyLabel(index) {
             const keys = ["app_loadout_difficulty_stalker", "app_loadout_difficulty_veteran", "app_loadout_difficulty_master"];
             return this.t(keys[index]) || ["Stalker", "Veteran", "Master"][index];
@@ -579,12 +647,174 @@ export default {
     text-decoration: underline;
 }
 
-/* Item grid */
+/* Item grid (ammo rows still use this) */
 .loadout-item-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 0.25rem;
     padding: 0.35rem 0;
+}
+
+/* Tile grid (purchasable + free items) */
+.loadout-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 0.45rem;
+    padding: 0.35rem 0;
+}
+
+.loadout-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5rem 0.3rem 0.45rem;
+    transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+}
+
+.loadout-tile:hover {
+    border-color: var(--accent-dim);
+    background: var(--color-accent-tint-5);
+}
+
+.loadout-tile.selected,
+.loadout-tile.selected:hover {
+    border-color: var(--accent);
+    background: var(--color-accent-tint-12);
+    box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* Can't afford with the points left — muted, buy control disabled */
+.loadout-tile.unaffordable {
+    opacity: 0.45;
+}
+
+.loadout-tile.unaffordable:hover {
+    border-color: var(--border);
+    background: var(--color-surface-2);
+}
+
+/* Free tiles read as "issued", not purchasable */
+.loadout-tile-free {
+    border-style: dashed;
+}
+
+.loadout-tile-icon {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadout-tile-icon.clickable {
+    cursor: pointer;
+}
+
+.loadout-tile-icon img {
+    height: 42px;
+    max-width: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.loadout-tile-name {
+    font-size: 0.64rem;
+    line-height: 1.2;
+    /* Reserve two lines so the control below always starts at the same height,
+       whether the name wraps to one line or two */
+    min-height: calc(0.64rem * 1.2 * 2);
+    color: var(--text-secondary);
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+}
+
+.loadout-tile-name.clickable {
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.loadout-tile-name.clickable:hover {
+    text-decoration: underline;
+}
+
+.loadout-tile:hover .loadout-tile-name:not(.clickable) {
+    color: var(--text);
+}
+
+/* Cost stamp (top-left); turns "spent" orange when selected */
+.loadout-tile-cost {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--color-overlay-black-60, rgba(0, 0, 0, 0.55));
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 3px;
+    line-height: 14px;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.loadout-tile-cost-unit {
+    opacity: 0.7;
+}
+
+.loadout-tile.selected .loadout-tile-cost {
+    color: var(--color-accent-orange);
+    border-color: var(--color-accent-tint-35);
+}
+
+/* Free-item quantity badge reuses the top-left slot (no cost to show) */
+.loadout-tile-qty {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--color-overlay-black-60, rgba(0, 0, 0, 0.55));
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 3px;
+    line-height: 14px;
+}
+
+/* Corner badges (top-right): difficulty lock stacked over faction-only mark */
+.loadout-tile-badges {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+/* Buy control pinned to the foot of the tile in a fixed-height slot, so the
+   checkbox (14px) and stepper (18px) share the same vertical box and line up
+   across every tile regardless of which control a tile uses.
+   The descendant selector raises specificity above `.loadout-checkbox`'s own
+   `height: 14px`, which is defined later in this file and would otherwise win. */
+.loadout-tile .loadout-tile-control {
+    margin-top: auto;
+    height: 18px;
+}
+
+.loadout-checkbox input:disabled + .loadout-checkmark {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 /* Item row */

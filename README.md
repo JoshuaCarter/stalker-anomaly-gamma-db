@@ -35,6 +35,8 @@ node scripts/generate-index.mjs --pack <pack-id>
 
 Output is written to `site/public/data/<pack>/`.
 
+**Adding a new modpack?** See **[docs/adding-a-mod-pack.md](docs/adding-a-mod-pack.md)** for the full end-to-end guide — exporting data, importing CSVs, optional inputs, icons, running the pipeline, and registering the pack in the UI.
+
 ## Development
 
 ```bash
