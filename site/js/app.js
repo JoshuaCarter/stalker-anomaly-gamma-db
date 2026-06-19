@@ -4463,7 +4463,13 @@ export const appDefinition = {
             }
             if (h === "ui_ammo_types" || h === "st_data_export_ammo_types_alt") return this.caliberName(val);
             if (h === "ui_st_community") return this.t(val);
-            if (h === "st_data_export_zoom_factor" || h === "st_data_export_magnifications") return `${val}x`;
+            if (h === "st_data_export_zoom_factor") return `${val}x`;
+            if (h === "st_data_export_magnifications") {
+                // "3-10" → "3–10x" (variable range); "1,4" → "1x/4x" (discrete modes, e.g. SpecterDR)
+                const mag = String(val);
+                if (mag.includes(",")) return mag.split(",").map(v => v.trim() + "x").join("/");
+                return `${mag.replace(/-/g, "–")}x`;
+            }
 
             const s = String(val);
             const isPct = s.includes("%");

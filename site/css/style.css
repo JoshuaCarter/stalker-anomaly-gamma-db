@@ -2295,6 +2295,30 @@ input.range-input {
     max-width: 6rem;
     transition: background 0.15s;
     vertical-align: top;
+    position: relative;
+}
+/* The icon sits on a soft, rounded "specimen plate" that hugs just the artwork —
+   gives each item a distinct footprint without boxing the whole tile. */
+.addon-img-tile-fig {
+    position: relative;
+    display: inline-flex;
+}
+/* Stat overlay on a compatible tile — scope magnification ("4×") or magazine capacity ("30").
+   Anchored to the plate's top-right corner so it tracks the icon, not the tile. */
+.addon-img-tile-badge {
+    position: absolute;
+    top: -0.3rem;
+    right: -0.3rem;
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    padding: 0.12rem 0.26rem;
+    border-radius: 3px;
+    background: var(--color-teal-tint-30);
+    color: var(--text-primary);
+    pointer-events: none;
 }
 .addon-img-tile-icon {
     width: auto;
@@ -2304,6 +2328,24 @@ input.range-input {
     image-rendering: pixelated;
     display: block;
 }
+/* Soft pool of light under the artwork — scoped to the modal's compatible-section
+   tiles only (the same class is reused bare for main-grid icons). Fades to transparent
+   so there are no box edges; gives each item a visible footprint without reading as a card. */
+.addon-img-tile .addon-img-tile-icon {
+    box-sizing: content-box;
+    padding: 0.5rem 0.7rem;
+    background: radial-gradient(ellipse at center,
+        rgba(255, 255, 255, 0.11) 0%,
+        rgba(255, 255, 255, 0.05) 48%,
+        transparent 72%);
+    transition: background 0.15s;
+}
+.addon-img-tile:hover .addon-img-tile-icon {
+    background: radial-gradient(ellipse at center,
+        rgba(200, 168, 78, 0.30) 0%,
+        rgba(200, 168, 78, 0.10) 50%,
+        transparent 74%);
+}
 .addon-img-tile-name {
     font-size: 0.55rem;
     text-align: center;
@@ -2312,14 +2354,6 @@ input.range-input {
     color: var(--text-secondary);
     max-width: 5.5rem;
 }
-.addon-img-tile-scope  { background: var(--color-teal-tint-14); }
-.addon-img-tile-scope:hover  { background: var(--color-teal-tint-30); }
-.addon-img-tile-silencer { background: var(--color-blue-tint-14); }
-.addon-img-tile-silencer:hover { background: var(--color-blue-tint-30); }
-.addon-img-tile-launcher { background: var(--color-orange-warm-tint-14); }
-.addon-img-tile-launcher:hover { background: var(--color-orange-warm-tint-30); }
-.addon-img-tile-kit { background: var(--color-purple-tint-12); }
-.addon-img-tile-kit:hover { background: var(--color-purple-tint-20); }
 .addon-tile-grid {
     display: flex;
     flex-wrap: wrap;

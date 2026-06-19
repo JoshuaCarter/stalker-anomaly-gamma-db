@@ -133,6 +133,11 @@
                                 class="modal-item-faction-badge"
                                 v-tooltip="t(modalItem.ui_st_community)"
                             />
+                            <span
+                                v-if="scopeZoomLabel"
+                                class="modal-scope-zoom-badge"
+                                v-tooltip="headerLabel('st_data_export_magnifications')"
+                            >{{ scopeZoomLabel }}</span>
                         </div>
                         <p v-if="parsedDescription" class="modal-description">{{ parsedDescription.text }}</p>
                         <div v-if="parsedDescription && parsedDescription.sections.length" class="modal-desc-meta">
@@ -258,7 +263,10 @@
                     <h2 class="section-toggle" @click="toggleSection('scopes')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_scopes') }}</h2>
                     <div class="addon-tile-grid">
                         <a v-for="addon in modalWeaponAddons.scopes" :key="addon.id" href="#" class="addon-img-tile addon-img-tile-scope" @mouseenter="showItemHover(addon, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', addon.id)">
-                            <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-fig">
+                                <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                                <span v-if="zoomBadge(addon)" class="addon-img-tile-badge">{{ zoomBadge(addon) }}</span>
+                            </span>
                             <span class="addon-img-tile-name">{{ t(addon.pda_encyclopedia_name) }}</span>
                         </a>
                     </div>
@@ -302,7 +310,10 @@
                     <h2 class="section-toggle" @click="toggleSection('magazines')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_magazines') }}</h2>
                     <div class="addon-tile-grid">
                         <a v-for="mag in modalCompatibleMagazines" :key="mag.id" href="#" class="addon-img-tile" @mouseenter="showItemHover(mag, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', mag.id)">
-                            <img class="addon-img-tile-icon" :src="'img/icons/' + mag.id + '.png'" :alt="t(mag.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-fig">
+                                <img class="addon-img-tile-icon" :src="'img/icons/' + mag.id + '.png'" :alt="t(mag.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                                <span v-if="capacityBadge(mag)" class="addon-img-tile-badge">{{ capacityBadge(mag) }}</span>
+                            </span>
                             <span class="addon-img-tile-name">{{ t(mag.pda_encyclopedia_name) }}</span>
                         </a>
                     </div>
@@ -575,6 +586,11 @@ export default {
     isAddonItem() {
       return ['Scopes', 'Silencers', 'Grenade Launchers', 'Tactical Kits'].includes(this.modalCategory);
     },
+    // Small magnification label overlaid on a scope's icon, e.g. "4×" or "3–10×".
+    scopeZoomLabel() {
+      if (this.modalCategory !== 'Scopes') return null;
+      return this.zoomBadge(this.modalItem);
+    },
     upgradeStatDeltas() {
       if (!this.modalUpgradeNodes || !this.modalUpgradeNodes.length) return {};
 
@@ -673,6 +689,24 @@ export default {
     },
   },
   methods: {
+    // Magnification label for a scope item, e.g. "4×", "3–10×" (range), or "1×/4×" (dual-mode).
+    // Blank magnification means a non-magnifying sight (red-dot/holo) — show "1×".
+    zoomBadge(item) {
+      if (!item) return null;
+      return this.formatMagnification(item.st_data_export_magnifications) || '1×';
+    },
+    // Normalise a raw magnification value: "3-10" → "3–10×" (range), "1,4" → "1×/4×" (discrete modes).
+    formatMagnification(raw) {
+      const mag = String(raw || '').trim();
+      if (!mag) return null;
+      if (mag.includes(',')) return mag.split(',').map(v => v.trim() + '×').join('/');
+      return mag.replace(/-/g, '–') + '×';
+    },
+    // Round-capacity label for a magazine item, e.g. "30" (null when unknown/zero).
+    capacityBadge(item) {
+      const rounds = parseInt(item?.magRounds, 10);
+      return rounds > 0 ? String(rounds) : null;
+    },
     _loadCollapsedSections() {
       try {
         const raw = localStorage.getItem('modal-collapsed-sections');
@@ -920,6 +954,23 @@ export default {
     max-width: 140px;
     max-height: 60px;
     object-fit: contain;
+}
+/* Magnification overlay on a scope's icon (e.g. "4×" / "3–10×") */
+.modal-scope-zoom-badge {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    z-index: 1;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    padding: 0.18rem 0.34rem;
+    border-radius: 3px;
+    background: var(--color-teal-tint-28);
+    color: var(--text-primary);
+    pointer-events: auto;
 }
 .modal-sticky-id {
     font-size: 0.6rem;
