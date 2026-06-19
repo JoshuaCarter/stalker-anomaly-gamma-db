@@ -394,7 +394,8 @@
                     <div class="sold-by-grid">
                         <div v-for="row in modalSoldBy" :key="row.trader" class="sold-by-item">
                             <span class="sold-by-trader" :style="row.color ? { '--trader-color': row.color } : null">
-                                <span v-if="row.color" class="sold-by-dot"></span><span class="sold-by-name" v-tooltip="row.name">{{ row.name }}</span>
+                                <img v-if="row.icon" class="sold-by-faction-icon" :src="'img/' + row.icon" :alt="row.name" loading="lazy" @error="$event.target.style.display='none'" />
+                                <span v-else-if="row.color" class="sold-by-dot"></span><span class="sold-by-name" v-tooltip="row.name">{{ row.name }}</span>
                             </span>
                             <span class="sold-by-tier" v-tooltip="row.tooltip">{{ row.badge }}</span>
                         </div>
@@ -451,7 +452,7 @@
                     <div class="used-by-grid">
                         <div v-for="w in modalUsedByWeapons" :key="w.id" class="used-by-item">
                             <a href="#" @click.prevent="$emit('navigateToItem', w.id)">{{ tName(w) }}</a>
-                            <span class="used-by-cat">{{ tCat(w.category) }}</span>
+                            <span class="used-by-cat">{{ t(singularCategory(w.category)) || tCat(w.category) }}</span>
                             <span v-if="w.isAlt" class="badge-ammo badge-ammo-alt ammo-alt-tag">{{ t('app_badge_alt') }}</span>
                         </div>
                     </div>
@@ -1083,6 +1084,12 @@ export default {
     height: 0.5rem;
     border-radius: 50%;
     background: var(--trader-color, var(--color-accent));
+}
+.sold-by-faction-icon {
+    flex-shrink: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    object-fit: contain;
 }
 .sold-by-tier {
     flex-shrink: 0;

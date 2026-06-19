@@ -612,6 +612,13 @@ export const appDefinition = {
             const noReq = this.t('app_label_no_supply_req') || 'Available at base supply';
             const reqWord = this.t('app_label_supply_requires') || 'Requires';
             const orWord = this.t('app_trading_or') || 'OR';
+            // Trader id prefix → faction community key understood by factionIcon().
+            // Unmapped prefixes (e.g. generic_*) get no icon rather than a misleading fallback.
+            const TRADER_FACTION = {
+                stalker: 'stalker', bandit: 'bandit', csky: 'csky', duty: 'duty',
+                ecolog: 'ecolog', freedom: 'freedom', greh: 'greh', isg: 'isg',
+                mercenary: 'killer', military: 'army', monolith: 'monolith',
+            };
             return this.modalSoldBy.map(e => {
                 const m = byId.get(e.trader);
                 let name = e.trader;
@@ -620,6 +627,7 @@ export const appDefinition = {
                     name = fromKey !== m.labelKey ? fromKey : (this.t(m.label) || m.label || e.trader);
                 }
                 const conds = e.cond ? parseCondition(e.cond, this.t) : [];
+                const community = TRADER_FACTION[e.trader.split('_')[0]];
                 return {
                     trader: e.trader,
                     name,
@@ -627,6 +635,7 @@ export const appDefinition = {
                     badge: e.tier === 'generic' ? 'G' : 'L' + e.tier,
                     tooltip: conds.length ? `${reqWord}: ${conds.join(` ${orWord} `)}` : noReq,
                     color: m?.color || '',
+                    icon: community ? this.factionIcon(community) : null,
                 };
             }).sort((a, b) => a.name.localeCompare(b.name));
         },
@@ -902,7 +911,7 @@ export const appDefinition = {
         modalUsedByWeapons() {
             if (!this.modalAmmoWeapons) return [];
             const list = this.modalAmmoWeapons.filter(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit));
-            list.sort((a, b) => a.name.localeCompare(b.name));
+            list.sort((a, b) => this.tName(a).localeCompare(this.tName(b)));
             return list;
         },
 
