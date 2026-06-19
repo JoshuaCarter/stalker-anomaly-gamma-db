@@ -32,6 +32,8 @@ const SKIP_COLUMNS = new Set(["br1", "br2", "br3", "br4", "br5", "br6", "br7"]);
 const SKIP_FILES = new Set([
   "export_disassemble_table.csv",
   "export_disassembles_materials.csv",
+  "export_item_parts.csv",
+  "export_item_part_defs.csv",
   "export_outfit_exchange.csv",
   "export_weapon_drop_sources.csv",
   "export_items_list.csv",
@@ -810,6 +812,91 @@ try {
   console.log("No disassemble table CSV found, skipping disassemble.json");
 }
 
+// Generate item-parts.json from export_item_parts.csv.
+// An item's physical components (Weapon Parts Overhaul) — covers both weapons and
+// outfits/helmets. Rows are wide: id, name, kind, then part section ids from column 3.
+// kind is "weapon" | "outfit" | "other" so the site can render the two families in
+// separate sections. Part fields live in item-part-defs.json (built below) and are
+// joined by id — the part ids preserve the tier suffix (several tiers share one display
+// name). Skips cleanly when the CSV is absent (WPO / itms_manager not installed, or an
+// older extract).
+const ITEM_PARTS_FILE = join(CSV_DIR, "export_item_parts.csv");
+try {
+  const ipText = readFileSync(ITEM_PARTS_FILE, "utf-8");
+  const ipLines = ipText.split(/\r?\n/).filter((l) => l.length > 0);
+  if (ipLines.length > 1) {
+    const itemParts = {};
+
+    for (let i = 1; i < ipLines.length; i++) {
+      const cols = parseCsvLine(ipLines[i]);
+      const id = cols[0]?.trim();
+      if (!id) continue;
+
+      const kind = cols[2]?.trim() || "other";
+      const parts = [];
+      for (let j = 3; j < cols.length; j++) {
+        const partId = cols[j]?.trim();
+        if (!partId) break;
+        parts.push(partId);
+      }
+
+      if (parts.length > 0) {
+        itemParts[id] = { kind, parts };
+      }
+    }
+
+    // Flag items by part family (mirrors hasDisassemble; items are already in
+    // categoryData by this point, so the flag lands in the per-category JSON files).
+    for (const [slug, data] of categoryData) {
+      for (const item of data.items) {
+        const entry = itemParts[item.id];
+        if (!entry) continue;
+        if (entry.kind === "outfit") item.hasOutfitParts = true;
+        else item.hasWeaponParts = true;
+      }
+    }
+
+    const ipOut = join(OUT_DIR, "item-parts.json");
+    writeFileSync(ipOut, JSON.stringify(itemParts, null, 2));
+    console.log(`Wrote ${Object.keys(itemParts).length} item-parts entries to ${ipOut}`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") throw e;
+  console.log("No item parts CSV found, skipping item-parts.json");
+}
+
+// Generate item-part-defs.json from export_item_part_defs.csv — one entry per unique
+// part section: id -> { name, descr, cost, weight }. name/descr are translation keys
+// resolved by the site via translations.json; cost/weight are numbers. Skips cleanly
+// when absent (same conditions as export_item_parts.csv).
+const ITEM_PART_DEFS_FILE = join(CSV_DIR, "export_item_part_defs.csv");
+try {
+  const pdText = readFileSync(ITEM_PART_DEFS_FILE, "utf-8");
+  const pdLines = pdText.split(/\r?\n/).filter((l) => l.length > 0);
+  if (pdLines.length > 1) {
+    const partDefs = {};
+
+    for (let i = 1; i < pdLines.length; i++) {
+      const cols = parseCsvLine(pdLines[i]);
+      const id = cols[0]?.trim();
+      if (!id) continue;
+
+      const name = cols[1]?.trim() || id;
+      const descr = cols[2]?.trim() || "";
+      const cost = Number(cols[3]) || 0;
+      const weight = Number(cols[4]) || 0;
+      partDefs[id] = { name, descr, cost, weight };
+    }
+
+    const pdOut = join(OUT_DIR, "item-part-defs.json");
+    writeFileSync(pdOut, JSON.stringify(partDefs, null, 2));
+    console.log(`Wrote ${Object.keys(partDefs).length} item-part-defs entries to ${pdOut}`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") throw e;
+  console.log("No item part defs CSV found, skipping item-part-defs.json");
+}
+
 // Generate upgrades.json from export_upgrade_sections.csv + export_upgrades_items.csv
 const UPGRADE_SECTIONS_FILE = join(CSV_DIR, "export_upgrade_sections.csv");
 const UPGRADE_ITEMS_FILE = join(CSV_DIR, "export_upgrades_items.csv");
@@ -889,9 +976,36 @@ try {
     for (const item of data.items) {
       if (item.id in upgrades) item.hasUpgrades = true;
 
+      const nodes = upgrades[item.id];
+
+      // Annotate ammo_class upgrade nodes. The section's ammo_class effect is
+      // either a rechamber (introduces a caliber the weapon doesn't fire by
+      // default — e.g. TOZ-106 20x70 → 12x76) or a same-caliber ammo unlock
+      // (e.g. an AK gaining AP rounds). The displayed prop/name on these nodes
+      // is often unrelated (the TOZ-106 rechamber rides on an "accuracy" node),
+      // so without this the change is invisible in the tree.
+      if (nodes) {
+        const baseCalibers = new Set(
+          String(item["ui_ammo_types"] || "")
+            .split(";").map((s) => s.trim()).filter(Boolean)
+            .map(ammoTokenToCaliber)
+        );
+        for (const node of nodes) {
+          const ac = node.stats?.ammo_class;
+          if (!ac) continue;
+          const tokens = ac.split(";").map((s) => s.trim()).filter(Boolean);
+          const newCalibers = [...new Set(tokens.map(ammoTokenToCaliber))]
+            .filter((c) => baseCalibers.size && !baseCalibers.has(c));
+          if (newCalibers.length) {
+            node.rechamberTo = newCalibers.join(", ");
+          } else {
+            node.ammoUnlock = tokens;
+          }
+        }
+      }
+
       const baseStr = item["ui_inv_outfit_artefact_count"];
       if (baseStr === undefined || baseStr === null || baseStr === "") continue;
-      const nodes = upgrades[item.id];
       if (!nodes) continue;
       let sum = 0;
       for (const node of nodes) {
