@@ -535,6 +535,7 @@
     :modal-disassemble-materials="modalDisassembleMaterials"
     :modal-upgrade-nodes="modalUpgradeNodes"
     :modal-used-by-weapons="modalUsedByWeapons"
+    :modal-sold-by="modalSoldByRows"
     :parsed-description="parsedDescription"
     :parsed-perk="parsedPerk"
     :pba-constants="pbaConstantsCache || {}"

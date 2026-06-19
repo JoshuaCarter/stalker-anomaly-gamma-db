@@ -388,6 +388,19 @@
                     </div>
                 </div>
 
+                <!-- Sold By (traders that stock this item) -->
+                <div v-if="modalSoldBy.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('sold-by') }">
+                    <h2 class="section-toggle" @click="toggleSection('sold-by')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_sold_by') }}</h2>
+                    <div class="sold-by-grid">
+                        <div v-for="row in modalSoldBy" :key="row.trader" class="sold-by-item">
+                            <span class="sold-by-trader" :style="row.color ? { '--trader-color': row.color } : null">
+                                <span v-if="row.color" class="sold-by-dot"></span><span class="sold-by-name" v-tooltip="row.name">{{ row.name }}</span>
+                            </span>
+                            <span class="sold-by-tier" v-tooltip="row.tooltip">{{ row.badge }}</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Crafting Recipe -->
                 <div v-if="modalRecipe" class="drop-sources" :class="{ collapsed: isCollapsed('recipe') }">
                     <h2 class="section-toggle" @click="toggleSection('recipe')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_crafting_recipe') }}</h2>
@@ -503,6 +516,7 @@ export default {
     modalDisassembleMaterials: { type: Array, default: null },
     modalUpgradeNodes: { type: Array, default: null },
     modalUsedByWeapons: Array,
+    modalSoldBy: { type: Array, default: () => [] },
     parsedDescription: Object,
     parsedPerk: Object,
     pbaConstants: { type: Object, default: () => ({}) },
@@ -1029,5 +1043,58 @@ export default {
 }
 .stats-help-btn:hover {
     color: var(--color-accent);
+}
+
+/* ── Sold By section ────────────────────────────────────── */
+
+.sold-by-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.4rem;
+}
+.sold-by-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--color-surface-3);
+}
+.sold-by-trader {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.sold-by-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+.sold-by-dot {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--trader-color, var(--color-accent));
+}
+.sold-by-tier {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-dim, var(--color-accent));
+    background: var(--color-accent-tint-8, var(--color-overlay-white-2));
+    border: 1px solid var(--color-accent-tint-20, var(--border));
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    cursor: help;
 }
 </style>

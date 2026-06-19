@@ -1,6 +1,7 @@
 import '../src/globals.js';
 import { markRaw } from 'vue';
 import { attachHoverPosition, prefersTouchHover } from '../src/hover-popover.js';
+import { parseCondition } from './trader-conditions.js';
 import {
     EFFECT_FIELDS, FILTER_DEFS, NAME_TAG_COLS, BADGE_COLS, MODAL_BADGE_KEYS,
     SKIP_KEYS, MAX_PINS, BUILD_HASH_PREFIX,
@@ -92,6 +93,8 @@ export const appDefinition = {
             dropsCache: null,
             itemDropsCache: null,
             stashChanceCache: null,
+            soldByCache: null,
+            tradersMetaCache: null,
             recipesCache: null,
             craftRecipesCache: null,
             disassembleCache: null,
@@ -139,6 +142,7 @@ export const appDefinition = {
             modalDrops: null,
             modalItemDrops: null,
             modalStashChance: null,
+            modalSoldBy: null,
             modalRecipeData: null,
             modalDisassemble: null,
             modalUpgradeNodes: null,
@@ -596,6 +600,35 @@ export const appDefinition = {
 
         modalDropFactions() {
             return buildDropFactions(this.modalDrops);
+        },
+
+        // Traders that stock the open item for sale, with a supply-tier badge and an
+        // unlock-requirement tooltip. Raw rows come from sold-by.json ([{trader,tier,cond}]);
+        // names resolve via traders-meta.json.
+        modalSoldByRows() {
+            if (!this.modalSoldBy || !this.modalSoldBy.length) return [];
+            const meta = Array.isArray(this.tradersMetaCache) ? this.tradersMetaCache : [];
+            const byId = new Map(meta.map(m => [m.id, m]));
+            const noReq = this.t('app_label_no_supply_req') || 'Available at base supply';
+            const reqWord = this.t('app_label_supply_requires') || 'Requires';
+            const orWord = this.t('app_trading_or') || 'OR';
+            return this.modalSoldBy.map(e => {
+                const m = byId.get(e.trader);
+                let name = e.trader;
+                if (m) {
+                    const fromKey = this.t(m.labelKey);
+                    name = fromKey !== m.labelKey ? fromKey : (this.t(m.label) || m.label || e.trader);
+                }
+                const conds = e.cond ? parseCondition(e.cond, this.t) : [];
+                return {
+                    trader: e.trader,
+                    name,
+                    tier: e.tier,
+                    badge: e.tier === 'generic' ? 'G' : 'L' + e.tier,
+                    tooltip: conds.length ? `${reqWord}: ${conds.join(` ${orWord} `)}` : noReq,
+                    color: m?.color || '',
+                };
+            }).sort((a, b) => a.name.localeCompare(b.name));
         },
 
         modalItemDropLocations() {
@@ -1838,6 +1871,14 @@ export const appDefinition = {
             return this.fetchJsonCached("stashChanceCache", "item-stash-chance.json");
         },
 
+        fetchSoldBy() {
+            return this.fetchJsonCached("soldByCache", "sold-by.json");
+        },
+
+        fetchTradersMeta() {
+            return this.fetchJsonCached("tradersMetaCache", "traders-meta.json");
+        },
+
         fetchRecipes() {
             return this.fetchJsonCached("recipesCache", "recipes.json");
         },
@@ -2538,6 +2579,7 @@ export const appDefinition = {
                 this.modalDrops = null;
                 this.modalItemDrops = null;
                 this.modalStashChance = null;
+                this.modalSoldBy = null;
                 this.modalRecipeData = null;
                 this.modalDisassemble = null;
                 this.modalUpgradeNodes = null;
@@ -2550,7 +2592,7 @@ export const appDefinition = {
                 document.body.style.overflow = "hidden";
 
                 const isWeapon = WEAPON_CATEGORIES.includes(entry.category);
-                const [drops, itemDrops, stashChance, recipeData, disassemble, ammoWeapons, upgrades] = await Promise.all([
+                const [drops, itemDrops, stashChance, recipeData, disassemble, ammoWeapons, upgrades, soldBy] = await Promise.all([
                     this.fetchDrops(),
                     this.fetchItemDrops(),
                     this.fetchStashChance(),
@@ -2558,6 +2600,8 @@ export const appDefinition = {
                     this.fetchDisassemble(),
                     this.fetchAmmoWeapons(),
                     this.fetchUpgrades(),
+                    this.fetchSoldBy(),
+                    this.fetchTradersMeta(),
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.AMMO)) : Promise.resolve(),
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.SCOPES)) : Promise.resolve(),
                     isWeapon ? this.fetchWeaponAddons() : Promise.resolve(),
@@ -2576,6 +2620,7 @@ export const appDefinition = {
                 this.modalDisassemble = disassemble[id] || null;
                 this.modalUpgradeNodes = upgrades[id] || null;
                 this.modalAmmoWeapons = ammoWeapons[id] || null;
+                this.modalSoldBy = soldBy[id] || null;
 
                 // For addon items (scopes/silencers/grenade launchers), pre-fetch compatible
                 // weapon category data so the modal can show rich stat tooltips on each weapon.

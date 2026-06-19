@@ -67,6 +67,19 @@ function parseCSV(text, fileName) {
   return rows;
 }
 
+/** Numeric rank for a supply-tier key, used to find the lowest tier an item sells at.
+ *  `supplies_generic` is always available, so it ranks below the numbered tiers. */
+function tierRank(key) {
+  if (key === 'supplies_generic') return 0;
+  const n = parseInt(key.replace('supplies_', ''), 10);
+  return Number.isFinite(n) ? n : Infinity;
+}
+
+/** Compact tier suffix for display ("1".."5" or "generic"). */
+function tierSuffix(key) {
+  return key === 'supplies_generic' ? 'generic' : key.replace('supplies_', '');
+}
+
 function processTraderDir(traderPath) {
   const files = fs.readdirSync(traderPath).filter(f => f.endsWith('.csv'));
   const traderData = {};
@@ -96,6 +109,9 @@ export function generateTraders(pack) {
     .map(d => d.name);
 
   let totalFiles = 0;
+  // Reverse index: itemId -> [{ trader, tier, cond }] — which traders stock this item
+  // for sale and the lowest supply tier (plus that tier's unlock condition) it appears in.
+  const soldBy = {};
   for (const traderName of traderDirs) {
     const traderPath = path.join(srcDir, traderName);
     const traderData = processTraderDir(traderPath);
@@ -104,7 +120,40 @@ export function generateTraders(pack) {
     const csvCount = Object.keys(traderData).length;
     totalFiles += csvCount;
     console.log(`  ${traderName}: ${csvCount} CSV files → ${traderName}.json`);
+
+    // buy_supplies = [[tierKey, conditionString], ...] — the requirement to unlock each tier.
+    const condByTier = {};
+    for (const [tierKey, cond] of (traderData.buy_supplies || [])) {
+      if (cond) condByTier[tierKey] = String(cond);
+    }
+    // For each item, keep the lowest tier it sells at for this trader.
+    const lowest = {}; // itemId -> tierKey
+    for (const key of Object.keys(traderData)) {
+      if (!key.startsWith('supplies_')) continue;
+      for (const row of (traderData[key] || [])) {
+        const id = row[0];
+        if (!id) continue;
+        if (!(id in lowest) || tierRank(key) < tierRank(lowest[id])) lowest[id] = key;
+      }
+    }
+    for (const [id, tierKey] of Object.entries(lowest)) {
+      (soldBy[id] ||= []).push({
+        trader: traderName,
+        tier: tierSuffix(tierKey),
+        cond: condByTier[tierKey] || null,
+      });
+    }
   }
+
+  // Sort each item's traders by tier (lowest first) then trader id for stable output.
+  for (const id of Object.keys(soldBy)) {
+    soldBy[id].sort((a, b) =>
+      tierRank(`supplies_${a.tier}`) - tierRank(`supplies_${b.tier}`) || a.trader.localeCompare(b.trader)
+    );
+  }
+  const soldByOut = path.join(outDir, '..', 'sold-by.json');
+  fs.writeFileSync(soldByOut, JSON.stringify(soldBy));
+  console.log(`Wrote sold-by.json (${Object.keys(soldBy).length} items) → ${soldByOut}`);
 
   console.log(`\nDone! Processed ${totalFiles} CSV files from ${traderDirs.length} traders → ${outDir}`);
 
