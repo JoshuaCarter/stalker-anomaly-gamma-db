@@ -97,14 +97,14 @@
                 <div class="trading-trader-card-rates" v-if="hasRates">
                     <div class="trading-rate">
                         <span class="trading-rate-label">{{ compactHeader ? (t('app_trading_sell') || 'Sell') : (t('app_trading_you_sell_at') || 'You sell at') }}</span>
-                        <span class="trading-rate-value" :class="rateClass(discountMap.buy, 'sell')">
-                            {{ formatMultiplier(discountMap.buy) }}<span class="trading-rate-x">×</span>
+                        <span class="trading-rate-value" :class="rateClass(effectiveRates.sell, 'sell')">
+                            {{ formatMultiplier(effectiveRates.sell) }}<span class="trading-rate-x">×</span>
                         </span>
                     </div>
                     <div class="trading-rate">
                         <span class="trading-rate-label">{{ compactHeader ? (t('app_trading_buy') || 'Buy') : (t('app_trading_you_buy_at') || 'You buy at') }}</span>
-                        <span class="trading-rate-value" :class="rateClass(discountMap.sell, 'buy')">
-                            {{ formatMultiplier(discountMap.sell) }}<span class="trading-rate-x">×</span>
+                        <span class="trading-rate-value" :class="rateClass(effectiveRates.buy, 'buy')">
+                            {{ formatMultiplier(effectiveRates.buy) }}<span class="trading-rate-x">×</span>
                         </span>
                     </div>
                 </div>
@@ -112,6 +112,21 @@
 
             <!-- Strip row A: search + filters, matching the item-page filter-bar pattern -->
             <div class="trading-strip-controls">
+                <!-- Economy-difficulty selector: scales the whole ledger's buy/sell prices. -->
+                <div class="trading-econ-row">
+                    <span class="trading-econ-label" v-tooltip="t('app_trading_economy_tooltip')">{{ t('app_trading_economy') || 'Economy' }}</span>
+                    <div class="trading-econ-seg" role="group">
+                        <button
+                            v-for="tier in econTiers"
+                            :key="tier.id"
+                            type="button"
+                            class="trading-econ-seg-btn"
+                            :class="{ active: econTier === tier.id }"
+                            @click="setEconTier(tier.id)"
+                            v-tooltip="econTierTooltip(tier)"
+                        >{{ econTierLabel(tier.id) }}</button>
+                    </div>
+                </div>
                 <div class="filter-input-group trading-filter-group" v-click-outside="closeFilterPanel">
                     <LucideSearch class="filter-input-icon" :size="14" />
                     <input
@@ -306,6 +321,25 @@
 import { CAT } from '../../js/constants.js';
 import { parseCondition } from '../../js/trader-conditions.js';
 
+// Economy difficulty tiers (configs/plugins/difficulty.ltx [econ_N]). In-game, every trade price
+// is multiplied by game_difficulties.get_eco_factor(...): the "sell" factor scales prices the
+// player PAYS (buying), the "buy" factor scales prices the player RECEIVES (selling). Scavenger
+// is the neutral 1× baseline, so the ledger matches the trader configs unless another tier is set.
+const ECON_TIERS = [
+    { id: 'tourist',     buy: 1.25, sell: 0.75 },
+    { id: 'scavenger',   buy: 1.0,  sell: 1.0  },
+    { id: 'survivalist', buy: 0.75, sell: 1.25 },
+];
+const ECON_STORAGE_KEY = 'gamma-econ-tier';
+
+function loadEconTier() {
+    try {
+        const v = typeof localStorage !== 'undefined' && localStorage.getItem(ECON_STORAGE_KEY);
+        if (v && ECON_TIERS.some(e => e.id === v)) return v;
+    } catch { /* ignore */ }
+    return 'scavenger';
+}
+
 export default {
     props: {
         packId: { type: String, default: null },
@@ -343,6 +377,8 @@ export default {
             collapsedFactions: {},
             stickyScrolled: false,
             narrowViewport: false,
+            // Economy difficulty tier (persisted); scales ledger buy/sell prices. See ECON_TIERS.
+            econTier: loadEconTier(),
         };
     },
     computed: {
@@ -460,6 +496,20 @@ export default {
             }
             return m;
         },
+        econTiers() {
+            return ECON_TIERS;
+        },
+        econFactors() {
+            return ECON_TIERS.find(e => e.id === this.econTier) || ECON_TIERS[1];
+        },
+        // Trader discount folded with the economy factor, so header rate × base == ledger price.
+        // sell = the rate the player gets when selling; buy = the rate the player pays when buying.
+        effectiveRates() {
+            return {
+                sell: this.discountMap.buy * this.econFactors.buy,
+                buy: this.discountMap.sell * this.econFactors.sell,
+            };
+        },
         buyConditionMap() {
             const map = {};
             for (const r of (this.traderData?.buy_condition || []))
@@ -533,12 +583,27 @@ export default {
         buyPrice(id) {
             const base = this.basePrice(id);
             if (base == null) return null;
-            return Math.round(base * this.discountMap.sell * (this.buyConditionMap[id] ?? 1));
+            return Math.round(base * this.discountMap.sell * this.econFactors.sell * (this.buyConditionMap[id] ?? 1));
         },
         sellPrice(id) {
             const base = this.basePrice(id);
             if (base == null) return null;
-            return Math.round(base * this.discountMap.buy * (this.sellConditionMap[id] ?? 1));
+            return Math.round(base * this.discountMap.buy * this.econFactors.buy * (this.sellConditionMap[id] ?? 1));
+        },
+        setEconTier(id) {
+            this.econTier = id;
+            try {
+                if (typeof localStorage !== 'undefined') localStorage.setItem(ECON_STORAGE_KEY, id);
+            } catch { /* ignore */ }
+        },
+        econTierLabel(id) {
+            return this.t('app_trading_econ_' + id) || id;
+        },
+        econTierTooltip(tier) {
+            // Player-facing: buy price scales by the tier's "sell" factor, sell price by "buy".
+            const buyL = this.t('app_trading_buy') || 'Buy';
+            const sellL = this.t('app_trading_sell') || 'Sell';
+            return `${this.econTierLabel(tier.id)} · ${buyL} ×${tier.sell.toFixed(2)} · ${sellL} ×${tier.buy.toFixed(2)}`;
         },
         formatPrice(val) {
             if (val == null) return null;
@@ -978,6 +1043,50 @@ export default {
    FilterBar; here the strip is a column, so that basis would become a 14rem
    height. Reset to auto basis so the input keeps its own 1.75rem height. */
 .trading-filter-group { width: 100%; max-width: none; flex: 0 0 auto; }
+
+/* Economy-difficulty selector (segmented pill) — scales ledger prices globally. */
+.trading-econ-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.trading-econ-label {
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    cursor: help;
+}
+.trading-econ-seg {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--card);
+}
+.trading-econ-seg-btn {
+    appearance: none;
+    border: 0;
+    border-right: 1px solid var(--border);
+    background: none;
+    padding: 0.2rem 0.7rem;
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+    white-space: nowrap;
+}
+.trading-econ-seg-btn:last-child { border-right: 0; }
+.trading-econ-seg-btn:hover { color: var(--text); }
+.trading-econ-seg-btn.active {
+    background: var(--accent);
+    color: var(--color-black, #000);
+}
 /* Active-filters chip strip inside the trader strip-controls: tighten top margin so it
    hugs the search bar (item-page rule has margin-top: 0.4rem inherited from .filter-bar context). */
 .trading-strip-controls .active-filters { margin-top: 0; padding-right: 0; }
