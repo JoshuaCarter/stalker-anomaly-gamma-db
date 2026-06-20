@@ -4025,36 +4025,6 @@ input.range-input {
     flex-wrap: wrap;
     gap: 0.35rem;
 }
-.addon-compat-weapons-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-}
-.addon-compat-weapon-link {
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-decoration: none;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-}
-.addon-compat-weapon-link:hover {
-    text-decoration: underline;
-}
-/* Inline "Integrated" tag on a weapon that mounts the viewed addon as a built-in (status 1). */
-.addon-compat-weapon-integral {
-    margin-left: 0.4rem;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    vertical-align: middle;
-    padding: 0.05rem 0.25rem;
-    border-radius: 3px;
-    background: var(--color-accent-tint-30, rgba(200, 168, 78, 0.30));
-    color: var(--text-primary);
-}
 .used-by-item {
     display: flex;
     align-items: baseline;

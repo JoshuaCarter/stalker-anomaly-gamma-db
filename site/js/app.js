@@ -472,6 +472,7 @@ export const appDefinition = {
                     return full || indexItem;
                 })
                 .filter(Boolean)
+                .filter(it => !(this.hideNoDrop && it.unobtainable === true) && !(this.hideTacticalKit && it.tacticalKit === true))
                 .sort((a, b) => (this.tName(a) || "").localeCompare(this.tName(b) || ""));
         },
 
@@ -483,7 +484,10 @@ export const appDefinition = {
             for (const slug of ["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers"]) {
                 for (const it of this.categoryItems[slug] || []) lookup.set(it.id, it);
             }
-            return ids.map(wid => lookup.get(wid)).filter(Boolean);
+            return ids
+                .map(wid => lookup.get(wid))
+                .filter(Boolean)
+                .filter(it => !(this.hideNoDrop && it.unobtainable === true) && !(this.hideTacticalKit && it.tacticalKit === true));
         },
 
         modalAddonCompatibleWeapons() {
@@ -505,6 +509,7 @@ export const appDefinition = {
                     return integralSet.has(id) ? { ...item, integral: true } : item;
                 })
                 .filter(Boolean)
+                .filter(it => !(this.hideNoDrop && it.unobtainable === true) && !(this.hideTacticalKit && it.tacticalKit === true))
                 .sort((a, b) => (this.tName(a) || '').localeCompare(this.tName(b) || ''));
         },
 
@@ -973,7 +978,10 @@ export const appDefinition = {
             for (const [itemId, entry] of Object.entries(map)) {
                 if (!entry.parts?.includes(partId)) continue;
                 const e = idx.get(itemId);
-                if (e) out.push(e);
+                if (!e) continue;
+                if (this.hideNoDrop && e.unobtainable === true) continue;
+                if (this.hideTacticalKit && e.tacticalKit === true) continue;
+                out.push(e);
             }
             out.sort((a, b) => (this.tName(a) || "").localeCompare(this.tName(b) || ""));
             return out;
