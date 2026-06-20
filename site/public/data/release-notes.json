@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-06-20",
+    "entries": [
+      { "type": "added", "text": "Weapons and outfits now list the parts they're built from, and each part shows which weapons and outfits use it.", "highlight": true, "summaryKey": "app_whats_new_item_parts" },
+      { "type": "added", "text": "The Trading view now has an economy-difficulty selector (Tourist / Scavenger / Survivalist) that scales every buy and sell price to match your in-game economy setting." },
+      { "type": "added", "text": "Item pages now have a Sold By section listing which traders stock the item and the supply tier it unlocks at, with the unlock requirement shown on hover." },
+      { "type": "added", "text": "Scopes, silencers, and launchers that are permanently built into a weapon are now marked with an Int. badge, so you can tell them apart from attachments you fit yourself." },
+      { "type": "changed", "text": "In a weapon's detail view, compatible scopes now show their magnification and compatible magazines show their round capacity right on the tile." },
+      { "type": "changed", "text": "Weapons with a built-in silencer now keep the silencer toggle locked on in the Ballistics calculator, and the damage results account for it automatically." }
+    ]
+  },
+  {
     "date": "2026-06-11",
     "entries": [
       { "type": "added", "text": "GAMMA Mags Reloaded support: a new Magazines category showing each magazine's size and round capacity, compatible magazines listed on every weapon (and compatible weapons on every magazine), and magazine carry slots on outfits and belt gear. Turn it on under the new Mods menu.", "highlight": true, "summaryKey": "app_whats_new_magazines", "credits": [{ "name": "Conact", "role": "suggestion" }] }

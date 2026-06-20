@@ -759,7 +759,9 @@
     "app_whats_new_gamma_095": "GAMMA 0.9.5 is here!",
     "app_whats_new_faction_drops": "Faction Drops - see what every faction's NPCs carry by rank!",
     "app_whats_new_player_inventory": "Import a save to browse your inventory and stashes!",
-    "app_whats_new_magazines": "GAMMA Mags Reloaded support"
+    "app_whats_new_magazines": "GAMMA Mags Reloaded support",
+    "app_whats_new_item_parts": "See the parts every weapon and outfit is built from!",
+    "app_whats_new_economy": "Trading prices now scale to your economy difficulty!"
   },
   "ru": {
     "app_group_saved": "Быстрый доступ",
@@ -1520,7 +1522,9 @@
     "app_whats_new_gamma_095": "GAMMA 0.9.5 уже здесь!",
     "app_whats_new_faction_drops": "Дроп группировок — оружие NPC каждой группировки по рангам!",
     "app_whats_new_player_inventory": "Импортируйте сохранение и просматривайте инвентарь и тайники!",
-    "app_whats_new_magazines": "Поддержка GAMMA Mags Reloaded"
+    "app_whats_new_magazines": "Поддержка GAMMA Mags Reloaded",
+    "app_whats_new_item_parts": "Узнайте, из каких частей собрано каждое оружие и снаряжение!",
+    "app_whats_new_economy": "Цены торговли теперь масштабируются под вашу сложность экономики!"
   },
   "fr": {
     "app_group_saved": "Accès rapide",
@@ -2100,6 +2104,8 @@
     "app_whats_new_faction_drops": "Drops de faction - l'arsenal des PNJ de chaque faction par rang !",
     "app_whats_new_player_inventory": "Importez une sauvegarde pour parcourir votre inventaire et vos planques !",
     "app_whats_new_magazines": "Prise en charge de GAMMA Mags Reloaded",
+    "app_whats_new_item_parts": "Découvrez les pièces qui composent chaque arme et tenue !",
+    "app_whats_new_economy": "Les prix d'échange s'adaptent désormais à votre difficulté économique !",
     "app_quick_nav_placeholder": "Aller à la page…",
     "app_quick_nav_hint_navigate": "naviguer",
     "app_quick_nav_hint_select": "sélectionner",
