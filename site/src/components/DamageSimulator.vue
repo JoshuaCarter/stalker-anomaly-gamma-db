@@ -38,8 +38,8 @@
           <span v-else class="damage-sim-slot-hint">{{ t('app_sim_select_ammo') }}</span>
           <button v-if="selectedAmmoFor(idx)" class="damage-sim-slot-remove" @click.stop="clearAmmo(idx)">&times;</button>
         </div>
-        <div class="damage-sim-silencer-toggle" @click="lo.silenced = !lo.silenced; saveToStorage()" v-tooltip="t('app_sim_silencer') + (gboConstants.silencer_boost ? ' (' + gboConstants.silencer_boost + 'x)' : '')">
-          <span class="toggle-switch" :class="{ on: lo.silenced }"><span class="toggle-knob"></span></span>
+        <div class="damage-sim-silencer-toggle" :class="{ locked: hasBuiltInSilencer(lo.weapon) }" @click="toggleSilencer(lo)" v-tooltip="(hasBuiltInSilencer(lo.weapon) ? t('app_sim_silencer_builtin') : t('app_sim_silencer')) + (gboConstants.silencer_boost ? ' (' + gboConstants.silencer_boost + 'x)' : '')">
+          <span class="toggle-switch" :class="{ on: lo.silenced || hasBuiltInSilencer(lo.weapon) }"><span class="toggle-knob"></span></span>
         </div>
         <button class="damage-sim-icon-btn" :class="{ 'damage-sim-icon-btn-hidden': !lo.weapon || !canAddLoadout }" @click="lo.weapon && canAddLoadout && copyLoadout(idx)" v-tooltip="t('app_sim_copy_loadout')">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
@@ -334,7 +334,8 @@ import { defineComponent, type PropType } from 'vue';
 import { calcMutantDamage, mutantShotsToKill, extractMutantSpecies,
          calcStalkerDetailed, stalkerArmorCalc,
          stalkerShotsToKill, stalkerArmorGroup, shotsToPen, resolveHpNoPenPenalty,
-         stalkerBoneDamageMult, resolveFactionRes, barrelConditionCorrected } from '../../js/damage-calc.js';
+         stalkerBoneDamageMult, resolveFactionRes, barrelConditionCorrected,
+         hasIntegratedSilencer, hasPermanentSilencer } from '../../js/damage-calc.js';
 import ItemPickerModal from './modals/ItemPickerModal.vue';
 
 interface GameItem {
@@ -401,6 +402,8 @@ export default defineComponent({
     mutantProfiles: { type: Array as PropType<MutantProfile[]>, default: () => [] },
     npcArmorProfiles: { type: Array as PropType<NpcArmorProfile[]>, default: () => [] },
     gboConstants: { type: Object as PropType<GboConstants>, default: () => ({}) },
+    // weapon ID → { silencer, scope, launcher } X-Ray addon status (1=integral, 2=attachable).
+    weaponAddonStatus: { type: Object as PropType<Record<string, { silencer?: number, scope?: number, launcher?: number }>>, default: () => ({}) },
     calibersData: { type: Object, default: () => ({}) },
     ballisticRanges: { type: Object as PropType<{ maxDamage?: number, maxAp?: number, maxDps?: number }>, default: () => ({}) },
     hideNoDrop: { type: Boolean, default: true },
@@ -728,6 +731,18 @@ export default defineComponent({
       if (group === 'lower_body') return gbo.ap_boost.legs || 0;
       return 0;
     },
+    // A weapon whose silencer is built in (grok_bo integrated list or a permanent silencer_status==1
+    // addon): always silenced in-game, so the toggle is forced on and locked.
+    hasBuiltInSilencer(weapon: GameItem | null): boolean {
+      if (!weapon) return false;
+      return hasIntegratedSilencer(weapon.id, this.gboConstants)
+        || hasPermanentSilencer(this.weaponAddonStatus?.[weapon.id]?.silencer);
+    },
+    toggleSilencer(lo: Loadout): void {
+      if (this.hasBuiltInSilencer(lo.weapon)) return; // locked: silencer is integral
+      lo.silenced = !lo.silenced;
+      this.saveToStorage();
+    },
     selectedAmmoFor(slot: number): GameItem | null {
       const id = this.loadouts[slot].ammoId;
       return id ? (this.ammoItems.find(a => a.id === id) || null) : null;
@@ -779,7 +794,7 @@ export default defineComponent({
         const pellets = parseInt(ammo.st_data_export_projectiles || '1') || 1;
         if (isNaN(hitPower) || isNaN(kHit) || isNaN(kAp)) return null;
         const npc = this.selectedNpcProfile;
-        const commonParams = { hitPower, kHit, kAp, pellets, kAirRes, distance: this.distance, barrelCond: this.barrelCondition, difficulty: this.difficulty, ammoId: ammo.id, weaponId: weapon.id, hitzone: this.hitzone, faction: this.faction, silenced: this.loadouts[slot].silenced, apScale: npc.ap_scale };
+        const commonParams = { hitPower, kHit, kAp, pellets, kAirRes, distance: this.distance, barrelCond: this.barrelCondition, difficulty: this.difficulty, ammoId: ammo.id, weaponId: weapon.id, hitzone: this.hitzone, faction: this.faction, silenced: this.loadouts[slot].silenced, silencerStatus: this.weaponAddonStatus?.[weapon.id]?.silencer, apScale: npc.ap_scale };
         const detailed = calcStalkerDetailed({ ...commonParams, gbo });
         const armorGroup = stalkerArmorGroup(this.hitzone);
         const boneArmor = armorGroup === 'head' ? npc.head_bonearmor : npc.body_bonearmor;
@@ -1457,6 +1472,13 @@ export default defineComponent({
   align-items: center;
   cursor: pointer;
   flex-shrink: 0;
+}
+/* Built-in silencer: always on, not user-changeable. */
+.damage-sim-silencer-toggle.locked {
+  cursor: default;
+}
+.damage-sim-silencer-toggle.locked .toggle-switch {
+  opacity: 0.6;
 }
 
 /* Slots */

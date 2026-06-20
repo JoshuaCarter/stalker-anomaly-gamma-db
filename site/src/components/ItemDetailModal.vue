@@ -6,7 +6,7 @@
     <button class="modal-close" @click="$emit('closeModal')">&times;</button>
     <Transition name="modal" appear>
     <div class="modal" v-if="modalOpen">
-        <div class="modal-body" ref="modalBody">
+        <div class="modal-body" ref="modalBody" @scroll.passive="$emit('modalScroll')">
             <p v-show="modalLoading" class="loading">{{ t('app_label_loading') }}</p>
 
             <div v-if="modalItem && !modalLoading">
@@ -266,6 +266,7 @@
                             <span class="addon-img-tile-fig">
                                 <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
                                 <span v-if="zoomBadge(addon)" class="addon-img-tile-badge">{{ zoomBadge(addon) }}</span>
+                                <span v-if="addon.integral" class="addon-img-tile-integral" v-tooltip="t('app_label_integrated_tip')">{{ t('app_label_integrated') }}</span>
                             </span>
                             <span class="addon-img-tile-name">{{ t(addon.pda_encyclopedia_name) }}</span>
                         </a>
@@ -277,7 +278,10 @@
                     <h2 class="section-toggle" @click="toggleSection('silencers')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_silencers') }}</h2>
                     <div class="addon-tile-grid">
                         <a v-for="addon in modalWeaponAddons.silencers" :key="addon.id" href="#" class="addon-img-tile addon-img-tile-silencer" @mouseenter="showItemHover(addon, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', addon.id)">
-                            <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-fig">
+                                <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                                <span v-if="addon.integral" class="addon-img-tile-integral" v-tooltip="t('app_label_integrated_tip')">{{ t('app_label_integrated') }}</span>
+                            </span>
                             <span class="addon-img-tile-name">{{ t(addon.pda_encyclopedia_name) }}</span>
                         </a>
                     </div>
@@ -288,7 +292,10 @@
                     <h2 class="section-toggle" @click="toggleSection('launchers')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_compatible_launchers') }}</h2>
                     <div class="addon-tile-grid">
                         <a v-for="addon in modalWeaponAddons.launchers" :key="addon.id" href="#" class="addon-img-tile addon-img-tile-launcher" @mouseenter="showItemHover(addon, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', addon.id)">
-                            <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-fig">
+                                <img class="addon-img-tile-icon" :src="'img/icons/' + addon.id + '.png'" :alt="t(addon.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                                <span v-if="addon.integral" class="addon-img-tile-integral" v-tooltip="t('app_label_integrated_tip')">{{ t('app_label_integrated') }}</span>
+                            </span>
                             <span class="addon-img-tile-name">{{ t(addon.pda_encyclopedia_name) }}</span>
                         </a>
                     </div>
@@ -326,6 +333,28 @@
                         <a v-for="w in modalMagazineCompatibleWeapons" :key="w.id" href="#" class="addon-img-tile" @mouseenter="showItemHover(w, $event)" @mousemove="moveItemHover($event)" @mouseleave="hideItemHover()" @click.prevent="$emit('navigateToItem', w.id)">
                             <img class="addon-img-tile-icon" :src="'img/icons/' + w.id + '.png'" :alt="t(w.pda_encyclopedia_name || w.name)" loading="lazy" @error="$event.target.style.display='none'" />
                             <span class="addon-img-tile-name">{{ t(w.pda_encyclopedia_name || w.name) }}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Parts / Components (on weapon & outfit detail) -->
+                <div v-if="modalItemParts.length" class="drop-sources" :class="{ collapsed: isCollapsed('item-parts') }">
+                    <h2 class="section-toggle" @click="toggleSection('item-parts')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_item_parts') }}</h2>
+                    <div class="addon-tile-grid">
+                        <a v-for="part in modalItemParts" :key="part.id" href="#" class="addon-img-tile" v-tooltip="part.descr ? t(part.descr) : null" @click.prevent="$emit('navigateToItem', part.id)">
+                            <img class="addon-img-tile-icon" :src="'img/icons/' + part.id + '.png'" :alt="t(part.pda_encyclopedia_name)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-name">{{ t(part.pda_encyclopedia_name) }}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Used In (on part detail): weapons/outfits that contain this part -->
+                <div v-if="modalPartUsedBy.length" class="drop-sources" :class="{ collapsed: isCollapsed('used-in') }">
+                    <h2 class="section-toggle" @click="toggleSection('used-in')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_used_in') }}</h2>
+                    <div class="addon-tile-grid">
+                        <a v-for="it in modalPartUsedBy" :key="it.id" href="#" class="addon-img-tile" @click.prevent="$emit('navigateToItem', it.id)">
+                            <img class="addon-img-tile-icon" :src="'img/icons/' + it.id + '.png'" :alt="tName(it)" loading="lazy" @error="$event.target.style.display='none'" />
+                            <span class="addon-img-tile-name">{{ tName(it) }}</span>
                         </a>
                     </div>
                 </div>
@@ -482,7 +511,7 @@
                             @mousemove="moveItemHover($event)"
                             @mouseleave="hideItemHover()"
                             @click.prevent="$emit('navigateToItem', w.id)"
-                        >{{ weaponDisplayName(w) }}</a>
+                        >{{ weaponDisplayName(w) }}<span v-if="w.integral" class="addon-compat-weapon-integral" v-tooltip="t('app_label_integrated_tip')">{{ t('app_label_integrated') }}</span></a>
                     </div>
                 </div>
             </div>
@@ -528,6 +557,8 @@ export default {
     modalDisassembleMaterials: { type: Array, default: null },
     modalUpgradeNodes: { type: Array, default: null },
     modalUsedByWeapons: Array,
+    modalItemParts: { type: Array, default: () => [] },
+    modalPartUsedBy: { type: Array, default: () => [] },
     modalSoldBy: { type: Array, default: () => [] },
     parsedDescription: Object,
     parsedPerk: Object,
@@ -551,7 +582,7 @@ export default {
   },
   emits: [
     'closeModal', 'navigateModal', 'navigateToItem', 'toggleFavorite', 'togglePin',
-    'copyItemId', 'copyModalLink', 'pickComparePack', 'openWeaponHelp',
+    'copyItemId', 'copyModalLink', 'pickComparePack', 'openWeaponHelp', 'modalScroll',
   ],
   data() {
     return {
@@ -565,9 +596,8 @@ export default {
       this.hideItemHover();
       this.stickyVisible = false;
       this.overflowMenuOpen = false;
-      // Reset scroll to the top whenever the modal opens or navigates to another
-      // item, so it doesn't inherit the previous item's scroll position.
-      this.$nextTick(() => { if (this.$refs.modalBody) this.$refs.modalBody.scrollTop = 0; });
+      // Scroll positioning (top on a fresh open, saved offset on Back/Forward) is
+      // owned by the parent's openItem/_restoreModalScroll so the two don't fight.
     },
     modalLoading(val) {
       if (!val && this.modalItem) {

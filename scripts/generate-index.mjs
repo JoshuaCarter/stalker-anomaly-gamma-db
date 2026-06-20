@@ -51,6 +51,7 @@ const SKIP_FILES = new Set([
   "export_npc_armor_profiles.csv",
   "export_addon_weapon_map.csv",
   "export_weapon_addon_map.csv",
+  "export_weapon_addon_status.csv",
   "export_craft_device.csv",
   "export_craft_equipment.csv",
   "export_craft_repair.csv",
@@ -891,6 +892,42 @@ try {
     const pdOut = join(OUT_DIR, "item-part-defs.json");
     writeFileSync(pdOut, JSON.stringify(partDefs, null, 2));
     console.log(`Wrote ${Object.keys(partDefs).length} item-part-defs entries to ${pdOut}`);
+
+    // Promote parts to first-class, browsable items in two categories so each part
+    // gets its own modal (showing the items it's used in). Split by id prefix:
+    // prt_w_* = weapon components, prt_o_* = outfit components. Fields mirror the
+    // CSV-sourced categories (string values) so the grid/modal render them the same
+    // way. The reverse "used in" lookup is derived client-side from item-parts.json.
+    const PART_CATEGORIES = [
+      { slug: "weapon-parts", category: "Weapon Parts", prefix: "prt_w_" },
+      { slug: "outfit-parts", category: "Outfit Parts", prefix: "prt_o_" },
+    ];
+    for (const { slug, category, prefix } of PART_CATEGORIES) {
+      const items = [];
+      for (const [id, d] of Object.entries(partDefs)) {
+        if (!id.startsWith(prefix)) continue;
+        items.push({
+          id,
+          pda_encyclopedia_name: d.name,
+          st_data_export_description: d.descr,
+          st_upgr_cost: String(d.cost),
+          st_prop_weight: String(d.weight),
+        });
+      }
+      if (!items.length) continue;
+      addDisplayNames(items, "id", "pda_encyclopedia_name");
+      categoryData.set(slug, {
+        category,
+        headers: ["id", "pda_encyclopedia_name", "st_data_export_description", "st_upgr_cost", "st_prop_weight"],
+        items,
+      });
+      for (const item of items) {
+        if (seen.has(item.id)) continue;
+        seen.add(item.id);
+        index.push({ id: item.id, name: item.pda_encyclopedia_name, category });
+      }
+      console.log(`Promoted ${items.length} parts to ${category}`);
+    }
   }
 } catch (e) {
   if (e.code !== "ENOENT") throw e;
@@ -2098,7 +2135,53 @@ if (existsSync(pbaSrc)) {
   console.log(`Copied PBA constants to ${pbaOut}`);
 }
 
-// Generate addon-weapons.json from export_addon_weapon_map.csv (addon ID → weapon IDs)
+// Per-weapon addon status (X-Ray EWeaponAddonStatus): 0=disabled, 1=permanent/integral, 2=attachable.
+// The exporter map now carries both attachable (2) and integral (1) addons; this status data lets us
+// tag the integral ones so the UI can show them in the "compatible" section with an "Integrated"
+// badge (rather than hide them) and the ballistics calc can treat integral silencers as always-on.
+// Written to weapon-addon-status.json. Absent (old extract) => empty map => no integral tagging.
+const weaponAddonStatus = {};
+{
+  const statusFile = join(CSV_DIR, "export_weapon_addon_status.csv");
+  if (existsSync(statusFile)) {
+    for (const line of readFileSync(statusFile, "utf-8").split(/\r?\n/)) {
+      const parts = line.split(",").map((v) => v.trim());
+      if (parts.length < 4 || parts[0] === "" || parts[0] === "~") continue;
+      weaponAddonStatus[parts[0]] = {
+        silencer: Number(parts[1]) || 0,
+        scope: Number(parts[2]) || 0,
+        launcher: Number(parts[3]) || 0,
+      };
+    }
+    const wsOut = join(OUT_DIR, "weapon-addon-status.json");
+    writeFileSync(wsOut, JSON.stringify(weaponAddonStatus, null, 2));
+    console.log(`Wrote ${Object.keys(weaponAddonStatus).length} weapon addon statuses to ${wsOut}`);
+  }
+}
+
+// Addon ID → type sets, shared by both addon maps for status-aware filtering.
+const scopeIds = new Set((categoryData.get("scopes")?.items || []).map(i => i.id));
+const silencerIds = new Set((categoryData.get("silencers")?.items || []).map(i => i.id));
+const launcherIds = new Set((categoryData.get("grenade-launchers")?.items || []).map(i => i.id));
+const kitIds = new Set((categoryData.get("tactical-kits")?.items || []).map(i => i.id));
+if (!scopeIds.size) console.warn("WARNING: No scope items found in categoryData — weapon-addons.json will have no scope classifications");
+if (!silencerIds.size) console.warn("WARNING: No silencer items found in categoryData — weapon-addons.json will have no silencer classifications");
+if (!launcherIds.size) console.warn("WARNING: No launcher items found in categoryData — weapon-addons.json will have no launcher classifications");
+
+// Per-slot integral flags for a weapon (status 1 = eAddonPermanent), e.g. { silencer: true }.
+// Drives the "Integrated" badge in the UI. Returns null when the weapon has no integral slot.
+function integralSlots(weaponId) {
+  const st = weaponAddonStatus[weaponId];
+  if (!st) return null;
+  const integral = {};
+  if (st.silencer === 1) integral.silencer = true;
+  if (st.scope === 1) integral.scope = true;
+  if (st.launcher === 1) integral.launcher = true;
+  return Object.keys(integral).length ? integral : null;
+}
+
+// Generate addon-weapons.json from export_addon_weapon_map.csv (addon ID → weapon IDs).
+// Includes weapons that mount the addon integrally as well as attachably (the UI badges integral).
 const ADDON_WEAPON_MAP_FILE = join(CSV_DIR, "export_addon_weapon_map.csv");
 try {
   const text = readFileSync(ADDON_WEAPON_MAP_FILE, "utf-8");
@@ -2146,15 +2229,6 @@ try {
 // Generate weapon-addons.json from export_weapon_addon_map.csv (weapon ID → addons by type)
 const WEAPON_ADDON_MAP_FILE = join(CSV_DIR, "export_weapon_addon_map.csv");
 try {
-  // Build ID sets from the processed item categories for classification
-  const scopeIds = new Set((categoryData.get("scopes")?.items || []).map(i => i.id));
-  const silencerIds = new Set((categoryData.get("silencers")?.items || []).map(i => i.id));
-  const launcherIds = new Set((categoryData.get("grenade-launchers")?.items || []).map(i => i.id));
-  const kitIds = new Set((categoryData.get("tactical-kits")?.items || []).map(i => i.id));
-  if (!scopeIds.size) console.warn("WARNING: No scope items found in categoryData — weapon-addons.json will have no scope classifications");
-  if (!silencerIds.size) console.warn("WARNING: No silencer items found in categoryData — weapon-addons.json will have no silencer classifications");
-  if (!launcherIds.size) console.warn("WARNING: No launcher items found in categoryData — weapon-addons.json will have no launcher classifications");
-
   const text = readFileSync(WEAPON_ADDON_MAP_FILE, "utf-8");
   const weaponAddons = {};
   for (const line of text.split(/\r?\n/)) {
@@ -2169,6 +2243,9 @@ try {
       else if (kitIds.has(addonId)) addons.kits.push(addonId);
     }
     if (addons.scopes.length || addons.silencers.length || addons.launchers.length || addons.kits.length) {
+      // Tag integral slots (status 1) so the UI badges them "Integrated" instead of hiding them.
+      const integral = integralSlots(weaponId);
+      if (integral) addons.integral = integral;
       weaponAddons[weaponId] = addons;
     }
   }

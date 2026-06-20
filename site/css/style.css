@@ -2320,6 +2320,25 @@ input.range-input {
     color: var(--text-primary);
     pointer-events: none;
 }
+/* "Int." tag on a built-in (permanent) addon — anchored bottom-right. Signals the addon ships
+   fixed to the weapon and isn't separately fitted. */
+.addon-img-tile-integral {
+    position: absolute;
+    bottom: 0.2rem;
+    right: -0.3rem;
+    z-index: 1;
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.26rem;
+    border-radius: 3px;
+    background: var(--color-accent-tint-30, rgba(200, 168, 78, 0.30));
+    color: var(--text-primary);
+    pointer-events: auto;
+}
 .addon-img-tile-icon {
     width: auto;
     height: 2rem;
@@ -2353,6 +2372,15 @@ input.range-input {
     line-height: 1.25;
     color: var(--text-secondary);
     max-width: 5.5rem;
+    transition: color 0.15s;
+}
+/* The whole tile responds to hover together: drop the stray link underline (from
+   the global a:hover rule) and brighten the label to match the icon's gold glow. */
+.addon-img-tile:hover {
+    text-decoration: none;
+}
+.addon-img-tile:hover .addon-img-tile-name {
+    color: var(--accent);
 }
 .addon-tile-grid {
     display: flex;
@@ -4013,6 +4041,19 @@ input.range-input {
 }
 .addon-compat-weapon-link:hover {
     text-decoration: underline;
+}
+/* Inline "Integrated" tag on a weapon that mounts the viewed addon as a built-in (status 1). */
+.addon-compat-weapon-integral {
+    margin-left: 0.4rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    padding: 0.05rem 0.25rem;
+    border-radius: 3px;
+    background: var(--color-accent-tint-30, rgba(200, 168, 78, 0.30));
+    color: var(--text-primary);
 }
 .used-by-item {
     display: flex;

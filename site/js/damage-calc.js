@@ -44,10 +44,31 @@ function isSniper(weaponId, gbo) {
 }
 
 /**
- * Check if a weapon has an integrated silencer.
+ * Check if a weapon is in grok_bo's hardcoded integrated_silencer list. These are weapons whose
+ * silencer is baked into the model (not an addon), so the engine's weapon_is_silencer() can't
+ * detect it — grok_bo lists them explicitly to apply the silencer boost.
  */
 export function hasIntegratedSilencer(weaponId, gbo) {
   return gbo.integrated_silencer.includes(weaponId);
+}
+
+/**
+ * Check if a weapon has a permanent/integral silencer addon (X-Ray silencer_status == 1,
+ * eAddonPermanent — e.g. the PB). CWeapon::IsSilencerAttached() always returns true for these, so
+ * grok_bo applies the silencer boost via its runtime weapon_is_silencer() path rather than the
+ * integrated_silencer list. Source: export_weapon_addon_status.csv → weapon-addon-status.json.
+ */
+export function hasPermanentSilencer(silencerStatus) {
+  return silencerStatus === 1;
+}
+
+/**
+ * Whether a shot gets the silencer damage/AP boost. Mirrors grok_bo's logic, checking both sources
+ * independently: an active silencer (manual `silenced` toggle / runtime weapon_is_silencer()), the
+ * grok_bo integrated_silencer list, or a permanent integral silencer (silencer_status == 1).
+ */
+export function isShotSilenced(silenced, weaponId, silencerStatus, gbo) {
+  return silenced || hasIntegratedSilencer(weaponId, gbo) || hasPermanentSilencer(silencerStatus);
 }
 
 /**
@@ -292,7 +313,7 @@ function getMutantType(mutantId) {
  */
 export function calcStalkerAP(params) {
   const { kAp, kAirRes, distance, barrelCond, difficulty, apScale,
-          ammoId, weaponId, hitzone, faction, silenced, gbo } = params;
+          ammoId, weaponId, hitzone, faction, silenced, silencerStatus, gbo } = params;
 
   const norm = normalizeAmmoId(ammoId);
   let ap = kAp * 10;
@@ -328,7 +349,7 @@ export function calcStalkerAP(params) {
 
   const airDiv = airResDivisor(distance, kAirRes);
   const factionRes = resolveFactionRes(faction, gbo);
-  const silencerMult = silenced || hasIntegratedSilencer(weaponId, gbo) ? gbo.silencer_boost : 1;
+  const silencerMult = isShotSilenced(silenced, weaponId, silencerStatus, gbo) ? gbo.silencer_boost : 1;
   const diffMult = gbo.difficulty[String(difficulty)] || 1;
 
   ap = ap / airDiv * factionRes.ap_res * silencerMult * diffMult * 0.80;
@@ -346,7 +367,7 @@ export function calcStalkerAP(params) {
  */
 export function calcStalkerRawDamage(params) {
   const { hitPower, kHit, pellets, kAirRes, distance, barrelCond, difficulty,
-          ammoId, weaponId, hitzone, faction, silenced, apScale, gbo } = params;
+          ammoId, weaponId, hitzone, faction, silenced, silencerStatus, apScale, gbo } = params;
 
   const airDiv = airResDivisor(distance, kAirRes);
   const barrel = barrelConditionCorrected(barrelCond);
@@ -354,7 +375,7 @@ export function calcStalkerRawDamage(params) {
   const factionRes = resolveFactionRes(faction, gbo);
   const diffMult = gbo.difficulty[String(difficulty)] || 1;
   const ammoMult = resolveStalkerAmmoMult(ammoId, gbo);
-  const silencerMult = silenced || hasIntegratedSilencer(weaponId, gbo) ? gbo.silencer_boost : 1;
+  const silencerMult = isShotSilenced(silenced, weaponId, silencerStatus, gbo) ? gbo.silencer_boost : 1;
 
   const damage = (hitPower / airDiv) * kHit * boneDmgMult * apScale * 1.1
     * barrel * factionRes.dmg_res * diffMult * ammoMult * silencerMult * pellets;
@@ -367,7 +388,7 @@ export function calcStalkerRawDamage(params) {
  */
 export function calcStalkerDetailed(params) {
   const { hitPower, kHit, kAp, pellets, kAirRes, distance, barrelCond, difficulty,
-          ammoId, weaponId, hitzone, faction, silenced, apScale, gbo } = params;
+          ammoId, weaponId, hitzone, faction, silenced, silencerStatus, apScale, gbo } = params;
 
   const norm = normalizeAmmoId(ammoId);
   const airDiv = airResDivisor(distance, kAirRes);
@@ -376,7 +397,7 @@ export function calcStalkerDetailed(params) {
   const factionRes = resolveFactionRes(faction, gbo);
   const diffMult = gbo.difficulty[String(difficulty)] || 1;
   const ammoMult = resolveStalkerAmmoMult(ammoId, gbo);
-  const silencerMult = silenced || hasIntegratedSilencer(weaponId, gbo) ? gbo.silencer_boost : 1;
+  const silencerMult = isShotSilenced(silenced, weaponId, silencerStatus, gbo) ? gbo.silencer_boost : 1;
 
   const rawDmg = (hitPower / airDiv) * kHit * boneDmgMult * apScale * 1.1
     * barrel * factionRes.dmg_res * diffMult * ammoMult * silencerMult * pellets;

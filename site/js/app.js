@@ -98,8 +98,11 @@ export const appDefinition = {
             recipesCache: null,
             craftRecipesCache: null,
             disassembleCache: null,
+            itemPartsCache: null,
+            itemPartDefsCache: null,
             ammoWeaponsCache: null,
             weaponAddonsCache: null,
+            weaponAddonStatusCache: null,
             weaponMagazinesCache: null,
             kitWeaponsCache: null,
             mutantProfilesCache: null,
@@ -155,6 +158,10 @@ export const appDefinition = {
             // Modal cross-category navigation history
             _modalNavBackStack: [],
             _modalNavFwdStack: [],
+            // Last-seen scroll offset per item id, so returning to an item (via the
+            // in-modal arrows OR the browser's Back/Forward) restores its position.
+            // Kept independent of history.state, which background URL syncing nulls out.
+            _modalScrollById: {},
 
             // Cross-pack comparison
             crossPackId: localStorage.getItem("crossPackId") || null,
@@ -428,10 +435,15 @@ export const appDefinition = {
             const silencerMap = resolve(CAT.SILENCERS);
             const launcherMap = resolve(CAT.GRENADE_LAUNCHERS);
             const kitMap = resolve(CAT.TACTICAL_KITS);
+            // A weapon's integral slots (status 1) are flagged in weapon-addons.json; tag the resolved
+            // addons so the UI can badge them "Integrated". Copy the item so the shared catalogue
+            // object isn't mutated.
+            const integral = addons.integral || {};
+            const mark = (item, isIntegral) => isIntegral ? { ...item, integral: true } : item;
             return {
-                scopes: (addons.scopes || []).map(id => scopeMap[id]).filter(Boolean),
-                silencers: (addons.silencers || []).map(id => silencerMap[id]).filter(Boolean),
-                launchers: (addons.launchers || []).map(id => launcherMap[id]).filter(Boolean),
+                scopes: (addons.scopes || []).map(id => scopeMap[id]).filter(Boolean).map(i => mark(i, integral.scope)),
+                silencers: (addons.silencers || []).map(id => silencerMap[id]).filter(Boolean).map(i => mark(i, integral.silencer)),
+                launchers: (addons.launchers || []).map(id => launcherMap[id]).filter(Boolean).map(i => mark(i, integral.launcher)),
                 kits: (addons.kits || []).map(id => kitMap[id]).filter(Boolean),
             };
         },
@@ -480,6 +492,8 @@ export const appDefinition = {
             const weaponIds = [...new Set((this.addonCompatibleWeaponsMap || {})[this.modalItem.id] || [])];
             if (!weaponIds.length) return [];
             const indexMap = new Map((this.index || []).map(i => [i.id, i]));
+            // Weapons that mount this addon integrally get badged (copy so the catalogue item isn't mutated).
+            const integralSet = (this.addonIntegralWeaponsMap || {})[this.modalItem.id] || new Set();
             return weaponIds
                 .map(id => {
                     const indexItem = indexMap.get(id);
@@ -487,7 +501,8 @@ export const appDefinition = {
                     // Use full item from categoryItems if already loaded (populated by openItem for addon modals)
                     const slug = categorySlug(indexItem.category);
                     const full = this.categoryItems[slug]?.find(i => i.id === id);
-                    return full || indexItem;
+                    const item = full || indexItem;
+                    return integralSet.has(id) ? { ...item, integral: true } : item;
                 })
                 .filter(Boolean)
                 .sort((a, b) => (this.tName(a) || '').localeCompare(this.tName(b) || ''));
@@ -837,6 +852,25 @@ export const appDefinition = {
             return map;
         },
 
+        // addon id → Set(weaponId) where the weapon mounts that addon integrally (status 1). Reverse
+        // of weapon-addons.json's per-slot `integral` flags; drives the "Integrated" badge on an
+        // addon's compatible-weapons list.
+        addonIntegralWeaponsMap() {
+            if (!this.weaponAddonsCache) return {};
+            const map = {};
+            const slots = [["scopes", "scope"], ["silencers", "silencer"], ["launchers", "launcher"]];
+            for (const [weaponId, addons] of Object.entries(this.weaponAddonsCache)) {
+                const integral = addons.integral || {};
+                for (const [listKey, statusKey] of slots) {
+                    if (!integral[statusKey]) continue;
+                    for (const id of addons[listKey] || []) {
+                        (map[id] = map[id] || new Set()).add(weaponId);
+                    }
+                }
+            }
+            return map;
+        },
+
         magazineCompatibleWeaponsMap() {
             // Reverse of weapon-magazines.json: magazine id → [weapon ids]. Derived at
             // runtime, no extra exported data needed.
@@ -913,6 +947,36 @@ export const appDefinition = {
             const list = this.modalAmmoWeapons.filter(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit));
             list.sort((a, b) => this.tName(a).localeCompare(this.tName(b)));
             return list;
+        },
+
+        // Parts (components) of the current weapon/outfit, joined against item-part-defs
+        // for name/cost/weight. Each entry is navigable to its own part modal.
+        modalItemParts() {
+            if (!this.modalItem) return [];
+            const entry = this.itemPartsCache?.[this.modalItem.id];
+            if (!entry?.parts?.length) return [];
+            const defs = this.itemPartDefsCache || {};
+            return entry.parts.map((pid) => {
+                const d = defs[pid] || {};
+                return { id: pid, pda_encyclopedia_name: d.name || pid, descr: d.descr || "", cost: d.cost, weight: d.weight };
+            });
+        },
+
+        // Reverse of item-parts: when viewing a part, the weapons/outfits that use it.
+        // Resolved against the index so each tile is navigable.
+        modalPartUsedBy() {
+            if (!this.modalItem || (this.modalCategory !== CAT.WEAPON_PARTS && this.modalCategory !== CAT.OUTFIT_PARTS)) return [];
+            const partId = this.modalItem.id;
+            const map = this.itemPartsCache || {};
+            const idx = new Map(this.index.map((e) => [e.id, e]));
+            const out = [];
+            for (const [itemId, entry] of Object.entries(map)) {
+                if (!entry.parts?.includes(partId)) continue;
+                const e = idx.get(itemId);
+                if (e) out.push(e);
+            }
+            out.sort((a, b) => (this.tName(a) || "").localeCompare(this.tName(b) || ""));
+            return out;
         },
 
         exchangeFactions() {
@@ -1912,6 +1976,14 @@ export const appDefinition = {
             return this.fetchJsonCached("disassembleCache", "disassemble.json");
         },
 
+        fetchItemParts() {
+            return this.fetchJsonCached("itemPartsCache", "item-parts.json");
+        },
+
+        fetchItemPartDefs() {
+            return this.fetchJsonCached("itemPartDefsCache", "item-part-defs.json");
+        },
+
         fetchAmmoWeapons() {
             return this.fetchJsonCached("ammoWeaponsCache", "ammo-weapons.json");
         },
@@ -1922,6 +1994,10 @@ export const appDefinition = {
 
         fetchWeaponAddons() {
             return this.fetchJsonCached("weaponAddonsCache", "weapon-addons.json");
+        },
+
+        fetchWeaponAddonStatus() {
+            return this.fetchJsonCached("weaponAddonStatusCache", "weapon-addon-status.json");
         },
 
         fetchWeaponMagazines() {
@@ -2561,7 +2637,7 @@ export const appDefinition = {
             if (slug === 'ammo') this.fetchAmmoWeapons();
         },
 
-        async openItem(id) {
+        async openItem(id, scrollTarget = 0) {
             const entry = this.index.find((i) => i.id === id);
             if (!entry) {
                 history.replaceState(null, "", window.location.pathname + window.location.search);
@@ -2611,6 +2687,8 @@ export const appDefinition = {
                     this.fetchUpgrades(),
                     this.fetchSoldBy(),
                     this.fetchTradersMeta(),
+                    this.fetchItemParts(),
+                    this.fetchItemPartDefs(),
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.AMMO)) : Promise.resolve(),
                     isWeapon ? this.ensureCategoryLoaded(categorySlug(CAT.SCOPES)) : Promise.resolve(),
                     isWeapon ? this.fetchWeaponAddons() : Promise.resolve(),
@@ -2664,6 +2742,9 @@ export const appDefinition = {
             }
             this.modalLoading = false;
             if (this.crossPackId) this.loadCrossPackItem(this.crossPackId);
+            // Position the scroll once all sections are populated: top for a fresh
+            // open, or the saved offset when Back/Forward passes one through.
+            this._restoreModalScroll(scrollTarget);
         },
 
         showToast(message, type = "error", duration = 3000) {
@@ -2960,7 +3041,8 @@ export const appDefinition = {
         navigateModal(direction) {
             if (!this.modalOpen || !this.modalItem || this.modalLoading) return;
 
-            // History-based back/forward for cross-category navigation
+            // History-based back/forward for cross-category navigation. navigateToItem
+            // saves/restores scroll via _modalScrollById, so the stacks only track order.
             if (direction === -1 && this._modalNavBackStack.length > 0) {
                 const prevId = this._modalNavBackStack.pop();
                 this._modalNavFwdStack.push(this.modalItem.id);
@@ -4115,12 +4197,55 @@ export const appDefinition = {
 
         navigateToItem(id, _fromHistory = false) {
             if (!this.indexById[id]) return;
+            // Snapshot where we're leaving so a later return restores it.
+            this._saveCurrentModalScroll();
             if (!_fromHistory && this.modalOpen && this.modalItem) {
                 this._modalNavBackStack.push(this.modalItem.id);
                 this._modalNavFwdStack = [];
             }
-            this.openItem(id);
+            // Returning to a previously seen item (in-modal arrows or browser
+            // Back/Forward) restores its saved scroll; opening a new one starts at top.
+            const target = _fromHistory ? (this._modalScrollById[id] || 0) : 0;
+            this.openItem(id, target);
             history.pushState(null, "", `${window.location.pathname}${window.location.search}#${id}`);
+        },
+
+        // The modal body (.modal-body) is the scroll container; it persists across
+        // in-modal navigation, so scrollTop must be set explicitly each time.
+        _getModalScroll() {
+            const el = document.querySelector(".modal-body");
+            return el ? el.scrollTop : 0;
+        },
+        _saveCurrentModalScroll() {
+            if (this.modalOpen && this.modalItem) {
+                this._modalScrollById[this.modalItem.id] = this._getModalScroll();
+            }
+        },
+        _restoreModalScroll(top) {
+            const target = top || 0;
+            // The modal's sections (parts, upgrade tree, drops, images) settle over
+            // a few frames after the data lands. Setting scrollTop once can clamp to a
+            // not-yet-tall-enough max and lose the offset, so re-apply each frame until
+            // it sticks (or we run out of tries). Stops immediately for target 0.
+            this.$nextTick(() => {
+                let frames = 0;
+                const apply = () => {
+                    const el = document.querySelector(".modal-body");
+                    if (!el) return;
+                    el.scrollTop = target;
+                    if (++frames < 12 && Math.abs(el.scrollTop - target) > 1) {
+                        requestAnimationFrame(apply);
+                    }
+                };
+                requestAnimationFrame(apply);
+            });
+        },
+        // Keep the current item's saved scroll fresh as the user scrolls, so the
+        // browser's Back/Forward (which goes through hashchange, not the in-modal
+        // arrows) restores the right offset. Debounced to avoid per-frame work.
+        onModalScroll() {
+            clearTimeout(this._scrollSyncTimer);
+            this._scrollSyncTimer = setTimeout(() => this._saveCurrentModalScroll(), 80);
         },
 
         openAmmoFromCaliber(caliberId) {
@@ -5264,6 +5389,7 @@ export const appDefinition = {
                 this.fetchPbaConstants(),
                 this.fetchCalibers(),
                 this.fetchAmmoWeapons(),
+                this.fetchWeaponAddonStatus(),
                 this.fetchJsonCached("ballisticRangesCache", "ballistic-ranges.json"),
             ]);
         },
@@ -7473,7 +7599,10 @@ export const appDefinition = {
                     this.saveBuildToStorage();
                 }
             } else if (hash) {
-                this.openItem(hash);
+                // Browser Back/Forward. modalItem is still the outgoing item here, so
+                // snapshot its scroll first, then restore the target item's saved offset.
+                this._saveCurrentModalScroll();
+                this.openItem(hash, this._modalScrollById[hash] || 0);
             } else {
                 this.closeModal();
             }

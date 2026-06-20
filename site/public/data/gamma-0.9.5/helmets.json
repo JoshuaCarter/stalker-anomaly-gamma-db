@@ -39,6 +39,7 @@
       "displayName": "helm_ach7",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -61,6 +62,7 @@
       "displayName": "helm_ach7ex",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -82,7 +84,8 @@
       "ui_inv_outfit_explosion_protection": "0%",
       "displayName": "st_helm_bandana",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "hasOutfitParts": true
     },
     {
       "id": "helm_battle",
@@ -104,6 +107,7 @@
       "displayName": "st_helm_battle",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -125,7 +129,8 @@
       "ui_inv_outfit_explosion_protection": "0%",
       "displayName": "st_helm_cloth_mask",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "hasOutfitParts": true
     },
     {
       "id": "helm_exo",
@@ -147,6 +152,7 @@
       "displayName": "st_helm_exo_name",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -169,6 +175,7 @@
       "displayName": "st_helm_hardhat",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -191,6 +198,7 @@
       "displayName": "st_helm_hardhat [snag]",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -213,6 +221,7 @@
       "displayName": "st_helm_m40",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -235,6 +244,7 @@
       "displayName": "helm_m50",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -257,6 +267,7 @@
       "displayName": "st_helm_metro",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -279,6 +290,7 @@
       "displayName": "helm_ppm88",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -301,6 +313,7 @@
       "displayName": "st_helm_protective",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -323,6 +336,7 @@
       "displayName": "helm_ranger",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -345,6 +359,7 @@
       "displayName": "st_helm_resp",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -367,6 +382,7 @@
       "displayName": "st_helm_respirator",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -389,6 +405,7 @@
       "displayName": "st_helm_respirator_gp5",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -411,6 +428,7 @@
       "displayName": "st_helm_respirator [old]",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -432,7 +450,8 @@
       "ui_inv_outfit_explosion_protection": "0%",
       "displayName": "st_helm_rp_bala",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "hasOutfitParts": true
     },
     {
       "id": "helm_spartan",
@@ -454,6 +473,7 @@
       "displayName": "helm_spartan",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     },
     {
@@ -476,6 +496,7 @@
       "displayName": "st_helm_tactic",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "hasOutfitParts": true,
       "hasUpgrades": true
     }
   ]

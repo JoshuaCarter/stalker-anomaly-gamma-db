@@ -1,0 +1,5250 @@
+{
+  "army_nosorog_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_11",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "army_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_fabrics_3",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "bandit_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_9",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "bandit_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "bandit_nbc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "bandit_novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_3"
+    ]
+  },
+  "bandit_novice_outfit_alt": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_2"
+    ]
+  },
+  "bandit_ps5_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "bandit_scientific_dark_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_5",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_14",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "bandit_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_17",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "bandit_sun_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "banditmerc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_3",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "cs_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_15",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_15",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "cs_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_15",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_15",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "cs_heavy_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_10",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_18",
+      "prt_o_ballistic_2"
+    ]
+  },
+  "cs_light_novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_8",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "cs_light_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "cs_medium_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "cs_nbc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_2",
+      "prt_o_retardant_1",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "cs_novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_2"
+    ]
+  },
+  "cs_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_12",
+      "prt_o_retardant_16",
+      "prt_o_retardant_15",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "cs_scientific_outfit_good": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "cs_stalker_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_1",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "cs_stalker_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_1",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_16",
+      "prt_o_support_1"
+    ]
+  },
+  "dolg_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_18",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_12",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "dolg_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_18",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_12",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "dolg_heavy_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_19",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_2"
+    ]
+  },
+  "dolg_heavy_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_19",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_2",
+      "prt_o_support_1"
+    ]
+  },
+  "dolg_heavy_redline_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_7"
+    ]
+  },
+  "dolg_nosorog_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_18",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_12",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "dolg_novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_4"
+    ]
+  },
+  "dolg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "dolg_pantsir_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_7",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_7"
+    ]
+  },
+  "dolg_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_17",
+      "prt_o_support_1"
+    ]
+  },
+  "dolg_red_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_2",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "dolg_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_5",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_16",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "dolg_scientific_red_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_11",
+      "prt_o_retardant_16",
+      "prt_o_ballistic_18",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "dolg_scientific_wood_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_15",
+      "prt_o_retardant_20",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "dolg_scout_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_10",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "dolg_specops_red_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "dolg_voin_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "ecolog_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_11",
+      "prt_o_support_1",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "ecolog_guard_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_18",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "ecolog_outfit_blue": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_retardant_18",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "ecolog_outfit_green": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_retardant_11",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "ecolog_outfit_orange": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_15",
+      "prt_o_retardant_12",
+      "prt_o_retardant_3",
+      "prt_o_retardant_4"
+    ]
+  },
+  "ecolog_outfit_red": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_15",
+      "prt_o_retardant_14",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "ecolog_outfit_white": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_retardant_12",
+      "prt_o_retardant_4",
+      "prt_o_retardant_1"
+    ]
+  },
+  "ecolog_outfit_yello": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_15",
+      "prt_o_retardant_11",
+      "prt_o_retardant_4",
+      "prt_o_retardant_17"
+    ]
+  },
+  "ecolog_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_18",
+      "prt_o_retardant_15",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_13",
+      "prt_o_support_1"
+    ]
+  },
+  "exo_dolg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_12",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_dolg_red_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_13",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_20",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_dolg_urban_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_1",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_dolg_wood_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_20",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_merc_grass_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_18",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_merc_urban_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_1",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_merc_wood_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_20",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_14",
+      "prt_o_ballistic_19",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exo_wood_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_20",
+      "prt_o_ballistic_4",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_14",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "freedom_exo_vineleaf_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "freedom_nosorog_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_16",
+      "prt_o_support_1",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "ghillie_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_9",
+      "prt_o_retardant_5",
+      "prt_o_retardant_19"
+    ]
+  },
+  "greh_armored_camo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_10",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "greh_armored_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_9",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "greh_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_12",
+      "prt_o_support_1",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "greh_ps5_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "greh_trenchcoat_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_12",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "helm_ach7": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_ballistic_15",
+      "prt_o_retardant_12",
+      "prt_o_retardant_5"
+    ]
+  },
+  "helm_ach7ex": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_ballistic_15",
+      "prt_o_retardant_12",
+      "prt_o_retardant_16"
+    ]
+  },
+  "helm_bandana": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3"
+    ]
+  },
+  "helm_battle": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_15",
+      "prt_o_retardant_4",
+      "prt_o_retardant_16",
+      "prt_o_retardant_12"
+    ]
+  },
+  "helm_cloth_mask": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3"
+    ]
+  },
+  "helm_exo": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_19",
+      "prt_o_retardant_11",
+      "prt_o_retardant_15",
+      "prt_o_retardant_5"
+    ]
+  },
+  "helm_hardhat": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_5",
+      "prt_o_retardant_5"
+    ]
+  },
+  "helm_hardhat_snag": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_5",
+      "prt_o_retardant_5"
+    ]
+  },
+  "helm_m40": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_15",
+      "prt_o_retardant_16"
+    ]
+  },
+  "helm_m50": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_retardant_17"
+    ]
+  },
+  "helm_metro": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_16",
+      "prt_o_retardant_11",
+      "prt_o_retardant_16",
+      "prt_o_retardant_5"
+    ]
+  },
+  "helm_ppm88": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_15",
+      "prt_o_retardant_16"
+    ]
+  },
+  "helm_protective": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_ballistic_16",
+      "prt_o_retardant_16",
+      "prt_o_retardant_17",
+      "prt_o_retardant_3",
+      "prt_o_retardant_6"
+    ]
+  },
+  "helm_ranger": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "helm_resp": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_15"
+    ]
+  },
+  "helm_respirator": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_16"
+    ]
+  },
+  "helm_respirator_gp5": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16"
+    ]
+  },
+  "helm_respirator_old": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16"
+    ]
+  },
+  "helm_rp_bala": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3"
+    ]
+  },
+  "helm_spartan": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_15",
+      "prt_o_retardant_12",
+      "prt_o_retardant_16",
+      "prt_o_retardant_6"
+    ]
+  },
+  "helm_tactic": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_ballistic_16",
+      "prt_o_retardant_3",
+      "prt_o_retardant_16",
+      "prt_o_retardant_11"
+    ]
+  },
+  "hybrid_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_12",
+      "prt_o_ballistic_3",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "isg_camo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_20",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "isg_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_20",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_11",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "isg_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_20",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "isg_lcs_camo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "isg_lcs_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_20",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "isg_lcs_urban_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_17",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "isg_nosorog_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_20",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_11",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "isg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "isg_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_19",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_13",
+      "prt_o_support_1"
+    ]
+  },
+  "isg_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_15",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_12",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "light_dolg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_12",
+      "prt_o_retardant_10",
+      "prt_o_ballistic_15",
+      "prt_o_ballistic_4"
+    ]
+  },
+  "light_freedom_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_15",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_8"
+    ]
+  },
+  "light_isg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_1",
+      "prt_o_retardant_10",
+      "prt_o_ballistic_18",
+      "prt_o_ballistic_6"
+    ]
+  },
+  "light_loner_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_9",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_12",
+      "prt_o_ballistic_8"
+    ]
+  },
+  "light_merc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_2",
+      "prt_o_retardant_10",
+      "prt_o_ballistic_18",
+      "prt_o_ballistic_7"
+    ]
+  },
+  "light_monolit_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_6",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_7"
+    ]
+  },
+  "light_voen_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_5",
+      "prt_o_retardant_12",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "merc_ace_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_12",
+      "prt_o_retardant_18",
+      "prt_o_ballistic_1",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "merc_combat_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_8",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_1",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "merc_coyote_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_13",
+      "prt_o_retardant_10",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "merc_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_14",
+      "prt_o_support_1",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "merc_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_14",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "merc_fighter_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_5",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "merc_jackal_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "merc_nighthunter_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_1",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_12",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "merc_nosorog_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_14",
+      "prt_o_support_1",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "merc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "merc_scientific_armored_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_11",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_2",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "merc_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_10",
+      "prt_o_retardant_1",
+      "prt_o_ballistic_15",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "merc_scout_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_3",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "merc_sun_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_17",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "merc_sunset_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "merc_wolven_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_2",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_12"
+    ]
+  },
+  "military_bandit_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_18",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_14",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "military_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_11",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "military_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "military_freedom_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_18",
+      "prt_o_retardant_11",
+      "prt_o_ballistic_12",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "military_merc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_20",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "military_monolit_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_17",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "military_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_17",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "military_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_17",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_17",
+      "prt_o_support_1"
+    ]
+  },
+  "military_sky_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_4",
+      "prt_o_retardant_15",
+      "prt_o_ballistic_20",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "monolith_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_17",
+      "prt_o_ballistic_4",
+      "prt_o_ballistic_13",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "monolith_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_17",
+      "prt_o_ballistic_4",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "monolith_nbc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "monolith_nosorog_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_17",
+      "prt_o_ballistic_4",
+      "prt_o_ballistic_13",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "monolith_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "monolith_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_20",
+      "prt_o_support_1"
+    ]
+  },
+  "monolith_scientific_light_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_6",
+      "prt_o_retardant_8",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "monolith_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_9",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_11",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "monolith_trenchcoat_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_11",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_3"
+    ]
+  },
+  "nbc_dolg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_fabrics_2",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "nbc_freedom_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_2",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "nbc_merc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_fabrics_3",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "nbc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_retardant_8",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "nomad_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_7",
+      "prt_o_retardant_12",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_3"
+    ]
+  },
+  "novice_outfit_camo": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_4"
+    ]
+  },
+  "novice_outfit_tourist": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_4"
+    ]
+  },
+  "redline_novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_4"
+    ]
+  },
+  "renegade_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_8",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_9",
+      "prt_o_support_1",
+      "prt_o_ballistic_5"
+    ]
+  },
+  "renegade_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_1",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_14",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "renegademerc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_4",
+      "prt_o_ballistic_9",
+      "prt_o_ballistic_16"
+    ]
+  },
+  "scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_11",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "specops_bandit_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_10",
+      "prt_o_ballistic_10",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "specops_dolg_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_13",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_9"
+    ]
+  },
+  "specops_merc_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_14",
+      "prt_o_ballistic_4",
+      "prt_o_ballistic_12"
+    ]
+  },
+  "specops_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_18",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "stalker_autumn_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_11",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "stalker_bear_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_1",
+      "prt_o_retardant_13",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "stalker_drought_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_6",
+      "prt_o_retardant_10",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "stalker_graphite_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_2",
+      "prt_o_retardant_7",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "stalker_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_retardant_8",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "stalker_predator_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_18"
+    ]
+  },
+  "stalker_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_5",
+      "prt_o_retardant_8",
+      "prt_o_ballistic_20",
+      "prt_o_support_1"
+    ]
+  },
+  "stalker_salamander_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_15",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "stalker_tigerstripe_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_8",
+      "prt_o_ballistic_19",
+      "prt_o_ballistic_14"
+    ]
+  },
+  "svoboda_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_16",
+      "prt_o_support_1",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "svoboda_exolight_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_16",
+      "prt_o_ballistic_5",
+      "prt_o_ballistic_16",
+      "prt_o_ballistic_11"
+    ]
+  },
+  "svoboda_heavy_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_4",
+      "prt_o_retardant_14",
+      "prt_o_ballistic_6",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "svoboda_heavy_outfit_2": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_10",
+      "prt_o_retardant_12",
+      "prt_o_ballistic_8",
+      "prt_o_ballistic_12"
+    ]
+  },
+  "svoboda_light_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "svoboda_light_proto_exo_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_20",
+      "prt_o_support_1"
+    ]
+  },
+  "svoboda_novice_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_fabrics_3",
+      "prt_o_fabrics_4"
+    ]
+  },
+  "svoboda_scientific_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_3",
+      "prt_o_retardant_13",
+      "prt_o_retardant_2",
+      "prt_o_ballistic_13",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "travel_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_1",
+      "prt_o_retardant_2",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_19"
+    ]
+  },
+  "trenchcoat_brown_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_10",
+      "prt_o_retardant_3",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "trenchcoat_dolg_brown_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_1",
+      "prt_o_retardant_9",
+      "prt_o_ballistic_7",
+      "prt_o_ballistic_17"
+    ]
+  },
+  "trenchcoat_freedom_brown_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_1",
+      "prt_o_retardant_6",
+      "prt_o_ballistic_17",
+      "prt_o_ballistic_20"
+    ]
+  },
+  "trenchcoat_green_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_retardant_9",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_15"
+    ]
+  },
+  "trenchcoat_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_2",
+      "prt_o_fabrics_3",
+      "prt_o_retardant_3"
+    ]
+  },
+  "wastelander_outfit": {
+    "kind": "outfit",
+    "parts": [
+      "prt_o_fabrics_1",
+      "prt_o_retardant_2",
+      "prt_o_retardant_9",
+      "prt_o_retardant_5",
+      "prt_o_ballistic_13"
+    ]
+  },
+  "wpn_9a91": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_7",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_abakan": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_abakan_n": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ace21": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_13",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_ace52": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_10",
+      "prt_w_bolt_13",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_adar2_15": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aek": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_aek_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_aek_duty": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak101": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak101_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak102": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak103": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak103_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak104": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak104_alfa": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak105": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak105_shakal": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak105_sp": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak105_swamp": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak12": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak12_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak12_custom_mono_kit": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak12_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak5c_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_ak5c_bas_5c_tik": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_ak5c_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_ak74": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74_n": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74_pmc": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74m": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74m_beard": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74m_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74m_n": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74m_pka": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74u": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74u_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74u_m1_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74u_n1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ak74u_tac": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akm": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akm_alfa": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akm_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akm_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akms": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akms_alt": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_akms_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_aks": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_aks74_new": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_am17": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_amb17": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_aps": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_aps_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_aps_bas_apsabigo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_ar15_freedom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_ash12": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_13",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_ash12_sup": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_13",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_aug": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_a1_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_a1_custom_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_a3": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_a3_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_a3_custom_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_freedom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_merc": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_aug_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_benelli_m1014": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_beretta": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_beretta_alt": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_beretta_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_beretta_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_bizon": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_bm16": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_2",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_9",
+      "prt_w_bolt_12",
+      "prt_w_gas_tube_10"
+    ]
+  },
+  "wpn_bm16_alt": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_2",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_9",
+      "prt_w_bolt_12",
+      "prt_w_gas_tube_10"
+    ]
+  },
+  "wpn_bm16_full": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_2",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_9",
+      "prt_w_bolt_12",
+      "prt_w_gas_tube_10"
+    ]
+  },
+  "wpn_bm16_full_alt": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_2",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_9",
+      "prt_w_bolt_12",
+      "prt_w_gas_tube_10"
+    ]
+  },
+  "wpn_bm16_full_alt_23": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_9",
+      "prt_w_bolt_12",
+      "prt_w_gas_tube_10"
+    ]
+  },
+  "wpn_brn180": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_colt1911": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_colt1911_anarchy": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_colt1911_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_colt1911_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_colt1911_duty": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_colt1911_n": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_cz52": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_5",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_5"
+    ]
+  },
+  "wpn_cz75": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_cz75_auto": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_desert_eagle": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_6"
+    ]
+  },
+  "wpn_desert_eagle_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_6"
+    ]
+  },
+  "wpn_desert_eagle_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_6"
+    ]
+  },
+  "wpn_desert_eagle_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_6"
+    ]
+  },
+  "wpn_dtmdr": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_dtmdr_black": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_dtmdr_black_sup": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_dtmdr_sup": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_dvl10": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_dvl10_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_eft_mts_255": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_eft_rsh12": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_4"
+    ]
+  },
+  "wpn_fal": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fal_aus": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fal_sa58_osw": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_famas3": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fn2000": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fn2000_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fn2000_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fn2000_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fn57": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_4",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_5"
+    ]
+  },
+  "wpn_fnc": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_fnp45": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_fnx45": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_fnx45_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_fort": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_fort17": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_fort500": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_fort_snag": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_g3": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36k_rwap": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36ka4_rwap": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36nimble_rwap": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36v_rwap": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g36v_rwap_cut_kit": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g3sg1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_g43": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_5",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_gauss": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_glock": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_glock17": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_glock17_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_glock_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_glock_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_grot": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_grot_short": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_grot_short_tan": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_grot_tan": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_groza": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_groza_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_gsh18": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_gsh18_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_hk21": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_hk416": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_hk417": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_howa20": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_hpsa": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_ithacam37": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ithacam37_mag": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ithacam37_sawnoff": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ithacam37_stakeout": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ithacam37_stakeout_20x70": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ithacam37_trench": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_k98": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_5",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_k98_mauser_kit": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_5",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_k98_mod": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_5",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_k98_mod_silen98": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_5",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_kiparis": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_kiparis_ots2_upgr_kit": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_korth": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_korth_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_kriss_vector": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_16",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_ks23": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ks23_23_up": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ks23_ecolog": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ks23_kaban": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ks23_kaban_kab_up": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ks23_vorkuta": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_ksg23": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_l85": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_l85_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_l85_m2": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_l85_m3": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_l85_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_l96a1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_l96a1m": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_lr300": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_lr300_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m16": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m16a2": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m24": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_m249": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_m4": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m45a1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_m4_butcher": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m4_ru556": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m4_tac": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m4a1_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m4a1_siber": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m60": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_m82": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_13",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_10",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_m98b": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_mac10": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14"
+    ]
+  },
+  "wpn_mk14": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_mk47": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_mk47_sup": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_mosin": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_mossberg590": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_mossberg590_rail": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_mp133": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_mp153": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_mp153_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_mp155": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_mp412": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_p_trigger_4"
+    ]
+  },
+  "wpn_mp443": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_mp5": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_mp5_kurtz": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_mp5_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_mp5sd": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_mp7": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_mp9": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_oc33": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_2",
+      "prt_w_p_spring_2"
+    ]
+  },
+  "wpn_p90": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_4",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_p90_gs": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_4",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_p90gamma": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_4",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_pb": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_6",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pb_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_6",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pb_bas_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_6",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pb_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_6",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pkm": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_pkm_siber": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_pkm_zenit_siber": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_pkm_zulus": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_pkp": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_pkp_siber": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_10",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_2",
+      "prt_w_gas_tube_7"
+    ]
+  },
+  "wpn_pl15": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_pl15_pl15_scolaz": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_pl15_tan": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_pl15_tan_pl15_scolaz": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_pm": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pm_actor": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pm_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pm_bas_actor": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pm_bas_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pm_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pmm_bas": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_1",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_1"
+    ]
+  },
+  "wpn_pp2000": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_pp2000_operator": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_ppsh41": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_12",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_17",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_ppsh41_rednew": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_12",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_17",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_ppsh41_woodnew": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_12",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_17",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_protecta": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_protecta_aim": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_protecta_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_protecta_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_protecta_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_raptr": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_remington700": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_remington700_archangel": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_remington700_lapua700": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_remington700_magpul_pro": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_remington700_mod_x_gen3": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_remington870": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_rpd": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_rpk": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_rpk74": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_rpk74_16": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_rpk74_16_drum": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_8",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_6",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_saiga12s": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_saiga12s_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_saiga12s_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_saiga12s_m2": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_scar_new": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_scar_siber": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_scar_siber_black": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_scar_siber_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_scar_siber_m1_black": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_scar_siber_m2": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_scar_siber_m2_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_7",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sig220": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_sig220_n": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_sig220_n_u2p2g0r": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_sig220_n_upg220": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_sig226": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_sig226_226sig_kit": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_sig550": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sig550_camo": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sig550_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sig550_luckygun": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sig550_sniper": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sig552": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sks": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_sks_b": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_sks_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_sks_molot": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_sks_tac": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_spas12": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_spas12_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_spas12_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_sr1m": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_sr1m_gurza_up": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_sr1m_sr1upgr1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_sr25": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_10",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_sr2_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_sr2_veresk": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_sr2_veresk_sr2_upkit": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
+      "prt_w_gas_tube_11"
+    ]
+  },
+  "wpn_steyr_scout": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_steyr_scout_big": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_sv98": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_sv98_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_svd": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svd_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svd_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svds": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svds_pmc": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svt40": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_svt40_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_svu": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svu_alt": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_svu_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_5",
+      "prt_w_gas_tube_5"
+    ]
+  },
+  "wpn_thompson_1921": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_16",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_thompson_m1a1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_16",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_toz106": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz106_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_bull": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_decor": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_mark4": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_mark4_23": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_obrez": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_obrez_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_toz34_obrez_decor": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_1",
+      "prt_w_trigger_components_6",
+      "prt_w_bolt_carrier_8",
+      "prt_w_bolt_11",
+      "prt_w_gas_tube_9"
+    ]
+  },
+  "wpn_trg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_tt33": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_5",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_5"
+    ]
+  },
+  "wpn_tt33_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_5",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_5"
+    ]
+  },
+  "wpn_type63": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_4",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_udp9": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_ump45": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_16",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_ump45_custom": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_16",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_usas12": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_10",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_usp": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_usp_tac": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_usp_tac_45": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_uzi": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15"
+    ]
+  },
+  "wpn_uzi_micro": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15"
+    ]
+  },
+  "wpn_uzi_mini": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15"
+    ]
+  },
+  "wpn_val": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_val_modern": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_val_tac": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vepr": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_1",
+      "prt_w_bolt_3",
+      "prt_w_gas_tube_1"
+    ]
+  },
+  "wpn_vihr": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez_1pn93": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez_isg": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez_m1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez_m2": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez_n1": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vintorez_nimble": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_5",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vityaz": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vityaz_vitup": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vsk94": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_6",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_2",
+      "prt_w_bolt_8",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vssk": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_13",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_vz61": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_vz61_alt": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_11",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_11",
+      "prt_w_bolt_15",
+      "prt_w_gas_tube_4"
+    ]
+  },
+  "wpn_wa2000": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_4",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_10",
+      "prt_w_gas_tube_3"
+    ]
+  },
+  "wpn_walther": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_walther_p99": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_3",
+      "prt_w_p_trigger_1",
+      "prt_w_p_spring_3"
+    ]
+  },
+  "wpn_walther_p99_mod9": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_2",
+      "prt_w_p_trigger_3",
+      "prt_w_p_spring_4"
+    ]
+  },
+  "wpn_wincheaster1300": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_wincheaster1300_trapper": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_3",
+      "prt_w_trigger_components_1",
+      "prt_w_bolt_carrier_7",
+      "prt_w_bolt_1",
+      "prt_w_gas_tube_2"
+    ]
+  },
+  "wpn_winchester1873": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_p_barrel_7",
+      "prt_w_trigger_components_4",
+      "prt_w_bolt_carrier_6",
+      "prt_w_bolt_4",
+      "prt_w_gas_tube_8"
+    ]
+  },
+  "wpn_xm4": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_xm4_admin": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_xm4_bd": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  },
+  "wpn_xm8": {
+    "kind": "weapon",
+    "parts": [
+      "prt_w_barrel_9",
+      "prt_w_trigger_components_3",
+      "prt_w_bolt_carrier_3",
+      "prt_w_bolt_9",
+      "prt_w_gas_tube_6"
+    ]
+  }
+}
