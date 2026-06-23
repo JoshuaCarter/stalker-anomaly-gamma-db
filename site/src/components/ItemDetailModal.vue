@@ -201,6 +201,14 @@
                     </div>
                 </div>
 
+                <!-- Used By Weapons (on ammo detail) -->
+                <div v-if="modalUsedByWeapons.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('used-by') }">
+                    <h2 class="section-toggle" @click="toggleSection('used-by')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_used_by') }}</h2>
+                    <div class="addon-tile-grid">
+                        <AddonTile v-for="w in modalUsedByWeapons" :key="w.id" :item="w" :name="weaponDisplayName(w)" :badge="w.isAlt ? t('app_badge_alt') : ''" @navigate="$emit('navigateToItem', $event)" />
+                    </div>
+                </div>
+
                 <!-- Max Upgraded Stats -->
                 <div v-if="maxUpgradeStatRows.length > 0" class="drop-sources max-stats-section" :class="{ collapsed: isCollapsed('max-stats') }">
                     <h2 class="section-toggle" @click="toggleSection('max-stats')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_max_upgraded_stats') }}<span class="max-stats-tag">{{ t('app_label_best_or_selected') }}</span></h2>
@@ -398,7 +406,7 @@
 
                 <!-- Sold By (traders that stock this item) -->
                 <div v-if="modalSoldBy.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('sold-by') }">
-                    <h2 class="section-toggle" @click="toggleSection('sold-by')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_sold_by') }}</h2>
+                    <h2 class="section-toggle" @click="toggleSection('sold-by')"><LucideChevronRight :size="14" class="section-chevron" /> <a href="#" class="section-title-link" @click.stop.prevent="$emit('openTrading')" v-tooltip="t('app_nav_trading')">{{ t('app_label_sold_by') }}</a></h2>
                     <div class="sold-by-grid">
                         <div v-for="row in modalSoldBy" :key="row.trader" class="sold-by-item">
                             <span class="sold-by-trader" :style="row.color ? { '--trader-color': row.color } : null">
@@ -450,18 +458,6 @@
                                 <span>{{ t(mat.name) }}</span>
                             </template>
                             <span class="recipe-ing-amount">{{ mat.amount }}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Used By Weapons (on ammo detail) -->
-                <div v-if="modalUsedByWeapons.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('used-by') }">
-                    <h2 class="section-toggle" @click="toggleSection('used-by')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_used_by') }}</h2>
-                    <div class="used-by-grid">
-                        <div v-for="w in modalUsedByWeapons" :key="w.id" class="used-by-item">
-                            <a href="#" @click.prevent="$emit('navigateToItem', w.id)">{{ tName(w) }}</a>
-                            <span class="used-by-cat">{{ t(singularCategory(w.category)) || tCat(w.category) }}</span>
-                            <span v-if="w.isAlt" class="badge-ammo badge-ammo-alt ammo-alt-tag">{{ t('app_badge_alt') }}</span>
                         </div>
                     </div>
                 </div>
@@ -535,6 +531,7 @@ export default {
   emits: [
     'closeModal', 'navigateModal', 'navigateToItem', 'toggleFavorite', 'togglePin',
     'copyItemId', 'copyModalLink', 'pickComparePack', 'openWeaponHelp', 'modalScroll',
+    'openTrading',
   ],
   data() {
     return {

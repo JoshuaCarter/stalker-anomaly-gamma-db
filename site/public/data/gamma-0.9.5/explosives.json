@@ -29,8 +29,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": false
+      "unobtainable": false,
+      "tacticalKit": false
     },
     {
       "id": "grenade_gd-05",
@@ -48,8 +48,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": false
+      "unobtainable": false,
+      "tacticalKit": false
     },
     {
       "id": "grenade_rgd5",
@@ -67,8 +67,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": false
+      "unobtainable": false,
+      "tacticalKit": false
     },
     {
       "id": "grenade_smoke",
@@ -86,8 +86,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     },
     {
       "id": "ied",
@@ -105,8 +105,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     },
     {
       "id": "ied_blow",
@@ -124,8 +124,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     },
     {
       "id": "ied_new_blow",
@@ -143,8 +143,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     },
     {
       "id": "ied_rpg",
@@ -162,8 +162,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     },
     {
       "id": "mine",
@@ -181,8 +181,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     },
     {
       "id": "mine_new_blow",
@@ -200,8 +200,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
-      "unobtainable": true
+      "unobtainable": true,
+      "tacticalKit": false
     }
   ]
 }

@@ -22,6 +22,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_sig226_226sig_kit",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -37,6 +39,8 @@
       "displayName": "st_addon_scope_23_up",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -53,6 +57,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_ak5c_bas_5c_tik",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -68,6 +74,8 @@
       "displayName": "st_addon_admin_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -84,6 +92,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_aps_bas_apsabigo",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -100,6 +110,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_remington700_archangel",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -115,6 +127,8 @@
       "displayName": "st_addon_bd_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -130,6 +144,8 @@
       "displayName": "st_addon_cut_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -145,6 +161,8 @@
       "displayName": "st_addon_scope_gurza_up_new",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -160,6 +178,8 @@
       "displayName": "st_addon_scope_infiltrator_tactical_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -176,6 +196,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_ks23_kaban_kab_up",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -191,6 +213,8 @@
       "displayName": "st_addon_scope_kashtan_rmr",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -208,6 +232,8 @@
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_fal_aus",
       "nameSuffixNum": 1,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -225,6 +251,8 @@
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_fal_aus",
       "nameSuffixNum": 2,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -242,6 +270,8 @@
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_fal_aus",
       "nameSuffixNum": 3,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -257,6 +287,8 @@
       "displayName": "st_addon_kurtz_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -273,6 +305,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_remington700_lapua700",
+      "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -288,6 +322,8 @@
       "displayName": "st_addon_scope_m9_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -304,6 +340,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_remington700_magpul_pro",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -319,6 +357,8 @@
       "displayName": "st_addon_scope_march_f_shorty_alt",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato",
         "wp"
@@ -335,6 +375,8 @@
       "displayName": "st_addon_scope_mark8_rmr",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato",
         "wp"
@@ -352,6 +394,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_k98_mod_silen98",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -368,6 +412,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_walther_p99_mod9",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -384,6 +430,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_remington700_mod_x_gen3",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -400,6 +448,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_ak12_mono_kit",
+      "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -415,6 +465,8 @@
       "displayName": "st_addon_ots2_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -430,6 +482,8 @@
       "displayName": "st_addon_scope_pb_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -445,6 +499,8 @@
       "displayName": "st_addon_scope_pl15_scolaz_new",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -460,6 +516,8 @@
       "displayName": "st_addon_scope_pm_upgr_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -475,6 +533,8 @@
       "displayName": "st_addon_scope_psicho_rmr",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -490,6 +550,8 @@
       "displayName": "st_addon_scope_shakal",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -505,6 +567,8 @@
       "displayName": "st_addon_scope_silen98",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -520,6 +584,8 @@
       "displayName": "st_addon_scope_spec_alt",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato",
         "other",
@@ -537,6 +603,8 @@
       "displayName": "st_addon_scope_spectre_tactical_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -552,6 +620,8 @@
       "displayName": "st_addon_scope_sr1upgr1_new",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -568,6 +638,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_sr2_veresk_sr2_upkit",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -583,6 +655,8 @@
       "displayName": "st_addon_scope_sup_new",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato",
         "wp"
@@ -600,6 +674,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_ak105_swamp",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -615,6 +691,8 @@
       "displayName": "st_addon_scope_trijicon_rmr",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato",
         "other",
@@ -633,6 +711,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_sig220_n_u2p2g0r",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -649,6 +729,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "nameSuffixKey": "st_wpn_sig220_n_upg220",
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -664,6 +746,8 @@
       "displayName": "st_addon_scope_vitup_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -679,6 +763,8 @@
       "displayName": "st_addon_vorkutakit",
       "hasStashDrop": false,
       "hasDisassemble": false,
+      "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]

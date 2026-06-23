@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, cpSync } from "fs";
 import { join } from "path";
 import { createHash } from "crypto";
-import { generateTraders } from "./generate-traders.mjs";
+import { generateTraders, getSoldItemIds } from "./generate-traders.mjs";
 
 // Parse --pack argument (supports both --pack=value and --pack value)
 function parsePackArg(argv) {
@@ -1334,6 +1334,10 @@ try {
 // instead of `unobtainable`; also written out as kit-weapons.json later.
 const kitWeapons = {};
 const kitDerivedWeaponIds = new Set();
+// derived weapon id -> { base: <base weapon id>, kitId: <tactical kit id> }.
+// Lets the obtainability pass test whether a kit weapon's prerequisites (the
+// base weapon and the kit item) are themselves reachable.
+const kitDerivedBase = new Map();
 {
   const kitIds = (categoryData.get("tactical-kits")?.items || []).map(i => i.id);
   const allWeaponIds = [];
@@ -1349,6 +1353,7 @@ const kitDerivedWeaponIds = new Set();
       if (wid.endsWith(suffix) && wid.length > suffix.length) {
         (kitWeapons[kitId] ||= []).push(wid);
         kitDerivedWeaponIds.add(wid);
+        kitDerivedBase.set(wid, { base: wid.slice(0, -suffix.length), kitId });
         break;
       }
     }
@@ -1459,22 +1464,69 @@ const kitNameSuffixes = new Map(); // kit id -> { key, num }
   }
 }
 
-// Compute the derived `unobtainable` / `tacticalKit` flags for weapons/explosives
-// and propagate hasNpcWeaponDrop / hasStashDrop / inStartingLoadout / unobtainable
-// / tacticalKit from category items into the index entries. Runs after stash-drop
-// and loadout blocks so all three input flags are available. Weapons with no drop
-// source that exist only as the result of applying a tactical kit are flagged
-// `tacticalKit` rather than `unobtainable`.
-const obtainabilityCategories = new Set(["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers", "explosives"]);
+// Compute the derived `unobtainable` / `tacticalKit` flags for weapons,
+// explosives, and tactical-kit items, and propagate hasNpcWeaponDrop /
+// hasStashDrop / inStartingLoadout / unobtainable / tacticalKit from category
+// items into the index entries. Runs after stash-drop and loadout blocks so all
+// input flags are available.
+//
+// "Directly reachable" is category-aware, because how an item enters the world
+// differs by type:
+//   - Weapons/explosives: a world source — NPC drop, stash, or starting loadout.
+//     Trader sales are intentionally NOT counted (preserving existing weapon
+//     semantics; only a couple of weapons are sold anyway).
+//   - Tactical-kit items: bought, crafted, or stash-found — never NPC-dropped.
+// A kit-derived weapon has no direct source of its own; it exists only once a
+// kit is applied to a base weapon, so it is reachable only when BOTH (a) its
+// base weapon and (b) the kit item that produces it are reachable. Reachability
+// is resolved to a fixed point because a base weapon can itself be kit-derived
+// (kit items are seeded up front). Kit weapons reachable purely via a kit are
+// flagged `tacticalKit`; everything unreachable is flagged `unobtainable`.
+const obtainabilityCategories = new Set(["pistols", "smgs", "shotguns", "rifles", "snipers", "launchers", "explosives", "tactical-kits"]);
+
+// Purchase/craft sources for kit items. getSoldItemIds reads the trader CSV
+// inputs (source data, not the produced sold-by.json); craftableIds comes from
+// the craft recipes built above.
+const soldItemIds = getSoldItemIds(pack);
+const craftableIds = new Set();
+for (const grp of Object.values(craftRecipes)) {
+  for (const it of grp.items) craftableIds.add(it.id);
+}
+
+const directlyReachable = (item, slug) =>
+  slug === "tactical-kits"
+    ? (item.hasStashDrop === true || soldItemIds.has(item.id) || craftableIds.has(item.id))
+    : (item.hasNpcWeaponDrop === true || item.hasStashDrop === true || item.inStartingLoadout === true);
+
+const obtItems = [];
 for (const [slug, data] of categoryData) {
   if (!obtainabilityCategories.has(slug)) continue;
-  for (const item of data.items) {
-    const noSource = item.hasNpcWeaponDrop !== true
-      && item.hasStashDrop !== true
-      && item.inStartingLoadout !== true;
-    item.tacticalKit = noSource && kitDerivedWeaponIds.has(item.id);
-    item.unobtainable = noSource && !item.tacticalKit;
+  for (const item of data.items) obtItems.push({ item, slug });
+}
+
+const reachable = new Set();
+for (const { item, slug } of obtItems) {
+  if (directlyReachable(item, slug)) reachable.add(item.id);
+}
+// A kit weapon's kit id is the producing kit item's id (in tactical-kits), so
+// reachable.has(kd.kitId) reflects whether that kit item is itself obtainable.
+let reachabilityChanged = true;
+while (reachabilityChanged) {
+  reachabilityChanged = false;
+  for (const { item } of obtItems) {
+    if (reachable.has(item.id)) continue;
+    const kd = kitDerivedBase.get(item.id);
+    if (kd && reachable.has(kd.base) && reachable.has(kd.kitId)) {
+      reachable.add(item.id);
+      reachabilityChanged = true;
+    }
   }
+}
+for (const { item, slug } of obtItems) {
+  item.unobtainable = !reachable.has(item.id);
+  item.tacticalKit = reachable.has(item.id)
+    && !directlyReachable(item, slug)
+    && kitDerivedWeaponIds.has(item.id);
 }
 
 const obtainabilityLookup = new Map();

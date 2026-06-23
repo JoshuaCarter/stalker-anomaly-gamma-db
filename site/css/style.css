@@ -3275,6 +3275,14 @@ input.range-input {
 .drop-sources h2.section-toggle:hover {
     color: var(--color-accent-light);
 }
+.drop-sources h2.section-toggle .section-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+.drop-sources h2.section-toggle .section-title-link:hover {
+    color: var(--color-accent-light);
+    text-decoration: underline;
+}
 .section-chevron {
     transition: transform 0.2s;
     transform: rotate(90deg);
@@ -4017,34 +4025,6 @@ input.range-input {
 }
 .footer-sep {
     color: var(--text-secondary);
-}
-
-/* Used By Weapons */
-.used-by-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-}
-.used-by-item {
-    display: flex;
-    align-items: baseline;
-    gap: 0.35rem;
-    font-size: 0.8rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
-}
-.used-by-item a {
-    color: var(--accent);
-    text-decoration: none;
-}
-.used-by-item a:hover {
-    text-decoration: underline;
-}
-.used-by-cat {
-    color: var(--text-secondary);
-    font-size: 0.65rem;
 }
 
 /* Outfit Exchange */

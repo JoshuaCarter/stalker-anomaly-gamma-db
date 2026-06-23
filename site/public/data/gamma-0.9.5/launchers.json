@@ -45,8 +45,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -75,8 +75,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -105,8 +105,8 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]

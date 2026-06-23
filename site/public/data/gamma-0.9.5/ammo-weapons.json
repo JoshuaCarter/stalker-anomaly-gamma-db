@@ -1915,7 +1915,7 @@
       "displayName": "st_wpn_ak12_mono_kit",
       "category": "Rifles",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_ak12_m1",
@@ -2127,7 +2127,7 @@
       "displayName": "st_wpn_ak12_mono_kit",
       "category": "Rifles",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_ak12_m1",
@@ -2339,7 +2339,7 @@
       "displayName": "st_wpn_ak12_mono_kit",
       "category": "Rifles",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_ak12_m1",
@@ -2543,7 +2543,7 @@
       "displayName": "st_wpn_ak12_mono_kit",
       "category": "Rifles",
       "isAlt": true,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_ak12_m1",
@@ -2748,7 +2748,7 @@
       "displayName": "MDR [sup]",
       "category": "Rifles",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -3181,7 +3181,7 @@
       "displayName": "st_wpn_ak12_mono_kit",
       "category": "Rifles",
       "isAlt": true,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_ak12_m1",
@@ -3386,7 +3386,7 @@
       "displayName": "MDR [sup]",
       "category": "Rifles",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -3819,7 +3819,7 @@
       "displayName": "st_wpn_ak12_mono_kit",
       "category": "Rifles",
       "isAlt": true,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_ak12_m1",
@@ -4024,7 +4024,7 @@
       "displayName": "MDR [sup]",
       "category": "Rifles",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -6035,7 +6035,7 @@
       "displayName": "st_wpn_aps_bas_apsabigo",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_beretta",
@@ -6057,7 +6057,7 @@
       "displayName": "st_wpn_beretta_new [m9_upgr_kit]",
       "category": "Pistols",
       "isAlt": true,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -6309,7 +6309,7 @@
       "displayName": "st_wpn_aps_bas_apsabigo",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_beretta",
@@ -6331,7 +6331,7 @@
       "displayName": "st_wpn_beretta_new [m9_upgr_kit]",
       "category": "Pistols",
       "isAlt": true,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -6599,7 +6599,7 @@
       "displayName": "st_wpn_aps_bas_apsabigo",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true
+      "noDrop": true
     },
     {
       "id": "wpn_beretta",
@@ -6621,7 +6621,7 @@
       "displayName": "st_wpn_beretta_new [m9_upgr_kit]",
       "category": "Pistols",
       "isAlt": true,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -6879,7 +6879,7 @@
       "displayName": "st_wpn_beretta_new [m9_upgr_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -6979,7 +6979,7 @@
       "displayName": "st_wpn_sig226_226sig_kit [hpsa_226sig_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true,
       "kitSuffixNum": 1
     },
@@ -7328,7 +7328,7 @@
       "displayName": "st_wpn_beretta_new [m9_upgr_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -7428,7 +7428,7 @@
       "displayName": "st_wpn_sig226_226sig_kit [hpsa_226sig_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true,
       "kitSuffixNum": 1
     },
@@ -7777,7 +7777,7 @@
       "displayName": "st_wpn_beretta_new [m9_upgr_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true
     },
     {
@@ -7877,7 +7877,7 @@
       "displayName": "st_wpn_sig226_226sig_kit [hpsa_226sig_kit]",
       "category": "Pistols",
       "isAlt": false,
-      "tacticalKit": true,
+      "noDrop": true,
       "kitSuffix": true,
       "kitSuffixNum": 1
     },

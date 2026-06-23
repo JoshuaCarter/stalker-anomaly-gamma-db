@@ -46,8 +46,8 @@
       "hasDisassemble": false,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -78,8 +78,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -110,8 +110,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -142,8 +142,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -174,8 +174,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -205,8 +205,8 @@
       "hasDisassemble": false,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -237,8 +237,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": true,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -271,8 +271,8 @@
       "inStartingLoadout": false,
       "kitSuffix": true,
       "kitSuffixNum": 1,
-      "tacticalKit": true,
       "unobtainable": false,
+      "tacticalKit": true,
       "factions": [
         "other"
       ]
@@ -303,8 +303,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "other"
       ]
@@ -337,8 +337,8 @@
       "inStartingLoadout": false,
       "kitSuffix": true,
       "kitSuffixNum": 2,
-      "tacticalKit": true,
       "unobtainable": false,
+      "tacticalKit": true,
       "factions": [
         "other"
       ]
@@ -369,8 +369,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -401,8 +401,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -433,8 +433,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -465,8 +465,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -497,8 +497,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -529,8 +529,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": true,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -561,8 +561,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -593,8 +593,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": true,
       "unobtainable": false,
+      "tacticalKit": true,
       "factions": [
         "nato"
       ]
@@ -626,8 +626,8 @@
       "hasUpgrades": true,
       "inStartingLoadout": false,
       "kitSuffix": true,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -658,8 +658,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -690,8 +690,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": true,
       "unobtainable": false,
+      "tacticalKit": true,
       "factions": [
         "nato"
       ]
@@ -722,8 +722,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -754,8 +754,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": true,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -786,8 +786,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -818,8 +818,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -850,8 +850,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -882,8 +882,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -914,8 +914,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -946,8 +946,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -978,8 +978,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1010,8 +1010,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1042,8 +1042,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1074,8 +1074,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1106,8 +1106,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1138,8 +1138,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1170,8 +1170,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1202,8 +1202,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1234,8 +1234,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1266,8 +1266,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1298,8 +1298,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -1330,8 +1330,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "wp"
       ]
@@ -1362,8 +1362,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "tacticalKit": false,
       "unobtainable": true,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]
@@ -1394,8 +1394,8 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": true,
-      "tacticalKit": false,
       "unobtainable": false,
+      "tacticalKit": false,
       "factions": [
         "nato"
       ]

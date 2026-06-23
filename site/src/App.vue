@@ -569,6 +569,7 @@
     @copy-modal-link="copyModalLink()"
     @pick-compare-pack="pickComparePack"
     @open-weapon-help="weaponMechanicsOpen = true"
+    @open-trading="closeModal(); openTrading()"
 />
 
 <BuildSaveModal

@@ -6,7 +6,7 @@ import {
     EFFECT_FIELDS, FILTER_DEFS, NAME_TAG_COLS, BADGE_COLS, MODAL_BADGE_KEYS,
     SKIP_KEYS, MAX_PINS, BUILD_HASH_PREFIX,
     LOWER_IS_BETTER, HIGHER_IS_WORSE, NO_HIGHLIGHT, BIPOLAR, POSITIVE_IS_GOOD,
-    HEAL_GROUPS, HEAL_FIELDS, RANGE_EXCLUDE, TILE_HIDE, UNITS,
+    HEAL_GROUPS, HEAL_FIELDS, RANGE_EXCLUDE, TILE_HIDE, KIT_HIDE_FIELDS, UNITS,
     PROTECTION_FIELDS, RESTORATION_FIELDS, BASE_RESIST_CAP, CAP_FIELD_MAP,
     CAT, BUILD_SLOT_CATEGORIES, isBackpack, MAX_SAVED_BUILDS,
     WEAPON_STAT_FIELDS, AMMO_MULTIPLIER_FIELDS, AMMO_ONLY_FIELDS, GRENADE_STAT_FIELDS,
@@ -384,10 +384,12 @@ export const appDefinition = {
         tileFields() {
             if (!this.activeCategory) return [];
             const isAmmo = this.activeCategory === CAT.AMMO;
+            const isKit = this.activeCategory === CAT.TACTICAL_KITS;
             const ammoKeys = new Set(["ui_ammo_types", "st_data_export_ammo_types_alt"]);
             const fields = this.displayHeaders.filter(h => {
                 if (h.startsWith("Total ")) return false;
                 if (h === "st_upgr_cost") return isAmmo;
+                if (isKit && KIT_HIDE_FIELDS.has(h)) return false;
                 return !TILE_HIDE.has(h);
             });
             const regular = fields.filter(h => !ammoKeys.has(h));
@@ -6859,8 +6861,16 @@ export const appDefinition = {
             if (indexEntry?.category) {
                 const fallbackSlug = categorySlug(indexEntry.category);
                 const headers = this.categoryHeaders[fallbackSlug] || [];
+                const cat = indexEntry.category;
+                const isAddon = cat === CAT.SCOPES || cat === CAT.SILENCERS || cat === CAT.GRENADE_LAUNCHERS || cat === CAT.TACTICAL_KITS;
+                const isKit = cat === CAT.TACTICAL_KITS;
                 if (headers.length) {
-                    return headers.filter(h => !TILE_HIDE.has(h) && !h.startsWith("Total ") && h !== "id");
+                    return headers.filter(h => {
+                        if (h.startsWith("Total ") || h === "id") return false;
+                        if (isKit && KIT_HIDE_FIELDS.has(h)) return false;
+                        if (isAddon && h === "st_upgr_cost") return true;
+                        return !TILE_HIDE.has(h);
+                    });
                 }
             }
             return [];

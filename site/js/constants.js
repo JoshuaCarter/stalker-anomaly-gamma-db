@@ -62,6 +62,9 @@ export const RANGE_EXCLUDE = new Set([
 ]);
 export const TILE_HIDE = new Set(["st_upgr_cost", "pda_encyclopedia_name", "name", "pda_encyclopedia_tier", "ui_st_rank", "Type", "factions", "st_data_export_has_perk", "st_data_export_is_junk", "st_data_export_is_backpack", "st_data_export_can_be_crafted", "ui_mcm_menu_exo", "st_data_export_can_be_cooked", "st_data_export_used_in_cooking", "st_data_export_used_in_crafting", "st_data_export_cuts_thick_skin", "st_data_export_restore_health_max", "st_data_export_restore_bleeding_max", "st_data_export_restore_radiation_max", "st_data_export_power_restore_max", "st_data_export_description", ...HEAL_FIELDS]);
 
+// Scope-only stats that carry over into tactical-kit headers but don't apply to kits
+export const KIT_HIDE_FIELDS = new Set(["st_data_export_zoom_factor", "st_data_export_magnifications"]);
+
 export const UNITS = {
     "st_prop_weight": "unit_kg",
     "st_upgr_cost": "₽",

@@ -93,6 +93,34 @@ function processTraderDir(traderPath) {
   return traderData;
 }
 
+/**
+ * Source-derived set of every item id that at least one trader stocks for sale
+ * (i.e. appears in any `supplies_*` tier). Reads the trader CSV *inputs*
+ * directly so consumers — e.g. the index generator's obtainability pass — can
+ * depend on source data rather than on the produced sold-by.json. Returns an
+ * empty set if the pack has no trader data.
+ */
+export function getSoldItemIds(pack) {
+  const srcDir = path.join(ROOT, 'data', pack, 'traders');
+  const sold = new Set();
+  if (!fs.existsSync(srcDir)) return sold;
+
+  const traderDirs = fs.readdirSync(srcDir, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name);
+
+  for (const traderName of traderDirs) {
+    const traderData = processTraderDir(path.join(srcDir, traderName));
+    for (const key of Object.keys(traderData)) {
+      if (!key.startsWith('supplies_')) continue;
+      for (const row of (traderData[key] || [])) {
+        if (row[0]) sold.add(row[0]);
+      }
+    }
+  }
+  return sold;
+}
+
 export function generateTraders(pack) {
   const srcDir = path.join(ROOT, 'data', pack, 'traders');
   const outDir = path.join(ROOT, 'site', 'public', 'data', pack, 'traders');
