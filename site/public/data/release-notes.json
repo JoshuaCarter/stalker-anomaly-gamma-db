@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-06-29",
+    "entries": [
+      { "type": "fixed", "text": "The Sold By section no longer lists weapons, outfits, and helmets, which GAMMA traders stock but won't actually sell.", "credits": [{ "name": "Terrafryer", "role": "bug" }] }
+    ]
+  },
+  {
     "date": "2026-06-20",
     "entries": [
       { "type": "added", "text": "Weapons and outfits now list the parts they're built from, and each part shows which weapons and outfits use it.", "highlight": true, "summaryKey": "app_whats_new_item_parts" },

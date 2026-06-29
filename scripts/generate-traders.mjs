@@ -80,6 +80,56 @@ function tierSuffix(key) {
   return key === 'supplies_generic' ? 'generic' : key.replace('supplies_', '');
 }
 
+// Source CSVs whose items are weapons / outfits / helmets. In GAMMA these are
+// stocked into traders (they appear in supplies_*), but the engine forbids
+// *selling* them: the trader's sell_condition lists every weapon/outfit/helmet
+// section as a bare name (no price value), which the engine reads as "disabled
+// for trade" (see CTradeParameters::process / AllowItemToTrade). So an item in
+// supplies is only actually sold if it ALSO appears in sell_condition.
+// We restrict this intersection to weapon/outfit/helmet kinds because addons
+// (scopes/silencers/mags) are not in the exporter's sell_condition catalog yet
+// are genuinely sellable — they must stay supplies-based.
+const GEAR_CSVS = [
+  'export_weapons_pistol', 'export_weapons_smg', 'export_weapons_shotgun',
+  'export_weapons_rifle', 'export_weapons_sniper', 'export_weapons_melee',
+  'export_weapons_explosive', 'export_outfits_outfit_light',
+  'export_outfits_outfit_medium', 'export_outfits_outfit_heavy',
+  'export_outfits_outfit_helmet',
+];
+
+/** Set of every weapon/outfit/helmet item id for a pack, read from the source
+ *  export CSVs (id is the first column). Empty set if the pack has none. */
+function getGearItemIds(pack) {
+  const dir = path.join(ROOT, 'data', pack);
+  const ids = new Set();
+  for (const name of GEAR_CSVS) {
+    const file = path.join(dir, `${name}.csv`);
+    if (!fs.existsSync(file)) continue;
+    const lines = fs.readFileSync(file, 'utf-8').replace(/\r\n/g, '\n').trimEnd().split('\n');
+    for (let i = 1; i < lines.length; i++) { // skip header row
+      const id = (lines[i] || '').split(',')[0].trim();
+      if (id && id !== '~') ids.add(id);
+    }
+  }
+  return ids;
+}
+
+/** Set of item ids a trader will actually sell (its sell_condition entries),
+ *  or null when the trader has no sell_condition data (then no filtering). */
+function sellableSet(traderData) {
+  const rows = traderData.sell_condition;
+  if (!Array.isArray(rows) || rows.length === 0) return null;
+  const s = new Set();
+  for (const row of rows) if (row[0]) s.add(row[0]);
+  return s;
+}
+
+/** A gear item (weapon/outfit/helmet) stocked in supplies is only sold when its
+ *  trader also lists it as sellable. Non-gear items are always kept. */
+function isBlockedGear(id, gearIds, sellable) {
+  return sellable !== null && gearIds.has(id) && !sellable.has(id);
+}
+
 function processTraderDir(traderPath) {
   const files = fs.readdirSync(traderPath).filter(f => f.endsWith('.csv'));
   const traderData = {};
@@ -105,16 +155,20 @@ export function getSoldItemIds(pack) {
   const sold = new Set();
   if (!fs.existsSync(srcDir)) return sold;
 
+  const gearIds = getGearItemIds(pack);
   const traderDirs = fs.readdirSync(srcDir, { withFileTypes: true })
     .filter(d => d.isDirectory())
     .map(d => d.name);
 
   for (const traderName of traderDirs) {
     const traderData = processTraderDir(path.join(srcDir, traderName));
+    const sellable = sellableSet(traderData);
     for (const key of Object.keys(traderData)) {
       if (!key.startsWith('supplies_')) continue;
       for (const row of (traderData[key] || [])) {
-        if (row[0]) sold.add(row[0]);
+        const id = row[0];
+        if (!id || isBlockedGear(id, gearIds, sellable)) continue;
+        sold.add(id);
       }
     }
   }
@@ -137,6 +191,7 @@ export function generateTraders(pack) {
     .map(d => d.name);
 
   let totalFiles = 0;
+  const gearIds = getGearItemIds(pack);
   // Reverse index: itemId -> [{ trader, tier, cond }] — which traders stock this item
   // for sale and the lowest supply tier (plus that tier's unlock condition) it appears in.
   const soldBy = {};
@@ -154,13 +209,15 @@ export function generateTraders(pack) {
     for (const [tierKey, cond] of (traderData.buy_supplies || [])) {
       if (cond) condByTier[tierKey] = String(cond);
     }
-    // For each item, keep the lowest tier it sells at for this trader.
+    // For each item, keep the lowest tier it sells at for this trader. Gear stocked
+    // but disabled in sell_condition (weapons/outfits/helmets) is skipped — see GEAR_CSVS.
+    const sellable = sellableSet(traderData);
     const lowest = {}; // itemId -> tierKey
     for (const key of Object.keys(traderData)) {
       if (!key.startsWith('supplies_')) continue;
       for (const row of (traderData[key] || [])) {
         const id = row[0];
-        if (!id) continue;
+        if (!id || isBlockedGear(id, gearIds, sellable)) continue;
         if (!(id in lowest) || tierRank(key) < tierRank(lowest[id])) lowest[id] = key;
       }
     }
