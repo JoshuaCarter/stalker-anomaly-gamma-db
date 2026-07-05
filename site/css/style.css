@@ -2428,6 +2428,7 @@ input.range-input {
     margin-left: 0.35rem;
     vertical-align: middle;
 }
+.badge-nimble { background: var(--color-purple-tint-18); color: var(--color-purple-light); }
 .badge-perk { background: var(--color-accent-tint-18); color: var(--color-accent-gold); }
 .badge-junk { background: var(--color-grey-tint-12); color: var(--color-text-tertiary); }
 .badge-craftable { background: var(--color-green-mid-tint-15); color: var(--color-green-positive); }

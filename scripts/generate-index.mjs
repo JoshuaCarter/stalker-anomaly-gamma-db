@@ -1493,10 +1493,30 @@ for (const grp of Object.values(craftRecipes)) {
   for (const it of grp.items) craftableIds.add(it.id);
 }
 
+// Nimble weapon-upgrade trades (base GAMMA — Darkasleif's Nimble Upgrades Guns).
+// The trade table isn't in any exporter CSV; it's hardcoded in NimbleTrade.script,
+// so it's transcribed into a curated data/<pack>/nimble.json. Each received weapon
+// is a real world source (trade a base weapon + RU with Nimble), so it counts
+// toward obtainability and gets a `nimble` flag for the UI badge. Absent for packs
+// without the file.
+const nimbleIds = new Set();
+{
+  const nimbleFile = join(CSV_DIR, "nimble.json");
+  if (existsSync(nimbleFile)) {
+    try {
+      for (const tr of JSON.parse(readFileSync(nimbleFile, "utf-8")).trades ?? []) {
+        if (tr.received) nimbleIds.add(tr.received);
+      }
+    } catch (e) {
+      console.warn(`Could not read nimble.json: ${e.message}`);
+    }
+  }
+}
+
 const directlyReachable = (item, slug) =>
   slug === "tactical-kits"
     ? (item.hasStashDrop === true || soldItemIds.has(item.id) || craftableIds.has(item.id))
-    : (item.hasNpcWeaponDrop === true || item.hasStashDrop === true || item.inStartingLoadout === true);
+    : (item.hasNpcWeaponDrop === true || item.hasStashDrop === true || item.inStartingLoadout === true || nimbleIds.has(item.id));
 
 const obtItems = [];
 for (const [slug, data] of categoryData) {
@@ -1527,6 +1547,7 @@ for (const { item, slug } of obtItems) {
   item.tacticalKit = reachable.has(item.id)
     && !directlyReachable(item, slug)
     && kitDerivedWeaponIds.has(item.id);
+  item.nimble = nimbleIds.has(item.id);
 }
 
 const obtainabilityLookup = new Map();
@@ -1539,6 +1560,7 @@ for (const [slug, data] of categoryData) {
       inStartingLoadout: item.inStartingLoadout === true,
       unobtainable: item.unobtainable === true,
       tacticalKit: item.tacticalKit === true,
+      nimble: item.nimble === true,
       kitSuffix: item.kitSuffix === true,
       kitSuffixNum: item.kitSuffixNum,
     });
@@ -1552,6 +1574,7 @@ for (const entry of index) {
   entry.inStartingLoadout = flags.inStartingLoadout;
   entry.unobtainable = flags.unobtainable;
   entry.tacticalKit = flags.tacticalKit;
+  if (flags.nimble) entry.nimble = true;
   if (flags.kitSuffix) entry.kitSuffix = true;
   if (flags.kitSuffixNum) entry.kitSuffixNum = flags.kitSuffixNum;
 }

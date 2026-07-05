@@ -601,8 +601,7 @@
       "name": "st_wpn_streetsweeper_nimble",
       "displayName": "st_wpn_streetsweeper_nimble",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_raptr",
@@ -666,8 +665,7 @@
       "name": "st_wpn_spas12_new",
       "displayName": "st_wpn_spas12_new [nimble]",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_toz34",
@@ -896,8 +894,7 @@
       "name": "st_wpn_streetsweeper_nimble",
       "displayName": "st_wpn_streetsweeper_nimble",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_raptr",
@@ -940,8 +937,7 @@
       "name": "st_wpn_spas12_new",
       "displayName": "st_wpn_spas12_new [nimble]",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_toz34",
@@ -1195,8 +1191,7 @@
       "name": "st_wpn_streetsweeper_nimble",
       "displayName": "st_wpn_streetsweeper_nimble",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_raptr",
@@ -1260,8 +1255,7 @@
       "name": "st_wpn_spas12_new",
       "displayName": "st_wpn_spas12_new [nimble]",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_toz106",
@@ -1527,8 +1521,7 @@
       "name": "st_wpn_streetsweeper_nimble",
       "displayName": "st_wpn_streetsweeper_nimble",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_raptr",
@@ -1592,8 +1585,7 @@
       "name": "st_wpn_spas12_new",
       "displayName": "st_wpn_spas12_new [nimble]",
       "category": "Shotguns",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_toz106",
@@ -2834,8 +2826,7 @@
       "name": "st_wpn_g36nimble_rwap",
       "displayName": "st_wpn_g36nimble_rwap",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_g36v_rwap",
@@ -3472,8 +3463,7 @@
       "name": "st_wpn_g36nimble_rwap",
       "displayName": "st_wpn_g36nimble_rwap",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_g36v_rwap",
@@ -4110,8 +4100,7 @@
       "name": "st_wpn_g36nimble_rwap",
       "displayName": "st_wpn_g36nimble_rwap",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_g36v_rwap",
@@ -5585,8 +5574,7 @@
       "name": "st_wpn_svu_nimble",
       "displayName": "st_wpn_svu_nimble",
       "category": "Snipers",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     }
   ],
   "ammo_7.62x54_7h14": [
@@ -5730,8 +5718,7 @@
       "name": "st_wpn_svu_nimble",
       "displayName": "st_wpn_svu_nimble",
       "category": "Snipers",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     }
   ],
   "ammo_7.62x54_ap": [
@@ -5755,8 +5742,7 @@
       "name": "st_wpn_pkm_zenit_siber",
       "displayName": "st_wpn_pkm_zenit_siber [enit_siber]",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_pkm_zulus",
@@ -5921,8 +5907,7 @@
       "name": "st_wpn_svu_nimble",
       "displayName": "st_wpn_svu_nimble",
       "category": "Snipers",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     }
   ],
   "ammo_7.92x33_ap": [
@@ -8483,8 +8468,7 @@
       "name": "st_wpn_desert_eagle_nimble",
       "displayName": "st_wpn_desert_eagle_nimble",
       "category": "Pistols",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_mp412",
@@ -8532,8 +8516,7 @@
       "name": "st_wpn_pkm_zenit_siber",
       "displayName": "st_wpn_pkm_zenit_siber [enit_siber]",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_pkm_zulus",

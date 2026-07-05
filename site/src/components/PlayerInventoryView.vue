@@ -782,10 +782,21 @@ export default {
             const panels = [
                 this.makePanel('actor', this.t('app_save_inv_actor_inventory'), this.parseResult.actor?.levelId, this.parseResult.actorItems),
             ];
-            this.parseResult.containers.forEach((cont, i) => {
-                const title = this.parseResult.containers.length > 1
-                    ? `${this.t('app_save_inv_stash')} ${i + 1}`
+            // Label by kind: fixed base stash vs deployed box. Number only when more
+            // than one container shares a kind (e.g. "Deployed Stash 1", "…2").
+            const kindTotals = {};
+            for (const cont of this.parseResult.containers) {
+                const kind = cont.kind || 'workshop';
+                kindTotals[kind] = (kindTotals[kind] || 0) + 1;
+            }
+            const kindSeen = {};
+            this.parseResult.containers.forEach((cont) => {
+                const kind = cont.kind || 'workshop';
+                const baseLabel = kind === 'deployed'
+                    ? this.t('app_save_inv_stash_deployed')
                     : this.t('app_save_inv_stash');
+                kindSeen[kind] = (kindSeen[kind] || 0) + 1;
+                const title = kindTotals[kind] > 1 ? `${baseLabel} ${kindSeen[kind]}` : baseLabel;
                 panels.push(this.makePanel(`stash-${cont.id}`, title, cont.levelId, cont.items));
             });
             return panels;

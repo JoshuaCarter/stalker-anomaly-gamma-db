@@ -43,13 +43,16 @@ const ScopParser = (() => {
      *
      * @param {ArrayBuffer} buffer   Raw .scop file contents.
      * @param {Set<string>} knownIds Set of known item section names from index.json.
+     * @param {Set<number>} [extraStashIds] Extra container object IDs to treat as player
+     *        stashes (e.g. deployed boxes from the .scoc's player_created_stashes), which
+     *        can't be identified by section name alone.
      * @returns {{ items: Array<{sectionName: string, id: number, parentId: number, ammoTypeIndex: number, equipSlot: number, condition: number}>,
      *             stashItems: Array<{sectionName: string, id: number, parentId: number, ammoTypeIndex: number, equipSlot: number, condition: number}>,
-     *             stashContainers: Array<{id: number, levelId: string | null, x: number, z: number}>,
+     *             stashContainers: Array<{id: number, section: string, kind: string, levelId: string | null, x: number, z: number}>,
      *             objectCount: number,
      *             actorPosition: {x: number, y: number, z: number, graphId: number, levelId: string} | null }}
      */
-    function parse(buffer, knownIds) {
+    function parse(buffer, knownIds, extraStashIds = null) {
         if (buffer.byteLength > MAX_FILE_SIZE) {
             throw new Error("Save file too large (>50 MB)");
         }
@@ -85,7 +88,7 @@ const ScopParser = (() => {
         }
 
         // Parse object entries
-        const parsed = parseObjects(objData, knownIds);
+        const parsed = parseObjects(objData, knownIds, extraStashIds);
         // Best-effort: actor faction goodwill from the relations registry (chunk 9).
         // Null if the chunk is absent, LZHUF-compressed, or fails sanity checks —
         // the UI falls back to MilPDA reputation in that case.
@@ -237,9 +240,15 @@ const ScopParser = (() => {
     /**
      * Parse the object registry and extract actor inventory + stash items.
      */
-    function parseObjects(data, knownIds) {
+    function parseObjects(data, knownIds, extraStashIds = null) {
         const objectCount = readU32(data, 0);
         let pos = 4;
+
+        // A spawn is a player stash if it's the fixed workshop_stash (by section) or
+        // its ID was flagged as player-owned via the .scoc (deployed boxes).
+        const isStashSpawn = (spawn) =>
+            STASH_SECTIONS.has(spawn.sectionName) ||
+            (extraStashIds != null && extraStashIds.has(spawn.id));
 
         // First pass: parse all objects
         const allSpawns = [];
@@ -258,7 +267,7 @@ const ScopParser = (() => {
 
             if (spawn) {
                 allSpawns.push(spawn);
-                if (STASH_SECTIONS.has(spawn.sectionName)) {
+                if (isStashSpawn(spawn)) {
                     stashIds.add(spawn.id);
                 }
                 if (spawn.id === ACTOR_ID) {
@@ -312,12 +321,14 @@ const ScopParser = (() => {
         const stashPositions = [];
         const stashContainers = [];
         for (const spawn of allSpawns) {
-            if (STASH_SECTIONS.has(spawn.sectionName)) {
+            if (isStashSpawn(spawn)) {
                 const levelId = spawn.graphId >= 0 ? resolveLevel(spawn.graphId) : null;
                 if (levelId) {
                     stashPositions.push({ x: spawn.posX, z: spawn.posZ, levelId });
                 }
-                stashContainers.push({ id: spawn.id, levelId, x: spawn.posX, z: spawn.posZ });
+                // Fixed base stash vs a deployed box, so the UI can label them apart.
+                const kind = STASH_SECTIONS.has(spawn.sectionName) ? "workshop" : "deployed";
+                stashContainers.push({ id: spawn.id, section: spawn.sectionName, kind, levelId, x: spawn.posX, z: spawn.posZ });
             }
         }
 

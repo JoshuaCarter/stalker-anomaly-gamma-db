@@ -18,10 +18,11 @@ const ScocParser = (() => {
     /**
      * Parse a .scoc file and extract equipped item info.
      * @param {ArrayBuffer} buffer  Raw .scoc file contents.
-     * @returns {{ beltItemIds: Set<number>, activeSlot: number, stats: Object | null }}
+     * @returns {{ beltItemIds: Set<number>, activeSlot: number, stats: Object | null, playerStashIds: Set<number> }}
      *   beltItemIds: set of object IDs currently in artifact belt slots
      *   activeSlot: active weapon slot number (0=knife, 1=pistol, 2=primary, 3=secondary, etc.)
      *   stats: compact progression-statistics summary (see extractStats), or null
+     *   playerStashIds: container object IDs the player owns (deployed + workshop stashes)
      */
     function parse(buffer) {
         const data = new Uint8Array(buffer);
@@ -35,7 +36,7 @@ const ScocParser = (() => {
             throw new Error("Failed to parse .scoc root table");
         }
 
-        const result = { beltItemIds: new Set(), activeSlot: -1, stats: extractStats(root) };
+        const result = { beltItemIds: new Set(), activeSlot: -1, stats: extractStats(root), playerStashIds: new Set() };
 
         // Extract active_slot from game_object[0].actor_binder
         const gameObject = root["game_object"];
@@ -57,6 +58,25 @@ const ScocParser = (() => {
                         result.beltItemIds.add(Number(itemId));
                     }
                 }
+            }
+        }
+
+        // Player-owned container object IDs. The .scop parser can identify the fixed
+        // workshop_stash by section name, but deployed stash boxes (placeable_case, …)
+        // aren't recognizable that way — the game tracks their IDs here instead:
+        //   player_created_stashes = { containerId: deployItemSection }  (deployed boxes)
+        //   workshop_stashes       = { markerId: containerId }           (base stashes)
+        const created = root["player_created_stashes"];
+        if (created && typeof created === "object") {
+            for (const id of Object.keys(created)) {
+                const n = Number(id);
+                if (Number.isFinite(n)) result.playerStashIds.add(n);
+            }
+        }
+        const workshops = root["workshop_stashes"];
+        if (workshops && typeof workshops === "object") {
+            for (const v of Object.values(workshops)) {
+                if (typeof v === "number") result.playerStashIds.add(v);
             }
         }
 

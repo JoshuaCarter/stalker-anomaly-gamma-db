@@ -6542,7 +6542,8 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_9a91",
@@ -7477,8 +7478,9 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "unobtainable": false,
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_dvl10",
@@ -7489,7 +7491,8 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_dvl10_m1",
@@ -7500,7 +7503,8 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_eft_mts_255",
@@ -7807,8 +7811,9 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "unobtainable": false,
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_g3sg1",
@@ -7951,7 +7956,8 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_groza",
@@ -8340,7 +8346,8 @@
     "hasStashDrop": true,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_m16",
@@ -8704,7 +8711,8 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_mp5sd",
@@ -8846,8 +8854,9 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "unobtainable": false,
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_pkm_zulus",
@@ -9677,8 +9686,9 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "unobtainable": false,
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_sr1m_gurza_up",
@@ -9824,8 +9834,9 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "unobtainable": false,
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_sv98",
@@ -9945,8 +9956,9 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
-    "tacticalKit": false
+    "unobtainable": false,
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_thompson_1921",
@@ -10078,7 +10090,8 @@
     "hasStashDrop": true,
     "inStartingLoadout": true,
     "unobtainable": false,
-    "tacticalKit": false
+    "tacticalKit": false,
+    "nimble": true
   },
   {
     "id": "wpn_toz34_obrez",

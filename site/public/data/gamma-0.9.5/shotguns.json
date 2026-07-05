@@ -49,6 +49,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -81,6 +82,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -113,6 +115,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -145,6 +148,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -177,6 +181,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -209,6 +214,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -241,6 +247,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -273,6 +280,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -305,6 +313,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -337,6 +346,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -369,6 +379,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -401,6 +412,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -433,6 +445,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -465,6 +478,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -497,6 +511,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -529,6 +544,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -561,6 +577,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -593,6 +610,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -625,6 +643,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": true,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -657,6 +676,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": true,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -689,6 +709,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -721,6 +742,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -753,6 +775,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -785,6 +808,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -817,6 +841,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -849,6 +874,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -881,6 +907,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -913,6 +940,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "other"
       ]
@@ -945,6 +973,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "other"
       ]
@@ -977,6 +1006,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "other"
       ]
@@ -1009,6 +1039,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "other"
       ]
@@ -1039,8 +1070,9 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "unobtainable": true,
+      "unobtainable": false,
       "tacticalKit": false,
+      "nimble": true,
       "factions": [
         "other"
       ]
@@ -1073,6 +1105,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "other"
       ]
@@ -1105,6 +1138,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -1137,6 +1171,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1169,6 +1204,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1201,6 +1237,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1233,6 +1270,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1265,6 +1303,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -1297,6 +1336,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -1327,8 +1367,9 @@
       "hasWeaponParts": true,
       "hasUpgrades": true,
       "inStartingLoadout": false,
-      "unobtainable": true,
+      "unobtainable": false,
       "tacticalKit": false,
+      "nimble": true,
       "factions": [
         "nato"
       ]
@@ -1361,6 +1402,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1393,6 +1435,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1425,6 +1468,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1456,6 +1500,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1488,6 +1533,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1520,6 +1566,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1552,6 +1599,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1584,6 +1632,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": true,
       "factions": [
         "wp"
       ]
@@ -1616,6 +1665,7 @@
       "inStartingLoadout": true,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1648,6 +1698,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1680,6 +1731,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1712,6 +1764,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -1744,6 +1797,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -1776,6 +1830,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -1808,6 +1863,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]

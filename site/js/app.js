@@ -6312,15 +6312,17 @@ export const appDefinition = {
             try {
                 const buffer = await scopFile.arrayBuffer();
                 const knownIds = new Set(this.index.map(e => e.id));
-                const result = ScopParser.parse(buffer, knownIds);
 
-                // Parse .scoc for belt/equipped state if provided (optional)
+                // Parse .scoc first (if provided) — it names the player's deployed stash
+                // container IDs, which the .scop parser needs to collect their contents.
                 let scocData = null;
                 if (scocFile) {
                     try {
                         scocData = ScocParser.parse(await scocFile.arrayBuffer());
                     } catch (e) { /* .scoc parsing is optional */ }
                 }
+
+                const result = ScopParser.parse(buffer, knownIds, scocData ? scocData.playerStashIds : null);
 
                 if (result.items.length === 0 && result.stashItems.length === 0) {
                     this.playerInventoryError = this.t("app_save_import_error_empty") || "No recognized items found in actor inventory or stash";
@@ -6362,8 +6364,16 @@ export const appDefinition = {
             for (const cont of result.stashContainers) {
                 const contItems = result.stashItems.filter(it => it.parentId === cont.id);
                 if (!contItems.length) continue;
-                containers.push({ id: cont.id, levelId: cont.levelId, items: aggregate(contItems) });
+                containers.push({
+                    id: cont.id,
+                    section: cont.section,
+                    kind: cont.kind || "workshop",
+                    levelId: cont.levelId,
+                    items: aggregate(contItems),
+                });
             }
+            // Base stash(es) first, then deployed boxes; stable within each kind.
+            containers.sort((a, b) => (a.kind === "workshop" ? 0 : 1) - (b.kind === "workshop" ? 0 : 1));
 
             // Per-weapon loaded-ammo index, keyed by resolved section. The LoadoutDrawer
             // resolves it against each weapon's ammo type list to pre-fill ammo slots.

@@ -30,7 +30,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": false,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "grenade_gd-05",
@@ -49,7 +50,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": false,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "grenade_rgd5",
@@ -68,7 +70,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": false,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "grenade_smoke",
@@ -87,7 +90,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "ied",
@@ -106,7 +110,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "ied_blow",
@@ -125,7 +130,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "ied_new_blow",
@@ -144,7 +150,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "ied_rpg",
@@ -163,7 +170,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "mine",
@@ -182,7 +190,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     },
     {
       "id": "mine_new_blow",
@@ -201,7 +210,8 @@
       "hasDisassemble": false,
       "inStartingLoadout": false,
       "unobtainable": true,
-      "tacticalKit": false
+      "tacticalKit": false,
+      "nimble": false
     }
   ]
 }

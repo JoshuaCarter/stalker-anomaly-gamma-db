@@ -47,6 +47,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "nato"
       ]
@@ -77,6 +78,7 @@
       "inStartingLoadout": false,
       "unobtainable": true,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
@@ -107,6 +109,7 @@
       "inStartingLoadout": false,
       "unobtainable": false,
       "tacticalKit": false,
+      "nimble": false,
       "factions": [
         "wp"
       ]
