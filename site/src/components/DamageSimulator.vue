@@ -577,27 +577,22 @@ export default defineComponent({
     },
 
     // Weapon stat ranges for radar normalization
-    weaponStatRanges(): { accuracy: [number, number], recoil: [number, number], magSize: [number, number] } {
+    weaponStatRanges(): { accuracy: [number, number], magSize: [number, number] } {
       const pool = this.radarMode === 'category' ? this.categoryWeapons : this.allWeapons;
       let minAcc = 100, maxAcc = 0;
-      let minCtrl = 999, maxCtrl = 0;
       let minMag = 999, maxMag = 0;
 
       for (const w of pool) {
         const acc = parseFloat((w.ui_inv_accuracy as string || '0').replace('%', '')) || 0;
-        const rec = parseFloat(w.ui_inv_recoil as string || '0') || 0;
         const mag = parseFloat(w.ui_ammo_count as string || '0') || 0;
         if (acc > 0) { minAcc = Math.min(minAcc, acc); maxAcc = Math.max(maxAcc, acc); }
-        if (rec > 0) { minCtrl = Math.min(minCtrl, rec); maxCtrl = Math.max(maxCtrl, rec); }
         if (mag > 0) { minMag = Math.min(minMag, mag); maxMag = Math.max(maxMag, mag); }
       }
       if (minAcc > maxAcc) { minAcc = 0; maxAcc = 100; }
-      if (minCtrl > maxCtrl) { minCtrl = 0; maxCtrl = 100; }
       if (minMag > maxMag) { minMag = 0; maxMag = 100; }
 
       return {
         accuracy: [minAcc, maxAcc],
-        recoil: [minCtrl, maxCtrl],
         magSize: [minMag, maxMag],
       };
     },
@@ -606,29 +601,19 @@ export default defineComponent({
       const activeResults = this.results.filter(r => r != null);
       if (activeResults.length === 0) return null;
 
-      const labels = [
-        (this as any).t('app_sim_result_damage'),
-        (this as any).t('app_sim_result_ap'),
-        'DPS',
-        (this as any).t('app_sim_radar_accuracy'),
-        (this as any).t('app_sim_radar_recoil'),
-        (this as any).t('app_sim_radar_range'),
-        (this as any).t('app_sim_radar_mag_size'),
-      ];
-
-      // Global ranges for normalization
-      // Weapon stats: from database min/max
+      // Ordered axis definitions. The Recoil axis is intentionally omitted: it was fed by
+      // the recoil-control stat, which the Weapon Mechanics guide flags as meaningless.
       const ranges = this.weaponStatRanges;
       const br = this.ballisticRanges;
-      const globalRanges = {
-        damage: [0, br.maxDamage || 1],
-        ap: [0, br.maxAp || 0.3],
-        dps: [0, br.maxDps || 5],
-        accuracy: ranges.accuracy,
-        recoil: ranges.recoil,
-        range: [0, 100],
-        magSize: ranges.magSize,
-      };
+      const axisDefs: { key: string, label: string, range: number[] }[] = [
+        { key: 'damage', label: (this as any).t('app_sim_result_damage'), range: [0, br.maxDamage || 1] },
+        { key: 'ap', label: (this as any).t('app_sim_result_ap'), range: [0, br.maxAp || 0.3] },
+        { key: 'dps', label: 'DPS', range: [0, br.maxDps || 5] },
+        { key: 'accuracy', label: (this as any).t('app_sim_radar_accuracy'), range: ranges.accuracy },
+        { key: 'range', label: (this as any).t('app_sim_radar_range'), range: [0, 100] },
+        { key: 'magSize', label: (this as any).t('app_sim_radar_mag_size'), range: ranges.magSize },
+      ];
+      const labels = axisDefs.map(a => a.label);
 
       const colors = LOADOUT_COLORS;
       const rawValues: number[][] = [];
@@ -646,12 +631,12 @@ export default defineComponent({
         const fireRate = parseFloat(lo.weapon.ui_inv_rate_of_fire as string || '0') || 0;
         const dps = damage * fireRate / 60;
         const accuracy = parseFloat((lo.weapon.ui_inv_accuracy as string || '0').replace('%', '')) || 0;
-        const control = parseFloat(lo.weapon.ui_inv_recoil as string || '0') || 0; // higher = better control
         const kAirRes = ammo ? parseFloat(ammo.st_data_export_k_air_resistance || '0') : 0;
         const rangeEff = 1 / this.airResDivisorAt(this.distance, kAirRes) * 100;
         const magSize = parseFloat(lo.weapon.ui_ammo_count as string || '0') || 0;
 
-        rawValues.push([damage, ap, dps, accuracy, control, rangeEff, magSize]);
+        const byKey: Record<string, number> = { damage, ap, dps, accuracy, range: rangeEff, magSize };
+        rawValues.push(axisDefs.map(a => byKey[a.key]));
       }
 
       if (rawValues.length === 0) return null;
@@ -661,21 +646,17 @@ export default defineComponent({
         return Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
       };
 
-      // Build effective ranges based on mode
-      const effectiveRanges = { ...globalRanges };
+      // Build effective ranges based on mode, aligned positionally with axisDefs.
+      const effectiveRanges = axisDefs.map(a => a.range);
       if (this.radarMode === 'relative' && rawValues.length > 1) {
-        const axisCount = 7;
-        const keys: (keyof typeof effectiveRanges)[] = ['damage', 'ap', 'dps', 'accuracy', 'recoil', 'range', 'magSize'];
-        for (let j = 0; j < axisCount; j++) {
+        for (let j = 0; j < axisDefs.length; j++) {
           let min = Infinity, max = -Infinity;
           for (const vals of rawValues) {
             min = Math.min(min, vals[j]);
             max = Math.max(max, vals[j]);
           }
-          if (min === max) {
-            continue;
-          }
-          effectiveRanges[keys[j]] = [0, max];
+          if (min === max) continue;
+          effectiveRanges[j] = [0, max];
         }
       }
 
@@ -686,15 +667,7 @@ export default defineComponent({
         if (!res || !lo.weapon) continue;
 
         const vals = rawValues[datasetIdx];
-        const normalized = [
-          normalize(vals[0], effectiveRanges.damage[0], effectiveRanges.damage[1]),
-          normalize(vals[1], effectiveRanges.ap[0], effectiveRanges.ap[1]),
-          normalize(vals[2], effectiveRanges.dps[0], effectiveRanges.dps[1]),
-          normalize(vals[3], effectiveRanges.accuracy[0], effectiveRanges.accuracy[1]),
-          normalize(vals[4], effectiveRanges.recoil[0], effectiveRanges.recoil[1]), // control: higher = better
-          normalize(vals[5], effectiveRanges.range[0], effectiveRanges.range[1]),
-          normalize(vals[6], effectiveRanges.magSize[0], effectiveRanges.magSize[1]),
-        ];
+        const normalized = vals.map((v, j) => normalize(v, effectiveRanges[j][0], effectiveRanges[j][1]));
 
         datasets.push({
           label: this.loadoutLabel(i),

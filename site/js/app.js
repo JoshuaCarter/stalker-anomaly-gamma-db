@@ -10,7 +10,7 @@ import {
     PROTECTION_FIELDS, RESTORATION_FIELDS, BASE_RESIST_CAP, CAP_FIELD_MAP,
     CAT, BUILD_SLOT_CATEGORIES, isBackpack, MAX_SAVED_BUILDS,
     WEAPON_STAT_FIELDS, AMMO_MULTIPLIER_FIELDS, AMMO_ONLY_FIELDS, GRENADE_STAT_FIELDS,
-    PACKS_HIDE_GUN_DAMAGE_RANGE, HIDDEN_GUN_DAMAGE_RANGE_FIELDS,
+    PACKS_HIDE_GUN_DAMAGE_RANGE, HIDDEN_GUN_DAMAGE_RANGE_FIELDS, GLOBAL_HIDDEN_WEAPON_STAT_FIELDS,
     PRIMARY_WEAPON_SLUGS, SIDEARM_SLUGS, GRENADE_SLUG, SLOT_COLORS,
     LOCALES, CHART_COLORS,
     SINGULAR_TYPE, SINGULAR_CATEGORY, CATEGORY_KEYS,
@@ -129,6 +129,9 @@ export const appDefinition = {
             hideTacticalKit: false,
             hideUnusedAmmo: true,
             showTileIcons: true,
+            // The Weapon Mechanics guide flags Recoil Control and Handling as meaningless
+            // stat-card values; hidden by default, opt-in to show. Persisted.
+            showUnreliableStats: (() => { try { return localStorage.getItem("showUnreliableStats") === "1"; } catch { return false; } })(),
             // Opt-in: the Magazines mod isn't universal, so its category is hidden
             // until the user enables it. Persisted; default off.
             showMagazines: (() => { try { return localStorage.getItem("showMagazines") === "1"; } catch { return false; } })(),
@@ -284,7 +287,10 @@ export const appDefinition = {
             return new Set([...this.globalHiddenFields, ...(this.activePack?.hiddenFields || [])]);
         },
         hiddenWeaponStatFields() {
-            return PACKS_HIDE_GUN_DAMAGE_RANGE.has(this.activePack?.id) ? HIDDEN_GUN_DAMAGE_RANGE_FIELDS : new Set();
+            const hidden = new Set();
+            if (!this.showUnreliableStats) for (const f of GLOBAL_HIDDEN_WEAPON_STAT_FIELDS) hidden.add(f);
+            if (PACKS_HIDE_GUN_DAMAGE_RANGE.has(this.activePack?.id)) for (const f of HIDDEN_GUN_DAMAGE_RANGE_FIELDS) hidden.add(f);
+            return hidden;
         },
         weaponStatFields() {
             const hidden = this.hiddenWeaponStatFields;
@@ -4134,6 +4140,11 @@ export const appDefinition = {
         toggleHideNoDrop() {
             this.hideNoDrop = !this.hideNoDrop;
             localStorage.setItem("hideNoDrop", JSON.stringify(this.hideNoDrop));
+        },
+
+        toggleShowUnreliableStats() {
+            this.showUnreliableStats = !this.showUnreliableStats;
+            try { localStorage.setItem("showUnreliableStats", this.showUnreliableStats ? "1" : ""); } catch {}
         },
 
         toggleHideTacticalKit() {

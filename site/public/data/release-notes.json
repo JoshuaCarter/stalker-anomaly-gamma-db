@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-07-05",
+    "entries": [
+      { "type": "changed", "text": "Recoil Control and Handling are now hidden from weapon stats by default as they are meaningless. A new \"Show unreliable stats\" toggle under Display brings them back." },
+      { "type": "added", "text": "Weapons you can get from Nimble now carry a NIMBLE badge and count as obtainable.", "credits": [{ "name": "shazhaze13", "role": "suggestion" }] }
+    ]
+  },
+  {
     "date": "2026-06-29",
     "entries": [
       { "type": "fixed", "text": "The Sold By section no longer lists weapons, outfits, and helmets, which GAMMA traders stock but won't actually sell.", "credits": [{ "name": "Terrafryer", "role": "bug" }] }

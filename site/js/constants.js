@@ -128,6 +128,9 @@ export const WEAPON_STAT_FIELDS = [
     "ui_inv_bspeed", "ui_inv_reli", "ui_inv_recoil",
 ];
 export const AMMO_MULTIPLIER_FIELDS = new Set(["ui_inv_damage", "ui_inv_accuracy", "ui_inv_wrange", "ui_inv_bspeed"]);
+// Stats the Weapon Mechanics guide flags as meaningless on the stat card, hidden for every pack:
+// Recoil Control (arbitrary formula, doesn't reflect real recoil) and Handling (inert as a card value).
+export const GLOBAL_HIDDEN_WEAPON_STAT_FIELDS = new Set(["ui_inv_recoil", "ui_inv_handling"]);
 // Packs that mirror GAMMA 0.9.5+ UI removal of gun-level Damage and Max Range stats
 export const PACKS_HIDE_GUN_DAMAGE_RANGE = new Set(["gamma-0.9.5"]);
 export const HIDDEN_GUN_DAMAGE_RANGE_FIELDS = new Set(["ui_inv_damage", "ui_inv_wrange"]);

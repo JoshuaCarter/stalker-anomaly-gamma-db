@@ -284,21 +284,28 @@
                  :style="{ position: 'fixed', top: _settingsPos.top + 'px', right: _settingsPos.right + 'px', zIndex: 201 }"
                  @click.stop>
                 <div class="settings-header">{{ t('app_label_display') }}</div>
+                <!-- All Display toggles use "Show" framing (on = visible). The no-drop / tactical-kit /
+                     unused-ammo prefs are stored internally with inverted "hide" semantics, so their
+                     switch reflects the negation and the emit still toggles the underlying hide flag. -->
                 <div class="settings-item" @click.stop="$emit('toggleHideNoDrop')">
-                    <span class="toggle-switch" :class="{ on: hideNoDrop }"><span class="toggle-knob"></span></span>
-                    <span>{{ t('app_label_hide_no_drop') }}</span>
+                    <span class="toggle-switch" :class="{ on: !hideNoDrop }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_show_no_drop') }}</span>
                 </div>
                 <div class="settings-item" @click.stop="$emit('toggleHideTacticalKit')">
-                    <span class="toggle-switch" :class="{ on: hideTacticalKit }"><span class="toggle-knob"></span></span>
-                    <span>{{ t('app_label_hide_tactical_kit') }}</span>
+                    <span class="toggle-switch" :class="{ on: !hideTacticalKit }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_show_tactical_kit') }}</span>
                 </div>
                 <div class="settings-item" @click.stop="$emit('toggleHideUnusedAmmo')">
-                    <span class="toggle-switch" :class="{ on: hideUnusedAmmo }"><span class="toggle-knob"></span></span>
-                    <span>{{ t('app_label_hide_unused_ammo') }}</span>
+                    <span class="toggle-switch" :class="{ on: !hideUnusedAmmo }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_show_unused_ammo') }}</span>
                 </div>
                 <div class="settings-item" @click.stop="$emit('toggleShowTileIcons')">
                     <span class="toggle-switch" :class="{ on: showTileIcons }"><span class="toggle-knob"></span></span>
                     <span>{{ t('app_label_show_tile_icons') }}</span>
+                </div>
+                <div class="settings-item" @click.stop="$emit('toggleShowUnreliableStats')">
+                    <span class="toggle-switch" :class="{ on: showUnreliableStats }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_show_unreliable_stats') }}</span>
                 </div>
             </div>
         </Teleport>
@@ -335,6 +342,7 @@ export default {
         hideTacticalKit: { type: Boolean, default: false },
         hideUnusedAmmo: { type: Boolean, default: false },
         showTileIcons: { type: Boolean, default: true },
+        showUnreliableStats: { type: Boolean, default: false },
         showMagazines: { type: Boolean, default: false },
     },
     emits: [
@@ -343,7 +351,7 @@ export default {
         'update:globalQuery', 'search', 'escapeSearch', 'selectSearchResult',
         'selectSearchResultInSection',
         'openItemDb', 'openMaps', 'openTrading', 'openPlayerInventory', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
-        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowMagazines',
+        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowUnreliableStats', 'toggleShowMagazines',
         'selectCraftingSearchResult',
     ],
     inject: ['t', 'tName', 'tCat', 'navHref'],
