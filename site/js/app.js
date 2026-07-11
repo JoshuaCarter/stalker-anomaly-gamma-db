@@ -448,11 +448,12 @@ export const appDefinition = {
             // object isn't mutated.
             const integral = addons.integral || {};
             const mark = (item, isIntegral) => isIntegral ? { ...item, integral: true } : item;
+            const byName = (a, b) => (this.t(a.pda_encyclopedia_name) || "").localeCompare(this.t(b.pda_encyclopedia_name) || "");
             return {
-                scopes: (addons.scopes || []).map(id => scopeMap[id]).filter(Boolean).map(i => mark(i, integral.scope)),
-                silencers: (addons.silencers || []).map(id => silencerMap[id]).filter(Boolean).map(i => mark(i, integral.silencer)),
-                launchers: (addons.launchers || []).map(id => launcherMap[id]).filter(Boolean).map(i => mark(i, integral.launcher)),
-                kits: (addons.kits || []).map(id => kitMap[id]).filter(Boolean),
+                scopes: (addons.scopes || []).map(id => scopeMap[id]).filter(Boolean).map(i => mark(i, integral.scope)).sort(byName),
+                silencers: (addons.silencers || []).map(id => silencerMap[id]).filter(Boolean).map(i => mark(i, integral.silencer)).sort(byName),
+                launchers: (addons.launchers || []).map(id => launcherMap[id]).filter(Boolean).map(i => mark(i, integral.launcher)).sort(byName),
+                kits: (addons.kits || []).map(id => kitMap[id]).filter(Boolean).sort(byName),
             };
         },
 
@@ -462,7 +463,8 @@ export const appDefinition = {
             const ids = this.weaponMagazinesCache[this.modalItem.id];
             if (!ids || !ids.length) return [];
             const magMap = Object.fromEntries((this.categoryItems[categorySlug(CAT.MAGAZINES)] || []).map(i => [i.id, i]));
-            return ids.map(id => magMap[id]).filter(Boolean);
+            return ids.map(id => magMap[id]).filter(Boolean)
+                .sort((a, b) => (this.t(a.pda_encyclopedia_name) || "").localeCompare(this.t(b.pda_encyclopedia_name) || ""));
         },
 
         modalMagazineCompatibleWeapons() {

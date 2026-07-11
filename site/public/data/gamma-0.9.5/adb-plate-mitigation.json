@@ -1,0 +1,118 @@
+{
+  "body": {
+    "af_death_lamp": {
+      "apRes": 0,
+      "premitigation": 0.12
+    },
+    "af_ear": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "af_fuzz_kolobok": {
+      "apRes": 0,
+      "premitigation": 0.03
+    },
+    "af_glass": {
+      "apRes": 0,
+      "premitigation": 0.05
+    },
+    "af_gold_fish": {
+      "apRes": 0,
+      "premitigation": 0.08
+    },
+    "af_gravi": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "af_kevlar": {
+      "apRes": 0.01,
+      "premitigation": 0.05
+    },
+    "af_kevlar_up": {
+      "apRes": 0.03,
+      "premitigation": 0.08
+    },
+    "af_kogot": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "af_night_star": {
+      "apRes": 0,
+      "premitigation": 0.04
+    },
+    "af_oasis_heart": {
+      "apRes": 0,
+      "premitigation": 0.08
+    },
+    "af_plates": {
+      "apRes": 0.06,
+      "premitigation": 0.12
+    },
+    "af_plates_up": {
+      "apRes": 0.1,
+      "premitigation": 0.17
+    },
+    "af_sandstone": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "hide_boar": {
+      "apRes": 0.02,
+      "premitigation": 0.05
+    },
+    "hide_pseudogiant": {
+      "apRes": 0.04,
+      "premitigation": 0.1
+    }
+  },
+  "head": {
+    "af_death_lamp": {
+      "apRes": 0,
+      "premitigation": 0.12
+    },
+    "af_ear": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "af_fuzz_kolobok": {
+      "apRes": 0,
+      "premitigation": 0.03
+    },
+    "af_glass": {
+      "apRes": 0,
+      "premitigation": 0.05
+    },
+    "af_gold_fish": {
+      "apRes": 0,
+      "premitigation": 0.08
+    },
+    "af_gravi": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "af_kogot": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "af_night_star": {
+      "apRes": 0,
+      "premitigation": 0.04
+    },
+    "af_oasis_heart": {
+      "apRes": 0,
+      "premitigation": 0.08
+    },
+    "af_sandstone": {
+      "apRes": 0,
+      "premitigation": 0.06
+    },
+    "hide_boar": {
+      "apRes": 0.02,
+      "premitigation": 0.05
+    },
+    "hide_pseudogiant": {
+      "apRes": 0.04,
+      "premitigation": 0.1
+    }
+  }
+}

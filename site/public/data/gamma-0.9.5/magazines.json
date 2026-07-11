@@ -21,7 +21,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_1921_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_196a1_7.62x54_alt",
@@ -33,7 +33,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_l96a1_pkm",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_50_762x51_drum",
@@ -45,7 +45,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_overlylarge_50_762x51_drum2",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_50_762x51_drum_hinge",
@@ -57,7 +57,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_overlylarge_50_762x51_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_7.62x39_ar15",
@@ -69,7 +69,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ar15_762x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_75_762x39_drum",
@@ -81,7 +81,7 @@
       "magSize": "large",
       "magRounds": 75,
       "displayName": "st_mag_overlylarge_75_762x39_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_95_5.56x45_drum",
@@ -93,7 +93,7 @@
       "magSize": "large",
       "magRounds": 95,
       "displayName": "st_mag_overlylarge_95_556_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_95_545x39_drum",
@@ -105,7 +105,7 @@
       "magSize": "large",
       "magRounds": 95,
       "displayName": "st_mag_overlylarge_95_545_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ace21_5.56x45_default",
@@ -129,7 +129,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak74_5.45x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_5.45x39_extended",
@@ -141,7 +141,7 @@
       "magSize": "medium",
       "magRounds": 60,
       "displayName": "st_mag_ak74_5.45x39_extended",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_5.45x39_fast",
@@ -153,7 +153,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak74_fast_5.45x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_5.45x39_modern",
@@ -165,7 +165,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak74m_5.45x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_5.56x45_modern",
@@ -177,7 +177,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak101_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_7.62x39_default",
@@ -189,7 +189,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_7.62x39_fast",
@@ -201,7 +201,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak103_fast_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ak_7.62x39_modern",
@@ -213,7 +213,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_ak103_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_akalfa_5.56x45_bas",
@@ -225,7 +225,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_akalfa_5.56x45_bas",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_akalfa_7.62x39_bas",
@@ -237,7 +237,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_akalfa_7.62x39_bas",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_aps_9x18_default",
@@ -249,7 +249,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_aps_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_aps_9x19_alt",
@@ -261,7 +261,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_aps_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ash_12.7x55_default",
@@ -273,7 +273,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_ash12_12.7x55",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ash_12.7x55_extended",
@@ -285,7 +285,7 @@
       "magSize": "large",
       "magRounds": 20,
       "displayName": "st_mag_ash12_ext_12.7x55",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_aug_5.56x45_default",
@@ -297,7 +297,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_aug_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_aug_5.56x45_extended",
@@ -309,7 +309,7 @@
       "magSize": "medium",
       "magRounds": 42,
       "displayName": "st_mag_aug_5.56x45_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_aug_9x19_default",
@@ -321,7 +321,7 @@
       "magSize": "small",
       "magRounds": 32,
       "displayName": "st_mag_aug_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_pl15_9x19",
@@ -333,7 +333,7 @@
       "magSize": "small",
       "magRounds": 16,
       "displayName": "st_mag_pl15_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_pl15_9x19_extended",
@@ -345,7 +345,7 @@
       "magSize": "small",
       "magRounds": 24,
       "displayName": "st_mag_pl15_9x19_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_sig226_9x19",
@@ -357,7 +357,7 @@
       "magSize": "small",
       "magRounds": 15,
       "displayName": "st_mag_sig226_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_sig226_9x19_extended",
@@ -369,7 +369,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_sig226_9x19_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_toz106",
@@ -381,7 +381,7 @@
       "magSize": "small",
       "magRounds": 2,
       "displayName": "st_mag_toz106_20x70_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_toz106_zhekan",
@@ -405,7 +405,7 @@
       "magSize": "small",
       "magRounds": 5,
       "displayName": "st_mag_etoz106_20x70_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bas_toz106m1_zhekan",
@@ -429,7 +429,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_baskiparis_9x18_20",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_baskiparis_9x18_40",
@@ -441,7 +441,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_baskiparis_9x18_40",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_baskiparis_9x18_81",
@@ -453,7 +453,7 @@
       "magSize": "large",
       "magRounds": 81,
       "displayName": "st_mag_baskiparis_9x18_81",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_baskiparis_9x19_20",
@@ -465,7 +465,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_baskiparis_9x19_20",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_baskiparis_9x19_40",
@@ -477,7 +477,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_baskiparis_9x19_40",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_baskiparis_9x19_81",
@@ -489,7 +489,7 @@
       "magSize": "large",
       "magRounds": 81,
       "displayName": "st_mag_baskiparis_9x19_81",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_basvz61_9x18_30",
@@ -501,7 +501,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_basvz61_9x18_30",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_basvz61_9x18_60",
@@ -513,7 +513,7 @@
       "magSize": "large",
       "magRounds": 60,
       "displayName": "st_mag_basvz61_9x18_60",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_basvz61_9x19_30",
@@ -525,7 +525,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_basvz61_9x19_30",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_basvz61_9x19_60",
@@ -537,7 +537,7 @@
       "magSize": "large",
       "magRounds": 60,
       "displayName": "st_mag_basvz61_9x19_60",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_beretta_9x18_alt",
@@ -549,7 +549,7 @@
       "magSize": "small",
       "magRounds": 17,
       "displayName": "st_mag_beretta_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_beretta_9x19_default",
@@ -561,7 +561,7 @@
       "magSize": "small",
       "magRounds": 17,
       "displayName": "st_mag_beretta_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bizon_7.62x25_alt",
@@ -573,7 +573,7 @@
       "magSize": "medium",
       "magRounds": 64,
       "displayName": "st_mag_bizon_7.62x25_p",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bizon_9x18_defalt",
@@ -585,7 +585,7 @@
       "magSize": "medium",
       "magRounds": 64,
       "displayName": "st_mag_bizon_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bizon_9x19_alt",
@@ -597,7 +597,7 @@
       "magSize": "medium",
       "magRounds": 64,
       "displayName": "st_mag_bizon_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_bolt_300_default",
@@ -609,7 +609,7 @@
       "magSize": "small",
       "magRounds": 5,
       "displayName": "st_mag_trg_magnum_300",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_colt1911_762x25",
@@ -621,7 +621,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "st_ppp_colt1911_762x25_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_colt1911_default",
@@ -633,7 +633,7 @@
       "magSize": "small",
       "magRounds": 7,
       "displayName": "st_mag_colt1911_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_colt1911_extended",
@@ -645,7 +645,7 @@
       "magSize": "small",
       "magRounds": 15,
       "displayName": "ext_mag_colt1911_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_coonan_357_default",
@@ -657,7 +657,7 @@
       "magSize": "small",
       "magRounds": 7,
       "displayName": "st_mag_ppp_1911_357_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_coonan_357_ext",
@@ -669,7 +669,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "ext_mag_ppp_1911_357_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_cz52_default",
@@ -681,7 +681,7 @@
       "magSize": "small",
       "magRounds": 8,
       "displayName": "st_mag_cz52_7.62x25_p",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_cz75_9x18_alt",
@@ -693,7 +693,7 @@
       "magSize": "small",
       "magRounds": 16,
       "displayName": "st_mag_cz75_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_cz75_9x19_default",
@@ -705,7 +705,7 @@
       "magSize": "small",
       "magRounds": 16,
       "displayName": "st_mag_cz75_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_deserteagal_default",
@@ -717,7 +717,7 @@
       "magSize": "small",
       "magRounds": 9,
       "displayName": "st_mag_desert_eagle_357_hp",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_dvl_338fed",
@@ -729,7 +729,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_dvl_338",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_dvl_7.62x51",
@@ -741,7 +741,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_dvl_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_fn57_default",
@@ -753,7 +753,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_fn57_5.7x28_ss190",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_fnp45_default",
@@ -765,7 +765,7 @@
       "magSize": "small",
       "magRounds": 15,
       "displayName": "st_mag_fnp45_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_fnx45_default",
@@ -777,7 +777,7 @@
       "magSize": "small",
       "magRounds": 15,
       "displayName": "st_mag_fnx45_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_fort_9x18_default",
@@ -789,7 +789,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "st_mag_fort_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_fort_9x19_alt",
@@ -801,7 +801,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "st_mag_fort_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_frasier_11.43x23_default",
@@ -813,7 +813,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_mp5_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_g36_5.56x45_default",
@@ -825,7 +825,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_g36_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_g43_7.92x33_default",
@@ -837,7 +837,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_g43_7.92x33",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_galil_7.62x51_default",
@@ -849,7 +849,7 @@
       "magSize": "medium",
       "magRounds": 25,
       "displayName": "st_mag_galil_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_galil_7.62x54_7h1_default",
@@ -873,7 +873,7 @@
       "magSize": "small",
       "magRounds": 17,
       "displayName": "st_mag_glock_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_glock_9x19_default",
@@ -885,7 +885,7 @@
       "magSize": "small",
       "magRounds": 17,
       "displayName": "st_mag_glock_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_grot",
@@ -897,7 +897,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_grot",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_gsh18_9x19_default",
@@ -909,7 +909,7 @@
       "magSize": "small",
       "magRounds": 18,
       "displayName": "st_mag_gsh18_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_hinge_7.62x51_default",
@@ -921,7 +921,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_hinge_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_hinge_7.62x51_extended",
@@ -933,7 +933,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_hinge_ext_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_hk21_7.62x51_default",
@@ -945,7 +945,7 @@
       "magSize": "large",
       "magRounds": 100,
       "displayName": "st_mag_hk21_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_hpsa_9x18_alt",
@@ -957,7 +957,7 @@
       "magSize": "small",
       "magRounds": 13,
       "displayName": "st_mag_hpsa_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_hpsa_9x19_default",
@@ -969,7 +969,7 @@
       "magSize": "small",
       "magRounds": 13,
       "displayName": "st_mag_hpsa_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_k98_7.62x51",
@@ -981,7 +981,7 @@
       "magSize": "small",
       "magRounds": 7,
       "displayName": "st_mag_k98_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_k98_7.62x54",
@@ -993,7 +993,7 @@
       "magSize": "small",
       "magRounds": 7,
       "displayName": "st_mag_k98_7.62x54",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_k98_7.92x33",
@@ -1005,7 +1005,7 @@
       "magSize": "small",
       "magRounds": 7,
       "displayName": "st_mag_k98_7.92x33",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kiparis_9x18_50",
@@ -1017,7 +1017,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_baskiparis_9x18_81",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kiparis_9x18_default",
@@ -1029,7 +1029,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_kiparis_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kiparis_9x19_50",
@@ -1041,7 +1041,7 @@
       "magSize": "mediun",
       "magRounds": 50,
       "displayName": "st_mag_baskiparis_9x19_81",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kiparis_9x19_alt",
@@ -1053,7 +1053,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_kiparis_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kriss_11.43x23_default",
@@ -1065,7 +1065,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "mag_kriss45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kriss_11.43x23_ext",
@@ -1077,7 +1077,7 @@
       "magSize": "medium",
       "magRounds": 45,
       "displayName": "ext_mag_kriss_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kriss_9x19_default",
@@ -1089,7 +1089,7 @@
       "magSize": "small",
       "magRounds": 33,
       "displayName": "mag_kriss9",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_kriss_9x19_ext",
@@ -1101,7 +1101,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "ext_mag_kriss9_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_l96a1_7.62x51_default",
@@ -1113,7 +1113,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_l96a1_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_lancer",
@@ -1125,7 +1125,7 @@
       "magSize": "medium",
       "magRounds": 25,
       "displayName": "st_mag_lancer",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_legion_9x19",
@@ -1137,7 +1137,7 @@
       "magSize": "small",
       "magRounds": 13,
       "displayName": "st_mag_ppp_sig_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_m1a1_11.43x23_default",
@@ -1149,7 +1149,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_m1a1_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_m249_5.56x45_default",
@@ -1161,7 +1161,7 @@
       "magSize": "large",
       "magRounds": 100,
       "displayName": "st_mag_m249_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_m82_12.7x55_default",
@@ -1173,7 +1173,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_m82_12.7x55",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_m98b_300_default",
@@ -1185,7 +1185,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_m98b_magnum_300",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mac10_9x18_alt",
@@ -1197,7 +1197,7 @@
       "magSize": "small",
       "magRounds": 32,
       "displayName": "st_mag_mac10_9x18_standard",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mac10_9x18_ext_alt",
@@ -1209,7 +1209,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_mac10_9x18_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mac10_9x19_ext",
@@ -1221,7 +1221,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_mac10_9x19_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mac10_9x19_standard",
@@ -1233,7 +1233,7 @@
       "magSize": "small",
       "magRounds": 32,
       "displayName": "st_mag_mac10_9x19_standard",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mk23_45",
@@ -1245,7 +1245,7 @@
       "magSize": "small",
       "magRounds": 22,
       "displayName": "st_mag_ppp_mk23_45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp443_9x18_alt",
@@ -1257,7 +1257,7 @@
       "magSize": "small",
       "magRounds": 18,
       "displayName": "st_mag_mp443_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp443_9x19_default",
@@ -1269,7 +1269,7 @@
       "magSize": "small",
       "magRounds": 18,
       "displayName": "st_mag_mp443_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp5_9x18_alt",
@@ -1281,7 +1281,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_mp5_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp5_9x18_extended",
@@ -1293,7 +1293,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_mp5_9x18_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp5_9x18_extended50",
@@ -1305,7 +1305,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_mp5_9x18_fmjext50",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp5_9x19_default",
@@ -1317,7 +1317,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_mp5_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp5_9x19_extended",
@@ -1329,7 +1329,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_mp5_9x19_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp5_9x19_extended50",
@@ -1341,7 +1341,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_mp5_9x19_fmjext50",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp7_5.7x28_default",
@@ -1353,7 +1353,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_mp7_5.7x28_ss190",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp7_5.7x28_small",
@@ -1365,7 +1365,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_mp7_5.7x28_short",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp7_9x18_alt",
@@ -1401,7 +1401,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_mp9iwp",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp9iwp_9x18",
@@ -1413,7 +1413,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_mp9iwp_9x18",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp9iwp_9x18_ext",
@@ -1425,7 +1425,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_mp9iwp_9x18_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_mp9iwp_ext",
@@ -1437,7 +1437,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_mp9iwp_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.45x39_alt",
@@ -1449,7 +1449,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_nato_5.45x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_casket",
@@ -1461,7 +1461,7 @@
       "magSize": "medium",
       "magRounds": 60,
       "displayName": "st_mag_nato_5.56x45_casket",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_default",
@@ -1473,7 +1473,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_stanag",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_drum",
@@ -1485,7 +1485,7 @@
       "magSize": "medium",
       "magRounds": 60,
       "displayName": "st_mag_nato_5.56x45_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_drum_ext",
@@ -1497,7 +1497,7 @@
       "magSize": "large",
       "magRounds": 100,
       "displayName": "st_mag_nato_5.56x45_drum_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_extended",
@@ -1509,7 +1509,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_nato_5.56x45_extended",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_fast",
@@ -1521,7 +1521,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_nato_5.56x45_fast",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_nato_5.56x45_short",
@@ -1533,7 +1533,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_stanag_short",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_oc_9x18_default",
@@ -1545,7 +1545,7 @@
       "magSize": "small",
       "magRounds": 27,
       "displayName": "st_mag_oc33_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_oc_9x19_alt",
@@ -1557,7 +1557,7 @@
       "magSize": "small",
       "magRounds": 27,
       "displayName": "st_mag_oc33_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ots_9x39_default",
@@ -1569,7 +1569,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_groza_9x39_pab9",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_p220_9x19_u2p2bas",
@@ -1581,7 +1581,7 @@
       "magSize": "small",
       "magRounds": 19,
       "displayName": "st_mag_p220_9x19_u2p2bas",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_p90_5.7x28_default",
@@ -1593,7 +1593,7 @@
       "magSize": "medium",
       "magRounds": 50,
       "displayName": "st_mag_p90_5.7x28_ss190",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_p90_5.7x28_ext",
@@ -1605,7 +1605,7 @@
       "magSize": "medium",
       "magRounds": 75,
       "displayName": "st_mag_p90_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pkp_pkm_default",
@@ -1617,7 +1617,7 @@
       "magSize": "large",
       "magRounds": 100,
       "displayName": "st_mag_pkm_pkm",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pm_9x18_default",
@@ -1629,7 +1629,7 @@
       "magSize": "small",
       "magRounds": 8,
       "displayName": "st_mag_pm_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pm_9x19_alt",
@@ -1641,7 +1641,7 @@
       "magSize": "small",
       "magRounds": 8,
       "displayName": "st_mag_pm_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pmm_9x18_default",
@@ -1653,7 +1653,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_pmm_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pmm_9x19_alt",
@@ -1665,7 +1665,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "st_mag_pmm_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pp2000_9x18_alt",
@@ -1677,7 +1677,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_pp2000_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pp2000_9x18_ext_alt",
@@ -1689,7 +1689,7 @@
       "magSize": "medium",
       "magRounds": 45,
       "displayName": "st_mag_pp2000_9x18_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pp2000_9x19_default",
@@ -1701,7 +1701,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_pp2000_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_pp2000_9x19_ext",
@@ -1713,7 +1713,7 @@
       "magSize": "medium",
       "magRounds": 45,
       "displayName": "st_mag_pp2000_9x19_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ppp_glock_45_default",
@@ -1737,7 +1737,7 @@
       "magSize": "large",
       "magRounds": 71,
       "displayName": "st_mag_ppsh41_7.62x25_p",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ppsh_7.62x25_stick",
@@ -1749,7 +1749,7 @@
       "magSize": "small",
       "magRounds": 35,
       "displayName": "st_mag_ppsh41_7.62x25_stick",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_px4_45_default",
@@ -1761,7 +1761,7 @@
       "magSize": "small",
       "magRounds": 10,
       "displayName": "st_mag_ppp_px4_45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_px4_9x19_default",
@@ -1773,7 +1773,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_ppp_px4_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_raptr_12x76_default",
@@ -1785,7 +1785,7 @@
       "magSize": "large",
       "magRounds": 20,
       "displayName": "mag_raptr",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_rem_7.62x51_default",
@@ -1797,7 +1797,7 @@
       "magSize": "small",
       "magRounds": 5,
       "displayName": "st_mag_remington700_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_remington700_7.62x51",
@@ -1809,7 +1809,7 @@
       "magSize": "medium",
       "magRounds": 12,
       "displayName": "st_mag_basremington700_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_remingtonarchangel_7.62x51",
@@ -1821,7 +1821,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_remingtonarchangel_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_remingtonla_300",
@@ -1833,7 +1833,7 @@
       "magSize": "medium",
       "magRounds": 5,
       "displayName": "st_mag_remingtonla_300",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_remingtonla_300_gamma",
@@ -1845,7 +1845,7 @@
       "magSize": "medium",
       "magRounds": 5,
       "displayName": "st_mag_remingtonla_300",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_rpd_7.62x39_default",
@@ -1857,7 +1857,7 @@
       "magSize": "large",
       "magRounds": 100,
       "displayName": "st_mag_rpd_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_rpk_5.45x39_default",
@@ -1869,7 +1869,7 @@
       "magSize": "medium",
       "magRounds": 45,
       "displayName": "st_mag_rpk74_5.45x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_rpk_5.56x45_default",
@@ -1881,7 +1881,7 @@
       "magSize": "medium",
       "magRounds": 45,
       "displayName": "st_mag_rpk74_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_rpk_7.62x39_default",
@@ -1893,7 +1893,7 @@
       "magSize": "medium",
       "magRounds": 40,
       "displayName": "st_mag_rpk_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_rxp_45",
@@ -1917,7 +1917,7 @@
       "magSize": "small",
       "magRounds": 17,
       "displayName": "st_mag_ppp_signimble_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_saiga12_drum",
@@ -1929,7 +1929,7 @@
       "magSize": "large",
       "magRounds": 20,
       "displayName": "st_mag_saiga12_drum",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_saiga12s_12x70_default",
@@ -1941,7 +1941,7 @@
       "magSize": "medium",
       "magRounds": 8,
       "displayName": "st_mag_saiga12s_12x70",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_saiga12s_12x70_extended",
@@ -1953,7 +1953,7 @@
       "magSize": "medium",
       "magRounds": 12,
       "displayName": "st_mag_saiga12s_ext_12x70",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sig_5.56x45_default",
@@ -1965,7 +1965,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_sig550_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sig_5.56x45_sniper",
@@ -1977,7 +1977,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_sig550_sniper_5.56x45",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sigp220_default",
@@ -1989,7 +1989,7 @@
       "magSize": "small",
       "magRounds": 7,
       "displayName": "st_mag_sigp220_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sigp220_extended",
@@ -2001,7 +2001,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "st_mag_sigp220_11.43x23_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sks_7.62x39",
@@ -2013,7 +2013,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_sks_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sks_7.62x39_extended",
@@ -2025,7 +2025,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_sksext_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sks_7.62x54",
@@ -2037,7 +2037,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_sks_7.62x54",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sks_7.62x54_extended",
@@ -2049,7 +2049,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_sks_7.62x54ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sr1m_9x21_default",
@@ -2061,7 +2061,7 @@
       "magSize": "small",
       "magRounds": 18,
       "displayName": "st_mag_sr1m_9x21",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sr1m_9x21_extended",
@@ -2073,7 +2073,7 @@
       "magSize": "small",
       "magRounds": 26,
       "displayName": "st_mag_sr1m_9x21ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sr2m_9x18_veresk",
@@ -2097,7 +2097,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_sr2m_9x21_veresk",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_stanag_7.62x51_default",
@@ -2109,7 +2109,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_stanag_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_stanag_7.62x51_extended",
@@ -2121,7 +2121,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_stanag_7.62x51_ext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_stanag_7.62x51_fast",
@@ -2133,7 +2133,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_stanag_fast_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_stanag_7.62x51_short",
@@ -2145,7 +2145,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_stanag_7.62x51_short",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_steyr_556",
@@ -2157,7 +2157,7 @@
       "magSize": "small",
       "magRounds": 8,
       "displayName": "st_mag_steyr_556",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_steyr_762",
@@ -2169,7 +2169,7 @@
       "magSize": "small",
       "magRounds": 5,
       "displayName": "st_mag_steyr_762",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sv98_7.62x54_default",
@@ -2181,7 +2181,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_sv98_7.62x54",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_svd_7.62x54_default",
@@ -2193,7 +2193,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_svd_7.62x54",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_svd_7.62x54_extended",
@@ -2205,7 +2205,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_svd_7.62x54_extended",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_svi_45",
@@ -2229,7 +2229,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_svt40_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_svt_7.62x54_default",
@@ -2241,7 +2241,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_svt40_7.62x54",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_sw_45_default",
@@ -2277,7 +2277,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_type63_7.62x39",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_t63_7.62x54_alt",
@@ -2289,7 +2289,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_type63_7.62x54",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_tt33_7.62x25_default",
@@ -2301,7 +2301,7 @@
       "magSize": "small",
       "magRounds": 8,
       "displayName": "st_mag_tt33_7.62x25_p",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_tt33_7.62x25_ext",
@@ -2313,7 +2313,7 @@
       "magSize": "small",
       "magRounds": 13,
       "displayName": "st_mag_tt33_7.62x25_p",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_ump45_11.43x23_default",
@@ -2325,7 +2325,7 @@
       "magSize": "small",
       "magRounds": 25,
       "displayName": "st_mag_ump45_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_usas12_12x70_default",
@@ -2337,7 +2337,7 @@
       "magSize": "large",
       "magRounds": 20,
       "displayName": "st_mag_usas12_12x70",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_usp_11.43x23_default",
@@ -2349,7 +2349,7 @@
       "magSize": "small",
       "magRounds": 12,
       "displayName": "st_mag_usp_11.43x23_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_usptac_9x19",
@@ -2361,7 +2361,7 @@
       "magSize": "small",
       "magRounds": 22,
       "displayName": "st_mag_usptac_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_usptac_9x19_extended",
@@ -2373,7 +2373,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_usptac_9x19_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_uzi_9x19_default",
@@ -2385,7 +2385,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_uzi_9x19",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_uzi_9x19_extended",
@@ -2397,7 +2397,7 @@
       "magSize": "small",
       "magRounds": 32,
       "displayName": "st_mag_uzi_9x19_extended",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_val_9x39_default",
@@ -2409,7 +2409,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_val_9x39_pab9",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vepr_12x70_compact",
@@ -2421,7 +2421,7 @@
       "magSize": "small",
       "magRounds": 5,
       "displayName": "st_mag_vepr_compact_12x70",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vepr_12x70_default",
@@ -2433,7 +2433,7 @@
       "magSize": "medium",
       "magRounds": 10,
       "displayName": "st_mag_vepr_12x70",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vihr_9x39_default",
@@ -2445,7 +2445,7 @@
       "magSize": "medium",
       "magRounds": 30,
       "displayName": "st_mag_vihr_9x39_pab9",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vityaz_9x18_alt",
@@ -2457,7 +2457,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_vityaz_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vityaz_9x19_default",
@@ -2469,7 +2469,7 @@
       "magSize": "small",
       "magRounds": 30,
       "displayName": "st_mag_vityaz_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vsk_12.7x55_default",
@@ -2481,7 +2481,7 @@
       "magSize": "small",
       "magRounds": 5,
       "displayName": "st_mag_vssk_12.7x55",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vsk_9x39_default",
@@ -2493,7 +2493,7 @@
       "magSize": "medium",
       "magRounds": 20,
       "displayName": "st_mag_vsk94_9x39_pab9",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vss_9x39_default",
@@ -2505,7 +2505,7 @@
       "magSize": "small",
       "magRounds": 10,
       "displayName": "st_mag_vintorez_9x39_pab9",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vz61_9x18_alt",
@@ -2517,7 +2517,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_vz61_9x18_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_vz61_9x19_default",
@@ -2529,7 +2529,7 @@
       "magSize": "small",
       "magRounds": 20,
       "displayName": "st_mag_vz61_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_wa_7.62x51_default",
@@ -2541,7 +2541,7 @@
       "magSize": "small",
       "magRounds": 6,
       "displayName": "st_mag_wa2000_7.62x51",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_wp99_9x19",
@@ -2553,7 +2553,7 @@
       "magSize": "small",
       "magRounds": 16,
       "displayName": "st_mag_wp99_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_wp99_9x19_extended",
@@ -2565,7 +2565,7 @@
       "magSize": "small",
       "magRounds": 24,
       "displayName": "st_mag_wp99_9x19_fmjext",
-      "hasDisassemble": true
+      "hasDisassemble": false
     },
     {
       "id": "mag_xd9_9x19_default",
@@ -2577,7 +2577,7 @@
       "magSize": "small",
       "magRounds": 9,
       "displayName": "st_ppp_xd9_9x19_fmj",
-      "hasDisassemble": true
+      "hasDisassemble": false
     }
   ]
 }

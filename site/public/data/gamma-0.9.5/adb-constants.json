@@ -1,0 +1,70 @@
+{
+  "byType": {
+    "FireWound": {
+      "adjuster": 0.8,
+      "artiAdjuster": 0.8,
+      "limiter": 0.65,
+      "immunity": "fire_wound_immunity",
+      "capStat": "fire_wound_cap",
+      "defense": "fire_wound_protection"
+    },
+    "Wound": {
+      "adjuster": 0.696,
+      "artiAdjuster": 1.16,
+      "limiter": 0.65,
+      "immunity": "wound_immunity",
+      "capStat": "wound_cap",
+      "defense": "wound_protection"
+    },
+    "Strike": {
+      "adjuster": 0.55,
+      "artiAdjuster": 0.715,
+      "limiter": 0.65,
+      "immunity": "strike_immunity",
+      "capStat": "strike_cap",
+      "defense": "strike_protection"
+    },
+    "Explosion": {
+      "adjuster": 0.45,
+      "artiAdjuster": 0.675,
+      "limiter": 0.65,
+      "immunity": "explosion_immunity",
+      "capStat": "explosion_cap",
+      "defense": "explosion_protection"
+    },
+    "Burn": {
+      "adjuster": 1,
+      "artiAdjuster": 2,
+      "limiter": 0.65,
+      "immunity": "burn_immunity",
+      "capStat": "burn_cap",
+      "defense": "burn_protection"
+    },
+    "Shock": {
+      "adjuster": 0.102,
+      "artiAdjuster": 2.703,
+      "limiter": 0.65,
+      "immunity": "shock_immunity",
+      "capStat": "shock_cap",
+      "defense": "shock_protection"
+    },
+    "ChemicalBurn": {
+      "adjuster": 1.32,
+      "artiAdjuster": 1.32,
+      "limiter": 0.65,
+      "immunity": "chemical_burn_immunity",
+      "capStat": "chemical_burn_cap",
+      "defense": "chemical_burn_protection"
+    },
+    "Telepatic": {
+      "adjuster": 1.7,
+      "artiAdjuster": 1.5,
+      "limiter": 0.65,
+      "immunity": "telepatic_immunity",
+      "capStat": "telepatic_cap",
+      "defense": "telepatic_protection"
+    }
+  },
+  "basePremitigation": 0.4,
+  "hardCap": 0.9
+}

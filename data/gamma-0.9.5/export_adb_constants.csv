@@ -1,0 +1,9 @@
+~,st_data_export_adjuster,st_data_export_arti_adjuster,st_data_export_limiter,st_data_export_immunity,st_data_export_cap_stat,st_data_export_defense
+FireWound,0.8,0.8,0.65,fire_wound_immunity,fire_wound_cap,fire_wound_protection
+Wound,0.696,1.16,0.65,wound_immunity,wound_cap,wound_protection
+Strike,0.55,0.715,0.65,strike_immunity,strike_cap,strike_protection
+Explosion,0.45,0.675,0.65,explosion_immunity,explosion_cap,explosion_protection
+Burn,1,2,0.65,burn_immunity,burn_cap,burn_protection
+Shock,0.102,2.703,0.65,shock_immunity,shock_cap,shock_protection
+ChemicalBurn,1.32,1.32,0.65,chemical_burn_immunity,chemical_burn_cap,chemical_burn_protection
+Telepatic,1.7,1.5,0.65,telepatic_immunity,telepatic_cap,telepatic_protection

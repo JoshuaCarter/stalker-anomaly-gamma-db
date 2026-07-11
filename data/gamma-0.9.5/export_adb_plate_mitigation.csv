@@ -1,0 +1,17 @@
+~,st_data_export_body_ap_res,st_data_export_body_premitigation,st_data_export_head_ap_res,st_data_export_head_premitigation
+af_death_lamp,0,0.12,0,0.12
+af_ear,0,0.06,0,0.06
+af_fuzz_kolobok,0,0.03,0,0.03
+af_glass,0,0.05,0,0.05
+af_gold_fish,0,0.08,0,0.08
+af_gravi,0,0.06,0,0.06
+af_kevlar,0.01,0.05,,
+af_kevlar_up,0.03,0.08,,
+af_kogot,0,0.06,0,0.06
+af_night_star,0,0.04,0,0.04
+af_oasis_heart,0,0.08,0,0.08
+af_plates,0.06,0.12,,
+af_plates_up,0.1,0.17,,
+af_sandstone,0,0.06,0,0.06
+hide_boar,0.02,0.05,0.02,0.05
+hide_pseudogiant,0.04,0.1,0.04,0.1

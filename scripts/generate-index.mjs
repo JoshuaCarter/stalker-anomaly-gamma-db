@@ -49,6 +49,8 @@ const SKIP_FILES = new Set([
   "export_weapon_magazine_map.csv",
   "export_mutant_profiles.csv",
   "export_npc_armor_profiles.csv",
+  "export_adb_plate_mitigation.csv",
+  "export_adb_constants.csv",
   "export_addon_weapon_map.csv",
   "export_weapon_addon_map.csv",
   "export_weapon_addon_status.csv",
@@ -973,17 +975,23 @@ try {
     if (!itemId) continue;
 
     const nodes = [];
-    // Repeating groups of 8 columns starting at index 2: Row, Column, Cell, Property, Value, Name, Desc, Section
+    // Repeating groups starting at index 2: Row, Column, Cell, Property, Value, [ActualValue,] Name, Desc, Section.
+    // The exporter historically emitted 8 fields per group; a newer export inserts an "actual value" field
+    // after Value (9 fields) without updating the header. Detect the stride from the field after Value in the
+    // first group — a translation key (Name) means the old 8-wide layout; a numeric/empty value means the new
+    // 9-wide one — then read Name/Desc/Section from the group tail so the extra field only shifts Value's neighbours.
+    const afterValue = cols[2 + 5]?.trim() ?? "";
+    const stride = /^[+\-]?[\d.]*$/.test(afterValue) ? 9 : 8;
     for (let n = 0; n < 22; n++) {
-      const base = 2 + n * 8;
+      const base = 2 + n * stride;
       const row = cols[base]?.trim();
       const col = cols[base + 1]?.trim();
       const cell = cols[base + 2]?.trim();
       const prop = cols[base + 3]?.trim();
       const val = cols[base + 4]?.trim();
-      const name = cols[base + 5]?.trim();
-      const desc = cols[base + 6]?.trim();
-      const sectionId = cols[base + 7]?.trim();
+      const name = cols[base + stride - 3]?.trim();
+      const desc = cols[base + stride - 2]?.trim();
+      const sectionId = cols[base + stride - 1]?.trim();
       if (!row || !sectionId) continue;
 
       const sect = sectionsMap.get(sectionId) || { cost: 0, stats: {} };
@@ -1923,6 +1931,42 @@ console.log(`\nWrote ${index.length} items to ${OUT_FILE}`);
   }
 }
 
+// ── Coerce raw armor fields on outfits + helmets into typed calc inputs ──────
+// The exporter emits these raw LTX numerics (blank on plain Anomaly / older
+// extracts). They drive the GAMMA actor armor formula and can't be recovered
+// from the display percents (see docs/gamma-actor-damage-formula.md):
+//   * hitFractionActor — bullet penetration gate: (1 - hfa) * cond >= k_ap
+//   * boneArmor        — real flat BR% multiplicand (spine for outfits, head
+//                        for helmets); NOT the displayed fire_wound_protection
+//   * apScale          — penetrating-damage falloff (engine / NPC path)
+//   * brClass          — raw br_class reference (== hfa in GAMMA)
+// Converted to typed camelCase fields and stripped from the raw header set so
+// they don't render as untranslated table columns. Absent columns => omitted.
+const ARMOR_FIELD_MAP = {
+  st_data_export_hit_fraction_actor: "hitFractionActor",
+  st_data_export_br_class: "brClass",
+  st_data_export_bone_armor: "boneArmor",
+  st_data_export_ap_scale: "apScale",
+};
+for (const slug of ["outfits", "helmets"]) {
+  const cat = categoryData.get(slug);
+  if (!cat) continue;
+  let enriched = 0;
+  for (const item of cat.items) {
+    let touched = false;
+    for (const [rawKey, outKey] of Object.entries(ARMOR_FIELD_MAP)) {
+      const raw = item[rawKey];
+      delete item[rawKey]; // drop the raw string column regardless
+      if (raw === undefined || raw === "") continue;
+      const num = parseFloat(raw);
+      if (!isNaN(num)) { item[outKey] = num; touched = true; }
+    }
+    if (touched) enriched++;
+  }
+  cat.headers = cat.headers.filter((h) => !(h in ARMOR_FIELD_MAP));
+  if (enriched) console.log(`Armor fields: enriched ${enriched} ${slug}`);
+}
+
 // Write per-category JSON files and build categories manifest
 const categoriesList = [];
 for (const [slug, data] of categoryData) {
@@ -2192,6 +2236,68 @@ try {
 } catch (e) {
   if (e.code !== "ENOENT") throw e;
   console.log("No NPC armor profiles CSV found, skipping npc-armor-profiles.json");
+}
+
+// Generate adb-plate-mitigation.json from export_adb_plate_mitigation.csv.
+// The GAMMA Actor Damage Balancer's ballistic-plate mitigation table lives only
+// in Lua, so the exporter dumps it. Each belt-item section contributes ap_res
+// (raises the penetration threshold) and premitigation (adds to the stopped-round
+// flat reduction), split by body/head slot — mirrored here as two lookup maps so
+// the armor calc can key by section exactly like the game does.
+const ADB_MIT_FILE = join(CSV_DIR, "export_adb_plate_mitigation.csv");
+try {
+  const lines = readFileSync(ADB_MIT_FILE, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
+  if (lines.length > 1) {
+    const mit = { body: {}, head: {} };
+    const num = (s) => { const n = parseFloat(s); return isNaN(n) ? undefined : n; };
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCsvLine(lines[i]);
+      const sec = cols[0]?.trim();
+      if (!sec || sec === "~") continue;
+      const bAp = num(cols[1]), bPre = num(cols[2]), hAp = num(cols[3]), hPre = num(cols[4]);
+      if (bAp !== undefined || bPre !== undefined) mit.body[sec] = { apRes: bAp ?? 0, premitigation: bPre ?? 0 };
+      if (hAp !== undefined || hPre !== undefined) mit.head[sec] = { apRes: hAp ?? 0, premitigation: hPre ?? 0 };
+    }
+    const out = join(OUT_DIR, "adb-plate-mitigation.json");
+    writeFileSync(out, JSON.stringify(mit, null, 2));
+    console.log(`Wrote plate mitigation (${Object.keys(mit.body).length} body, ${Object.keys(mit.head).length} head) to ${out}`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") throw e;
+  console.log("No ADB plate mitigation CSV found, skipping adb-plate-mitigation.json");
+}
+
+// Generate adb-constants.json from export_adb_constants.csv — the per-damage-type
+// multipliers get_adb_constants() feeds the player armor formula. basePremitigation
+// (0.40) and hardCap (0.90) are script literals (not per-type, not exported), added
+// here so the site's calc has the full constant set in one place.
+const ADB_CONST_FILE = join(CSV_DIR, "export_adb_constants.csv");
+try {
+  const lines = readFileSync(ADB_CONST_FILE, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
+  if (lines.length > 1) {
+    const byType = {};
+    const num = (s) => { const n = parseFloat(s); return isNaN(n) ? s : n; };
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCsvLine(lines[i]);
+      const ht = cols[0]?.trim();
+      if (!ht || ht === "~") continue;
+      byType[ht] = {
+        adjuster: num(cols[1]?.trim()),
+        artiAdjuster: num(cols[2]?.trim()),
+        limiter: num(cols[3]?.trim()),
+        immunity: cols[4]?.trim() || "",
+        capStat: cols[5]?.trim() || "",
+        defense: cols[6]?.trim() || "",
+      };
+    }
+    const constants = { byType, basePremitigation: 0.4, hardCap: 0.9 };
+    const out = join(OUT_DIR, "adb-constants.json");
+    writeFileSync(out, JSON.stringify(constants, null, 2));
+    console.log(`Wrote ADB constants (${Object.keys(byType).length} damage types) to ${out}`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") throw e;
+  console.log("No ADB constants CSV found, skipping adb-constants.json");
 }
 
 // Copy gbo-constants.json if present in pack data
