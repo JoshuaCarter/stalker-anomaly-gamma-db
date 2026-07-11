@@ -286,4 +286,13 @@
     --color-green-mid-tint-15:       rgba(78,  168, 100, 0.15);
     --color-red-soft-tint-18:        rgba(200, 80,  80,  0.18);
     --color-red-warm-soft-tint-15:   rgba(208, 122, 110, 0.15);
+
+    /* ── Inventory tray (borderless "rucksack" surface) ── */
+    --color-inv-tray-top:     #131210;   /* gritty tray gradient — top    */
+    --color-inv-tray-bottom:  #0c0b0a;   /* gritty tray gradient — bottom */
+    --color-inv-tray-border:  #201d18;
+    --color-inv-tray-kit-top: #151310;   /* warmer top for a "your kit" tray */
+    --color-inv-qty:          #79c8d4;   /* cyan picked-quantity ×N badge  */
+    --color-ember-tint-10:    rgba(120, 60, 40, 0.10);   /* warm floor glow */
+    --color-overlay-white-1:  rgba(255, 255, 255, 0.012);
 }

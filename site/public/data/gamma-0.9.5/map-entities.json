@@ -9,7 +9,8 @@
     "stash": 1171,
     "level_changer": 102,
     "smart_terrain": 467,
-    "named_npc": 126
+    "named_npc": 126,
+    "anomaly_field": 71
   },
   "entities": {
     "campfire": [
@@ -25352,6 +25353,6088 @@
         "mapX": 336.44,
         "mapY": 99.13,
         "location": "Generators - War Lab Surface"
+      }
+    ],
+    "anomaly_field": [
+      {
+        "id": "mar_smart_terrain_base_anomal_zone",
+        "name": "mar_smart_terrain_base_anomaly_spot",
+        "label": "Bog Pounder",
+        "label_key": "st_mar_smart_terrain_base_anomaly_spot_name",
+        "section": "mar_smart_terrain_base_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 70.82,
+        "mapY": 2352.9,
+        "artefacts": [
+          {
+            "name": "Stone Flower",
+            "chance": 15
+          },
+          {
+            "name": "Soul",
+            "chance": 15
+          },
+          {
+            "name": "Stone Blood",
+            "chance": 5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.8
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.8
+          },
+          {
+            "name": "Chain",
+            "chance": 3.8
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.8
+          },
+          {
+            "name": "Heart",
+            "chance": 3.8
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.8
+          },
+          {
+            "name": "Generator",
+            "chance": 3.8
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.8
+          },
+          {
+            "name": "Moss",
+            "chance": 3.8
+          },
+          {
+            "name": "Moon",
+            "chance": 3.8
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.8
+          },
+          {
+            "name": "Signet",
+            "chance": 3.8
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.8
+          },
+          {
+            "name": "Spike",
+            "chance": 3.8
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.8
+          },
+          {
+            "name": "Scar",
+            "chance": 3.8
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_11_3_anomal_zone",
+        "name": "mar_smart_terrain_11_3_anomaly_spot",
+        "label": "Fault",
+        "label_key": "st_mar_smart_terrain_11_3_anomaly_spot_name",
+        "section": "mar_smart_terrain_11_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 255.84,
+        "mapY": 2240.37,
+        "anomalyTypes": [
+          "Thermal"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 33.3
+          },
+          {
+            "name": "Itcher",
+            "chance": 33.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_8_8_anomal_zone",
+        "name": "mar_smart_terrain_8_8_anomaly_spot",
+        "label": "Fermi",
+        "label_key": "st_mar_smart_terrain_8_8_anomaly_spot_name",
+        "section": "mar_smart_terrain_8_8_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 210.45,
+        "mapY": 2303.34,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 25
+          },
+          {
+            "name": "Itcher",
+            "chance": 25
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_2c_01_anomal_zone",
+        "name": "mar_smart_terrain_2c_01_anomaly_spot",
+        "label": "God's Acre",
+        "label_key": "",
+        "section": "mar_smart_terrain_2c_01_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 236.02,
+        "mapY": 2342.61,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 12.5
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_3_3_anomal_zone",
+        "name": "mar_smart_terrain_3_3_anomaly_spot",
+        "label": "Lungrot",
+        "label_key": "st_mar_smart_terrain_3_3_anomaly_spot_name",
+        "section": "mar_smart_terrain_3_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 95.76,
+        "mapY": 2251.85,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 12.5
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_3_7_anomal_zone",
+        "name": "mar_smart_terrain_3_7_anomaly_spot",
+        "label": "Stomper",
+        "label_key": "st_mar_smart_terrain_3_7_anomaly_spot_name",
+        "section": "mar_smart_terrain_3_7_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 93.91,
+        "mapY": 2298.51,
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_12_2_anomal_zone",
+        "name": "mar_smart_terrain_12_2_anomaly_spot",
+        "label": "Teravolt",
+        "label_key": "st_mar_smart_terrain_12_2_anomaly_spot_name",
+        "section": "mar_smart_terrain_12_2_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 293.53,
+        "mapY": 2239.69,
+        "anomalyTypes": [
+          "Radioactive",
+          "Electro"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 16.7
+          },
+          {
+            "name": "Sparkler",
+            "chance": 16.7
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "mar_smart_terrain_10_10_anomal_zone",
+        "name": "mar_smart_terrain_10_10_anomaly_spot",
+        "label": "Thunderclap",
+        "label_key": "st_mar_smart_terrain_10_10_anomaly_spot_name",
+        "section": "mar_smart_terrain_10_10_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k00_marsh",
+        "mapX": 272.67,
+        "mapY": 2326.22,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 16.7
+          },
+          {
+            "name": "Sparkler",
+            "chance": 16.7
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "ds_2c_03_anomal_zone",
+        "name": "ds_2c_03_anomaly_spot",
+        "label": "Bald Mountain",
+        "label_key": "st_ds_2c_03_anomaly_spot_name",
+        "section": "ds_2c_03_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k01_darkscape",
+        "mapX": 912.41,
+        "mapY": 2316.45
+      },
+      {
+        "id": "ds_2c_02_anomal_zone",
+        "name": "ds_2c_02_anomaly_spot",
+        "label": "Shining Road",
+        "label_key": "st_ds_2c_02_anomaly_spot_name",
+        "section": "ds_2c_02_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "k01_darkscape",
+        "mapX": 946.65,
+        "mapY": 2167.99
+      },
+      {
+        "id": "esc_tunnel_electr_anomal_zone",
+        "name": "esc_tunnel_electr_anomaly_spot",
+        "label": "Burnt Fuzz Tunnel",
+        "label_key": "",
+        "section": "esc_tunnel_electr_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l01_escape",
+        "mapX": 429.07,
+        "mapY": 2217.12,
+        "anomalyTypes": [
+          "Electro"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 25
+          },
+          {
+            "name": "Sparkler",
+            "chance": 25
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "esc_2c_01_high_hopes_anomal_zone",
+        "name": "esc_2c_01_high_hopes_anomaly_spot",
+        "label": "High Hopes",
+        "label_key": "st_esc_2c_01_high_hopes_anomaly_spot_name",
+        "section": "esc_2c_01_high_hopes_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l01_escape",
+        "mapX": 432.98,
+        "mapY": 2152.48,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "esc_smart_terrain_8_9_anomal_zone",
+        "name": "esc_smart_terrain_8_9_anomaly_spot",
+        "label": "Rock Crusher",
+        "label_key": "st_esc_smart_terrain_8_9_anomaly_spot_name",
+        "section": "esc_smart_terrain_8_9_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l01_escape",
+        "mapX": 542.54,
+        "mapY": 2204.08,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "esc_smart_terrain_5_4_anomal_zone",
+        "name": "esc_smart_terrain_5_4_anomaly_spot",
+        "label": "Rookie Eater",
+        "label_key": "st_esc_smart_terrain_5_4_anomaly_spot_name",
+        "section": "esc_smart_terrain_5_4_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l01_escape",
+        "mapX": 483.43,
+        "mapY": 2119.11,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 18.8
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 6.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 6.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 6.3
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "esc_smart_terrain_1_11_anomal_zone",
+        "name": "esc_smart_terrain_1_11_anomaly_spot",
+        "label": "Trash Compactor",
+        "label_key": "st_esc_smart_terrain_1_11_anomaly_spot_name",
+        "section": "esc_smart_terrain_1_11_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l01_escape",
+        "mapX": 382.64,
+        "mapY": 2265.35,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "gar_2c_02_toaster_anomal_zone",
+        "name": "gar_2c_02_toaster_anomaly_spot",
+        "label": "Greek Fire",
+        "label_key": "st_gar_2c_02_toaster_anomaly_spot_name",
+        "section": "gar_2c_02_toaster_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 541.38,
+        "mapY": 1832.48,
+        "anomalyTypes": [
+          "Thermal"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 33.3
+          },
+          {
+            "name": "Itcher",
+            "chance": 33.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "gar_smart_terrain_3_7_anomal_zone",
+        "name": "gar_smart_terrain_3_7_anomaly_spot",
+        "label": "Hot Hind",
+        "label_key": "st_gar_smart_terrain_3_7_anomaly_spot_name",
+        "section": "gar_smart_terrain_3_7_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 443.49,
+        "mapY": 1920.32,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 16.7
+          },
+          {
+            "name": "Itcher",
+            "chance": 16.7
+          },
+          {
+            "name": "Bat",
+            "chance": 6.7
+          },
+          {
+            "name": "Grapes",
+            "chance": 6.7
+          },
+          {
+            "name": "Beacon",
+            "chance": 6.7
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 6.7
+          },
+          {
+            "name": "Sun",
+            "chance": 6.7
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "gar_smart_terrain_6_7_anomal_zone",
+        "name": "gar_smart_terrain_6_7_anomaly_spot",
+        "label": "Mauler",
+        "label_key": "st_gar_smart_terrain_6_7_anomaly_spot_name",
+        "section": "gar_smart_terrain_6_7_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 501.28,
+        "mapY": 1937.99,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 6.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 6.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 6.3
+          },
+          {
+            "name": "Soul",
+            "chance": 6.3
+          },
+          {
+            "name": "Ball",
+            "chance": 4.7
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.7
+          },
+          {
+            "name": "Chain",
+            "chance": 4.7
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.7
+          },
+          {
+            "name": "Heart",
+            "chance": 4.7
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.7
+          },
+          {
+            "name": "Generator",
+            "chance": 4.7
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.7
+          },
+          {
+            "name": "Moss",
+            "chance": 4.7
+          },
+          {
+            "name": "Moon",
+            "chance": 4.7
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.7
+          },
+          {
+            "name": "Signet",
+            "chance": 4.7
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.7
+          },
+          {
+            "name": "Spike",
+            "chance": 4.7
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.7
+          },
+          {
+            "name": "Scar",
+            "chance": 4.7
+          }
+        ]
+      },
+      {
+        "id": "gar_2c_01_nwi_anomal_zone",
+        "name": "gar_2c_01_nwi_anomaly_spot",
+        "label": "Push-Pull",
+        "label_key": "st_gar_2c_01_nwi_anomaly_spot_name",
+        "section": "gar_2c_01_nwi_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 456.11,
+        "mapY": 1835.26,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Nightstar",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "gar_smart_terrain_1_7_anomal_zone",
+        "name": "gar_smart_terrain_1_7_anomaly_spot",
+        "label": "Slammer",
+        "label_key": "st_gar_smart_terrain_1_7_anomaly_spot_name",
+        "section": "gar_smart_terrain_1_7_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 430.41,
+        "mapY": 1926.31,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 25
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 16.7
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "gar_smart_terrain_2_4_anomal_zone",
+        "name": "gar_smart_terrain_2_4_anomaly_spot",
+        "label": "Synapse",
+        "label_key": "st_gar_smart_terrain_2_4_anomaly_spot_name",
+        "section": "gar_smart_terrain_2_4_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 403.25,
+        "mapY": 1838.15,
+        "anomalyTypes": [
+          "Psi"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Battery",
+            "chance": 12.5
+          },
+          {
+            "name": "Sparkler",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Bat",
+            "chance": 5
+          },
+          {
+            "name": "Grapes",
+            "chance": 5
+          },
+          {
+            "name": "Beacon",
+            "chance": 5
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 5
+          },
+          {
+            "name": "Sun",
+            "chance": 5
+          },
+          {
+            "name": "Ball",
+            "chance": 1.6
+          },
+          {
+            "name": "Black Angel",
+            "chance": 1.6
+          },
+          {
+            "name": "Chain",
+            "chance": 1.6
+          },
+          {
+            "name": "Cocoon",
+            "chance": 1.6
+          },
+          {
+            "name": "Heart",
+            "chance": 1.6
+          },
+          {
+            "name": "Lamp",
+            "chance": 1.6
+          },
+          {
+            "name": "Generator",
+            "chance": 1.6
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 1.6
+          },
+          {
+            "name": "Moss",
+            "chance": 1.6
+          },
+          {
+            "name": "Moon",
+            "chance": 1.6
+          },
+          {
+            "name": "Sandstone",
+            "chance": 1.6
+          },
+          {
+            "name": "Signet",
+            "chance": 1.6
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 1.6
+          },
+          {
+            "name": "Spike",
+            "chance": 1.6
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 1.6
+          },
+          {
+            "name": "Scar",
+            "chance": 1.6
+          }
+        ]
+      },
+      {
+        "id": "gar_smart_terrain_5_6_anomal_zone",
+        "name": "gar_smart_terrain_5_6_anomaly_spot",
+        "label": "Witches' Jelly",
+        "label_key": "st_gar_smart_terrain_5_6_anomaly_spot_name",
+        "section": "gar_smart_terrain_5_6_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l02_garbage",
+        "mapX": 504.32,
+        "mapY": 1904.72,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 25
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 25
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 25
+          },
+          {
+            "name": "Soul",
+            "chance": 25
+          }
+        ]
+      },
+      {
+        "id": "agr_smart_terrain_1_3_anomal_zone",
+        "name": "agr_smart_terrain_1_3_anomaly_spot",
+        "label": "Bedrock Claws",
+        "label_key": "st_agr_smart_terrain_1_3_anomaly_spot_name",
+        "section": "agr_smart_terrain_1_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l03_agroprom",
+        "mapX": 183.86,
+        "mapY": 1920.84,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Bat",
+            "chance": 6.7
+          },
+          {
+            "name": "Grapes",
+            "chance": 6.7
+          },
+          {
+            "name": "Beacon",
+            "chance": 6.7
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 6.7
+          },
+          {
+            "name": "Sun",
+            "chance": 6.7
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "agr_smart_terrain_5_7_anomal_zone",
+        "name": "agr_smart_terrain_5_7_anomaly_spot",
+        "label": "Bushwhacker",
+        "label_key": "st_agr_smart_terrain_5_7_anomaly_spot_name",
+        "section": "agr_smart_terrain_5_7_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l03_agroprom",
+        "mapX": 246.51,
+        "mapY": 1991.25,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Nightstar",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "agr_smart_terrain_5_2_anomal_zone",
+        "name": "agr_smart_terrain_5_2_anomaly_spot",
+        "label": "Dog Mincer",
+        "label_key": "st_agr_smart_terrain_5_2_anomaly_spot_name",
+        "section": "agr_smart_terrain_5_2_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l03_agroprom",
+        "mapX": 279.03,
+        "mapY": 1884.28,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 25
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 16.7
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "agr_2c_01_hg_anomal_zone",
+        "name": "agr_2c_01_hg_anomaly_spot",
+        "label": "Heavy Grass",
+        "label_key": "st_agr_2c_01_hg_anomaly_spot_name",
+        "section": "agr_2c_01_hg_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l03_agroprom",
+        "mapX": 296.51,
+        "mapY": 1957.46,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Signet",
+            "chance": 8.8
+          },
+          {
+            "name": "Bat",
+            "chance": 6.7
+          },
+          {
+            "name": "Stone Blood",
+            "chance": 6.7
+          },
+          {
+            "name": "Mama's Beads",
+            "chance": 6.7
+          },
+          {
+            "name": "Grapes",
+            "chance": 6.7
+          },
+          {
+            "name": "Beacon",
+            "chance": 6.7
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 6.7
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 6.7
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 6.7
+          },
+          {
+            "name": "Sun",
+            "chance": 6.7
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "agr_smart_terrain_4_4_near_3_anomal_zone",
+        "name": "agr_smart_terrain_4_4_near_3_anomaly_spot",
+        "label": "Nerve Wracker",
+        "label_key": "st_agr_smart_terrain_4_4_near_3_anomaly_spot_name",
+        "section": "agr_smart_terrain_4_4_near_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l03_agroprom",
+        "mapX": 250.34,
+        "mapY": 1917.38,
+        "anomalyTypes": [
+          "Psi"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Flower",
+            "chance": 20
+          },
+          {
+            "name": "Battery",
+            "chance": 20
+          },
+          {
+            "name": "Sparkler",
+            "chance": 20
+          },
+          {
+            "name": "Soul",
+            "chance": 20
+          },
+          {
+            "name": "Ball",
+            "chance": 1.3
+          },
+          {
+            "name": "Black Angel",
+            "chance": 1.3
+          },
+          {
+            "name": "Chain",
+            "chance": 1.3
+          },
+          {
+            "name": "Cocoon",
+            "chance": 1.3
+          },
+          {
+            "name": "Heart",
+            "chance": 1.3
+          },
+          {
+            "name": "Lamp",
+            "chance": 1.3
+          },
+          {
+            "name": "Generator",
+            "chance": 1.3
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 1.3
+          },
+          {
+            "name": "Moss",
+            "chance": 1.3
+          },
+          {
+            "name": "Moon",
+            "chance": 1.3
+          },
+          {
+            "name": "Sandstone",
+            "chance": 1.3
+          },
+          {
+            "name": "Signet",
+            "chance": 1.3
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 1.3
+          },
+          {
+            "name": "Spike",
+            "chance": 1.3
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 1.3
+          },
+          {
+            "name": "Scar",
+            "chance": 1.3
+          }
+        ]
+      },
+      {
+        "id": "agr_smart_terrain_1_2_anomal_zone",
+        "name": "agr_smart_terrain_1_2_anomaly_spot",
+        "label": "Toxic Swamp",
+        "label_key": "st_agr_smart_terrain_1_2_anomaly_spot_name",
+        "section": "agr_smart_terrain_1_2_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l03_agroprom",
+        "mapX": 179.57,
+        "mapY": 1894.98,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 12.5
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "val_smart_terrain_6_4_anomal_zone",
+        "name": "val_smart_terrain_6_4_anomaly_spot",
+        "label": "Basher",
+        "label_key": "st_val_smart_terrain_6_4_anomaly_spot_name",
+        "section": "val_smart_terrain_6_4_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l04_darkvalley",
+        "mapX": 774.12,
+        "mapY": 1750.5,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 18.8
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 6.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 6.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 6.3
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "val_smart_terrain_9_4_anomal_zone",
+        "name": "val_smart_terrain_9_4_anomaly_spot",
+        "label": "Bubble Bath",
+        "label_key": "st_val_smart_terrain_9_4_anomaly_spot_name",
+        "section": "val_smart_terrain_9_4_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l04_darkvalley",
+        "mapX": 820.6,
+        "mapY": 1783.42,
+        "anomalyTypes": [
+          "Radioactive",
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 12.5
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Ball",
+            "chance": 3.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 3.1
+          },
+          {
+            "name": "Chain",
+            "chance": 3.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 3.1
+          },
+          {
+            "name": "Heart",
+            "chance": 3.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 3.1
+          },
+          {
+            "name": "Generator",
+            "chance": 3.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moss",
+            "chance": 3.1
+          },
+          {
+            "name": "Moon",
+            "chance": 3.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 3.1
+          },
+          {
+            "name": "Signet",
+            "chance": 3.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 3.1
+          },
+          {
+            "name": "Spike",
+            "chance": 3.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 3.1
+          },
+          {
+            "name": "Scar",
+            "chance": 3.1
+          }
+        ]
+      },
+      {
+        "id": "val_smart_terrain_8_6_anomal_zone",
+        "name": "val_smart_terrain_8_6_anomaly_spot",
+        "label": "Bug Zapper",
+        "label_key": "st_val_smart_terrain_8_6_anomaly_spot_name",
+        "section": "val_smart_terrain_8_6_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l04_darkvalley",
+        "mapX": 783.56,
+        "mapY": 1793.09,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 16.7
+          },
+          {
+            "name": "Sparkler",
+            "chance": 16.7
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "val_smart_terrain_9_10_anomal_zone",
+        "name": "val_smart_terrain_9_10_anomaly_spot",
+        "label": "Glowing Pit",
+        "label_key": "st_val_smart_terrain_9_10_anomaly_spot_name",
+        "section": "val_smart_terrain_9_10_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l04_darkvalley",
+        "mapX": 823.2,
+        "mapY": 1904.14,
+        "anomalyTypes": [
+          "Thermal",
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 25
+          },
+          {
+            "name": "Itcher",
+            "chance": 25
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Nightstar",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          }
+        ]
+      },
+      {
+        "id": "val_smart_terrain_8_9_anomal_zone",
+        "name": "val_smart_terrain_8_9_anomaly_spot",
+        "label": "Maimer",
+        "label_key": "st_val_smart_terrain_8_9_anomaly_spot_name",
+        "section": "val_smart_terrain_8_9_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l04_darkvalley",
+        "mapX": 835.41,
+        "mapY": 1854.81,
+        "anomalyTypes": [
+          "Radioactive",
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Meat Chunk",
+            "chance": 16.7
+          },
+          {
+            "name": "Soul",
+            "chance": 16.7
+          },
+          {
+            "name": "Stone Blood",
+            "chance": 8.3
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 8.3
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "bar_2c_01_grant_anomal_zone",
+        "name": "bar_2c_01_grant_anomaly_spot",
+        "label": "Mantrap",
+        "label_key": "st_bar_2c_01_grant_anomaly_spot_name",
+        "section": "bar_2c_01_grant_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l05_bar",
+        "mapX": 446.96,
+        "mapY": 1520.91,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Bat",
+            "chance": 6.7
+          },
+          {
+            "name": "Grapes",
+            "chance": 6.7
+          },
+          {
+            "name": "Beacon",
+            "chance": 6.7
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 6.7
+          },
+          {
+            "name": "Sun",
+            "chance": 6.7
+          },
+          {
+            "name": "Ball",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Angel",
+            "chance": 4.2
+          },
+          {
+            "name": "Chain",
+            "chance": 4.2
+          },
+          {
+            "name": "Cocoon",
+            "chance": 4.2
+          },
+          {
+            "name": "Heart",
+            "chance": 4.2
+          },
+          {
+            "name": "Lamp",
+            "chance": 4.2
+          },
+          {
+            "name": "Generator",
+            "chance": 4.2
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moss",
+            "chance": 4.2
+          },
+          {
+            "name": "Moon",
+            "chance": 4.2
+          },
+          {
+            "name": "Sandstone",
+            "chance": 4.2
+          },
+          {
+            "name": "Signet",
+            "chance": 4.2
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 4.2
+          },
+          {
+            "name": "Spike",
+            "chance": 4.2
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 4.2
+          },
+          {
+            "name": "Scar",
+            "chance": 4.2
+          }
+        ]
+      },
+      {
+        "id": "ros_2c_03_yc_anomal_zone",
+        "name": "ros_2c_03_yc_anomaly_spot",
+        "label": "Conflagrator",
+        "label_key": "st_ros_2c_03_yc_anomaly_spot_name",
+        "section": "ros_2c_03_yc_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l06_rostok",
+        "mapX": 361.7,
+        "mapY": 1589.29,
+        "anomalyTypes": [
+          "Thermal"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 38.9
+          },
+          {
+            "name": "Itcher",
+            "chance": 38.9
+          },
+          {
+            "name": "Crystal",
+            "chance": 3.7
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 3.7
+          },
+          {
+            "name": "Pin",
+            "chance": 3.7
+          },
+          {
+            "name": "Ball",
+            "chance": 0.7
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.7
+          },
+          {
+            "name": "Chain",
+            "chance": 0.7
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.7
+          },
+          {
+            "name": "Heart",
+            "chance": 0.7
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.7
+          },
+          {
+            "name": "Generator",
+            "chance": 0.7
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.7
+          },
+          {
+            "name": "Moss",
+            "chance": 0.7
+          },
+          {
+            "name": "Moon",
+            "chance": 0.7
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.7
+          },
+          {
+            "name": "Signet",
+            "chance": 0.7
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.7
+          },
+          {
+            "name": "Spike",
+            "chance": 0.7
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.7
+          },
+          {
+            "name": "Scar",
+            "chance": 0.7
+          }
+        ]
+      },
+      {
+        "id": "ros_2c_02_crispy_train_anomal_zone",
+        "name": "ros_2c_02_crispy_train_anomaly_spot",
+        "label": "Crispy Train",
+        "label_key": "st_ros_2c_02_crispy_train_anomaly_spot_name",
+        "section": "ros_2c_02_crispy_train_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l06_rostok",
+        "mapX": 324.65,
+        "mapY": 1509.7
+      },
+      {
+        "id": "ros_2c_01_tunnel_anomal_zone",
+        "name": "ros_2c_01_tunnel_anomaly_spot",
+        "label": "Sparkle Deadlock",
+        "label_key": "st_ros_2c_01_tunnel_anomaly_spot_name",
+        "section": "ros_2c_01_tunnel_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l06_rostok",
+        "mapX": 335.97,
+        "mapY": 1536.81,
+        "anomalyTypes": [
+          "Electro"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 38.9
+          },
+          {
+            "name": "Sparkler",
+            "chance": 38.9
+          },
+          {
+            "name": "Crystal",
+            "chance": 3.7
+          },
+          {
+            "name": "Moonlight",
+            "chance": 3.7
+          },
+          {
+            "name": "Ring",
+            "chance": 3.7
+          },
+          {
+            "name": "Ball",
+            "chance": 0.7
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.7
+          },
+          {
+            "name": "Chain",
+            "chance": 0.7
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.7
+          },
+          {
+            "name": "Heart",
+            "chance": 0.7
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.7
+          },
+          {
+            "name": "Generator",
+            "chance": 0.7
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.7
+          },
+          {
+            "name": "Moss",
+            "chance": 0.7
+          },
+          {
+            "name": "Moon",
+            "chance": 0.7
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.7
+          },
+          {
+            "name": "Signet",
+            "chance": 0.7
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.7
+          },
+          {
+            "name": "Spike",
+            "chance": 0.7
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.7
+          },
+          {
+            "name": "Scar",
+            "chance": 0.7
+          }
+        ]
+      },
+      {
+        "id": "mil_smart_terrain_4_7_anomal_zone",
+        "name": "mil_smart_terrain_4_7_anomaly_spot",
+        "label": "Corpse Disposer",
+        "label_key": "st_mil_smart_terrain_4_7_anomaly_spot_name",
+        "section": "mil_smart_terrain_4_7_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l07_military",
+        "mapX": 568.44,
+        "mapY": 1333.8,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 16.7
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 16.7
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 16.7
+          },
+          {
+            "name": "Soul",
+            "chance": 16.7
+          },
+          {
+            "name": "Bracelet",
+            "chance": 2.8
+          },
+          {
+            "name": "Eye",
+            "chance": 2.8
+          },
+          {
+            "name": "Kolobok",
+            "chance": 2.8
+          },
+          {
+            "name": "Wrenched",
+            "chance": 2.8
+          },
+          {
+            "name": "Bat",
+            "chance": 2.2
+          },
+          {
+            "name": "Grapes",
+            "chance": 2.2
+          },
+          {
+            "name": "Beacon",
+            "chance": 2.2
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 2.2
+          },
+          {
+            "name": "Sun",
+            "chance": 2.2
+          },
+          {
+            "name": "Ball",
+            "chance": 0.7
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.7
+          },
+          {
+            "name": "Chain",
+            "chance": 0.7
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.7
+          },
+          {
+            "name": "Heart",
+            "chance": 0.7
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.7
+          },
+          {
+            "name": "Generator",
+            "chance": 0.7
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.7
+          },
+          {
+            "name": "Moss",
+            "chance": 0.7
+          },
+          {
+            "name": "Moon",
+            "chance": 0.7
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.7
+          },
+          {
+            "name": "Signet",
+            "chance": 0.7
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.7
+          },
+          {
+            "name": "Spike",
+            "chance": 0.7
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.7
+          },
+          {
+            "name": "Scar",
+            "chance": 0.7
+          }
+        ]
+      },
+      {
+        "id": "mil_2c_01_hw_anomal_zone",
+        "name": "mil_2c_01_hw_anomaly_spot",
+        "label": "Hell Walls",
+        "label_key": "st_mil_2c_01_hw_anomaly_spot_name",
+        "section": "mil_2c_01_hw_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l07_military",
+        "mapX": 464.45,
+        "mapY": 1286.85,
+        "anomalyTypes": [
+          "Gravitational",
+          "Thermal"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 41.7
+          },
+          {
+            "name": "Itcher",
+            "chance": 41.7
+          },
+          {
+            "name": "Crystal",
+            "chance": 5.6
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 5.6
+          },
+          {
+            "name": "Pin",
+            "chance": 5.6
+          }
+        ]
+      },
+      {
+        "id": "mil_smart_terrain_8_3_anomal_zone",
+        "name": "mil_smart_terrain_8_3_anomaly_spot",
+        "label": "Lignite Weeds",
+        "label_key": "st_mil_smart_terrain_8_3_anomaly_spot_name",
+        "section": "mil_smart_terrain_8_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l07_military",
+        "mapX": 457.73,
+        "mapY": 1357.54,
+        "anomalyTypes": [
+          "Thermal"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 31.3
+          },
+          {
+            "name": "Itcher",
+            "chance": 31.3
+          },
+          {
+            "name": "Crystal",
+            "chance": 4.2
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 4.2
+          },
+          {
+            "name": "Pin",
+            "chance": 4.2
+          },
+          {
+            "name": "Bat",
+            "chance": 2.5
+          },
+          {
+            "name": "Grapes",
+            "chance": 2.5
+          },
+          {
+            "name": "Beacon",
+            "chance": 2.5
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 2.5
+          },
+          {
+            "name": "Sun",
+            "chance": 2.5
+          },
+          {
+            "name": "Ball",
+            "chance": 0.8
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.8
+          },
+          {
+            "name": "Chain",
+            "chance": 0.8
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.8
+          },
+          {
+            "name": "Heart",
+            "chance": 0.8
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.8
+          },
+          {
+            "name": "Generator",
+            "chance": 0.8
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.8
+          },
+          {
+            "name": "Moss",
+            "chance": 0.8
+          },
+          {
+            "name": "Moon",
+            "chance": 0.8
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.8
+          },
+          {
+            "name": "Signet",
+            "chance": 0.8
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.8
+          },
+          {
+            "name": "Spike",
+            "chance": 0.8
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.8
+          },
+          {
+            "name": "Scar",
+            "chance": 0.8
+          }
+        ]
+      },
+      {
+        "id": "mil_smart_terrain_7_4_anomal_zone",
+        "name": "mil_smart_terrain_7_4_anomaly_spot",
+        "label": "Masher",
+        "label_key": "st_mil_smart_terrain_7_4_anomaly_spot_name",
+        "section": "mil_smart_terrain_7_4_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l07_military",
+        "mapX": 494.37,
+        "mapY": 1365.59,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 30.9
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 20.6
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 10.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 10.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 10.3
+          },
+          {
+            "name": "Kolobok",
+            "chance": 2
+          },
+          {
+            "name": "Empty",
+            "chance": 1.2
+          },
+          {
+            "name": "Gravi",
+            "chance": 1.2
+          },
+          {
+            "name": "Sponge",
+            "chance": 1.2
+          },
+          {
+            "name": "Wrenched",
+            "chance": 1.2
+          },
+          {
+            "name": "Bracelet",
+            "chance": 0.8
+          },
+          {
+            "name": "Shell",
+            "chance": 0.8
+          },
+          {
+            "name": "Moonlight",
+            "chance": 0.8
+          },
+          {
+            "name": "Eye",
+            "chance": 0.8
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 0.8
+          },
+          {
+            "name": "Pin",
+            "chance": 0.8
+          },
+          {
+            "name": "Ball",
+            "chance": 0.4
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.4
+          },
+          {
+            "name": "Chain",
+            "chance": 0.4
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.4
+          },
+          {
+            "name": "Heart",
+            "chance": 0.4
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.4
+          },
+          {
+            "name": "Generator",
+            "chance": 0.4
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.4
+          },
+          {
+            "name": "Moss",
+            "chance": 0.4
+          },
+          {
+            "name": "Moon",
+            "chance": 0.4
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.4
+          },
+          {
+            "name": "Signet",
+            "chance": 0.4
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.4
+          },
+          {
+            "name": "Spike",
+            "chance": 0.4
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.4
+          },
+          {
+            "name": "Scar",
+            "chance": 0.4
+          }
+        ]
+      },
+      {
+        "id": "mil_smart_terrain_2_6_anomal_zone",
+        "name": "mil_smart_terrain_2_6_anomaly_spot",
+        "label": "Newton",
+        "label_key": "st_mil_smart_terrain_2_6_anomaly_spot_name",
+        "section": "mil_smart_terrain_2_6_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l07_military",
+        "mapX": 538.2,
+        "mapY": 1243.88,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 30.9
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 20.6
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 10.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 10.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 10.3
+          },
+          {
+            "name": "Kolobok",
+            "chance": 2
+          },
+          {
+            "name": "Empty",
+            "chance": 1.2
+          },
+          {
+            "name": "Gravi",
+            "chance": 1.2
+          },
+          {
+            "name": "Sponge",
+            "chance": 1.2
+          },
+          {
+            "name": "Wrenched",
+            "chance": 1.2
+          },
+          {
+            "name": "Bracelet",
+            "chance": 0.8
+          },
+          {
+            "name": "Shell",
+            "chance": 0.8
+          },
+          {
+            "name": "Moonlight",
+            "chance": 0.8
+          },
+          {
+            "name": "Eye",
+            "chance": 0.8
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 0.8
+          },
+          {
+            "name": "Pin",
+            "chance": 0.8
+          },
+          {
+            "name": "Ball",
+            "chance": 0.4
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.4
+          },
+          {
+            "name": "Chain",
+            "chance": 0.4
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.4
+          },
+          {
+            "name": "Heart",
+            "chance": 0.4
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.4
+          },
+          {
+            "name": "Generator",
+            "chance": 0.4
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.4
+          },
+          {
+            "name": "Moss",
+            "chance": 0.4
+          },
+          {
+            "name": "Moon",
+            "chance": 0.4
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.4
+          },
+          {
+            "name": "Signet",
+            "chance": 0.4
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.4
+          },
+          {
+            "name": "Spike",
+            "chance": 0.4
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.4
+          },
+          {
+            "name": "Scar",
+            "chance": 0.4
+          }
+        ]
+      },
+      {
+        "id": "mil_smart_terrain_2_1_anomal_zone",
+        "name": "mil_smart_terrain_2_1_anomaly_spot",
+        "label": "Shock Therapy",
+        "label_key": "st_mil_smart_terrain_2_1_anomaly_spot_name",
+        "section": "mil_smart_terrain_2_1_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l07_military",
+        "mapX": 484.51,
+        "mapY": 1246.02,
+        "anomalyTypes": [
+          "Psi"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 21.9
+          },
+          {
+            "name": "Sparkler",
+            "chance": 21.9
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 10.9
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 10.9
+          },
+          {
+            "name": "Nightstar",
+            "chance": 10.9
+          },
+          {
+            "name": "Soul",
+            "chance": 10.9
+          },
+          {
+            "name": "Crystal",
+            "chance": 2.1
+          },
+          {
+            "name": "Moonlight",
+            "chance": 2.1
+          },
+          {
+            "name": "Ring",
+            "chance": 2.1
+          },
+          {
+            "name": "Empty",
+            "chance": 1.3
+          },
+          {
+            "name": "Kolobok",
+            "chance": 1.3
+          },
+          {
+            "name": "Gravi",
+            "chance": 1.3
+          },
+          {
+            "name": "Sponge",
+            "chance": 1.3
+          },
+          {
+            "name": "Wrenched",
+            "chance": 1.3
+          }
+        ]
+      },
+      {
+        "id": "yan_smart_terrain_5_3_anomal_zone",
+        "name": "yan_smart_terrain_5_3_anomaly_spot",
+        "label": "Blackwater",
+        "label_key": "st_yan_smart_terrain_5_3_anomaly_spot_name",
+        "section": "yan_smart_terrain_5_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l08_yantar",
+        "mapX": 161.51,
+        "mapY": 1676.14,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 21.4
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 21.4
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 21.4
+          },
+          {
+            "name": "Soul",
+            "chance": 21.4
+          },
+          {
+            "name": "Ball",
+            "chance": 0.9
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.9
+          },
+          {
+            "name": "Chain",
+            "chance": 0.9
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.9
+          },
+          {
+            "name": "Heart",
+            "chance": 0.9
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.9
+          },
+          {
+            "name": "Generator",
+            "chance": 0.9
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.9
+          },
+          {
+            "name": "Moss",
+            "chance": 0.9
+          },
+          {
+            "name": "Moon",
+            "chance": 0.9
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.9
+          },
+          {
+            "name": "Signet",
+            "chance": 0.9
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.9
+          },
+          {
+            "name": "Spike",
+            "chance": 0.9
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.9
+          },
+          {
+            "name": "Scar",
+            "chance": 0.9
+          }
+        ]
+      },
+      {
+        "id": "yan_smart_terrain_4_2_anomal_zone",
+        "name": "yan_smart_terrain_4_2_anomaly_spot",
+        "label": "Bonfire",
+        "label_key": "st_yan_smart_terrain_4_2_anomaly_spot_name",
+        "section": "yan_smart_terrain_4_2_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l08_yantar",
+        "mapX": 127.58,
+        "mapY": 1649.06,
+        "anomalyTypes": [
+          "Thermal"
+        ],
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 42.9
+          },
+          {
+            "name": "Itcher",
+            "chance": 42.9
+          },
+          {
+            "name": "Ball",
+            "chance": 0.9
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.9
+          },
+          {
+            "name": "Chain",
+            "chance": 0.9
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.9
+          },
+          {
+            "name": "Heart",
+            "chance": 0.9
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.9
+          },
+          {
+            "name": "Generator",
+            "chance": 0.9
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.9
+          },
+          {
+            "name": "Moss",
+            "chance": 0.9
+          },
+          {
+            "name": "Moon",
+            "chance": 0.9
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.9
+          },
+          {
+            "name": "Signet",
+            "chance": 0.9
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.9
+          },
+          {
+            "name": "Spike",
+            "chance": 0.9
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.9
+          },
+          {
+            "name": "Scar",
+            "chance": 0.9
+          }
+        ]
+      },
+      {
+        "id": "yan_2c_01_cd_anomal_zone",
+        "name": "yan_2c_01_cd_anomaly_spot",
+        "label": "Concrete Dump",
+        "label_key": "st_yan_2c_01_cd_anomaly_spot_name",
+        "section": "yan_2c_01_cd_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l08_yantar",
+        "mapX": 203.56,
+        "mapY": 1590.31,
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 34.6
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 23.1
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 11.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 11.5
+          },
+          {
+            "name": "Nightstar",
+            "chance": 11.5
+          },
+          {
+            "name": "Ball",
+            "chance": 0.5
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.5
+          },
+          {
+            "name": "Chain",
+            "chance": 0.5
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.5
+          },
+          {
+            "name": "Heart",
+            "chance": 0.5
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.5
+          },
+          {
+            "name": "Generator",
+            "chance": 0.5
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.5
+          },
+          {
+            "name": "Moss",
+            "chance": 0.5
+          },
+          {
+            "name": "Moon",
+            "chance": 0.5
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.5
+          },
+          {
+            "name": "Signet",
+            "chance": 0.5
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.5
+          },
+          {
+            "name": "Spike",
+            "chance": 0.5
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.5
+          },
+          {
+            "name": "Scar",
+            "chance": 0.5
+          }
+        ]
+      },
+      {
+        "id": "yan_smart_terrain_zombi_spawn_anomal_zone",
+        "name": "yan_smart_terrain_zombi_spawn_anomaly_spot",
+        "label": "Edison",
+        "label_key": "st_yan_smart_terrain_zombi_spawn_anomaly_spot_name",
+        "section": "yan_smart_terrain_zombi_spawn_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l08_yantar",
+        "mapX": 199.15,
+        "mapY": 1610.37,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 42.9
+          },
+          {
+            "name": "Sparkler",
+            "chance": 42.9
+          },
+          {
+            "name": "Ball",
+            "chance": 0.9
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.9
+          },
+          {
+            "name": "Chain",
+            "chance": 0.9
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.9
+          },
+          {
+            "name": "Heart",
+            "chance": 0.9
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.9
+          },
+          {
+            "name": "Generator",
+            "chance": 0.9
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.9
+          },
+          {
+            "name": "Moss",
+            "chance": 0.9
+          },
+          {
+            "name": "Moon",
+            "chance": 0.9
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.9
+          },
+          {
+            "name": "Signet",
+            "chance": 0.9
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.9
+          },
+          {
+            "name": "Spike",
+            "chance": 0.9
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.9
+          },
+          {
+            "name": "Scar",
+            "chance": 0.9
+          }
+        ]
+      },
+      {
+        "id": "yan_smart_terrain_2_5_anomal_zone",
+        "name": "yan_smart_terrain_2_5_anomaly_spot",
+        "label": "Tesla",
+        "label_key": "st_yan_smart_terrain_2_5_anomaly_spot_name",
+        "section": "yan_smart_terrain_2_5_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l08_yantar",
+        "mapX": 199.59,
+        "mapY": 1626.25,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 37.5
+          },
+          {
+            "name": "Sparkler",
+            "chance": 37.5
+          },
+          {
+            "name": "Bat",
+            "chance": 2.5
+          },
+          {
+            "name": "Grapes",
+            "chance": 2.5
+          },
+          {
+            "name": "Beacon",
+            "chance": 2.5
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 2.5
+          },
+          {
+            "name": "Sun",
+            "chance": 2.5
+          },
+          {
+            "name": "Ball",
+            "chance": 0.8
+          },
+          {
+            "name": "Black Angel",
+            "chance": 0.8
+          },
+          {
+            "name": "Chain",
+            "chance": 0.8
+          },
+          {
+            "name": "Cocoon",
+            "chance": 0.8
+          },
+          {
+            "name": "Heart",
+            "chance": 0.8
+          },
+          {
+            "name": "Lamp",
+            "chance": 0.8
+          },
+          {
+            "name": "Generator",
+            "chance": 0.8
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 0.8
+          },
+          {
+            "name": "Moss",
+            "chance": 0.8
+          },
+          {
+            "name": "Moon",
+            "chance": 0.8
+          },
+          {
+            "name": "Sandstone",
+            "chance": 0.8
+          },
+          {
+            "name": "Signet",
+            "chance": 0.8
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 0.8
+          },
+          {
+            "name": "Spike",
+            "chance": 0.8
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 0.8
+          },
+          {
+            "name": "Scar",
+            "chance": 0.8
+          }
+        ]
+      },
+      {
+        "id": "cit_2c_01_ch_anomal_zone",
+        "name": "cit_2c_01_ch_anomaly_spot",
+        "label": "Garden Sprinkler",
+        "label_key": "st_cit_2c_01_ch_anomaly_spot_name",
+        "section": "cit_2c_01_ch_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l09_deadcity",
+        "mapX": 99.83,
+        "mapY": 1348.74,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 25
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 16.7
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Ball",
+            "chance": 2.1
+          },
+          {
+            "name": "Black Angel",
+            "chance": 2.1
+          },
+          {
+            "name": "Chain",
+            "chance": 2.1
+          },
+          {
+            "name": "Cocoon",
+            "chance": 2.1
+          },
+          {
+            "name": "Heart",
+            "chance": 2.1
+          },
+          {
+            "name": "Lamp",
+            "chance": 2.1
+          },
+          {
+            "name": "Generator",
+            "chance": 2.1
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moss",
+            "chance": 2.1
+          },
+          {
+            "name": "Moon",
+            "chance": 2.1
+          },
+          {
+            "name": "Sandstone",
+            "chance": 2.1
+          },
+          {
+            "name": "Signet",
+            "chance": 2.1
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 2.1
+          },
+          {
+            "name": "Spike",
+            "chance": 2.1
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 2.1
+          },
+          {
+            "name": "Scar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "cit_2c_02_pg_anomal_zone",
+        "name": "cit_2c_02_pg_anomaly_spot",
+        "label": "Proving Ground",
+        "label_key": "st_cit_2c_02_pg_anomaly_spot_name",
+        "section": "cit_2c_02_pg_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l09_deadcity",
+        "mapX": 189.95,
+        "mapY": 1381.83,
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 50
+          },
+          {
+            "name": "Sparkler",
+            "chance": 50
+          }
+        ]
+      },
+      {
+        "id": "lim_2c_02_ib_anomal_zone",
+        "name": "lim_2c_02_ib_anomaly_spot",
+        "label": "Blathy",
+        "label_key": "st_lim_2c_02_ib_anomaly_spot_name",
+        "section": "lim_2c_02_ib_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_limansk",
+        "mapX": 150.57,
+        "mapY": 915.28,
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 16.7
+          },
+          {
+            "name": "Sparkler",
+            "chance": 16.7
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 8.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 8.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 8.3
+          },
+          {
+            "name": "Soul",
+            "chance": 8.3
+          },
+          {
+            "name": "Crystal",
+            "chance": 5.6
+          },
+          {
+            "name": "Moonlight",
+            "chance": 5.6
+          },
+          {
+            "name": "Ring",
+            "chance": 5.6
+          },
+          {
+            "name": "Empty",
+            "chance": 3.3
+          },
+          {
+            "name": "Kolobok",
+            "chance": 3.3
+          },
+          {
+            "name": "Gravi",
+            "chance": 3.3
+          },
+          {
+            "name": "Sponge",
+            "chance": 3.3
+          },
+          {
+            "name": "Wrenched",
+            "chance": 3.3
+          }
+        ]
+      },
+      {
+        "id": "lim_2c_01_ls_anomal_zone",
+        "name": "lim_2c_01_ls_anomaly_spot",
+        "label": "Last Step",
+        "label_key": "st_lim_2c_01_ls_anomaly_spot_name",
+        "section": "lim_2c_01_ls_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_limansk",
+        "mapX": 115.65,
+        "mapY": 1016.18,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 21.4
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 14.3
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 7.1
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 7.1
+          },
+          {
+            "name": "Nightstar",
+            "chance": 7.1
+          },
+          {
+            "name": "Kolobok",
+            "chance": 4.9
+          },
+          {
+            "name": "Empty",
+            "chance": 2.9
+          },
+          {
+            "name": "Gravi",
+            "chance": 2.9
+          },
+          {
+            "name": "Sponge",
+            "chance": 2.9
+          },
+          {
+            "name": "Wrenched",
+            "chance": 2.9
+          },
+          {
+            "name": "Bracelet",
+            "chance": 2
+          },
+          {
+            "name": "Shell",
+            "chance": 2
+          },
+          {
+            "name": "Moonlight",
+            "chance": 2
+          },
+          {
+            "name": "Eye",
+            "chance": 2
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 2
+          },
+          {
+            "name": "Pin",
+            "chance": 2
+          },
+          {
+            "name": "Cell",
+            "chance": 1.2
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 1.2
+          },
+          {
+            "name": "Electron",
+            "chance": 1.2
+          },
+          {
+            "name": "Generator",
+            "chance": 1.2
+          },
+          {
+            "name": "Grapes",
+            "chance": 1.2
+          },
+          {
+            "name": "Claw",
+            "chance": 1.2
+          },
+          {
+            "name": "Beacon",
+            "chance": 1.2
+          },
+          {
+            "name": "Medal",
+            "chance": 1.2
+          },
+          {
+            "name": "Thistle",
+            "chance": 1.2
+          },
+          {
+            "name": "Seraphim",
+            "chance": 1.2
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 1.2
+          },
+          {
+            "name": "Sun",
+            "chance": 1.2
+          }
+        ]
+      },
+      {
+        "id": "rad_2c_02_pp_anomal_zone",
+        "name": "rad_2c_02_pp_anomaly_spot",
+        "label": "Pain Pool",
+        "label_key": "st_rad_2c_02_pp_anomaly_spot_name",
+        "section": "rad_2c_02_pp_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_radar",
+        "mapX": 600.51,
+        "mapY": 1070.06,
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 25
+          },
+          {
+            "name": "Sparkler",
+            "chance": 25
+          },
+          {
+            "name": "Crystal",
+            "chance": 16.7
+          },
+          {
+            "name": "Moonlight",
+            "chance": 16.7
+          },
+          {
+            "name": "Ring",
+            "chance": 16.7
+          }
+        ]
+      },
+      {
+        "id": "rad_2c_01_bl_anomal_zone",
+        "name": "rad_2c_01_bl_anomaly_spot",
+        "label": "Walking Ghost",
+        "label_key": "st_rad_2c_01_bl_anomaly_spot_name",
+        "section": "rad_2c_01_bl_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_radar",
+        "mapX": 646.32,
+        "mapY": 1119.63,
+        "artefacts": [
+          {
+            "name": "Jellyfish",
+            "chance": 12.5
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 12.5
+          },
+          {
+            "name": "Nightstar",
+            "chance": 12.5
+          },
+          {
+            "name": "Soul",
+            "chance": 12.5
+          },
+          {
+            "name": "Empty",
+            "chance": 10
+          },
+          {
+            "name": "Kolobok",
+            "chance": 10
+          },
+          {
+            "name": "Gravi",
+            "chance": 10
+          },
+          {
+            "name": "Sponge",
+            "chance": 10
+          },
+          {
+            "name": "Wrenched",
+            "chance": 10
+          }
+        ]
+      },
+      {
+        "id": "red_smart_terrain_6_6_anomal_zone",
+        "name": "red_smart_terrain_6_6_anomaly_spot",
+        "label": "Carousel",
+        "label_key": "st_red_smart_terrain_6_6_anomaly_spot_name",
+        "section": "red_smart_terrain_6_6_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_red_forest",
+        "mapX": 313.63,
+        "mapY": 1153.67,
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 16.7
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 11.1
+          },
+          {
+            "name": "Kolobok",
+            "chance": 7.6
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 5.6
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 5.6
+          },
+          {
+            "name": "Nightstar",
+            "chance": 5.6
+          },
+          {
+            "name": "Empty",
+            "chance": 4.4
+          },
+          {
+            "name": "Gravi",
+            "chance": 4.4
+          },
+          {
+            "name": "Sponge",
+            "chance": 4.4
+          },
+          {
+            "name": "Wrenched",
+            "chance": 4.4
+          },
+          {
+            "name": "Bracelet",
+            "chance": 3.2
+          },
+          {
+            "name": "Shell",
+            "chance": 3.2
+          },
+          {
+            "name": "Moonlight",
+            "chance": 3.2
+          },
+          {
+            "name": "Eye",
+            "chance": 3.2
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 3.2
+          },
+          {
+            "name": "Pin",
+            "chance": 3.2
+          },
+          {
+            "name": "Cell",
+            "chance": 0.9
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 0.9
+          },
+          {
+            "name": "Electron",
+            "chance": 0.9
+          },
+          {
+            "name": "Generator",
+            "chance": 0.9
+          },
+          {
+            "name": "Grapes",
+            "chance": 0.9
+          },
+          {
+            "name": "Claw",
+            "chance": 0.9
+          },
+          {
+            "name": "Beacon",
+            "chance": 0.9
+          },
+          {
+            "name": "Medal",
+            "chance": 0.9
+          },
+          {
+            "name": "Thistle",
+            "chance": 0.9
+          },
+          {
+            "name": "Seraphim",
+            "chance": 0.9
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 0.9
+          },
+          {
+            "name": "Sun",
+            "chance": 0.9
+          }
+        ]
+      },
+      {
+        "id": "red_smart_terrain_3_2_anomal_zone",
+        "name": "red_smart_terrain_3_2_anomaly_spot",
+        "label": "Dead Canary",
+        "label_key": "st_red_smart_terrain_3_2_anomaly_spot_name",
+        "section": "red_smart_terrain_3_2_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_red_forest",
+        "mapX": 245.18,
+        "mapY": 1092.21,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Stone Blood",
+            "chance": 16.7
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 16.7
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 16.7
+          },
+          {
+            "name": "Soul",
+            "chance": 16.7
+          },
+          {
+            "name": "Bracelet",
+            "chance": 8.3
+          },
+          {
+            "name": "Eye",
+            "chance": 8.3
+          },
+          {
+            "name": "Kolobok",
+            "chance": 8.3
+          },
+          {
+            "name": "Wrenched",
+            "chance": 8.3
+          }
+        ]
+      },
+      {
+        "id": "red_smart_terrain_3_1_anomal_zone",
+        "name": "red_smart_terrain_3_1_anomaly_spot",
+        "label": "Slutsky's Rest",
+        "label_key": "st_red_smart_terrain_3_1_anomaly_spot_name",
+        "section": "red_smart_terrain_3_1_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_red_forest",
+        "mapX": 254.26,
+        "mapY": 1083.55,
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 33.3
+          },
+          {
+            "name": "Sparkler",
+            "chance": 33.3
+          },
+          {
+            "name": "Crystal",
+            "chance": 11.1
+          },
+          {
+            "name": "Moonlight",
+            "chance": 11.1
+          },
+          {
+            "name": "Ring",
+            "chance": 11.1
+          }
+        ]
+      },
+      {
+        "id": "red_smart_terrain_4_5_anomal_zone",
+        "name": "red_smart_terrain_4_5_anomaly_spot",
+        "label": "Superconductor",
+        "label_key": "st_red_smart_terrain_4_5_anomaly_spot_name",
+        "section": "red_smart_terrain_4_5_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_red_forest",
+        "mapX": 280.68,
+        "mapY": 1136.21,
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 33.3
+          },
+          {
+            "name": "Sparkler",
+            "chance": 33.3
+          },
+          {
+            "name": "Crystal",
+            "chance": 11.1
+          },
+          {
+            "name": "Moonlight",
+            "chance": 11.1
+          },
+          {
+            "name": "Ring",
+            "chance": 11.1
+          }
+        ]
+      },
+      {
+        "id": "red_smart_terrain_monsters_anomal_zone",
+        "name": "red_smart_terrain_monsters_anomaly_spot",
+        "label": "Swingset",
+        "label_key": "st_red_smart_terrain_monsters_anomaly_spot_name",
+        "section": "red_smart_terrain_monsters_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_red_forest",
+        "mapX": 322.91,
+        "mapY": 1056.04,
+        "artefacts": [
+          {
+            "name": "Soul",
+            "chance": 16.7
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 11.1
+          },
+          {
+            "name": "Kolobok",
+            "chance": 7.6
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 5.6
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 5.6
+          },
+          {
+            "name": "Nightstar",
+            "chance": 5.6
+          },
+          {
+            "name": "Empty",
+            "chance": 4.4
+          },
+          {
+            "name": "Gravi",
+            "chance": 4.4
+          },
+          {
+            "name": "Sponge",
+            "chance": 4.4
+          },
+          {
+            "name": "Wrenched",
+            "chance": 4.4
+          },
+          {
+            "name": "Bracelet",
+            "chance": 3.2
+          },
+          {
+            "name": "Shell",
+            "chance": 3.2
+          },
+          {
+            "name": "Moonlight",
+            "chance": 3.2
+          },
+          {
+            "name": "Eye",
+            "chance": 3.2
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 3.2
+          },
+          {
+            "name": "Pin",
+            "chance": 3.2
+          },
+          {
+            "name": "Cell",
+            "chance": 0.9
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 0.9
+          },
+          {
+            "name": "Electron",
+            "chance": 0.9
+          },
+          {
+            "name": "Generator",
+            "chance": 0.9
+          },
+          {
+            "name": "Grapes",
+            "chance": 0.9
+          },
+          {
+            "name": "Claw",
+            "chance": 0.9
+          },
+          {
+            "name": "Beacon",
+            "chance": 0.9
+          },
+          {
+            "name": "Medal",
+            "chance": 0.9
+          },
+          {
+            "name": "Thistle",
+            "chance": 0.9
+          },
+          {
+            "name": "Seraphim",
+            "chance": 0.9
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 0.9
+          },
+          {
+            "name": "Sun",
+            "chance": 0.9
+          }
+        ]
+      },
+      {
+        "id": "red_smart_terrain_6_3_anomal_zone",
+        "name": "red_smart_terrain_6_3_anomaly_spot",
+        "label": "Symbiont",
+        "label_key": "st_red_smart_terrain_6_3_anomaly_spot_name",
+        "section": "red_smart_terrain_6_3_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l10_red_forest",
+        "mapX": 336.32,
+        "mapY": 1105.1,
+        "artefacts": [
+          {
+            "name": "Mama's Beads",
+            "chance": 33.3
+          },
+          {
+            "name": "Itcher",
+            "chance": 33.3
+          },
+          {
+            "name": "Crystal",
+            "chance": 11.1
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 11.1
+          },
+          {
+            "name": "Pin",
+            "chance": 11.1
+          }
+        ]
+      },
+      {
+        "id": "pri_2c_02_gt_anomal_zone",
+        "name": "pri_2c_02_gt_anomaly_spot",
+        "label": "Barricade",
+        "label_key": "st_pri_2c_02_gt_anomaly_spot_name",
+        "section": "pri_2c_02_gt_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l11_pripyat",
+        "mapX": 677.88,
+        "mapY": 861.81,
+        "artefacts": [
+          {
+            "name": "Empty",
+            "chance": 14.5
+          },
+          {
+            "name": "Kolobok",
+            "chance": 14.5
+          },
+          {
+            "name": "Gravi",
+            "chance": 14.5
+          },
+          {
+            "name": "Sponge",
+            "chance": 14.5
+          },
+          {
+            "name": "Wrenched",
+            "chance": 14.5
+          },
+          {
+            "name": "Full Empty",
+            "chance": 3
+          },
+          {
+            "name": "Firefly",
+            "chance": 3
+          },
+          {
+            "name": "Goldfish",
+            "chance": 3
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 2.3
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 2.3
+          },
+          {
+            "name": "Nightstar",
+            "chance": 2.3
+          },
+          {
+            "name": "Soul",
+            "chance": 2.3
+          },
+          {
+            "name": "Cell",
+            "chance": 0.8
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 0.8
+          },
+          {
+            "name": "Electron",
+            "chance": 0.8
+          },
+          {
+            "name": "Generator",
+            "chance": 0.8
+          },
+          {
+            "name": "Grapes",
+            "chance": 0.8
+          },
+          {
+            "name": "Claw",
+            "chance": 0.8
+          },
+          {
+            "name": "Beacon",
+            "chance": 0.8
+          },
+          {
+            "name": "Medal",
+            "chance": 0.8
+          },
+          {
+            "name": "Thistle",
+            "chance": 0.8
+          },
+          {
+            "name": "Seraphim",
+            "chance": 0.8
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 0.8
+          },
+          {
+            "name": "Sun",
+            "chance": 0.8
+          }
+        ]
+      },
+      {
+        "id": "pri_2c_03_wr_anomal_zone",
+        "name": "pri_2c_03_wr_anomaly_spot",
+        "label": "Collider",
+        "label_key": "st_pri_2c_03_wr_anomaly_spot_name",
+        "section": "pri_2c_03_wr_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l11_pripyat",
+        "mapX": 681.27,
+        "mapY": 810.26,
+        "artefacts": [
+          {
+            "name": "Kolobok",
+            "chance": 11.4
+          },
+          {
+            "name": "Empty",
+            "chance": 6.7
+          },
+          {
+            "name": "Gravi",
+            "chance": 6.7
+          },
+          {
+            "name": "Sponge",
+            "chance": 6.7
+          },
+          {
+            "name": "Wrenched",
+            "chance": 6.7
+          },
+          {
+            "name": "Soul",
+            "chance": 5
+          },
+          {
+            "name": "Bracelet",
+            "chance": 4.8
+          },
+          {
+            "name": "Shell",
+            "chance": 4.8
+          },
+          {
+            "name": "Moonlight",
+            "chance": 4.8
+          },
+          {
+            "name": "Eye",
+            "chance": 4.8
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 4.8
+          },
+          {
+            "name": "Pin",
+            "chance": 4.8
+          },
+          {
+            "name": "Firefly",
+            "chance": 4.4
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 3.3
+          },
+          {
+            "name": "Black Spray",
+            "chance": 2.2
+          },
+          {
+            "name": "Flash",
+            "chance": 2.2
+          },
+          {
+            "name": "Full Empty",
+            "chance": 2.2
+          },
+          {
+            "name": "Goldfish",
+            "chance": 2.2
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 1.7
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 1.7
+          },
+          {
+            "name": "Nightstar",
+            "chance": 1.7
+          },
+          {
+            "name": "Cell",
+            "chance": 0.6
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 0.6
+          },
+          {
+            "name": "Electron",
+            "chance": 0.6
+          },
+          {
+            "name": "Generator",
+            "chance": 0.6
+          },
+          {
+            "name": "Grapes",
+            "chance": 0.6
+          },
+          {
+            "name": "Claw",
+            "chance": 0.6
+          },
+          {
+            "name": "Beacon",
+            "chance": 0.6
+          },
+          {
+            "name": "Medal",
+            "chance": 0.6
+          },
+          {
+            "name": "Thistle",
+            "chance": 0.6
+          },
+          {
+            "name": "Seraphim",
+            "chance": 0.6
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 0.6
+          },
+          {
+            "name": "Sun",
+            "chance": 0.6
+          }
+        ]
+      },
+      {
+        "id": "pri_2c_04_o_anomal_zone",
+        "name": "pri_2c_04_o_anomaly_spot",
+        "label": "Olympic",
+        "label_key": "st_pri_2c_04_o_anomaly_spot_name",
+        "section": "pri_2c_04_o_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l11_pripyat",
+        "mapX": 668.18,
+        "mapY": 808.91,
+        "artefacts": [
+          {
+            "name": "Kolobok",
+            "chance": 11.4
+          },
+          {
+            "name": "Empty",
+            "chance": 6.7
+          },
+          {
+            "name": "Gravi",
+            "chance": 6.7
+          },
+          {
+            "name": "Sponge",
+            "chance": 6.7
+          },
+          {
+            "name": "Wrenched",
+            "chance": 6.7
+          },
+          {
+            "name": "Soul",
+            "chance": 5
+          },
+          {
+            "name": "Bracelet",
+            "chance": 4.8
+          },
+          {
+            "name": "Shell",
+            "chance": 4.8
+          },
+          {
+            "name": "Moonlight",
+            "chance": 4.8
+          },
+          {
+            "name": "Eye",
+            "chance": 4.8
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 4.8
+          },
+          {
+            "name": "Pin",
+            "chance": 4.8
+          },
+          {
+            "name": "Firefly",
+            "chance": 4.4
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 3.3
+          },
+          {
+            "name": "Black Spray",
+            "chance": 2.2
+          },
+          {
+            "name": "Flash",
+            "chance": 2.2
+          },
+          {
+            "name": "Full Empty",
+            "chance": 2.2
+          },
+          {
+            "name": "Goldfish",
+            "chance": 2.2
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 1.7
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 1.7
+          },
+          {
+            "name": "Nightstar",
+            "chance": 1.7
+          },
+          {
+            "name": "Cell",
+            "chance": 0.6
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 0.6
+          },
+          {
+            "name": "Electron",
+            "chance": 0.6
+          },
+          {
+            "name": "Generator",
+            "chance": 0.6
+          },
+          {
+            "name": "Grapes",
+            "chance": 0.6
+          },
+          {
+            "name": "Claw",
+            "chance": 0.6
+          },
+          {
+            "name": "Beacon",
+            "chance": 0.6
+          },
+          {
+            "name": "Medal",
+            "chance": 0.6
+          },
+          {
+            "name": "Thistle",
+            "chance": 0.6
+          },
+          {
+            "name": "Seraphim",
+            "chance": 0.6
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 0.6
+          },
+          {
+            "name": "Sun",
+            "chance": 0.6
+          }
+        ]
+      },
+      {
+        "id": "pri_2c_01_pp_anomal_zone",
+        "name": "pri_2c_01_pp_anomaly_spot",
+        "label": "Root Rot",
+        "label_key": "st_pri_2c_01_pp_anomaly_spot_name",
+        "section": "pri_2c_01_pp_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l11_pripyat",
+        "mapX": 679.4,
+        "mapY": 842.15,
+        "artefacts": [
+          {
+            "name": "Crystal",
+            "chance": 23.3
+          },
+          {
+            "name": "Moonlight",
+            "chance": 23.3
+          },
+          {
+            "name": "Ring",
+            "chance": 23.3
+          },
+          {
+            "name": "Battery",
+            "chance": 5
+          },
+          {
+            "name": "Flash",
+            "chance": 5
+          },
+          {
+            "name": "Sparkler",
+            "chance": 5
+          },
+          {
+            "name": "Snowflake",
+            "chance": 5
+          },
+          {
+            "name": "Cell",
+            "chance": 0.8
+          },
+          {
+            "name": "Dragon's Eye",
+            "chance": 0.8
+          },
+          {
+            "name": "Electron",
+            "chance": 0.8
+          },
+          {
+            "name": "Generator",
+            "chance": 0.8
+          },
+          {
+            "name": "Grapes",
+            "chance": 0.8
+          },
+          {
+            "name": "Claw",
+            "chance": 0.8
+          },
+          {
+            "name": "Beacon",
+            "chance": 0.8
+          },
+          {
+            "name": "Medal",
+            "chance": 0.8
+          },
+          {
+            "name": "Thistle",
+            "chance": 0.8
+          },
+          {
+            "name": "Seraphim",
+            "chance": 0.8
+          },
+          {
+            "name": "Phantom Star",
+            "chance": 0.8
+          },
+          {
+            "name": "Sun",
+            "chance": 0.8
+          }
+        ]
+      },
+      {
+        "id": "aes_2c_01_ce_anomal_zone",
+        "name": "aes_2c_01_ce_anomaly_spot",
+        "label": "Gatekeeper",
+        "label_key": "st_aes_2c_01_ce_anomaly_spot_name",
+        "section": "aes_2c_01_ce_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l12_stancia",
+        "mapX": 599.86,
+        "mapY": 414.32,
+        "artefacts": [
+          {
+            "name": "Kolobok",
+            "chance": 11.4
+          },
+          {
+            "name": "Empty",
+            "chance": 6.7
+          },
+          {
+            "name": "Gravi",
+            "chance": 6.7
+          },
+          {
+            "name": "Sponge",
+            "chance": 6.7
+          },
+          {
+            "name": "Wrenched",
+            "chance": 6.7
+          },
+          {
+            "name": "Soul",
+            "chance": 6.3
+          },
+          {
+            "name": "Firefly",
+            "chance": 5.6
+          },
+          {
+            "name": "Bracelet",
+            "chance": 4.8
+          },
+          {
+            "name": "Shell",
+            "chance": 4.8
+          },
+          {
+            "name": "Moonlight",
+            "chance": 4.8
+          },
+          {
+            "name": "Eye",
+            "chance": 4.8
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 4.8
+          },
+          {
+            "name": "Pin",
+            "chance": 4.8
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 4.2
+          },
+          {
+            "name": "Black Spray",
+            "chance": 2.8
+          },
+          {
+            "name": "Flash",
+            "chance": 2.8
+          },
+          {
+            "name": "Full Empty",
+            "chance": 2.8
+          },
+          {
+            "name": "Goldfish",
+            "chance": 2.8
+          },
+          {
+            "name": "Jellyfish",
+            "chance": 2.1
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 2.1
+          },
+          {
+            "name": "Nightstar",
+            "chance": 2.1
+          }
+        ]
+      },
+      {
+        "id": "aes_2c_02_p_anomal_zone",
+        "name": "aes_2c_02_p_anomaly_spot",
+        "label": "Pylon",
+        "label_key": "st_aes_2c_02_p_anomaly_spot_name",
+        "section": "aes_2c_02_p_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l12_stancia",
+        "mapX": 461.6,
+        "mapY": 415.34,
+        "artefacts": [
+          {
+            "name": "Crystal",
+            "chance": 20
+          },
+          {
+            "name": "Moonlight",
+            "chance": 20
+          },
+          {
+            "name": "Ring",
+            "chance": 20
+          },
+          {
+            "name": "Battery",
+            "chance": 10
+          },
+          {
+            "name": "Flash",
+            "chance": 10
+          },
+          {
+            "name": "Sparkler",
+            "chance": 10
+          },
+          {
+            "name": "Snowflake",
+            "chance": 10
+          }
+        ]
+      },
+      {
+        "id": "aes2_2c_02_at_anomal_zone",
+        "name": "aes2_2c_02_at_anomaly_spot",
+        "label": "Acid Trolley",
+        "label_key": "st_aes2_2c_02_at_anomaly_spot_name",
+        "section": "aes2_2c_02_at_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l12_stancia_2",
+        "mapX": 566.02,
+        "mapY": 166.99,
+        "anomalyTypes": [
+          "Chemical"
+        ],
+        "artefacts": [
+          {
+            "name": "Bracelet",
+            "chance": 17.9
+          },
+          {
+            "name": "Eye",
+            "chance": 17.9
+          },
+          {
+            "name": "Kolobok",
+            "chance": 17.9
+          },
+          {
+            "name": "Wrenched",
+            "chance": 17.9
+          },
+          {
+            "name": "Bubble",
+            "chance": 7.1
+          },
+          {
+            "name": "Firefly",
+            "chance": 7.1
+          },
+          {
+            "name": "Stone Blood",
+            "chance": 3.6
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 3.6
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 3.6
+          },
+          {
+            "name": "Soul",
+            "chance": 3.6
+          }
+        ]
+      },
+      {
+        "id": "aes2_2c_01_bo_anomal_zone",
+        "name": "aes2_2c_01_bo_anomaly_spot",
+        "label": "Barrel Organ",
+        "label_key": "st_aes2_2c_01_bo_anomaly_spot_name",
+        "section": "aes2_2c_01_bo_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l12_stancia_2",
+        "mapX": 486.38,
+        "mapY": 188.56,
+        "artefacts": [
+          {
+            "name": "Bracelet",
+            "chance": 17.9
+          },
+          {
+            "name": "Eye",
+            "chance": 17.9
+          },
+          {
+            "name": "Kolobok",
+            "chance": 17.9
+          },
+          {
+            "name": "Wrenched",
+            "chance": 17.9
+          },
+          {
+            "name": "Bubble",
+            "chance": 7.1
+          },
+          {
+            "name": "Firefly",
+            "chance": 7.1
+          },
+          {
+            "name": "Stone Blood",
+            "chance": 3.6
+          },
+          {
+            "name": "Stone Flower",
+            "chance": 3.6
+          },
+          {
+            "name": "Meat Chunk",
+            "chance": 3.6
+          },
+          {
+            "name": "Soul",
+            "chance": 3.6
+          }
+        ]
+      },
+      {
+        "id": "gen_smart_terrain_urod_anomal_zone",
+        "name": "gen_smart_terrain_urod_anomaly_spot",
+        "label": "Meat Grinder",
+        "label_key": "st_gen_smart_terrain_urod_anomaly_spot_name",
+        "section": "gen_smart_terrain_urod_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l13_generators",
+        "mapX": 292.36,
+        "mapY": 48.91
+      },
+      {
+        "id": "gen_2c_01_ss_anomal_zone",
+        "name": "gen_2c_01_ss_anomaly_spot",
+        "label": "Soul Stairway",
+        "label_key": "st_gen_2c_01_ss_anomaly_spot_name",
+        "section": "gen_2c_01_ss_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "l13_generators",
+        "mapX": 260.74,
+        "mapY": 109.64,
+        "anomalyTypes": [
+          "Gravitational"
+        ],
+        "artefacts": [
+          {
+            "name": "Kolobok",
+            "chance": 11.4
+          },
+          {
+            "name": "Firefly",
+            "chance": 11.1
+          },
+          {
+            "name": "Empty",
+            "chance": 6.7
+          },
+          {
+            "name": "Gravi",
+            "chance": 6.7
+          },
+          {
+            "name": "Sponge",
+            "chance": 6.7
+          },
+          {
+            "name": "Wrenched",
+            "chance": 6.7
+          },
+          {
+            "name": "Black Spray",
+            "chance": 5.6
+          },
+          {
+            "name": "Flash",
+            "chance": 5.6
+          },
+          {
+            "name": "Full Empty",
+            "chance": 5.6
+          },
+          {
+            "name": "Goldfish",
+            "chance": 5.6
+          },
+          {
+            "name": "Bracelet",
+            "chance": 4.8
+          },
+          {
+            "name": "Shell",
+            "chance": 4.8
+          },
+          {
+            "name": "Moonlight",
+            "chance": 4.8
+          },
+          {
+            "name": "Eye",
+            "chance": 4.8
+          },
+          {
+            "name": "Lobster Eyes",
+            "chance": 4.8
+          },
+          {
+            "name": "Pin",
+            "chance": 4.8
+          }
+        ]
+      },
+      {
+        "id": "pol_smart_terrain_1_2_anomal_zone",
+        "name": "pol_smart_terrain_1_2_anomaly_spot",
+        "label": "Volt",
+        "label_key": "st_pol_smart_terrain_1_2_anomaly_spot_name",
+        "section": "pol_smart_terrain_1_2_anomaly_spot",
+        "type": "anomaly_field",
+        "level": "y04_pole",
+        "mapX": 552.61,
+        "mapY": 2054.53,
+        "anomalyTypes": [
+          "Radioactive"
+        ],
+        "artefacts": [
+          {
+            "name": "Battery",
+            "chance": 37.5
+          },
+          {
+            "name": "Sparkler",
+            "chance": 37.5
+          },
+          {
+            "name": "Ball",
+            "chance": 1.6
+          },
+          {
+            "name": "Black Angel",
+            "chance": 1.6
+          },
+          {
+            "name": "Chain",
+            "chance": 1.6
+          },
+          {
+            "name": "Cocoon",
+            "chance": 1.6
+          },
+          {
+            "name": "Heart",
+            "chance": 1.6
+          },
+          {
+            "name": "Lamp",
+            "chance": 1.6
+          },
+          {
+            "name": "Generator",
+            "chance": 1.6
+          },
+          {
+            "name": "Sourpuss",
+            "chance": 1.6
+          },
+          {
+            "name": "Moss",
+            "chance": 1.6
+          },
+          {
+            "name": "Moon",
+            "chance": 1.6
+          },
+          {
+            "name": "Sandstone",
+            "chance": 1.6
+          },
+          {
+            "name": "Signet",
+            "chance": 1.6
+          },
+          {
+            "name": "Miser's Skull",
+            "chance": 1.6
+          },
+          {
+            "name": "Spike",
+            "chance": 1.6
+          },
+          {
+            "name": "Tapeworm",
+            "chance": 1.6
+          },
+          {
+            "name": "Scar",
+            "chance": 1.6
+          }
+        ]
       }
     ]
   }

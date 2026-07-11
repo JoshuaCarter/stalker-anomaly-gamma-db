@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'fs';
 import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { globalRects, levelBounds as level_bounds, excludedLevels, buildAnomalyFields } from './map-projection.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
@@ -20,85 +21,14 @@ let pack = 'gamma-0.9.5';
 const packIdx = args.indexOf('--pack');
 if (packIdx !== -1 && args[packIdx + 1]) pack = args[packIdx + 1];
 
-// ── Global rects: where each level sits on the 1024×2634 global map ─────
-// From game_maps_single.ltx global_rect values (left, top, right, bottom)
-const globalRects = {
-  jupiter:              { left: 277, top: 783, right: 459, bottom: 965 },
-  k00_marsh:            { left: 22, top: 2113, right: 352, bottom: 2443 },
-  k01_darkscape:        { left: 701, top: 2071, right: 1020, bottom: 2392.345 },
-  k02_trucks_cemetery:  { left: 706, top: 1382, right: 1025, bottom: 1703.345 },
-  l01_escape:           { left: 358, top: 2022, right: 564, bottom: 2434 },
-  l02_garbage:          { left: 369, top: 1776, right: 573, bottom: 1980 },
-  l03_agroprom:         { left: 164, top: 1848, right: 332, bottom: 2016 },
-  l04_darkvalley:       { left: 728, top: 1705, right: 852, bottom: 1953 },
-  l05_bar:              { left: 407, top: 1414, right: 556, bottom: 1712 },
-  l06_rostok:           { left: 258, top: 1414, right: 407, bottom: 1712 },
-  l07_military:         { left: 425, top: 1231, right: 590, bottom: 1396 },
-  l08_yantar:           { left: 101, top: 1572, right: 249, bottom: 1720 },
-  l09_deadcity:         { left: -6, top: 1220, right: 248, bottom: 1481 },
-  l10_limansk:          { left: 66, top: 874, right: 182, bottom: 1105 },
-  l10_radar:            { left: 527, top: 975, right: 769, bottom: 1218.705 },
-  l10_red_forest:       { left: 198, top: 1028, right: 380, bottom: 1210 },
-  l11_hospital:         { left: 194, top: 694, right: 246, bottom: 798 },
-  l11_pripyat:          { left: 607, top: 762, right: 740, bottom: 909 },
-  l12_stancia:          { left: 322, top: 298, right: 728, bottom: 495 },
-  l12_stancia_2:        { left: 322, top: 101, right: 728, bottom: 298 },
-  l13_generators:       { left: 195, top: -40, right: 414, bottom: 179 },
-  pripyat:              { left: 679, top: 718, right: 888, bottom: 927 },
-  zaton:                { left: 291, top: 574, right: 473, bottom: 756 },
-  y04_pole:             { left: 457, top: 1965, right: 698.98, bottom: 2205 },
-};
+// Level projection tables (globalRects, level_bounds) and exclusions live in
+// map-projection.mjs — shared with generate-map-anomaly-fields.mjs so they can't
+// drift apart.
 
 // ── Load map_entities.json ──────────────────────────────────────────────────
 const dumpPath = resolve(root, 'data', pack, 'map_entities.json');
 const dump = JSON.parse(readFileSync(dumpPath, 'utf-8'));
 const { entities } = dump;
-
-// ── Real level bounds from level.ltx bound_rect (minX, minZ, maxX, maxZ) ─
-// Extracted from db/levels/level_*.db0 → levels/*/level.ltx
-const level_bounds = {
-  jupiter:              { minX: -600, maxX: 600, minZ: -600, maxZ: 600 },
-  jupiter_underground:  { minX: -390.808, maxX: 349.192, minZ: -265.132, maxZ: 474.868 },
-  k00_marsh:            { minX: -445, maxX: 755, minZ: -445, maxZ: 755 },
-  k01_darkscape:        { minX: -702, maxX: 708.5, minZ: -704.09, maxZ: 716.778 },
-  k02_trucks_cemetery:  { minX: -543.948, maxX: 387.099, minZ: -472.689, maxZ: 467.012 },
-  l01_escape:           { minX: -335, maxX: 415, minZ: -630, maxZ: 870 },
-  l02_garbage:          { minX: -370, maxX: 370, minZ: -422, maxZ: 327.867 },
-  l03_agroprom:         { minX: -275, maxX: 335, minZ: -370, maxZ: 240 },
-  l03u_agr_underground: { minX: -21.868, maxX: 161.91, minZ: -208.824, maxZ: 195.815 },
-  l04_darkvalley:       { minX: -215, maxX: 235, minZ: -665, maxZ: 235 },
-  l04u_labx18:          { minX: -52.316, maxX: 49.368, minZ: -39.219, maxZ: 82.368 },
-  l05_bar:              { minX: 0, maxX: 512, minZ: -512.03, maxZ: 512.001 },
-  l06_rostok:           { minX: -512, maxX: 0, minZ: -512.03, maxZ: 512.001 },
-  l07_military:         { minX: -420, maxX: 180, minZ: -105, maxZ: 495 },
-  l08_yantar:           { minX: -270, maxX: 270, minZ: -405, maxZ: 135 },
-  l08u_brainlab:        { minX: -149.45, maxX: 157.072, minZ: -45.408, maxZ: 25.718 },
-  l09_deadcity:         { minX: -481.497, maxX: 379.976, minZ: -412.284, maxZ: 474.479 },
-  l10_limansk:          { minX: -210, maxX: 210, minZ: -415, maxZ: 425 },
-  l10_radar:            { minX: -320.405, maxX: 890.625, minZ: -658.741, maxZ: 557.681 },
-  l10_red_forest:       { minX: -285, maxX: 375, minZ: -485, maxZ: 175 },
-  l10u_bunker:          { minX: -75.655, maxX: 30.716, minZ: -112.497, maxZ: 85.01 },
-  l11_hospital:         { minX: -180, maxX: 10, minZ: 537, maxZ: 917 },
-  l11_pripyat:          { minX: -628.133, maxX: 671.867, minZ: -520.743, maxZ: 779.257 },
-  l12_stancia:          { minX: -600.105, maxX: 1729.65, minZ: -747.782, maxZ: 850.523 },
-  l12_stancia_2:        { minX: -603.302, maxX: 1729.65, minZ: -930.571, maxZ: 966.97 },
-  l12u_control_monolith:{ minX: -43.996, maxX: 43.947, minZ: -44.348, maxZ: 40.702 },
-  l12u_sarcofag:        { minX: -34.982, maxX: 102.851, minZ: -43.51, maxZ: 55.244 },
-  l13_generators:       { minX: -525.205, maxX: 540.927, minZ: -853.156, maxZ: 209.524 },
-  l13u_warlab:          { minX: -51.513, maxX: 51.513, minZ: -80.721, maxZ: 43.721 },
-  labx8:                { minX: -122.441, maxX: -40.441, minZ: 44.614, maxZ: 126.614 },
-  pripyat:              { minX: -550, maxX: 550, minZ: -550, maxZ: 550 },
-  y04_pole:             { minX: -544.541, maxX: 555.461, minZ: -615.296, maxZ: 484.704 },
-  zaton:                { minX: -600, maxX: 600, minZ: -615, maxZ: 585 },
-};
-
-// ── Underground / tiny levels to exclude from the surface map ───────────
-const excludedLevels = new Set([
-  'fake_start',
-  'jupiter_underground', 'labx8',
-  'l03u_agr_underground', 'l04u_labx18', 'l08u_brainlab',
-  'l10u_bunker', 'l12u_control_monolith', 'l12u_sarcofag', 'l13u_warlab',
-]);
 
 // ── Types to exclude from output (too many, dynamic in GAMMA, or unused) ─
 // Anomalies are dynamic (re-randomize per level load) — only available via save import
@@ -281,6 +211,13 @@ for (const [landId, landName] of Object.entries(landNames)) {
     mapY: match.mapY,
   });
 }
+
+// ── Named artefact anomaly fields (High Hopes, Crispy Train, …) ──────────
+// Independent CSV input (export_anomaly_fields.csv) — static restrictor
+// positions, unaffected by the dynamic-anomaly randomizer excluded above.
+const anomalyFields = buildAnomalyFields(root, pack);
+output.push(...anomalyFields);
+if (anomalyFields.length) console.log(`Added ${anomalyFields.length} named anomaly fields`);
 
 // ── Group by type for easier consumption ────────────────────────────────
 const byType = {};

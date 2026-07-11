@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-07-11",
+    "entries": [
+      { "type": "added", "text": "Named anomaly fields (High Hopes, Burnt Fuzz Tunnel, and dozens more) now show on the map. Turn on the Anomaly fields layer, then click a field for its anomaly type and full artefact drop chances." }
+    ]
+  },
+  {
     "date": "2026-07-05",
     "entries": [
       { "type": "changed", "text": "Recoil Control and Handling are now hidden from weapon stats by default as they are meaningless. A new \"Show unreliable stats\" toggle under Display brings them back." },

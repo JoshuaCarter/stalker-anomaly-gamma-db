@@ -184,36 +184,38 @@
                         <div v-show="!collapsed[panel.key]" class="pi-panel-body">
                             <div v-if="panel.items.length === 0" class="pi-panel-empty">{{ t('app_label_no_results') }}</div>
                             <template v-else>
-                            <div class="pi-icon-grid">
-                                <a
-                                    v-for="item in panel.items.slice(0, revealCount(panel.key))"
-                                    :key="item.id"
-                                    :href="itemHref(item.id)"
-                                    class="pi-icon-cell"
-                                    :class="{ 'pi-icon-equipped': item._equipped, 'pi-icon-selected': selectedIds.has(item.id) }"
-                                    draggable="true"
-                                    @click.prevent="onCellClick(item, $event)"
-                                    @dragstart="onCellDragStart(item, $event)"
-                                    @dragend="loadoutDragItem = null"
-                                    @mouseenter="onCellEnter(item, $event)"
-                                    @mousemove="onCellMove($event)"
-                                    @mouseleave="$emit('hideItemHover')"
-                                >
-                                    <img :src="'img/icons/' + item.id + '.png'" :alt="item._name" loading="lazy" @error="$event.target.style.visibility = 'hidden'">
-                                    <span class="pi-icon-name">{{ item._name }}</span>
-                                    <span v-if="item._qty > 1" class="pi-qty">&times;{{ item._qty }}</span>
-                                    <span v-if="item._equipped" class="pi-equip" v-tooltip="t('app_save_inv_equipped')"></span>
-                                    <span v-else-if="item._modified && !parseResult.manual" class="pi-mod" v-tooltip="t('app_save_inv_loadout_modified')"></span>
-                                    <LucideWrench v-if="item._wbTick && !item._equipped" :size="10" class="pi-wb-tick" v-tooltip="t('app_save_inv_wb_ready_ingredient')" />
-                                    <span v-if="parseResult.manual" class="pi-cell-edit">
-                                        <button class="pi-cell-btn" @click.stop.prevent="$emit('adjustItem', item.id, $event.shiftKey ? -10 : -1)">&minus;</button>
-                                        <button class="pi-cell-btn" @click.stop.prevent="$emit('adjustItem', item.id, $event.shiftKey ? 10 : 1)">+</button>
-                                    </span>
-                                    <span v-if="showCondition(item)" class="pi-cond">
-                                        <span class="pi-cond-fill" :class="conditionClass(item._cond)" :style="{ width: Math.round(item._cond * 100) + '%' }"></span>
-                                    </span>
-                                </a>
-                            </div>
+                            <InventoryTray>
+                                <div class="pi-icon-grid">
+                                    <InventoryTile
+                                        v-for="item in panel.items.slice(0, revealCount(panel.key))"
+                                        :key="item.id"
+                                        :icon-id="item.id"
+                                        :name="item._name"
+                                        :qty="item._qty"
+                                        :selected="selectedIds.has(item.id)"
+                                        clickable
+                                        draggable
+                                        @navigate="onCellClick(item, $event)"
+                                        @dragstart="onCellDragStart(item, $event)"
+                                        @dragend="loadoutDragItem = null"
+                                        @hover-enter="onCellEnter(item, $event)"
+                                        @hover-move="onCellMove($event)"
+                                        @hover-leave="$emit('hideItemHover')"
+                                    >
+                                        <template v-if="item._equipped || (item._modified && !parseResult.manual) || (item._wbTick && !item._equipped)" #corner>
+                                            <span v-if="item._equipped" class="pi-equip" v-tooltip="t('app_save_inv_equipped')"></span>
+                                            <span v-else-if="item._modified && !parseResult.manual" class="pi-mod" v-tooltip="t('app_save_inv_loadout_modified')"></span>
+                                            <LucideWrench v-if="item._wbTick && !item._equipped" :size="10" class="pi-wb-tick" v-tooltip="t('app_save_inv_wb_ready_ingredient')" />
+                                        </template>
+                                        <template v-if="parseResult.manual" #control>
+                                            <div class="pi-manual-step">
+                                                <button @click.stop.prevent="$emit('adjustItem', item.id, $event.shiftKey ? -10 : -1)">&minus;</button>
+                                                <button @click.stop.prevent="$emit('adjustItem', item.id, $event.shiftKey ? 10 : 1)">+</button>
+                                            </div>
+                                        </template>
+                                    </InventoryTile>
+                                </div>
+                            </InventoryTray>
                             <div
                                 v-if="panel.items.length > revealCount(panel.key)"
                                 class="pi-reveal-sentinel"
@@ -385,15 +387,26 @@ import WorkbenchDrawer from './WorkbenchDrawer.vue';
 import StatsDrawer from './StatsDrawer.vue';
 import GoodwillDrawer from './GoodwillDrawer.vue';
 import ItemPickerModal from './modals/ItemPickerModal.vue';
+import InventoryTray from './InventoryTray.vue';
+import InventoryTile from './InventoryTile.vue';
 
 /** Weapon categories the damage simulator can compare. */
 const SIM_WEAPON_CATEGORIES = new Set(['Pistols', 'SMGs', 'Shotguns', 'Rifles', 'Snipers']);
 
 /** Gear categories that occupy a loadout slot (weapons handled separately via slugs). */
-const EQUIPABLE_CATEGORIES = new Set([CAT.HELMETS, CAT.OUTFITS, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS, CAT.EXPLOSIVES, CAT.AMMO]);
+const EQUIPABLE_CATEGORIES = new Set([CAT.HELMETS, CAT.OUTFITS, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS, CAT.EXPLOSIVES]);
 
 /** Default sort sinks these categories to the end, in this order. */
 const DEFAULT_SORT_LAST = [CAT.AMMO, CAT.MEDICINE, CAT.MATERIALS];
+
+/** Default sort: explicit leading category order — weapons by class, then armor,
+ *  then artefacts. Anything unlisted sits after these (but before DEFAULT_SORT_LAST). */
+const DEFAULT_CATEGORY_ORDER = [
+    CAT.RIFLES, CAT.SNIPERS, CAT.SMGS, CAT.SHOTGUNS, CAT.PISTOLS,
+    CAT.LAUNCHERS, CAT.GRENADE_LAUNCHERS, CAT.MELEE,
+    CAT.OUTFITS, CAT.HELMETS,
+    CAT.ARTEFACTS,
+];
 
 /** Icon-grid cells rendered per reveal step (initial render + each scroll page). */
 const REVEAL_PAGE = 80;
@@ -409,7 +422,7 @@ const TIER_KITS = {
 };
 
 export default {
-    components: { LoadoutDrawer, WorkbenchDrawer, StatsDrawer, GoodwillDrawer, ItemPickerModal },
+    components: { LoadoutDrawer, WorkbenchDrawer, StatsDrawer, GoodwillDrawer, ItemPickerModal, InventoryTray, InventoryTile },
     props: {
         active: { type: Boolean, default: false },
         parseResult: { type: Object, default: null },
@@ -882,11 +895,15 @@ export default {
             } else if (this.sortMode === 'qty') {
                 items.sort((a, b) => (b._qty - a._qty) || byName(a, b));
             } else {
-                // Default: equipped gear first, then group by category (with Ammo,
-                // Medicine, Materials sunk to the end in that order), then by name
+                // Default: equipped gear first, then an explicit category order
+                // (weapons by class → armor → artefacts → everything else), with
+                // Ammo / Medicine / Materials sunk to the very end, then by name.
                 const catRank = (cat) => {
-                    const i = DEFAULT_SORT_LAST.indexOf(cat);
-                    return i === -1 ? 0 : i + 1;
+                    const lead = DEFAULT_CATEGORY_ORDER.indexOf(cat);
+                    if (lead !== -1) return lead;
+                    const last = DEFAULT_SORT_LAST.indexOf(cat);
+                    if (last !== -1) return 1000 + last;
+                    return 500;
                 };
                 items.sort((a, b) =>
                     (b._equipped - a._equipped) ||
@@ -902,21 +919,12 @@ export default {
                 totalCount: storedItems.reduce((n, it) => n + it.q, 0),
             };
         },
-        showCondition(item) {
-            // Only meaningful for degradable gear; hide pristine/unknown values
-            return item._cond >= 0 && item._cond < 0.995;
-        },
         /** Can this category occupy a loadout slot? (drives the "Equippable only" filter) */
         isEquipable(category) {
             if (!category) return false;
             if (EQUIPABLE_CATEGORIES.has(category)) return true;
             const slug = categorySlug(category);
             return PRIMARY_WEAPON_SLUGS.includes(slug) || SIDEARM_SLUGS.includes(slug);
-        },
-        conditionClass(cond) {
-            if (cond >= 0.7) return 'pi-cond-good';
-            if (cond >= 0.4) return 'pi-cond-worn';
-            return 'pi-cond-bad';
         },
         toggleCategory(cat) {
             const idx = this.activeCategories.indexOf(cat);
@@ -1794,21 +1802,20 @@ export default {
     gap: 0.75rem;
 }
 
+/* Bare container: a label header above a single tray box (no panel card). */
 .pi-panel {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: var(--card);
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
 .pi-panel-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.15rem 0.25rem;
     cursor: pointer;
     user-select: none;
-    border-bottom: 1px solid var(--border);
 }
 
 .pi-panel-header:hover .pi-panel-title {
@@ -1853,7 +1860,8 @@ export default {
 }
 
 .pi-panel-body {
-    padding: 0.65rem;
+    /* The InventoryTray is the box here; it provides its own frame + padding. */
+    padding: 0;
 }
 
 .pi-panel-empty {
@@ -1875,99 +1883,19 @@ export default {
     height: 1px;
 }
 
-.pi-icon-cell {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    background: var(--color-surface-2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.5rem 0.3rem 0.4rem;
-    cursor: pointer;
-    font-family: inherit;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.15s, background 0.15s;
-}
-
-.pi-icon-cell:hover {
-    border-color: var(--accent-dim);
-    background: var(--color-accent-tint-5);
-}
-
-.pi-icon-equipped {
-    border-color: var(--color-accent-tint-35);
-}
-
-.pi-icon-selected,
-.pi-icon-selected:hover {
-    border-color: var(--accent);
-    background: var(--color-accent-tint-12);
-    box-shadow: 0 0 0 1px var(--accent);
-}
-
-.pi-icon-cell img {
-    height: 42px;
-    max-width: 100%;
-    object-fit: contain;
-    image-rendering: pixelated;
-}
-
-.pi-icon-name {
-    font-size: 0.64rem;
-    line-height: 1.2;
-    color: var(--text-secondary);
-    text-align: center;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    word-break: break-word;
-}
-
-.pi-icon-cell:hover .pi-icon-name {
-    color: var(--text);
-}
-
-.pi-qty {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    font-weight: 600;
-    color: var(--accent);
-    background: var(--color-accent-tint-12);
-    border: 1px solid var(--color-accent-tint-20);
-    border-radius: 3px;
-    padding: 0 3px;
-    line-height: 14px;
-}
-
-.pi-equip {
-    position: absolute;
-    top: 5px;
-    left: 5px;
+/* Cells are now InventoryTile; only the state markers that ride the tile's
+   bottom-right `corner` slot are styled here (equipped / modified dots). */
+.pi-equip,
+.pi-mod {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 4px var(--accent);
 }
+
+.pi-equip { background: var(--accent); box-shadow: 0 0 4px var(--accent); }
 
 /* Added/changed since import — mirrors the loadout's blue "Modified" dot */
-.pi-mod {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--color-blue-bright);
-    box-shadow: 0 0 4px var(--color-blue-bright);
-}
+.pi-mod { background: var(--color-blue-bright); box-shadow: 0 0 4px var(--color-blue-bright); }
 
 /* Equippable-only toggle: accent treatment while active */
 .pi-equip-toggle.active {
@@ -1979,37 +1907,32 @@ export default {
     color: var(--accent);
 }
 
-/* ── Manual mode: cell quantity steppers ──────────────────── */
-.pi-cell-edit {
-    position: absolute;
-    inset: auto 0 0 0;
+/* ── Manual mode: quantity steppers (tile foot control slot) ── */
+.pi-manual-step {
     display: flex;
-    opacity: 0;
-    transition: opacity 0.12s;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
 }
 
-.pi-icon-cell:hover .pi-cell-edit {
-    opacity: 1;
-}
-
-.pi-cell-btn {
+.pi-manual-step button {
     flex: 1;
     background: var(--color-overlay-black-60, rgba(0, 0, 0, 0.6));
     border: none;
-    border-top: 1px solid var(--border);
     color: var(--text);
     font-family: var(--mono);
     font-size: 0.78rem;
-    line-height: 1.1rem;
+    line-height: 1.15rem;
     cursor: pointer;
     padding: 0;
 }
 
-.pi-cell-btn:first-child {
+.pi-manual-step button:first-child {
     border-right: 1px solid var(--border);
 }
 
-.pi-cell-btn:hover {
+.pi-manual-step button:hover {
     color: var(--accent);
     background: var(--color-accent-tint-12);
 }
@@ -2064,36 +1987,12 @@ export default {
     line-height: 1rem;
 }
 
-/* Marks items that are components of a fully craftable recipe */
+/* Marks items that are components of a fully craftable recipe (corner slot) */
 .pi-wb-tick {
-    position: absolute;
-    top: 4px;
-    left: 4px;
     color: var(--color-green-positive);
     opacity: 0.9;
     filter: drop-shadow(0 0 3px var(--color-green-tint-30));
 }
-
-.pi-cond {
-    position: absolute;
-    bottom: 2px;
-    left: 6px;
-    right: 6px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 1px;
-    overflow: hidden;
-}
-
-.pi-cond-fill {
-    display: block;
-    height: 100%;
-    border-radius: 1px;
-}
-
-.pi-cond-good { background: var(--color-green-positive); }
-.pi-cond-worn { background: var(--accent); }
-.pi-cond-bad { background: var(--color-red-soft); }
 
 /* ── Multi-select action bar ──────────────────────────────── */
 .pi-select-bar {

@@ -904,6 +904,7 @@ export default defineComponent({
         { id: 'smart_terrain',  label: 'Locations',         color: '#aaaaaa', radius: 0, minZoom: 5 },
         { id: 'level_changer',  label: 'Level changers',   color: '#08fef8', radius: 4, minZoom: 3 },
         { id: 'named_npc',      label: 'Notable characters', color: '#90caf9', radius: 5, minZoom: 3 },
+        { id: 'anomaly_field',  label: 'Anomaly fields',   color: '#e040fb', radius: 5, minZoom: 4 },
       ];
       return defs;
     }
@@ -1418,6 +1419,11 @@ export default defineComponent({
         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><path d="M256 16c-52.5 252.632-210 277.845 0 454.688C466 293.845 308.5 268.63 256 16zM124.75 167.407C98.5 243.197 46 294.117 46 369.907S151 496 229.75 496c-157.5-126.317-105-202.278-105-328.593zm262.5 0c0 126.317 52.5 202.278-105 328.593C361 496 466 445.696 466 369.907c0-75.79-52.5-126.71-78.75-202.5z" fill="#e65100" stroke="rgba(0,0,0,0.6)" stroke-width="12" transform="translate(76.8,76.8) scale(0.7)"/></svg>`
       );
 
+      // Named anomaly field icon — magenta target/zone blip with dark halo for contrast
+      iconImages['anomaly_field'] = svgToImg(
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="3.5"/><circle cx="12" cy="12" r="9" fill="none" stroke="#e040fb" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="#e040fb" fill-opacity="0.55" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/></svg>`
+      );
+
       // Pre-render NPC role icons (teardrop pin with cutout)
       const pinBody = `M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932C314.276,58.317,255.96,0,184.277,0z`;
       const npcIcons: Record<string, HTMLImageElement> = {};
@@ -1578,6 +1584,34 @@ export default defineComponent({
           }).join('');
 
         return `<div class="map-cluster-popup">${header}${items}${campfireLine}</div>`;
+      }
+
+      // Click popup for a named anomaly field — full artefact list (the hover
+      // tooltip only previews the first few).
+      function buildAnomalyFieldPopupHtml(ent: any): string {
+        const title = ent.label || displayName(ent);
+        const levelName = levelNames[ent.level] || ent.level;
+        const types: string[] = ent.anomalyTypes || [];
+        const arts: string[] = ent.artefacts || [];
+
+        const badges = types.map((t) => `<span class="map-anomaly-type-badge">${t}</span>`).join('');
+        let html = `<div class="map-anomaly-popup">`
+          + `<div class="map-anomaly-popup-header">`
+          + `<div class="map-anomaly-popup-title">${title}</div>`
+          + `<div class="map-anomaly-popup-meta">${badges}<span class="map-anomaly-popup-level">${levelName}</span></div>`
+          + `</div>`;
+        if (arts.length) {
+          const hasChance = arts.some((a: any) => a.chance != null);
+          html += `<div class="map-anomaly-popup-arts-title">Artefacts<span class="map-anomaly-popup-arts-count">${arts.length}</span>`
+            + (hasChance ? `<span class="map-anomaly-popup-arts-hint">drop share</span>` : '')
+            + `</div>`
+            + `<ul class="map-anomaly-popup-arts">`
+            + arts.map((a: any) => `<li><span class="af-name">${a.name}</span>${a.chance != null ? `<span class="af-pct">${a.chance}%</span>` : ''}</li>`).join('')
+            + `</ul>`;
+        } else {
+          html += `<div class="map-anomaly-popup-empty">No artefact data</div>`;
+        }
+        return html + `</div>`;
       }
 
       relayoutMarkers = function relayoutMarkersImpl() {
@@ -1800,6 +1834,18 @@ export default defineComponent({
               + `<img src="/img/${fIcon}" class="map-npc-tip-icon">`
               + `<div><b>${title}</b><br><span class="map-npc-tip-meta">${meta}</span></div>`
               + `</div>`;
+          } else if (ent.type === 'anomaly_field') {
+            const levelName = levelNames[ent.level] || ent.level;
+            const meta = [(ent.anomalyTypes || []).join(', '), levelName].filter(Boolean).join(' · ');
+            let html = `<b>${title}</b><br><span class="map-npc-tip-meta">${meta}</span>`;
+            const arts = ent.artefacts || [];
+            if (arts.length) {
+              const shown = arts.slice(0, 8);
+              const extra = arts.length - shown.length;
+              const names = shown.map((a: any) => a.name).join(', ');
+              html += `<div class="map-anomaly-arts"><span class="map-anomaly-arts-label">Artefacts</span> ${names}${extra > 0 ? `, +${extra} more` : ''}</div>`;
+            }
+            baseContent = html;
           } else {
             const levelName = levelNames[ent.level] || ent.level;
             baseContent = `<b>${title}</b><br><span class="map-npc-tip-meta">${levelName}</span>`;
@@ -1855,6 +1901,22 @@ export default defineComponent({
               rotation: angle,
             }).addTo(dotGroup);
             bindMapTooltip(m, tooltipFn);
+            trackMarker(m, ent, def.id);
+          } else if (def.id === 'anomaly_field') {
+            const m = canvasImgMarker(pt, {
+              canvasImg: iconImages['anomaly_field'],
+              imgSize: 18,
+            }).addTo(dotGroup);
+            bindMapTooltip(m, tooltipFn);
+            m.on('click', (e: any) => {
+              L.DomEvent.stopPropagation(e);
+              if (!map) return;
+              hideTooltip();
+              L.popup({ className: 'map-anomaly-popup-wrap', maxHeight: 340, maxWidth: 300, minWidth: 268, closeButton: true, autoPan: true })
+                .setLatLng(m.getLatLng())
+                .setContent(buildAnomalyFieldPopupHtml(ent))
+                .openOn(map);
+            });
             trackMarker(m, ent, def.id);
           } else {
             const m = L.circleMarker(pt, {
@@ -3019,6 +3081,149 @@ export default defineComponent({
   height: 16px;
 }
 
+/* Named anomaly field click popup — full artefact list */
+.map-anomaly-popup-wrap .leaflet-popup-content-wrapper {
+  background: rgba(0, 0, 0, 0.92);
+  color: #ddd;
+  border: 1px solid rgba(224, 64, 251, 0.45);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  padding: 0;
+}
+
+.map-anomaly-popup-wrap .leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+}
+
+.map-anomaly-popup-wrap .leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid rgba(224, 64, 251, 0.45);
+}
+
+.map-anomaly-popup-wrap .leaflet-popup-close-button {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px 8px 0 0;
+}
+
+.map-anomaly-popup-wrap .leaflet-popup-close-button:hover {
+  color: #fff;
+}
+
+.map-anomaly-popup {
+  width: 268px;
+  box-sizing: border-box;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 0.6rem 0.75rem 0.7rem;
+}
+
+.map-anomaly-popup-header {
+  padding-right: 14px;
+  padding-bottom: 0.55rem;
+  margin-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.map-anomaly-popup-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #f4f4f4;
+}
+
+.map-anomaly-popup-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.map-anomaly-type-badge {
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: #e77bff;
+  background: rgba(224, 64, 251, 0.15);
+  border: 1px solid rgba(224, 64, 251, 0.45);
+  border-radius: 999px;
+  padding: 1px 9px;
+  white-space: nowrap;
+}
+
+.map-anomaly-popup-level {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.map-anomaly-popup-arts-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.42);
+  margin-bottom: 0.4rem;
+}
+
+.map-anomaly-popup-arts-count {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 0 6px;
+  font-size: 0.64rem;
+  letter-spacing: 0;
+}
+
+.map-anomaly-popup-arts-hint {
+  margin-left: auto;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.map-anomaly-popup-arts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.map-anomaly-popup-arts li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: #d4d4d4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.map-anomaly-popup-arts li:last-child {
+  border-bottom: none;
+}
+
+.map-anomaly-popup-arts .af-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.map-anomaly-popup-arts .af-pct {
+  flex-shrink: 0;
+  color: #e77bff;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.map-anomaly-popup-empty {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
 .map-location-label {
   background: transparent !important;
   border: none !important;
@@ -3089,6 +3294,22 @@ export default defineComponent({
 .map-npc-tip-meta {
   opacity: 0.6;
   font-size: 0.75rem;
+}
+
+.map-anomaly-arts {
+  margin-top: 5px;
+  padding-top: 4px;
+  border-top: 1px solid var(--color-overlay-black-20, rgba(255, 255, 255, 0.12));
+  font-size: 0.72rem;
+  line-height: 1.35;
+  max-width: 240px;
+  opacity: 0.85;
+}
+
+.map-anomaly-arts-label {
+  color: #e040fb;
+  font-weight: 600;
+  margin-right: 3px;
 }
 
 .map-faction-tip-list {
