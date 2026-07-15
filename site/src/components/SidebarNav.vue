@@ -54,26 +54,21 @@
             </a>
         </div>
     </div>
-    <div class="sidebar-group">
+    <div class="sidebar-group" v-if="hasToolkitRates || hasOutfitExchange || hasMutantParts">
         <div class="sidebar-group-label" @click="$emit('toggleGroup', 'tools')">
             <svg class="sidebar-chevron" :class="{ collapsed: collapsedGroups['tools'] }" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            {{ t('app_group_tools') }}
+            {{ t('app_sidebar_extra') }}
         </div>
         <div class="sidebar-group-items" v-show="!collapsedGroups['tools']">
-            <a :href="navHref('version-compare')" :class="{ active: versionCompareActive }" @click.prevent="$emit('openVersionCompare')">
-                <span class="cat-label">{{ t('app_cat_version_compare') }}</span>
-            </a>
-            <a v-if="hasStartingLoadouts" :href="navHref('starting-loadouts')" :class="{ active: startingLoadoutsActive }" @click.prevent="$emit('openStartingLoadouts')">
-                <span class="cat-label">{{ t('app_cat_starting_loadouts') }}</span>
-            </a>
-            <a v-if="hasFactionPools" :href="navHref('faction-drops')" :class="{ active: factionPoolsActive }" @click.prevent="$emit('openFactionPools')">
-                <span class="cat-label">{{ t('app_cat_faction_drops') }}</span>
-            </a>
             <a v-if="hasToolkitRates" :href="categoryHref(toolkitRatesCategory)" :class="{ active: activeCategory === toolkitRatesCategory && !favoritesViewActive && !recentViewActive && !versionCompareActive && !startingLoadoutsActive }" @click.prevent="$emit('selectCategory', toolkitRatesCategory)">
                 <span class="cat-label">{{ t('app_cat_toolkit_rates') }}</span>
             </a>
             <a v-if="hasOutfitExchange" :href="categoryHref(outfitExchangeCategory)" :class="{ active: activeCategory === outfitExchangeCategory && !favoritesViewActive && !recentViewActive && !versionCompareActive && !startingLoadoutsActive }" @click.prevent="$emit('selectCategory', outfitExchangeCategory)">
                 <span class="cat-label">{{ t('app_cat_outfit_exchange') }}</span>
+            </a>
+            <a v-if="hasMutantParts" :href="categoryHref(mutantPartsCategory)" :class="{ active: activeCategory === mutantPartsCategory && !favoritesViewActive && !recentViewActive && !versionCompareActive && !startingLoadoutsActive }" @click.prevent="$emit('selectCategory', mutantPartsCategory)">
+                <span class="cat-label">{{ t('app_cat_mutant_parts') }}</span>
+                <span v-if="categoryCounts[mutantPartsCategory]" class="cat-count">{{ categoryCounts[mutantPartsCategory] }}</span>
             </a>
         </div>
     </div>
@@ -126,6 +121,8 @@ export default {
         toolkitRatesCategory: { type: String, default: null },
         hasOutfitExchange: { type: Boolean, default: false },
         outfitExchangeCategory: { type: String, default: null },
+        hasMutantParts: { type: Boolean, default: false },
+        mutantPartsCategory: { type: String, default: null },
         favoritesViewActive: { type: Boolean, default: false },
         recentViewActive: { type: Boolean, default: false },
     },

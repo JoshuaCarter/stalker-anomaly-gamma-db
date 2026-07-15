@@ -967,6 +967,23 @@
         ]
       },
       {
+        "id": "firestarter_gamma",
+        "pda_encyclopedia_name": "st_firestarter",
+        "toolTier": 1,
+        "recipeReq": "recipe_basic_0",
+        "recipeReqName": "",
+        "ingredients": [
+          {
+            "name": "st_steel_wool",
+            "amount": "x1"
+          },
+          {
+            "name": "st_batteries",
+            "amount": "x1"
+          }
+        ]
+      },
+      {
         "id": "itm_backpack",
         "pda_encyclopedia_name": "st_itm_backpack_name",
         "toolTier": 1,

@@ -5063,3 +5063,5 @@ st_data_export_immunity,st_data_export_immunity
 st_data_export_limiter,st_data_export_limiter
 st_data_export_part,st_data_export_part
 st_data_export_part_kind,st_data_export_part_kind
+st_firestarter,Permanent Firestarter
+st_firestarter_descr,"A sturdy, reusable fire-starting tool made from steel wool and a battery: touch the wool across the terminals and it sparks into flame. \n \nWhile it is in your inventory any campfire can always be lit, rain or shine, and it never wears out. No need to carry matches."

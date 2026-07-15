@@ -291,6 +291,65 @@ function getMutantType(mutantId) {
 }
 
 // ──────────────────────────────────────────
+// ACTOR (player as target)
+// ──────────────────────────────────────────
+
+// Constants from the GAMMA Actor Damage Balancer for fire_wound (bullets):
+// adb-constants.json FireWound row + the script's literals. Mirrored here so the
+// calc runs without loading the JSON. See docs/gamma-actor-damage-formula.md and
+// grok_actor_damage_balancer.script (get_protection line ~361, damage line 726).
+export const ACTOR_FIRE_WOUND = {
+  adjuster: 0.8,          // flat-protection multiplier: boneArmor × cond × adjuster
+  artiAdjuster: 0.8,      // artefact immunity multiplier
+  artiFactor: 0.6,        // extra artefact scalar (× cond × 0.6 × artiAdjuster)
+  basePremitigation: 0.4, // flat reduction earned when a round is stopped
+  limiterBase: 0.65,      // protection cap before artefact caps
+  hardCap: 0.9,           // absolute cap on either bucket
+};
+
+/**
+ * Damage taken by the player from a bullet, per GAMMA's actor formula. Two
+ * independent buckets, then damage = incomingPower × (1 − premitigation) × (1 − protection),
+ * where incomingPower is already ×0.8 for fire_wound. This returns the mitigation
+ * factor (damageFraction) and both buckets; the caller multiplies by incoming power
+ * for an absolute number.
+ *
+ * @param {object} params
+ * @param {number} params.kAp - incoming round's armour-piercing coefficient (raw, 0..~0.8)
+ * @param {number} params.boneArmor - armour's real bone protection (spine for body, head for headshot)
+ * @param {number} params.hitFractionActor - armour's hit_fraction_actor (BR Class = 1 − this)
+ * @param {number} [params.cond=1] - armour condition 0..1
+ * @param {Array<{apRes:number,premitigation:number}>} [params.plates=[]] - belt ballistic plates
+ * @param {Array<{fireWoundImmunity:number,fireWoundCap:number}>} [params.artefacts=[]] - belt artefacts
+ * @param {number} [params.boost=0] - active drug fire_wound_immunity
+ * @param {object} [params.fw=ACTOR_FIRE_WOUND] - constant overrides (e.g. from adb-constants.json)
+ * @returns {{ stopped, armorBoneValue, premitigation, protection, limiter, damageFraction }}
+ */
+export function calcActorDamage(params) {
+  const { kAp, boneArmor, hitFractionActor, cond = 1,
+          plates = [], artefacts = [], boost = 0, fw = ACTOR_FIRE_WOUND } = params;
+
+  // Penetration gate on the ballistic-resistance scale.
+  const plateApRes = plates.reduce((s, p) => s + (p.apRes || 0), 0);
+  const armorBoneValue = (1 - hitFractionActor) * cond + plateApRes;
+  const stopped = armorBoneValue >= kAp;
+
+  // BRC premitigation bucket — only when the round is stopped.
+  const platePremit = plates.reduce((s, p) => s + (p.premitigation || 0), 0);
+  const premitigation = stopped ? Math.min(fw.basePremitigation + platePremit, fw.hardCap) : 0;
+
+  // Flat protection bucket, capped by the limiter (and the hard cap).
+  const artiProt = artefacts.reduce((s, a) => s + (a.fireWoundImmunity || 0) * cond * fw.artiFactor * fw.artiAdjuster, 0);
+  const artiCap = artefacts.reduce((s, a) => s + (a.fireWoundCap || 0), 0);
+  const limiter = Math.min(fw.limiterBase + artiCap, fw.hardCap);
+  const protection = Math.min(boneArmor * cond * fw.adjuster + artiProt + boost, limiter, fw.hardCap);
+
+  const damageFraction = (1 - premitigation) * (1 - protection);
+
+  return { stopped, armorBoneValue, premitigation, protection, limiter, damageFraction };
+}
+
+// ──────────────────────────────────────────
 // STALKER AP
 // ──────────────────────────────────────────
 

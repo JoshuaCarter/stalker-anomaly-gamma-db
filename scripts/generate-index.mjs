@@ -65,6 +65,7 @@ const SKIP_FILES = new Set([
   "export_craft_decoration.csv",
   "export_upgrades_items.csv",
   "export_upgrade_sections.csv",
+  "export_upgrade_effects.csv",
   "en_us.csv",
   "ru_ru.csv",
   "fr_fr.csv",
@@ -965,6 +966,29 @@ try {
   }
   console.log(`Loaded ${sectionsMap.size} upgrade sections`);
 
+  // Per-upgrade full effect list (all converted stats), keyed by
+  // `${itemSection}\0${upgradeSection}`. Optional — older exports omit it.
+  const effectsMap = new Map();
+  try {
+    const effText = readFileSync(join(CSV_DIR, "export_upgrade_effects.csv"), "utf-8");
+    const effLines = effText.split(/\r?\n/).filter((l) => l.length > 0);
+    for (let i = 1; i < effLines.length; i++) {
+      const cols = parseCsvLine(effLines[i]);
+      const itemId = cols[0]?.trim();
+      const upgradeSection = cols[1]?.trim();
+      const blob = cols[2]?.trim();
+      if (!itemId || !upgradeSection || !blob) continue;
+      const effects = blob.split("|").map((e) => {
+        const [key, value, unit] = e.split(":");
+        return { key, value, unit };
+      }).filter((e) => e.key && e.value !== undefined);
+      if (effects.length) effectsMap.set(`${itemId}\0${upgradeSection}`, effects);
+    }
+    console.log(`Loaded upgrade effects for ${effectsMap.size} nodes`);
+  } catch (e) {
+    if (e.code !== "ENOENT") throw e;
+  }
+
   const upItemsText = readFileSync(UPGRADE_ITEMS_FILE, "utf-8");
   const upItemsLines = upItemsText.split(/\r?\n/).filter((l) => l.length > 0);
   const upgrades = {};
@@ -1006,6 +1030,7 @@ try {
         section: sectionId,
         cost: sect.cost,
         stats: Object.keys(sect.stats).length > 0 ? sect.stats : undefined,
+        effects: effectsMap.get(`${itemId}\0${sectionId}`),
       });
     }
 
@@ -1939,7 +1964,9 @@ console.log(`\nWrote ${index.length} items to ${OUT_FILE}`);
 //   * boneArmor        — real flat BR% multiplicand (spine for outfits, head
 //                        for helmets); NOT the displayed fire_wound_protection
 //   * apScale          — penetrating-damage falloff (engine / NPC path)
-//   * brClass          — raw br_class reference (== hfa in GAMMA)
+//   * brClass          — coarse br_class tier label from the LTX header; NOT
+//                        the penetration gate (that's hitFractionActor) and NOT
+//                        equal to it — e.g. Nosorog brClass 0.17 vs hfa 0.31
 // Converted to typed camelCase fields and stripped from the raw header set so
 // they don't render as untranslated table columns. Absent columns => omitted.
 const ARMOR_FIELD_MAP = {

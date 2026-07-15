@@ -33,7 +33,7 @@
         </div>
         <div class="tile-card-stats" v-show="tileFields.length > 0">
             <div v-for="field in tileFields" :key="field" class="tile-stat-row">
-                <span class="stat-label" v-tooltip="field === '_malfunction_chance' ? t('app_tooltip_malfunction') : ''">{{ headerLabel(field) }}<svg v-if="field === '_malfunction_chance'" class="info-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                <span class="stat-label" v-tooltip="statLabelTooltip(field)">{{ headerLabel(field) }}<svg v-if="field === '_malfunction_chance' || field === '_ballistic_rating' || field === 'ui_inv_ap_res' || field === 'ui_inv_outfit_fire_wound_protection'" class="info-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
                 <template v-if="field === 'ui_mm_repair'">
                     <span class="badge" :style="displayStyle(field, item[field])">{{ displayLabel(field, item[field]) }}</span>
                 </template>
@@ -97,6 +97,13 @@ export default {
     methods: {
         isFavorited(id) { return this.favoriteIds.includes(id); },
         isPinned(id) { return this.pinnedIds.includes(id); },
+        statLabelTooltip(field) {
+            if (field === '_malfunction_chance') return this.t('app_tooltip_malfunction');
+            if (field === '_ballistic_rating') return this.t('app_tooltip_ballistic_rating');
+            if (field === 'ui_inv_ap_res') return this.t('app_tooltip_br_class');
+            if (field === 'ui_inv_outfit_fire_wound_protection') return this.t('app_tooltip_fire_wound_protection');
+            return '';
+        },
         perkBadgeText(item) {
             const name = this.parsePerk?.(item)?.name;
             const label = this.t('app_badge_perk');

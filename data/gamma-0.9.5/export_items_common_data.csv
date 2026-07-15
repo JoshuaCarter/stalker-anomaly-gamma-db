@@ -855,6 +855,7 @@ exps3,II_FOOD,w_misc,st_addon_scope_exps3,st_addon_scope_exps3_descr,0.32,7350,
 exps3_x,II_FOOD,w_misc,st_addon_scope_dummy,st_addon_scope_dummy_descr,0.32,7350,
 fieldcooker,II_FOOD,i_kit,st_fieldcooker,st_fieldcooker_descr,0.93,10155,
 fieldcraft_plate_attch,SCRPTART,i_attach,fieldcraft_plate_attch_name,fieldcraft_plate_attch_descr,1.79,1912,
+firestarter_gamma,II_ATTCH,i_tool,st_firestarter,st_firestarter_descr,0.05,800,
 flashlight_broken,II_ATTCH,i_misc,st_flashlight_broken,st_flashlight_broken_descr,0.21,1500,
 flask,II_FOOD,i_drink,st_flask,st_flask_descr,1.33,658,3
 freedom_exo_vineleaf_outfit,E_STLK,o_heavy,freedom_exo_vineleaf_outfit_name,freedom_exo_vineleaf_outfit_description,38.00,107536,

@@ -56,9 +56,33 @@
             <LucideHammer :size="16" />
             <span>{{ t('app_cat_build_planner') }}</span>
         </a>
-        <a class="header-drawer-item" :class="{ active: damageSimActive }" :href="navHref('ballistics')" @click.prevent="$emit('openDamageSim'); overflowOpen = false">
+        <a class="header-drawer-item" :class="{ active: damageSimActive && ballisticsMode === 'weapons' }" :href="navHref('ballistics')" @click.prevent="$emit('openDamageSim'); overflowOpen = false">
             <LucideCrosshair :size="16" />
-            <span>{{ t('app_nav_damage_sim') }}</span>
+            <span>{{ t('app_tool_weapon_damage') }}</span>
+        </a>
+<!-- Armor Protection hidden (feature kept; still reachable at /db/<pack>/armor)
+        <a class="header-drawer-item" :class="{ active: damageSimActive && ballisticsMode === 'armor' }" :href="navHref('armor')" @click.prevent="$emit('openArmorProtection'); overflowOpen = false">
+            <LucideShield :size="16" />
+            <span>{{ t('app_tool_armor_protection') }}</span>
+        </a>
+        -->
+        <!-- Version Compare hidden (feature kept)
+        <a class="header-drawer-item" :class="{ active: versionCompareActive }" :href="navHref('version-compare')" @click.prevent="$emit('openVersionCompare'); overflowOpen = false">
+            <LucideGitCompareArrows :size="16" />
+            <span>{{ t('app_cat_version_compare') }}</span>
+        </a>
+        -->
+        <a v-if="hasStartingLoadouts" class="header-drawer-item" :class="{ active: startingLoadoutsActive }" :href="navHref('starting-loadouts')" @click.prevent="$emit('openStartingLoadouts'); overflowOpen = false">
+            <LucideLayers :size="16" />
+            <span>{{ t('app_cat_starting_loadouts') }}</span>
+        </a>
+        <a v-if="hasFactionPools" class="header-drawer-item" :class="{ active: factionPoolsActive }" :href="navHref('faction-drops')" @click.prevent="$emit('openFactionPools'); overflowOpen = false">
+            <LucidePackage :size="16" />
+            <span>{{ t('app_cat_faction_drops') }}</span>
+        </a>
+        <a class="header-drawer-item" :class="{ active: toolsLandingActive }" :href="navHref('tools')" @click.prevent="$emit('openToolsLanding'); overflowOpen = false">
+            <LucideWrench :size="16" />
+            <span>{{ t('app_tools_view_all') }}</span>
         </a>
         <a class="header-drawer-item maps-nav-btn" :class="{ active: mapsActive }" :href="navHref('maps')" @click.prevent="$emit('openMaps'); overflowOpen = false">
             <LucideMap :size="16" />
@@ -235,10 +259,39 @@
         <LucideHammer :size="14" />
         {{ t('app_cat_build_planner') }}
     </a>
-    <a class="nav-bar-item ballistics-nav-btn" :class="{ active: damageSimActive }" :href="navHref('ballistics')" @click.prevent="$emit('openDamageSim')">
-        <LucideCrosshair :size="14" />
-        {{ t('app_nav_damage_sim') }}
+    <a class="nav-bar-item nav-bar-tools-label" :class="{ active: toolsActive }" :href="navHref('tools')" @click.stop.prevent="toggleTools($event)">
+        <LucideWrench :size="14" />
+        {{ t('app_nav_tools') }}
+        <svg class="nav-bar-tools-caret" :class="{ open: toolsOpen }" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </a>
+    <!-- Teleported to <body> so the menu escapes the nav-bar's overflow clipping on mobile -->
+    <Teleport to="body">
+        <div v-if="toolsOpen" class="settings-menu-backdrop" @click="toolsOpen = false"></div>
+        <div v-if="toolsOpen" class="nav-bar-tools-menu" :style="{ position: 'fixed', top: _toolsPos.top + 'px', left: _toolsPos.left + 'px', zIndex: 201 }" @click.stop>
+            <a :href="navHref('ballistics')" class="nav-bar-tools-item" :class="{ active: damageSimActive && ballisticsMode === 'weapons' }" @click.prevent="$emit('openDamageSim'); toolsOpen = false">
+                <LucideCrosshair :size="15" /><span>{{ t('app_tool_weapon_damage') }}</span>
+            </a>
+<!-- Armor Protection hidden (feature kept; still reachable at /db/<pack>/armor)
+            <a :href="navHref('armor')" class="nav-bar-tools-item" :class="{ active: damageSimActive && ballisticsMode === 'armor' }" @click.prevent="$emit('openArmorProtection'); toolsOpen = false">
+                <LucideShield :size="15" /><span>{{ t('app_tool_armor_protection') }}</span>
+            </a>
+            -->
+            <!-- Version Compare hidden from the menu (feature kept; still reachable at /db/<pack>/version-compare)
+            <a :href="navHref('version-compare')" class="nav-bar-tools-item" :class="{ active: versionCompareActive }" @click.prevent="$emit('openVersionCompare'); toolsOpen = false">
+                <LucideGitCompareArrows :size="15" /><span>{{ t('app_cat_version_compare') }}</span>
+            </a>
+            -->
+            <a v-if="hasStartingLoadouts" :href="navHref('starting-loadouts')" class="nav-bar-tools-item" :class="{ active: startingLoadoutsActive }" @click.prevent="$emit('openStartingLoadouts'); toolsOpen = false">
+                <LucideLayers :size="15" /><span>{{ t('app_cat_starting_loadouts') }}</span>
+            </a>
+            <a v-if="hasFactionPools" :href="navHref('faction-drops')" class="nav-bar-tools-item" :class="{ active: factionPoolsActive }" @click.prevent="$emit('openFactionPools'); toolsOpen = false">
+                <LucidePackage :size="15" /><span>{{ t('app_cat_faction_drops') }}</span>
+            </a>
+            <a :href="navHref('tools')" class="nav-bar-tools-item nav-bar-tools-all" :class="{ active: toolsLandingActive }" @click.prevent="$emit('openToolsLanding'); toolsOpen = false">
+                <span>{{ t('app_tools_view_all') }}</span><LucideChevronRight :size="14" />
+            </a>
+        </div>
+    </Teleport>
     <a class="nav-bar-item maps-nav-btn" :class="{ active: mapsActive }" :href="navHref('maps')" @click.prevent="$emit('openMaps')">
         <LucideMap :size="14" />
         {{ t('app_nav_maps') }}
@@ -307,6 +360,10 @@
                     <span class="toggle-switch" :class="{ on: showUnreliableStats }"><span class="toggle-knob"></span></span>
                     <span>{{ t('app_label_show_unreliable_stats') }}</span>
                 </div>
+                <div class="settings-item" @click.stop="$emit('toggleShowEngineUpgradeStats')" v-tooltip="t('app_label_upgrade_stats_engine_hint')">
+                    <span class="toggle-switch" :class="{ on: showEngineUpgradeStats }"><span class="toggle-knob"></span></span>
+                    <span>{{ t('app_label_upgrade_stats_engine') }}</span>
+                </div>
             </div>
         </Teleport>
     </div>
@@ -337,12 +394,21 @@ export default {
         mapsActive: { type: Boolean, default: false },
         tradingActive: { type: Boolean, default: false },
         playerInventoryActive: { type: Boolean, default: false },
+        versionCompareActive: { type: Boolean, default: false },
+        startingLoadoutsActive: { type: Boolean, default: false },
+        factionPoolsActive: { type: Boolean, default: false },
+        toolsLandingActive: { type: Boolean, default: false },
+        toolsActive: { type: Boolean, default: false },
+        ballisticsMode: { type: String, default: 'weapons' },
+        hasStartingLoadouts: { type: Boolean, default: false },
+        hasFactionPools: { type: Boolean, default: false },
         itemDbActive: { type: Boolean, default: false },
         hideNoDrop: { type: Boolean, default: false },
         hideTacticalKit: { type: Boolean, default: false },
         hideUnusedAmmo: { type: Boolean, default: false },
         showTileIcons: { type: Boolean, default: true },
         showUnreliableStats: { type: Boolean, default: false },
+        showEngineUpgradeStats: { type: Boolean, default: true },
         showMagazines: { type: Boolean, default: false },
     },
     emits: [
@@ -351,7 +417,8 @@ export default {
         'update:globalQuery', 'search', 'escapeSearch', 'selectSearchResult',
         'selectSearchResultInSection',
         'openItemDb', 'openMaps', 'openTrading', 'openPlayerInventory', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
-        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowUnreliableStats', 'toggleShowMagazines',
+        'openArmorProtection', 'openVersionCompare', 'openStartingLoadouts', 'openFactionPools', 'openToolsLanding',
+        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowUnreliableStats', 'toggleShowEngineUpgradeStats', 'toggleShowMagazines',
         'selectCraftingSearchResult',
     ],
     inject: ['t', 'tName', 'tCat', 'navHref'],
@@ -362,12 +429,15 @@ export default {
         // Full-width tool sections collapse the sidebar (App.vue's `sidebar-hidden`),
         // so the mobile hamburger would open an empty drawer — hide it for those.
         sidebarUnavailable() {
-            return this.buildPlannerActive || this.mapsActive || this.damageSimActive || this.tradingActive;
+            return this.buildPlannerActive || this.mapsActive || this.damageSimActive || this.tradingActive
+                || this.versionCompareActive || this.startingLoadoutsActive || this.factionPoolsActive || this.toolsLandingActive;
         },
     },
     data() {
         return {
             packOpen: false,
+            toolsOpen: false,
+            _toolsPos: { top: 0, left: 0 },
             localeOpen: false,
             searchFocused: false,
             overflowOpen: false,
@@ -418,6 +488,12 @@ export default {
                 right: window.innerWidth - rect.right,
             };
             this.modsOpen = true;
+        },
+        toggleTools(event) {
+            if (this.toolsOpen) { this.toolsOpen = false; return; }
+            const rect = event.currentTarget.getBoundingClientRect();
+            this._toolsPos = { top: rect.bottom + 4, left: rect.left };
+            this.toolsOpen = true;
         },
         focusSearch() {
             if (this.mobileSearchOpen) {

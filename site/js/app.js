@@ -19,7 +19,7 @@ import {
     FACTION_ICONS, FACTION_COLORS, FACTION_LIST,
 } from './constants.js';
 import {
-    malfunctionChance, isNonZero, buildStatRows, buildDropFactions,
+    malfunctionChance, ballisticRating, isNonZero, buildStatRows, buildDropFactions,
     categorySlug, buildPathUrl, parsePathUrl,
     saveCategoryFilters, loadCategoryFilters, debounce,
 } from './utils.js';
@@ -132,6 +132,9 @@ export const appDefinition = {
             // The Weapon Mechanics guide flags Recoil Control and Handling as meaningless
             // stat-card values; hidden by default, opt-in to show. Persisted.
             showUnreliableStats: (() => { try { return localStorage.getItem("showUnreliableStats") === "1"; } catch { return false; } })(),
+            // Upgrade tree stat display: true = Engine (our computed values), false =
+            // In-game (the game's authored upgrade-screen values). Defaults to Engine.
+            showEngineUpgradeStats: (() => { try { return localStorage.getItem("showEngineUpgradeStats") !== "0"; } catch { return true; } })(),
             // Opt-in: the Magazines mod isn't universal, so its category is hidden
             // until the user enables it. Persisted; default off.
             showMagazines: (() => { try { return localStorage.getItem("showMagazines") === "1"; } catch { return false; } })(),
@@ -189,7 +192,9 @@ export const appDefinition = {
             playerInventoryParsing: false,
             playerInventoryError: "",
             damageSimActive: false,
+            toolsLandingActive: false,
             damageSimMounted: false,
+            ballisticsMode: "weapons", // weapons | armor
             ballisticsModalOpen: false,
             ballisticsModalWeaponIds: null,
             versionCompareActive: false,
@@ -548,6 +553,16 @@ export const appDefinition = {
                 const row = { key: "_mag_capacity", value: this.cellValue(this.modalItem, "_mag_capacity"), isSection: false };
                 if (wIdx >= 0) rows.splice(wIdx + 1, 0, row);
                 else rows.push(row);
+            }
+            // Inject BR+ (ballistic rating) for armour, just before BR Class — matches the card.
+            if (this.modalCategory === CAT.OUTFITS || this.modalCategory === CAT.HELMETS) {
+                const br = this.cellValue(this.modalItem, "_ballistic_rating");
+                if (br !== undefined) {
+                    const apIdx = rows.findIndex(r => r.key === "ui_inv_ap_res");
+                    const row = { key: "_ballistic_rating", value: br, isSection: false };
+                    if (apIdx >= 0) rows.splice(apIdx, 0, row);
+                    else rows.push(row);
+                }
             }
             return rows;
         },
@@ -1087,6 +1102,15 @@ export const appDefinition = {
             const reliIdx = filtered.indexOf("ui_inv_reli");
             if (reliIdx >= 0) {
                 filtered.splice(reliIdx + 1, 0, "_malfunction_chance");
+            }
+
+            // Inject BR+ (composite ballistic rating) for armour, just before BR Class.
+            // Only when the raw calc inputs are present (absent on older packs / plain Anomaly).
+            if ((this.activeCategory === CAT.OUTFITS || this.activeCategory === CAT.HELMETS)
+                && items.some(i => typeof i.boneArmor === "number" && typeof i.hitFractionActor === "number")) {
+                const apIdx = filtered.indexOf("ui_inv_ap_res");
+                if (apIdx >= 0) filtered.splice(apIdx, 0, "_ballistic_rating");
+                else filtered.push("_ballistic_rating");
             }
 
             // Inject magazine carry capacity (Magazines mod) when enabled and present
@@ -1931,6 +1955,15 @@ export const appDefinition = {
             return this[cacheKey];
         },
 
+        async ensureArmorForSim() {
+            // Actor-target mode in the damage simulator needs outfit + helmet data,
+            // which load lazily. Trigger both so the armour pickers populate.
+            await Promise.all([
+                this.ensureCategoryLoaded("outfits"),
+                this.ensureCategoryLoaded("helmets"),
+            ]);
+        },
+
         async ensureCategoryLoaded(slug) {
             if (this.categoryItems[slug]) return;
             const filename = `${slug}.json`;
@@ -2144,8 +2177,13 @@ export const appDefinition = {
                     const urlCat = pathParsed.cat || new URLSearchParams(window.location.search).get("cat");
                     if (urlCat === "build-planner" || pathParsed.buildPlanner) {
                         // Defer to mounted handler
+                    } else if (urlCat === "tools" || pathParsed.toolsLanding) {
+                        this.toolsLandingActive = true;
+                        this.activeCategory = null;
                     } else if (urlCat === "ballistics" || pathParsed.damageSim) {
                         await this.openDamageSim();
+                    } else if (urlCat === "armor" || pathParsed.armorProtection) {
+                        await this.openArmorProtection();
                     } else if (urlCat === "maps" || pathParsed.maps) {
                         this.mapsActive = true;
                         this.mapsMounted = true;
@@ -2439,6 +2477,7 @@ export const appDefinition = {
             this.versionCompareActive = false;
             this.startingLoadoutsActive = false;
             this.factionPoolsActive = false;
+            this.toolsLandingActive = false;
             this.favoritesViewActive = false;
             this.recentViewActive = false;
             this.showFavoritesOnly = false;
@@ -2915,6 +2954,13 @@ export const appDefinition = {
             if (this.crossPackId) this.loadVersionCompareData();
         },
 
+        openToolsLanding() {
+            this.resetViewState();
+            this.toolsLandingActive = true;
+            if (!this._restoringUrl) this.pushUrlState(true);
+            else this.pushUrlState();
+        },
+
         async openStartingLoadouts() {
             this.resetViewState();
             this.startingLoadoutsActive = true;
@@ -3168,6 +3214,7 @@ export const appDefinition = {
             this.versionCompareActive = false;
             this.startingLoadoutsActive = false;
             this.factionPoolsActive = false;
+            this.toolsLandingActive = false;
             this.favoritesViewActive = false;
             this.recentViewActive = false;
             this.showFavoritesOnly = false;
@@ -4149,6 +4196,11 @@ export const appDefinition = {
             try { localStorage.setItem("showUnreliableStats", this.showUnreliableStats ? "1" : ""); } catch {}
         },
 
+        toggleShowEngineUpgradeStats() {
+            this.showEngineUpgradeStats = !this.showEngineUpgradeStats;
+            try { localStorage.setItem("showEngineUpgradeStats", this.showEngineUpgradeStats ? "1" : "0"); } catch {}
+        },
+
         toggleHideTacticalKit() {
             this.hideTacticalKit = !this.hideTacticalKit;
             localStorage.setItem("hideTacticalKit", JSON.stringify(this.hideTacticalKit));
@@ -4284,6 +4336,7 @@ export const appDefinition = {
             if (!h) return "";
             if (h === "_heal") return this.t("app_heal_heals");
             if (h === "_malfunction_chance") return this.t("_malfunction_chance");
+            if (h === "_ballistic_rating") return this.t("_ballistic_rating");
             if (h === "_cost_per_round") return this.t("_cost_per_round");
             if (h === "_compatible_weapons") return this.t("app_label_compatible_weapons");
             if (h === "_num_scopes") return this.t("app_label_num_scopes");
@@ -4362,6 +4415,9 @@ export const appDefinition = {
             }
             if ([CAT.SCOPES, CAT.SILENCERS, CAT.GRENADE_LAUNCHERS, CAT.TACTICAL_KITS].includes(category) && !allHeaders.includes("_compatible_weapons")) {
                 allHeaders.push("_compatible_weapons");
+            }
+            if ((category === CAT.OUTFITS || category === CAT.HELMETS) && !allHeaders.includes("_ballistic_rating")) {
+                allHeaders.push("_ballistic_rating");
             }
             const isWeapon = WEAPON_CATEGORIES.includes(category) || category === CAT.ALL_WEAPONS;
             if (isWeapon && this.weaponAddonsCache && !allHeaders.includes("_num_scopes")) {
@@ -4562,6 +4618,10 @@ export const appDefinition = {
                 const reliVal = parseFloat(String(item["ui_inv_reli"] || "").replace("%", ""));
                 return isNaN(reliVal) ? undefined : malfunctionChance(reliVal);
             }
+            if (field === "_ballistic_rating") {
+                const r = ballisticRating(item.boneArmor, item.hitFractionActor);
+                return r === null ? undefined : r;
+            }
             if (field === "_cost_per_round") {
                 const cost = parseFloat(item["st_upgr_cost"]);
                 const box = parseFloat(item["st_data_export_ammo_box_size"]);
@@ -4593,6 +4653,7 @@ export const appDefinition = {
         formatValue(h, val, tableMode) {
             if (val === undefined || val === null || val === "" || val === "--") return "--";
             if (h === "_malfunction_chance") return val.toFixed(2) + "%";
+            if (h === "_ballistic_rating") return Math.round(val) + "%";
             if (h === "_cost_per_round") {
                 const n = parseFloat(val);
                 return isNaN(n) ? String(val) : `${n.toLocaleString(this.locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ₽`;
@@ -5043,6 +5104,7 @@ export const appDefinition = {
                 cat: this.isCrafting ? this.craftingCategory : this.activeCategory,
                 buildPlanner: this.buildPlannerActive,
                 damageSim: this.damageSimActive,
+                armorMode: this.damageSimActive && this.ballisticsMode === "armor",
                 maps: this.mapsActive,
                 trading: this.tradingActive,
                 playerInventory: this.playerInventoryActive,
@@ -5051,6 +5113,7 @@ export const appDefinition = {
                 versionCompare: this.versionCompareActive,
                 startingLoadouts: this.startingLoadoutsActive,
                 factionPools: this.factionPoolsActive,
+                toolsLanding: this.toolsLandingActive,
             };
             url.pathname = buildPathUrl(pathState);
 
@@ -5154,8 +5217,13 @@ export const appDefinition = {
             if (parsed.buildPlanner || legacyCat === "build-planner") {
                 // Will be handled after data loads
                 this._pendingBuildRestore = params;
+            } else if (parsed.toolsLanding || legacyCat === "tools") {
+                this.toolsLandingActive = true;
+                this.activeCategory = null;
             } else if (parsed.damageSim) {
                 this.openDamageSim();
+            } else if (parsed.armorProtection) {
+                this.openArmorProtection();
             } else if (parsed.maps || legacyCat === "maps") {
                 this.mapsActive = true;
                 this.mapsMounted = true;
@@ -5421,9 +5489,26 @@ export const appDefinition = {
             this.resetViewState();
             this.damageSimActive = true;
             this.damageSimMounted = true;
+            this.ballisticsMode = "weapons";
 
             await this.loadDamageSimData();
 
+            if (!this._restoringUrl) this.pushUrlState(true);
+            else this.pushUrlState();
+        },
+
+        async selectBallisticsArmor() {
+            this.ballisticsMode = "armor";
+            await this.ensureArmorForSim();
+        },
+
+        async openArmorProtection() {
+            this.resetViewState();
+            this.damageSimActive = true;
+            this.damageSimMounted = true;
+            this.ballisticsMode = "armor";
+            await this.loadDamageSimData();
+            await this.ensureArmorForSim();
             if (!this._restoringUrl) this.pushUrlState(true);
             else this.pushUrlState();
         },
@@ -7364,12 +7449,12 @@ export const appDefinition = {
             // Alt+ArrowLeft / Alt+ArrowRight: cycle through nav-bar tabs
             if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
                 e.preventDefault();
-                const NAV_TABS = ['db', 'crafting', 'build-planner', 'ballistics', 'maps', 'trading', 'inventory'];
+                const NAV_TABS = ['db', 'crafting', 'build-planner', 'tools', 'maps', 'trading', 'inventory'];
                 let current;
                 if (this.playerInventoryActive) current = 'inventory';
                 else if (this.tradingActive)   current = 'trading';
                 else if (this.mapsActive)      current = 'maps';
-                else if (this.damageSimActive) current = 'ballistics';
+                else if (this.toolsLandingActive || this.damageSimActive || this.versionCompareActive || this.startingLoadoutsActive || this.factionPoolsActive) current = 'tools';
                 else if (this.buildPlannerActive) current = 'build-planner';
                 else if (this.isCrafting)      current = 'crafting';
                 else                           current = 'db';
@@ -7378,7 +7463,7 @@ export const appDefinition = {
                 if (next === 'db')            this.openItemDb();
                 else if (next === 'crafting') this.openCrafting();
                 else if (next === 'build-planner') this.openBuildPlanner();
-                else if (next === 'ballistics')    this.openDamageSim();
+                else if (next === 'tools')         this.openToolsLanding();
                 else if (next === 'maps')          this.openMaps();
                 else if (next === 'trading')       this.openTrading();
                 else if (next === 'inventory')     this.openPlayerInventory();
@@ -7665,7 +7750,9 @@ export const appDefinition = {
             if (parsed.buildPlanner) {
                 if (!this.buildPlannerActive) await this.openBuildPlanner();
             } else if (parsed.damageSim) {
-                if (!this.damageSimActive) await this.openDamageSim();
+                if (!this.damageSimActive || this.ballisticsMode !== "weapons") await this.openDamageSim();
+            } else if (parsed.armorProtection) {
+                if (!this.damageSimActive || this.ballisticsMode !== "armor") await this.openArmorProtection();
             } else if (parsed.trading) {
                 if (!this.tradingActive) this.openTrading();
             } else if (parsed.playerInventory) {

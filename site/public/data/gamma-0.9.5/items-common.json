@@ -3209,6 +3209,10 @@
     "name": "fieldcraft_plate_attch_name",
     "price": 1912
   },
+  "firestarter_gamma": {
+    "name": "st_firestarter",
+    "price": 800
+  },
   "flashlight_broken": {
     "name": "st_flashlight_broken",
     "price": 1500

@@ -8,17 +8,19 @@
         </span>
         <span class="uptree-summary-sep">·</span>
         <span class="uptree-summary-item">
-            <span class="uptree-summary-val">{{ rows.length }}</span>
-            <span class="uptree-summary-lbl">{{ t('app_upgrade_label_tiers') }}</span>
-        </span>
-        <span class="uptree-summary-sep">·</span>
-        <span class="uptree-summary-item">
             <span class="uptree-summary-lbl">{{ t('app_upgrade_label_total_cost') }}</span>
             <span class="uptree-summary-val uptree-summary-cost">{{ totalCostFormatted }}</span>
         </span>
         <span class="uptree-summary-spacer"></span>
         <!-- Category legend -->
-        <span v-for="cat in presentCategories" :key="cat" class="uptree-legend-chip" :class="'uptree-legend--' + cat">
+        <span
+            v-for="cat in presentCategories"
+            :key="cat"
+            class="uptree-legend-chip"
+            :class="['uptree-legend--' + cat, { 'is-active': hoveredCat === cat, 'is-muted': hoveredCat && hoveredCat !== cat }]"
+            @mouseenter="hoveredCat = cat"
+            @mouseleave="hoveredCat = null"
+        >
             <span class="uptree-legend-dot"></span>{{ catLabel(cat) }}
         </span>
     </div>
@@ -30,11 +32,6 @@
             :key="row.rowNum"
             class="uptree-tier"
         >
-            <!-- Tier gutter label -->
-            <div class="uptree-gutter">
-                <div class="uptree-tier-badge">T{{ row.rowNum }}</div>
-            </div>
-
             <!-- Cells -->
             <div
                 v-for="colNum in maxCols"
@@ -45,7 +42,7 @@
                     <div v-for="(node, ni) in getCol(row, colNum).cells" :key="node.section">
                         <div
                             class="uptree-node"
-                            :class="'uptree-node--' + propCategory(node.prop)"
+                            :class="['uptree-node--' + propCategory(node.prop), { 'uptree-node--dim': hoveredCat && propCategory(node.prop) !== hoveredCat }]"
                             @mouseenter="showHover(node, $event)"
                             @mousemove="moveHover($event)"
                             @mouseleave="onNodeLeave"
@@ -58,13 +55,27 @@
                                     <span class="uptree-node-cost-badge">{{ formatCost(node.cost) }}</span>
                                 </div>
                                 <div class="uptree-node-row2">
-                                    <span class="uptree-node-stat uptree-node-stat--primary">{{ nodeStatLine(node) }}</span>
-                                    <template v-for="[key, val] in sideEffectStats(node)" :key="key">
-                                        <span class="uptree-node-sep">·</span>
-                                        <span
-                                            class="uptree-node-stat"
-                                            :class="statSignClass(key, val)"
-                                        >{{ statLabel(key) }} {{ formatStatVal(val) }}</span>
+                                    <template v-if="rowEffects(node).length">
+                                        <template v-for="(eff, ei) in rowEffects(node)" :key="'e' + eff.key">
+                                            <span v-if="ei > 0" class="uptree-node-sep">·</span>
+                                            <span class="uptree-node-stat" :class="effectSignClass(eff)">{{ effectLabel(eff) }} {{ effectValueText(eff) }}<span v-if="engineMode && eff.authored" class="uptree-fallback-badge" :title="t('app_upgrade_game_value')">{{ t('app_upgrade_fallback_badge') }}</span></span>
+                                        </template>
+                                        <template v-if="engineMode">
+                                            <template v-for="[key, val] in extraStats(node)" :key="'x' + key">
+                                                <span class="uptree-node-sep">·</span>
+                                                <span class="uptree-node-stat" :class="statSignClass(key, val)">{{ statLabel(key) }} {{ formatStatVal(val) }}</span>
+                                            </template>
+                                        </template>
+                                    </template>
+                                    <template v-else>
+                                        <span class="uptree-node-stat uptree-node-stat--primary">{{ nodeStatLine(node) }}</span>
+                                        <template v-for="[key, val] in sideEffectStats(node)" :key="key">
+                                            <span class="uptree-node-sep">·</span>
+                                            <span
+                                                class="uptree-node-stat"
+                                                :class="statSignClass(key, val)"
+                                            >{{ statLabel(key) }} {{ formatStatVal(val) }}</span>
+                                        </template>
                                     </template>
                                 </div>
                             </div>
@@ -90,14 +101,50 @@
             </div>
             <p v-if="t(hoverNode.desc)" class="uptree-hover-desc">{{ t(hoverNode.desc) }}</p>
             <div class="uptree-hover-stats">
-                <div class="uptree-hover-stat-row uptree-hover-stat-row--primary">
-                    <span class="uptree-hover-stat-label uptree-hover-stat-label--primary">{{ t(hoverNode.prop) || hoverNode.prop }}</span>
-                    <span class="uptree-hover-stat-value uptree-stat-pos">{{ hoverPrimaryVal(hoverNode) }}</span>
-                </div>
-                <div v-for="[key, val] in sideEffectStats(hoverNode)" :key="key" class="uptree-hover-stat-row">
-                    <span class="uptree-hover-stat-label">{{ statLabel(key) }}</span>
-                    <span class="uptree-hover-stat-value" :class="statSignClass(key, val)">{{ formatStatVal(val) }}</span>
-                </div>
+                <template v-if="hoverNode.effects && hoverNode.effects.length">
+                    <!-- Engine mode: computed values primary, in-game value as comparison -->
+                    <template v-if="engineMode">
+                        <div class="uptree-hover-game-caption uptree-hover-game-caption--first">{{ t('app_upgrade_engine_value') }}</div>
+                        <div v-for="eff in hoverNode.effects" :key="'e' + eff.key" class="uptree-hover-stat-row">
+                            <span class="uptree-hover-stat-label">{{ effectLabel(eff) }}</span>
+                            <span class="uptree-hover-stat-value" :class="effectSignClass(eff)">{{ effectValueText(eff) }}</span>
+                        </div>
+                        <div v-for="[key, val] in extraStats(hoverNode)" :key="'x' + key" class="uptree-hover-stat-row">
+                            <span class="uptree-hover-stat-label">{{ statLabel(key) }}</span>
+                            <span class="uptree-hover-stat-value" :class="statSignClass(key, val)">{{ formatStatVal(val) }}</span>
+                        </div>
+                        <template v-if="ingameEffect(hoverNode)">
+                            <div class="uptree-hover-game-caption">{{ t('app_upgrade_game_value') }}</div>
+                            <div class="uptree-hover-stat-row uptree-hover-stat-row--game">
+                                <span class="uptree-hover-stat-label">{{ propLabel(hoverNode.prop) }}</span>
+                                <span class="uptree-hover-stat-value">{{ hoverNode.val }}</span>
+                            </div>
+                        </template>
+                    </template>
+                    <!-- In-game mode: authored value primary, computed values as comparison -->
+                    <template v-else>
+                        <div class="uptree-hover-game-caption uptree-hover-game-caption--first">{{ t('app_upgrade_game_value') }}</div>
+                        <div v-if="ingameEffect(hoverNode)" class="uptree-hover-stat-row">
+                            <span class="uptree-hover-stat-label">{{ propLabel(hoverNode.prop) }}</span>
+                            <span class="uptree-hover-stat-value" :class="effectSignClass(ingameEffect(hoverNode))">{{ hoverNode.val }}</span>
+                        </div>
+                        <div class="uptree-hover-game-caption">{{ t('app_upgrade_engine_value') }}</div>
+                        <div v-for="eff in hoverNode.effects" :key="'g' + eff.key" class="uptree-hover-stat-row">
+                            <span class="uptree-hover-stat-label">{{ effectLabel(eff) }}</span>
+                            <span class="uptree-hover-stat-value" :class="effectSignClass(eff)">{{ effectValueText(eff) }}</span>
+                        </div>
+                    </template>
+                </template>
+                <template v-else>
+                    <div class="uptree-hover-stat-row uptree-hover-stat-row--primary">
+                        <span class="uptree-hover-stat-label uptree-hover-stat-label--primary">{{ t(hoverNode.prop) || hoverNode.prop }}</span>
+                        <span class="uptree-hover-stat-value uptree-stat-pos">{{ hoverPrimaryVal(hoverNode) }}</span>
+                    </div>
+                    <div v-for="[key, val] in sideEffectStats(hoverNode)" :key="key" class="uptree-hover-stat-row">
+                        <span class="uptree-hover-stat-label">{{ statLabel(key) }}</span>
+                        <span class="uptree-hover-stat-value" :class="statSignClass(key, val)">{{ formatStatVal(val) }}</span>
+                    </div>
+                </template>
             </div>
         </div>
     </div>
@@ -131,6 +178,43 @@ const STAT_LABEL_MAP = {
     rpm: "unit_rpm",
 };
 
+// Unit suffix per effect unit code emitted by the exporter (export_upgrade_effects.csv).
+// "game" = an authored in-game value used as a fallback (no computed unit).
+const EFFECT_UNIT_SUFFIX = {
+    pct: "%", healpct: "%", kg: " kg", rpm: " RPM",
+    speed: " m/s", mlmin: " ml/min", microg: " µg", num: "", game: "",
+};
+
+// Effect props where a NEGATIVE change is the improvement (lighter weight / less
+// condition loss) — everything else treats a positive change as good. Note recoil
+// is NOT inverted: the exporter emits a control index where higher = better (a
+// recoil-reducing upgrade yields a positive value), matching the in-game mod.
+const EFFECT_INVERTED = new Set(["st_prop_weight", "st_prop_durability"]);
+
+// For authored (fallback) values, which follow the game's display convention where
+// a lower number is the improvement (recoil/weight shown as negative).
+const AUTHORED_NEG_GOOD = new Set(["st_prop_recoil", "st_prop_weight", "st_prop_weightoutfit"]);
+
+// The game's declared upgrade property and our computed effect sometimes name the
+// same stat with different keys. Alias them so a computed effect is recognised as
+// covering the declared property (no spurious authored fallback / duplicate line).
+const EFFECT_KEY_ALIASES = {
+    st_prop_bullet_speed: "app_upgrade_bullet_speed", // "Flatness" ↔ our "Bullet Speed"
+    st_prop_weightoutfit: "st_prop_weight",           // outfit weight ↔ our weight
+};
+
+// Raw section stats now superseded by a converted effect — hidden from the raw
+// side-effect list so a node doesn't double-list e.g. weight or protections.
+const SUPERSEDED_RAW_KEYS = new Set([
+    "inv_weight", "rpm", "ammo_mag_size", "bullet_speed", "condition_shot_dec",
+    "fire_dispersion_base", "PDM_disp_base", "zoom_cam_dispersion", "bones_koeff_protection_add",
+    "wound_protection", "fire_wound_protection", "burn_protection", "shock_protection",
+    "chemical_burn_protection", "telepatic_protection", "radiation_protection",
+    "strike_protection", "explosion_protection", "bleeding_restore_speed",
+    "health_restore_speed", "power_restore_speed", "artefact_count",
+    "additional_inventory_weight", "additional_inventory_weight2",
+]);
+
 const CAT_LABEL_KEYS = {
     combat: "app_upgrade_cat_combat",
     fire: "app_upgrade_cat_fire",
@@ -138,23 +222,44 @@ const CAT_LABEL_KEYS = {
     psi: "app_upgrade_cat_psi",
     weight: "app_upgrade_cat_weight",
     gun: "app_upgrade_cat_gun",
+    recoil: "app_upgrade_cat_recoil",
+    accuracy: "app_upgrade_cat_accuracy",
+    handling: "app_upgrade_cat_handling",
+    firerate: "app_upgrade_cat_firerate",
+    reliability: "app_upgrade_cat_reliability",
+    ballistic: "app_upgrade_cat_ballistic",
+    mods: "app_upgrade_cat_mods",
     artifact: "app_upgrade_cat_artifact",
     medic: "app_upgrade_cat_medic",
     repair: "app_upgrade_cat_repair",
     default: "app_upgrade_cat_default",
 };
 
-// Maps a prop key to a design category for color coding
+// Maps a prop key to a design category for color coding.
 function getPropCategory(prop) {
     if (!prop) return "default";
     const p = prop.toLowerCase();
+
+    // ── Weapon upgrade axes (keyed off the declared primary property) ──
+    // These prop keys are disjoint from the armor/outfit ones below, so a weapon
+    // tree only ever shows weapon colors and an armor tree only armor colors.
+    if (p.includes("recoil")) return "recoil";
+    if (p.includes("accuracy")) return "accuracy";
+    if (p.includes("handling")) return "handling";
+    if (p.includes("rate_of_fire") || p.includes("rpm") || p.includes("auto_fire") || p.includes("fire_mode")) return "firerate";
+    if (p.includes("reliability")) return "reliability";
+    if (p.includes("bullet_speed") || p.includes("mag_size")) return "ballistic";
+    // Optics, muzzle/underbarrel devices, night vision, binoculars and
+    // caliber-conversion are all grouped as "Mods".
+    if (p.includes("scope") || p.includes("silencer") || p.includes("underbarrel") || p.includes("night_vision")
+        || p.includes("contrast") || p.includes("binoc") || p.includes("zoom") || p.includes("calibre") || p.includes("caliber")) return "mods";
+
+    // ── Armor / outfit axes ──
     if (p.includes("wound_protection") || p.includes("hit_power") || p.includes("damage")) return "combat";
     if (p.includes("fire_wound") || p.includes("burn") || p.includes("explosion")) return "fire";
     if (p.includes("radiation") || p.includes("chemical")) return "hazard";
     if (p.includes("telepat") || p.includes("shock_protection")) return "psi";
     if (p.includes("weight") || p.includes("inv_weight")) return "weight";
-    if (p.includes("rate_of_fire") || p.includes("rpm") || p.includes("accuracy") || p.includes("handling")
-        || p.includes("calibre") || p.includes("recoil") || p.includes("scope")) return "gun";
     if (p.includes("artefact") || p.includes("artifact") || p.includes("power_restore")) return "artifact";
     if (p.includes("health") || p.includes("bleed") || p.includes("restore")) return "medic";
     if (p.includes("durability") || p.includes("repair")) return "repair";
@@ -166,12 +271,16 @@ export default {
     inject: ["t", "headerLabel", "formatValue"],
     props: {
         nodes: { type: Array, default: () => [] },
+        // true = Engine (our computed values), false = In-game (the game's authored
+        // upgrade-screen values). Controlled by the Display setting; defaults to Engine.
+        engineMode: { type: Boolean, default: true },
     },
     data() {
         return {
             hoverNode: null,
             hoverPos: null,
             hoverSheet: false,
+            hoveredCat: null,
             _hoverTimeout: null,
         };
     },
@@ -219,7 +328,7 @@ export default {
             for (const node of this.nodes) {
                 seen.add(getPropCategory(node.prop));
             }
-            const order = ["combat","fire","hazard","psi","weight","gun","artifact","medic","repair","default"];
+            const order = ["combat","fire","hazard","psi","recoil","accuracy","handling","firerate","reliability","ballistic","mods","weight","gun","artifact","medic","repair","default"];
             return order.filter(c => seen.has(c));
         },
     },
@@ -316,7 +425,7 @@ export default {
                 return this.t("app_upgrade_label_change_to") + " " + node.val;
             }
             const prop = this.t(node.prop) || node.prop;
-            const val = node.val ? this.formatVal(node.val) : "";
+            const val = node.val ? this.formatVal(node.val, node.prop) : "";
             let line = val ? prop + " " + val : prop;
             if (node.stats) {
                 const related = [];
@@ -330,21 +439,32 @@ export default {
         sideEffectStats(node) {
             if (!node.stats) return [];
             const combined = this.combinedKeys(node);
-            const hide = new Set(["cost", "ammo_class", "hit_power", "ammo_elapsed"]);
-            return Object.entries(node.stats).filter(([key]) => !combined.has(key) && !hide.has(key));
+            // immunities_sect_add is an internal section reference, not a player
+            // stat — the protection it grants is already shown as the resistance
+            // percentage, so its raw section id would only be noise.
+            // additional_inventory_weight2 duplicates additional_inventory_weight.
+            const hide = new Set(["cost", "ammo_class", "hit_power", "ammo_elapsed", "immunities_sect_add", "immunities_sect", "additional_inventory_weight2"]);
+            return Object.entries(node.stats).filter(([key, val]) =>
+                !combined.has(key) && !hide.has(key) && parseFloat(val) !== 0
+            );
         },
         hoverPrimaryVal(node) {
             if (!node.val) return "";
             if (node.prop === "st_prop_calibre") return this.t("app_upgrade_label_change_to") + " " + node.val;
-            return this.formatVal(node.val);
+            return this.formatVal(node.val, node.prop);
         },
-        formatVal(val) {
+        formatVal(val, prop) {
             if (!val) return "";
             const num = parseFloat(val);
             if (isNaN(num)) return val;
             const prefix = num > 0 && !val.startsWith("+") ? "+" : "";
-            const suffix = val.includes("kg") || val.includes("%") ? "" : "%";
-            return prefix + val + suffix;
+            // Value already carries a unit — leave it alone.
+            if (val.includes("kg") || val.includes("%")) return prefix + val;
+            // Artefact/belt slots are a whole-number count, not a percentage.
+            if (prop === "st_prop_artefact") return prefix + val;
+            // Weight upgrades are measured in kg, not percent.
+            if (prop && prop.includes("weight")) return prefix + val + " " + this.t("unit_kg");
+            return prefix + val + "%";
         },
         formatCost(cost) {
             if (!cost) return "";
@@ -362,6 +482,75 @@ export default {
             const isGood = invertedKeys.has(key) ? num < 0 : num > 0;
             return isGood ? "uptree-stat-pos" : "uptree-stat-neg";
         },
+        // ── Full converted effects (export_upgrade_effects.csv) ──────────
+        propLabel(key) {
+            const tr = this.t(key);
+            if (tr && tr !== key) return tr;
+            const hl = this.headerLabel(key);
+            return (hl && hl !== key) ? hl : key;
+        },
+        effectLabel(eff) {
+            // The computed durability effect is a fixed condition-loss reduction, not a
+            // durability drop — relabel so the negative-but-good value reads correctly.
+            // The authored (in-game) value keeps the game's "Suit durability" name.
+            if (eff.key === "st_prop_durability" && !eff.authored) {
+                return this.t("app_upgrade_durability_computed");
+            }
+            return this.propLabel(eff.key);
+        },
+        effectValueText(eff) {
+            const suffix = EFFECT_UNIT_SUFFIX[eff.unit] ?? "";
+            // Number() is strict (whole string must be numeric) so caliber-like
+            // values ("5.56x45") aren't mis-parsed and don't get a "+" prefix.
+            const num = Number(eff.value);
+            if (Number.isNaN(num)) return eff.value + suffix;
+            const s = String(eff.value);
+            const signed = /^[+-]/.test(s) ? s : (num > 0 ? "+" + s : s); // don't double a sign
+            return signed + suffix;
+        },
+        effectSignClass(eff) {
+            const num = Number(eff.value);
+            if (Number.isNaN(num) || num === 0) return "";
+            const negGood = eff.authored ? AUTHORED_NEG_GOOD.has(eff.key) : EFFECT_INVERTED.has(eff.key);
+            const good = negGood ? num < 0 : num > 0;
+            return good ? "uptree-stat-pos" : "uptree-stat-neg";
+        },
+        // Effects to display. When the declared primary property produced no
+        // computed effect (e.g. recoil on a weapon missing from the enhanced-recoil
+        // config, where the % can't be derived), fall back to its authored in-game
+        // value so the node isn't shown as, say, a pure weight change.
+        nodeEffects(node) {
+            if (!node.effects || !node.effects.length) return node.effects;
+            if (node.prop && node.val && !this.isPrimaryComputed(node)) {
+                return [{ key: node.prop, value: node.val, unit: "game", authored: true }, ...node.effects];
+            }
+            return node.effects;
+        },
+        // Whether the declared primary property already has a computed effect (directly
+        // or via an alias) — if so, no authored fallback is needed for it.
+        isPrimaryComputed(node) {
+            if (!node.prop || !node.effects) return false;
+            const alias = EFFECT_KEY_ALIASES[node.prop];
+            return node.effects.some((e) => e.key === node.prop || (alias && e.key === alias));
+        },
+        // The game's authored declared value as an effect object (or null).
+        ingameEffect(node) {
+            if (!node.prop || !node.val) return null;
+            return { key: node.prop, value: node.val, unit: "game", authored: true };
+        },
+        // Chips to render in the compact tree row, per the current display mode.
+        rowEffects(node) {
+            if (this.engineMode) {
+                return (node.effects && node.effects.length) ? this.nodeEffects(node) : [];
+            }
+            const ig = this.ingameEffect(node);
+            return ig ? [ig] : [];
+        },
+        // Raw side-effects not already covered by a converted effect (e.g. immunities).
+        extraStats(node) {
+            if (!node.stats) return [];
+            return this.sideEffectStats(node).filter(([key]) => !SUPERSEDED_RAW_KEYS.has(key));
+        },
     },
 };
 </script>
@@ -374,6 +563,13 @@ export default {
 .uptree-node--psi       { --node-accent: var(--color-purple-mid);      --node-accent-bg: var(--color-purple-tint-12); }
 .uptree-node--weight    { --node-accent: var(--color-blue-muted);      --node-accent-bg: var(--color-blue-tint-12); }
 .uptree-node--gun       { --node-accent: var(--color-accent);          --node-accent-bg: var(--color-accent-tint-10); }
+.uptree-node--recoil      { --node-accent: var(--color-red-muted);     --node-accent-bg: var(--color-red-tint-12); }
+.uptree-node--accuracy    { --node-accent: var(--color-accent);        --node-accent-bg: var(--color-accent-tint-10); }
+.uptree-node--handling    { --node-accent: var(--color-warm-brown);    --node-accent-bg: var(--color-warm-brown-tint-12); }
+.uptree-node--firerate    { --node-accent: var(--color-orange);        --node-accent-bg: var(--color-orange-tint-12); }
+.uptree-node--reliability { --node-accent: var(--color-teal);          --node-accent-bg: var(--color-teal-tint-12); }
+.uptree-node--ballistic   { --node-accent: var(--color-purple-mid);    --node-accent-bg: var(--color-purple-tint-12); }
+.uptree-node--mods        { --node-accent: var(--color-green-muted);   --node-accent-bg: var(--color-green-tint-12); }
 .uptree-node--artifact  { --node-accent: var(--color-teal);            --node-accent-bg: var(--color-teal-tint-12); }
 .uptree-node--medic     { --node-accent: var(--color-green-positive);  --node-accent-bg: var(--color-green-positive-tint-10); }
 .uptree-node--repair    { --node-accent: var(--color-accent-tan);      --node-accent-bg: var(--color-accent-tan-tint-12); }
@@ -386,6 +582,13 @@ export default {
 .uptree-hover-card--psi,     .uptree-legend--psi      { --card-accent: var(--color-purple-mid); }
 .uptree-hover-card--weight,  .uptree-legend--weight   { --card-accent: var(--color-blue-muted); }
 .uptree-hover-card--gun,     .uptree-legend--gun      { --card-accent: var(--color-accent); }
+.uptree-hover-card--recoil,      .uptree-legend--recoil      { --card-accent: var(--color-red-muted); }
+.uptree-hover-card--accuracy,    .uptree-legend--accuracy    { --card-accent: var(--color-accent); }
+.uptree-hover-card--handling,    .uptree-legend--handling    { --card-accent: var(--color-warm-brown); }
+.uptree-hover-card--firerate,    .uptree-legend--firerate    { --card-accent: var(--color-orange); }
+.uptree-hover-card--reliability, .uptree-legend--reliability { --card-accent: var(--color-teal); }
+.uptree-hover-card--ballistic,   .uptree-legend--ballistic   { --card-accent: var(--color-purple-mid); }
+.uptree-hover-card--mods,        .uptree-legend--mods        { --card-accent: var(--color-green-muted); }
 .uptree-hover-card--artifact,.uptree-legend--artifact { --card-accent: var(--color-teal); }
 .uptree-hover-card--medic,   .uptree-legend--medic    { --card-accent: var(--color-green-positive); }
 .uptree-hover-card--repair,  .uptree-legend--repair   { --card-accent: var(--color-accent-tan); }
@@ -452,6 +655,16 @@ export default {
     color: var(--card-accent);
     text-transform: uppercase;
     opacity: 0.75;
+    cursor: pointer;
+    transition: opacity 0.12s;
+}
+
+.uptree-legend-chip.is-active {
+    opacity: 1;
+}
+
+.uptree-legend-chip.is-muted {
+    opacity: 0.3;
 }
 
 .uptree-legend-dot {
@@ -465,7 +678,6 @@ export default {
 
 /* ── Grid ────────────────────────────────────────────────── */
 .uptree-grid {
-    --ut-gutter: 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -478,9 +690,9 @@ export default {
 /* ── Tier row ────────────────────────────────────────────── */
 .uptree-tier {
     display: grid;
-    grid-template-columns: var(--ut-gutter) repeat(var(--cols), 1fr);
+    grid-template-columns: repeat(var(--cols), 1fr);
     gap: 0 0.4rem;
-    padding: 0.5rem 0.5rem 0.5rem 0;
+    padding: 0.5rem;
     align-items: start;
     position: relative;
 }
@@ -492,30 +704,6 @@ export default {
 /* Alternate tier background for visual rhythm */
 .uptree-tier:nth-child(even) {
     background: var(--color-overlay-white-2);
-}
-
-/* ── Gutter ──────────────────────────────────────────────── */
-.uptree-gutter {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 0.2rem;
-    border-right: 1px solid var(--color-border);
-    margin-right: 0.15rem;
-    align-self: stretch;
-}
-
-.uptree-tier-badge {
-    font-size: 0.48rem;
-    font-weight: 900;
-    letter-spacing: 0.06em;
-    color: var(--color-accent-dim);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    padding: 0.25rem 0;
-    line-height: 1;
-    text-transform: uppercase;
 }
 
 /* ── Cell ────────────────────────────────────────────────── */
@@ -532,8 +720,13 @@ export default {
     border-left: 3px solid var(--node-accent, var(--color-accent-dim));
     border-radius: 4px;
     cursor: default;
-    transition: border-color 0.12s, box-shadow 0.12s, background 0.12s;
+    transition: border-color 0.12s, box-shadow 0.12s, background 0.12s, opacity 0.12s;
     overflow: hidden;
+}
+
+/* Dimmed when another category is being previewed from the legend. */
+.uptree-node--dim {
+    opacity: 0.28;
 }
 
 .uptree-node:hover {
@@ -756,4 +949,49 @@ export default {
 
 .uptree-stat-pos { color: var(--color-green-positive); }
 .uptree-stat-neg { color: var(--color-red-muted); }
+
+/* Small badge flagging a value as the game's authored figure (computed value
+   unavailable for this weapon), not our derived conversion. */
+.uptree-fallback-badge {
+    display: inline-block;
+    margin-left: 0.25rem;
+    padding: 0 0.22rem;
+    font-size: 0.44rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--color-text-secondary);
+    background: var(--color-overlay-white-4);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* In-game (authored) value caption + row — helps match a node to the game UI */
+.uptree-hover-game-caption {
+    margin-top: 0.3rem;
+    padding-top: 0.25rem;
+    border-top: 1px dashed var(--color-border);
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+/* Leading caption sits right under the description — no divider needed above it. */
+.uptree-hover-game-caption--first {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.uptree-hover-stat-row--game .uptree-hover-stat-label,
+.uptree-hover-stat-row--game .uptree-hover-stat-value {
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+}
 </style>

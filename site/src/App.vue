@@ -44,12 +44,21 @@
     :maps-active="mapsActive"
     :trading-active="tradingActive"
     :player-inventory-active="playerInventoryActive"
-    :item-db-active="!buildPlannerActive && !mapsActive && !damageSimActive && !isCrafting && !tradingActive && !playerInventoryActive"
+    :version-compare-active="versionCompareActive"
+    :starting-loadouts-active="startingLoadoutsActive"
+    :faction-pools-active="factionPoolsActive"
+    :tools-landing-active="toolsLandingActive"
+    :tools-active="damageSimActive || versionCompareActive || startingLoadoutsActive || factionPoolsActive || toolsLandingActive"
+    :has-starting-loadouts="!!fileManifest['starting-loadouts.json']"
+    :has-faction-pools="!!fileManifest['drops.json']"
+    :ballistics-mode="ballisticsMode"
+    :item-db-active="!buildPlannerActive && !mapsActive && !damageSimActive && !isCrafting && !tradingActive && !playerInventoryActive && !versionCompareActive && !startingLoadoutsActive && !factionPoolsActive && !toolsLandingActive"
     :hide-no-drop="hideNoDrop"
     :hide-tactical-kit="hideTacticalKit"
     :hide-unused-ammo="hideUnusedAmmo"
     :show-tile-icons="showTileIcons"
     :show-unreliable-stats="showUnreliableStats"
+    :show-engine-upgrade-stats="showEngineUpgradeStats"
     :show-magazines="showMagazines"
     @toggle-sidebar-collapse="toggleSidebarCollapse()"
     @toggle-sidebar="toggleSidebar()"
@@ -60,11 +69,17 @@
     @open-build-planner="openBuildPlanner()"
     @open-crafting="openCrafting()"
     @open-damage-sim="openDamageSim()"
+    @open-armor-protection="openArmorProtection()"
+    @open-version-compare="openVersionCompare()"
+    @open-starting-loadouts="openStartingLoadouts()"
+    @open-faction-pools="openFactionPools()"
+    @open-tools-landing="openToolsLanding()"
     @toggle-hide-no-drop="toggleHideNoDrop()"
     @toggle-hide-tactical-kit="toggleHideTacticalKit()"
     @toggle-hide-unused-ammo="toggleHideUnusedAmmo()"
     @toggle-show-tile-icons="toggleShowTileIcons()"
     @toggle-show-unreliable-stats="toggleShowUnreliableStats()"
+    @toggle-show-engine-upgrade-stats="toggleShowEngineUpgradeStats()"
     @toggle-show-magazines="toggleShowMagazines()"
     @switch-pack="(p) => { activePack = p; switchPack() }"
     @change-locale="(id) => { locale = id; onLocaleChange() }"
@@ -78,7 +93,7 @@
     @select-crafting-search-result="(result) => selectCraftingSearchResult(result)"
 />
 
-<div class="layout" :class="{ 'sidebar-collapsed': sidebarCollapsed, 'sidebar-hidden': buildPlannerActive || mapsActive || damageSimActive || tradingActive || playerInventoryActive }">
+<div class="layout" :class="{ 'sidebar-collapsed': sidebarCollapsed, 'sidebar-hidden': buildPlannerActive || mapsActive || damageSimActive || tradingActive || playerInventoryActive || versionCompareActive || startingLoadoutsActive || factionPoolsActive || toolsLandingActive }">
     <SidebarNav
         :translations="translations"
         :sidebar-open="sidebarOpen"
@@ -102,6 +117,8 @@
         :toolkit-rates-category="'Toolkit Rates'"
         :has-outfit-exchange="!!fileManifest['outfit-exchange.json']"
         :outfit-exchange-category="'Outfit Exchange'"
+        :has-mutant-parts="!!fileManifest['mutant-parts.json']"
+        :mutant-parts-category="'Mutant Parts'"
         :favorites-view-active="favoritesViewActive"
         :recent-view-active="recentViewActive"
         @toggle-group="toggleGroup"
@@ -158,9 +175,10 @@
             @move-item-hover="(event) => moveItemHover(event)"
             @hide-item-hover="hideItemHover()"
         />
-        <DamageSimulator
-            v-if="damageSimMounted"
-            v-show="damageSimActive"
+        <div v-if="damageSimMounted" v-show="damageSimActive" class="ballistics-view">
+          <DamageSimulator
+            :actions-target="null"
+            v-show="ballisticsMode === 'weapons'"
             :weapon-categories="categoryItems"
             :ammo-items="categoryItems['ammo'] || []"
             :mutant-profiles="mutantProfilesCache || []"
@@ -176,6 +194,26 @@
             @show-build-hover="(item, event) => showBuildHover(item, event)"
             @move-build-hover="(event) => moveBuildHover(event)"
             @hide-build-hover="hideBuildHover()"
+          />
+
+          <ArmorProtectionMatrix
+            v-if="ballisticsMode === 'armor'"
+            :outfits="categoryItems['outfits'] || []"
+            :helmets="categoryItems['helmets'] || []"
+            :ammo-items="categoryItems['ammo'] || []"
+          />
+        </div>
+
+        <ToolsLanding
+          v-if="toolsLandingActive"
+          class="tools-landing-view"
+          :has-starting-loadouts="!!fileManifest['starting-loadouts.json']"
+          :has-faction-pools="!!fileManifest['drops.json']"
+          @open-damage-sim="openDamageSim()"
+          @open-armor-protection="openArmorProtection()"
+          @open-version-compare="openVersionCompare()"
+          @open-starting-loadouts="openStartingLoadouts()"
+          @open-faction-pools="openFactionPools()"
         />
         <BallisticsModal :open="ballisticsModalOpen" @close="closeBallisticsModal">
             <DamageSimulator
@@ -202,7 +240,7 @@
             <div class="loading-spinner"></div>
             <p class="loading-text">{{ t('app_label_loading') }}</p>
         </div>
-        <div v-show="!loading && !mapsActive && !damageSimActive && !tradingActive && !playerInventoryActive" class="content-inner">
+        <div v-show="!loading && !mapsActive && !damageSimActive && !tradingActive && !playerInventoryActive && !toolsLandingActive" class="content-inner">
             <FilterBar
                 ref="filterBar"
                 :filter-input="filterInput"
@@ -538,6 +576,7 @@
     :modal-used-in-recipes="modalUsedInRecipes"
     :modal-disassemble-materials="modalDisassembleMaterials"
     :modal-upgrade-nodes="modalUpgradeNodes"
+    :show-engine-upgrade-stats="showEngineUpgradeStats"
     :modal-used-by-weapons="modalUsedByWeapons"
     :modal-item-parts="modalItemParts"
     :modal-part-used-by="modalPartUsedBy"
@@ -646,6 +685,7 @@
     :hasFactionPools="!!fileManifest['drops.json']"
     :hasToolkitRates="!!fileManifest['toolkit-rates.json']"
     :hasOutfitExchange="!!fileManifest['outfit-exchange.json']"
+    :hasMutantParts="!!fileManifest['mutant-parts.json']"
     :craftingRecipeCategories="craftingRecipeCategories"
     :craftingDisassemblyCategories="craftingDisassemblyCategories"
     @close="quickNavOpen = false"
@@ -679,6 +719,7 @@ import ItemDetailModal from "./components/ItemDetailModal.vue";
 import { defineAsyncComponent } from 'vue';
 const BuildPlanner = defineAsyncComponent(() => import('./components/BuildPlanner.vue'));
 const DamageSimulator = defineAsyncComponent(() => import('./components/DamageSimulator.vue'));
+const ArmorProtectionMatrix = defineAsyncComponent(() => import('./components/ArmorProtectionMatrix.vue'));
 import ItemHoverPopover from "./components/ItemHoverPopover.vue";
 import ItemComparePopover from "./components/ItemComparePopover.vue";
 const MapsView = defineAsyncComponent(() => import('./components/MapsView.vue'));
@@ -691,6 +732,7 @@ import ToolkitRatesView from "./components/ToolkitRatesView.vue";
 import VersionCompareView from "./components/VersionCompareView.vue";
 const StartingLoadoutsView = defineAsyncComponent(() => import('./components/StartingLoadoutsView.vue'));
 const FactionDropsView = defineAsyncComponent(() => import('./components/FactionDropsView.vue'));
+const ToolsLanding = defineAsyncComponent(() => import('./components/ToolsLanding.vue'));
 import BuildImportCodeModal from "./components/modals/BuildImportCodeModal.vue";
 import BuildSaveModal from "./components/modals/BuildSaveModal.vue";
 import SaveImportModal from "./components/modals/SaveImportModal.vue";
@@ -706,6 +748,7 @@ export default {
     ...appDefinition.components,
     BuildPlanner,
     DamageSimulator,
+    ArmorProtectionMatrix,
     ItemHoverPopover,
     ItemComparePopover,
     BuildImportCodeModal,
@@ -732,6 +775,7 @@ export default {
     ToolkitRatesView,
     VersionCompareView,
     StartingLoadoutsView,
+    ToolsLanding,
     FactionDropsView,
   },
   provide() {

@@ -48,7 +48,7 @@ export const BIPOLAR = new Set([
     "ui_inv_outfit_durability_physical", "ui_inv_outfit_durability_anomaly"
 ]);
 export const POSITIVE_IS_GOOD = new Set([
-    "ui_inv_accuracy", "ui_inv_handling", "ui_inv_reli",
+    "ui_inv_accuracy", "ui_inv_handling", "ui_inv_reli", "_ballistic_rating",
 ]);
 
 export const HEAL_GROUPS = [
@@ -172,7 +172,6 @@ export const CATEGORY_GROUPS = [
     { name: "app_group_ammo_explosives", categories: [CAT.AMMO, CAT.EXPLOSIVES, CAT.MAGAZINES] },
     { name: "app_group_equipment", categories: [CAT.OUTFITS, CAT.HELMETS, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS, CAT.OUTFIT_PARTS] },
     { name: "app_group_consumables", categories: [CAT.FOOD, CAT.MEDICINE] },
-    { name: "app_group_crafting", categories: [CAT.MUTANT_PARTS] },
 ];
 
 export const KEYS = {

@@ -185,7 +185,7 @@
                                 </span>
                             </template>
                             <template v-else>
-                                <span class="stat-label" v-tooltip="row.key === '_malfunction_chance' ? t('app_tooltip_malfunction') : ''">{{ headerLabel(row.key) }}<svg v-if="row.key === '_malfunction_chance'" class="info-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+                                <span class="stat-label" v-tooltip="statRowTooltip(row.key)">{{ headerLabel(row.key) }}<svg v-if="statRowTooltip(row.key)" class="info-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
                                 <span class="stat-value" :class="modalStatClass(row.key, row.value)" :style="modalStatStyle(row.key, row.value)">{{ formatValue(row.key, row.value) }}</span>
                             </template>
                         </div>
@@ -200,6 +200,12 @@
                             </span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Penetration scale (outfit/helmet with armor calc fields) -->
+                <div v-if="isModalArmorItem" class="drop-sources" :class="{ collapsed: isCollapsed('penetration') }">
+                    <h2 class="section-toggle" @click="toggleSection('penetration')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_penetration_scale') }}</h2>
+                    <ArmorPenetrationScale :bone-armor="modalItem.boneArmor" :hit-fraction-actor="modalItem.hitFractionActor" />
                 </div>
 
                 <!-- Used By Weapons (on ammo detail) -->
@@ -342,7 +348,7 @@
                 <!-- Upgrade Tree -->
                 <div v-if="modalUpgradeNodes && modalUpgradeNodes.length > 0" class="drop-sources" :class="{ collapsed: isCollapsed('upgrades') }">
                     <h2 class="section-toggle" @click="toggleSection('upgrades')"><LucideChevronRight :size="14" class="section-chevron" /> {{ t('app_label_upgrades') }}</h2>
-                    <UpgradeTreeView :nodes="modalUpgradeNodes" />
+                    <UpgradeTreeView :nodes="modalUpgradeNodes" :engine-mode="showEngineUpgradeStats" />
                 </div>
 
                 <!-- NPC drop sources -->
@@ -474,10 +480,11 @@
 import UpgradeTreeView from './UpgradeTreeView.vue';
 import PerkDetails from './PerkDetails.vue';
 import AddonTile from './AddonTile.vue';
+import ArmorPenetrationScale from './ArmorPenetrationScale.vue';
 
 export default {
   name: 'ItemDetailModal',
-  components: { UpgradeTreeView, PerkDetails, AddonTile },
+  components: { UpgradeTreeView, PerkDetails, AddonTile, ArmorPenetrationScale },
   inject: [
     't', 'tName', 'tCat', 'headerLabel', 'formatValue', 'displayLabel', 'displayStyle', 'isFieldHidden',
     'healDots', 'factionColor', 'factionIcon', 'singularCategory', 'isUnusedAmmo', 'originBadge',
@@ -505,6 +512,7 @@ export default {
     modalUsedInRecipes: Array,
     modalDisassembleMaterials: { type: Array, default: null },
     modalUpgradeNodes: { type: Array, default: null },
+    showEngineUpgradeStats: { type: Boolean, default: true },
     modalUsedByWeapons: Array,
     modalItemParts: { type: Array, default: () => [] },
     modalPartUsedBy: { type: Array, default: () => [] },
@@ -565,6 +573,12 @@ export default {
     },
     isAddonItem() {
       return ['Scopes', 'Silencers', 'Grenade Launchers', 'Tactical Kits'].includes(this.modalCategory);
+    },
+    isModalArmorItem() {
+      return (this.modalCategory === 'Outfits' || this.modalCategory === 'Helmets')
+        && this.modalItem
+        && typeof this.modalItem.boneArmor === 'number'
+        && typeof this.modalItem.hitFractionActor === 'number';
     },
     // Small magnification label overlaid on a scope's icon, e.g. "4×" or "3–10×".
     scopeZoomLabel() {
@@ -692,6 +706,13 @@ export default {
         const raw = localStorage.getItem('modal-collapsed-sections');
         return raw ? JSON.parse(raw) : {};
       } catch { return {}; }
+    },
+    statRowTooltip(key) {
+      if (key === '_malfunction_chance') return this.t('app_tooltip_malfunction');
+      if (key === '_ballistic_rating') return this.t('app_tooltip_ballistic_rating');
+      if (key === 'ui_inv_ap_res') return this.t('app_tooltip_br_class');
+      if (key === 'ui_inv_outfit_fire_wound_protection') return this.t('app_tooltip_fire_wound_protection');
+      return '';
     },
     isCollapsed(key) {
       return !!this.collapsedSections[key];

@@ -60,6 +60,7 @@ export default {
         hasFactionPools: { type: Boolean, default: false },
         hasToolkitRates: { type: Boolean, default: false },
         hasOutfitExchange: { type: Boolean, default: false },
+        hasMutantParts: { type: Boolean, default: false },
         craftingRecipeCategories: { type: Array, default: () => [] },
         craftingDisassemblyCategories: { type: Array, default: () => [] },
     },
@@ -130,6 +131,9 @@ export default {
             }
             if (this.hasOutfitExchange) {
                 pages.push({ id: "outfit-exchange", label: this.t("app_cat_outfit_exchange"), group: toolsGroup, action: "category", cat: "Outfit Exchange" });
+            }
+            if (this.hasMutantParts) {
+                pages.push({ id: "mutant-parts", label: this.t("app_cat_mutant_parts"), group: toolsGroup, action: "category", cat: "Mutant Parts" });
             }
 
             return pages;

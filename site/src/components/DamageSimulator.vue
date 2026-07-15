@@ -1,59 +1,25 @@
 <template>
 <div class="damage-sim">
-  <div class="damage-sim-topbar">
-    <div class="damage-sim-credit">
-      <LucideHeart :size="12" />
-      <span>Based on veerserif's damage <a href="https://github.com/veerserif/gamma-dashboard" target="_blank" rel="noopener">calculator</a>.</span>
-    </div>
-    <div class="damage-sim-actions">
-      <button class="copy-link-btn damage-sim-help-toggle" :class="{ active: showHelp }" @click="showHelp = !showHelp; saveToStorage()">
-        <LucideCircleHelp :size="14" />
-        <span>{{ t('app_sim_show_help') }}</span>
-      </button>
-      <button class="copy-link-btn" :class="{ copied: _shareFeedback }" @click="copyShareLink()" v-tooltip="_shareFeedback ? t('app_sim_link_copied') : t('app_sim_copy_link')">
-        <LucideLink v-show="!_shareFeedback" :size="16" />
-        <svg v-show="_shareFeedback" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </button>
-      <button class="copy-link-btn" @click="resetAll()" v-tooltip="t('app_sim_reset')">
-        <LucideTrash2 :size="16" />
-      </button>
-    </div>
-  </div>
-  <div class="damage-sim-columns">
+  <div class="damage-sim-layout">
 
-    <!-- Left: Inputs -->
-    <div class="damage-sim-panel">
-      <!-- Loadouts -->
-      <div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_loadout_pre') }} {{ gboConstants.silencer_boost || '?' }}x. {{ t('app_sim_help_loadout_post') }}</div>
-      <div v-for="(lo, idx) in loadouts" :key="idx" class="damage-sim-loadout-row">
-        <span class="damage-sim-loadout-dot" :style="{ background: loadoutColor(idx) }"></span>
-        <div class="damage-sim-slot" :class="lo.weapon ? 'filled' : 'empty'" :style="lo.weapon ? { borderLeftColor: loadoutColor(idx) } : {}" @click="openWeaponPicker(idx)" @mouseenter="lo.weapon && $emit('showBuildHover', lo.weapon, $event)" @mousemove="lo.weapon && $emit('moveBuildHover', $event)" @mouseleave="$emit('hideBuildHover')">
-          <span v-if="lo.weapon" class="damage-sim-slot-name">{{ tName(lo.weapon) }}</span>
-          <span v-if="!lo.weapon" class="damage-sim-slot-hint">{{ t('app_sim_select_weapon') }}</span>
-          <button v-if="lo.weapon" class="damage-sim-slot-remove" @click.stop="clearWeapon(idx)">&times;</button>
-        </div>
-        <div class="damage-sim-slot" :class="[!lo.weapon ? 'empty disabled' : selectedAmmoFor(idx) ? 'filled' : 'empty']" :style="selectedAmmoFor(idx) ? { borderLeftColor: loadoutColor(idx) } : {}" @click="lo.weapon && openAmmoPicker(idx)" @mouseenter="selectedAmmoFor(idx) && $emit('showBuildHover', selectedAmmoFor(idx), $event)" @mousemove="selectedAmmoFor(idx) && $emit('moveBuildHover', $event)" @mouseleave="$emit('hideBuildHover')">
-          <span v-if="!lo.weapon" class="damage-sim-slot-hint">{{ t('app_sim_select_ammo') }}</span>
-          <span v-else-if="selectedAmmoFor(idx)" class="damage-sim-slot-name">{{ shortAmmoName(tName(selectedAmmoFor(idx)!)) }}</span>
-          <span v-else class="damage-sim-slot-hint">{{ t('app_sim_select_ammo') }}</span>
-          <button v-if="selectedAmmoFor(idx)" class="damage-sim-slot-remove" @click.stop="clearAmmo(idx)">&times;</button>
-        </div>
-        <div class="damage-sim-silencer-toggle" :class="{ locked: hasBuiltInSilencer(lo.weapon) }" @click="toggleSilencer(lo)" v-tooltip="(hasBuiltInSilencer(lo.weapon) ? t('app_sim_silencer_builtin') : t('app_sim_silencer')) + (gboConstants.silencer_boost ? ' (' + gboConstants.silencer_boost + 'x)' : '')">
-          <span class="toggle-switch" :class="{ on: lo.silenced || hasBuiltInSilencer(lo.weapon) }"><span class="toggle-knob"></span></span>
-        </div>
-        <button class="damage-sim-icon-btn" :class="{ 'damage-sim-icon-btn-hidden': !lo.weapon || !canAddLoadout }" @click="lo.weapon && canAddLoadout && copyLoadout(idx)" v-tooltip="t('app_sim_copy_loadout')">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+    <!-- Left rail: toolbar, then target conditions (one-click, live), then credit -->
+    <div class="damage-sim-panel damage-sim-rail">
+
+      <Teleport :to="actionsTarget" :disabled="!actionsTarget">
+      <div class="damage-sim-actions damage-sim-rail-actions">
+        <button class="copy-link-btn damage-sim-help-toggle" :class="{ active: showHelp }" @click="showHelp = !showHelp; saveToStorage()">
+          <LucideCircleHelp :size="14" />
+          <span>{{ t('app_sim_show_help') }}</span>
         </button>
-        <button v-if="loadouts.length > 1" class="damage-sim-icon-btn damage-sim-icon-btn-danger" @click="removeLoadout(idx)" v-tooltip="t('app_sim_remove_loadout')">
-          <LucideX :size="12" />
+        <button class="copy-link-btn" :class="{ copied: _shareFeedback }" @click="copyShareLink()" v-tooltip="_shareFeedback ? t('app_sim_link_copied') : t('app_sim_copy_link')">
+          <LucideLink v-show="!_shareFeedback" :size="16" />
+          <svg v-show="_shareFeedback" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <button class="copy-link-btn" @click="resetAll()" v-tooltip="t('app_sim_reset')">
+          <LucideTrash2 :size="16" />
         </button>
       </div>
-      <button v-if="canAddLoadout" class="damage-sim-add-btn" @click="addLoadout()">
-        <LucidePlus :size="12" />
-        {{ t('app_sim_add_loadout') }}
-      </button>
-
-      <div class="damage-sim-divider"></div>
+      </Teleport>
 
       <!-- Target -->
       <div class="damage-sim-section-label">{{ t('app_sim_target') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_target') }}</div></div>
@@ -66,7 +32,11 @@
         <div class="damage-sim-slot damage-sim-target-slot" :class="selectedMutant ? 'filled' : 'empty'" @click="mutantPickerOpen = true">
           <template v-if="selectedMutant">
             <span class="damage-sim-slot-name">{{ mutantDisplayName(selectedMutant.id) }}</span>
-            <span class="damage-sim-slot-meta">{{ mutantSubLabel(selectedMutant) }}</span>
+            <span class="damage-sim-slot-meta">
+              <span class="damage-sim-stat"><span class="k">Skin</span> <span class="v">{{ selectedMutant.skin_armor }}</span></span>
+              <span class="damage-sim-stat"><span class="k">Hit Frac</span> <span class="v">{{ selectedMutant.hit_fraction }}</span></span>
+              <span class="damage-sim-stat"><span class="k">Head</span> <span class="v">×{{ selectedMutant.hitzone_head }}</span></span>
+            </span>
             <button class="damage-sim-slot-remove" @click.stop="selectedMutantId = ''">&times;</button>
           </template>
           <template v-else>
@@ -83,7 +53,12 @@
         <div class="damage-sim-slot damage-sim-target-slot" :class="selectedNpcProfile ? 'filled' : 'empty'" @click="npcPickerOpen = true">
           <template v-if="selectedNpcProfile">
             <span class="damage-sim-slot-name">{{ npcProfileLabel(selectedNpcProfile) }}</span>
-            <span class="damage-sim-slot-meta">Body {{ selectedNpcProfile.body_bonearmor }} · Head {{ selectedNpcProfile.head_bonearmor }} · AP Scale {{ selectedNpcProfile.ap_scale }} · Hit Frac {{ selectedNpcProfile.hit_fraction }}</span>
+            <span class="damage-sim-slot-meta">
+              <span class="damage-sim-stat"><span class="k">Body</span> <span class="v">{{ selectedNpcProfile.body_bonearmor }}</span></span>
+              <span class="damage-sim-stat"><span class="k">Head</span> <span class="v">{{ selectedNpcProfile.head_bonearmor }}</span></span>
+              <span class="damage-sim-stat"><span class="k">AP Scale</span> <span class="v">{{ selectedNpcProfile.ap_scale }}</span></span>
+              <span class="damage-sim-stat"><span class="k">Hit Frac</span> <span class="v">{{ selectedNpcProfile.hit_fraction }}</span></span>
+            </span>
             <button class="damage-sim-slot-remove" @click.stop="selectedNpcProfileId = ''">&times;</button>
           </template>
           <template v-else>
@@ -95,7 +70,7 @@
           <button v-for="z in stalkerHitzones" :key="z" :class="{ active: hitzone === z }" @click="hitzone = z; saveToStorage()">{{ t('app_sim_hitzone_' + z) }}<span v-if="gboConstants.stalker_hitzones" class="damage-sim-btn-sub">{{ stalkerBoneDamageMult(z, gboConstants) }}x<template v-if="hitzoneApBoost(z)">, +{{ hitzoneApBoost(z) }} AP</template></span></button>
         </div>
         <div class="damage-sim-section-label">{{ t('app_sim_faction') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_faction') }}</div></div>
-        <div class="damage-sim-toggle-group">
+        <div class="damage-sim-toggle-group damage-sim-fac-group">
           <button :class="{ active: faction === 'default' }" @click="faction = 'default'; saveToStorage()">{{ t('app_sim_faction_default') }}<span v-if="gboConstants.faction_resistance" class="damage-sim-btn-sub">{{ resolveFactionRes('default', gboConstants).dmg_res }}x<template v-if="resolveFactionRes('default', gboConstants).ap_res !== resolveFactionRes('default', gboConstants).dmg_res">, {{ resolveFactionRes('default', gboConstants).ap_res }}x AP</template></span></button>
           <button v-for="f in factions" :key="f" :class="{ active: faction === f }" @click="faction = f; saveToStorage()">{{ t('app_sim_faction_' + f) }}<span v-if="gboConstants.faction_resistance" class="damage-sim-btn-sub">{{ resolveFactionRes(f, gboConstants).dmg_res }}x<template v-if="resolveFactionRes(f, gboConstants).ap_res !== resolveFactionRes(f, gboConstants).dmg_res">, {{ resolveFactionRes(f, gboConstants).ap_res }}x AP</template></span></button>
         </div>
@@ -120,195 +95,218 @@
         <button v-for="d in difficulties" :key="d.key" :class="{ active: difficulty === d.key }" @click="difficulty = d.key; saveToStorage()">{{ t(d.label) }}<span v-if="gboConstants.difficulty" class="damage-sim-btn-sub">{{ gboConstants.difficulty[String(d.key)] }}x</span></button>
       </div>
 
+      <div class="damage-sim-credit damage-sim-rail-credit">
+        <LucideHeart :size="12" />
+        <span>Inspired by veerserif's damage <a href="https://github.com/veerserif/gamma-dashboard" target="_blank" rel="noopener">calculator</a>.</span>
+      </div>
+
     </div>
 
-    <!-- Right: Results -->
-    <div class="damage-sim-panel">
-      <div v-if="activeResults.length" class="damage-sim-results-table-wrap damage-sim-stats-box">
-        <table class="damage-sim-results-table">
+    <!-- Right: leaderboard + compare -->
+    <div class="damage-sim-panel damage-sim-board-col">
+      <div class="damage-sim-board-head">
+        <h3 class="damage-sim-board-title">{{ t('app_sim_results') }}</h3>
+        <button class="damage-sim-add-primary" @click="openCombinedPicker()">
+          {{ t('app_sim_add_pair') }}
+        </button>
+      </div>
+
+      <!-- Leaderboard -->
+      <div v-if="activeResults.length" class="damage-sim-lb-wrap damage-sim-stats-box">
+        <table class="damage-sim-lb">
           <thead>
             <tr>
-              <th></th>
-              <th v-for="ar in activeResults" :key="'h'+ar.idx" :style="{ color: loadoutColor(ar.idx) }">{{ loadoutLabel(ar.idx) }}</th>
+              <th class="damage-sim-lb-pin-col">
+                <span class="damage-sim-pin damage-sim-pin-all" :class="{ on: pinAllState !== 'none' }" @click="toggleSelectAll()" v-tooltip="t('app_sim_pin_all')">
+                  <svg v-if="pinAllState === 'all'" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg v-else-if="pinAllState === 'some'" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </th>
+              <th class="left">{{ t('app_sim_weapon_ammo') }}</th>
+              <template v-if="targetType === 'stalker'">
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'damage' }" @click="sortBy('damage')" v-tooltip="t('app_sim_help_damage')">{{ t('app_sim_col_dmg') }}<span v-if="sortKey === 'damage'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'stk' }" @click="sortBy('stk')" v-tooltip="t('app_sim_help_stk')">{{ t('app_sim_col_stk') }}<span v-if="sortKey === 'stk'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'ap' }" @click="sortBy('ap')" v-tooltip="t('app_sim_help_ap')">{{ t('app_sim_col_ap') }}<span v-if="sortKey === 'ap'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'dps' }" @click="sortBy('dps')" v-tooltip="t('app_sim_help_dps')">{{ t('app_sim_col_dps') }}<span v-if="sortKey === 'dps'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+              </template>
+              <template v-else>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'damage' }" @click="sortBy('damage')" v-tooltip="t('app_sim_help_damage')">{{ t('app_sim_col_dmg') }}<span v-if="sortKey === 'damage'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'ammoMult' }" @click="sortBy('ammoMult')" v-tooltip="t('app_sim_help_ammo_mult')">{{ t('app_sim_col_ammo') }}<span v-if="sortKey === 'ammoMult'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'stk' }" @click="sortBy('stk')" v-tooltip="t('app_sim_help_stk')">{{ t('app_sim_col_stk') }}<span v-if="sortKey === 'stk'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+                <th class="damage-sim-lb-sortable" :class="{ sorted: sortKey === 'dps' }" @click="sortBy('dps')" v-tooltip="t('app_sim_help_dps')">{{ t('app_sim_col_dps') }}<span v-if="sortKey === 'dps'" class="damage-sim-lb-arrow">{{ sortDir < 0 ? '▾' : '▴' }}</span></th>
+              </template>
+              <th class="damage-sim-lb-sil-col" v-tooltip="t('app_sim_help_silencer_mult')">{{ t('app_sim_col_sil') }}</th>
+              <th class="damage-sim-lb-remove-col"></th>
             </tr>
           </thead>
-          <tbody v-if="targetType === 'stalker'">
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_result_ap') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_ap')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ap') }}</div></td>
-              <td v-for="ar in activeResults" :key="'ap'+ar.idx">
-                <span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.ap) }}</span>
-                <span class="damage-sim-table-vs">vs</span>
-                <span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.boneArmor) }}</span>
-                <span class="damage-sim-pen-icon" :class="ar.result.stalker?.armor?.penetrated ? 'pen' : 'nopen'" v-tooltip="ar.result.stalker?.armor?.penetrated ? t('app_sim_result_pen') : t('app_sim_result_no_pen')">
-                  <svg v-if="ar.result.stalker?.armor?.penetrated" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_result_damage') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_damage')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_damage') }}</div></td>
-              <td v-for="ar in activeResults" :key="'dmg'+ar.idx">
-                <span class="damage-sim-table-val damage-sim-table-val-primary" :class="compareClass(ar.idx, 'damage')">{{ fmt(ar.result.stalker?.armor?.damage) }}</span>
-                <span v-if="hasComparison && compareDelta(ar.idx, 'damage')" class="damage-sim-compare-tag" :class="compareClass(ar.idx, 'damage')">{{ compareDelta(ar.idx, 'damage') }}</span>
-                <div v-if="ar.result.stalker?.armor?.minDamage !== undefined" class="damage-sim-table-sub">{{ t('app_sim_non_pen_range') }}: {{ fmt(ar.result.stalker.armor.minDamage) }} &ndash; {{ fmt(ar.result.stalker.armor.maxDamage) }}</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_result_stk') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_stk')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_stk') }}</div></td>
-              <td v-for="ar in activeResults" :key="'stk'+ar.idx">
-                <span class="damage-sim-table-val damage-sim-table-val-primary" :class="compareClass(ar.idx, 'stk')">{{ ar.result.stalker?.stk?.stk }}</span>
-                <span v-if="ar.result.stalker?.stk?.minStk !== ar.result.stalker?.stk?.maxStk" class="damage-sim-table-sub">({{ ar.result.stalker?.stk?.minStk }}&ndash;{{ ar.result.stalker?.stk?.maxStk }})</span>
-                <span v-if="hasComparison && compareDelta(ar.idx, 'stk')" class="damage-sim-compare-tag" :class="compareClass(ar.idx, 'stk')">{{ compareDelta(ar.idx, 'stk') }}</span>
-              </td>
-            </tr>
-            <tr v-if="activeResults.some(ar => ar.result.stalker?.stp > 1)">
-              <td class="damage-sim-table-label">{{ t('app_sim_result_stp') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_stp')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_stp') }}</div></td>
-              <td v-for="ar in activeResults" :key="'stp'+ar.idx">
-                <span class="damage-sim-table-val">{{ ar.result.stalker?.stp }}</span>
-              </td>
-            </tr>
-          </tbody>
-          <tbody v-if="targetType === 'mutant'">
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_result_ap_skin') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_ap_skin')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ap_skin') }}</div></td>
-              <td v-for="ar in activeResults" :key="'apsk'+ar.idx">
-                <span class="damage-sim-table-val">{{ fmt(ar.result.mutant?.ap) }}</span>
-                <span class="damage-sim-table-vs">vs</span>
-                <span class="damage-sim-table-val">{{ fmt(ar.result.mutant?.skinArmor) }}</span>
-                <span class="damage-sim-pen-icon" :class="ar.result.mutant?.penetrated ? 'pen' : 'nopen'" v-tooltip="ar.result.mutant?.penetrated ? t('app_sim_result_pen') : t('app_sim_result_no_pen_mutant_tip')">
-                  <svg v-if="ar.result.mutant?.penetrated" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_ammo_mult') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_ammo_mult_mutant')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ammo_mult_mutant') }}</div></td>
-              <td v-for="ar in activeResults" :key="'amult'+ar.idx">
-                <span class="damage-sim-table-val" :class="ammoMultClass(ar.result.mutant?.ammoMult)">× {{ ar.result.mutant?.ammoMult }}</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_result_damage') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_damage_mutant')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_damage_mutant') }}</div></td>
-              <td v-for="ar in activeResults" :key="'dmg'+ar.idx">
-                <span class="damage-sim-table-val damage-sim-table-val-primary" :class="compareClass(ar.idx, 'damage')">{{ fmt(ar.result.mutant?.damage) }}</span>
-                <span v-if="hasComparison && compareDelta(ar.idx, 'damage')" class="damage-sim-compare-tag" :class="compareClass(ar.idx, 'damage')">{{ compareDelta(ar.idx, 'damage') }}</span>
-                <div v-if="ar.result.mutant?.critMult > 1" class="damage-sim-crit-badge">{{ t('app_sim_result_crit') }} x{{ ar.result.mutant.critMult }}</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="damage-sim-table-label">{{ t('app_sim_result_stk') }}<LucideCircleHelp class="damage-sim-info-icon" :size="12" v-tooltip="t('app_sim_help_stk_mutant')" /><div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_stk_mutant') }}</div></td>
-              <td v-for="ar in activeResults" :key="'stk'+ar.idx">
-                <span class="damage-sim-table-val damage-sim-table-val-primary" :class="compareClass(ar.idx, 'stk')">{{ Number.isFinite(ar.result.mutant?.stk) ? ar.result.mutant.stk : '∞' }}</span>
-                <span v-if="hasComparison && compareDelta(ar.idx, 'stk')" class="damage-sim-compare-tag" :class="compareClass(ar.idx, 'stk')">{{ compareDelta(ar.idx, 'stk') }}</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Detail toggle -->
-      <div v-if="activeResults.length" class="damage-sim-detail-toggle">
-        <div class="damage-sim-toggle-group damage-sim-toggle-sm">
-          <button :class="{ active: detailView === 'chart' }" @click="detailView = 'chart'">{{ t('app_sim_radar_chart') }}</button>
-          <button :class="{ active: detailView === 'breakdown' }" @click="detailView = 'breakdown'">{{ t('app_sim_breakdown') }}</button>
-        </div>
-      </div>
-
-      <!-- Breakdown table -->
-      <div v-if="detailView === 'breakdown' && activeResults.length" class="damage-sim-results-table-wrap damage-sim-stats-box">
-        <!-- Mutant breakdown -->
-        <table v-if="targetType === 'mutant'" class="damage-sim-results-table">
-          <thead><tr>
-            <th></th>
-            <th v-for="ar in activeResults" :key="'bh'+ar.idx" :style="{ color: loadoutColor(ar.idx) }">{{ loadoutLabel(ar.idx) }}</th>
-          </tr></thead>
           <tbody>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_raw_damage') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_raw_damage') }}</div></td><td v-for="ar in activeResults" :key="'rd'+ar.idx"><span class="damage-sim-table-val">{{ fmt(ar.result.mutant?.rawDmg) }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_air_res') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_air_res') }}</div></td><td v-for="ar in activeResults" :key="'ar'+ar.idx"><span class="damage-sim-table-val">&divide; {{ fmt(ar.result.mutant?.airDiv) }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_ammo_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ammo_mult') }}</div></td><td v-for="ar in activeResults" :key="'am'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.mutant?.ammoMult }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_spec_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_spec_mult') }}</div></td><td v-for="ar in activeResults" :key="'sm'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.mutant?.specMult }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_bone_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_bone_mult') }}</div></td><td v-for="ar in activeResults" :key="'bm'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.mutant?.boneMult }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_barrel') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_barrel') }}</div></td><td v-for="ar in activeResults" :key="'ba'+ar.idx"><span class="damage-sim-table-val">&times; {{ fmt(ar.result.mutant?.barrel) }}</span></td></tr>
-            <tr class="damage-sim-table-total"><td class="damage-sim-table-label">{{ t('app_sim_result_damage') }}</td><td v-for="ar in activeResults" :key="'td'+ar.idx"><span class="damage-sim-table-val damage-sim-table-val-primary">{{ fmt(ar.result.mutant?.damage) }}</span></td></tr>
-          </tbody>
-        </table>
-
-        <!-- Stalker breakdown -->
-        <table v-if="targetType === 'stalker'" class="damage-sim-results-table">
-          <thead><tr>
-            <th></th>
-            <th v-for="ar in activeResults" :key="'bh'+ar.idx" :style="{ color: loadoutColor(ar.idx) }">{{ loadoutLabel(ar.idx) }}</th>
-          </tr></thead>
-          <tbody>
-            <tr class="damage-sim-table-section"><td :colspan="activeResults.length + 1">{{ t('app_sim_result_damage') }}</td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_hit_power') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_hit_power') }}</div></td><td v-for="ar in activeResults" :key="'hp'+ar.idx"><span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.breakdown?.hitPower) }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_air_res') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_air_res') }}</div></td><td v-for="ar in activeResults" :key="'ar'+ar.idx"><span class="damage-sim-table-val">&divide; {{ fmt(ar.result.stalker?.breakdown?.airDiv) }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_k_hit') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_k_hit') }}</div></td><td v-for="ar in activeResults" :key="'kh'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.kHit }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_bone_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_bone_mult') }}</div></td><td v-for="ar in activeResults" :key="'bm'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.boneDmgMult }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_ap_scale') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ap_scale') }}</div></td><td v-for="ar in activeResults" :key="'as'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.apScale }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_barrel') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_barrel') }}</div></td><td v-for="ar in activeResults" :key="'ba'+ar.idx"><span class="damage-sim-table-val">&times; {{ fmt(ar.result.stalker?.breakdown?.barrel) }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_difficulty') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_difficulty') }}</div></td><td v-for="ar in activeResults" :key="'df'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.diffMult }}</span></td></tr>
-            <tr v-if="activeResults.some(ar => ar.result.stalker?.breakdown?.ammoMult !== 1)"><td class="damage-sim-table-label">{{ t('app_sim_ammo_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ammo_mult') }}</div></td><td v-for="ar in activeResults" :key="'am'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.ammoMult }}</span></td></tr>
-            <tr v-if="activeResults.some(ar => ar.result.stalker?.breakdown?.silencerMult !== 1)"><td class="damage-sim-table-label">{{ t('app_sim_silencer_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_silencer_mult') }}</div></td><td v-for="ar in activeResults" :key="'sl'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.silencerMult }}</span></td></tr>
-            <tr class="damage-sim-table-total"><td class="damage-sim-table-label">{{ t('app_sim_raw_damage') }}</td><td v-for="ar in activeResults" :key="'rd'+ar.idx"><span class="damage-sim-table-val damage-sim-table-val-primary">{{ fmt(ar.result.stalker?.rawDmg) }}</span></td></tr>
-
-            <tr class="damage-sim-table-section"><td :colspan="activeResults.length + 1">{{ t('app_sim_result_ap') }}</td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_base_ap') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_base_ap') }}</div></td><td v-for="ar in activeResults" :key="'kap'+ar.idx"><span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.breakdown?.kAp) }}</span></td></tr>
-            <tr v-if="activeResults.some(ar => ar.result.stalker?.breakdown?.apBoost)"><td class="damage-sim-table-label">{{ t('app_sim_ap_boost') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ap_boost') }}</div></td><td v-for="ar in activeResults" :key="'ab'+ar.idx"><span class="damage-sim-table-val">+ {{ ar.result.stalker?.breakdown?.apBoost || 0 }}</span></td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_difficulty') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_difficulty') }}</div></td><td v-for="ar in activeResults" :key="'df2'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.diffMult }}</span></td></tr>
-            <tr class="damage-sim-table-total"><td class="damage-sim-table-label">{{ t('app_sim_result_ap') }}</td><td v-for="ar in activeResults" :key="'tap'+ar.idx"><span class="damage-sim-table-val damage-sim-table-val-primary">{{ fmt(ar.result.stalker?.ap) }}</span></td></tr>
-
-            <tr class="damage-sim-table-section"><td :colspan="activeResults.length + 1">{{ t('app_sim_armor_result') }}</td></tr>
-            <tr><td class="damage-sim-table-label">{{ t('app_sim_result_damage') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_armor_result') }}</div></td>
-              <td v-for="ar in activeResults" :key="'ares'+ar.idx">
-                <span class="damage-sim-pen-icon" :class="ar.result.stalker?.armor?.penetrated ? 'pen' : 'nopen'" v-tooltip="ar.result.stalker?.armor?.penetrated ? t('app_sim_result_pen') : ar.result.stalker?.armor?.partialPen ? t('app_sim_armor_partial_pen') : t('app_sim_result_no_pen')">
-                  <svg v-if="ar.result.stalker?.armor?.penetrated" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <tr v-for="ar in sortedResults" :key="ar.idx" :class="{ pinned: isPinned(ar.idx) }">
+              <td class="damage-sim-lb-pin-cell">
+                <span class="damage-sim-pin" :class="{ on: isPinned(ar.idx) }" :style="isPinned(ar.idx) ? { background: pinColorForIndex(ar.idx), borderColor: pinColorForIndex(ar.idx) } : {}" @click="togglePin(ar.idx)" v-tooltip="t('app_sim_pin')">
+                  <svg v-if="isPinned(ar.idx)" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </span>
-                <span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.armor?.damage) }}</span>
+              </td>
+              <td class="left">
+                <div class="damage-sim-lb-wcell">
+                  <div class="damage-sim-lb-icon" :style="isPinned(ar.idx) ? { borderColor: pinColorForIndex(ar.idx) } : {}" @mouseenter="$emit('showBuildHover', loadouts[ar.idx].weapon, $event)" @mousemove="$emit('moveBuildHover', $event)" @mouseleave="$emit('hideBuildHover')">
+                    <img :src="iconUrl(loadouts[ar.idx].weapon!.id)" :alt="tName(loadouts[ar.idx].weapon!)" @error="onIconError" loading="lazy" />
+                  </div>
+                  <div class="damage-sim-lb-wtext">
+                    <div class="damage-sim-lb-wname">{{ tName(loadouts[ar.idx].weapon!) }}<span v-if="loadouts[ar.idx].silenced || hasBuiltInSilencer(loadouts[ar.idx].weapon)" class="damage-sim-lb-silenced" v-tooltip="t('app_sim_silencer')"><LucideVolumeX :size="11" /></span></div>
+                    <span v-if="selectedAmmoFor(ar.idx)" class="damage-sim-lb-ammo" :class="'ammo-cls-' + ammoClassFor(ar.idx)">{{ shortAmmoName(tName(selectedAmmoFor(ar.idx)!)) }}</span>
+                  </div>
+                </div>
+              </td>
+              <template v-if="targetType === 'stalker'">
+                <td class="damage-sim-lb-num damage-sim-lb-dmg">
+                  <span class="damage-sim-lb-dmgval" :class="{ best: ar.result.stalker?.armor?.damage === maxActiveDamage }">{{ fmt(ar.result.stalker?.armor?.damage) }}</span>
+                  <div v-if="activeResults.length > 1" class="damage-sim-lb-bar"><span :style="{ width: dmgBarWidth(ar.result.stalker?.armor?.damage), background: ar.result.stalker?.armor?.damage === maxActiveDamage ? 'var(--accent)' : 'var(--text-secondary)' }"></span></div>
+                </td>
+                <td class="damage-sim-lb-num"><span class="damage-sim-lb-stk">{{ ar.result.stalker?.stk?.stk }}</span><span v-if="ar.result.stalker?.stk?.minStk !== ar.result.stalker?.stk?.maxStk" class="damage-sim-lb-sub">{{ ar.result.stalker?.stk?.minStk }}&ndash;{{ ar.result.stalker?.stk?.maxStk }}</span></td>
+                <td class="damage-sim-lb-num">
+                  <span class="damage-sim-lb-ap-line">
+                    <span class="damage-sim-pen-ico" :class="ar.result.stalker?.armor?.penetrated ? 'pen' : 'nopen'" v-tooltip="ar.result.stalker?.armor?.penetrated ? t('app_sim_result_pen') : t('app_sim_result_stop')">
+                      <svg v-if="ar.result.stalker?.armor?.penetrated" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      <svg v-else width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </span>
+                    <span class="damage-sim-lb-val">{{ fmt(ar.result.stalker?.ap) }}</span>
+                  </span>
+                  <span class="damage-sim-lb-sub">vs {{ fmt(ar.result.stalker?.boneArmor) }}</span>
+                </td>
+                <td class="damage-sim-lb-num"><span class="damage-sim-lb-val">{{ fmt(dpsFor(ar.idx)) }}</span></td>
+              </template>
+              <template v-else>
+                <td class="damage-sim-lb-num damage-sim-lb-dmg">
+                  <span class="damage-sim-lb-dmgval" :class="{ best: ar.result.mutant?.damage === maxActiveDamage }">{{ fmt(ar.result.mutant?.damage) }}</span>
+                  <div v-if="activeResults.length > 1" class="damage-sim-lb-bar"><span :style="{ width: dmgBarWidth(ar.result.mutant?.damage), background: ar.result.mutant?.damage === maxActiveDamage ? 'var(--accent)' : 'var(--text-secondary)' }"></span></div>
+                  <div v-if="ar.result.mutant?.critMult > 1" class="damage-sim-lb-crit">{{ t('app_sim_result_crit') }} ×{{ ar.result.mutant.critMult }}</div>
+                </td>
+                <td class="damage-sim-lb-num"><span class="damage-sim-lb-val" :class="ammoMultClass(ar.result.mutant?.ammoMult)">×{{ ar.result.mutant?.ammoMult }}</span></td>
+                <td class="damage-sim-lb-num"><span class="damage-sim-lb-stk">{{ Number.isFinite(ar.result.mutant?.stk) ? ar.result.mutant.stk : '∞' }}</span></td>
+                <td class="damage-sim-lb-num"><span class="damage-sim-lb-val">{{ fmt(dpsFor(ar.idx)) }}</span></td>
+              </template>
+              <td class="damage-sim-lb-sil-cell">
+                <div v-if="weaponSilencerCapable(loadouts[ar.idx].weapon)" class="damage-sim-silencer-toggle" :class="{ locked: hasBuiltInSilencer(loadouts[ar.idx].weapon) }" @click="toggleSilencer(loadouts[ar.idx])" v-tooltip="(hasBuiltInSilencer(loadouts[ar.idx].weapon) ? t('app_sim_silencer_builtin') : t('app_sim_silencer')) + (gboConstants.silencer_boost ? ' (' + gboConstants.silencer_boost + 'x)' : '')">
+                  <span class="damage-sim-sil-caption" :class="{ on: loadouts[ar.idx].silenced || hasBuiltInSilencer(loadouts[ar.idx].weapon) }">{{ t('app_sim_silencer') }}</span>
+                  <span class="toggle-switch toggle-switch-sm" :class="{ on: loadouts[ar.idx].silenced || hasBuiltInSilencer(loadouts[ar.idx].weapon) }"><span class="toggle-knob"></span></span>
+                </div>
+              </td>
+              <td class="damage-sim-lb-remove-cell">
+                <button class="damage-sim-icon-btn damage-sim-icon-btn-danger" @click="removeRow(ar.idx)" v-tooltip="t('app_sim_remove')"><LucideX :size="12" /></button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Radar chart -->
-      <div v-if="activeResults.length && detailView === 'chart'" class="damage-sim-radar-wrap">
-        <canvas ref="radarCanvas"></canvas>
-        <div class="damage-sim-radar-mode">
-          <button :class="{ active: radarMode === 'relative' }" @click="radarMode = 'relative'">{{ t('app_sim_radar_each_other') }}</button>
-          <button :class="{ active: radarMode === 'category' }" @click="radarMode = 'category'">{{ t('app_sim_radar_same_class') }}</button>
-          <button :class="{ active: radarMode === 'global' }" @click="radarMode = 'global'">{{ t('app_sim_radar_all_weapons') }}</button>
-        </div>
-      </div>
-
-      <div v-if="!results[0] && !results[1]" class="damage-sim-empty-state">
+      <div v-else class="damage-sim-empty-state">
         <LucideCrosshair :size="32" />
-        <p>{{ t('app_sim_select_all') }}</p>
+        <p>{{ t('app_sim_no_weapons') }}</p>
+      </div>
+
+      <!-- Compare (pinned rows) — hidden until at least one row is pinned -->
+      <div v-if="pinnedResults.length" class="damage-sim-compare">
+        <div class="damage-sim-compare-head">
+          <h4 class="damage-sim-compare-title">{{ t('app_sim_compare') }}</h4>
+          <div class="damage-sim-toggle-group damage-sim-toggle-sm">
+            <button :class="{ active: detailView === 'chart' }" @click="detailView = 'chart'">{{ t('app_sim_radar_chart') }}</button>
+            <button :class="{ active: detailView === 'breakdown' }" @click="detailView = 'breakdown'">{{ t('app_sim_breakdown') }}</button>
+          </div>
+        </div>
+
+        <!-- Breakdown table -->
+          <div v-if="detailView === 'breakdown'" class="damage-sim-results-table-wrap damage-sim-stats-box">
+            <!-- Mutant breakdown -->
+            <table v-if="targetType === 'mutant'" class="damage-sim-results-table">
+              <thead><tr>
+                <th></th>
+                <th v-for="ar in pinnedResults" :key="'bh'+ar.idx" :style="{ color: pinColorForIndex(ar.idx) }">{{ loadoutLabel(ar.idx) }}</th>
+              </tr></thead>
+              <tbody>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_raw_damage') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_raw_damage') }}</div></td><td v-for="ar in pinnedResults" :key="'rd'+ar.idx"><span class="damage-sim-table-val">{{ fmt(ar.result.mutant?.rawDmg) }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_air_res') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_air_res') }}</div></td><td v-for="ar in pinnedResults" :key="'ar'+ar.idx"><span class="damage-sim-table-val">&divide; {{ fmt(ar.result.mutant?.airDiv) }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_ammo_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ammo_mult') }}</div></td><td v-for="ar in pinnedResults" :key="'am'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.mutant?.ammoMult }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_spec_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_spec_mult') }}</div></td><td v-for="ar in pinnedResults" :key="'sm'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.mutant?.specMult }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_bone_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_bone_mult') }}</div></td><td v-for="ar in pinnedResults" :key="'bm'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.mutant?.boneMult }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_barrel') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_barrel') }}</div></td><td v-for="ar in pinnedResults" :key="'ba'+ar.idx"><span class="damage-sim-table-val">&times; {{ fmt(ar.result.mutant?.barrel) }}</span></td></tr>
+                <tr class="damage-sim-table-total"><td class="damage-sim-table-label">{{ t('app_sim_result_damage') }}</td><td v-for="ar in pinnedResults" :key="'td'+ar.idx"><span class="damage-sim-table-val damage-sim-table-val-primary">{{ fmt(ar.result.mutant?.damage) }}</span></td></tr>
+              </tbody>
+            </table>
+
+            <!-- Stalker breakdown -->
+            <table v-if="targetType === 'stalker'" class="damage-sim-results-table">
+              <thead><tr>
+                <th></th>
+                <th v-for="ar in pinnedResults" :key="'bh'+ar.idx" :style="{ color: pinColorForIndex(ar.idx) }">{{ loadoutLabel(ar.idx) }}</th>
+              </tr></thead>
+              <tbody>
+                <tr class="damage-sim-table-section"><td :colspan="pinnedResults.length + 1">{{ t('app_sim_result_damage') }}</td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_hit_power') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_hit_power') }}</div></td><td v-for="ar in pinnedResults" :key="'hp'+ar.idx"><span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.breakdown?.hitPower) }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_air_res') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_air_res') }}</div></td><td v-for="ar in pinnedResults" :key="'ar'+ar.idx"><span class="damage-sim-table-val">&divide; {{ fmt(ar.result.stalker?.breakdown?.airDiv) }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_k_hit') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_k_hit') }}</div></td><td v-for="ar in pinnedResults" :key="'kh'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.kHit }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_bone_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_bone_mult') }}</div></td><td v-for="ar in pinnedResults" :key="'bm'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.boneDmgMult }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_ap_scale') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ap_scale') }}</div></td><td v-for="ar in pinnedResults" :key="'as'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.apScale }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_barrel') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_barrel') }}</div></td><td v-for="ar in pinnedResults" :key="'ba'+ar.idx"><span class="damage-sim-table-val">&times; {{ fmt(ar.result.stalker?.breakdown?.barrel) }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_difficulty') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_difficulty') }}</div></td><td v-for="ar in pinnedResults" :key="'df'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.diffMult }}</span></td></tr>
+                <tr v-if="pinnedResults.some(ar => ar.result.stalker?.breakdown?.ammoMult !== 1)"><td class="damage-sim-table-label">{{ t('app_sim_ammo_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ammo_mult') }}</div></td><td v-for="ar in pinnedResults" :key="'am'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.ammoMult }}</span></td></tr>
+                <tr v-if="pinnedResults.some(ar => ar.result.stalker?.breakdown?.silencerMult !== 1)"><td class="damage-sim-table-label">{{ t('app_sim_silencer_mult') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_silencer_mult') }}</div></td><td v-for="ar in pinnedResults" :key="'sl'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.silencerMult }}</span></td></tr>
+                <tr class="damage-sim-table-total"><td class="damage-sim-table-label">{{ t('app_sim_raw_damage') }}</td><td v-for="ar in pinnedResults" :key="'rd'+ar.idx"><span class="damage-sim-table-val damage-sim-table-val-primary">{{ fmt(ar.result.stalker?.rawDmg) }}</span></td></tr>
+
+                <tr class="damage-sim-table-section"><td :colspan="pinnedResults.length + 1">{{ t('app_sim_result_ap') }}</td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_base_ap') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_base_ap') }}</div></td><td v-for="ar in pinnedResults" :key="'kap'+ar.idx"><span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.breakdown?.kAp) }}</span></td></tr>
+                <tr v-if="pinnedResults.some(ar => ar.result.stalker?.breakdown?.apBoost)"><td class="damage-sim-table-label">{{ t('app_sim_ap_boost') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_ap_boost') }}</div></td><td v-for="ar in pinnedResults" :key="'ab'+ar.idx"><span class="damage-sim-table-val">+ {{ ar.result.stalker?.breakdown?.apBoost || 0 }}</span></td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_difficulty') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_difficulty') }}</div></td><td v-for="ar in pinnedResults" :key="'df2'+ar.idx"><span class="damage-sim-table-val">&times; {{ ar.result.stalker?.breakdown?.diffMult }}</span></td></tr>
+                <tr class="damage-sim-table-total"><td class="damage-sim-table-label">{{ t('app_sim_result_ap') }}</td><td v-for="ar in pinnedResults" :key="'tap'+ar.idx"><span class="damage-sim-table-val damage-sim-table-val-primary">{{ fmt(ar.result.stalker?.ap) }}</span></td></tr>
+
+                <tr class="damage-sim-table-section"><td :colspan="pinnedResults.length + 1">{{ t('app_sim_armor_result') }}</td></tr>
+                <tr><td class="damage-sim-table-label">{{ t('app_sim_result_damage') }}<div v-if="showHelp" class="damage-sim-help-text">{{ t('app_sim_help_armor_result') }}</div></td>
+                  <td v-for="ar in pinnedResults" :key="'ares'+ar.idx">
+                    <span class="damage-sim-pen-icon" :class="ar.result.stalker?.armor?.penetrated ? 'pen' : 'nopen'">
+                      <svg v-if="ar.result.stalker?.armor?.penetrated" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </span>
+                    <span class="damage-sim-table-val">{{ fmt(ar.result.stalker?.armor?.damage) }}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Radar chart -->
+          <div v-if="detailView === 'chart'" class="damage-sim-radar-wrap">
+            <canvas ref="radarCanvas"></canvas>
+            <div class="damage-sim-radar-mode">
+              <button :class="{ active: radarMode === 'relative' }" @click="radarMode = 'relative'">{{ t('app_sim_radar_each_other') }}</button>
+              <button :class="{ active: radarMode === 'category' }" @click="radarMode = 'category'">{{ t('app_sim_radar_same_class') }}</button>
+              <button :class="{ active: radarMode === 'global' }" @click="radarMode = 'global'">{{ t('app_sim_radar_all_weapons') }}</button>
+            </div>
+          </div>
       </div>
     </div>
 
   </div>
 
   <!-- Picker Modals -->
-  <ItemPickerModal :open="weaponPickerSlot >= 0" :title="t('app_sim_weapon')" :placeholder="t('app_sim_search_weapon')" :empty-text="t('app_sim_no_results')" :items="pickerWeapons" :label-fn="(w: any) => tName(w) || w.id" :filter-fn="weaponFilter" @close="weaponPickerSlot = -1; weaponStartingFilter = false" @select="selectWeapon">
-    <template #toolbar v-if="!restrictedToInitial">
-      <button class="damage-sim-picker-filter" :class="{ active: weaponStartingFilter }" @click.stop="toggleStartingFilter()">
+  <!-- Combined weapon + ammo picker: each row is a flat weapon×ammo pair -->
+  <ItemPickerModal :open="combinedPickerOpen" :title="t('app_sim_add_pair')" :placeholder="t('app_sim_search_weapon_ammo')" :empty-text="t('app_sim_no_results')" :items="weaponAmmoPairs" :label-fn="(p: any) => p.label" :filter-fn="pairFilter" :key-fn="(p: any) => p.key" @close="closeCombinedPicker()" @select="selectPair" @item-hover="(p: any, e: MouseEvent) => $emit('showBuildHover', p.weapon, e)" @item-move="(e: MouseEvent) => $emit('moveBuildHover', e)" @item-leave="$emit('hideBuildHover')">
+    <template #toolbar>
+      <button class="damage-sim-picker-filter" :class="{ active: ammoPrimaryFilter }" @click.stop="toggleAmmoPrimaryFilter()">
+        <LucideSlidersHorizontal :size="12" />
+        {{ t('app_sim_primary_ammo') }}
+      </button>
+      <button v-if="!restrictedToInitial" class="damage-sim-picker-filter" :class="{ active: weaponStartingFilter }" @click.stop="toggleStartingFilter()">
         <LucideSlidersHorizontal :size="12" />
         {{ t('app_sim_starting_loadouts') }}
       </button>
     </template>
     <template #item="{ item }">
-      <span class="build-picker-item-name">{{ tName(item) }}</span>
-      <span class="build-picker-item-type build-picker-type-weapon">{{ item.id }}</span>
-    </template>
-  </ItemPickerModal>
-
-  <ItemPickerModal :open="ammoPickerSlot >= 0" :title="t('app_sim_ammo')" :placeholder="t('app_sim_search_ammo')" :empty-text="t('app_sim_no_results')" :items="activePickerAmmo" :label-fn="(a: any) => tName(a) || a.id" :filter-fn="ammoFilter" @close="ammoPickerSlot = -1" @select="selectAmmo">
-    <template #item="{ item }">
-      <span class="build-picker-item-name">{{ tName(item) }}</span>
-      <span v-if="isAltAmmoForSlot(item)" class="badge-ammo badge-ammo-alt ammo-alt-tag">ALT</span>
-      <span class="build-picker-item-type build-picker-type-ammo">{{ item.id }}</span>
+      <span class="damage-sim-pick-check" :class="{ on: isPairAdded(item) }">
+        <svg v-if="isPairAdded(item)" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </span>
+      <span class="build-picker-item-name">{{ item.weaponName }}</span>
+      <span class="damage-sim-pick-id">{{ item.weapon.id }}</span>
+      <span class="badge-ammo damage-sim-pick-ammo" :class="'ammo-cls-' + item.ammoClass">{{ item.ammoName }}</span>
+      <span v-if="item.alt" class="badge-ammo badge-ammo-alt ammo-alt-tag">ALT</span>
     </template>
   </ItemPickerModal>
 
@@ -383,6 +381,7 @@ interface Loadout {
   weapon: GameItem | null;
   ammoId: string;
   silenced: boolean;
+  uid: number;
 }
 
 interface DifficultyOption {
@@ -390,8 +389,16 @@ interface DifficultyOption {
   label: string;
 }
 
-const MAX_LOADOUTS = 5;
-const LOADOUT_COLORS = ['#5b8abd', '#c89050', '#b8a048', '#9b6fb0', '#6b9ec8'];
+const MAX_LOADOUTS = 40;
+// Colors assigned to pinned rows (in pin order) for the compare panel.
+const PIN_COLORS = ['#5b8abd', '#c89050', '#b8a048', '#9b6fb0', '#6fb08a', '#bd6f6f', '#6fa8b0', '#b06f9b', '#8ab05b', '#c8a0c0'];
+const MAX_PINS = PIN_COLORS.length;
+
+// Stable per-row id so pins survive sorting and row removal.
+let _loadoutUid = 0;
+function blankLoadout(): Loadout {
+  return { weapon: null, ammoId: '', silenced: false, uid: ++_loadoutUid };
+}
 
 export default defineComponent({
   name: 'DamageSimulator',
@@ -412,13 +419,15 @@ export default defineComponent({
     ammoWeaponsCache: { type: Object as PropType<Record<string, any[]>>, default: () => ({}) },
     /** When set, overrides restored loadouts with these weapons (e.g. inventory ballistics modal). */
     initialWeaponIds: { type: Array as PropType<string[]>, default: null },
+    /** CSS selector of a container to teleport the toolbar actions into (e.g. the ballistics tab bar). Null keeps them in place. */
+    actionsTarget: { type: String as PropType<string | null>, default: null },
   },
   emits: ['showBuildHover', 'moveBuildHover', 'hideBuildHover'],
   inject: ['t', 'tName', 'shortAmmoName'],
   data() {
     return {
       loadouts: [
-        { weapon: null, ammoId: '', silenced: false },
+        blankLoadout(),
       ] as Loadout[],
       targetType: 'stalker' as 'mutant' | 'stalker',
       selectedMutantId: '',
@@ -428,16 +437,19 @@ export default defineComponent({
       distance: 25,
       barrelCondition: 70,
       difficulty: 3,
-      weaponPickerSlot: -1,
-      ammoPickerSlot: -1,
+      combinedPickerOpen: false,
       mutantPickerOpen: false,
       npcPickerOpen: false,
       _shareFeedback: false as boolean,
       startingLoadoutIds: null as Set<string> | null,
       weaponStartingFilter: false,
+      ammoPrimaryFilter: true,
       showHelp: false,
       detailView: 'chart' as 'breakdown' | 'chart',
       radarMode: 'relative' as 'relative' | 'category' | 'global',
+      sortKey: 'damage' as string,
+      sortDir: -1 as 1 | -1,
+      pinnedUids: [] as number[],
     };
   },
   computed: {
@@ -467,9 +479,83 @@ export default defineComponent({
       return weapons.sort((a, b) => ((this as any).tName(a) || a.id).localeCompare((this as any).tName(b) || b.id));
     },
 
-    activePickerAmmo(): GameItem[] {
-      if (this.ammoPickerSlot < 0) return [];
-      return this.compatibleAmmoFor(this.ammoPickerSlot);
+    // Flat weapon×ammo pairs for the combined picker. Built lazily (only while open)
+    // because the cross-product is large.
+    weaponAmmoPairs(): Record<string, any>[] {
+      if (!this.combinedPickerOpen) return [];
+      const pairs: Record<string, any>[] = [];
+      for (const w of this.pickerWeapons) {
+        const wName = (this as any).tName(w) || w.id;
+        for (const a of this.compatibleAmmoForWeapon(w)) {
+          const alt = this.isAltAmmoFor(w, a);
+          if (this.ammoPrimaryFilter && alt) continue;
+          const ammoName = (this as any).shortAmmoName((this as any).tName(a) || a.id);
+          pairs.push({
+            key: w.id + '|' + a.id,
+            weapon: w,
+            ammoId: a.id,
+            weaponName: wName,
+            ammoName,
+            ammoClass: this.ammoClassOf(a),
+            alt,
+            label: `${wName} ${ammoName} ${w.id} ${a.id}`,
+          });
+        }
+      }
+      return pairs;
+    },
+
+    targetTitle(): string {
+      if (this.targetType === 'mutant') {
+        return this.selectedMutant ? this.mutantDisplayName(this.selectedMutant.id) : (this as any).t('app_sim_target_mutant');
+      }
+      return this.selectedNpcProfile ? this.npcProfileLabel(this.selectedNpcProfile) : (this as any).t('app_sim_target_stalker');
+    },
+
+    // Active results ordered by the selected column. Kept separate from activeResults
+    // so the underlying loadout indices (and pins) stay stable.
+    sortedResults(): { idx: number, result: Record<string, any> }[] {
+      const rows = this.activeResults.slice();
+      const dir = this.sortDir;
+      rows.sort((a, b) => {
+        const av = this.sortValFor(a, this.sortKey);
+        const bv = this.sortValFor(b, this.sortKey);
+        if (av === bv) return 0;
+        return av < bv ? -dir : dir;
+      });
+      return rows;
+    },
+
+    maxActiveDamage(): number {
+      let max = 0;
+      for (const ar of this.activeResults) {
+        const d = this.targetType === 'mutant' ? ar.result.mutant?.damage : ar.result.stalker?.armor?.damage;
+        if (typeof d === 'number' && d > max) max = d;
+      }
+      return max;
+    },
+
+    // Loadout indices of pinned rows, in pin order, that currently produce a result.
+    pinnedIndices(): number[] {
+      const out: number[] = [];
+      for (const uid of this.pinnedUids) {
+        const idx = this.loadouts.findIndex(lo => lo.uid === uid);
+        if (idx >= 0 && this.results[idx]) out.push(idx);
+      }
+      return out;
+    },
+
+    pinnedResults(): { idx: number, result: Record<string, any> }[] {
+      return this.pinnedIndices.map(idx => ({ idx, result: this.results[idx]! }));
+    },
+
+    // Header select-all checkbox state: none / some / all rows pinned.
+    pinAllState(): 'none' | 'some' | 'all' {
+      const rows = this.activeResults;
+      if (!rows.length) return 'none';
+      const pinnedCount = rows.filter(ar => this.isPinned(ar.idx)).length;
+      if (pinnedCount === 0) return 'none';
+      return pinnedCount === rows.length ? 'all' : 'some';
     },
 
     uniqueMutants(): MutantProfile[] {
@@ -528,22 +614,10 @@ export default defineComponent({
       return this.allWeapons;
     },
 
-    hasComparison(): boolean {
-      return this.activeResults.length > 1;
-    },
-
     activeResults(): { idx: number, result: Record<string, any> }[] {
       return this.results
         .map((r, i) => r ? { idx: i, result: r } : null)
         .filter(Boolean) as { idx: number, result: Record<string, any> }[];
-    },
-
-    canAddLoadout(): boolean {
-      return this.loadouts.length < MAX_LOADOUTS;
-    },
-
-    defaultDetailView(): 'chart' | 'breakdown' {
-      return this.hasComparison ? 'chart' : 'breakdown';
     },
 
     // Weapon categories that each loadout weapon belongs to
@@ -598,8 +672,9 @@ export default defineComponent({
     },
 
     radarData(): { labels: string[], datasets: any[], rawValues: number[][] } | null {
-      const activeResults = this.results.filter(r => r != null);
-      if (activeResults.length === 0) return null;
+      // The radar compares only the pinned rows (in pin order).
+      const idxs = this.pinnedIndices;
+      if (idxs.length === 0) return null;
 
       // Ordered axis definitions. The Recoil axis is intentionally omitted: it was fed by
       // the recoil-control stat, which the Weapon Mechanics guide flags as meaningless.
@@ -615,14 +690,11 @@ export default defineComponent({
       ];
       const labels = axisDefs.map(a => a.label);
 
-      const colors = LOADOUT_COLORS;
       const rawValues: number[][] = [];
-      const datasets: any[] = [];
-
-      for (let i = 0; i < this.loadouts.length; i++) {
+      for (const i of idxs) {
         const res = this.results[i];
         const lo = this.loadouts[i];
-        if (!res || !lo.weapon) continue;
+        if (!res || !lo.weapon) { rawValues.push(axisDefs.map(() => 0)); continue; }
 
         const damage = this.targetType === 'mutant' ? (res.mutant?.damage || 0) : (res.stalker?.armor?.damage || 0);
         const ammo = this.selectedAmmoFor(i);
@@ -638,8 +710,6 @@ export default defineComponent({
         const byKey: Record<string, number> = { damage, ap, dps, accuracy, range: rangeEff, magSize };
         rawValues.push(axisDefs.map(a => byKey[a.key]));
       }
-
-      if (rawValues.length === 0) return null;
 
       const normalize = (val: number, min: number, max: number): number => {
         if (max <= min) return 50;
@@ -660,27 +730,21 @@ export default defineComponent({
         }
       }
 
-      let datasetIdx = 0;
-      for (let i = 0; i < this.loadouts.length; i++) {
-        const res = this.results[i];
-        const lo = this.loadouts[i];
-        if (!res || !lo.weapon) continue;
-
-        const vals = rawValues[datasetIdx];
+      const datasets: any[] = idxs.map((i, pos) => {
+        const vals = rawValues[pos];
         const normalized = vals.map((v, j) => normalize(v, effectiveRanges[j][0], effectiveRanges[j][1]));
-
-        datasets.push({
+        const col = PIN_COLORS[pos % PIN_COLORS.length];
+        return {
           label: this.loadoutLabel(i),
           data: normalized,
-          borderColor: colors[i],
-          backgroundColor: colors[i] + '26',
-          pointBackgroundColor: colors[i],
+          borderColor: col,
+          backgroundColor: col + '26',
+          pointBackgroundColor: col,
           pointRadius: 3,
           borderWidth: 2,
           fill: true,
-        });
-        datasetIdx++;
-      }
+        };
+      });
 
       return { labels, datasets, rawValues };
     },
@@ -716,13 +780,19 @@ export default defineComponent({
       lo.silenced = !lo.silenced;
       this.saveToStorage();
     },
+    // Show the silencer control only when the weapon can actually be suppressed:
+    // a built-in/integral suppressor, or an attachable one (addon status 2).
+    weaponSilencerCapable(weapon: GameItem | null): boolean {
+      if (!weapon) return false;
+      if (this.hasBuiltInSilencer(weapon)) return true;
+      return this.weaponAddonStatus?.[weapon.id]?.silencer === 2;
+    },
     selectedAmmoFor(slot: number): GameItem | null {
       const id = this.loadouts[slot].ammoId;
       return id ? (this.ammoItems.find(a => a.id === id) || null) : null;
     },
 
-    compatibleAmmoFor(slot: number): GameItem[] {
-      const weapon = this.loadouts[slot].weapon;
+    compatibleAmmoForWeapon(weapon: GameItem | null): GameItem[] {
       if (!weapon) return [];
       const types = (weapon.ui_ammo_types || '').split(';').map(s => s.trim()).filter(Boolean);
       const altTypes = (weapon.st_data_export_ammo_types_alt || '').split(';').map(s => s.trim()).filter(Boolean);
@@ -737,6 +807,33 @@ export default defineComponent({
         }
         return true;
       }).sort((a, b) => ((this as any).tName(a) || a.id).localeCompare((this as any).tName(b) || b.id));
+    },
+
+    isAltAmmoFor(weapon: GameItem, ammoItem: GameItem): boolean {
+      const altTypes = (weapon.st_data_export_ammo_types_alt || '').split(';').map(s => s.trim()).filter(Boolean);
+      if (!altTypes.length) return false;
+      const name = ammoItem.pda_encyclopedia_name || ammoItem.displayName || '';
+      return altTypes.some(t => name === t || name.startsWith(t));
+    },
+
+    // Coarse ammo class purely for badge coloring (HP=green, AP=blue, slug/buck=warm).
+    ammoClassOf(ammo: GameItem | null): string {
+      if (!ammo) return 'FMJ';
+      const id = ammo.id.toLowerCase();
+      if (/buck/.test(id)) return 'BUCK';
+      if (/(slug|zhekan|dart|bull|barrikada|shrapnel)/.test(id)) return 'SLUG';
+      if (/(ap|pbp|sp6|ss190|7n1|7n14|pab9|_7n|magnum)/.test(id)) return 'AP';
+      if (/(hp|jhp|hydro|pmm|expan|_ep|-ep)/.test(id)) return 'HP';
+      return 'FMJ';
+    },
+
+    ammoClassFor(slot: number): string {
+      return this.ammoClassOf(this.selectedAmmoFor(slot));
+    },
+
+    defaultAmmoForWeapon(weapon: GameItem | null): string {
+      const list = this.compatibleAmmoForWeapon(weapon);
+      return list.length ? list[0].id : '';
     },
 
     calcForSlot(slot: number): Record<string, any> | null {
@@ -778,77 +875,6 @@ export default defineComponent({
         return { stalker: { ap: detailed.ap, rawDmg: detailed.rawDmg, boneArmor, armor, stp, stk, breakdown: detailed.breakdown } };
       }
       return null;
-    },
-
-    getStatVal(res: Record<string, any> | null, stat: string): number | undefined {
-      if (!res) return undefined;
-      if (this.targetType === 'mutant') {
-        if (stat === 'damage') return res.mutant?.damage;
-        if (stat === 'stk') return res.mutant?.stk;
-      } else {
-        if (stat === 'damage') return res.stalker?.armor?.damage;
-        if (stat === 'stk') return res.stalker?.stk?.stk;
-      }
-      return undefined;
-    },
-
-    compareClass(idx: number, stat: string): string {
-      if (!this.hasComparison) return '';
-      const vals = this.results.map(r => this.getStatVal(r, stat));
-      const defined = vals.filter(v => v != null) as number[];
-      if (defined.length < 2) return '';
-      const myVal = vals[idx];
-      if (myVal == null) return '';
-      const higherIsBetter = stat !== 'stk';
-      const best = higherIsBetter ? Math.max(...defined) : Math.min(...defined);
-      const worst = higherIsBetter ? Math.min(...defined) : Math.max(...defined);
-      if (best === worst) return '';
-      if (myVal === best) return 'damage-sim-better';
-      if (myVal === worst) return 'damage-sim-worse';
-      return '';
-    },
-
-    compareDelta(idx: number, stat: string): string {
-      if (!this.hasComparison) return '';
-      const vals = this.results.map(r => this.getStatVal(r, stat));
-      const defined = vals.filter(v => v != null) as number[];
-      if (defined.length < 2) return '';
-      const myVal = vals[idx];
-      if (myVal == null) return '';
-      const higherIsBetter = stat !== 'stk';
-      const best = higherIsBetter ? Math.max(...defined) : Math.min(...defined);
-      if (myVal === best && defined.every(v => v === best)) return '';
-      const diff = myVal - best;
-      if (diff === 0) return '';
-      const pct = best !== 0 ? Math.round((diff / Math.abs(best)) * 100) : 0;
-      const isBetter = diff === 0;
-      const arrow = (higherIsBetter ? diff > 0 : diff < 0) ? '\u25B2' : '\u25BC';
-      const sign = diff > 0 ? '+' : '';
-      return `${arrow} ${sign}${pct}%`;
-    },
-
-    breakdownArrow(idx: number, valA: number | undefined, valB: number | undefined, higherIsBetter = true): string {
-      if (!this.hasComparison || valA == null || valB == null || valA === valB) return '';
-      const myVal = idx === 0 ? valA : valB;
-      const otherVal = idx === 0 ? valB : valA;
-      const isBetter = higherIsBetter ? myVal > otherVal : myVal < otherVal;
-      return isBetter ? '\u25B2' : '\u25BC';
-    },
-
-    breakdownArrowClass(idx: number, valA: number | undefined, valB: number | undefined, higherIsBetter = true): string {
-      if (!this.hasComparison || valA == null || valB == null || valA === valB) return '';
-      const myVal = idx === 0 ? valA : valB;
-      const otherVal = idx === 0 ? valB : valA;
-      const isBetter = higherIsBetter ? myVal > otherVal : myVal < otherVal;
-      return isBetter ? 'damage-sim-better' : 'damage-sim-worse';
-    },
-
-    mutantBreakdownVal(idx: number, key: string): number | undefined {
-      return this.results[idx]?.mutant?.[key];
-    },
-
-    stalkerBreakdownVal(idx: number, key: string): number | undefined {
-      return this.results[idx]?.stalker?.breakdown?.[key];
     },
 
     airResDivisorAt(distance: number, kAirRes: number): number {
@@ -925,13 +951,19 @@ export default defineComponent({
       } catch { /* ignore */ }
     },
 
+    toggleAmmoPrimaryFilter(): void {
+      this.ammoPrimaryFilter = !this.ammoPrimaryFilter;
+    },
     toggleStartingFilter(): void {
       this.weaponStartingFilter = !this.weaponStartingFilter;
       if (this.weaponStartingFilter) this.loadStartingLoadouts();
     },
 
     resetAll(): void {
-      this.loadouts.splice(0, this.loadouts.length, { weapon: null, ammoId: '', silenced: false });
+      this.loadouts.splice(0, this.loadouts.length, blankLoadout());
+      this.pinnedUids = [];
+      this.sortKey = 'damage';
+      this.sortDir = -1;
       this.targetType = 'stalker';
       this.hitzone = 'torso';
       this.faction = 'default';
@@ -999,7 +1031,7 @@ export default defineComponent({
       if (savedLoadouts.length === 0) savedLoadouts.push({ weaponId: '', ammoId: '', silenced: false });
       this._savedLoadouts = savedLoadouts;
       // Ensure loadouts array matches
-      while (this.loadouts.length < savedLoadouts.length) this.loadouts.push({ weapon: null, ammoId: '', silenced: false });
+      while (this.loadouts.length < savedLoadouts.length) this.loadouts.push(blankLoadout());
       while (this.loadouts.length > savedLoadouts.length) this.loadouts.pop();
       this.restoreWeaponsFromStorage();
       // Save to localStorage so it persists
@@ -1054,7 +1086,7 @@ export default defineComponent({
           const data = JSON.parse(raw);
           this._savedLoadouts = data.loadouts || null;
           if (this._savedLoadouts) {
-            while (this.loadouts.length < this._savedLoadouts.length) this.loadouts.push({ weapon: null, ammoId: '', silenced: false });
+            while (this.loadouts.length < this._savedLoadouts.length) this.loadouts.push(blankLoadout());
             while (this.loadouts.length > this._savedLoadouts.length && this.loadouts.length > 1) this.loadouts.pop();
           }
           if (data.targetType) this.targetType = data.targetType;
@@ -1098,7 +1130,7 @@ export default defineComponent({
     applyInitialWeapons(): void {
       if (!this.initialWeaponIds || this.initialWeaponIds.length === 0) return;
       const ids = this.initialWeaponIds.slice(0, MAX_LOADOUTS);
-      this.loadouts = ids.map(() => ({ weapon: null, ammoId: '', silenced: false }));
+      this.loadouts = ids.map(() => (blankLoadout()));
       (this as any)._savedLoadouts = ids.map(id => ({ weaponId: id, ammoId: '', silenced: false }));
       // Let the allWeapons watcher retry if weapon data hasn't arrived yet
       this._restored = false;
@@ -1114,7 +1146,7 @@ export default defineComponent({
       );
       if (!hasData) return;
       // Ensure loadouts array is the right size
-      while (this.loadouts.length < saved.length) this.loadouts.push({ weapon: null, ammoId: '', silenced: false });
+      while (this.loadouts.length < saved.length) this.loadouts.push(blankLoadout());
       for (let i = 0; i < saved.length; i++) {
         const lo = saved[i];
         if (!lo) continue;
@@ -1123,24 +1155,15 @@ export default defineComponent({
           if (weapon) this.loadouts[i].weapon = weapon;
         }
         if (lo.ammoId) this.loadouts[i].ammoId = lo.ammoId;
+        // Combined model: a row needs ammo to score. When restored (or seeded by the
+        // inventory modal) without one, default to the weapon's first compatible round.
+        if (!this.loadouts[i].ammoId && this.loadouts[i].weapon) {
+          this.loadouts[i].ammoId = this.defaultAmmoForWeapon(this.loadouts[i].weapon);
+        }
         if (lo.silenced != null) this.loadouts[i].silenced = lo.silenced;
       }
       this._restored = true;
       (this as any)._savedLoadouts = null;
-    },
-
-    isAltAmmoForSlot(ammoItem: GameItem): boolean {
-      if (this.ammoPickerSlot < 0) return false;
-      const weapon = this.loadouts[this.ammoPickerSlot].weapon;
-      if (!weapon) return false;
-      const altTypes = (weapon.st_data_export_ammo_types_alt || '').split(';').map(s => s.trim()).filter(Boolean);
-      if (!altTypes.length) return false;
-      const name = ammoItem.pda_encyclopedia_name || ammoItem.displayName || '';
-      return altTypes.some(t => name === t || name.startsWith(t));
-    },
-
-    loadoutColor(idx: number): string {
-      return LOADOUT_COLORS[idx % LOADOUT_COLORS.length];
     },
 
     loadoutLabel(slot: number): string {
@@ -1152,60 +1175,122 @@ export default defineComponent({
       return wpn + ' + ' + (this as any).shortAmmoName((this as any).tName(ammo));
     },
 
-    openWeaponPicker(slot: number): void { this.weaponPickerSlot = slot; },
-    openAmmoPicker(slot: number): void { this.ammoPickerSlot = slot; },
+    // ── Weapon icons ────────────────────────────────────────────
+    iconUrl(id: string): string { return `img/icons/${id}.png`; },
+    onIconError(e: Event): void {
+      const img = e.target as HTMLImageElement;
+      img.style.visibility = 'hidden';
+      img.parentElement?.classList.add('no-icon');
+    },
 
-    weaponFilter(w: GameItem, q: string): boolean {
-      const name = (w.localeName || (this as any).tName(w) || w.id).toLowerCase();
-      return name.includes(q) || w.id.toLowerCase().includes(q);
+    // ── Combined weapon×ammo picker ─────────────────────────────
+    openCombinedPicker(): void { this.combinedPickerOpen = true; },
+    closeCombinedPicker(): void { this.combinedPickerOpen = false; this.weaponStartingFilter = false; this.ammoPrimaryFilter = true; },
+    pairFilter(p: Record<string, any>, q: string): boolean {
+      return `${p.weaponName} ${p.ammoName} ${p.weapon.id} ${p.ammoId}`.toLowerCase().includes(q);
     },
-    ammoFilter(a: GameItem, q: string): boolean {
-      const name = (a.localeName || (this as any).tName(a) || a.id).toLowerCase();
-      return name.includes(q) || a.id.toLowerCase().includes(q);
+    isPairAdded(p: Record<string, any>): boolean {
+      return this.loadouts.some(lo => lo.weapon?.id === p.weapon.id && lo.ammoId === p.ammoId);
     },
-    selectWeapon(w: GameItem): void {
-      if (this.weaponPickerSlot >= 0) {
-        this.loadouts[this.weaponPickerSlot].weapon = w;
-        this.loadouts[this.weaponPickerSlot].ammoId = '';
-        this.weaponPickerSlot = -1;
-        this.saveToStorage();
-      }
+    selectPair(p: Record<string, any>): void {
+      // Checkbox toggle: clicking an added pair removes it, otherwise add it.
+      // Picker stays open so several pairs can be toggled in one pass.
+      const idx = this.loadouts.findIndex(lo => lo.weapon?.id === p.weapon.id && lo.ammoId === p.ammoId);
+      if (idx >= 0) { this.removeRow(idx); return; }
+      this.addPair(p.weapon as GameItem, p.ammoId as string);
     },
-    clearWeapon(slot: number): void {
-      this.loadouts[slot].weapon = null;
-      this.loadouts[slot].ammoId = '';
-      this.saveToStorage();
-    },
-    selectAmmo(a: GameItem): void {
-      if (this.ammoPickerSlot >= 0) {
-        this.loadouts[this.ammoPickerSlot].ammoId = a.id;
-        this.ammoPickerSlot = -1;
-        this.saveToStorage();
-      }
-    },
-    addLoadout(): void {
+    addPair(weapon: GameItem, ammoId: string): void {
       if (this.loadouts.length >= MAX_LOADOUTS) return;
-      this.loadouts.push({ weapon: null, ammoId: '', silenced: false });
+      // Reuse a trailing empty row (e.g. the initial blank) before growing the list.
+      let lo = this.loadouts.find(l => !l.weapon);
+      if (!lo) { lo = blankLoadout(); this.loadouts.push(lo); }
+      lo.weapon = weapon;
+      lo.ammoId = ammoId;
+      lo.silenced = false;
       this.saveToStorage();
     },
-
-    removeLoadout(idx: number): void {
-      if (this.loadouts.length <= 1) return;
+    removeRow(idx: number): void {
+      const uid = this.loadouts[idx]?.uid;
+      if (uid != null) {
+        const p = this.pinnedUids.indexOf(uid);
+        if (p >= 0) this.pinnedUids.splice(p, 1);
+      }
       this.loadouts.splice(idx, 1);
+      if (this.loadouts.length === 0) this.loadouts.push(blankLoadout());
       this.saveToStorage();
     },
 
-    copyLoadout(fromSlot: number): void {
-      if (this.loadouts.length >= MAX_LOADOUTS) return;
-      const from = this.loadouts[fromSlot];
-      this.loadouts.push({ weapon: from.weapon, ammoId: from.ammoId, silenced: from.silenced });
-      this.saveToStorage();
+    // ── Pins (drive the compare panel) ──────────────────────────
+    isPinned(idx: number): boolean {
+      const uid = this.loadouts[idx]?.uid;
+      return uid != null && this.pinnedUids.includes(uid);
+    },
+    togglePin(idx: number): void {
+      const uid = this.loadouts[idx]?.uid;
+      if (uid == null) return;
+      const pos = this.pinnedUids.indexOf(uid);
+      if (pos >= 0) { this.pinnedUids.splice(pos, 1); return; }
+      if (this.pinnedUids.length >= MAX_PINS) this.pinnedUids.shift();
+      this.pinnedUids.push(uid);
+    },
+    // Select-all header checkbox: clear if anything is pinned, else pin up to MAX_PINS rows.
+    toggleSelectAll(): void {
+      if (this.pinAllState !== 'none') { this.pinnedUids = []; return; }
+      const uids: number[] = [];
+      for (const ar of this.activeResults) {
+        if (uids.length >= MAX_PINS) break;
+        const uid = this.loadouts[ar.idx]?.uid;
+        if (uid != null) uids.push(uid);
+      }
+      this.pinnedUids = uids;
+    },
+    pinColorForIndex(idx: number): string {
+      const uid = this.loadouts[idx]?.uid;
+      if (uid == null) return '';
+      const pos = this.pinnedUids.indexOf(uid);
+      return pos >= 0 ? PIN_COLORS[pos % PIN_COLORS.length] : '';
     },
 
-    clearAmmo(slot: number): void {
-      this.loadouts[slot].ammoId = '';
-      this.saveToStorage();
+    // ── Sorting + derived row stats ─────────────────────────────
+    sortBy(key: string): void {
+      if (this.sortKey === key) { this.sortDir = this.sortDir === 1 ? -1 : 1; }
+      else { this.sortKey = key; this.sortDir = key === 'stk' ? 1 : -1; }
     },
+    sortValFor(ar: { idx: number, result: Record<string, any> }, key: string): number {
+      const r = ar.result;
+      if (this.targetType === 'mutant') {
+        switch (key) {
+          case 'pen': return r.mutant?.penetrated ? 1 : 0;
+          case 'ammoMult': return r.mutant?.ammoMult ?? 0;
+          case 'damage': return r.mutant?.damage ?? 0;
+          case 'stk': return Number.isFinite(r.mutant?.stk) ? r.mutant.stk : 99999;
+          case 'dps': return this.dpsFor(ar.idx);
+        }
+      } else {
+        switch (key) {
+          case 'pen': return r.stalker?.armor?.penetrated ? 1 : 0;
+          case 'damage': return r.stalker?.armor?.damage ?? 0;
+          case 'stk': return r.stalker?.stk?.stk ?? 99999;
+          case 'ap': return r.stalker?.ap ?? 0;
+          case 'dps': return this.dpsFor(ar.idx);
+        }
+      }
+      return 0;
+    },
+    dpsFor(idx: number): number {
+      const res = this.results[idx];
+      const lo = this.loadouts[idx];
+      if (!res || !lo?.weapon) return 0;
+      const dmg = this.targetType === 'mutant' ? (res.mutant?.damage || 0) : (res.stalker?.armor?.damage || 0);
+      const rof = parseFloat(lo.weapon.ui_inv_rate_of_fire as string || '0') || 0;
+      return dmg * rof / 60;
+    },
+    dmgBarWidth(v: number | undefined): string {
+      const max = this.maxActiveDamage;
+      if (!max || !v) return '0%';
+      return `${Math.max(3, Math.min(100, (v / max) * 100))}%`;
+    },
+
     selectMutant(m: MutantProfile): void {
       this.selectedMutantId = m.id;
       this.mutantPickerOpen = false;
@@ -1328,15 +1413,323 @@ export default defineComponent({
 .damage-sim-credit svg {
   color: var(--color-red-warm-soft);
 }
-.damage-sim-columns {
+.damage-sim-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(340px, 33%) 1fr;
   gap: 1.5rem;
   align-items: start;
 }
 @media (max-width: 900px) {
-  .damage-sim-columns { grid-template-columns: 1fr; }
+  .damage-sim-layout { grid-template-columns: 1fr; }
 }
+.damage-sim-rail {
+  position: sticky;
+  top: 0;
+  gap: 0.4rem;
+}
+/* Toolbar pinned to the top of the target column */
+.damage-sim-rail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+/* Credit line sits at the bottom of the target column */
+.damage-sim-rail-credit {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 900px) {
+  .damage-sim-rail { position: static; }
+}
+
+/* Rail toggle groups wrap instead of clipping in the (narrow) rail, and
+   every button in a row stretches to a common height so wrapping sub-labels
+   don't create ragged rows. */
+.damage-sim-rail .damage-sim-toggle-group {
+  flex-wrap: wrap;
+  overflow: visible;
+  border: none;
+  gap: 0.3rem;
+  align-items: stretch;
+}
+.damage-sim-rail .damage-sim-toggle-group button {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+.damage-sim-rail .damage-sim-toggle-group button + button {
+  border-left: 1px solid var(--border);
+}
+.damage-sim-rail .damage-sim-toggle-group button.active {
+  border-color: var(--accent-dim);
+}
+/* Faction has 6 options — lay them out as an even 3×2 grid so none clip. */
+.damage-sim-rail .damage-sim-fac-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ── Board header + primary add button ─────────────────────── */
+.damage-sim-board-col { gap: 0.6rem; }
+.damage-sim-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.damage-sim-board-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.damage-sim-board-count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.damage-sim-board-vs {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.damage-sim-add-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-accent-tint-10);
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 5px;
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+.damage-sim-add-primary:hover {
+  background: var(--color-accent-tint-20);
+  border-color: var(--accent);
+}
+
+/* ── Leaderboard table ─────────────────────────────────────── */
+.damage-sim-lb-wrap { overflow-x: auto; }
+.damage-sim-lb {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+.damage-sim-lb thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--card);
+  font-size: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.5rem;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+.damage-sim-lb thead th.left { text-align: left; }
+.damage-sim-lb-sortable { cursor: pointer; user-select: none; transition: color 0.12s; }
+.damage-sim-lb-sortable:hover { color: var(--text); }
+.damage-sim-lb thead th.sorted { color: var(--accent); }
+.damage-sim-lb-arrow { margin-left: 0.15rem; font-size: 0.6rem; }
+.damage-sim-lb-pin-col { width: 1.6rem; }
+.damage-sim-lb-sil-col { width: 5.5rem; }
+.damage-sim-lb-remove-col { width: 2rem; }
+
+.damage-sim-lb tbody tr { border-bottom: 1px solid var(--color-overlay-border-50); transition: background 0.1s; }
+.damage-sim-lb tbody tr:hover { background: var(--color-accent-tint-5); }
+.damage-sim-lb tbody tr.pinned { background: var(--color-accent-tint-8); }
+.damage-sim-lb td { padding: 0.4rem 0.5rem; text-align: right; vertical-align: middle; white-space: nowrap; }
+.damage-sim-lb td.left { text-align: left; }
+.damage-sim-lb-num { font-family: var(--mono); }
+
+/* pin checkbox */
+.damage-sim-lb-pin-cell { text-align: center; }
+.damage-sim-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--card-raised);
+  color: var(--bg);
+  transition: border-color 0.12s, background 0.12s;
+}
+.damage-sim-pin:hover { border-color: var(--accent); }
+/* Header select-all checkbox (no per-row pin color) */
+.damage-sim-pin-all.on { background: var(--accent); border-color: var(--accent); }
+
+/* weapon cell */
+.damage-sim-lb-wcell { display: flex; align-items: center; gap: 0.55rem; min-width: 0; }
+.damage-sim-lb-icon {
+  width: 84px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 5px;
+  background: var(--card-raised);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.damage-sim-lb-icon img { width: 100%; height: 100%; object-fit: contain; }
+.damage-sim-lb-icon.no-icon { position: relative; }
+.damage-sim-lb-icon.no-icon::after {
+  content: '';
+  position: absolute;
+  inset: 25%;
+  background: currentColor;
+  color: var(--text-secondary);
+  opacity: 0.4;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='22' y1='12' x2='18' y2='12'/%3E%3Cline x1='6' y1='12' x2='2' y2='12'/%3E%3Cline x1='12' y1='6' x2='12' y2='2'/%3E%3Cline x1='12' y1='22' x2='12' y2='18'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='22' y1='12' x2='18' y2='12'/%3E%3Cline x1='6' y1='12' x2='2' y2='12'/%3E%3Cline x1='12' y1='6' x2='12' y2='2'/%3E%3Cline x1='12' y1='22' x2='12' y2='18'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.damage-sim-lb-wtext { min-width: 0; }
+.damage-sim-lb-wname {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  line-height: 1.15;
+}
+.damage-sim-lb-silenced { display: inline-flex; color: var(--text-secondary); }
+.damage-sim-lb-ammo {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  padding: 0.02rem 0.35rem;
+  border-radius: 3px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+}
+.ammo-cls-HP { color: var(--color-green-positive); border-color: var(--color-green-muted); }
+.ammo-cls-AP { color: var(--color-blue-mid); border-color: var(--color-blue-muted); }
+.ammo-cls-BUCK, .ammo-cls-SLUG { color: var(--accent-warm); border-color: var(--color-accent-muted); }
+
+/* pen chip — a quiet verdict so the gold damage value stays the loudest cell */
+.damage-sim-pen-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 0.56rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: none;
+}
+.damage-sim-pen-chip.pen { color: var(--color-green-positive); }
+.damage-sim-pen-chip.nopen { color: var(--color-red-warm-soft); }
+
+/* pen verdict folded into the AP column: icon sits to the left of the AP value */
+.damage-sim-lb-ap-line { display: inline-flex; align-items: center; justify-content: flex-end; gap: 0.3rem; }
+.damage-sim-pen-ico { display: inline-flex; align-items: center; }
+.damage-sim-pen-ico.pen { color: var(--color-green-positive); }
+.damage-sim-pen-ico.nopen { color: var(--color-red-warm-soft); }
+
+/* damage cell + bar */
+.damage-sim-lb-dmg { min-width: 5.5rem; }
+.damage-sim-lb-dmgval { font-family: var(--mono); font-size: 0.74rem; font-weight: 700; color: var(--text); }
+.damage-sim-lb-dmgval.best { color: var(--accent); }
+.damage-sim-lb-bar { height: 3px; border-radius: 2px; margin-top: 0.2rem; background: var(--color-overlay-white-6); overflow: hidden; }
+.damage-sim-lb-bar span { display: block; height: 100%; border-radius: 2px; transition: width 0.25s ease; }
+.damage-sim-lb-crit {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.damage-sim-lb-val { font-family: var(--mono); font-size: 0.7rem; color: var(--text); }
+.damage-sim-lb-stk { font-family: var(--mono); font-size: 0.76rem; font-weight: 700; color: var(--text); }
+.damage-sim-lb-sub { display: block; font-family: var(--mono); font-size: 0.55rem; color: var(--text-secondary); }
+
+/* row actions */
+.damage-sim-lb-sil-cell { text-align: right; }
+.damage-sim-lb-sil-cell .damage-sim-silencer-toggle { display: inline-flex; align-items: center; justify-content: flex-end; gap: 0.4rem; }
+.damage-sim-sil-caption { color: var(--text-secondary); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; transition: color 0.12s; }
+.damage-sim-sil-caption.on { color: var(--accent); }
+.damage-sim-lb-remove-cell { text-align: center; }
+.toggle-switch-sm { transform: scale(0.8); transform-origin: right center; }
+
+/* ── Compare panel (pinned) ────────────────────────────────── */
+.damage-sim-compare {
+  padding-top: 0.6rem;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.damage-sim-compare-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.damage-sim-compare-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.damage-sim-compare-sub { font-size: 0.58rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); }
+
+/* ── Combined picker rows ──────────────────────────────────── */
+.damage-sim-pick-check {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 4px;
+  background: var(--card-raised);
+  color: var(--bg);
+  transition: border-color 0.12s, background 0.12s;
+}
+.damage-sim-pick-check.on { background: var(--accent); border-color: var(--accent); }
+.build-picker-item:hover .damage-sim-pick-check { border-color: var(--accent); }
+.damage-sim-pick-id { font-family: var(--mono); font-size: 0.6rem; color: var(--text-muted); white-space: nowrap; }
+.damage-sim-pick-ammo { margin-left: auto; }
 
 /* Panels */
 .damage-sim-panel {
@@ -1433,9 +1826,9 @@ export default defineComponent({
 /* Section labels */
 .damage-sim-section-label {
   font-size: 0.55rem;
-  color: var(--accent-dim);
+  color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.12em;
   font-weight: 600;
   margin-top: 0.25rem;
 }
@@ -1504,8 +1897,13 @@ export default defineComponent({
 .damage-sim-slot-meta {
   font-size: 0.6rem;
   color: var(--text-secondary);
-  margin-top: 0.05rem;
+  margin-top: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.7rem;
 }
+.damage-sim-stat .k { color: var(--text-secondary); }
+.damage-sim-stat .v { color: var(--text-muted); font-family: var(--mono); }
 .damage-sim-slot-hint {
   font-size: 0.65rem;
   color: var(--text-secondary);
@@ -1560,15 +1958,16 @@ export default defineComponent({
   background: var(--color-accent-tint-8);
 }
 
-/* Sub-line values in toggle buttons */
+/* Sub-line values in toggle buttons — the modifier reads second to the choice */
 .damage-sim-btn-sub {
   display: block;
   font-size: 0.5rem;
   font-weight: 400;
-  opacity: 0.7;
-  margin-top: 0.1rem;
+  opacity: 0.5;
+  margin-top: 0.12rem;
   letter-spacing: 0;
 }
+.damage-sim-toggle-group button.active .damage-sim-btn-sub { opacity: 0.65; }
 
 /* Range rows */
 .damage-sim-range-row {

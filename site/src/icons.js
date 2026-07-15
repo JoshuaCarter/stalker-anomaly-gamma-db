@@ -54,6 +54,7 @@ import {
   Trash2,
   TriangleAlert,
   Upload,
+  VolumeX,
   Wrench,
   X,
 } from 'lucide-vue-next';
@@ -107,6 +108,7 @@ export const lucideIcons = {
   LucideTrash2: Trash2,
   LucideTriangleAlert: TriangleAlert,
   LucideUpload: Upload,
+  LucideVolumeX: VolumeX,
   LucideWrench: Wrench,
   LucideX: X,
 };
