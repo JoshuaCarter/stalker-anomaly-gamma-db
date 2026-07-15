@@ -4,7 +4,9 @@
     "entries": [
       { "type": "added", "text": "New Tools page that gathers all the calculators and analysis views in one spot." },
       { "type": "changed", "text": "Upgrade trees now show real values computed from the game files. A new \"Show computed upgrade values\" toggle switches back to the game's own in-game numbers." },
-      { "type": "changed", "text": "The Ballistics calculator now compares many weapon and ammo loadouts at once, with a leaderboard that ranks them by damage and shots to kill." }
+      { "type": "changed", "text": "The Ballistics calculator now compares many weapon and ammo loadouts at once, with a leaderboard that ranks them by damage and shots to kill." },
+      { "type": "added", "text": "Outfit and helmet pages now include a penetration scale showing which ammo types the armor stops and how much damage gets through the ones it doesn't.", "highlight": true, "summaryKey": "app_whats_new_armor_penetration", "action": "outfits" },
+      { "type": "added", "text": "Outfits and helmets now show a Ballistic Rating: a 0 to 100 score the site works out to sum up how well the armor stops bullets across every ammo tier in one number." }
     ]
   },
   {

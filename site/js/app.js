@@ -6008,6 +6008,8 @@ export const appDefinition = {
                 this.openPlayerInventory();
             } else if (entry.action === "attachments") {
                 this.selectCategory(CAT.SCOPES);
+            } else if (entry.action === "outfits") {
+                this.selectCategory(CAT.OUTFITS);
             } else if (entry.action === "startingLoadouts") {
                 this.openStartingLoadouts();
             } else if (entry.action === "factionPools") {
