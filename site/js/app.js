@@ -555,7 +555,7 @@ export const appDefinition = {
                 else rows.push(row);
             }
             // Inject BR+ (ballistic rating) for armour, just before BR Class — matches the card.
-            if (this.modalCategory === CAT.OUTFITS || this.modalCategory === CAT.HELMETS) {
+            if (this.modalItem && (this.modalCategory === CAT.OUTFITS || this.modalCategory === CAT.HELMETS)) {
                 const br = this.cellValue(this.modalItem, "_ballistic_rating");
                 if (br !== undefined) {
                     const apIdx = rows.findIndex(r => r.key === "ui_inv_ap_res");
