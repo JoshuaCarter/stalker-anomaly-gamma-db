@@ -14,6 +14,11 @@
                 <span class="loadout-diff-pts">{{ pts.toLocaleString() }}</span>
             </button>
         </div>
+        <!-- Inline mod tag: only when an alternative loadout mod (not base game) is active -->
+        <span v-if="activeLoadoutMod" class="loadout-mod-tag" :title="modLabel">
+            <span class="loadout-mod-tag-label">{{ t('app_loadout_active_mod') }}</span>
+            <span class="loadout-mod-tag-name">{{ modLabel }}</span>
+        </span>
         <div class="loadout-bar-sum">
             <span class="loadout-bar-spent" :class="{ over: remainingPoints < 0 }">{{ selectedCost.toLocaleString() }} / {{ pointBudget.toLocaleString() }} {{ t('app_loadout_points') }}</span>
             <span class="loadout-bar-sep">&middot;</span>
@@ -173,6 +178,9 @@ export default {
         startingLoadoutsDifficulty: { type: Number, default: 0 },
         packId: { type: String, default: "" },
         indexById: { type: Object, default: () => ({}) },
+        // Active loadout-mod id, or "" for the base game. Drives the top-of-screen
+        // banner so it's clear when the plan isn't the base game's loadout.
+        activeLoadoutMod: { type: String, default: "" },
     },
     emits: ["update:startingLoadoutsFaction", "update:startingLoadoutsDifficulty", "navigateToItem", "showItemHover", "moveItemHover", "hideItemHover"],
     data() {
@@ -182,6 +190,10 @@ export default {
         };
     },
     computed: {
+        // Display name of the active loadout mod (empty when on the base game).
+        modLabel() {
+            return this.activeLoadoutMod ? this.t("app_label_loadout_mod_" + this.activeLoadoutMod) : "";
+        },
         activeFactionId() {
             if (this.startingLoadoutsFaction) return this.startingLoadoutsFaction;
             return this.startingLoadoutsData?.factions?.[0]?.id || null;
@@ -283,6 +295,9 @@ export default {
     },
     methods: {
         categoryRank(id) {
+            // Companion pick tokens (Drunk's Alternative Loadouts) rank first — they're
+            // the headline pick and have no item-DB category to sort by.
+            if (id.endsWith("_comp_item")) return -1;
             const cat = this.indexById[id]?.category;
             const i = CATEGORY_ORDER.indexOf(cat);
             return i === -1 ? CATEGORY_ORDER.length : i;
@@ -305,6 +320,10 @@ export default {
             if (entry?.displayName) return this.t(entry.displayName);
             const translated = this.t(id);
             if (translated && translated !== id) return translated;
+            // Companion pick tokens shipped without a name string table:
+            // <faction>_sim_squad_comp_<N>_comp_item -> "Companion N".
+            const comp = /_comp_(\d+)_comp_item$/.exec(id);
+            if (comp) return `${this.t('app_loadout_companion') || 'Companion'} ${comp[1]}`;
             return id;
         },
         filterByDifficulty(items) {
@@ -381,6 +400,34 @@ export default {
     min-height: 0;
     padding-right: calc(1rem + 8px);
     gap: 0.5rem;
+}
+
+/* Inline mod tag: sits on the toolbar row, shown only when a loadout mod is active */
+.loadout-mod-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    background: var(--color-accent-tint-12);
+    box-shadow: inset 0 0 0 1px var(--color-accent-tint-35);
+    font-size: 0.68rem;
+}
+.loadout-mod-tag-label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+.loadout-mod-tag-name {
+    color: var(--text);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Slim toolbar: discrete difficulty buttons + budget summary, one borderless row */

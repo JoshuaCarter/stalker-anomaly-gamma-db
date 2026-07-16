@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, cpSync
 import { join } from "path";
 import { createHash } from "crypto";
 import { generateTraders, getSoldItemIds } from "./generate-traders.mjs";
+import { LOADOUT_MODS } from "./loadout-mods.mjs";
 
 // Parse --pack argument (supports both --pack=value and --pack value)
 function parsePackArg(argv) {
@@ -1218,14 +1219,13 @@ try {
   console.log("No toolkit map rates CSV found, skipping toolkit-rates.json");
 }
 
-// Generate starting-loadouts.json and item-loadouts.json from new_game_loadouts.ltx
-const LOADOUT_FILE = existsSync(join(CSV_DIR, "source", "new_game_loadouts.ltx"))
-  ? join(CSV_DIR, "source", "new_game_loadouts.ltx")
-  : join(CSV_DIR, "new_game_loadouts.ltx");
-try {
-  const ltxText = readFileSync(LOADOUT_FILE, "utf-8");
+// Generate starting-loadouts.json and item-loadouts.json from new_game_loadouts.ltx.
+// The base game file drives item-loadouts.json and the `inStartingLoadout` weapon
+// flag; optional loadout mods (see LOADOUT_MODS below) only emit their own
+// starting-loadouts-<id>.json, which the app swaps in behind a Mods-menu toggle.
 
-  // Parse LTX into sections: Map<name, { parent, entries: Map<key, value> }>
+// Parse an LTX body into Map<name, { parent, entries: Map<key,value> }>.
+function parseLtxSections(ltxText) {
   const sections = new Map();
   let currentSection = null;
   for (const rawLine of ltxText.split(/\r?\n/)) {
@@ -1250,8 +1250,29 @@ try {
       }
     }
   }
+  return sections;
+}
 
-  // Extract points budget
+// Resolve a single entry key through the (comma-separated) parent chain.
+function resolveLtxEntry(sections, name, key, seen = new Set()) {
+  if (seen.has(name)) return null;
+  seen.add(name);
+  const sec = sections.get(name);
+  if (!sec) return null;
+  if (sec.entries.has(key)) return sec.entries.get(key);
+  if (sec.parent) {
+    for (const p of sec.parent.split(",")) {
+      const v = resolveLtxEntry(sections, p.trim(), key, seen);
+      if (v != null) return v;
+    }
+  }
+  return null;
+}
+
+// Parse a new_game_loadouts.ltx body into the shape the loadout view consumes.
+function parseLoadoutLtx(ltxText) {
+  const sections = parseLtxSections(ltxText);
+
   const pointsSec = sections.get("points");
   const points = [
     parseInt(pointsSec?.entries.get("total_points_eco_1")) || 0,
@@ -1259,7 +1280,6 @@ try {
     parseInt(pointsSec?.entries.get("total_points_eco_3")) || 0,
   ];
 
-  // Extract ammo config
   const ammoPerWeapon = {};
   const ammoTypeSec = sections.get("ammo_type_per_wpn");
   if (ammoTypeSec) {
@@ -1271,8 +1291,7 @@ try {
     for (const [k, v] of ammoCountSec.entries) ammoCount[k] = parseInt(v) || 0;
   }
 
-  // Parse item entries from a section
-  function parseLoadoutItems(sec) {
+  const parseLoadoutItems = (sec) => {
     const items = [];
     if (!sec) return items;
     for (const [id, raw] of sec.entries) {
@@ -1286,10 +1305,10 @@ try {
       });
     }
     return items;
-  }
+  };
 
-  // Resolve inheritance: collect items from parent chain + own entries
-  function resolveItems(sectionName) {
+  // Resolve inheritance: collect items from parent chain + own entries.
+  const resolveItems = (sectionName) => {
     const sec = sections.get(sectionName);
     if (!sec) return [];
     const parentItems = sec.parent
@@ -1301,18 +1320,20 @@ try {
     for (const item of parentItems) merged.set(item.id, item);
     for (const item of ownItems) merged.set(item.id, item);
     return [...merged.values()];
-  }
+  };
 
-  // Build shared items (from the shared section only, excluding custom)
   const sharedItems = parseLoadoutItems(sections.get("shared"));
 
-  // Build faction loadouts
+  // Preferred display order for the known factions; any other [*_loadout] section a
+  // mod introduces is appended after these so it isn't silently dropped.
   const FACTION_SECTIONS = [
     "stalker_loadout", "bandit_loadout", "ecolog_loadout", "dolg_loadout",
     "freedom_loadout", "killer_loadout", "army_loadout", "monolith_loadout",
     "csky_loadout", "renegade_loadout", "greh_loadout", "isg_loadout", "zombied_loadout",
   ];
-  const sharedIdSet = new Set(sharedItems.map(i => i.id));
+  for (const name of sections.keys()) {
+    if (name.endsWith("_loadout") && !FACTION_SECTIONS.includes(name)) FACTION_SECTIONS.push(name);
+  }
 
   const factions = [];
   for (const secName of FACTION_SECTIONS) {
@@ -1324,7 +1345,17 @@ try {
     factions.push({ id: factionId, money, items });
   }
 
-  const loadoutsData = { points, factions, shared: sharedItems, ammoPerWeapon, ammoCount };
+  return { points, factions, shared: sharedItems, ammoPerWeapon, ammoCount };
+}
+
+const LOADOUT_FILE = existsSync(join(CSV_DIR, "source", "new_game_loadouts.ltx"))
+  ? join(CSV_DIR, "source", "new_game_loadouts.ltx")
+  : join(CSV_DIR, "new_game_loadouts.ltx");
+try {
+  const loadoutsData = parseLoadoutLtx(readFileSync(LOADOUT_FILE, "utf-8"));
+  const { factions, shared: sharedItems } = loadoutsData;
+  const sharedIdSet = new Set(sharedItems.map(i => i.id));
+
   const loadoutsOut = join(OUT_DIR, "starting-loadouts.json");
   writeFileSync(loadoutsOut, JSON.stringify(loadoutsData, null, 2));
   console.log(`Wrote ${factions.length} faction loadouts to ${loadoutsOut}`);
@@ -1357,6 +1388,22 @@ try {
 } catch (e) {
   if (e.code !== "ENOENT") throw e;
   console.log("No starting loadouts LTX found, skipping starting-loadouts.json");
+}
+
+// Optional loadout mods (registry in scripts/loadout-mods.mjs): each present source
+// emits its own starting-loadouts-<id>.json. The app discovers these from manifest.json
+// and lets the player swap one in via the Mods menu (falls back to the base game file).
+// These do NOT feed item-loadouts.json / weapon flags. `generatedLoadoutMods` collects
+// the mods actually built so the companion-name and icon passes below can skip absent ones.
+const generatedLoadoutMods = [];
+for (const mod of LOADOUT_MODS) {
+  const modPath = join(CSV_DIR, "source", mod.ltx);
+  if (!existsSync(modPath)) continue;
+  const data = parseLoadoutLtx(readFileSync(modPath, "utf-8"));
+  const outPath = join(OUT_DIR, `starting-loadouts-${mod.id}.json`);
+  writeFileSync(outPath, JSON.stringify(data, null, 2));
+  console.log(`Wrote ${data.factions.length} faction loadouts to ${outPath}`);
+  generatedLoadoutMods.push(mod);
 }
 
 // Build the kit→weapon mapping (kit ID → modified weapon IDs). The relationship
@@ -2488,6 +2535,52 @@ if (existsSync(suppPath)) {
   const count = Object.keys(supp.en || {}).length;
   console.log(`Merged ${count} supplementary translations from ${suppPath}`);
 }
+
+// Inject companion item names for any generated loadout mod that ships companions.
+// The loadout view resolves <faction>_sim_squad_comp_N_comp_item IDs via t(id); map
+// each to its display name from the mod's companions.ltx (id -> inv_name key, through
+// parent inheritance) + the eng/rus string tables (key -> text). The Russian XML
+// typically only defines the base names; faction-specific ones resolve to the English
+// text via t()'s en fallback, so we only set ru where the XML has it.
+{
+  const parseStringTable = (xmlPath) => {
+    const map = {};
+    if (!existsSync(xmlPath)) return map;
+    const text = new TextDecoder("windows-1251").decode(readFileSync(xmlPath));
+    const re = /<string id="([^"]+)">\s*<text>([\s\S]*?)<\/text>/g;
+    let m;
+    while ((m = re.exec(text))) map[m[1].toLowerCase()] = m[2].trim();
+    return map;
+  };
+  let injected = 0;
+  for (const mod of generatedLoadoutMods) {
+    const comp = mod.companions;
+    if (!comp) continue;
+    const compLtxPath = join(CSV_DIR, "source", comp.ltx);
+    if (!existsSync(compLtxPath)) continue;
+    const compSections = parseLtxSections(readFileSync(compLtxPath, "utf-8"));
+    const engStr = parseStringTable(join(CSV_DIR, "source", comp.eng));
+    const rusStr = parseStringTable(join(CSV_DIR, "source", comp.rus));
+    for (const [name] of compSections) {
+      if (!name.endsWith("_comp_item")) continue;
+      const nameKey = resolveLtxEntry(compSections, name, "inv_name");
+      if (!nameKey) continue;
+      const k = nameKey.toLowerCase();
+      const idKey = name.toLowerCase();
+      if (engStr[k]) { translations.en[idKey] = engStr[k]; injected++; }
+      if (rusStr[k]) translations.ru[idKey] = rusStr[k];
+    }
+  }
+  if (injected) console.log(`Injected ${injected} companion item translations`);
+
+  // Crop companion portrait icons off each mod's sprite sheet (needs sharp; loaded
+  // lazily so packs without companion mods don't pull it in).
+  if (generatedLoadoutMods.some((m) => m.companions)) {
+    const { extractCompanionIcons } = await import("./extract-companion-icons.mjs");
+    await extractCompanionIcons(pack, generatedLoadoutMods);
+  }
+}
+
 // Copy app translations to site/data/ (loaded separately by frontend)
 const appPath = join(CSV_DIR, "..", "app_translations.json");
 if (existsSync(appPath)) {

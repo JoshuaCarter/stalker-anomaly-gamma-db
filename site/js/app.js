@@ -138,6 +138,17 @@ export const appDefinition = {
             // Opt-in: the Magazines mod isn't universal, so its category is hidden
             // until the user enables it. Persisted; default off.
             showMagazines: (() => { try { return localStorage.getItem("showMagazines") === "1"; } catch { return false; } })(),
+            // Opt-in: swap the starting-loadouts screen to an optional loadout mod's
+            // variant (e.g. "Drunk's Alternative Loadouts and Companions"). Holds the
+            // mod id, or "" for the base game. Persisted; migrates the old boolean flag.
+            // Available mods are discovered from the pack manifest (see loadoutMods).
+            activeLoadoutMod: (() => {
+                try {
+                    const v = localStorage.getItem("activeLoadoutMod");
+                    if (v !== null) return v;
+                    return localStorage.getItem("loadoutModDrunks") === "1" ? "drunks" : "";
+                } catch { return ""; }
+            })(),
 
             // Filter & Sort
             activeFilters: {},
@@ -290,6 +301,16 @@ export const appDefinition = {
         },
         hiddenFields() {
             return new Set([...this.globalHiddenFields, ...(this.activePack?.hiddenFields || [])]);
+        },
+        // Optional starting-loadout mods present in the current pack, discovered from
+        // the manifest (starting-loadouts-<id>.json, excluding the base file). The
+        // Mods-menu label for each is app_label_loadout_mod_<id>.
+        loadoutMods() {
+            return Object.keys(this.fileManifest || {})
+                .map(f => /^starting-loadouts-(.+)\.json$/.exec(f))
+                .filter(Boolean)
+                .map(m => m[1])
+                .sort();
         },
         hiddenWeaponStatFields() {
             const hidden = new Set();
@@ -1066,6 +1087,9 @@ export const appDefinition = {
             const hiddenWeaponStats = isWeaponCategory ? this.hiddenWeaponStatFields : null;
             const filtered = raw.filter((h) => {
                 if (h === "id" || h === "st_upgr_cost" || h === "displayName") return false;
+                // base_mag_size is not its own column — it feeds the ui_ammo_count cell
+                // when the Magazines view is off (see cellValue).
+                if (h === "base_mag_size") return false;
                 if (h === "st_data_export_description") return false;
                 if (hidden.has(h)) return false;
                 if (hiddenWeaponStats && hiddenWeaponStats.has(h)) return false;
@@ -2961,11 +2985,31 @@ export const appDefinition = {
             else this.pushUrlState();
         },
 
+        // Resolve the loadout JSON for the active mod, falling back to the base file
+        // when no mod is selected or the selected one isn't in this pack's manifest.
+        loadoutFileName() {
+            const id = this.activeLoadoutMod;
+            if (id && this.loadoutMods.includes(id)) return `starting-loadouts-${id}.json`;
+            return "starting-loadouts.json";
+        },
+
         async openStartingLoadouts() {
             this.resetViewState();
             this.startingLoadoutsActive = true;
             this.pushUrlState(true);
-            await this.fetchJsonCached("startingLoadoutsCache", "starting-loadouts.json");
+            // Null the cache first so a mod change re-fetches the right file.
+            this.startingLoadoutsCache = null;
+            await this.fetchJsonCached("startingLoadoutsCache", this.loadoutFileName());
+        },
+
+        setLoadoutMod(id) {
+            this.activeLoadoutMod = id || "";
+            try { localStorage.setItem("activeLoadoutMod", this.activeLoadoutMod); } catch {}
+            // If the loadout screen is open, re-fetch so the swap is immediate.
+            if (this.startingLoadoutsActive) {
+                this.startingLoadoutsCache = null;
+                this.fetchJsonCached("startingLoadoutsCache", this.loadoutFileName());
+            }
         },
 
         async openFactionPools() {
@@ -4646,6 +4690,19 @@ export const appDefinition = {
             if (field === "_mag_capacity") {
                 const c = item.magCapacity;
                 return c ? `${c.small} / ${c.medium} / ${c.large}` : undefined;
+            }
+            if (field === "ui_ammo_count") {
+                // The exported mag size is the value the game reported in-panel — under the
+                // optional GAMMA Mags Reloaded mod that's the loaded default-mag capacity
+                // (e.g. P90 gamma 75), not the weapon's native size. Prefer the native
+                // ammo_mag_size (base_mag_size) when the Magazines view is off, OR whenever
+                // the Mags value is missing/0 — a few weapons (GSh-18, ACE 21) spawn without
+                // a mag attached at export and report 0, which is never a valid mag size.
+                // Falls back to ui_ammo_count for data pre-dating base_mag_size.
+                const mags = parseFloat(item.ui_ammo_count);
+                const base = parseFloat(item.base_mag_size);
+                if ((!this.showMagazines || !(mags > 0)) && base > 0) return item.base_mag_size;
+                return item.ui_ammo_count;
             }
             return item[field];
         },

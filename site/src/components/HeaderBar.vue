@@ -322,6 +322,17 @@
                     <span class="toggle-switch" :class="{ on: showMagazines }"><span class="toggle-knob"></span></span>
                     <span>{{ t('app_label_show_magazines') }}</span>
                 </div>
+                <template v-if="loadoutMods.length">
+                    <div class="settings-subhead">{{ t('app_label_loadout_mods_header') }}</div>
+                    <div class="settings-item" @click.stop="$emit('setLoadoutMod', '')">
+                        <span class="settings-radio" :class="{ on: !activeLoadoutMod }"></span>
+                        <span>{{ t('app_label_loadout_mod_base') }}</span>
+                    </div>
+                    <div v-for="id in loadoutMods" :key="id" class="settings-item" @click.stop="$emit('setLoadoutMod', id)">
+                        <span class="settings-radio" :class="{ on: activeLoadoutMod === id }"></span>
+                        <span>{{ t('app_label_loadout_mod_' + id) }}</span>
+                    </div>
+                </template>
             </div>
         </Teleport>
     </div>
@@ -410,6 +421,8 @@ export default {
         showUnreliableStats: { type: Boolean, default: false },
         showEngineUpgradeStats: { type: Boolean, default: true },
         showMagazines: { type: Boolean, default: false },
+        loadoutMods: { type: Array, default: () => [] },
+        activeLoadoutMod: { type: String, default: '' },
     },
     emits: [
         'toggleSidebarCollapse', 'toggleSidebar', 'switchPack',
@@ -418,7 +431,7 @@ export default {
         'selectSearchResultInSection',
         'openItemDb', 'openMaps', 'openTrading', 'openPlayerInventory', 'openBuildPlanner', 'openCrafting', 'openDamageSim',
         'openArmorProtection', 'openVersionCompare', 'openStartingLoadouts', 'openFactionPools', 'openToolsLanding',
-        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowUnreliableStats', 'toggleShowEngineUpgradeStats', 'toggleShowMagazines',
+        'toggleHideNoDrop', 'toggleHideTacticalKit', 'toggleHideUnusedAmmo', 'toggleShowTileIcons', 'toggleShowUnreliableStats', 'toggleShowEngineUpgradeStats', 'toggleShowMagazines', 'setLoadoutMod',
         'selectCraftingSearchResult',
     ],
     inject: ['t', 'tName', 'tCat', 'navHref'],

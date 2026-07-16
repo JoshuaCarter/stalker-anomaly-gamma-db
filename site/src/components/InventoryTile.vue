@@ -27,7 +27,8 @@
         @mousemove="onMove"
         @mouseleave="onLeave"
     >
-        <img :src="iconSrc" :alt="name" loading="lazy" @error="onImgError">
+        <img v-if="!imgError" :src="iconSrc" :alt="name" loading="lazy" @error="onImgError">
+        <span v-else class="inv-tile-ph" :aria-label="name" role="img"></span>
         <span v-if="$slots.glyphs" class="inv-tile-glyphs"><slot name="glyphs" /></span>
     </div>
 
@@ -71,6 +72,15 @@ export default {
         draggable: { type: Boolean, default: false },
     },
     emits: ["navigate", "cycle", "dragstart", "dragend", "hover-enter", "hover-move", "hover-leave"],
+    data() {
+        // Track a failed icon load so we can swap in a neutral placeholder slot
+        // (e.g. loadout-mod companion picks whose sprite sheet wasn't shipped).
+        return { imgError: false };
+    },
+    watch: {
+        // Reused tiles (v-for reorder) must re-try the new icon.
+        iconSrc() { this.imgError = false; },
+    },
     computed: {
         iconSrc() {
             return "/img/icons/" + this.iconId + ".png";
@@ -102,7 +112,7 @@ export default {
         onEnter(e) { if (this.clickable) this.$emit("hover-enter", e); },
         onMove(e) { if (this.clickable) this.$emit("hover-move", e); },
         onLeave() { if (this.clickable) this.$emit("hover-leave"); },
-        onImgError(e) { e.target.style.visibility = "hidden"; },
+        onImgError() { this.imgError = true; },
     },
 };
 </script>
@@ -153,6 +163,16 @@ export default {
     image-rendering: pixelated;
     filter: drop-shadow(0 2px 3px var(--color-overlay-black-55));
     transition: filter 0.15s, transform 0.12s;
+}
+
+/* Neutral placeholder slot shown when an icon PNG is missing (optional companion
+   sprites, etc.) — reads as an intentional empty slot, not a broken image. */
+.inv-tile-ph {
+    width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1px dashed var(--color-overlay-white-12, var(--color-overlay-white-6));
+    background: var(--color-overlay-white-2);
 }
 
 /* Selection is a warm glow behind the icon — no rectangle, no border */

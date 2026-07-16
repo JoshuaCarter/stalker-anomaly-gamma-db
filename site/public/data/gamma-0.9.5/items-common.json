@@ -1805,6 +1805,18 @@
     "name": "st_army_fp",
     "price": 850
   },
+  "army_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_military_1",
+    "price": 1
+  },
+  "army_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_military_2",
+    "price": 1
+  },
+  "army_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_military_3",
+    "price": 1
+  },
   "artefact_container": {
     "name": "st_itm_artefact_container_name",
     "price": 5000
@@ -1866,6 +1878,18 @@
   "bandit_scientific_outfit": {
     "name": "bandit_scientific_outfit_name",
     "price": 112190
+  },
+  "bandit_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_bandit_1",
+    "price": 1
+  },
+  "bandit_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_bandit_2",
+    "price": 1
+  },
+  "bandit_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_bandit_3",
+    "price": 1
   },
   "bandit_sun_outfit": {
     "name": "bandit_sun_outfit_name",
@@ -2146,6 +2170,18 @@
     "name": "st_coffee_drink",
     "price": 920
   },
+  "companion_itm_base_1": {
+    "name": "st_companion_item_x_1",
+    "price": 1
+  },
+  "companion_itm_base_2": {
+    "name": "st_companion_item_x_2",
+    "price": 1
+  },
+  "companion_itm_base_3": {
+    "name": "st_companion_item_x_3",
+    "price": 1
+  },
   "compm4s": {
     "name": "st_addon_scope_compm4s",
     "price": 5000
@@ -2244,6 +2280,18 @@
   "csky_patch": {
     "name": "st_clearsky_fp",
     "price": 650
+  },
+  "csky_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_x_1",
+    "price": 1
+  },
+  "csky_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_x_2",
+    "price": 1
+  },
+  "csky_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_x_3",
+    "price": 1
   },
   "cut_kit": {
     "name": "st_addon_cut_kit",
@@ -2882,6 +2930,18 @@
     "name": "dolg_scout_outfit_name",
     "price": 75384
   },
+  "dolg_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_military_1",
+    "price": 1
+  },
+  "dolg_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_military_2",
+    "price": 1
+  },
+  "dolg_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_military_3",
+    "price": 1
+  },
   "dolg_specops_red_outfit": {
     "name": "dolg_specops_red_outfit_name",
     "price": 123638
@@ -3028,6 +3088,18 @@
   "ecolog_proto_exo_outfit": {
     "name": "ecolog_proto_exo_outfit_name",
     "price": 206010
+  },
+  "ecolog_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_contractor_1",
+    "price": 1
+  },
+  "ecolog_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_contractor_2",
+    "price": 1
+  },
+  "ecolog_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_contractor_3",
+    "price": 1
   },
   "ekp8_02": {
     "name": "st_addon_scope_ekp8_02",
@@ -3233,6 +3305,18 @@
     "name": "st_freedom_fp",
     "price": 850
   },
+  "freedom_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_x_1",
+    "price": 1
+  },
+  "freedom_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_x_2",
+    "price": 1
+  },
+  "freedom_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_x_3",
+    "price": 1
+  },
   "gauss_sight": {
     "name": "st_addon_scope_gauss_sight",
     "price": 253200
@@ -3329,6 +3413,18 @@
   "greh_ps5_outfit": {
     "name": "greh_ps5_outfit_name",
     "price": 59328
+  },
+  "greh_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_cult_1",
+    "price": 1
+  },
+  "greh_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_cult_2",
+    "price": 1
+  },
+  "greh_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_cult_3",
+    "price": 1
   },
   "greh_trenchcoat_outfit": {
     "name": "greh_trenchcoat_outfit_name",
@@ -3670,6 +3766,18 @@
     "name": "isg_scientific_outfit_name",
     "price": 87591
   },
+  "isg_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_military_1",
+    "price": 1
+  },
+  "isg_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_military_2",
+    "price": 1
+  },
+  "isg_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_military_4",
+    "price": 1
+  },
   "item_pda_map_mlr": {
     "name": "item_pda_map_mlr_name",
     "price": 150
@@ -3946,6 +4054,18 @@
   "killer_patch": {
     "name": "st_merc_fp",
     "price": 850
+  },
+  "killer_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_merc_1",
+    "price": 1
+  },
+  "killer_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_merc_2",
+    "price": 1
+  },
+  "killer_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_merc_3",
+    "price": 1
   },
   "kit_aus_tri": {
     "name": "st_addon_scope_kit_aus_tri",
@@ -5590,6 +5710,18 @@
   "monolith_shard": {
     "name": "item_monolith_shard_name"
   },
+  "monolith_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_cult_1",
+    "price": 1
+  },
+  "monolith_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_cult_2",
+    "price": 1
+  },
+  "monolith_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_cult_3",
+    "price": 1
+  },
   "monolith_trenchcoat_outfit": {
     "name": "monolith_trenchcoat_outfit_name",
     "price": 114062
@@ -6896,6 +7028,38 @@
     "name": "st_gamma_recipe_ammo_4",
     "price": 65000
   },
+  "recipe_ammo_arty1": {
+    "name": "st_ammo_recipe_arty1",
+    "price": 1
+  },
+  "recipe_ammo_arty2": {
+    "name": "st_ammo_recipe_arty2",
+    "price": 1
+  },
+  "recipe_ammo_fire": {
+    "name": "st_ammo_recipe_fire",
+    "price": 1
+  },
+  "recipe_ammo_nato": {
+    "name": "st_ammo_recipe_nato",
+    "price": 1
+  },
+  "recipe_ammo_pistol": {
+    "name": "st_ammo_recipe_pistol",
+    "price": 1
+  },
+  "recipe_ammo_ru1": {
+    "name": "st_ammo_recipe_ru1",
+    "price": 1
+  },
+  "recipe_ammo_ru2": {
+    "name": "st_ammo_recipe_ru2",
+    "price": 1
+  },
+  "recipe_ammo_shotgun": {
+    "name": "st_ammo_recipe_shotgun",
+    "price": 1
+  },
   "recipe_basic_1": {
     "name": "st_gamma_recipe_basic_1",
     "price": 5000
@@ -6983,6 +7147,18 @@
   "renegade_scientific_outfit": {
     "name": "renegade_scientific_outfit_name",
     "price": 78600
+  },
+  "renegade_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_bandit_1",
+    "price": 1
+  },
+  "renegade_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_bandit_2",
+    "price": 1
+  },
+  "renegade_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_bandit_4",
+    "price": 1
   },
   "renegademerc_outfit": {
     "name": "renegademerc_outfit_name",
@@ -7228,6 +7404,18 @@
   "stalker_salamander_outfit": {
     "name": "stalker_salamander_outfit_name",
     "price": 62115
+  },
+  "stalker_sim_squad_comp_1_comp_item": {
+    "name": "st_companion_item_x_1",
+    "price": 1
+  },
+  "stalker_sim_squad_comp_2_comp_item": {
+    "name": "st_companion_item_x_2",
+    "price": 1
+  },
+  "stalker_sim_squad_comp_3_comp_item": {
+    "name": "st_companion_item_x_3",
+    "price": 1
   },
   "stalker_tigerstripe_outfit": {
     "name": "stalker_tigerstripe_outfit_name",

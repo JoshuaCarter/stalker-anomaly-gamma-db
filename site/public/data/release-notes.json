@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-07-16",
+    "entries": [
+      { "type": "added", "text": "Starting Loadouts now supports alternative loadout mods. Pick one from the Mods menu (starting with Drunk's Alternative Loadouts) to plan its loadout instead of the base game's.", "action": "startingLoadouts" },
+      { "type": "fixed", "text": "Weapon magazine sizes now show the base-game value by default and switch to GAMMA Mags Reloaded's capacities only when the Magazines view is on. Some weapons (the P90 and SVDS variants among others) were showing the mod's larger mag sizes even with it turned off.", "credits": [{ "name": "KRN", "role": "bug" }] }
+    ]
+  },
+  {
     "date": "2026-07-15",
     "entries": [
       { "type": "added", "text": "New Tools page that gathers all the calculators and analysis views in one spot." },

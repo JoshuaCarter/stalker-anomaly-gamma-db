@@ -1,16 +1,23 @@
 /**
  * Import exported CSV files from the GAMMA game directory into a pack's data folder.
  *
- * All CSVs are copied from --src to data/<pack>/.
+ * The exporter writes each run into a timestamped subfolder (e.g. 2026-07-16_20-27-45)
+ * under a root bin directory. By default this script scans --root for the most recent
+ * such folder and imports from it, so you only need to point at the root. Pass --src to
+ * import from a specific run folder instead.
+ *
+ * All CSVs are copied from the resolved run folder to data/<pack>/.
  * Translation CSVs (en_us.csv, ru_ru.csv, fr_fr.csv) are replaced by default.
  * Pass --merge-translations to merge new keys into existing translation files instead.
  *
  * Usage:
- *   node scripts/import-game-exports.mjs --pack gamma-0.9.5 --src "C:\Stalker_GAMMA\overwrite\bin"
- *   node scripts/import-game-exports.mjs --pack gamma-0.9.5 --src "C:\Stalker_GAMMA\overwrite\bin" --merge-translations
+ *   node scripts/import-game-exports.mjs --pack gamma-0.9.5
+ *   node scripts/import-game-exports.mjs --pack gamma-0.9.5 --root "D:\gamma0.9.5\GAMMA\overwrite\bin"
+ *   node scripts/import-game-exports.mjs --pack gamma-0.9.5 --src "D:\gamma0.9.5\GAMMA\overwrite\bin\2026-07-16_20-27-45"
+ *   node scripts/import-game-exports.mjs --pack gamma-0.9.5 --merge-translations
  */
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, copyFileSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, copyFileSync, statSync } from "fs";
 import { join } from "path";
 
 function parseArgs(argv) {
@@ -29,24 +36,51 @@ function parseArgs(argv) {
   return args;
 }
 
-const DEFAULT_SRC = "C:\\Stalker_GAMMA\\overwrite\\bin";
+const DEFAULT_ROOT = "D:\\gamma0.9.5\\GAMMA\\overwrite\\bin";
+
+// Exporter run folders are named like 2026-07-16_20-27-45.
+const RUN_FOLDER_RE = /^\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}$/;
 
 const args = parseArgs(process.argv);
 const pack = args.pack;
-const srcDir = args.src || DEFAULT_SRC;
+const rootDir = args.root || DEFAULT_ROOT;
 const mergeTranslations = !!args["merge-translations"];
 
 if (!pack) {
-  console.error('Usage: node scripts/import-game-exports.mjs --pack <pack-id> [--src "<game-bin-path>"] [--merge-translations]');
-  console.error(`  --src defaults to ${DEFAULT_SRC}`);
+  console.error('Usage: node scripts/import-game-exports.mjs --pack <pack-id> [--root "<bin-path>"] [--src "<run-folder>"] [--merge-translations]');
+  console.error(`  --root defaults to ${DEFAULT_ROOT} (latest timestamped run folder is picked automatically)`);
+  console.error("  --src imports from a specific run folder, bypassing --root");
   process.exit(1);
 }
 
 const destDir = join(import.meta.dirname, "..", "data", pack);
 
-if (!existsSync(srcDir)) {
-  console.error(`Source directory not found: ${srcDir}`);
-  process.exit(1);
+// Resolve the run folder to import from: an explicit --src, or the most recent
+// timestamped subfolder under --root.
+let srcDir;
+if (args.src) {
+  srcDir = args.src;
+  if (!existsSync(srcDir)) {
+    console.error(`Source directory not found: ${srcDir}`);
+    process.exit(1);
+  }
+} else {
+  if (!existsSync(rootDir)) {
+    console.error(`Root directory not found: ${rootDir}`);
+    process.exit(1);
+  }
+  const runs = readdirSync(rootDir)
+    .filter((f) => RUN_FOLDER_RE.test(f))
+    .filter((f) => statSync(join(rootDir, f)).isDirectory())
+    .sort() // lexical sort matches chronological order for this timestamp format
+    .reverse();
+  if (runs.length === 0) {
+    console.error(`No timestamped run folders (e.g. 2026-07-16_20-27-45) found under: ${rootDir}`);
+    console.error("Pass --src to import from a specific folder instead.");
+    process.exit(1);
+  }
+  srcDir = join(rootDir, runs[0]);
+  console.log(`Using latest run: ${runs[0]} (${runs.length} run folder${runs.length === 1 ? "" : "s"} found)`);
 }
 if (!existsSync(destDir)) {
   console.error(`Destination directory not found: ${destDir}`);

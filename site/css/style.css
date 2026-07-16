@@ -1740,6 +1740,43 @@ a.tile-card-name:hover {
 .toggle-switch.on .toggle-knob {
     transform: translateX(0.75rem);
 }
+/* Sub-heading inside a settings menu (e.g. a radio group's title) */
+.settings-subhead {
+    padding: 0.4rem 0.75rem 0.15rem;
+    margin-top: 0.15rem;
+    border-top: 1px solid var(--color-overlay-white-6);
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+/* Radio indicator for single-select settings rows */
+.settings-radio {
+    position: relative;
+    display: inline-block;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-elevated-3);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    transition: border-color 0.15s;
+}
+.settings-radio.on {
+    border-color: var(--accent);
+}
+.settings-radio.on::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translate(-50%, -50%);
+}
 /* Filter button & panel */
 .filter-wrap {
     position: relative; /* positioning context for mobile; desktop uses Floating UI */
