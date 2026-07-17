@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-07-17",
+    "entries": [
+      { "type": "added", "text": "New Misc category gathers items that didn't fit any other page: detectors, tools, repair and cooking kits, the bolt, binoculars, artefact junk and more, each with its icon, weight and cost. Weapon Parts and Outfit Parts now sit alongside it under a new Items group." },
+      { "type": "fixed", "text": "Fixed a few items that were missing from Starting Loadouts, like the Thompson and the anomaly detector.", "action": "startingLoadouts" }
+    ]
+  },
+  {
     "date": "2026-07-16",
     "entries": [
       { "type": "added", "text": "Starting Loadouts now supports alternative loadout mods. Pick one from the Mods menu (starting with Drunk's Alternative Loadouts) to plan its loadout instead of the base game's.", "action": "startingLoadouts" },

@@ -6148,7 +6148,8 @@
       "name": "st_wpn_pm_new",
       "displayName": "st_wpn_pm_new",
       "category": "Pistols",
-      "isAlt": false
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_pm_actor",
@@ -6422,7 +6423,8 @@
       "name": "st_wpn_pm_new",
       "displayName": "st_wpn_pm_new",
       "category": "Pistols",
-      "isAlt": false
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_pm_actor",
@@ -6712,7 +6714,8 @@
       "name": "st_wpn_pm_new",
       "displayName": "st_wpn_pm_new",
       "category": "Pistols",
-      "isAlt": false
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_pm_actor",
@@ -7021,7 +7024,8 @@
       "name": "st_wpn_pm_new",
       "displayName": "st_wpn_pm_new",
       "category": "Pistols",
-      "isAlt": true
+      "isAlt": true,
+      "noDrop": true
     },
     {
       "id": "wpn_pm_actor",
@@ -7470,7 +7474,8 @@
       "name": "st_wpn_pm_new",
       "displayName": "st_wpn_pm_new",
       "category": "Pistols",
-      "isAlt": true
+      "isAlt": true,
+      "noDrop": true
     },
     {
       "id": "wpn_pm_actor",
@@ -7919,7 +7924,8 @@
       "name": "st_wpn_pm_new",
       "displayName": "st_wpn_pm_new",
       "category": "Pistols",
-      "isAlt": true
+      "isAlt": true,
+      "noDrop": true
     },
     {
       "id": "wpn_pm_actor",

@@ -111,6 +111,7 @@ export const CAT = {
     MUTANT_PARTS: "Mutant Parts", RECIPES: "Recipes",
     TOOLKIT_RATES: "Toolkit Rates",
     WEAPON_PARTS: "Weapon Parts", OUTFIT_PARTS: "Outfit Parts",
+    MISC: "Misc",
 };
 
 export const CRAFTING_SUBCATEGORIES = new Set([
@@ -161,6 +162,7 @@ export const CATEGORY_KEYS = {
     [CAT.MUTANT_PARTS]: "app_cat_mutant_parts", [CAT.RECIPES]: "app_cat_recipes",
     [CAT.TOOLKIT_RATES]: "app_cat_toolkit_rates",
     [CAT.WEAPON_PARTS]: "app_cat_weapon_parts", [CAT.OUTFIT_PARTS]: "app_cat_outfit_parts",
+    [CAT.MISC]: "app_cat_misc",
 };
 export const WEAPON_CATEGORIES = [CAT.PISTOLS, CAT.SMGS, CAT.SHOTGUNS, CAT.RIFLES, CAT.SNIPERS, CAT.LAUNCHERS, CAT.MELEE];
 export const WEAPON_CATEGORY_SLUGS = WEAPON_CATEGORIES.map(c => c.toLowerCase().replace(/ /g, "-"));
@@ -168,10 +170,11 @@ export const VIRTUAL_CATEGORIES = new Set([CAT.ALL_WEAPONS, CAT.CRAFTING, CAT.TO
 
 export const CATEGORY_GROUPS = [
     { name: "app_group_weapons", categories: [CAT.ALL_WEAPONS, ...WEAPON_CATEGORIES] },
-    { name: "app_group_attachments", categories: [CAT.SCOPES, CAT.SILENCERS, CAT.GRENADE_LAUNCHERS, CAT.TACTICAL_KITS, CAT.WEAPON_PARTS] },
+    { name: "app_group_attachments", categories: [CAT.SCOPES, CAT.SILENCERS, CAT.GRENADE_LAUNCHERS, CAT.TACTICAL_KITS] },
     { name: "app_group_ammo_explosives", categories: [CAT.AMMO, CAT.EXPLOSIVES, CAT.MAGAZINES] },
-    { name: "app_group_equipment", categories: [CAT.OUTFITS, CAT.HELMETS, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS, CAT.OUTFIT_PARTS] },
+    { name: "app_group_equipment", categories: [CAT.OUTFITS, CAT.HELMETS, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS] },
     { name: "app_group_consumables", categories: [CAT.FOOD, CAT.MEDICINE] },
+    { name: "app_group_items", categories: [CAT.WEAPON_PARTS, CAT.OUTFIT_PARTS, CAT.MISC] },
 ];
 
 export const KEYS = {

@@ -6,9 +6,12 @@
  * such folder and imports from it, so you only need to point at the root. Pass --src to
  * import from a specific run folder instead.
  *
- * All CSVs are copied from the resolved run folder to data/<pack>/.
+ * All CSV and JSON files are copied from the resolved run folder to data/<pack>/.
  * Translation CSVs (en_us.csv, ru_ru.csv, fr_fr.csv) are replaced by default.
  * Pass --merge-translations to merge new keys into existing translation files instead.
+ *
+ * export_item_icons.csv is additionally staged to <GAMMA>\data\ (where the MO2
+ * icon-extractor plugin reads it), so the plugin crops from the latest atlas coords.
  *
  * Usage:
  *   node scripts/import-game-exports.mjs --pack gamma-0.9.5
@@ -17,7 +20,7 @@
  *   node scripts/import-game-exports.mjs --pack gamma-0.9.5 --merge-translations
  */
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, copyFileSync, statSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, copyFileSync, statSync, mkdirSync } from "fs";
 import { join } from "path";
 
 function parseArgs(argv) {
@@ -36,7 +39,15 @@ function parseArgs(argv) {
   return args;
 }
 
-const DEFAULT_ROOT = "D:\\gamma0.9.5\\GAMMA\\overwrite\\bin";
+const GAMMA_DIR = "D:\\gamma0.9.5\\GAMMA";
+const DEFAULT_ROOT = join(GAMMA_DIR, "overwrite", "bin");
+
+// The MO2 icon-extractor plugin reads its CSV from <GAMMA>\data\export_item_icons.csv
+// (it resolves <plugin dir>\..\data\). After importing, mirror the icon CSV there so the
+// plugin always crops from the latest atlas coords — no separate setup-icon-extractor.mjs
+// run needed just to refresh the CSV.
+const ICON_CSV = "export_item_icons.csv";
+const ICON_PLUGIN_DATA_DIR = join(GAMMA_DIR, "data");
 
 // Exporter run folders are named like 2026-07-16_20-27-45.
 const RUN_FOLDER_RE = /^\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}$/;
@@ -89,9 +100,12 @@ if (!existsSync(destDir)) {
 
 const TRANSLATION_FILES = new Set(["en_us.csv", "ru_ru.csv", "fr_fr.csv", "translation_keys.csv"]);
 
-const srcFiles = readdirSync(srcDir).filter((f) => f.endsWith(".csv"));
+// CSV tables plus structured JSON exports (e.g. export_starting_loadouts.json,
+// whose nested shape doesn't fit a flat CSV). JSON files are plain copies — the
+// translation-merge path only applies to the CSV translation files.
+const srcFiles = readdirSync(srcDir).filter((f) => f.endsWith(".csv") || f.endsWith(".json"));
 if (srcFiles.length === 0) {
-  console.log("No CSV files found in source directory.");
+  console.log("No CSV or JSON files found in source directory.");
   process.exit(0);
 }
 
@@ -148,6 +162,16 @@ for (const file of srcFiles) {
     console.log(`${file}: copied`);
     copied++;
   }
+}
+
+// Stage the icon CSV where the MO2 icon-extractor plugin reads it, so its next run
+// crops from the atlas coords we just imported (keeps GAMMA\data\ in sync without a
+// separate setup-icon-extractor.mjs run).
+if (srcFiles.includes(ICON_CSV)) {
+  mkdirSync(ICON_PLUGIN_DATA_DIR, { recursive: true });
+  const iconPluginDest = join(ICON_PLUGIN_DATA_DIR, ICON_CSV);
+  copyFileSync(join(destDir, ICON_CSV), iconPluginDest);
+  console.log(`${ICON_CSV}: also staged for the MO2 icon-extractor plugin → ${iconPluginDest}`);
 }
 
 console.log(`\nDone. ${copied} files copied${merged ? `, ${merged} translation files merged` : ""}.`);

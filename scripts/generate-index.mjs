@@ -575,10 +575,10 @@ for (const cat of CRAFT_CATEGORIES) {
         ingredients,
       });
 
-      // Track craft recipe IDs but don't add to search index — items that exist
-      // in the DB already have an index entry from their real category. Items that
-      // only appear in recipes have no category JSON to load detail data from.
-      seen.add(id);
+      // Deliberately NOT added to `seen`: recipe outputs with no real category must
+      // still fall through to the Misc catch-all below and get a card (a craftable
+      // item like a detector or repair kit is a real item). Recipe outputs that are
+      // real category items are already deduped via their category's `seen` entry.
     }
 
     if (items.length > 0) {
@@ -771,6 +771,48 @@ try {
 } catch (e) {
   if (e.code !== "ENOENT") throw e;
   console.log("No items common data CSV found, skipping items-common.json");
+}
+
+// ── Misc catch-all category ──────────────────────────────────────────────────
+// Real items that exist in the game but land in no other category — devices,
+// tools, repair kits, backpacks, etc. (e.g. the Anomaly Detector granted in
+// starting loadouts). Sourced from export_items_common_data.csv, filtered to
+// "i_*" spawn types (real inventory items) minus quest/letter items, upgrade
+// *sections*, artefact containers (i_arty_cont — the same items as the Artefacts
+// category) and parts (i_part — covered by the Weapon/Outfit Parts categories),
+// and minus anything already a card in another category. Weapon variants (w_*
+// spawn types) are intentionally excluded — they're covered by their base weapon
+// card. Icons come from export_item_icons.csv, which the icon exporter now
+// self-seeds for every real item. Runs after all other categories so `seen` is complete.
+const MISC_EXCLUDED_SPAWN_TYPES = new Set(["i_quest", "i_letter", "i_upgrade", "i_arty_cont", "i_part"]);
+// Non-real / dummy sections that slip through the spawn-type filter (they have a
+// `kind` and inv_grid coords but no drawn icon — the crop is a blank transparent
+// PNG). Dropped entirely so they never appear as a card. Add ids here as found.
+const MISC_BLACKLIST = new Set([
+  "items_anm_dummy",       // "don't spawn, dummy no sound item"
+  "itm_xcvb_1", "itm_xcvb_2", "itm_xcvb_3", // test/junk sections
+  "fieldcraft_plate_attch", // internal attach, no icon
+]);
+// Real items whose spawn type falls outside the `i_*` gate but which are genuine
+// browsable items (the `w_*` bucket is mostly weapon variants + scope dummies, but a
+// few real utility items live there). Forced into Misc regardless of spawn type.
+const MISC_WHITELIST = new Set(["bolt", "wpn_binoc_inv"]);
+if (existsSync(ITEMS_COMMON_FILE)) {
+  const { headers, items } = processFile(ITEMS_COMMON_FILE, { category: "Misc", nameCol: 3 });
+  const miscItems = [];
+  for (const item of items) {
+    const spawn = item["st_ui_dbg_spawn_type"] || "";
+    if (!MISC_WHITELIST.has(item.id) && (!spawn.startsWith("i_") || MISC_EXCLUDED_SPAWN_TYPES.has(spawn))) continue;
+    if (MISC_BLACKLIST.has(item.id)) continue;
+    if (seen.has(item.id)) continue;
+    seen.add(item.id);
+    miscItems.push(item);
+    index.push({ id: item.id, name: item.pda_encyclopedia_name || item.id, category: "Misc" });
+  }
+  if (miscItems.length) {
+    categoryData.set("misc", { category: "Misc", headers, items: miscItems });
+    console.log(`Misc: ${miscItems.length} uncategorised items → misc.json`);
+  }
 }
 
 // Generate disassemble.json from export_disassemble_table.csv
@@ -1348,11 +1390,25 @@ function parseLoadoutLtx(ltxText) {
   return { points, factions, shared: sharedItems, ammoPerWeapon, ammoCount };
 }
 
-const LOADOUT_FILE = existsSync(join(CSV_DIR, "source", "new_game_loadouts.ltx"))
+// Base starting loadout. Prefer the in-game export (export_starting_loadouts.json):
+// the fully-merged loadout the engine actually builds — the base ltx plus
+// mod_new_game_loadouts_*.ltx appends plus runtime *_mcm.script injections (e.g.
+// the Thompson → freedom/stalker/csky/bandit/renegade, and the anomaly detector).
+// Produced by the "Export starting loadouts" command in
+// universal_anomaly_data_export.script. Falls back to parsing the raw ltx (static
+// file only, no injected items) until that export has been generated and dropped in.
+const LOADOUT_JSON = join(CSV_DIR, "export_starting_loadouts.json");
+const LOADOUT_LTX = existsSync(join(CSV_DIR, "source", "new_game_loadouts.ltx"))
   ? join(CSV_DIR, "source", "new_game_loadouts.ltx")
   : join(CSV_DIR, "new_game_loadouts.ltx");
-try {
-  const loadoutsData = parseLoadoutLtx(readFileSync(LOADOUT_FILE, "utf-8"));
+let loadoutsData = null;
+if (existsSync(LOADOUT_JSON)) {
+  loadoutsData = JSON.parse(readFileSync(LOADOUT_JSON, "utf-8"));
+} else if (existsSync(LOADOUT_LTX)) {
+  console.log("Starting loadouts: using legacy new_game_loadouts.ltx — run the in-game 'Export starting loadouts' for the fully-merged loadout (mod_ appends + script-injected items)");
+  loadoutsData = parseLoadoutLtx(readFileSync(LOADOUT_LTX, "utf-8"));
+}
+if (loadoutsData) {
   const { factions, shared: sharedItems } = loadoutsData;
   const sharedIdSet = new Set(sharedItems.map(i => i.id));
 
@@ -1385,9 +1441,8 @@ try {
       item.inStartingLoadout = item.id in itemLoadouts;
     }
   }
-} catch (e) {
-  if (e.code !== "ENOENT") throw e;
-  console.log("No starting loadouts LTX found, skipping starting-loadouts.json");
+} else {
+  console.log("No starting loadouts source found, skipping starting-loadouts.json");
 }
 
 // Optional loadout mods (registry in scripts/loadout-mods.mjs): each present source
