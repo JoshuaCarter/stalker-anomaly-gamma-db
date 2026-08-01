@@ -13,6 +13,7 @@
     "st_data_export_has_perk",
     "st_data_export_perk_description",
     "ui_inv_outfit_fire_wound_protection",
+    "st_data_export_belt_stopped_bonus",
     "ui_inv_outfit_wound_protection",
     "ui_inv_outfit_burn_protection",
     "ui_inv_outfit_shock_protection",
@@ -78,7 +79,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_e1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_e2",
@@ -119,7 +122,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_e2",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_f1",
@@ -160,7 +165,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_f1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_g1",
@@ -201,7 +208,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_g1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_g2",
@@ -242,7 +251,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_g2",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_h1",
@@ -283,7 +294,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_h1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_h2",
@@ -324,7 +337,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_h2",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_o1",
@@ -365,7 +380,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_o1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_o2",
@@ -406,7 +423,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_o2",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_r1",
@@ -447,7 +466,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_r1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_r2",
@@ -488,7 +509,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_r2",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_r3",
@@ -529,7 +552,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_r3",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_r4",
@@ -570,7 +595,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_r4",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_r5",
@@ -611,7 +638,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_r5",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ah_s1",
@@ -652,7 +681,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ah_s1",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_atom",
@@ -693,7 +724,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_atom_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ball",
@@ -734,7 +767,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ball_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_baloon",
@@ -753,11 +788,11 @@
       "ui_inv_outfit_burn_protection": "39.6%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "60.984%",
-      "ui_inv_outfit_radiation_protection": "12.9%",
+      "ui_inv_outfit_radiation_protection": "49.9875%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
-      "st_prop_restore_health": "-6",
+      "st_prop_restore_health": "-7.5",
       "ui_inv_satiety": "0%",
       "st_prop_restore_bleeding": "0",
       "st_data_export_restore_radiation": "0",
@@ -775,7 +810,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_baloon_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_bat",
@@ -816,7 +853,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_bat_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_black",
@@ -857,7 +896,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_black_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_black_angel",
@@ -898,7 +939,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_black_angel_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_black_spray",
@@ -917,7 +960,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "4.3%",
+      "ui_inv_outfit_radiation_protection": "16.6625%",
       "ui_inv_outfit_telepatic_protection": "29.7%",
       "ui_inv_outfit_strike_protection": "39.897%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -939,7 +982,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_black_spray_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_blood",
@@ -980,7 +1025,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_blood_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_bracelet",
@@ -1021,7 +1068,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_bracelet_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_cell",
@@ -1062,7 +1111,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_cell_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_chelust",
@@ -1103,7 +1154,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_chelust_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_cocoon",
@@ -1144,7 +1197,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_cocoon_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_compass",
@@ -1163,11 +1218,11 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-18.5%",
+      "ui_inv_outfit_radiation_protection": "-71.6875%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "29.601%",
       "ui_inv_outfit_explosion_protection": "19.035%",
-      "st_prop_restore_health": "-6",
+      "st_prop_restore_health": "-7.5",
       "ui_inv_satiety": "0%",
       "st_prop_restore_bleeding": "-0.6123",
       "st_data_export_restore_radiation": "0",
@@ -1185,7 +1240,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_compass_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.52,
+      "fireWoundCap": 0.15
     },
     {
       "id": "af_cristall",
@@ -1226,7 +1283,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_cristall_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_cristall_flower",
@@ -1267,7 +1326,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_cristall_flower_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_death_lamp",
@@ -1286,7 +1347,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-20%",
+      "ui_inv_outfit_radiation_protection": "-77.5%",
       "ui_inv_outfit_telepatic_protection": "-4.896%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -1308,7 +1369,10 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_death_lamp_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 12
     },
     {
       "id": "af_dragon_eye",
@@ -1349,7 +1413,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_dragon_eye_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_dummy_battery",
@@ -1390,7 +1456,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_dummy_battery_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_dummy_dummy",
@@ -1409,11 +1477,11 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "8.6%",
+      "ui_inv_outfit_radiation_protection": "33.325%",
       "ui_inv_outfit_telepatic_protection": "14.85%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
-      "st_prop_restore_health": "-6",
+      "st_prop_restore_health": "-7.5",
       "ui_inv_satiety": "0%",
       "st_prop_restore_bleeding": "0",
       "st_data_export_restore_radiation": "0",
@@ -1431,7 +1499,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_dummy_dummy_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_dummy_glassbeads",
@@ -1472,7 +1542,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_dummy_glassbeads_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ear",
@@ -1513,7 +1585,10 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_ear_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 6
     },
     {
       "id": "af_electra_flash",
@@ -1532,11 +1607,11 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "49.14054%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "13%",
+      "ui_inv_outfit_radiation_protection": "50.375%",
       "ui_inv_outfit_telepatic_protection": "24.75%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
-      "st_prop_restore_health": "-3",
+      "st_prop_restore_health": "-3.75",
       "ui_inv_satiety": "0%",
       "st_prop_restore_bleeding": "0",
       "st_data_export_restore_radiation": "0",
@@ -1554,7 +1629,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_electra_flash_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_electra_moonlight",
@@ -1573,7 +1650,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "19.656216%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-9.5%",
+      "ui_inv_outfit_radiation_protection": "-36.8125%",
       "ui_inv_outfit_telepatic_protection": "14.85%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -1595,7 +1672,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_electra_moonlight_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_electra_sparkler",
@@ -1636,7 +1715,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_electra_sparkler_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_elektron",
@@ -1677,7 +1758,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_elektron_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_empty",
@@ -1696,7 +1779,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-4.75%",
+      "ui_inv_outfit_radiation_protection": "-18.40625%",
       "ui_inv_outfit_telepatic_protection": "-6.250005%",
       "ui_inv_outfit_strike_protection": "29.601%",
       "ui_inv_outfit_explosion_protection": "19.035%",
@@ -1718,7 +1801,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_empty_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.194862,
+      "fireWoundCap": 0.05
     },
     {
       "id": "af_eye",
@@ -1759,7 +1844,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_eye_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_fire",
@@ -1778,7 +1865,7 @@
       "ui_inv_outfit_burn_protection": "19.5%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "-36.95868%",
-      "ui_inv_outfit_radiation_protection": "-14.25%",
+      "ui_inv_outfit_radiation_protection": "-55.21875%",
       "ui_inv_outfit_telepatic_protection": "9.9%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -1800,7 +1887,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_fire_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_fire_loop",
@@ -1841,7 +1930,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_fire_loop_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_fireball",
@@ -1882,7 +1973,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_fireball_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.194862,
+      "fireWoundCap": 0
     },
     {
       "id": "af_fonar",
@@ -1923,7 +2016,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_fonar_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_fountain",
@@ -1964,7 +2059,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_fountain_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_full_empty",
@@ -1983,7 +2080,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-14.25%",
+      "ui_inv_outfit_radiation_protection": "-55.21875%",
       "ui_inv_outfit_telepatic_protection": "-6.250005%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "19.035%",
@@ -2005,7 +2102,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_full_empty_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.4,
+      "fireWoundCap": 0.05
     },
     {
       "id": "af_fuzz_kolobok",
@@ -2024,7 +2123,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "8.6%",
+      "ui_inv_outfit_radiation_protection": "33.325%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -2046,7 +2145,10 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_fuzz_kolobok_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": -0.125,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 3
     },
     {
       "id": "af_geliy",
@@ -2087,7 +2189,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_geliy_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_generator",
@@ -2128,7 +2232,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_generator_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_gimlet",
@@ -2169,7 +2275,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_gimlet_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_glass",
@@ -2188,7 +2296,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "13%",
+      "ui_inv_outfit_radiation_protection": "50.375%",
       "ui_inv_outfit_telepatic_protection": "-6.250005%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -2210,7 +2318,10 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_glass_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": -0.24,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 5
     },
     {
       "id": "af_gold_fish",
@@ -2229,11 +2340,11 @@
       "ui_inv_outfit_burn_protection": "-21.6%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "17.2%",
+      "ui_inv_outfit_radiation_protection": "66.65%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "39.285%",
-      "st_prop_restore_health": "-6",
+      "st_prop_restore_health": "-7.5",
       "ui_inv_satiety": "0%",
       "st_prop_restore_bleeding": "0",
       "st_data_export_restore_radiation": "0",
@@ -2251,7 +2362,10 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_gold_fish_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.097431,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 8
     },
     {
       "id": "af_grapes",
@@ -2292,7 +2406,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_grapes_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_gravi",
@@ -2311,7 +2427,7 @@
       "ui_inv_outfit_burn_protection": "-21.6%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "8.6%",
+      "ui_inv_outfit_radiation_protection": "33.325%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "19.035%",
@@ -2333,7 +2449,10 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_gravi_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": -0.125,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 6
     },
     {
       "id": "af_ice",
@@ -2352,11 +2471,11 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "17.8125%",
+      "ui_inv_outfit_radiation_protection": "69.0234375%",
       "ui_inv_outfit_telepatic_protection": "-11.7%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
-      "st_prop_restore_health": "-6",
+      "st_prop_restore_health": "-7.5",
       "ui_inv_satiety": "0%",
       "st_prop_restore_bleeding": "0",
       "st_data_export_restore_radiation": "0",
@@ -2374,7 +2493,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_ice_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_itcher",
@@ -2415,7 +2536,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_itcher_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_kislushka",
@@ -2456,7 +2579,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_kislushka_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_kogot",
@@ -2497,7 +2622,10 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_kogot_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 6
     },
     {
       "id": "af_lighthouse",
@@ -2538,7 +2666,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_lighthouse_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_lobster_eyes",
@@ -2557,7 +2687,7 @@
       "ui_inv_outfit_burn_protection": "19.5%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-4.75%",
+      "ui_inv_outfit_radiation_protection": "-18.40625%",
       "ui_inv_outfit_telepatic_protection": "14.85%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "-21.87%",
@@ -2579,7 +2709,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_lobster_eyes_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_medallion",
@@ -2620,7 +2752,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_medallion_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_medusa",
@@ -2661,7 +2795,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_medusa_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.097431,
+      "fireWoundCap": 0
     },
     {
       "id": "af_mincer_meat",
@@ -2702,7 +2838,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_mincer_meat_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.194862,
+      "fireWoundCap": 0.05
     },
     {
       "id": "af_moh",
@@ -2743,7 +2881,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_moh_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_monolith",
@@ -2762,7 +2902,7 @@
       "ui_inv_outfit_burn_protection": "49.2%",
       "ui_inv_outfit_shock_protection": "49.14054%",
       "ui_inv_outfit_chemical_burn_protection": "49.27824%",
-      "ui_inv_outfit_radiation_protection": "-23%",
+      "ui_inv_outfit_radiation_protection": "-89.125%",
       "ui_inv_outfit_telepatic_protection": "19.8%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -2784,7 +2924,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_monolith_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_night_star",
@@ -2803,7 +2945,7 @@
       "ui_inv_outfit_burn_protection": "-11.4%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "4.3%",
+      "ui_inv_outfit_radiation_protection": "16.6625%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "9.180135%",
@@ -2825,7 +2967,10 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_night_star_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 4
     },
     {
       "id": "af_oasis_heart",
@@ -2844,7 +2989,7 @@
       "ui_inv_outfit_burn_protection": "-36.5625%",
       "ui_inv_outfit_shock_protection": "-36.855405%",
       "ui_inv_outfit_chemical_burn_protection": "-36.95868%",
-      "ui_inv_outfit_radiation_protection": "17.3%",
+      "ui_inv_outfit_radiation_protection": "67.0375%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -2866,7 +3011,10 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_oasis_heart_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": -0.35,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 8
     },
     {
       "id": "af_peas",
@@ -2907,7 +3055,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_peas_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_pin",
@@ -2926,7 +3076,7 @@
       "ui_inv_outfit_burn_protection": "19.5%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "-21.384%",
-      "ui_inv_outfit_radiation_protection": "-4.75%",
+      "ui_inv_outfit_radiation_protection": "-18.40625%",
       "ui_inv_outfit_telepatic_protection": "9.9%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -2948,7 +3098,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_pin_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_repei",
@@ -2989,7 +3141,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_repei_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_ring",
@@ -3030,7 +3184,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_ring_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_sandstone",
@@ -3071,7 +3227,10 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_sandstone_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0,
+      "st_data_export_belt_stopped_bonus": 6
     },
     {
       "id": "af_serofim",
@@ -3112,7 +3271,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_serofim_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_signet",
@@ -3153,7 +3314,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_signet_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_skull_miser",
@@ -3194,7 +3357,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_skull_miser_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_soul",
@@ -3213,7 +3378,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "4.3%",
+      "ui_inv_outfit_radiation_protection": "16.6625%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -3235,7 +3400,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_soul_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_spaika",
@@ -3276,7 +3443,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_spaika_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_sponge",
@@ -3295,7 +3464,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-9.5%",
+      "ui_inv_outfit_radiation_protection": "-36.8125%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "19.305%",
       "ui_inv_outfit_explosion_protection": "19.035%",
@@ -3317,7 +3486,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_sponge_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_star_phantom",
@@ -3358,7 +3529,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_star_phantom_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_sun",
@@ -3399,7 +3572,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_sun_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_tapeworm",
@@ -3440,7 +3615,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_tapeworm_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_tlf_lost_soul",
@@ -3481,7 +3658,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_tlf_lost_soul",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_tlf_prometheus",
@@ -3500,7 +3679,7 @@
       "ui_inv_outfit_burn_protection": "49.2%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "0%",
-      "ui_inv_outfit_radiation_protection": "-14.25%",
+      "ui_inv_outfit_radiation_protection": "-55.21875%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -3522,7 +3701,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_tlf_prometheus",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_vaselisk",
@@ -3563,7 +3744,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_vaselisk_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_vyvert",
@@ -3582,7 +3765,7 @@
       "ui_inv_outfit_burn_protection": "0%",
       "ui_inv_outfit_shock_protection": "0%",
       "ui_inv_outfit_chemical_burn_protection": "19.711296%",
-      "ui_inv_outfit_radiation_protection": "-4.75%",
+      "ui_inv_outfit_radiation_protection": "-18.40625%",
       "ui_inv_outfit_telepatic_protection": "0%",
       "ui_inv_outfit_strike_protection": "0%",
       "ui_inv_outfit_explosion_protection": "0%",
@@ -3604,7 +3787,9 @@
       "st_data_export_can_be_crafted": "Y",
       "displayName": "st_af_vyvert_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0.097431,
+      "fireWoundCap": 0
     },
     {
       "id": "af_zhelch",
@@ -3645,7 +3830,9 @@
       "st_data_export_can_be_crafted": "N",
       "displayName": "st_af_zhelch_name",
       "hasStashDrop": false,
-      "hasDisassemble": false
+      "hasDisassemble": false,
+      "fireWoundImmunity": 0,
+      "fireWoundCap": 0
     },
     {
       "id": "af_lucifer",

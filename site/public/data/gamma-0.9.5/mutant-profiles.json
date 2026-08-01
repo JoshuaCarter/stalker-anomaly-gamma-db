@@ -1200,6 +1200,16 @@
     "hitzone_rear": 1.25
   },
   {
+    "id": "drone_quad_ai",
+    "skin_armor": 0.01,
+    "hit_fraction": 0.8,
+    "fire_wound_immunity": 1.5,
+    "hitzone_head": 2,
+    "hitzone_torso": 1,
+    "hitzone_limbs": 0.75,
+    "hitzone_rear": 1.25
+  },
+  {
     "id": "flesh_01a_normal",
     "skin_armor": 0.25,
     "hit_fraction": 0.67,

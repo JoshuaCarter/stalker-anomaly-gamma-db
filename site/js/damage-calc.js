@@ -298,13 +298,17 @@ function getMutantType(mutantId) {
 // adb-constants.json FireWound row + the script's literals. Mirrored here so the
 // calc runs without loading the JSON. See docs/gamma-actor-damage-formula.md and
 // grok_actor_damage_balancer.script (get_protection line ~361, damage line 726).
+// adjuster / artiAdjuster / limiterBase come from get_adb_constants and are exported
+// to adb-constants.json. basePremitigation and hardCap are inline literals in the
+// script with no named constant to read, so they can't be exported — if a GAMMA bump
+// rebalances them this block must be re-checked by hand against those lines.
 export const ACTOR_FIRE_WOUND = {
   adjuster: 0.8,          // flat-protection multiplier: boneArmor × cond × adjuster
   artiAdjuster: 0.8,      // artefact immunity multiplier
   artiFactor: 0.6,        // extra artefact scalar (× cond × 0.6 × artiAdjuster)
-  basePremitigation: 0.4, // flat reduction earned when a round is stopped
+  basePremitigation: 0.4, // stopped-round flat reduction (literal, script:491 + 502)
   limiterBase: 0.65,      // protection cap before artefact caps
-  hardCap: 0.9,           // absolute cap on either bucket
+  hardCap: 0.9,           // absolute cap on either bucket (literal, script:449 + 509)
 };
 
 /**
@@ -339,7 +343,10 @@ export function calcActorDamage(params) {
   const premitigation = stopped ? Math.min(fw.basePremitigation + platePremit, fw.hardCap) : 0;
 
   // Flat protection bucket, capped by the limiter (and the hard cap).
-  const artiProt = artefacts.reduce((s, a) => s + (a.fireWoundImmunity || 0) * cond * fw.artiFactor * fw.artiAdjuster, 0);
+  // ADB floors each belt item to 2dp *before* summing, not after
+  // (grok_actor_damage_balancer.script:443), so mirror that per artefact.
+  const artiProt = artefacts.reduce((s, a) =>
+    s + Math.floor((a.fireWoundImmunity || 0) * cond * fw.artiFactor * fw.artiAdjuster * 100) / 100, 0);
   const artiCap = artefacts.reduce((s, a) => s + (a.fireWoundCap || 0), 0);
   const limiter = Math.min(fw.limiterBase + artiCap, fw.hardCap);
   const protection = Math.min(boneArmor * cond * fw.adjuster + artiProt + boost, limiter, fw.hardCap);

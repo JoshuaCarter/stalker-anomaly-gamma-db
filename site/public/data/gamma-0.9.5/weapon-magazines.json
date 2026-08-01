@@ -1663,5 +1663,95 @@
   ],
   "wpn_xm8": [
     "mag_g36_5.56x45_default"
+  ],
+  "wpn_browninghp": [
+    "mag_beretta_9x19_default"
+  ],
+  "wpn_cetme": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_cr920": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_fort14": [
+    "mag_fort_9x18_default"
+  ],
+  "wpn_fort14_bloodoath": [
+    "mag_sr1m_9x21_default",
+    "mag_sr1m_9x21_extended"
+  ],
+  "wpn_hk51": [
+    "mag_50_762x51_drum_hinge",
+    "mag_hinge_7.62x51_default",
+    "mag_hinge_7.62x51_extended"
+  ],
+  "wpn_l96_gravebinder": [
+    "mag_bolt_300_default"
+  ],
+  "wpn_lvaw": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_pdp": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_pdx": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_pdx_terminal": [
+    "mag_grot",
+    "mag_nato_5.56x45_casket",
+    "mag_nato_5.56x45_default",
+    "mag_nato_5.56x45_drum",
+    "mag_nato_5.56x45_drum_ext",
+    "mag_nato_5.56x45_extended",
+    "mag_nato_5.56x45_fast",
+    "mag_nato_5.56x45_short"
+  ],
+  "wpn_ppq5": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_ppq5_cinder": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_usms": [
+    "mag_glock_9x19_default",
+    "mag_kriss_9x19_default",
+    "mag_kriss_9x19_ext"
+  ],
+  "wpn_usms_liberty": [
+    "mag_mk23_45",
+    "mag_usp_11.43x23_default"
+  ],
+  "wpn_usp45c": [
+    "mag_mk23_45",
+    "mag_usp_11.43x23_default"
+  ],
+  "wpn_usp45pm": [
+    "mag_mk23_45",
+    "mag_usp_11.43x23_default"
   ]
 }

@@ -45,7 +45,10 @@ export const BIPOLAR = new Set([
     "ui_inv_outfit_explosion_protection", "st_prop_restore_health", "st_prop_restore_bleeding",
     "ui_inv_outfit_power_restore", "st_data_export_eat_health_change", "st_data_export_jump_height",
     "st_itm_desc_eat_sleepiness", "st_itm_desc_eat_thirst", "st_data_export_eat_alcohol", "ui_inv_satiety",
-    "ui_inv_outfit_durability_physical", "ui_inv_outfit_durability_anomaly"
+    "ui_inv_outfit_durability_physical", "ui_inv_outfit_durability_anomaly",
+    // Belt ballistic contributions: signed, higher is better, negatives are real
+    // (some artefacts trade flat protection for the stopped-round bonus).
+    "st_data_export_belt_br_class", "st_data_export_belt_stopped_bonus"
 ]);
 export const POSITIVE_IS_GOOD = new Set([
     "ui_inv_accuracy", "ui_inv_handling", "ui_inv_reli", "_ballistic_rating",

@@ -3,7 +3,8 @@
     "date": "2026-08-01",
     "entries": [
       { "type": "added", "text": "Upgrade trees have a new Lighter tag that picks out every upgrade making the item weigh less, even when it's filed under something else. Some AK stock upgrades only list Handling but quietly shave off weight too.", "credits": [{ "name": "Androwski", "role": "suggestion" }] },
-      { "type": "changed", "text": "The upgrade tree tags now match on everything an upgrade does, not just its headline stat, so tapping Recoil also highlights the upgrades that cut recoil as a side effect. Tap a tag to keep it highlighted." }
+      { "type": "changed", "text": "The upgrade tree tags now match on everything an upgrade does, not just its headline stat, so tapping Recoil also highlights the upgrades that cut recoil as a side effect. Tap a tag to keep it highlighted." },
+      { "type": "added", "text": "Artefacts and belt items now show what they add to your bullet protection. BR Class raises the class of round your armour will stop, and Stopped Bonus is the extra damage cut when a round doesn't get through.", "credits": [{ "name": "neuroc", "role": "suggestion" }] }
     ]
   },
   {

@@ -66,10 +66,18 @@ Sum of:
 - **Helmet BR%** — same, only counted on head shots.
 - **Artefact protection** — for each belt artefact:
   `SYS_GetParam(immunity_sect, fire_wound_immunity) * cond * 0.6 * 0.80`,
-  summed across the belt.
-- **Booster protection** — active drug boost (`fire_wound_immunity`).
+  summed across the belt. `immunity_sect` is the section named by the artefact's
+  `hit_absorbation_sect`, **defaulting to the artefact section itself** when that
+  key is absent (line 439). Each item is floored to 2dp *before* summing
+  (line 443), so the rounding is per-artefact, not on the total.
+- **Booster protection** — active drug boost (`fire_wound_immunity`), as
+  `booster_value * arti_adjuster * adjuster` (line 461). Note this is a
+  **different chain** from artefacts: both adjusters (0.8 × 0.8 = 0.64 for
+  FireWound), no `× 0.6`, and no condition scaling.
 
 Capped at `limiter` = `0.65 + Σ(artefact fire_wound_cap)`, hard-capped at **0.90**.
+The cap is read off the artefact section directly, never the absorbation section
+(line 440).
 
 ### `premitigation` — the BRC bucket
 
@@ -111,10 +119,18 @@ is the "two defense buckets" the 0.9.5 release notes describe.
    `"56%"`) are the in-game **display strings**. The real LTX
    `fire_wound_protection` is e.g. `0.52` (see `G.A.M.M.A. Armors Balancing/`),
    and `GetBoneArmor(spine)` returns the per-bone protection from the
-   `bones_koeff_protection` reference, not the flat field. If a breakpoint table
-   needs to be exact, `scripts/generate-index.mjs` should be extended to emit
-   `hit_fraction_actor`, `br_class`, and the raw `fire_wound_protection` /
-   `wound_protection` numerics from the source LTX.
+   `bones_koeff_protection` reference, not the flat field. The exporter now emits
+   `hit_fraction_actor`, `br_class`, `bone_armor` and `ap_scale` for outfits and
+   helmets, and raw `fire_wound_immunity` / `fire_wound_cap` for artefacts and belt
+   attachments, so a breakpoint table can be exact. The same caveat still applies to
+   any *other* immunity type — those columns are display strings only.
+5. **Artefact `fire_wound_immunity` can be negative.** `af_oasis_heart` is −0.35,
+   `af_glass` −0.24, `af_gravi` / `af_fuzz_kolobok` −0.125. These are exactly the
+   artefacts that also grant premitigation, so the design trades flat BR% for the
+   stopped-round bucket. ADB applies no lower clamp — protection can go negative and
+   *increase* damage taken — so neither the calc nor any UI should clamp at 0.
+   The displayed percent is the raw immunity × 0.48 (`0.6 × arti_adjuster`) at full
+   condition, exactly, for every artefact in 0.9.5.
 3. `cond` (item condition) and `* 0.80` adjuster both scale BR% in-game. A
    static "100% condition" table is the sane default for a database UI.
 4. Belt artefacts and drug boosters can move both buckets meaningfully. A

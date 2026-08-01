@@ -850,7 +850,12 @@
     "app_sim_col_dps": "DPS",
     "app_sim_col_ammo": "Ammo ×",
     "app_sim_vs": "vs",
-    "app_sim_col_sil": "Silencer"
+    "app_sim_col_sil": "Silencer",
+    "st_data_export_belt_br_class": "BR Class",
+    "st_data_export_belt_stopped_bonus": "Stopped Bonus",
+    "app_tooltip_belt_br_class": "Adds to your armour's BR Class while this sits on your belt, so it stops rounds that would otherwise punch through. Torso hits only, so ballistic plates do nothing for your head.",
+    "app_tooltip_belt_stopped_bonus": "Adds to the flat 40% you get when a round fails to penetrate. It does nothing against rounds that punch through.",
+    "app_tooltip_belt_flat_protection": "How much bullet damage this blocks while it sits on your belt, at full condition. The game rounds each item down to two decimals, so what you actually get can be a shade lower."
   },
   "ru": {
     "app_group_saved": "Быстрый доступ",
@@ -1702,7 +1707,12 @@
     "app_sim_col_dps": "УВС",
     "app_sim_col_ammo": "Патрон ×",
     "app_sim_vs": "против",
-    "app_sim_col_sil": "Глушитель"
+    "app_sim_col_sil": "Глушитель",
+    "st_data_export_belt_br_class": "Класс БЗ",
+    "st_data_export_belt_stopped_bonus": "Бонус при остановке",
+    "app_tooltip_belt_br_class": "Добавляется к классу БЗ брони, пока предмет на поясе, так что она останавливает патроны, которые иначе пробили бы её. Учитывается только при попаданиях в торс, поэтому баллистические пластины не защищают голову.",
+    "app_tooltip_belt_stopped_bonus": "Добавляется к стандартным 40%, которые вы получаете, когда патрон не пробивает броню. Он не действует против патронов, которые её пробивают.",
+    "app_tooltip_belt_flat_protection": "Насколько снижается урон от пуль, пока предмет на поясе, при полном состоянии. Игра округляет каждый предмет вниз до двух знаков, поэтому фактическое значение может быть немного ниже."
   },
   "fr": {
     "app_group_saved": "Accès rapide",
@@ -2326,6 +2336,11 @@
     "app_quick_nav_placeholder": "Aller à la page…",
     "app_quick_nav_hint_navigate": "naviguer",
     "app_quick_nav_hint_select": "sélectionner",
-    "app_quick_nav_hint_close": "fermer"
+    "app_quick_nav_hint_close": "fermer",
+    "st_data_export_belt_br_class": "Classe BR",
+    "st_data_export_belt_stopped_bonus": "Bonus tir stoppé",
+    "app_tooltip_belt_br_class": "S'ajoute à la classe BR de votre armure lorsque cet objet est à la ceinture, ce qui lui permet de stopper des munitions qui traverseraient sinon. Uniquement pour les tirs au torse, donc les plaques balistiques ne protègent pas la tête.",
+    "app_tooltip_belt_stopped_bonus": "S'ajoute aux 40% de base obtenus lorsqu'une munition ne pénètre pas. Il n'a aucun effet contre les munitions qui traversent.",
+    "app_tooltip_belt_flat_protection": "Quantité de dégâts de balles bloquée lorsque cet objet est à la ceinture, en parfait état. Le jeu arrondit chaque objet vers le bas à deux décimales, la valeur réelle peut donc être légèrement inférieure."
   }
 }

@@ -2096,6 +2096,114 @@ for (const slug of ["outfits", "helmets"]) {
   if (enriched) console.log(`Armor fields: enriched ${enriched} ${slug}`);
 }
 
+// ── ADB ballistic-plate mitigation table ────────────────────────────────────
+// The GAMMA Actor Damage Balancer's mitigation table lives only in Lua, so the
+// exporter dumps it. Each belt-item section contributes apRes (raises the
+// penetration threshold) and premitigation (adds to the stopped-round flat
+// reduction), split by body/head slot. Parsed here -- before the category write --
+// because the body values are merged onto artefact/belt items below; the same
+// object is written out as adb-plate-mitigation.json further down.
+const ADB_MIT_FILE = join(CSV_DIR, "export_adb_plate_mitigation.csv");
+const plateMitigation = (() => {
+  try {
+    const lines = readFileSync(ADB_MIT_FILE, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
+    if (lines.length <= 1) return null;
+    const mit = { body: {}, head: {} };
+    const num = (s) => { const n = parseFloat(s); return isNaN(n) ? undefined : n; };
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCsvLine(lines[i]);
+      const sec = cols[0]?.trim();
+      if (!sec || sec === "~") continue;
+      const bAp = num(cols[1]), bPre = num(cols[2]), hAp = num(cols[3]), hPre = num(cols[4]);
+      if (bAp !== undefined || bPre !== undefined) mit.body[sec] = { apRes: bAp ?? 0, premitigation: bPre ?? 0 };
+      if (hAp !== undefined || hPre !== undefined) mit.head[sec] = { apRes: hAp ?? 0, premitigation: hPre ?? 0 };
+    }
+    return mit;
+  } catch (e) {
+    if (e.code !== "ENOENT") throw e;
+    return null;
+  }
+})();
+
+// ── Coerce raw belt-item ballistic fields into typed calc inputs ─────────────
+// Artefacts and belt attachments (mutant hides, ballistic plates) both feed the
+// actor armor formula. The exporter's percent columns are the same values already
+// scaled by 0.6 * arti_adjuster at full condition; these are the raw LTX numerics
+// ADB itself reads, so the calc can apply condition and the adjusters itself:
+//   * fireWoundImmunity — flat BR% bucket, ADB applies cond * 0.6 * arti_adjuster.
+//     CAN BE NEGATIVE (af_oasis_heart -0.35, af_glass -0.24): several artefacts
+//     trade flat BR% for premitigation, so never clamp this at 0.
+//   * fireWoundCap      — raises the 0.65 protection limiter (hard cap 0.90)
+// The penetration-gate half (apRes / premitigation) isn't in any LTX and comes
+// from adb-plate-mitigation.json instead. Same strip-the-raw-column treatment as
+// ARMOR_FIELD_MAP above; absent columns => omitted.
+const BELT_BALLISTIC_FIELD_MAP = {
+  st_data_export_fire_wound_immunity: "fireWoundImmunity",
+  st_data_export_fire_wound_cap: "fireWoundCap",
+};
+for (const slug of ["artefacts", "belt-attachments"]) {
+  const cat = categoryData.get(slug);
+  if (!cat) continue;
+  let enriched = 0;
+  for (const item of cat.items) {
+    let touched = false;
+    for (const [rawKey, outKey] of Object.entries(BELT_BALLISTIC_FIELD_MAP)) {
+      const raw = item[rawKey];
+      delete item[rawKey]; // drop the raw string column regardless
+      if (raw === undefined || raw === "") continue;
+      const num = parseFloat(raw);
+      if (!isNaN(num)) { item[outKey] = num; touched = true; }
+    }
+    if (touched) enriched++;
+  }
+  cat.headers = cat.headers.filter((h) => !(h in BELT_BALLISTIC_FIELD_MAP));
+  if (enriched) console.log(`Belt ballistic fields: enriched ${enriched} ${slug}`);
+}
+
+// ── Merge the two ADB mitigation channels onto belt items as real columns ────
+// apRes and premitigation are the only bullet-mitigation facts NOT already shown
+// on these items (fire_wound immunity and cap surface as the Ballistic Res /
+// Ballistic Cap columns). Materialising them as ordinary percent-scaled numeric
+// fields -- rather than computing them client-side -- is what lets the existing
+// header, sort, table and *filter-range* machinery pick them up untouched:
+// `availableFilters` reads item[key] directly, so a runtime-only value would get
+// a column but never a filter.
+// Body/torso values only. Ballistic plates have no head entry at all (they do
+// nothing for a helmet) and mutant hides are symmetric, so the body number is
+// always present and never contradicts the head one; the head caveat lives in the
+// column tooltip instead of a second near-duplicate pair of columns.
+// Zero contributions are left unset so the column stays absent for the ~65 items
+// that don't participate.
+const BELT_MIT_COLUMNS = [
+  ["apRes", "st_data_export_belt_br_class"],
+  ["premitigation", "st_data_export_belt_stopped_bonus"],
+];
+if (plateMitigation) {
+  for (const slug of ["artefacts", "belt-attachments"]) {
+    const cat = categoryData.get(slug);
+    if (!cat) continue;
+    const present = new Set();
+    for (const item of cat.items) {
+      const m = plateMitigation.body[item.id];
+      if (!m) continue;
+      for (const [src, key] of BELT_MIT_COLUMNS) {
+        if (!m[src]) continue; // 0 => no contribution, leave the column unset
+        item[key] = Math.round(m[src] * 1000) / 10; // fraction -> percent points
+        present.add(key);
+      }
+    }
+    // Slot them straight after Ballistic Res so all the bullet-defence numbers sit
+    // together, in both the stat grid's reading order and the table's columns.
+    const anchor = cat.headers.indexOf("ui_inv_outfit_fire_wound_protection");
+    let at = anchor >= 0 ? anchor + 1 : cat.headers.length;
+    for (const [, key] of BELT_MIT_COLUMNS) {
+      if (!present.has(key) || cat.headers.includes(key)) continue;
+      cat.headers.splice(at++, 0, key);
+    }
+    if (present.size) console.log(`Belt mitigation columns: ${[...present].join(", ")} on ${slug}`);
+  }
+}
+
 // Write per-category JSON files and build categories manifest
 const categoriesList = [];
 for (const [slug, data] of categoryData) {
@@ -2367,32 +2475,14 @@ try {
   console.log("No NPC armor profiles CSV found, skipping npc-armor-profiles.json");
 }
 
-// Generate adb-plate-mitigation.json from export_adb_plate_mitigation.csv.
-// The GAMMA Actor Damage Balancer's ballistic-plate mitigation table lives only
-// in Lua, so the exporter dumps it. Each belt-item section contributes ap_res
-// (raises the penetration threshold) and premitigation (adds to the stopped-round
-// flat reduction), split by body/head slot — mirrored here as two lookup maps so
-// the armor calc can key by section exactly like the game does.
-const ADB_MIT_FILE = join(CSV_DIR, "export_adb_plate_mitigation.csv");
-try {
-  const lines = readFileSync(ADB_MIT_FILE, "utf-8").split(/\r?\n/).filter((l) => l.length > 0);
-  if (lines.length > 1) {
-    const mit = { body: {}, head: {} };
-    const num = (s) => { const n = parseFloat(s); return isNaN(n) ? undefined : n; };
-    for (let i = 1; i < lines.length; i++) {
-      const cols = parseCsvLine(lines[i]);
-      const sec = cols[0]?.trim();
-      if (!sec || sec === "~") continue;
-      const bAp = num(cols[1]), bPre = num(cols[2]), hAp = num(cols[3]), hPre = num(cols[4]);
-      if (bAp !== undefined || bPre !== undefined) mit.body[sec] = { apRes: bAp ?? 0, premitigation: bPre ?? 0 };
-      if (hAp !== undefined || hPre !== undefined) mit.head[sec] = { apRes: hAp ?? 0, premitigation: hPre ?? 0 };
-    }
-    const out = join(OUT_DIR, "adb-plate-mitigation.json");
-    writeFileSync(out, JSON.stringify(mit, null, 2));
-    console.log(`Wrote plate mitigation (${Object.keys(mit.body).length} body, ${Object.keys(mit.head).length} head) to ${out}`);
-  }
-} catch (e) {
-  if (e.code !== "ENOENT") throw e;
+// Write adb-plate-mitigation.json (parsed above, before the category write, since
+// the body values are also merged onto artefact/belt items as real columns). Kept
+// as a standalone file because the actor armor calc needs the head split too.
+if (plateMitigation) {
+  const out = join(OUT_DIR, "adb-plate-mitigation.json");
+  writeFileSync(out, JSON.stringify(plateMitigation, null, 2));
+  console.log(`Wrote plate mitigation (${Object.keys(plateMitigation.body).length} body, ${Object.keys(plateMitigation.head).length} head) to ${out}`);
+} else {
   console.log("No ADB plate mitigation CSV found, skipping adb-plate-mitigation.json");
 }
 

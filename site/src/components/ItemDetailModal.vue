@@ -711,7 +711,14 @@ export default {
       if (key === '_malfunction_chance') return this.t('app_tooltip_malfunction');
       if (key === '_ballistic_rating') return this.t('app_tooltip_ballistic_rating');
       if (key === 'ui_inv_ap_res') return this.t('app_tooltip_br_class');
-      if (key === 'ui_inv_outfit_fire_wound_protection') return this.t('app_tooltip_fire_wound_protection');
+      if (key === 'st_data_export_belt_br_class') return this.t('app_tooltip_belt_br_class');
+      if (key === 'st_data_export_belt_stopped_bonus') return this.t('app_tooltip_belt_stopped_bonus');
+      if (key === 'ui_inv_outfit_fire_wound_protection') {
+        // On belt items this column IS the contribution to the wearer's armour, and
+        // the game floors it per item — worth saying where the number lives.
+        const isBelt = this.modalCategory === 'Artefacts' || this.modalCategory === 'Belt Attachments';
+        return this.t(isBelt ? 'app_tooltip_belt_flat_protection' : 'app_tooltip_fire_wound_protection');
+      }
       return '';
     },
     isCollapsed(key) {

@@ -177,6 +177,24 @@
       ]
     },
     {
+      "id": "infiltrator_kit",
+      "pda_encyclopedia_name": "st_addon_scope_infiltrator_kit",
+      "st_data_export_description": "st_addon_scope_infiltrator_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "40000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_infiltrator_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "unobtainable": true,
+      "tacticalKit": false,
+      "nimble": false,
+      "factions": [
+        "nato"
+      ]
+    },
+    {
       "id": "infiltrator_tactical_kit",
       "pda_encyclopedia_name": "st_addon_scope_infiltrator_tactical_kit",
       "st_data_export_description": "st_addon_scope_infiltrator_tactical_kit_descr",
@@ -188,6 +206,24 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "unobtainable": false,
+      "tacticalKit": false,
+      "nimble": false,
+      "factions": [
+        "nato"
+      ]
+    },
+    {
+      "id": "jaeger_kit",
+      "pda_encyclopedia_name": "st_addon_scope_jaeger_kit",
+      "st_data_export_description": "st_addon_scope_jaeger_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "120000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_jaeger_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "unobtainable": true,
       "tacticalKit": false,
       "nimble": false,
       "factions": [
@@ -404,22 +440,21 @@
       ]
     },
     {
-      "id": "mauser_kit",
-      "pda_encyclopedia_name": "st_addon_scope_mauser_kit",
-      "st_data_export_description": "st_addon_scope_mauser_kit_descr",
-      "st_prop_weight": "3.60",
-      "st_upgr_cost": "21000",
+      "id": "mlok_kit",
+      "pda_encyclopedia_name": "st_addon_scope_mlok_kit",
+      "st_data_export_description": "st_addon_scope_mlok_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "120000",
       "st_data_export_zoom_factor": "",
       "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope_mauser_kit",
+      "displayName": "st_addon_scope_mlok_kit",
       "hasStashDrop": false,
       "hasDisassemble": false,
-      "nameSuffixKey": "st_wpn_k98_mod_silen98",
-      "unobtainable": false,
+      "unobtainable": true,
       "tacticalKit": false,
       "nimble": false,
       "factions": [
-        "other"
+        "nato"
       ]
     },
     {
@@ -495,6 +530,24 @@
       "nimble": false,
       "factions": [
         "wp"
+      ]
+    },
+    {
+      "id": "overgrowth_kit",
+      "pda_encyclopedia_name": "st_addon_overgrowth_kit",
+      "st_data_export_description": "st_addon_overgrowth_descr",
+      "st_prop_weight": "2.50",
+      "st_upgr_cost": "59500",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_overgrowth_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "unobtainable": true,
+      "tacticalKit": false,
+      "nimble": false,
+      "factions": [
+        "nato"
       ]
     },
     {
@@ -777,6 +830,24 @@
       ]
     },
     {
+      "id": "verdeckt_kit",
+      "pda_encyclopedia_name": "st_addon_verdeckt_kit",
+      "st_data_export_description": "st_addon_verdeckt_descr",
+      "st_prop_weight": "1.25",
+      "st_upgr_cost": "12000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_verdeckt_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "unobtainable": true,
+      "tacticalKit": false,
+      "nimble": false,
+      "factions": [
+        "other"
+      ]
+    },
+    {
       "id": "vitup",
       "pda_encyclopedia_name": "st_addon_scope_vitup_kit",
       "st_data_export_description": "st_addon_scope_vitup_kit_descr",
@@ -810,6 +881,24 @@
       "nimble": false,
       "factions": [
         "wp"
+      ]
+    },
+    {
+      "id": "whisper_kit",
+      "pda_encyclopedia_name": "st_addon_scope_whisper_kit",
+      "st_data_export_description": "st_addon_scope_whisper_kit_descr",
+      "st_prop_weight": "2.00",
+      "st_upgr_cost": "70000",
+      "st_data_export_zoom_factor": "",
+      "st_data_export_magnifications": "",
+      "displayName": "st_addon_scope_whisper_kit",
+      "hasStashDrop": false,
+      "hasDisassemble": false,
+      "unobtainable": true,
+      "tacticalKit": false,
+      "nimble": false,
+      "factions": [
+        "nato"
       ]
     }
   ]

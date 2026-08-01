@@ -2099,6 +2099,7 @@ export const appDefinition = {
             return this.fetchJsonCached("pbaConstantsCache", "pba-constants.json");
         },
 
+
         findItemByName(name) {
             return this.index.find(i => i.name === name || i.displayName === name || i.pda_encyclopedia_name === name);
         },
@@ -4711,6 +4712,13 @@ export const appDefinition = {
             if (val === undefined || val === null || val === "" || val === "--") return "--";
             if (h === "_malfunction_chance") return val.toFixed(2) + "%";
             if (h === "_ballistic_rating") return Math.round(val) + "%";
+            // Belt contributions read as deltas to the wearer's armour, so sign them.
+            if (h === "st_data_export_belt_br_class" || h === "st_data_export_belt_stopped_bonus") {
+                const n = parseFloat(val);
+                if (isNaN(n)) return String(val);
+                const unit = h === "st_data_export_belt_stopped_bonus" ? "%" : "";
+                return (n > 0 ? "+" : "") + n + unit;
+            }
             if (h === "_cost_per_round") {
                 const n = parseFloat(val);
                 return isNaN(n) ? String(val) : `${n.toLocaleString(this.locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ₽`;

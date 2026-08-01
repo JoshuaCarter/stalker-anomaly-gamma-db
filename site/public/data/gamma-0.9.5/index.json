@@ -120,6 +120,12 @@
     "displayName": "ammo_9x21_sp10"
   },
   {
+    "id": "ammo_magnum_300_sub",
+    "name": "ammo_magnum_300_sub",
+    "category": "Ammo",
+    "displayName": "ammo_magnum_300_sub"
+  },
+  {
     "id": "ammo_vog-30",
     "name": "ammo_vog_30",
     "category": "Ammo",
@@ -1636,6 +1642,16 @@
     "tacticalKit": false
   },
   {
+    "id": "overgrowth_kit",
+    "name": "st_addon_overgrowth_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_overgrowth_kit",
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
+  },
+  {
     "id": "ps01",
     "name": "st_addon_scope",
     "category": "Scopes",
@@ -1717,6 +1733,24 @@
     "tacticalKit": false
   },
   {
+    "id": "407",
+    "name": "st_addon_scope_407",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_407"
+  },
+  {
+    "id": "507",
+    "name": "st_addon_scope_507",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_507"
+  },
+  {
+    "id": "509",
+    "name": "st_addon_scope_509",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_509"
+  },
+  {
     "id": "5c_tik",
     "name": "st_addon_scope_5c_tik",
     "category": "Tactical Kits",
@@ -1746,18 +1780,6 @@
     "displayName": "st_addon_scope_acog"
   },
   {
-    "id": "acog2x",
-    "name": "st_addon_scope_acog2x",
-    "category": "Scopes",
-    "displayName": "st_addon_scope_acog2x"
-  },
-  {
-    "id": "aim_2k",
-    "name": "st_addon_scope_aim_2k",
-    "category": "Scopes",
-    "displayName": "st_addon_scope_aim_2k"
-  },
-  {
     "id": "aim_acro",
     "name": "st_addon_scope_aim_acro",
     "category": "Scopes",
@@ -1768,6 +1790,18 @@
     "name": "st_addon_scope_aim_low",
     "category": "Scopes",
     "displayName": "st_addon_scope_aim_low"
+  },
+  {
+    "id": "aim_t2",
+    "name": "st_addon_scope_aim_t2",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_aim_t2"
+  },
+  {
+    "id": "aim_t2_magd",
+    "name": "st_addon_scope_aim_t2_magd",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_aim_t2_magd"
   },
   {
     "id": "aimpoint",
@@ -1804,6 +1838,18 @@
     "nameSuffixKey": "st_wpn_remington700_archangel"
   },
   {
+    "id": "atacr",
+    "name": "st_addon_scope_atacr",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_atacr"
+  },
+  {
+    "id": "atacr_voodoo",
+    "name": "st_addon_scope_atacr_voodoo",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_atacr_voodoo"
+  },
+  {
     "id": "bossxe",
     "name": "st_addon_scope_bossxe",
     "category": "Scopes",
@@ -1826,12 +1872,6 @@
     "name": "st_addon_scope_c79",
     "category": "Scopes",
     "displayName": "st_addon_scope_c79"
-  },
-  {
-    "id": "chs",
-    "name": "st_addon_scope_chs",
-    "category": "Scopes",
-    "displayName": "st_addon_scope_chs"
   },
   {
     "id": "c-more",
@@ -1864,6 +1904,18 @@
     "displayName": "st_addon_scope_devo"
   },
   {
+    "id": "dppro",
+    "name": "st_addon_scope_dppro",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_dppro"
+  },
+  {
+    "id": "drs",
+    "name": "st_addon_scope_drs",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_drs"
+  },
+  {
     "id": "e0t2",
     "name": "st_addon_scope_e0t2",
     "category": "Scopes",
@@ -1874,6 +1926,18 @@
     "name": "st_addon_scope_e0t2_mag",
     "category": "Scopes",
     "displayName": "st_addon_scope_e0t2_mag"
+  },
+  {
+    "id": "e0t2_magd_off",
+    "name": "st_addon_scope_e0t2_mag",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_e0t2_mag [off]"
+  },
+  {
+    "id": "e0t2_magd_unity",
+    "name": "st_addon_scope_e0t2_magd_unity",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_e0t2_magd_unity"
   },
   {
     "id": "echo1",
@@ -1946,6 +2010,16 @@
     "displayName": "st_addon_scope_he510"
   },
   {
+    "id": "infiltrator_kit",
+    "name": "st_addon_scope_infiltrator_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_scope_infiltrator_kit",
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
+  },
+  {
     "id": "infiltrator_tactical_kit",
     "name": "st_addon_scope_infiltrator_tactical_kit",
     "category": "Tactical Kits",
@@ -1953,6 +2027,16 @@
     "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "jaeger_kit",
+    "name": "st_addon_scope_jaeger_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_scope_jaeger_kit",
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
     "tacticalKit": false
   },
   {
@@ -2119,21 +2203,20 @@
     "tacticalKit": false
   },
   {
-    "id": "mauser_kit",
-    "name": "st_addon_scope_mauser_kit",
-    "category": "Tactical Kits",
-    "displayName": "st_addon_scope_mauser_kit",
-    "hasStashDrop": false,
-    "inStartingLoadout": false,
-    "unobtainable": false,
-    "tacticalKit": false,
-    "nameSuffixKey": "st_wpn_k98_mod_silen98"
-  },
-  {
     "id": "mepro",
     "name": "st_addon_scope_mepro",
     "category": "Scopes",
     "displayName": "st_addon_scope_mepro"
+  },
+  {
+    "id": "mlok_kit",
+    "name": "st_addon_scope_mlok_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_scope_mlok_kit",
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "mod_x_gen3",
@@ -2303,6 +2386,12 @@
     "name": "st_addon_scope_razor_mag",
     "category": "Scopes",
     "displayName": "st_addon_scope_razor_mag"
+  },
+  {
+    "id": "uh1_magd_off",
+    "name": "st_addon_scope_razor_mag",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_razor_mag [off]"
   },
   {
     "id": "razorhd",
@@ -2480,6 +2569,12 @@
     "nameSuffixKey": "st_wpn_sig220_n_u2p2g0r"
   },
   {
+    "id": "uh1_magd_unity",
+    "name": "st_addon_scope_uh1_magd_unity",
+    "category": "Scopes",
+    "displayName": "st_addon_scope_uh1_magd_unity"
+  },
+  {
     "id": "upg220",
     "name": "st_addon_scope_upg220",
     "category": "Tactical Kits",
@@ -2517,6 +2612,16 @@
     "name": "st_addon_scope_vulcan",
     "category": "Scopes",
     "displayName": "st_addon_scope_vulcan"
+  },
+  {
+    "id": "whisper_kit",
+    "name": "st_addon_scope_whisper_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_scope_whisper_kit",
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_addon_scope_g43",
@@ -2681,6 +2786,12 @@
     "displayName": "st_addon_sil_nato"
   },
   {
+    "id": "wpn_sil_omega300",
+    "name": "st_addon_sil_omega300",
+    "category": "Silencers",
+    "displayName": "st_addon_sil_omega300"
+  },
+  {
     "id": "wpn_sil_osp9",
     "name": "st_addon_sil_osp9",
     "category": "Silencers",
@@ -2775,6 +2886,16 @@
     "name": "st_addon_silencer",
     "category": "Silencers",
     "displayName": "st_addon_silencer"
+  },
+  {
+    "id": "verdeckt_kit",
+    "name": "st_addon_verdeckt_kit",
+    "category": "Tactical Kits",
+    "displayName": "st_addon_verdeckt_kit",
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "vorkuta",
@@ -4189,6 +4310,18 @@
     "name": "st_drink_crow",
     "category": "Food",
     "displayName": "st_drink_crow"
+  },
+  {
+    "id": "drone_controller",
+    "name": "st_drone_controller_name",
+    "category": "Misc",
+    "displayName": "st_drone_controller_name"
+  },
+  {
+    "id": "drone_vr_goggles",
+    "name": "st_drone_vr_goggles_name",
+    "category": "Misc",
+    "displayName": "st_drone_vr_goggles_name"
   },
   {
     "id": "drug_anabiotic",
@@ -6700,6 +6833,12 @@
     "name": "st_mutant_part_crow_beak",
     "category": "Mutant Parts",
     "displayName": "st_mutant_part_crow_beak"
+  },
+  {
+    "id": "aimpoint_pro",
+    "name": "st_not_in_use",
+    "category": "Scopes",
+    "displayName": "st_not_in_use"
   },
   {
     "id": "nuts",
@@ -9525,6 +9664,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_browninghp",
+    "name": "st_wpn_browninghp",
+    "category": "Pistols",
+    "displayName": "st_wpn_browninghp",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_xm4",
     "name": "st_wpn_car15",
     "category": "Rifles",
@@ -9545,6 +9695,17 @@
     "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": true
+  },
+  {
+    "id": "wpn_cetme",
+    "name": "st_wpn_cetme",
+    "category": "Rifles",
+    "displayName": "st_wpn_cetme",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_colt1911",
@@ -9586,6 +9747,17 @@
     "displayName": "st_wpn_colt1911_n [n]",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_cr920",
+    "name": "st_wpn_cr920",
+    "category": "Pistols",
+    "displayName": "st_wpn_cr920",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": false
@@ -9803,6 +9975,28 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_fort14",
+    "name": "st_wpn_fort14",
+    "category": "Pistols",
+    "displayName": "st_wpn_fort14",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_fort14_bloodoath",
+    "name": "st_wpn_fort14_bloodoath",
+    "category": "Pistols",
+    "displayName": "st_wpn_fort14_bloodoath",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_fort_snag",
     "name": "st_wpn_fort17",
     "category": "Pistols",
@@ -9873,10 +10067,10 @@
     "name": "st_wpn_g3",
     "category": "Rifles",
     "displayName": "st_wpn_g3",
-    "hasNpcWeaponDrop": false,
+    "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
+    "unobtainable": false,
     "tacticalKit": false
   },
   {
@@ -9962,10 +10156,10 @@
     "name": "st_wpn_g3sg1",
     "category": "Rifles",
     "displayName": "st_wpn_g3sg1",
-    "hasNpcWeaponDrop": false,
+    "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
+    "unobtainable": false,
     "tacticalKit": false
   },
   {
@@ -10146,6 +10340,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_hk51",
+    "name": "st_wpn_hk51",
+    "category": "Rifles",
+    "displayName": "st_wpn_hk51",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_howa20",
     "name": "st_wpn_howa20",
     "category": "Rifles",
@@ -10263,10 +10468,8 @@
     "hasNpcWeaponDrop": false,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": false,
-    "tacticalKit": true,
-    "kitSuffix": true,
-    "kitSuffixNum": 1
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_k98_mod_silen98",
@@ -10278,8 +10481,7 @@
     "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": true,
-    "kitSuffix": true,
-    "kitSuffixNum": 2
+    "kitSuffix": true
   },
   {
     "id": "wpn_kiparis",
@@ -10458,14 +10660,25 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_l96_gravebinder",
+    "name": "st_wpn_l96_gravebinder",
+    "category": "Snipers",
+    "displayName": "st_wpn_l96_gravebinder",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_l96a1",
     "name": "st_wpn_l96a1",
     "category": "Snipers",
     "displayName": "st_wpn_l96a1",
-    "hasNpcWeaponDrop": false,
+    "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": false,
-    "unobtainable": true,
+    "unobtainable": false,
     "tacticalKit": false
   },
   {
@@ -10490,6 +10703,17 @@
     "unobtainable": false,
     "tacticalKit": false,
     "nimble": true
+  },
+  {
+    "id": "wpn_lvaw",
+    "name": "st_wpn_lvaw",
+    "category": "Rifles",
+    "displayName": "st_wpn_lvaw",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
   },
   {
     "id": "wpn_m16",
@@ -10734,12 +10958,34 @@
     "tacticalKit": true
   },
   {
+    "id": "wpn_mosin_carbine",
+    "name": "st_wpn_mosin_carbine",
+    "category": "Snipers",
+    "displayName": "st_wpn_mosin_carbine",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_mosin",
     "name": "st_wpn_mosin_k",
     "category": "Snipers",
     "displayName": "st_wpn_mosin_k",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_mosin_k",
+    "name": "st_wpn_mosin_k",
+    "category": "Snipers",
+    "displayName": "st_wpn_mosin_k [k]",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
     "inStartingLoadout": true,
     "unobtainable": false,
     "tacticalKit": false
@@ -10890,6 +11136,17 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_obrez",
+    "name": "st_wpn_obrez",
+    "category": "Snipers",
+    "displayName": "st_wpn_obrez",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_oc33",
     "name": "st_wpn_oc33_new",
     "category": "Pistols",
@@ -10964,6 +11221,39 @@
     "hasStashDrop": true,
     "inStartingLoadout": true,
     "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_pdp",
+    "name": "st_wpn_pdp",
+    "category": "Pistols",
+    "displayName": "st_wpn_pdp",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_pdx",
+    "name": "st_wpn_pdx",
+    "category": "Rifles",
+    "displayName": "st_wpn_pdx",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_pdx_terminal",
+    "name": "st_wpn_pdx_terminal",
+    "category": "Rifles",
+    "displayName": "st_wpn_pdx_terminal",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
     "tacticalKit": false
   },
   {
@@ -11177,6 +11467,28 @@
     "hasNpcWeaponDrop": true,
     "hasStashDrop": false,
     "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_ppq5",
+    "name": "st_wpn_ppq5",
+    "category": "Pistols",
+    "displayName": "st_wpn_ppq5",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_ppq5_cinder",
+    "name": "st_wpn_ppq5_cinder",
+    "category": "Pistols",
+    "displayName": "st_wpn_ppq5_cinder",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": false
   },
@@ -11554,6 +11866,17 @@
     "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": true
+  },
+  {
+    "id": "wpn_shiv",
+    "name": "st_wpn_shiv",
+    "category": "Snipers",
+    "displayName": "st_wpn_shiv",
+    "hasNpcWeaponDrop": false,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": true,
+    "tacticalKit": false
   },
   {
     "id": "wpn_sig220",
@@ -12368,6 +12691,28 @@
     "tacticalKit": false
   },
   {
+    "id": "wpn_usms",
+    "name": "st_wpn_usms",
+    "category": "Pistols",
+    "displayName": "st_wpn_usms",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_usms_liberty",
+    "name": "st_wpn_usms_liberty",
+    "category": "Pistols",
+    "displayName": "st_wpn_usms_liberty",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
     "id": "wpn_usp_tac",
     "name": "st_wpn_usp_tac",
     "category": "Pistols",
@@ -12385,6 +12730,28 @@
     "displayName": "st_wpn_usp_tac45",
     "hasNpcWeaponDrop": true,
     "hasStashDrop": true,
+    "inStartingLoadout": false,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_usp45c",
+    "name": "st_wpn_usp45c",
+    "category": "Pistols",
+    "displayName": "st_wpn_usp45c",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
+    "inStartingLoadout": true,
+    "unobtainable": false,
+    "tacticalKit": false
+  },
+  {
+    "id": "wpn_usp45pm",
+    "name": "st_wpn_usp45pm",
+    "category": "Pistols",
+    "displayName": "st_wpn_usp45pm",
+    "hasNpcWeaponDrop": true,
+    "hasStashDrop": false,
     "inStartingLoadout": false,
     "unobtainable": false,
     "tacticalKit": false

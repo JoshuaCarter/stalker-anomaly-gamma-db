@@ -1,4 +1,16 @@
 {
+  "407": {
+    "name": "st_addon_scope_407",
+    "price": 10000
+  },
+  "507": {
+    "name": "st_addon_scope_507",
+    "price": 10000
+  },
+  "509": {
+    "name": "st_addon_scope_509",
+    "price": 10000
+  },
   "0kp2": {
     "name": "st_addon_scope_0kp2",
     "price": 7000
@@ -102,10 +114,6 @@
   "acog": {
     "name": "st_addon_scope_acog",
     "price": 10000
-  },
-  "acog2x": {
-    "name": "st_addon_scope_acog2x",
-    "price": 41500
   },
   "acog_x": {
     "name": "st_addon_scope_dummy",
@@ -1062,10 +1070,6 @@
     "name": "ah_gramota_info",
     "price": 250
   },
-  "aim_2k": {
-    "name": "st_addon_scope_aim_2k",
-    "price": 8450
-  },
   "aim_acro": {
     "name": "st_addon_scope_aim_acro",
     "price": 6500
@@ -1081,6 +1085,14 @@
   "aim_low_x": {
     "name": "st_addon_scope_dummy",
     "price": 6500
+  },
+  "aim_t2": {
+    "name": "st_addon_scope_aim_t2",
+    "price": 8250
+  },
+  "aim_t2_magd": {
+    "name": "st_addon_scope_aim_t2_magd",
+    "price": 25250
   },
   "aimpoint": {
     "name": "st_addon_scope_aimpoint",
@@ -1672,6 +1684,10 @@
     "name": "ammo-338-lapua",
     "price": 11000
   },
+  "ammo_magnum_300_sub": {
+    "name": "ammo_magnum_300_sub",
+    "price": 9000
+  },
   "ammo_magnum_300_verybad": {
     "name": "ammo-338-lapua",
     "price": 720
@@ -1815,6 +1831,14 @@
   },
   "as_script_grenade": {
     "price": 500
+  },
+  "atacr": {
+    "name": "st_addon_scope_atacr",
+    "price": 54500
+  },
+  "atacr_voodoo": {
+    "name": "st_addon_scope_atacr_voodoo",
+    "price": 148250
   },
   "attackers_pda": {
     "name": "attackers_pda_name"
@@ -2079,10 +2103,6 @@
   "chocolate_p": {
     "name": "st_chocolate_p",
     "price": 1000
-  },
-  "chs": {
-    "name": "st_addon_scope_chs",
-    "price": 41500
   },
   "cigar": {
     "name": "st_cuban_cigar",
@@ -2890,6 +2910,10 @@
     "name": "dolg_voin_outfit_name",
     "price": 57395
   },
+  "dppro": {
+    "name": "st_addon_scope_dppro",
+    "price": 10000
+  },
   "drekavac_notes": {
     "name": "drekavac_notes_name",
     "price": 1000
@@ -2897,6 +2921,18 @@
   "drink_crow": {
     "name": "st_drink_crow",
     "price": 5660
+  },
+  "drone_controller": {
+    "name": "st_drone_controller_name",
+    "price": 6000
+  },
+  "drone_vr_goggles": {
+    "name": "st_drone_vr_goggles_name",
+    "price": 5000
+  },
+  "drs": {
+    "name": "st_addon_scope_drs",
+    "price": 120000
   },
   "drug_anabiotic": {
     "name": "st_drug_anabiotic",
@@ -2968,6 +3004,10 @@
   "e0t2_magd_off": {
     "name": "st_addon_scope_e0t2_mag",
     "price": 23280
+  },
+  "e0t2_magd_unity": {
+    "name": "st_addon_scope_e0t2_magd_unity",
+    "price": 25250
   },
   "e0t2_magd_x": {
     "name": "st_addon_scope_dummy",
@@ -3618,6 +3658,10 @@
   "immediate_fiery_explosion": {
     "price": 500
   },
+  "infiltrator_kit": {
+    "name": "st_addon_scope_infiltrator_kit",
+    "price": 40000
+  },
   "infiltrator_tactical_kit": {
     "name": "st_addon_scope_infiltrator_tactical_kit",
     "price": 25200
@@ -3800,6 +3844,10 @@
   "itm_xcvb_3": {
     "name": "st_bread",
     "price": 1
+  },
+  "jaeger_kit": {
+    "name": "st_addon_scope_jaeger_kit",
+    "price": 120000
   },
   "jar": {
     "name": "st_jar",
@@ -5451,6 +5499,10 @@
     "name": "st_mirror",
     "price": 280
   },
+  "mlok_kit": {
+    "name": "st_addon_scope_mlok_kit",
+    "price": 120000
+  },
   "mlr_strelok_item_01": {
     "name": "mlr_strelok_item_01"
   },
@@ -5835,6 +5887,10 @@
   "ots2_upgr_kit": {
     "name": "st_addon_ots2_upgr_kit",
     "price": 21000
+  },
+  "overgrowth_kit": {
+    "name": "st_addon_overgrowth_kit",
+    "price": 59500
   },
   "p1x42": {
     "name": "st_addon_scope_pilad_p1x42",
@@ -7515,9 +7571,17 @@
     "name": "st_addon_scope_razor_mag",
     "price": 25280
   },
+  "uh1_magd_unity": {
+    "name": "st_addon_scope_uh1_magd_unity",
+    "price": 25250
+  },
   "uh1_magd_x": {
     "name": "st_addon_scope_dummy",
     "price": 32000
+  },
+  "uh1_voodoo": {
+    "name": "st_addon_scope_uh1_voodoo",
+    "price": 120000
   },
   "uh2": {
     "name": "st_addon_scope_razor",
@@ -7959,6 +8023,10 @@
     "name": "st_addon_scope_usp1",
     "price": 14000
   },
+  "verdeckt_kit": {
+    "name": "st_addon_verdeckt_kit",
+    "price": 12000
+  },
   "vitup": {
     "name": "st_addon_scope_vitup_kit",
     "price": 14200
@@ -8020,6 +8088,10 @@
   "welding_goggles": {
     "name": "st_welding_goggles",
     "price": 440
+  },
+  "whisper_kit": {
+    "name": "st_addon_scope_whisper_kit",
+    "price": 70000
   },
   "workshop_item": {
     "name": "st_placeable_workshop",
@@ -13565,6 +13637,18 @@
     "name": "st_wpn_brn180",
     "price": 76321
   },
+  "wpn_browninghp": {
+    "name": "st_wpn_browninghp",
+    "price": 8400
+  },
+  "wpn_cetme": {
+    "name": "st_wpn_cetme",
+    "price": 42520
+  },
+  "wpn_cetme_infiltrator_kit": {
+    "name": "st_wpn_cetme",
+    "price": 42520
+  },
   "wpn_colt1911": {
     "name": "st_wpn_colt1911_n",
     "price": 20000
@@ -13596,6 +13680,22 @@
   "wpn_colt1911_n": {
     "name": "st_wpn_colt1911_n",
     "price": 20000
+  },
+  "wpn_cr920": {
+    "name": "st_wpn_cr920",
+    "price": 25000
+  },
+  "wpn_cr920_407": {
+    "name": "st_wpn_cr920",
+    "price": 25000
+  },
+  "wpn_cr920_507": {
+    "name": "st_wpn_cr920",
+    "price": 25000
+  },
+  "wpn_cr920_509": {
+    "name": "st_wpn_cr920",
+    "price": 25000
   },
   "wpn_cz52": {
     "name": "st_wpn_cz52",
@@ -14765,6 +14865,54 @@
     "name": "st_wpn_fort17",
     "price": 7860
   },
+  "wpn_fort14": {
+    "name": "st_wpn_fort14",
+    "price": 5660
+  },
+  "wpn_fort14_407": {
+    "name": "st_wpn_fort14",
+    "price": 5660
+  },
+  "wpn_fort14_507": {
+    "name": "st_wpn_fort14",
+    "price": 5660
+  },
+  "wpn_fort14_bloodoath": {
+    "name": "st_wpn_fort14_bloodoath",
+    "price": 5660
+  },
+  "wpn_fort14_bloodoath_407": {
+    "name": "st_wpn_fort14_bloodoath",
+    "price": 5660
+  },
+  "wpn_fort14_bloodoath_507": {
+    "name": "st_wpn_fort14_bloodoath",
+    "price": 5660
+  },
+  "wpn_fort14_bloodoath_deltapoint": {
+    "name": "st_wpn_fort14_bloodoath",
+    "price": 5660
+  },
+  "wpn_fort14_bloodoath_dppro": {
+    "name": "st_wpn_fort14_bloodoath",
+    "price": 5660
+  },
+  "wpn_fort14_bloodoath_rmr": {
+    "name": "st_wpn_fort14_bloodoath",
+    "price": 5660
+  },
+  "wpn_fort14_deltapoint": {
+    "name": "st_wpn_fort14",
+    "price": 5660
+  },
+  "wpn_fort14_dppro": {
+    "name": "st_wpn_fort14",
+    "price": 5660
+  },
+  "wpn_fort14_rmr": {
+    "name": "st_wpn_fort14",
+    "price": 5660
+  },
   "wpn_fort17": {
     "name": "st_wpn_fort17",
     "price": 7860
@@ -14779,7 +14927,7 @@
   },
   "wpn_g3": {
     "name": "st_wpn_g3",
-    "price": 39880
+    "price": 57980
   },
   "wpn_g36": {
     "name": "st_wpn_g36new",
@@ -15245,21 +15393,153 @@
     "name": "st_wpn_g36c_spec",
     "price": 43580
   },
-  "wpn_g3_ac10632": {
+  "wpn_g3_1p87": {
     "name": "st_wpn_g3",
-    "price": 39880
+    "price": 57980
   },
   "wpn_g3_acog": {
     "name": "st_wpn_g3",
-    "price": 39880
+    "price": 57980
   },
-  "wpn_g3_eot": {
+  "wpn_g3_aim_acro": {
     "name": "st_wpn_g3",
-    "price": 39880
+    "price": 57980
+  },
+  "wpn_g3_aim_low": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_aim_t2_magd": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_aim_t2_magd_off": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_aimpoint": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_atacr": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_bossxe": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_drs": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_e0t2": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_e0t2_magd": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_e0t2_magd_off": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_e0t2_magd_unity": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_e0t2_magd_unity_off": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_ekp8_18": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_exps3": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_he510": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_mepro": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_mlok_kit": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_mlok_kit_off": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_monstrum": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_p1x42": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_pn23": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_razorhd": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_romeo8": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_spec_alt": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_specter": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_triji": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_uh1_magd": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_uh1_magd_off": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_uh1_magd_unity": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_uh1_magd_unity_off": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_uh2": {
+    "name": "st_wpn_g3",
+    "price": 57980
+  },
+  "wpn_g3_vulcan": {
+    "name": "st_wpn_g3",
+    "price": 57980
   },
   "wpn_g3sg1": {
     "name": "st_wpn_g3sg1",
-    "price": 43980
+    "price": 57980
+  },
+  "wpn_g3sg1_jaeger_kit": {
+    "name": "st_wpn_g3sg1",
+    "price": 57980
   },
   "wpn_g43": {
     "name": "st_wpn_g43",
@@ -16149,6 +16429,150 @@
     "name": "st_wpn_hk417",
     "price": 35000
   },
+  "wpn_hk51": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_1p87": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_acog": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_aim_acro": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_aim_low": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_aim_t2_magd": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_aim_t2_magd_off": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_aimpoint": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_atacr": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_bossxe": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_drs": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_e0t2": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_e0t2_magd": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_e0t2_magd_off": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_e0t2_magd_unity": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_e0t2_magd_unity_off": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_ekp8_18": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_exps3": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_he510": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_mepro": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_monstrum": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_p1x42": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_pn23": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_razorhd": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_romeo8": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_spec_alt": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_specter": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_triji": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_uh1_magd": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_uh1_magd_off": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_uh1_magd_unity": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_uh1_magd_unity_off": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_uh2": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_vulcan": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_whisper_kit": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
+  "wpn_hk51_whisper_kit_off": {
+    "name": "st_wpn_hk51",
+    "price": 43980
+  },
   "wpn_howa20": {
     "name": "st_wpn_howa20",
     "price": 175680
@@ -16364,6 +16788,10 @@
   "wpn_k98_mod_skeet": {
     "name": "st_wpn_k98_mod",
     "price": 32590
+  },
+  "wpn_k98_verdeckt_kit": {
+    "name": "st_wpn_k98",
+    "price": 22590
   },
   "wpn_k98_wpn_addon_scope_zf4": {
     "name": "st_wpn_k98",
@@ -17081,11 +17509,23 @@
     "name": "st_wpn_l85_m2",
     "price": 53860
   },
+  "wpn_l96_gravebinder": {
+    "name": "st_wpn_l96_gravebinder",
+    "price": 71880
+  },
   "wpn_l96a1": {
     "name": "st_wpn_l96a1",
     "price": 65880
   },
+  "wpn_l96a1_overgrowth_kit": {
+    "name": "st_wpn_l96a1",
+    "price": 65880
+  },
   "wpn_l96a1m": {
+    "name": "st_wpn_l96a1m",
+    "price": 76580
+  },
+  "wpn_l96a1m_overgrowth_kit": {
     "name": "st_wpn_l96a1m",
     "price": 76580
   },
@@ -17256,6 +17696,150 @@
   "wpn_lr300_triji": {
     "name": "st_wpn_m4a1_siber",
     "price": 29230
+  },
+  "wpn_lvaw": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_1p87": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_acog": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_aim_acro": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_aim_t2": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_aim_t2_magd": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_aim_t2_magd_off": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_aimpoint": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_atacr": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_atacr_voodoo": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_atacr_voodoo_off": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_bossxe": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_c79": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_drs": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_e0t2": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_e0t2_magd": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_e0t2_magd_off": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_e0t2_magd_unity": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_e0t2_magd_unity_off": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_ekp8_18": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_he510": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_mepro": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_monstrum": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_p1x42": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_pn23": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_razorhd": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_romeo8": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_spec_alt": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_specter": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_triji": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_uh1_magd": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_uh1_magd_off": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_uh1_magd_unity": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_uh1_magd_unity_off": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_uh2": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
+  },
+  "wpn_lvaw_vulcan": {
+    "name": "st_wpn_lvaw",
+    "price": 76400
   },
   "wpn_m16": {
     "name": "st_wpn_m16",
@@ -18313,6 +18897,18 @@
     "name": "st_wpn_mosin_k",
     "price": 21590
   },
+  "wpn_mosin_carbine": {
+    "name": "st_wpn_mosin_carbine",
+    "price": 29770
+  },
+  "wpn_mosin_k": {
+    "name": "st_wpn_mosin_k",
+    "price": 21590
+  },
+  "wpn_mosin_k_wpn_addon_scope_pu": {
+    "name": "st_wpn_mosin_k",
+    "price": 21590
+  },
   "wpn_mosin_wpn_addon_scope_pu": {
     "name": "st_wpn_mosin_k",
     "price": 21590
@@ -19173,6 +19769,14 @@
     "name": "st_wpn_mp9",
     "price": 43300
   },
+  "wpn_obrez": {
+    "name": "st_wpn_obrez",
+    "price": 21590
+  },
+  "wpn_obrez_wpn_addon_scope_pu": {
+    "name": "st_wpn_obrez",
+    "price": 21590
+  },
   "wpn_oc33": {
     "name": "st_wpn_oc33_new",
     "price": 8860
@@ -19384,6 +19988,194 @@
   "wpn_pb_pb_upgr_kit": {
     "name": "st_wpn_pb_upgr",
     "price": 6580
+  },
+  "wpn_pdp": {
+    "name": "st_wpn_pdp",
+    "price": 9270
+  },
+  "wpn_pdp_aim_acro": {
+    "name": "st_wpn_pdp",
+    "price": 9270
+  },
+  "wpn_pdp_deltapoint": {
+    "name": "st_wpn_pdp",
+    "price": 9270
+  },
+  "wpn_pdp_rmr": {
+    "name": "st_wpn_pdp",
+    "price": 9270
+  },
+  "wpn_pdx": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_0kp2": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_1p87": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_ac10632": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_acog": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_aim_acro": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_aim_t2": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_aim_t2_magd": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_aim_t2_magd_off": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_aimpoint": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_atacr": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_atacr_voodoo": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_atacr_voodoo_off": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_bossxe": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_c79": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_drs": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_e0t2": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_e0t2_magd": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_e0t2_magd_off": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_e0t2_magd_unity": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_e0t2_magd_unity_off": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_ekp8_18": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_he510": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_mepro": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_monstrum": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_p1x42": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_pn23": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_razorhd": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_romeo4": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_romeo8": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_spec_alt": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_specter": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_t12": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_terminal": {
+    "name": "st_wpn_pdx_terminal",
+    "price": 29560
+  },
+  "wpn_pdx_terminal_off": {
+    "name": "st_wpn_pdx_terminal",
+    "price": 29560
+  },
+  "wpn_pdx_trihawk": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_triji": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_uh1_magd": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_uh1_magd_off": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_uh1_magd_unity": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_uh1_magd_unity_off": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_uh2": {
+    "name": "st_wpn_pdx",
+    "price": 29560
+  },
+  "wpn_pdx_vulcan": {
+    "name": "st_wpn_pdx",
+    "price": 29560
   },
   "wpn_pkm": {
     "name": "st_wpn_pkm_siber",
@@ -19788,6 +20580,38 @@
   "wpn_pp2000_vulcan": {
     "name": "st_wpn_pp2000n",
     "price": 19650
+  },
+  "wpn_ppq5": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
+  },
+  "wpn_ppq5_407": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
+  },
+  "wpn_ppq5_507": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
+  },
+  "wpn_ppq5_509": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
+  },
+  "wpn_ppq5_cinder": {
+    "name": "st_wpn_ppq5_cinder",
+    "price": 25000
+  },
+  "wpn_ppq5_deltapoint": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
+  },
+  "wpn_ppq5_dppro": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
+  },
+  "wpn_ppq5_rmr": {
+    "name": "st_wpn_ppq5",
+    "price": 25000
   },
   "wpn_ppsh41": {
     "name": "st_wpn_ppsh41",
@@ -21489,6 +22313,10 @@
     "name": "st_wpn_scar_siber",
     "price": 55880
   },
+  "wpn_shiv": {
+    "name": "st_wpn_shiv",
+    "price": 21590
+  },
   "wpn_sig220": {
     "name": "st_wpn_sig220_n",
     "price": 12980
@@ -22353,6 +23181,10 @@
     "name": "st_addon_sil_nato",
     "price": 2200
   },
+  "wpn_sil_omega300": {
+    "name": "st_addon_sil_omega300",
+    "price": 12245
+  },
   "wpn_sil_osp9": {
     "name": "st_addon_sil_osp9",
     "price": 2500
@@ -22809,6 +23641,10 @@
     "name": "st_wpn_sr2_m1",
     "price": 73300
   },
+  "wpn_sr2_m1_bossxe": {
+    "name": "st_wpn_sr2_m1",
+    "price": 73300
+  },
   "wpn_sr2_m1_c-more": {
     "name": "st_wpn_sr2_m1",
     "price": 73300
@@ -22849,6 +23685,10 @@
     "name": "st_wpn_sr2_m1",
     "price": 73300
   },
+  "wpn_sr2_m1_he510": {
+    "name": "st_wpn_sr2_m1",
+    "price": 73300
+  },
   "wpn_sr2_m1_kemper": {
     "name": "st_wpn_sr2_m1",
     "price": 73300
@@ -22881,6 +23721,10 @@
     "name": "st_wpn_sr2_m1",
     "price": 73300
   },
+  "wpn_sr2_m1_romeo8": {
+    "name": "st_wpn_sr2_m1",
+    "price": 73300
+  },
   "wpn_sr2_m1_specter": {
     "name": "st_wpn_sr2_m1",
     "price": 73300
@@ -22890,6 +23734,10 @@
     "price": 73300
   },
   "wpn_sr2_m1_trihawk": {
+    "name": "st_wpn_sr2_m1",
+    "price": 73300
+  },
+  "wpn_sr2_m1_uh2": {
     "name": "st_wpn_sr2_m1",
     "price": 73300
   },
@@ -22907,6 +23755,10 @@
   },
   "wpn_sr2_veresk_sr2_upkit": {
     "name": "st_wpn_sr2_veresk_sr2_upkit",
+    "price": 50300
+  },
+  "wpn_sr2_veresk_sr2_upkit_off": {
+    "name": "st_wpn_sr2_veresk",
     "price": 50300
   },
   "wpn_steyr_scout": {
@@ -23837,9 +24689,89 @@
     "name": "st_wpn_raptr",
     "price": 125660
   },
+  "wpn_usms": {
+    "name": "st_wpn_usms",
+    "price": 9270
+  },
+  "wpn_usms_407": {
+    "name": "st_wpn_usms",
+    "price": 9270
+  },
+  "wpn_usms_507": {
+    "name": "st_wpn_usms",
+    "price": 9270
+  },
+  "wpn_usms_deltapoint": {
+    "name": "st_wpn_usms",
+    "price": 9270
+  },
+  "wpn_usms_dppro": {
+    "name": "st_wpn_usms",
+    "price": 9270
+  },
+  "wpn_usms_liberty": {
+    "name": "st_wpn_usms_liberty",
+    "price": 9270
+  },
+  "wpn_usms_rmr": {
+    "name": "st_wpn_usms",
+    "price": 9270
+  },
   "wpn_usp": {
     "name": "st_wpn_mk23",
     "price": 54600
+  },
+  "wpn_usp45c": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45c_407": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45c_507": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45c_509": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45c_aim_acro": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45c_deltapoint": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45c_rmr": {
+    "name": "st_wpn_usp45c",
+    "price": 10960
+  },
+  "wpn_usp45pm": {
+    "name": "st_wpn_usp45pm",
+    "price": 14860
+  },
+  "wpn_usp45pm_407": {
+    "name": "st_wpn_usp45pm",
+    "price": 14860
+  },
+  "wpn_usp45pm_507": {
+    "name": "st_wpn_usp45pm",
+    "price": 14860
+  },
+  "wpn_usp45pm_509": {
+    "name": "st_wpn_usp45pm",
+    "price": 14860
+  },
+  "wpn_usp45pm_deltapoint": {
+    "name": "st_wpn_usp45pm",
+    "price": 14860
+  },
+  "wpn_usp45pm_rmr": {
+    "name": "st_wpn_usp45pm",
+    "price": 14860
   },
   "wpn_usp_tac": {
     "name": "st_wpn_usp_tac",

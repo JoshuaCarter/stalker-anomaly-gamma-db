@@ -38,6 +38,13 @@
       "isAlt": false
     },
     {
+      "id": "wpn_cr920",
+      "name": "st_wpn_cr920",
+      "displayName": "st_wpn_cr920",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_fnp45",
       "name": "st_wpn_fnp45",
       "displayName": "st_wpn_fnp45",
@@ -82,6 +89,27 @@
       "isAlt": false
     },
     {
+      "id": "wpn_pdp",
+      "name": "st_wpn_pdp",
+      "displayName": "st_wpn_pdp",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_ppq5",
+      "name": "st_wpn_ppq5",
+      "displayName": "st_wpn_ppq5",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_ppq5_cinder",
+      "name": "st_wpn_ppq5_cinder",
+      "displayName": "st_wpn_ppq5_cinder",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_sig220",
       "name": "st_wpn_sig220_n",
       "displayName": "st_wpn_sig220_n",
@@ -115,9 +143,37 @@
       "kitSuffixNum": 2
     },
     {
+      "id": "wpn_usms",
+      "name": "st_wpn_usms",
+      "displayName": "st_wpn_usms",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_usms_liberty",
+      "name": "st_wpn_usms_liberty",
+      "displayName": "st_wpn_usms_liberty",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_usp",
       "name": "st_wpn_mk23",
       "displayName": "st_wpn_mk23",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_usp45c",
+      "name": "st_wpn_usp45c",
+      "displayName": "st_wpn_usp45c",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_usp45pm",
+      "name": "st_wpn_usp45pm",
+      "displayName": "st_wpn_usp45pm",
       "category": "Pistols",
       "isAlt": false
     },
@@ -218,6 +274,13 @@
       "isAlt": false
     },
     {
+      "id": "wpn_cr920",
+      "name": "st_wpn_cr920",
+      "displayName": "st_wpn_cr920",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_fnp45",
       "name": "st_wpn_fnp45",
       "displayName": "st_wpn_fnp45",
@@ -262,6 +325,27 @@
       "isAlt": false
     },
     {
+      "id": "wpn_pdp",
+      "name": "st_wpn_pdp",
+      "displayName": "st_wpn_pdp",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_ppq5",
+      "name": "st_wpn_ppq5",
+      "displayName": "st_wpn_ppq5",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_ppq5_cinder",
+      "name": "st_wpn_ppq5_cinder",
+      "displayName": "st_wpn_ppq5_cinder",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_sig220",
       "name": "st_wpn_sig220_n",
       "displayName": "st_wpn_sig220_n",
@@ -295,9 +379,37 @@
       "kitSuffixNum": 2
     },
     {
+      "id": "wpn_usms",
+      "name": "st_wpn_usms",
+      "displayName": "st_wpn_usms",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_usms_liberty",
+      "name": "st_wpn_usms_liberty",
+      "displayName": "st_wpn_usms_liberty",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_usp",
       "name": "st_wpn_mk23",
       "displayName": "st_wpn_mk23",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_usp45c",
+      "name": "st_wpn_usp45c",
+      "displayName": "st_wpn_usp45c",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_usp45pm",
+      "name": "st_wpn_usp45pm",
+      "displayName": "st_wpn_usp45pm",
       "category": "Pistols",
       "isAlt": false
     },
@@ -2945,6 +3057,13 @@
       "noDrop": true
     },
     {
+      "id": "wpn_lvaw",
+      "name": "st_wpn_lvaw",
+      "displayName": "st_wpn_lvaw",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
       "id": "wpn_m16",
       "name": "st_wpn_m16",
       "displayName": "st_wpn_m16",
@@ -3011,6 +3130,21 @@
       "displayName": "st_wpn_m4a1_siber [m4a1_siber]",
       "category": "Rifles",
       "isAlt": false
+    },
+    {
+      "id": "wpn_pdx",
+      "name": "st_wpn_pdx",
+      "displayName": "st_wpn_pdx",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_pdx_terminal",
+      "name": "st_wpn_pdx_terminal",
+      "displayName": "st_wpn_pdx_terminal",
+      "category": "Rifles",
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_rpk74",
@@ -3582,6 +3716,13 @@
       "noDrop": true
     },
     {
+      "id": "wpn_lvaw",
+      "name": "st_wpn_lvaw",
+      "displayName": "st_wpn_lvaw",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
       "id": "wpn_m16",
       "name": "st_wpn_m16",
       "displayName": "st_wpn_m16",
@@ -3648,6 +3789,21 @@
       "displayName": "st_wpn_m4a1_siber [m4a1_siber]",
       "category": "Rifles",
       "isAlt": false
+    },
+    {
+      "id": "wpn_pdx",
+      "name": "st_wpn_pdx",
+      "displayName": "st_wpn_pdx",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_pdx_terminal",
+      "name": "st_wpn_pdx_terminal",
+      "displayName": "st_wpn_pdx_terminal",
+      "category": "Rifles",
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_rpk74",
@@ -4219,6 +4375,13 @@
       "noDrop": true
     },
     {
+      "id": "wpn_lvaw",
+      "name": "st_wpn_lvaw",
+      "displayName": "st_wpn_lvaw",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
       "id": "wpn_m16",
       "name": "st_wpn_m16",
       "displayName": "st_wpn_m16",
@@ -4285,6 +4448,21 @@
       "displayName": "st_wpn_m4a1_siber [m4a1_siber]",
       "category": "Rifles",
       "isAlt": false
+    },
+    {
+      "id": "wpn_pdx",
+      "name": "st_wpn_pdx",
+      "displayName": "st_wpn_pdx",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_pdx_terminal",
+      "name": "st_wpn_pdx_terminal",
+      "displayName": "st_wpn_pdx_terminal",
+      "category": "Rifles",
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_rpk74",
@@ -4981,6 +5159,13 @@
       "isAlt": false
     },
     {
+      "id": "wpn_cetme",
+      "name": "st_wpn_cetme",
+      "displayName": "st_wpn_cetme",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
       "id": "wpn_dtmdr_black",
       "name": "MDR_black",
       "displayName": "MDR_black",
@@ -5023,16 +5208,14 @@
       "name": "st_wpn_g3",
       "displayName": "st_wpn_g3",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_g3sg1",
       "name": "st_wpn_g3sg1",
       "displayName": "st_wpn_g3sg1",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_hk21",
@@ -5048,6 +5231,13 @@
       "category": "Rifles",
       "isAlt": false,
       "noDrop": true
+    },
+    {
+      "id": "wpn_hk51",
+      "name": "st_wpn_hk51",
+      "displayName": "st_wpn_hk51",
+      "category": "Rifles",
+      "isAlt": false
     },
     {
       "id": "wpn_m60",
@@ -5139,8 +5329,14 @@
       "name": "st_wpn_l96a1",
       "displayName": "st_wpn_l96a1",
       "category": "Snipers",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
+    },
+    {
+      "id": "wpn_mosin_carbine",
+      "name": "st_wpn_mosin_carbine",
+      "displayName": "st_wpn_mosin_carbine",
+      "category": "Snipers",
+      "isAlt": true
     },
     {
       "id": "wpn_remington700",
@@ -5212,6 +5408,13 @@
       "isAlt": false
     },
     {
+      "id": "wpn_cetme",
+      "name": "st_wpn_cetme",
+      "displayName": "st_wpn_cetme",
+      "category": "Rifles",
+      "isAlt": false
+    },
+    {
       "id": "wpn_dtmdr_black",
       "name": "MDR_black",
       "displayName": "MDR_black",
@@ -5254,16 +5457,14 @@
       "name": "st_wpn_g3",
       "displayName": "st_wpn_g3",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_g3sg1",
       "name": "st_wpn_g3sg1",
       "displayName": "st_wpn_g3sg1",
       "category": "Rifles",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
     },
     {
       "id": "wpn_hk21",
@@ -5279,6 +5480,13 @@
       "category": "Rifles",
       "isAlt": false,
       "noDrop": true
+    },
+    {
+      "id": "wpn_hk51",
+      "name": "st_wpn_hk51",
+      "displayName": "st_wpn_hk51",
+      "category": "Rifles",
+      "isAlt": false
     },
     {
       "id": "wpn_m60",
@@ -5370,8 +5578,14 @@
       "name": "st_wpn_l96a1",
       "displayName": "st_wpn_l96a1",
       "category": "Snipers",
-      "isAlt": false,
-      "noDrop": true
+      "isAlt": false
+    },
+    {
+      "id": "wpn_mosin_carbine",
+      "name": "st_wpn_mosin_carbine",
+      "displayName": "st_wpn_mosin_carbine",
+      "category": "Snipers",
+      "isAlt": true
     },
     {
       "id": "wpn_remington700",
@@ -5447,8 +5661,7 @@
       "name": "st_wpn_l96a1",
       "displayName": "st_wpn_l96a1",
       "category": "Snipers",
-      "isAlt": true,
-      "noDrop": true
+      "isAlt": true
     },
     {
       "id": "wpn_mosin",
@@ -5456,6 +5669,35 @@
       "displayName": "st_wpn_mosin_k",
       "category": "Snipers",
       "isAlt": false
+    },
+    {
+      "id": "wpn_mosin_carbine",
+      "name": "st_wpn_mosin_carbine",
+      "displayName": "st_wpn_mosin_carbine",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_mosin_k",
+      "name": "st_wpn_mosin_k",
+      "displayName": "st_wpn_mosin_k [k]",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_obrez",
+      "name": "st_wpn_obrez",
+      "displayName": "st_wpn_obrez",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_shiv",
+      "name": "st_wpn_shiv",
+      "displayName": "st_wpn_shiv",
+      "category": "Snipers",
+      "isAlt": false,
+      "noDrop": true
     },
     {
       "id": "wpn_sks",
@@ -5598,7 +5840,35 @@
       "name": "st_wpn_l96a1",
       "displayName": "st_wpn_l96a1",
       "category": "Snipers",
-      "isAlt": true,
+      "isAlt": true
+    },
+    {
+      "id": "wpn_mosin_carbine",
+      "name": "st_wpn_mosin_carbine",
+      "displayName": "st_wpn_mosin_carbine",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_mosin_k",
+      "name": "st_wpn_mosin_k",
+      "displayName": "st_wpn_mosin_k [k]",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_obrez",
+      "name": "st_wpn_obrez",
+      "displayName": "st_wpn_obrez",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_shiv",
+      "name": "st_wpn_shiv",
+      "displayName": "st_wpn_shiv",
+      "category": "Snipers",
+      "isAlt": false,
       "noDrop": true
     },
     {
@@ -5787,7 +6057,35 @@
       "name": "st_wpn_l96a1",
       "displayName": "st_wpn_l96a1",
       "category": "Snipers",
-      "isAlt": true,
+      "isAlt": true
+    },
+    {
+      "id": "wpn_mosin_carbine",
+      "name": "st_wpn_mosin_carbine",
+      "displayName": "st_wpn_mosin_carbine",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_mosin_k",
+      "name": "st_wpn_mosin_k",
+      "displayName": "st_wpn_mosin_k [k]",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_obrez",
+      "name": "st_wpn_obrez",
+      "displayName": "st_wpn_obrez",
+      "category": "Snipers",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_shiv",
+      "name": "st_wpn_shiv",
+      "displayName": "st_wpn_shiv",
+      "category": "Snipers",
+      "isAlt": false,
       "noDrop": true
     },
     {
@@ -5932,9 +6230,7 @@
       "displayName": "st_wpn_k98_mod_silen98 [auser_kit]",
       "category": "Snipers",
       "isAlt": false,
-      "tacticalKit": true,
-      "kitSuffix": true,
-      "kitSuffixNum": 1
+      "noDrop": true
     },
     {
       "id": "wpn_k98_mod",
@@ -5950,8 +6246,7 @@
       "category": "Snipers",
       "isAlt": false,
       "tacticalKit": true,
-      "kitSuffix": true,
-      "kitSuffixNum": 2
+      "kitSuffix": true
     }
   ],
   "ammo_7.92x33_fmj": [
@@ -5976,9 +6271,7 @@
       "displayName": "st_wpn_k98_mod_silen98 [auser_kit]",
       "category": "Snipers",
       "isAlt": false,
-      "tacticalKit": true,
-      "kitSuffix": true,
-      "kitSuffixNum": 1
+      "noDrop": true
     },
     {
       "id": "wpn_k98_mod",
@@ -5994,8 +6287,7 @@
       "category": "Snipers",
       "isAlt": false,
       "tacticalKit": true,
-      "kitSuffix": true,
-      "kitSuffixNum": 2
+      "kitSuffix": true
     }
   ],
   "ammo_9x18_ap": [
@@ -6046,6 +6338,13 @@
       "kitSuffix": true
     },
     {
+      "id": "wpn_browninghp",
+      "name": "st_wpn_browninghp",
+      "displayName": "st_wpn_browninghp",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_cz75",
       "name": "st_wpn_cz75",
       "displayName": "st_wpn_cz75",
@@ -6057,6 +6356,13 @@
       "id": "wpn_fort",
       "name": "st_wpn_fort17",
       "displayName": "st_wpn_fort17 [fort]",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_fort14",
+      "name": "st_wpn_fort14",
+      "displayName": "st_wpn_fort14",
       "category": "Pistols",
       "isAlt": false
     },
@@ -6321,6 +6627,13 @@
       "kitSuffix": true
     },
     {
+      "id": "wpn_browninghp",
+      "name": "st_wpn_browninghp",
+      "displayName": "st_wpn_browninghp",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_cz75",
       "name": "st_wpn_cz75",
       "displayName": "st_wpn_cz75",
@@ -6332,6 +6645,13 @@
       "id": "wpn_fort",
       "name": "st_wpn_fort17",
       "displayName": "st_wpn_fort17 [fort]",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_fort14",
+      "name": "st_wpn_fort14",
+      "displayName": "st_wpn_fort14",
       "category": "Pistols",
       "isAlt": false
     },
@@ -6612,6 +6932,13 @@
       "kitSuffix": true
     },
     {
+      "id": "wpn_browninghp",
+      "name": "st_wpn_browninghp",
+      "displayName": "st_wpn_browninghp",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
       "id": "wpn_cz75",
       "name": "st_wpn_cz75",
       "displayName": "st_wpn_cz75",
@@ -6623,6 +6950,13 @@
       "id": "wpn_fort",
       "name": "st_wpn_fort17",
       "displayName": "st_wpn_fort17 [fort]",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_fort14",
+      "name": "st_wpn_fort14",
+      "displayName": "st_wpn_fort14",
       "category": "Pistols",
       "isAlt": false
     },
@@ -6871,6 +7205,20 @@
       "kitSuffix": true
     },
     {
+      "id": "wpn_browninghp",
+      "name": "st_wpn_browninghp",
+      "displayName": "st_wpn_browninghp",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_cr920",
+      "name": "st_wpn_cr920",
+      "displayName": "st_wpn_cr920",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_cz75",
       "name": "st_wpn_cz75",
       "displayName": "st_wpn_cz75",
@@ -6882,6 +7230,20 @@
       "id": "wpn_fort",
       "name": "st_wpn_fort17",
       "displayName": "st_wpn_fort17 [fort]",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_fort14",
+      "name": "st_wpn_fort14",
+      "displayName": "st_wpn_fort14",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_fort14_bloodoath",
+      "name": "st_wpn_fort14_bloodoath",
+      "displayName": "st_wpn_fort14_bloodoath",
       "category": "Pistols",
       "isAlt": true
     },
@@ -6986,6 +7348,13 @@
       "isAlt": true
     },
     {
+      "id": "wpn_pdp",
+      "name": "st_wpn_pdp",
+      "displayName": "st_wpn_pdp",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_pl15",
       "name": "st_wpn_pl15",
       "displayName": "st_wpn_pl15",
@@ -7075,6 +7444,20 @@
       "noDrop": true
     },
     {
+      "id": "wpn_ppq5",
+      "name": "st_wpn_ppq5",
+      "displayName": "st_wpn_ppq5",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_ppq5_cinder",
+      "name": "st_wpn_ppq5_cinder",
+      "displayName": "st_wpn_ppq5_cinder",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_sig220_n_u2p2g0r",
       "name": "st_wpn_sig220_n_u2p2g0r",
       "displayName": "st_wpn_sig220_n_u2p2g0r [n_u2p2g0r]",
@@ -7110,6 +7493,13 @@
       "tacticalKit": true,
       "kitSuffix": true,
       "kitSuffixNum": 2
+    },
+    {
+      "id": "wpn_usms",
+      "name": "st_wpn_usms",
+      "displayName": "st_wpn_usms",
+      "category": "Pistols",
+      "isAlt": false
     },
     {
       "id": "wpn_usp_tac",
@@ -7321,6 +7711,20 @@
       "kitSuffix": true
     },
     {
+      "id": "wpn_browninghp",
+      "name": "st_wpn_browninghp",
+      "displayName": "st_wpn_browninghp",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_cr920",
+      "name": "st_wpn_cr920",
+      "displayName": "st_wpn_cr920",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_cz75",
       "name": "st_wpn_cz75",
       "displayName": "st_wpn_cz75",
@@ -7332,6 +7736,20 @@
       "id": "wpn_fort",
       "name": "st_wpn_fort17",
       "displayName": "st_wpn_fort17 [fort]",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_fort14",
+      "name": "st_wpn_fort14",
+      "displayName": "st_wpn_fort14",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_fort14_bloodoath",
+      "name": "st_wpn_fort14_bloodoath",
+      "displayName": "st_wpn_fort14_bloodoath",
       "category": "Pistols",
       "isAlt": true
     },
@@ -7436,6 +7854,13 @@
       "isAlt": true
     },
     {
+      "id": "wpn_pdp",
+      "name": "st_wpn_pdp",
+      "displayName": "st_wpn_pdp",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_pl15",
       "name": "st_wpn_pl15",
       "displayName": "st_wpn_pl15",
@@ -7525,6 +7950,20 @@
       "noDrop": true
     },
     {
+      "id": "wpn_ppq5",
+      "name": "st_wpn_ppq5",
+      "displayName": "st_wpn_ppq5",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_ppq5_cinder",
+      "name": "st_wpn_ppq5_cinder",
+      "displayName": "st_wpn_ppq5_cinder",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_sig220_n_u2p2g0r",
       "name": "st_wpn_sig220_n_u2p2g0r",
       "displayName": "st_wpn_sig220_n_u2p2g0r [n_u2p2g0r]",
@@ -7560,6 +7999,13 @@
       "tacticalKit": true,
       "kitSuffix": true,
       "kitSuffixNum": 2
+    },
+    {
+      "id": "wpn_usms",
+      "name": "st_wpn_usms",
+      "displayName": "st_wpn_usms",
+      "category": "Pistols",
+      "isAlt": false
     },
     {
       "id": "wpn_usp_tac",
@@ -7771,6 +8217,20 @@
       "kitSuffix": true
     },
     {
+      "id": "wpn_browninghp",
+      "name": "st_wpn_browninghp",
+      "displayName": "st_wpn_browninghp",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_cr920",
+      "name": "st_wpn_cr920",
+      "displayName": "st_wpn_cr920",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_cz75",
       "name": "st_wpn_cz75",
       "displayName": "st_wpn_cz75",
@@ -7782,6 +8242,20 @@
       "id": "wpn_fort",
       "name": "st_wpn_fort17",
       "displayName": "st_wpn_fort17 [fort]",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_fort14",
+      "name": "st_wpn_fort14",
+      "displayName": "st_wpn_fort14",
+      "category": "Pistols",
+      "isAlt": true
+    },
+    {
+      "id": "wpn_fort14_bloodoath",
+      "name": "st_wpn_fort14_bloodoath",
+      "displayName": "st_wpn_fort14_bloodoath",
       "category": "Pistols",
       "isAlt": true
     },
@@ -7886,6 +8360,13 @@
       "isAlt": true
     },
     {
+      "id": "wpn_pdp",
+      "name": "st_wpn_pdp",
+      "displayName": "st_wpn_pdp",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_pl15",
       "name": "st_wpn_pl15",
       "displayName": "st_wpn_pl15",
@@ -7975,6 +8456,20 @@
       "noDrop": true
     },
     {
+      "id": "wpn_ppq5",
+      "name": "st_wpn_ppq5",
+      "displayName": "st_wpn_ppq5",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
+      "id": "wpn_ppq5_cinder",
+      "name": "st_wpn_ppq5_cinder",
+      "displayName": "st_wpn_ppq5_cinder",
+      "category": "Pistols",
+      "isAlt": false
+    },
+    {
       "id": "wpn_sig220_n_u2p2g0r",
       "name": "st_wpn_sig220_n_u2p2g0r",
       "displayName": "st_wpn_sig220_n_u2p2g0r [n_u2p2g0r]",
@@ -8010,6 +8505,13 @@
       "tacticalKit": true,
       "kitSuffix": true,
       "kitSuffixNum": 2
+    },
+    {
+      "id": "wpn_usms",
+      "name": "st_wpn_usms",
+      "displayName": "st_wpn_usms",
+      "category": "Pistols",
+      "isAlt": false
     },
     {
       "id": "wpn_usp_tac",
@@ -8190,6 +8692,13 @@
     }
   ],
   "ammo_9x21_sp10": [
+    {
+      "id": "wpn_fort14_bloodoath",
+      "name": "st_wpn_fort14_bloodoath",
+      "displayName": "st_wpn_fort14_bloodoath",
+      "category": "Pistols",
+      "isAlt": false
+    },
     {
       "id": "wpn_sr1m",
       "name": "st_wpn_sr1mp_new",
@@ -8553,6 +9062,13 @@
       "displayName": "st_wpn_k98",
       "category": "Snipers",
       "isAlt": true
+    },
+    {
+      "id": "wpn_mosin_carbine",
+      "name": "st_wpn_mosin_carbine",
+      "displayName": "st_wpn_mosin_carbine",
+      "category": "Snipers",
+      "isAlt": true
     }
   ],
   "ammo_gauss": [
@@ -8606,6 +9122,13 @@
     }
   ],
   "ammo_magnum_300": [
+    {
+      "id": "wpn_l96_gravebinder",
+      "name": "st_wpn_l96_gravebinder",
+      "displayName": "st_wpn_l96_gravebinder",
+      "category": "Snipers",
+      "isAlt": false
+    },
     {
       "id": "wpn_l96a1m",
       "name": "st_wpn_l96a1m",

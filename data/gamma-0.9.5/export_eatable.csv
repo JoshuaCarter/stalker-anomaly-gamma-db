@@ -1,7 +1,7 @@
 ~,pda_encyclopedia_name,st_data_export_description,st_prop_weight,st_upgr_cost,pda_encyclopedia_tier,st_data_export_sleepiness,st_data_export_thirst,st_data_export_eat_alcohol,st_data_export_eat_health_change,ui_inv_radiation,ui_inv_satiety,st_ui_number_of_uses,st_data_export_used_in_cooking,st_data_export_can_be_cooked,ui_inv_effect_time,st_prop_restore_health,st_data_export_restore_health_max,st_prop_restore_bleeding,st_data_export_restore_bleeding_max,st_data_export_restore_radiation,st_data_export_restore_radiation_max,ui_inv_outfit_power_restore,st_data_export_power_restore_max,ui_inv_outfit_radiation_protection,ui_inv_outfit_chemical_burn_protection,ui_inv_outfit_telepatic_protection,ui_inv_outfit_additional_weight
 beans,st_beans,st_beans_descr,0.34,895,2,0.19%,3%,0%,0%,0,21%,1,N,N,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
 beer,st_beer,st_beer_descr,0.71,1349,1,0.27%,5%,3%,-0.8%,0,24%,1,N,N,30,0%,0%,0,0,14,420,0%,0%,0,0%,0,0.00
-bottle_metal,st_bottle_metal,st_bottle_metal_descr,1.42,2150,1,7.43%,5%,19%,-1.8%,0,1%,3,N,N,1800,0%,0%,0,0,0,0,0%,0%,5,0%,2,0.00
+bottle_metal,st_bottle_metal,st_bottle_metal_descr,1.42,2150,1,7.43%,5%,19%,-1.8%,0,1%,3,N,N,1800,0%,0%,0,0,0,0,0%,0%,22,0%,2,0.00
 bread,st_bread,st_bread_descr,0.19,900,2,0.65%,2%,0%,0%,0,10%,1,N,N,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
 breadold,st_breadold,st_breadold_descr,0.19,500,1,0.06%,3%,0%,0%,0,9%,1,N,N,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
 brewed_coffee,st_brewed_coffee,st_brewed_coffee_descr,0.33,400,1,-6.29%,-58%,-35%,0%,0,12%,1,N,Y,500,0%,0%,0,0,1,500,0.25%,125%,0,0%,0,1.20
@@ -25,7 +25,7 @@ ground_coffee,st_ground_coffee,st_ground_coffee_descr,0.34,100,1,-0.34%,5%,0%,0%
 hand_rolling_tobacco,st_hand_rolling_tobacco,st_hand_rolling_tobacco_descr,0.01,2801,2,-1.21%,2%,-9%,-0.4%,0,7%,3,N,N,23,0%,0%,0,0,33,759,0%,0%,0,0%,0,0.00
 kolbasa,st_kolbasa,st_kolbasa_descr,0.33,1275,3,0.07%,6%,0%,-1.2%,0,32%,1,N,N,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
 meat_bloodsucker,st_meat_bloodsucker,st_meat_bloodsucker_descr,0.17,1422,3,0.3%,0%,0%,-2.8%,104,24%,1,N,Y,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
-meat_bloodsucker_a,st_meat_bloodsucker,st_meat_bloodsucker_descr,0.17,3722,4,0.3%,0%,0%,0%,0,45%,1,N,Y,3800,0%,0%,0,0,0,0,0.15%,570%,17,0%,0,0.00
+meat_bloodsucker_a,st_meat_bloodsucker,st_meat_bloodsucker_descr,0.17,3722,4,0.3%,0%,0%,0%,0,45%,1,N,Y,3800,0%,0%,0,0,0,0,0.15%,570%,66,0%,0,0.00
 meat_bloodsucker_b,st_meat_bloodsucker,st_meat_bloodsucker_descr,0.17,1922,3,0.3%,0%,0%,0%,52,38%,1,N,Y,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
 meat_boar,st_meat_boar,st_meat_boar_descr,0.19,1034,2,0.28%,0%,0%,-2.8%,290,48%,1,N,Y,0,0%,0%,0,0,0,0,0%,0%,0,0%,0,0.00
 meat_boar_a,st_meat_boar,st_meat_boar_descr,0.19,3534,3,0.28%,0%,0%,0%,0,90%,1,N,Y,2850,0%,0%,0,0,0,0,0.29%,826%,0,0%,0,6.40
