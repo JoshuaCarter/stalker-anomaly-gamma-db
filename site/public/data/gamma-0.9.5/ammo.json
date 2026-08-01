@@ -1318,32 +1318,6 @@
       ]
     },
     {
-      "id": "ammo_magnum_300_sub",
-      "pda_encyclopedia_name": "ammo_magnum_300_sub",
-      "st_data_export_description": "ammo_magnum_300_sub_descr",
-      "st_prop_weight": "0.45",
-      "st_data_export_ammo_box_size": "10",
-      "st_upgr_cost": "9000",
-      "st_data_export_projectiles": "1",
-      "ui_inv_damage": "1",
-      "ui_inv_accuracy": "70%",
-      "ui_inv_wrange": "100%",
-      "st_data_export_falloff": "35%",
-      "ui_inv_bspeed": "120%",
-      "st_data_export_impulse": "145%",
-      "st_data_export_weapon_degradation": "40%",
-      "st_data_export_k_hit": "1",
-      "st_data_export_k_ap": "0.1",
-      "st_data_export_k_air_resistance": "0.35",
-      "displayName": "ammo_magnum_300_sub",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "st_data_export_ap": 100,
-      "factions": [
-        "nato"
-      ]
-    },
-    {
       "id": "ammo_og-7b",
       "pda_encyclopedia_name": "ammo-og-7b",
       "st_data_export_description": "ammo-og-7b_descr",

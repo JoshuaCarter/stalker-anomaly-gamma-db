@@ -76,15 +76,12 @@ wpn_bm16_full,0,0,0
 wpn_bm16_full_alt,0,0,0
 wpn_bm16_full_alt_23,0,0,0
 wpn_brn180,2,0,0
-wpn_browninghp,2,0,0
-wpn_cetme,0,0,0
 wpn_colt1911,2,0,0
 wpn_colt1911_anarchy,0,0,0
 wpn_colt1911_camo,0,0,0
 wpn_colt1911_custom,2,0,0
 wpn_colt1911_duty,2,0,0
 wpn_colt1911_n,2,0,0
-wpn_cr920,2,0,0
 wpn_cz52,0,0,0
 wpn_cz75,2,0,0
 wpn_cz75_auto,0,0,0
@@ -112,8 +109,6 @@ wpn_fnp45,2,0,0
 wpn_fnx45,2,0,0
 wpn_fnx45_custom,2,0,0
 wpn_fort,2,0,0
-wpn_fort14,2,0,0
-wpn_fort14_bloodoath,2,0,0
 wpn_fort17,2,0,0
 wpn_fort500,0,0,0
 wpn_fort_snag,2,0,0
@@ -125,7 +120,7 @@ wpn_g36ka4_rwap,2,0,2
 wpn_g36nimble_rwap,2,0,2
 wpn_g36v_rwap,2,1,0
 wpn_g36v_rwap_cut_kit,2,1,0
-wpn_g3sg1,2,1,0
+wpn_g3sg1,0,1,0
 wpn_g43,0,1,0
 wpn_gauss,0,1,0
 wpn_gauss_quest,0,1,0
@@ -145,7 +140,6 @@ wpn_gsh18_custom,2,0,0
 wpn_hk21,2,0,0
 wpn_hk416,2,0,2
 wpn_hk417,2,0,2
-wpn_hk51,2,0,0
 wpn_howa20,2,0,0
 wpn_hpsa,0,0,0
 wpn_hpsa_226sig_kit,2,1,0
@@ -155,7 +149,7 @@ wpn_ithacam37_sawnoff,0,0,0
 wpn_ithacam37_stakeout,0,0,0
 wpn_ithacam37_stakeout_20x70,0,0,0
 wpn_ithacam37_trench,0,0,0
-wpn_k98,2,0,0
+wpn_k98,0,0,0
 wpn_k98_mauser_kit,2,1,0
 wpn_k98_mod,0,1,0
 wpn_k98_mod_silen98,2,1,0
@@ -176,12 +170,10 @@ wpn_l85_m1,2,0,0
 wpn_l85_m2,2,0,0
 wpn_l85_m3,2,0,2
 wpn_l85_modern,2,0,0
-wpn_l96_gravebinder,2,1,0
-wpn_l96a1,2,1,0
-wpn_l96a1m,2,1,0
+wpn_l96a1,0,1,0
+wpn_l96a1m,0,1,0
 wpn_lr300,2,0,2
 wpn_lr300_camo,2,0,2
-wpn_lvaw,1,0,0
 wpn_m16,2,0,2
 wpn_m16a2,2,0,2
 wpn_m24,0,1,0
@@ -202,8 +194,6 @@ wpn_mk14,2,0,0
 wpn_mk47,2,0,0
 wpn_mk47_sup,2,0,0
 wpn_mosin,2,0,0
-wpn_mosin_carbine,2,0,0
-wpn_mosin_k,2,0,0
 wpn_mossberg590,0,0,0
 wpn_mossberg590_rail,0,0,0
 wpn_mp133,0,0,0
@@ -218,7 +208,6 @@ wpn_mp5_nimble,2,0,0
 wpn_mp5sd,1,0,0
 wpn_mp7,2,0,0
 wpn_mp9,2,0,0
-wpn_obrez,2,0,0
 wpn_oc33,2,0,0
 wpn_p90,2,0,0
 wpn_p90_gs,2,0,0
@@ -226,9 +215,6 @@ wpn_p90gamma,2,0,0
 wpn_pb,1,0,0
 wpn_pb_bas,1,0,0
 wpn_pb_bas_custom,1,0,0
-wpn_pdp,2,0,0
-wpn_pdx,2,0,0
-wpn_pdx_terminal,1,0,0
 wpn_pkm,0,0,0
 wpn_pkm_siber,0,0,0
 wpn_pkm_zenit_siber,2,0,0
@@ -248,8 +234,6 @@ wpn_pm_custom,2,0,0
 wpn_pmm_bas,2,0,0
 wpn_pp2000,2,0,0
 wpn_pp2000_operator,2,0,0
-wpn_ppq5,2,0,0
-wpn_ppq5_cinder,2,0,0
 wpn_ppsh41,0,0,0
 wpn_ppsh41_rednew,0,0,0
 wpn_ppsh41_woodnew,0,0,0
@@ -283,7 +267,6 @@ wpn_scar_siber_m1,2,0,0
 wpn_scar_siber_m1_black,2,0,0
 wpn_scar_siber_m2,2,0,0
 wpn_scar_siber_m2_custom,2,0,0
-wpn_shiv,1,0,0
 wpn_sig220,0,0,0
 wpn_sig220_n,0,0,0
 wpn_sig220_n_u2p2g0r,2,1,0
@@ -312,7 +295,7 @@ wpn_sr1m_sr1upgr1,2,0,0
 wpn_sr25,2,0,0
 wpn_sr2_m1,2,0,0
 wpn_sr2_veresk,2,0,0
-wpn_sr2_veresk_sr2_upkit,1,1,0
+wpn_sr2_veresk_sr2_upkit,2,0,0
 wpn_steyr_scout,2,0,0
 wpn_steyr_scout_big,2,1,0
 wpn_sv98,2,1,0
@@ -349,11 +332,7 @@ wpn_udp9,2,0,0
 wpn_ump45,2,0,0
 wpn_ump45_custom,2,0,0
 wpn_usas12,2,0,0
-wpn_usms,2,0,0
-wpn_usms_liberty,2,0,0
 wpn_usp,2,0,0
-wpn_usp45c,2,0,0
-wpn_usp45pm,2,0,0
 wpn_usp_tac,2,0,0
 wpn_usp_tac_45,2,0,0
 wpn_uzi,2,0,0

@@ -384,16 +384,6 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_browninghp": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_cetme": {
-    "silencer": 0,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_colt1911": {
     "silencer": 2,
     "scope": 0,
@@ -420,11 +410,6 @@
     "launcher": 0
   },
   "wpn_colt1911_n": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_cr920": {
     "silencer": 2,
     "scope": 0,
     "launcher": 0
@@ -564,16 +549,6 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_fort14": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_fort14_bloodoath": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_fort17": {
     "silencer": 2,
     "scope": 0,
@@ -630,7 +605,7 @@
     "launcher": 0
   },
   "wpn_g3sg1": {
-    "silencer": 2,
+    "silencer": 0,
     "scope": 1,
     "launcher": 0
   },
@@ -729,11 +704,6 @@
     "scope": 0,
     "launcher": 2
   },
-  "wpn_hk51": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_howa20": {
     "silencer": 2,
     "scope": 0,
@@ -780,7 +750,7 @@
     "launcher": 0
   },
   "wpn_k98": {
-    "silencer": 2,
+    "silencer": 0,
     "scope": 0,
     "launcher": 0
   },
@@ -884,18 +854,13 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_l96_gravebinder": {
-    "silencer": 2,
-    "scope": 1,
-    "launcher": 0
-  },
   "wpn_l96a1": {
-    "silencer": 2,
+    "silencer": 0,
     "scope": 1,
     "launcher": 0
   },
   "wpn_l96a1m": {
-    "silencer": 2,
+    "silencer": 0,
     "scope": 1,
     "launcher": 0
   },
@@ -908,11 +873,6 @@
     "silencer": 2,
     "scope": 0,
     "launcher": 2
-  },
-  "wpn_lvaw": {
-    "silencer": 1,
-    "scope": 0,
-    "launcher": 0
   },
   "wpn_m16": {
     "silencer": 2,
@@ -1014,16 +974,6 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_mosin_carbine": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_mosin_k": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_mossberg590": {
     "silencer": 0,
     "scope": 0,
@@ -1094,11 +1044,6 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_obrez": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_oc33": {
     "silencer": 2,
     "scope": 0,
@@ -1130,21 +1075,6 @@
     "launcher": 0
   },
   "wpn_pb_bas_custom": {
-    "silencer": 1,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_pdp": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_pdx": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_pdx_terminal": {
     "silencer": 1,
     "scope": 0,
     "launcher": 0
@@ -1240,16 +1170,6 @@
     "launcher": 0
   },
   "wpn_pp2000_operator": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_ppq5": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_ppq5_cinder": {
     "silencer": 2,
     "scope": 0,
     "launcher": 0
@@ -1419,11 +1339,6 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_shiv": {
-    "silencer": 1,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_sig220": {
     "silencer": 0,
     "scope": 0,
@@ -1565,8 +1480,8 @@
     "launcher": 0
   },
   "wpn_sr2_veresk_sr2_upkit": {
-    "silencer": 1,
-    "scope": 1,
+    "silencer": 2,
+    "scope": 0,
     "launcher": 0
   },
   "wpn_steyr_scout": {
@@ -1749,27 +1664,7 @@
     "scope": 0,
     "launcher": 0
   },
-  "wpn_usms": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_usms_liberty": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
   "wpn_usp": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_usp45c": {
-    "silencer": 2,
-    "scope": 0,
-    "launcher": 0
-  },
-  "wpn_usp45pm": {
     "silencer": 2,
     "scope": 0,
     "launcher": 0

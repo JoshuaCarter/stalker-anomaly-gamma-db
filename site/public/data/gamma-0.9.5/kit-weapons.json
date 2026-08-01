@@ -79,6 +79,9 @@
   "bd": [
     "wpn_xm4_bd"
   ],
+  "mauser_kit": [
+    "wpn_k98_mauser_kit"
+  ],
   "silen98": [
     "wpn_k98_mod_silen98"
   ],

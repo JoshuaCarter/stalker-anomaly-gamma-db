@@ -26,7 +26,6 @@ equ_small_military_pack,st_equ_smilpack_name,2,recipe_advanced_1,st_gamma_recipe
 equ_small_pack,st_equ_smallpack_name,1,recipe_basic_1,st_gamma_recipe_basic_1,st_sewing_thread,x8,st_itm_backpack_name,x1,st_prt_o_fabrics_3,x8,st_prt_o_fabrics_2,x4
 equ_tourist_pack,st_equ_touristpack_name,3,recipe_expert_1,st_gamma_recipe_expert_1,st_sewing_thread,x14,st_equ_milpack_name,x1,st_prt_o_fabrics_1,x10,st_prt_o_fabrics_2,x15
 fieldcooker,st_fieldcooker,2,recipe_advanced_1,st_gamma_recipe_advanced_1,st_cooking,x5,st_balon_gas,x1,st_prt_i_scrap,x10,st_prt_i_fasteners,x5
-firestarter_gamma,st_firestarter,1,recipe_basic_0,,st_steel_wool,x1,st_batteries,x1,,,,
 itm_backpack,st_itm_backpack_name,1,recipe_basic_1,st_gamma_recipe_basic_1,st_sewing_thread,x3,st_prt_o_fabrics_1,x4,st_prt_o_fabrics_3,x4,,
 itm_sleepbag,st_itm_sleepbag_name,1,recipe_basic_1,st_gamma_recipe_basic_1,st_sewing_thread,x3,st_prt_o_fabrics_3,x2,st_prt_o_fabrics_4,x2,,
 itm_tent,st_itm_tent_name,1,recipe_basic_1,st_gamma_recipe_basic_1,st_rope,x6,st_prt_i_wood,x3,st_prt_o_fabrics_4,x6,st_ball_hammer,x2

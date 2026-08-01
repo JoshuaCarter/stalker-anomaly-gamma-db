@@ -2527,24 +2527,6 @@
       "prt_w_gas_tube_6"
     ]
   },
-  "wpn_browninghp": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
-    ]
-  },
-  "wpn_cetme": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_7",
-      "prt_w_trigger_components_3",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
-      "prt_w_gas_tube_6"
-    ]
-  },
   "wpn_colt1911": {
     "kind": "weapon",
     "parts": [
@@ -2591,14 +2573,6 @@
       "prt_w_p_barrel_3",
       "prt_w_p_trigger_1",
       "prt_w_p_spring_3"
-    ]
-  },
-  "wpn_cr920": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
     ]
   },
   "wpn_cz52": {
@@ -2864,22 +2838,6 @@
       "prt_w_p_spring_2"
     ]
   },
-  "wpn_fort14": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_1",
-      "prt_w_p_trigger_2",
-      "prt_w_p_spring_2"
-    ]
-  },
-  "wpn_fort14_bloodoath": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_3",
-      "prt_w_p_trigger_1",
-      "prt_w_p_spring_3"
-    ]
-  },
   "wpn_fort17": {
     "kind": "weapon",
     "parts": [
@@ -2910,9 +2868,9 @@
     "kind": "weapon",
     "parts": [
       "prt_w_barrel_7",
-      "prt_w_trigger_components_3",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
       "prt_w_gas_tube_6"
     ]
   },
@@ -2990,9 +2948,9 @@
     "kind": "weapon",
     "parts": [
       "prt_w_barrel_7",
-      "prt_w_trigger_components_3",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
+      "prt_w_trigger_components_2",
+      "prt_w_bolt_carrier_5",
+      "prt_w_bolt_14",
       "prt_w_gas_tube_6"
     ]
   },
@@ -3153,16 +3111,6 @@
     ]
   },
   "wpn_hk417": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_7",
-      "prt_w_trigger_components_3",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
-      "prt_w_gas_tube_6"
-    ]
-  },
-  "wpn_hk51": {
     "kind": "weapon",
     "parts": [
       "prt_w_barrel_7",
@@ -3456,16 +3404,6 @@
       "prt_w_gas_tube_6"
     ]
   },
-  "wpn_l96_gravebinder": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_8",
-      "prt_w_trigger_components_2",
-      "prt_w_bolt_carrier_1",
-      "prt_w_bolt_6",
-      "prt_w_gas_tube_5"
-    ]
-  },
   "wpn_l96a1": {
     "kind": "weapon",
     "parts": [
@@ -3501,16 +3439,6 @@
     "parts": [
       "prt_w_barrel_9",
       "prt_w_trigger_components_3",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
-      "prt_w_gas_tube_6"
-    ]
-  },
-  "wpn_lvaw": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_9",
-      "prt_w_trigger_components_2",
       "prt_w_bolt_carrier_3",
       "prt_w_bolt_9",
       "prt_w_gas_tube_6"
@@ -3703,26 +3631,6 @@
       "prt_w_gas_tube_8"
     ]
   },
-  "wpn_mosin_carbine": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_4",
-      "prt_w_trigger_components_4",
-      "prt_w_bolt_carrier_6",
-      "prt_w_bolt_4",
-      "prt_w_gas_tube_8"
-    ]
-  },
-  "wpn_mosin_k": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_4",
-      "prt_w_trigger_components_4",
-      "prt_w_bolt_carrier_6",
-      "prt_w_bolt_4",
-      "prt_w_gas_tube_8"
-    ]
-  },
   "wpn_mossberg590": {
     "kind": "weapon",
     "parts": [
@@ -3858,16 +3766,6 @@
       "prt_w_gas_tube_4"
     ]
   },
-  "wpn_obrez": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_4",
-      "prt_w_trigger_components_4",
-      "prt_w_bolt_carrier_6",
-      "prt_w_bolt_4",
-      "prt_w_gas_tube_8"
-    ]
-  },
   "wpn_oc33": {
     "kind": "weapon",
     "parts": [
@@ -3936,34 +3834,6 @@
       "prt_w_p_barrel_6",
       "prt_w_p_trigger_3",
       "prt_w_p_spring_1"
-    ]
-  },
-  "wpn_pdp": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
-    ]
-  },
-  "wpn_pdx": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_9",
-      "prt_w_trigger_components_2",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
-      "prt_w_gas_tube_6"
-    ]
-  },
-  "wpn_pdx_terminal": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_9",
-      "prt_w_trigger_components_2",
-      "prt_w_bolt_carrier_3",
-      "prt_w_bolt_9",
-      "prt_w_gas_tube_6"
     ]
   },
   "wpn_pkm": {
@@ -4132,22 +4002,6 @@
       "prt_w_bolt_carrier_11",
       "prt_w_bolt_15",
       "prt_w_gas_tube_4"
-    ]
-  },
-  "wpn_ppq5": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
-    ]
-  },
-  "wpn_ppq5_cinder": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
     ]
   },
   "wpn_ppsh41": {
@@ -4458,16 +4312,6 @@
       "prt_w_bolt_carrier_3",
       "prt_w_bolt_8",
       "prt_w_gas_tube_6"
-    ]
-  },
-  "wpn_shiv": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_barrel_4",
-      "prt_w_trigger_components_4",
-      "prt_w_bolt_carrier_6",
-      "prt_w_bolt_4",
-      "prt_w_gas_tube_8"
     ]
   },
   "wpn_sig220": {
@@ -5068,44 +4912,12 @@
       "prt_w_gas_tube_1"
     ]
   },
-  "wpn_usms": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
-    ]
-  },
-  "wpn_usms_liberty": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
-    ]
-  },
   "wpn_usp": {
     "kind": "weapon",
     "parts": [
       "prt_w_p_barrel_3",
       "prt_w_p_trigger_3",
       "prt_w_p_spring_3"
-    ]
-  },
-  "wpn_usp45c": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
-    ]
-  },
-  "wpn_usp45pm": {
-    "kind": "weapon",
-    "parts": [
-      "prt_w_p_barrel_2",
-      "prt_w_p_trigger_3",
-      "prt_w_p_spring_4"
     ]
   },
   "wpn_usp_tac": {

@@ -541,60 +541,6 @@
       "selectable": true
     }
   ],
-  "wpn_browninghp": [
-    {
-      "faction": "stalker",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "bandit",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "ecolog",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "csky",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "renegade",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "isg",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "zombied",
-      "cost": 200,
-      "selectable": true
-    }
-  ],
-  "wpn_fort14": [
-    {
-      "faction": "stalker",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "monolith",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "zombied",
-      "cost": 200,
-      "selectable": true
-    }
-  ],
   "wpn_ithacam37_stakeout_20x70": [
     {
       "faction": "stalker",
@@ -713,60 +659,6 @@
       "selectable": true
     }
   ],
-  "wpn_mosin_carbine": [
-    {
-      "faction": "stalker",
-      "cost": 850,
-      "selectable": true
-    },
-    {
-      "faction": "bandit",
-      "cost": 850,
-      "selectable": true
-    },
-    {
-      "faction": "ecolog",
-      "cost": 850,
-      "selectable": true
-    },
-    {
-      "faction": "csky",
-      "cost": 850,
-      "selectable": true
-    },
-    {
-      "faction": "zombied",
-      "cost": 850,
-      "selectable": true
-    }
-  ],
-  "wpn_mosin_k": [
-    {
-      "faction": "stalker",
-      "cost": 1000,
-      "selectable": true
-    },
-    {
-      "faction": "bandit",
-      "cost": 1000,
-      "selectable": true
-    },
-    {
-      "faction": "ecolog",
-      "cost": 1000,
-      "selectable": true
-    },
-    {
-      "faction": "csky",
-      "cost": 1000,
-      "selectable": true
-    },
-    {
-      "faction": "zombied",
-      "cost": 1000,
-      "selectable": true
-    }
-  ],
   "wpn_mp443": [
     {
       "faction": "stalker",
@@ -786,33 +678,6 @@
     {
       "faction": "zombied",
       "cost": 150,
-      "selectable": true
-    }
-  ],
-  "wpn_obrez": [
-    {
-      "faction": "stalker",
-      "cost": 900,
-      "selectable": true
-    },
-    {
-      "faction": "bandit",
-      "cost": 900,
-      "selectable": true
-    },
-    {
-      "faction": "ecolog",
-      "cost": 900,
-      "selectable": true
-    },
-    {
-      "faction": "csky",
-      "cost": 900,
-      "selectable": true
-    },
-    {
-      "faction": "zombied",
-      "cost": 900,
       "selectable": true
     }
   ],
@@ -1418,33 +1283,6 @@
       "selectable": true
     }
   ],
-  "wpn_pdp": [
-    {
-      "faction": "ecolog",
-      "cost": 250,
-      "selectable": true
-    },
-    {
-      "faction": "freedom",
-      "cost": 200,
-      "selectable": true
-    },
-    {
-      "faction": "killer",
-      "cost": 250,
-      "selectable": true
-    },
-    {
-      "faction": "csky",
-      "cost": 250,
-      "selectable": true
-    },
-    {
-      "faction": "isg",
-      "cost": 250,
-      "selectable": true
-    }
-  ],
   "wpn_usp": [
     {
       "faction": "ecolog",
@@ -1464,38 +1302,6 @@
     {
       "faction": "greh",
       "cost": 250,
-      "selectable": true
-    }
-  ],
-  "wpn_usp45c": [
-    {
-      "faction": "ecolog",
-      "cost": 300,
-      "selectable": true
-    },
-    {
-      "faction": "freedom",
-      "cost": 300,
-      "selectable": true
-    },
-    {
-      "faction": "killer",
-      "cost": 300,
-      "selectable": true
-    },
-    {
-      "faction": "monolith",
-      "cost": 300,
-      "selectable": true
-    },
-    {
-      "faction": "csky",
-      "cost": 300,
-      "selectable": true
-    },
-    {
-      "faction": "isg",
-      "cost": 300,
       "selectable": true
     }
   ],
@@ -1847,18 +1653,6 @@
     {
       "faction": "csky",
       "cost": 175,
-      "selectable": true
-    }
-  ],
-  "wpn_usms": [
-    {
-      "faction": "killer",
-      "cost": 250,
-      "selectable": true
-    },
-    {
-      "faction": "isg",
-      "cost": 250,
       "selectable": true
     }
   ],

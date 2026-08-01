@@ -32,8 +32,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "nato",
-        "wp"
+        "nato"
       ]
     },
     {
@@ -232,8 +231,7 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "nato",
-        "wp"
+        "nato"
       ]
     },
     {
@@ -313,7 +311,6 @@
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
-        "other",
         "wp"
       ]
     },
@@ -355,19 +352,6 @@
       "factions": [
         "nato",
         "wp"
-      ]
-    },
-    {
-      "id": "wpn_sil_omega300",
-      "pda_encyclopedia_name": "st_addon_sil_omega300",
-      "st_data_export_description": "st_addon_sil_omega300_descr",
-      "st_prop_weight": "0.97",
-      "st_upgr_cost": "12245",
-      "displayName": "st_addon_sil_omega300",
-      "hasStashDrop": false,
-      "hasDisassemble": false,
-      "factions": [
-        "nato"
       ]
     },
     {

@@ -1884,22 +1884,6 @@
       "march_f_shorty_alt"
     ]
   },
-  "wpn_browninghp": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_9mm"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_cetme": {
-    "scopes": [],
-    "silencers": [],
-    "launchers": [],
-    "kits": [
-      "infiltrator_kit"
-    ]
-  },
   "wpn_colt1911": {
     "scopes": [],
     "silencers": [
@@ -1931,18 +1915,6 @@
     "scopes": [],
     "silencers": [
       "wpn_sil_45"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_cr920": {
-    "scopes": [
-      "407",
-      "507",
-      "509"
-    ],
-    "silencers": [
-      "wpn_sil_gemtech"
     ],
     "launchers": [],
     "kits": []
@@ -2409,34 +2381,6 @@
     "launchers": [],
     "kits": []
   },
-  "wpn_fort14": {
-    "scopes": [
-      "407",
-      "507",
-      "dppro",
-      "deltapoint",
-      "rmr"
-    ],
-    "silencers": [
-      "wpn_sil_9mm"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_fort14_bloodoath": {
-    "scopes": [
-      "407",
-      "507",
-      "dppro",
-      "deltapoint",
-      "rmr"
-    ],
-    "silencers": [
-      "wpn_sil_9mm"
-    ],
-    "launchers": [],
-    "kits": []
-  },
   "wpn_fort17": {
     "scopes": [],
     "silencers": [
@@ -2455,45 +2399,15 @@
   },
   "wpn_g3": {
     "scopes": [
-      "aim_low",
-      "aimpoint_pro",
-      "aim_acro",
-      "aimpoint",
-      "bossxe",
-      "e0t2",
-      "ekp8_18",
-      "he510",
-      "mepro",
-      "exps3",
-      "romeo8",
-      "p1x42",
-      "1p87",
-      "uh2",
+      "ac10632",
       "acog",
-      "e0t2_magd",
-      "e0t2_magd_off",
-      "monstrum",
-      "pn23",
-      "razorhd",
-      "specter",
-      "uh1_magd",
-      "uh1_magd_off",
-      "vulcan",
-      "aim_t2_magd",
-      "uh1_magd_unity",
-      "e0t2_magd_unity",
-      "drs",
-      "atacr"
+      "eot"
     ],
     "silencers": [
       "wpn_sil_nato"
     ],
     "launchers": [],
-    "kits": [
-      "spec_alt",
-      "triji",
-      "mlok_kit"
-    ]
+    "kits": []
   },
   "wpn_g36": {
     "scopes": [],
@@ -2676,19 +2590,6 @@
     ],
     "launchers": [],
     "kits": [],
-    "integral": {
-      "scope": true
-    }
-  },
-  "wpn_g3sg1": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_nato"
-    ],
-    "launchers": [],
-    "kits": [
-      "jaeger_kit"
-    ],
     "integral": {
       "scope": true
     }
@@ -3063,48 +2964,6 @@
     ],
     "kits": []
   },
-  "wpn_hk51": {
-    "scopes": [
-      "aim_low",
-      "aimpoint_pro",
-      "aim_acro",
-      "aimpoint",
-      "bossxe",
-      "e0t2",
-      "ekp8_18",
-      "he510",
-      "mepro",
-      "exps3",
-      "romeo8",
-      "p1x42",
-      "1p87",
-      "uh2",
-      "acog",
-      "e0t2_magd",
-      "e0t2_magd_off",
-      "monstrum",
-      "pn23",
-      "razorhd",
-      "specter",
-      "uh1_magd",
-      "uh1_magd_off",
-      "vulcan",
-      "aim_t2_magd",
-      "uh1_magd_unity",
-      "e0t2_magd_unity",
-      "drs",
-      "atacr"
-    ],
-    "silencers": [
-      "wpn_sil_nato"
-    ],
-    "launchers": [],
-    "kits": [
-      "spec_alt",
-      "triji",
-      "whisper_kit"
-    ]
-  },
   "wpn_howa20": {
     "scopes": [
       "march_f_shorty",
@@ -3174,12 +3033,10 @@
     "scopes": [
       "wpn_addon_scope_zf4"
     ],
-    "silencers": [
-      "wpn_sil_kzrzp"
-    ],
+    "silencers": [],
     "launchers": [],
     "kits": [
-      "verdeckt_kit"
+      "mauser_kit"
     ]
   },
   "wpn_k98_mauser_kit": {
@@ -3490,28 +3347,13 @@
       "march_f_shorty_alt"
     ]
   },
-  "wpn_l96_gravebinder": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_omega300"
-    ],
-    "launchers": [],
-    "kits": [],
-    "integral": {
-      "scope": true
-    }
-  },
   "wpn_l96a1": {
     "scopes": [
       "wpn_addon_scope"
     ],
-    "silencers": [
-      "wpn_sil_nato"
-    ],
+    "silencers": [],
     "launchers": [],
-    "kits": [
-      "overgrowth_kit"
-    ],
+    "kits": [],
     "integral": {
       "scope": true
     }
@@ -3520,13 +3362,9 @@
     "scopes": [
       "wpn_addon_scope"
     ],
-    "silencers": [
-      "wpn_sil_omega300"
-    ],
+    "silencers": [],
     "launchers": [],
-    "kits": [
-      "overgrowth_kit"
-    ],
+    "kits": [],
     "integral": {
       "scope": true
     }
@@ -3594,50 +3432,6 @@
       "mark8_rmr",
       "spec_alt"
     ]
-  },
-  "wpn_lvaw": {
-    "scopes": [
-      "aim_acro",
-      "aimpoint",
-      "bossxe",
-      "e0t2",
-      "ekp8_18",
-      "he510",
-      "mepro",
-      "romeo8",
-      "p1x42",
-      "1p87",
-      "uh2",
-      "acog",
-      "c79",
-      "e0t2_magd",
-      "e0t2_magd_off",
-      "monstrum",
-      "pn23",
-      "razorhd",
-      "specter",
-      "uh1_magd",
-      "uh1_magd_off",
-      "vulcan",
-      "aim_t2",
-      "aim_t2_magd",
-      "uh1_magd_unity",
-      "e0t2_magd_unity",
-      "drs",
-      "atacr",
-      "atacr_voodoo"
-    ],
-    "silencers": [
-      "wpn_sil_nato"
-    ],
-    "launchers": [],
-    "kits": [
-      "spec_alt",
-      "triji"
-    ],
-    "integral": {
-      "silencer": true
-    }
   },
   "wpn_m16": {
     "scopes": [
@@ -4049,24 +3843,6 @@
     "launchers": [],
     "kits": []
   },
-  "wpn_mosin_carbine": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_kzrzp"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_mosin_k": {
-    "scopes": [
-      "wpn_addon_scope_pu"
-    ],
-    "silencers": [
-      "wpn_sil_kzrzp"
-    ],
-    "launchers": [],
-    "kits": []
-  },
   "wpn_mossberg590": {
     "scopes": [
       "ac10632",
@@ -4357,16 +4133,6 @@
     "launchers": [],
     "kits": []
   },
-  "wpn_obrez": {
-    "scopes": [
-      "wpn_addon_scope_pu"
-    ],
-    "silencers": [
-      "wpn_sil_kzrzp"
-    ],
-    "launchers": [],
-    "kits": []
-  },
   "wpn_oc33": {
     "scopes": [
       "lazup_pl15"
@@ -4463,75 +4229,6 @@
     "scopes": [],
     "silencers": [
       "wpn_sil_6p9"
-    ],
-    "launchers": [],
-    "kits": [],
-    "integral": {
-      "silencer": true
-    }
-  },
-  "wpn_pdp": {
-    "scopes": [
-      "rmr",
-      "deltapoint",
-      "aim_acro"
-    ],
-    "silencers": [
-      "wpn_sil_gemtech"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_pdx": {
-    "scopes": [
-      "ac10632",
-      "0kp2",
-      "aim_acro",
-      "aimpoint",
-      "bossxe",
-      "e0t2",
-      "ekp8_18",
-      "he510",
-      "mepro",
-      "romeo4",
-      "romeo8",
-      "p1x42",
-      "1p87",
-      "uh2",
-      "acog",
-      "c79",
-      "e0t2_magd",
-      "e0t2_magd_off",
-      "monstrum",
-      "pn23",
-      "razorhd",
-      "specter",
-      "t12",
-      "trihawk",
-      "uh1_magd",
-      "uh1_magd_off",
-      "vulcan",
-      "aim_t2",
-      "aim_t2_magd",
-      "uh1_magd_unity",
-      "e0t2_magd_unity",
-      "drs",
-      "atacr",
-      "atacr_voodoo"
-    ],
-    "silencers": [
-      "wpn_sil_nato"
-    ],
-    "launchers": [],
-    "kits": [
-      "spec_alt",
-      "triji"
-    ]
-  },
-  "wpn_pdx_terminal": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_nato"
     ],
     "launchers": [],
     "kits": [],
@@ -4806,36 +4503,6 @@
     "scopes": [],
     "silencers": [
       "wpn_sil_9mm"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_ppq5": {
-    "scopes": [
-      "407",
-      "507",
-      "509",
-      "dppro",
-      "deltapoint",
-      "rmr"
-    ],
-    "silencers": [
-      "wpn_sil_gemtech"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_ppq5_cinder": {
-    "scopes": [
-      "407",
-      "507",
-      "509",
-      "dppro",
-      "deltapoint",
-      "rmr"
-    ],
-    "silencers": [
-      "wpn_sil_gemtech"
     ],
     "launchers": [],
     "kits": []
@@ -5478,17 +5145,6 @@
       "spec_alt"
     ]
   },
-  "wpn_shiv": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_kzrzp"
-    ],
-    "launchers": [],
-    "kits": [],
-    "integral": {
-      "silencer": true
-    }
-  },
   "wpn_sig220": {
     "scopes": [],
     "silencers": [],
@@ -5989,11 +5645,7 @@
       "specter",
       "t12",
       "echo1",
-      "c79",
-      "uh2",
-      "romeo8",
-      "bossxe",
-      "he510"
+      "c79"
     ],
     "silencers": [
       "wpn_sil_veresk"
@@ -6019,11 +5671,7 @@
       "wpn_sil_veresk"
     ],
     "launchers": [],
-    "kits": [],
-    "integral": {
-      "silencer": true,
-      "scope": true
-    }
+    "kits": []
   },
   "wpn_steyr_scout": {
     "scopes": [],
@@ -6444,61 +6092,10 @@
       "spec_alt"
     ]
   },
-  "wpn_usms": {
-    "scopes": [
-      "407",
-      "507",
-      "dppro",
-      "deltapoint",
-      "rmr"
-    ],
-    "silencers": [
-      "wpn_sil_gemtech"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_usms_liberty": {
-    "scopes": [],
-    "silencers": [
-      "wpn_sil_45"
-    ],
-    "launchers": [],
-    "kits": []
-  },
   "wpn_usp": {
     "scopes": [],
     "silencers": [
       "wpn_sil_black_box"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_usp45c": {
-    "scopes": [
-      "rmr",
-      "deltapoint",
-      "407",
-      "507",
-      "509",
-      "aim_acro"
-    ],
-    "silencers": [
-      "wpn_sil_45"
-    ],
-    "launchers": [],
-    "kits": []
-  },
-  "wpn_usp45pm": {
-    "scopes": [
-      "rmr",
-      "deltapoint",
-      "407",
-      "507",
-      "509"
-    ],
-    "silencers": [
-      "wpn_sil_gemtech"
     ],
     "launchers": [],
     "kits": []
@@ -7127,6 +6724,9 @@
   },
   "wpn_xm4": {
     "scopes": [
+      "chs",
+      "acog2x",
+      "aim_2k",
       "acog"
     ],
     "silencers": [

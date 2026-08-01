@@ -1904,28 +1904,6 @@
       "hasDisassemble": false
     },
     {
-      "id": "drone_controller",
-      "st_class": "D_CUSTOM",
-      "st_ui_dbg_spawn_type": "i_tool",
-      "pda_encyclopedia_name": "st_drone_controller_name",
-      "st_data_export_description": "st_drone_controller_descr",
-      "st_prop_weight": "0.28",
-      "st_upgr_cost": "6000",
-      "st_data_export_max_uses": "",
-      "hasDisassemble": false
-    },
-    {
-      "id": "drone_vr_goggles",
-      "st_class": "II_ATTCH",
-      "st_ui_dbg_spawn_type": "i_tool",
-      "pda_encyclopedia_name": "st_drone_vr_goggles_name",
-      "st_data_export_description": "st_drone_vr_goggles_descr",
-      "st_prop_weight": "0.80",
-      "st_upgr_cost": "5000",
-      "st_data_export_max_uses": "",
-      "hasDisassemble": false
-    },
-    {
       "id": "duct_tape",
       "st_class": "II_ATTCH",
       "st_ui_dbg_spawn_type": "i_misc",
@@ -2100,17 +2078,6 @@
       "st_upgr_cost": "10155",
       "st_data_export_max_uses": "",
       "hasDisassemble": true
-    },
-    {
-      "id": "firestarter_gamma",
-      "st_class": "II_ATTCH",
-      "st_ui_dbg_spawn_type": "i_tool",
-      "pda_encyclopedia_name": "st_firestarter",
-      "st_data_export_description": "st_firestarter_descr",
-      "st_prop_weight": "0.05",
-      "st_upgr_cost": "800",
-      "st_data_export_max_uses": "",
-      "hasDisassemble": false
     },
     {
       "id": "flashlight_broken",

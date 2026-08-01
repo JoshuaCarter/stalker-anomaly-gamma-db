@@ -382,20 +382,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_fort14",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_ithacam37_stakeout_20x70",
           "selectable": true,
           "quantity": 1,
@@ -431,31 +417,10 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_mosin_carbine",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 850,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_mosin_k",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 1000,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_mp443",
           "selectable": true,
           "quantity": 1,
           "cost": 150,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_obrez",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 900,
           "difficultyLock": null
         },
         {
@@ -906,13 +871,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_colt1911",
           "selectable": true,
           "quantity": 1,
@@ -948,31 +906,10 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_mosin_carbine",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 850,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_mosin_k",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 1000,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_mp443",
           "selectable": true,
           "quantity": 1,
           "cost": 150,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_obrez",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 900,
           "difficultyLock": null
         },
         {
@@ -1437,13 +1374,6 @@
           "difficultyLock": 2
         },
         {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_k98",
           "selectable": true,
           "quantity": 1,
@@ -1465,38 +1395,10 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_mosin_carbine",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 850,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_mosin_k",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 1000,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_mp5",
           "selectable": true,
           "quantity": 1,
           "cost": 500,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_obrez",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 900,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_pdp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 250,
           "difficultyLock": null
         },
         {
@@ -1525,13 +1427,6 @@
           "selectable": true,
           "quantity": 1,
           "cost": 250,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_usp45c",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 300,
           "difficultyLock": null
         },
         {
@@ -2471,13 +2366,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_pdp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_pm_custom",
           "selectable": true,
           "quantity": 1,
@@ -2510,13 +2398,6 @@
           "selectable": true,
           "quantity": 1,
           "cost": 120,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_usp45c",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 300,
           "difficultyLock": null
         },
         {
@@ -2974,13 +2855,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_pdp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 250,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_pm_custom",
           "selectable": true,
           "quantity": 1,
@@ -3002,24 +2876,10 @@
           "difficultyLock": 1
         },
         {
-          "id": "wpn_usms",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 250,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_usp",
           "selectable": true,
           "quantity": 1,
           "cost": 250,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_usp45c",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 300,
           "difficultyLock": null
         },
         {
@@ -3910,13 +3770,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_fort14",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_glock",
           "selectable": true,
           "quantity": 1,
@@ -4006,13 +3859,6 @@
           "quantity": 1,
           "cost": 550,
           "difficultyLock": 2
-        },
-        {
-          "id": "wpn_usp45c",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 300,
-          "difficultyLock": null
         },
         {
           "id": "wpn_vintorez_n1",
@@ -4427,13 +4273,6 @@
           "difficultyLock": 2
         },
         {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_colt1911",
           "selectable": true,
           "quantity": 1,
@@ -4462,38 +4301,10 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_mosin_carbine",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 850,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_mosin_k",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 1000,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_mp5",
           "selectable": true,
           "quantity": 1,
           "cost": 500,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_obrez",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 900,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_pdp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 250,
           "difficultyLock": null
         },
         {
@@ -4522,13 +4333,6 @@
           "selectable": true,
           "quantity": 1,
           "cost": 250,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_usp45c",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 300,
           "difficultyLock": null
         },
         {
@@ -4934,13 +4738,6 @@
           "selectable": true,
           "quantity": 1,
           "cost": 100,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
           "difficultyLock": null
         },
         {
@@ -6013,13 +5810,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_fn57",
           "selectable": true,
           "quantity": 1,
@@ -6049,13 +5839,6 @@
         },
         {
           "id": "wpn_oc33",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 250,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_pdp",
           "selectable": true,
           "quantity": 1,
           "cost": 250,
@@ -6115,20 +5898,6 @@
           "selectable": true,
           "quantity": 1,
           "cost": 650,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_usms",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 250,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_usp45c",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 300,
           "difficultyLock": null
         },
         {
@@ -6530,20 +6299,6 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_browninghp",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_fort14",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 200,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_ithacam37_stakeout_20x70",
           "selectable": true,
           "quantity": 1,
@@ -6579,31 +6334,10 @@
           "difficultyLock": null
         },
         {
-          "id": "wpn_mosin_carbine",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 850,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_mosin_k",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 1000,
-          "difficultyLock": null
-        },
-        {
           "id": "wpn_mp443",
           "selectable": true,
           "quantity": 1,
           "cost": 150,
-          "difficultyLock": null
-        },
-        {
-          "id": "wpn_obrez",
-          "selectable": true,
-          "quantity": 1,
-          "cost": 900,
           "difficultyLock": null
         },
         {
