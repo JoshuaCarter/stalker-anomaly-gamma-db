@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-01",
+    "entries": [
+      { "type": "added", "text": "Upgrade trees have a new Lighter tag that picks out every upgrade making the item weigh less, even when it's filed under something else. Some AK stock upgrades only list Handling but quietly shave off weight too.", "credits": [{ "name": "Androwski", "role": "suggestion" }] },
+      { "type": "changed", "text": "The upgrade tree tags now match on everything an upgrade does, not just its headline stat, so tapping Recoil also highlights the upgrades that cut recoil as a side effect. Tap a tag to keep it highlighted." }
+    ]
+  },
+  {
     "date": "2026-07-17",
     "entries": [
       { "type": "added", "text": "New Misc category gathers items that didn't fit any other page: detectors, tools, repair and cooking kits, the bolt, binoculars, artefact junk and more, each with its icon, weight and cost. Weapon Parts and Outfit Parts now sit alongside it under a new Items group." },

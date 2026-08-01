@@ -17,9 +17,10 @@
             v-for="cat in presentCategories"
             :key="cat"
             class="uptree-legend-chip"
-            :class="['uptree-legend--' + cat, { 'is-active': hoveredCat === cat, 'is-muted': hoveredCat && hoveredCat !== cat }]"
+            :class="['uptree-legend--' + cat, { 'is-active': activeCat === cat, 'is-muted': activeCat && activeCat !== cat, 'is-pinned': pinnedCat === cat }]"
             @mouseenter="hoveredCat = cat"
             @mouseleave="hoveredCat = null"
+            @click="toggleCat(cat)"
         >
             <span class="uptree-legend-dot"></span>{{ catLabel(cat) }}
         </span>
@@ -42,7 +43,7 @@
                     <div v-for="(node, ni) in getCol(row, colNum).cells" :key="node.section">
                         <div
                             class="uptree-node"
-                            :class="['uptree-node--' + propCategory(node.prop), { 'uptree-node--dim': hoveredCat && propCategory(node.prop) !== hoveredCat }]"
+                            :class="['uptree-node--' + propCategory(node.prop), { 'uptree-node--dim': activeCat && !categoriesOf(node).has(activeCat) }]"
                             @mouseenter="showHover(node, $event)"
                             @mousemove="moveHover($event)"
                             @mouseleave="onNodeLeave"
@@ -229,6 +230,7 @@ const CAT_LABEL_KEYS = {
     reliability: "app_upgrade_cat_reliability",
     ballistic: "app_upgrade_cat_ballistic",
     mods: "app_upgrade_cat_mods",
+    lighter: "app_upgrade_cat_lighter",
     artifact: "app_upgrade_cat_artifact",
     medic: "app_upgrade_cat_medic",
     repair: "app_upgrade_cat_repair",
@@ -266,6 +268,46 @@ function getPropCategory(prop) {
     return "default";
 }
 
+// Whether a computed effect is an improvement — same rule as effectSignClass, but
+// for authored-free (computed) effects only.
+function isEffectGood(eff) {
+    const num = Number(eff.value);
+    if (!Number.isFinite(num) || num === 0) return false;
+    return EFFECT_INVERTED.has(eff.key) ? num < 0 : num > 0;
+}
+
+// Every category a node can be highlighted under. The declared primary property is
+// always included (it's what colors the node); computed effects contribute extra
+// categories so a node declared as, say, Handling still lights up under Recoil when
+// it also cuts recoil. Only *beneficial* effects count — hovering "Reliability"
+// shouldn't highlight a node that costs you reliability.
+//
+// Weight is handled separately as the signed "lighter" category: most weapon
+// upgrades add a little weight, so a sign-blind Weight chip would match nearly the
+// whole tree. Only weight-*saving* nodes get the chip.
+const EMPTY_CATEGORIES = new Set();
+
+function nodeCategorySet(node) {
+    const set = new Set([getPropCategory(node.prop)]);
+    let weightDelta = null;
+    for (const eff of node.effects || []) {
+        if (eff.authored) continue;
+        if (eff.key === "st_prop_weight" || eff.key === "st_prop_weightoutfit") {
+            const num = Number(eff.value);
+            if (Number.isFinite(num)) weightDelta = num;
+            continue;
+        }
+        if (isEffectGood(eff)) set.add(getPropCategory(eff.key));
+    }
+    // Packs without converted effects still carry the raw section stat.
+    if (weightDelta === null && node.stats && node.stats.inv_weight != null) {
+        const raw = parseFloat(node.stats.inv_weight);
+        if (Number.isFinite(raw)) weightDelta = raw;
+    }
+    if (weightDelta !== null && weightDelta < 0) set.add("lighter");
+    return set;
+}
+
 export default {
     name: "UpgradeTreeView",
     inject: ["t", "headerLabel", "formatValue"],
@@ -281,6 +323,10 @@ export default {
             hoverPos: null,
             hoverSheet: false,
             hoveredCat: null,
+            // Clicking a legend chip pins its highlight so it survives moving the
+            // pointer away — and so the legend works at all on touch, where there
+            // is no hover.
+            pinnedCat: null,
             _hoverTimeout: null,
         };
     },
@@ -323,18 +369,30 @@ export default {
             if (!this.hoverPos) return { display: 'none' };
             return { top: this.hoverPos.top + 'px', left: this.hoverPos.left + 'px' };
         },
+        // node -> the set of categories it can be highlighted under.
+        categoryMap() {
+            const map = new Map();
+            for (const node of this.nodes) map.set(node, nodeCategorySet(node));
+            return map;
+        },
+        // Hovering a chip previews it; otherwise the pinned chip (if any) stays lit.
+        activeCat() {
+            return this.hoveredCat || this.pinnedCat;
+        },
         presentCategories() {
             const seen = new Set();
-            for (const node of this.nodes) {
-                seen.add(getPropCategory(node.prop));
+            for (const cats of this.categoryMap.values()) {
+                for (const cat of cats) seen.add(cat);
             }
-            const order = ["combat","fire","hazard","psi","recoil","accuracy","handling","firerate","reliability","ballistic","mods","weight","gun","artifact","medic","repair","default"];
+            const order = ["combat","fire","hazard","psi","recoil","accuracy","handling","firerate","reliability","ballistic","mods","weight","lighter","gun","artifact","medic","repair","default"];
             return order.filter(c => seen.has(c));
         },
     },
     watch: {
         nodes() {
             this.hideHover();
+            this.hoveredCat = null;
+            this.pinnedCat = null;
         },
     },
     beforeUnmount() {
@@ -343,6 +401,12 @@ export default {
     methods: {
         propCategory(prop) {
             return getPropCategory(prop);
+        },
+        categoriesOf(node) {
+            return this.categoryMap.get(node) || EMPTY_CATEGORIES;
+        },
+        toggleCat(cat) {
+            this.pinnedCat = this.pinnedCat === cat ? null : cat;
         },
         catLabel(cat) {
             const key = CAT_LABEL_KEYS[cat];
@@ -581,6 +645,7 @@ export default {
 .uptree-hover-card--hazard,  .uptree-legend--hazard   { --card-accent: var(--color-green-muted); }
 .uptree-hover-card--psi,     .uptree-legend--psi      { --card-accent: var(--color-purple-mid); }
 .uptree-hover-card--weight,  .uptree-legend--weight   { --card-accent: var(--color-blue-muted); }
+.uptree-legend--lighter                               { --card-accent: var(--color-green-positive); }
 .uptree-hover-card--gun,     .uptree-legend--gun      { --card-accent: var(--color-accent); }
 .uptree-hover-card--recoil,      .uptree-legend--recoil      { --card-accent: var(--color-red-muted); }
 .uptree-hover-card--accuracy,    .uptree-legend--accuracy    { --card-accent: var(--color-accent); }
@@ -665,6 +730,12 @@ export default {
 
 .uptree-legend-chip.is-muted {
     opacity: 0.3;
+}
+
+.uptree-legend-chip.is-pinned {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .uptree-legend-dot {
