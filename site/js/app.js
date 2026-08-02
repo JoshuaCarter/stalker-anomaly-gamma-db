@@ -995,7 +995,15 @@ export const appDefinition = {
 
         modalUsedByWeapons() {
             if (!this.modalAmmoWeapons) return [];
-            const list = this.modalAmmoWeapons.filter(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit));
+            // ammo-weapons.json only carries id/name/category, so merge in the full
+            // catalogue entry (loaded by openItem) — otherwise the hover card on each
+            // tile has no stats to show.
+            const list = this.modalAmmoWeapons
+                .filter(w => !(this.hideNoDrop && w.noDrop) && !(this.hideTacticalKit && w.tacticalKit))
+                .map(w => {
+                    const full = w.category ? this.categoryItems[categorySlug(w.category)]?.find(i => i.id === w.id) : null;
+                    return full ? { ...full, ...w } : w;
+                });
             list.sort((a, b) => this.tName(a).localeCompare(this.tName(b)));
             return list;
         },
@@ -2818,6 +2826,13 @@ export const appDefinition = {
                             } catch (e) { console.warn(`Failed to load category data for "${s}":`, e); }
                         }));
                     }
+                }
+
+                // Ammo modal: the "Used By" tiles show a stat hover card, which needs the
+                // full weapon rows rather than the slim ammo-weapons entries.
+                if (entry.category === CAT.AMMO && this.modalAmmoWeapons?.length) {
+                    const slugs = [...new Set(this.modalAmmoWeapons.map(w => w.category).filter(Boolean).map(categorySlug))];
+                    await Promise.all(slugs.map(s => this.ensureCategoryItems(s)));
                 }
             } catch (e) {
                 console.error("Failed to load item:", e);
