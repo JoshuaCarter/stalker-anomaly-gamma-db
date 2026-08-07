@@ -147,6 +147,10 @@
                     </div>
                 </template>
             </div>
+            <div v-if="hoverNode.kit" class="uptree-hover-kit">
+                <span class="uptree-hover-kit-label">{{ t('app_upgrade_kit_required') }}</span>
+                <span class="uptree-hover-kit-value">{{ kitLabel(hoverNode.kit) }}</span>
+            </div>
         </div>
     </div>
 </div>
@@ -533,6 +537,13 @@ export default {
         formatCost(cost) {
             if (!cost) return "";
             return this.formatValue("st_upgr_cost", cost);
+        },
+        // All three tiers of an upgrade kit share a single inv_name, so the tier has
+        // to be appended for the name to identify an actual item.
+        kitLabel(kit) {
+            const name = this.t(kit.name) || kit.name || kit.id;
+            if (!kit.tier) return name;
+            return `${name} · ${this.t('app_upgrade_kit_tier')} ${kit.tier}`;
         },
         formatStatVal(val) {
             const num = parseFloat(val);
@@ -1064,5 +1075,32 @@ export default {
 .uptree-hover-stat-row--game .uptree-hover-stat-value {
     color: var(--color-text-secondary);
     font-variant-numeric: tabular-nums;
+}
+
+/* Kit footer: a requirement rather than a stat, so it sits below the stat block
+   behind a solid divider instead of joining the dashed-caption run above. */
+.uptree-hover-kit {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.uptree-hover-kit-label {
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+.uptree-hover-kit-value {
+    font-size: 0.6rem;
+    color: var(--color-text-secondary);
+    text-align: right;
 }
 </style>

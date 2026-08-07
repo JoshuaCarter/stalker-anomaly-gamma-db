@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-07",
+    "entries": [
+      { "type": "added", "text": "Hover an upgrade in the upgrade tree to see which kit it needs and what tier. Tier depends on what you're upgrading: an exoskeleton wants tier 3 kits right across its tree, a pistol mostly tier 1.", "credits": [{ "name": "AgentX2006", "role": "suggestion" }] },
+      { "type": "fixed", "text": "Crafting was listing the old per-stat upgrade kits that GAMMA dropped a while back. It now shows the six that actually exist: suit armour, environmental and utility, and weapon body, mechanism and optics. Ammo recipes were stale too (a few listed the ammo itself as an ingredient), and the exo power supplies were missing.", "action": "crafting" }
+    ]
+  },
+  {
     "date": "2026-08-01",
     "entries": [
       { "type": "added", "text": "Upgrade trees have a new Lighter tag that picks out every upgrade making the item weigh less, even when it's filed under something else. Some AK stock upgrades only list Handling but quietly shave off weight too.", "credits": [{ "name": "Androwski", "role": "suggestion" }] },

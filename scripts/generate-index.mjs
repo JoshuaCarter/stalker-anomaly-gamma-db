@@ -67,6 +67,7 @@ const SKIP_FILES = new Set([
   "export_upgrades_items.csv",
   "export_upgrade_sections.csv",
   "export_upgrade_effects.csv",
+  "export_upgrade_kits.csv",
   "en_us.csv",
   "ru_ru.csv",
   "fr_fr.csv",
@@ -1032,6 +1033,36 @@ try {
     if (e.code !== "ENOENT") throw e;
   }
 
+  // Upgrade kit consumed by each node. Optional — absent on packs without GAMMA's
+  // upgrade overhaul, and on older exports. Keyed by tree coordinates rather than by
+  // upgrade section: a few items (SPAS-12, APS, ACE families) reuse one section across
+  // two cells that need different kits, so the section alone would collide.
+  // All three tiers of a kit share one inv_name, so tier is carried separately.
+  const kitsMap = new Map();
+  try {
+    const kitText = readFileSync(join(CSV_DIR, "export_upgrade_kits.csv"), "utf-8");
+    const kitLines = kitText.split(/\r?\n/).filter((l) => l.length > 0);
+    for (let i = 1; i < kitLines.length; i++) {
+      const cols = parseCsvLine(kitLines[i]);
+      const itemId = cols[0]?.trim();
+      const row = cols[1]?.trim();
+      const col = cols[2]?.trim();
+      const cell = cols[3]?.trim();
+      const kit = cols[5]?.trim();
+      const kitName = cols[6]?.trim();
+      const tier = parseInt(cols[7]?.trim(), 10);
+      if (!itemId || !row || !kit) continue;
+      kitsMap.set(`${itemId}\0${row}\0${col}\0${cell}`, {
+        id: kit,
+        name: kitName || "",
+        tier: Number.isFinite(tier) ? tier : undefined,
+      });
+    }
+    console.log(`Loaded upgrade kits for ${kitsMap.size} nodes`);
+  } catch (e) {
+    if (e.code !== "ENOENT") throw e;
+  }
+
   const upItemsText = readFileSync(UPGRADE_ITEMS_FILE, "utf-8");
   const upItemsLines = upItemsText.split(/\r?\n/).filter((l) => l.length > 0);
   const upgrades = {};
@@ -1074,6 +1105,7 @@ try {
         cost: sect.cost,
         stats: Object.keys(sect.stats).length > 0 ? sect.stats : undefined,
         effects: effectsMap.get(`${itemId}\0${sectionId}`),
+        kit: kitsMap.get(`${itemId}\0${row}\0${col}\0${cell}`),
       });
     }
 
