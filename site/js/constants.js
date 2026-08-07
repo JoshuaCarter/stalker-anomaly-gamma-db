@@ -12,6 +12,9 @@ export const FILTER_DEFS = [
     { key: "ui_mm_repair", type: "discrete", label: "app_filter_repair_type", values: ["A", "B", "C", "D", "E", "F", "H", "L", "M"] },
     { key: "ui_ammo_types", type: "discrete", label: "app_filter_ammo_type", dynamic: true },
     { key: "st_data_export_single_handed", type: "discrete", label: "app_filter_hands", values: ["Y", "N"], displayMap: { Y: "1H", N: "2H" } },
+    // Burst counts vary by weapon (2, 3, occasionally more), so the values are
+    // collected from the data rather than hardcoded. Sorting puts "A" last.
+    { key: "st_data_export_fire_modes", type: "discrete", label: "app_filter_fire_mode", dynamic: true, multiValue: true },
     { key: "ui_st_community", type: "discrete", label: "app_filter_faction", dynamic: true },
     { key: "pda_encyclopedia_tier", type: "discrete", label: "app_filter_tier", dynamic: true },
     { key: "st_data_export_can_be_crafted", type: "flag", label: "app_filter_craftable" },
@@ -30,7 +33,7 @@ export const FILTER_DEFS = [
 ];
 
 export const NAME_TAG_COLS = new Set(["st_data_export_has_perk", "st_data_export_is_junk", "st_data_export_can_be_crafted", "ui_mcm_menu_exo", "st_data_export_can_be_cooked", "st_data_export_used_in_cooking", "st_data_export_used_in_crafting", "st_data_export_cuts_thick_skin"]);
-export const BADGE_COLS = new Set(["Type", "ui_mm_repair", "ui_ammo_types", "st_data_export_ammo_types_alt", "st_data_export_single_handed", ...NAME_TAG_COLS]);
+export const BADGE_COLS = new Set(["Type", "ui_mm_repair", "ui_ammo_types", "st_data_export_ammo_types_alt", "st_data_export_single_handed", "st_data_export_fire_modes", ...NAME_TAG_COLS]);
 export const MODAL_BADGE_KEYS = new Set(["st_data_export_has_perk", "st_data_export_is_junk", "st_data_export_can_be_crafted", "ui_mcm_menu_exo", "st_data_export_can_be_cooked", "st_data_export_used_in_cooking", "st_data_export_used_in_crafting", "st_data_export_cuts_thick_skin", "ui_ammo_types", "st_data_export_ammo_types_alt", "ui_st_community", "factions"]);
 export const SKIP_KEYS = new Set(["id", "pda_encyclopedia_name", "hasNpcWeaponDrop", "hasStashDrop", "inStartingLoadout", "unobtainable", "tacticalKit", "nimble", "kitSuffix", "kitSuffixNum", "nameSuffixKey", "nameSuffixNum", "hasDisassemble", "st_data_export_description"]);
 export const MAX_PINS = 5;
@@ -38,7 +41,7 @@ export const BUILD_HASH_PREFIX = "build/";
 
 export const LOWER_IS_BETTER = new Set(["st_data_export_weapon_degradation"]);
 export const HIGHER_IS_WORSE = new Set(["st_prop_weight", "st_upgr_cost", "_cost_per_round", "_malfunction_chance"]);
-export const NO_HIGHLIGHT = new Set(["ui_ammo_types", "st_data_export_ammo_types_alt", "ui_mm_repair", "_compatible_weapons"]);
+export const NO_HIGHLIGHT = new Set(["ui_ammo_types", "st_data_export_ammo_types_alt", "st_data_export_fire_modes", "ui_mm_repair", "_compatible_weapons"]);
 export const BIPOLAR = new Set([
     "ui_inv_outfit_fire_wound_protection", "ui_inv_outfit_wound_protection", "ui_inv_outfit_burn_protection", "ui_inv_outfit_shock_protection",
     "ui_inv_outfit_chemical_burn_protection", "ui_inv_outfit_radiation_protection", "ui_inv_outfit_telepatic_protection", "ui_inv_outfit_strike_protection",

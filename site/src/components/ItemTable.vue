@@ -64,6 +64,11 @@
                     <template v-else-if="col.key === 'st_data_export_single_handed'">
                         <span class="badge-hands" :data-hands="item[col.key] === 'Y' ? '1' : '2'">{{ item[col.key] === 'Y' ? '1H' : '2H' }}</span>
                     </template>
+                    <template v-else-if="col.key === 'st_data_export_fire_modes'">
+                        <span v-if="item[col.key]" class="fire-mode-list">
+                            <span v-for="m in fireModes(item[col.key])" :key="m" class="badge-firemode" :data-mode="m === 'A' ? 'auto' : (m === '1' ? 'single' : 'burst')" v-tooltip="fireModeLabel(m)">{{ fireModeLabelShort(m) }}</span>
+                        </span>
+                    </template>
                     <template v-else-if="col.key === 'ui_ammo_types' || col.key === 'st_data_export_ammo_types_alt'">
                         <span v-if="item[col.key]" class="table-ammo-list">
                             <span v-for="a in item[col.key].split(';')" :key="a" :class="col.key === 'st_data_export_ammo_types_alt' ? 'badge-ammo badge-ammo-alt clickable' : 'badge-ammo clickable'" @mouseenter="showItemHoverFromCaliber(a.trim(), $event)" @mouseleave="hideItemHover()" @click.stop="openAmmoFromCaliber(a.trim())">{{ caliberName(a.trim()) }}</span>
@@ -107,6 +112,9 @@ export default {
     "originBadge",
     "healDots",
     "caliberName",
+    "fireModes",
+    "fireModeLabel",
+    "fireModeLabelShort",
     "itemHref",
     "showItemHoverFromCaliber",
     "hideItemHover",

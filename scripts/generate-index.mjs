@@ -208,6 +208,20 @@ function loadPackConfig(packDir) {
 const packConfig = loadPackConfig(CSV_DIR);
 const parseCsvLine = packConfig.csvStyle === "rfc4180" ? parseCsvLineRfc4180 : parseCsvLineLegacy;
 
+// Keys app_translations.json defines for any locale — used to decide which
+// self-referential pack rows are safe to drop (see loadTranslations).
+function loadAppTranslationKeys() {
+  const path = join(import.meta.dirname, "..", "data", "app_translations.json");
+  if (!existsSync(path)) return new Set();
+  const app = JSON.parse(readFileSync(path, "utf-8"));
+  const keys = new Set();
+  for (const locale of Object.keys(app)) {
+    for (const k of Object.keys(app[locale] || {})) keys.add(k.toLowerCase());
+  }
+  return keys;
+}
+const appTranslationKeys = loadAppTranslationKeys();
+
 function loadTranslations(packDir) {
   const encodingOverrides = packConfig.encoding || {};
   const translations = { locales: ["en", "ru", "fr"], en: {}, ru: {}, fr: {} };
@@ -235,6 +249,13 @@ function loadTranslations(packDir) {
       if (pctMatch) {
         value = pctMatch[1].charAt(0).toUpperCase() + pctMatch[1].slice(1);
       }
+      // The exporter self-seeds any key with no game string table entry, writing
+      // the key as its own value. Pack strings beat app_translations.json in t(),
+      // so such a row would shadow our own label and leave the raw key on screen.
+      // Only skip it where app_translations has a real string to take its place —
+      // dropping self-referential rows wholesale would strip ~300 keys that other
+      // code still expects to find in the map.
+      if (value.toLowerCase() === key && appTranslationKeys.has(key)) continue;
       translations[locale][key] = value;
     }
     console.log(`Loaded ${Object.keys(translations[locale]).length} translations for ${locale}`);
@@ -330,6 +351,16 @@ for (const file of files) {
 
   const { headers, items } = processFile(join(CSV_DIR, file), config);
   const slug = categorySlug(config.category);
+
+  // A weapon with no `fire_modes` ltx line (bolt actions, pump/break shotguns,
+  // launchers) has no mode selector and fires single only, which the engine
+  // treats as mode 1. Backfill it so the badges, the spelled-out label and the
+  // Fire Mode filter all agree instead of the filter silently skipping blanks.
+  if (headers.includes("st_data_export_fire_modes")) {
+    for (const item of items) {
+      if (!item.st_data_export_fire_modes) item.st_data_export_fire_modes = "1";
+    }
+  }
 
   // Initialize or merge into category data
   if (!categoryData.has(slug)) {

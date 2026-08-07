@@ -5218,3 +5218,4 @@ st_wpn_usp45c,HK USP45 Compact
 st_wpn_usp45c_descr,"The HK USP45 Compact is a compact .45 ACP handgun developed by Heckler & Koch in the late 1990s. It became known for its rugged reliability, polymer frame, and soft recoil system, making it popular with military, law enforcement, and shooters who wanted a robust sidearm.\n \n %c[ui_gray_2]ATTACHMENTS: \n %c[d_purple] • %c[ui_gray_2] Gemtech Suppressor"
 st_wpn_usp45pm,"""Phantom Mark"""
 st_wpn_usp45pm_descr,"The Heckler & Koch USP45 is a rugged .45 ACP handgun known for its durability, reliability, and strong stopping power. ""Phantom Mark"" is a further customized version of the original, sporting a tan frame and greater compatibility with modern optics.\n \n %c[ui_gray_2]ATTACHMENTS: \n %c[d_purple] • %c[ui_gray_2] Gemtech Suppressor"
+st_data_export_fire_modes,st_data_export_fire_modes

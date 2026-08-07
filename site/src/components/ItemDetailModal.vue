@@ -178,6 +178,12 @@
                                 <span class="stat-label">{{ headerLabel(row.key) }}</span>
                                 <span class="badge" :style="displayStyle(row.key, row.value)">{{ displayLabel(row.key, row.value) }}</span>
                             </template>
+                            <template v-else-if="row.key === 'st_data_export_fire_modes' && row.value">
+                                <span class="stat-label">{{ headerLabel(row.key) }}</span>
+                                <span class="stat-value fire-mode-list">
+                                    <span v-for="m in fireModes(row.value)" :key="m" class="badge-firemode" :data-mode="m === 'A' ? 'auto' : (m === '1' ? 'single' : 'burst')" v-tooltip="fireModeLabel(m)">{{ fireModeLabelShort(m) }}</span>
+                                </span>
+                            </template>
                             <template v-else-if="(row.key === 'ui_ammo_types' || row.key === 'st_data_export_ammo_types_alt') && row.value">
                                 <span class="stat-label">{{ headerLabel(row.key) }}</span>
                                 <span class="stat-value ammo-variants">
@@ -489,6 +495,7 @@ export default {
     't', 'tName', 'tCat', 'headerLabel', 'formatValue', 'displayLabel', 'displayStyle', 'isFieldHidden',
     'healDots', 'factionColor', 'factionIcon', 'singularCategory', 'isUnusedAmmo', 'originBadge',
     'caliberVariantObjects', 'shortAmmoName', 'formatAmmoStat', 'ammoArrow', 'isAmmoBest',
+    'fireModes', 'fireModeLabel', 'fireModeLabelShort',
     'findItemByName', 'modalStatClass', 'modalStatStyle',
     'showItemHover', 'moveItemHover', 'hideItemHover',
   ],

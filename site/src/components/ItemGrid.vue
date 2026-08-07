@@ -37,6 +37,12 @@
                 <template v-if="field === 'ui_mm_repair'">
                     <span class="badge" :style="displayStyle(field, item[field])">{{ displayLabel(field, item[field]) }}</span>
                 </template>
+                <template v-else-if="field === 'st_data_export_fire_modes'">
+                    <span v-if="item[field]" class="fire-mode-list">
+                        <span v-for="m in fireModes(item[field])" :key="m" class="badge-firemode" :data-mode="m === 'A' ? 'auto' : (m === '1' ? 'single' : 'burst')" v-tooltip="fireModeLabel(m)">{{ fireModeLabelShort(m) }}</span>
+                    </span>
+                    <span v-else class="stat-value">--</span>
+                </template>
                 <template v-else-if="field === 'ui_ammo_types' || field === 'st_data_export_ammo_types_alt'">
                     <span v-if="item[field]" class="tile-ammo-list">
                         <span v-for="a in item[field].split(';')" :key="a" :class="field === 'st_data_export_ammo_types_alt' ? 'badge-ammo badge-ammo-alt clickable' : 'badge-ammo clickable'" @mouseenter="showItemHoverFromCaliber(a.trim(), $event)" @mouseleave="hideItemHover()" @click.stop="openAmmoFromCaliber(a.trim())">{{ caliberName(a.trim()) }}</span>
@@ -88,7 +94,8 @@ export default {
         't', 'tItemName', 'headerLabel', 'cellValue', 'formatValue',
         'statClass', 'statStyle', 'displayLabel', 'displayStyle',
         'singularType', 'singularCategory', 'healDots', 'originBadge',
-        'caliberName', 'itemHref', 'showItemHoverFromCaliber', 'hideItemHover', 'factionColor',
+        'caliberName', 'fireModes', 'fireModeLabel', 'fireModeLabelShort',
+        'itemHref', 'showItemHoverFromCaliber', 'hideItemHover', 'factionColor',
         'isUnusedAmmo', 'openAmmoFromCaliber',
         'showWeaponListPopover',
         'hideWeaponListPopover',

@@ -1221,7 +1221,7 @@ export const appDefinition = {
                     for (const item of items) {
                         const v = item[def.key];
                         if (v !== undefined && v !== null && v !== "") {
-                            if (def.key === "ui_ammo_types") {
+                            if (def.key === "ui_ammo_types" || def.multiValue) {
                                 for (const s of String(v).split(";")) {
                                     const t = s.trim();
                                     if (t) vals.add(t);
@@ -4095,6 +4095,10 @@ export const appDefinition = {
                             } else {
                                 if (!val.some(v => itemCals.includes(v))) return false;
                             }
+                        } else if (def.multiValue) {
+                            // ";"-joined scalar list (e.g. fire modes "1;3;A") — match on any selected token
+                            const tokens = String(itemVal || "").split(";").map(s => s.trim()).filter(Boolean);
+                            if (!val.some(v => tokens.includes(v))) return false;
                         } else if (def.arrayField) {
                             if (!Array.isArray(itemVal) || !val.some(v => itemVal.includes(v))) return false;
                         } else {
@@ -4243,6 +4247,7 @@ export const appDefinition = {
             const entry = this.displayEntry(def.key, value);
             if (entry) { const lbl = typeof entry === 'string' ? entry : entry.label || value; return this.t(lbl); }
             if (def.key === "ui_ammo_types") return this.caliberName(value);
+            if (def.key === "st_data_export_fire_modes") return this.fireModeLabel(value);
             return this.t(value);
         },
 
@@ -4751,6 +4756,12 @@ export const appDefinition = {
                 return label !== key ? label : String(val);
             }
             if (h === "ui_ammo_types" || h === "st_data_export_ammo_types_alt") return this.caliberName(val);
+            // Spelled out for every consumer without a dedicated badge branch
+            // (item grid, hover popover, compare panel, build planner, ...).
+            // ItemTable and ItemDetailModal render glyph chips instead.
+            if (h === "st_data_export_fire_modes") {
+                return this.fireModes(val).map(m => this.fireModeLabelShort(m)).join(" / ");
+            }
             if (h === "ui_st_community") return this.t(val);
             if (h === "st_data_export_zoom_factor") return `${val}x`;
             if (h === "st_data_export_magnifications") {
@@ -5133,6 +5144,34 @@ export const appDefinition = {
 
         craftingHref(subcat) {
             return this.navHref(subcat);
+        },
+
+        // Fire mode tokens are the in-game HUD glyphs: "1" single, "A" full auto,
+        // any other number an N-round burst. Returns the spelled-out name for
+        // tooltips and filter chips; the badge itself shows the raw glyph.
+        fireModeLabel(mode) {
+            const m = String(mode).trim();
+            if (m === "A") return this.t("app_fire_mode_auto");
+            if (m === "1") return this.t("app_fire_mode_single");
+            return this.t("app_fire_mode_burst").replace("%s", m);
+        },
+
+        // Compact form for stat values, where "Single shot, 3-round burst, Full
+        // auto" is too long. The full names stay on badge tooltips and in the
+        // filter list, which have room to be explicit.
+        fireModeLabelShort(mode) {
+            const m = String(mode).trim();
+            if (m === "A") return this.t("app_fire_mode_auto_short");
+            if (m === "1") return this.t("app_fire_mode_single_short");
+            return this.t("app_fire_mode_burst_short").replace("%s", m);
+        },
+
+        // Sorted into the canonical HUD order — burst counts ascending, auto last.
+        // A few weapons (wpn_sr25) list their modes the other way round in the ltx.
+        fireModes(val) {
+            if (!val) return [];
+            return String(val).split(";").map(s => s.trim()).filter(Boolean)
+                .sort((a, b) => (a === "A" ? 1 : b === "A" ? -1 : Number(a) - Number(b)));
         },
 
         caliberName(val) {
