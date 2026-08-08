@@ -554,6 +554,10 @@ export const appDefinition = {
             const hidden = this.hiddenFields;
             const hiddenWeaponStats = isWeapon ? this.hiddenWeaponStatFields : null;
             const rows = buildStatRows(this.modalItem, this.modalHeaders).filter(r => !HEAL_FIELDS.has(r.key) && !MODAL_BADGE_KEYS.has(r.key) && !hidden.has(r.key) && !(isWeapon && r.key === "st_upgr_cost") && !(hiddenWeaponStats && hiddenWeaponStats.has(r.key)) && r.value !== null && r.value !== undefined && r.value !== "");
+            // Mag. Size must resolve the same way it does in the table: the raw ui_ammo_count
+            // is the Mags-mod value, wrong when the Magazines view is off (see cellValue).
+            const magIdx = rows.findIndex(r => r.key === "ui_ammo_count");
+            if (magIdx >= 0) rows[magIdx].value = this.cellValue(this.modalItem, "ui_ammo_count");
             const reliIdx = rows.findIndex(r => r.key === "ui_inv_reli");
             if (reliIdx >= 0) {
                 const reliVal = parseFloat(String(rows[reliIdx].value).replace("%", ""));
