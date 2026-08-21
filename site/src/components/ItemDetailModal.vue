@@ -488,6 +488,96 @@ import PerkDetails from './PerkDetails.vue';
 import AddonTile from './AddonTile.vue';
 import ArmorPenetrationScale from './ArmorPenetrationScale.vue';
 
+// ── Max Upgraded Stats: upgrade key → stat-card field ────────────────────
+// The section sums every upgrade in the tree onto the item's own stat rows, in
+// whichever mode the "computed upgrade values" toggle is in: the converted
+// effects the exporter derived from the game files, or the game's own authored
+// upgrade numbers. Both paths land on the same field keys.
+
+// A node's declared (authored) property → the field it moves.
+const PROP_TO_FIELD = {
+  st_prop_recoil: 'ui_inv_recoil',
+  st_prop_reliability: 'ui_inv_reli',
+  st_prop_bullet_speed: 'ui_inv_bspeed',
+  st_prop_weightoutfit: 'st_prop_weight',
+  st_prop_artefact: 'ui_inv_outfit_artefact_count',
+};
+
+// Raw upgrade-section params → field, for side effects the declared property
+// doesn't mention (weight, protections, artefact slots…).
+const SECONDARY_TO_FIELD = {
+  inv_weight: 'st_prop_weight',
+  wound_protection: 'ui_inv_outfit_wound_protection',
+  fire_wound_protection: 'ui_inv_outfit_fire_wound_protection',
+  burn_protection: 'ui_inv_outfit_burn_protection',
+  chemical_burn_protection: 'ui_inv_outfit_chemical_burn_protection',
+  radiation_protection: 'ui_inv_outfit_radiation_protection',
+  telepatic_protection: 'ui_inv_outfit_telepatic_protection',
+  shock_protection: 'ui_inv_outfit_shock_protection',
+  explosion_protection: 'ui_inv_outfit_explosion_protection',
+  artefact_count: 'ui_inv_outfit_artefact_count',
+  additional_inventory_weight: 'ui_inv_outfit_additional_weight',
+  additional_inventory_weight2: 'ui_inv_outfit_additional_weight',
+};
+
+// Nodes left out of the sum entirely. A caliber conversion is a sidegrade, not
+// an upgrade — it buys velocity with magazine size and reliability — and the
+// section is a best-case build ("best option per choice"), so counting it would
+// make the max worse than stock. Its params are absolute replacements rather
+// than deltas anyway (hit_power arrives as the new round's "0.46,0.46,…"), so
+// summing them was never meaningful. The trade-off stays visible per node in
+// the tree, and the alternate caliber is listed in the item's ammo section.
+const SIDEGRADE_PROPS = new Set(['st_prop_calibre']);
+
+// Converted-effect keys → field. Most effect keys already are field keys (or
+// are covered by PROP_TO_FIELD); only the exporter's synthetic ones need this.
+const EFFECT_TO_FIELD = {
+  app_upgrade_bullet_speed: 'ui_inv_bspeed',
+  app_upgrade_mag_size: 'ui_ammo_count',
+};
+
+// Properties that move nothing shown on the stat card (slots, sights, fire
+// modes), or whose stat has no row to land on (durability is a flat
+// condition-loss reduction; heal rates live in their own section).
+const SKIP_PROPS = new Set([
+  'st_prop_calibre', 'st_prop_sprint', 'st_prop_underbarrel_slot',
+  'st_prop_scope', 'st_prop_scope_15x', 'st_prop_scope_4x', 'st_prop_scope_5x',
+  'st_prop_silencer', 'st_auto_fire', 'st_semi_auto_fire',
+  'st_prop_contrast', 'st_prop_night_vision_2',
+  'st_prop_binoc_zoom', 'st_prop_binoc_autolock', 'st_prop_binoc_nightvision',
+  'st_prop_durability', 'st_prop_restore_bleeding', 'st_prop_restore_health',
+]);
+
+// Raw params already carried by a converted effect — summing both would double
+// the delta. Mirrors UpgradeTreeView's list of the same name.
+const SUPERSEDED_RAW_KEYS = new Set([
+  'inv_weight', 'rpm', 'ammo_mag_size', 'bullet_speed', 'condition_shot_dec',
+  'fire_dispersion_base', 'PDM_disp_base', 'zoom_cam_dispersion', 'bones_koeff_protection_add',
+  'wound_protection', 'fire_wound_protection', 'burn_protection', 'shock_protection',
+  'chemical_burn_protection', 'telepatic_protection', 'radiation_protection',
+  'strike_protection', 'explosion_protection', 'bleeding_restore_speed',
+  'health_restore_speed', 'power_restore_speed', 'artefact_count',
+  'additional_inventory_weight', 'additional_inventory_weight2',
+]);
+
+// A converted effect sometimes names the declared property differently — alias
+// them so a node isn't counted twice (once computed, once as the authored
+// fallback below).
+const EFFECT_KEY_ALIASES = {
+  st_prop_bullet_speed: 'app_upgrade_bullet_speed',
+  st_prop_weightoutfit: 'st_prop_weight',
+};
+
+// Declared properties whose in-game sign runs opposite to the field's own
+// direction: the game writes a recoil upgrade as "-10" (less recoil) while the
+// card shows Recoil *Control*, where the same upgrade is an increase. Authored
+// deltas for these are flipped into the field's convention before summing.
+const AUTHORED_SIGN_FLIPPED = new Set(['st_prop_recoil']);
+
+// Fields where the lower number is the better one, for delta colouring.
+// ui_inv_recoil is deliberately absent — it is Recoil Control, higher = better.
+const LOWER_IS_BETTER = new Set(['st_prop_weight']);
+
 export default {
   name: 'ItemDetailModal',
   components: { UpgradeTreeView, PerkDetails, AddonTile, ArmorPenetrationScale },
@@ -595,83 +685,42 @@ export default {
     upgradeStatDeltas() {
       if (!this.modalUpgradeNodes || !this.modalUpgradeNodes.length) return {};
 
-      const PROP_TO_FIELD = {
-        st_prop_recoil: 'ui_inv_recoil',
-        st_prop_reliability: 'ui_inv_reli',
-        st_prop_bullet_speed: 'ui_inv_bspeed',
-        st_prop_weightoutfit: 'st_prop_weight',
-        st_prop_artefact: 'ui_inv_outfit_artefact_count',
-      };
-
-      const SECONDARY_TO_FIELD = {
-        inv_weight: 'st_prop_weight',
-        wound_protection: 'ui_inv_outfit_wound_protection',
-        fire_wound_protection: 'ui_inv_outfit_fire_wound_protection',
-        burn_protection: 'ui_inv_outfit_burn_protection',
-        chemical_burn_protection: 'ui_inv_outfit_chemical_burn_protection',
-        radiation_protection: 'ui_inv_outfit_radiation_protection',
-        telepatic_protection: 'ui_inv_outfit_telepatic_protection',
-        shock_protection: 'ui_inv_outfit_shock_protection',
-        explosion_protection: 'ui_inv_outfit_explosion_protection',
-        artefact_count: 'ui_inv_outfit_artefact_count',
-        additional_inventory_weight: 'ui_inv_outfit_additional_weight',
-        additional_inventory_weight2: 'ui_inv_outfit_additional_weight',
-        hit_power: 'st_data_export_hit_power',
-      };
-
-      const SKIP_PROPS = new Set([
-        'st_prop_calibre', 'st_prop_sprint', 'st_prop_underbarrel_slot',
-        'st_prop_scope', 'st_prop_scope_15x', 'st_prop_scope_4x', 'st_prop_scope_5x',
-        'st_prop_silencer', 'st_auto_fire', 'st_semi_auto_fire',
-        'st_prop_contrast', 'st_prop_night_vision_2',
-        'st_prop_binoc_zoom', 'st_prop_binoc_autolock', 'st_prop_binoc_nightvision',
-        'st_prop_durability', 'st_prop_restore_bleeding', 'st_prop_restore_health',
-      ]);
-
-      // Group nodes by position (row-col) for OR-group handling
-      const positions = new Map();
-      for (const node of this.modalUpgradeNodes) {
-        const posKey = `${node.row}-${node.col}`;
-        if (!positions.has(posKey)) positions.set(posKey, []);
-        positions.get(posKey).push(node);
-      }
-
-      // For each OR group pick the node with the highest absolute primary val
-      const selected = [];
-      for (const [, nodes] of positions) {
-        if (nodes.length === 1) {
-          selected.push(nodes[0]);
-        } else {
-          let best = nodes[0];
-          for (const n of nodes.slice(1)) {
-            if (Math.abs(parseFloat(n.val) || 0) > Math.abs(parseFloat(best.val) || 0)) best = n;
-          }
-          selected.push(best);
-        }
-      }
-
       const deltas = {};
-      for (const node of selected) {
-        if (node.prop && !SKIP_PROPS.has(node.prop) && node.val) {
-          const fieldKey = PROP_TO_FIELD[node.prop] || node.prop;
-          const v = parseFloat(node.val);
-          if (!isNaN(v)) deltas[fieldKey] = (deltas[fieldKey] || 0) + v;
-        }
-        if (node.stats) {
-          const primaryField = PROP_TO_FIELD[node.prop] || node.prop;
-          for (const [sKey, sVal] of Object.entries(node.stats)) {
-            const mappedKey = SECONDARY_TO_FIELD[sKey];
-            if (!mappedKey || mappedKey === primaryField) continue;
-            const v = parseFloat(sVal);
-            if (!isNaN(v)) deltas[mappedKey] = (deltas[mappedKey] || 0) + v;
-          }
-        }
+      const add = (field, v) => {
+        if (!field || isNaN(v)) return;
+        deltas[field] = (deltas[field] || 0) + v;
+      };
+      // Per node, not per item: a pack (or a single upgrade) with no converted
+      // effects still contributes its authored numbers while the toggle is on.
+      for (const node of this.selectedUpgradeNodes) {
+        if (this.showEngineUpgradeStats && node.effects?.length) this._addComputedDeltas(node, add);
+        else this._addAuthoredDeltas(node, add);
       }
 
       for (const key of Object.keys(deltas)) {
         if (Math.abs(deltas[key]) < 0.0001) delete deltas[key];
       }
       return deltas;
+    },
+    // One node per tree position: an OR group (two upgrades sharing a cell) is
+    // an either/or choice, so only the strongest of the pair is counted.
+    selectedUpgradeNodes() {
+      const positions = new Map();
+      for (const node of this.modalUpgradeNodes || []) {
+        if (SIDEGRADE_PROPS.has(node.prop)) continue;
+        const posKey = `${node.row}-${node.col}`;
+        if (!positions.has(posKey)) positions.set(posKey, []);
+        positions.get(posKey).push(node);
+      }
+      const selected = [];
+      for (const [, nodes] of positions) {
+        let best = nodes[0];
+        for (const n of nodes.slice(1)) {
+          if (this._upgradeNodeWeight(n) > this._upgradeNodeWeight(best)) best = n;
+        }
+        selected.push(best);
+      }
+      return selected;
     },
     maxUpgradeStatRows() {
       if (!this.modalUpgradeNodes?.length) return [];
@@ -785,6 +834,64 @@ export default {
     weaponDisplayName(w) {
       return this.tName(w).replace(/\s*\[default\]$/i, '').trim();
     },
+    // How strongly a node argues for itself when it is one side of an OR group.
+    // The game's own declared value where there is one — it is the property the
+    // upgrade is sold on. Nodes that declare no property at all (their whole
+    // contribution is computed) fall back to their largest non-weight effect so
+    // they can win a cell instead of scoring nothing.
+    _upgradeNodeWeight(node) {
+      if (node.prop) return Math.abs(parseFloat(node.val)) || 0;
+      let best = 0;
+      for (const eff of node.effects || []) {
+        if (eff.key === 'st_prop_weight') continue;
+        const v = Math.abs(parseFloat(eff.value));
+        if (!isNaN(v) && v > best) best = v;
+      }
+      return best;
+    },
+    // Converted effects, whose values are already in the same scale as the stat
+    // row they land on (percentage points on a "76%" row, index points on Recoil
+    // Control, kg / RPM / m/s elsewhere) — so they sum additively.
+    _addComputedDeltas(node, add) {
+      const covered = new Set();
+      for (const eff of node.effects) {
+        if (SKIP_PROPS.has(eff.key)) continue;
+        covered.add(eff.key);
+        add(EFFECT_TO_FIELD[eff.key] || PROP_TO_FIELD[eff.key] || eff.key, parseFloat(eff.value));
+      }
+      // Declared property with no converted effect (e.g. recoil on a weapon
+      // missing from the enhanced-recoil config, where the % can't be derived):
+      // fall back to its authored value, as the tree does, so the node isn't
+      // counted as a pure weight change.
+      if (!covered.has(node.prop) && !covered.has(EFFECT_KEY_ALIASES[node.prop])) {
+        this._addAuthoredPrimary(node, add);
+      }
+      // Raw side effects no converted effect already carries.
+      this._addRawStats(node, add, { skipSuperseded: true });
+    },
+    // The game's own authored numbers: the declared property plus every raw side
+    // effect, none of which are unit-converted.
+    _addAuthoredDeltas(node, add) {
+      this._addAuthoredPrimary(node, add);
+      this._addRawStats(node, add, { skipField: PROP_TO_FIELD[node.prop] || node.prop });
+    },
+    // Raw upgrade-section params. The authored path drops the one already counted
+    // from the declared property (`skipField`); the computed path drops instead
+    // every param a converted effect already carries (`skipSuperseded`).
+    _addRawStats(node, add, { skipField = null, skipSuperseded = false } = {}) {
+      for (const [sKey, sVal] of Object.entries(node.stats || {})) {
+        if (skipSuperseded && SUPERSEDED_RAW_KEYS.has(sKey)) continue;
+        const mappedKey = SECONDARY_TO_FIELD[sKey];
+        if (!mappedKey || (skipField && mappedKey === skipField)) continue;
+        add(mappedKey, parseFloat(sVal));
+      }
+    },
+    _addAuthoredPrimary(node, add) {
+      if (!node.prop || !node.val || SKIP_PROPS.has(node.prop)) return;
+      const v = parseFloat(node.val);
+      if (isNaN(v)) return;
+      add(PROP_TO_FIELD[node.prop] || node.prop, AUTHORED_SIGN_FLIPPED.has(node.prop) ? -v : v);
+    },
     applyUpgradeDelta(key, value, delta) {
       if (value === null || value === undefined || value === '' || value === '--') return null;
       const s = String(value);
@@ -797,9 +904,7 @@ export default {
     },
     upgradeDeltaClass(key, delta) {
       if (!delta) return '';
-      const LOWER_IS_BETTER = new Set(['st_prop_weight', 'ui_inv_recoil']);
-      const isLowerBetter = LOWER_IS_BETTER.has(key);
-      const isGood = isLowerBetter ? delta < 0 : delta > 0;
+      const isGood = LOWER_IS_BETTER.has(key) ? delta < 0 : delta > 0;
       return isGood ? 'upg-good' : 'upg-bad';
     },
     formatUpgradeDelta(key, delta, baseValue) {

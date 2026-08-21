@@ -22,8 +22,9 @@ param(
     # MO2 mods folder to link into
     [string]$ModsDir = "D:\gamma0.9.5\GAMMA\mods",
 
-    # Mod folder name as it appears in MO2
-    [string]$Name = "Universal Anomaly Data Export (dev)",
+    # Mod folder name as it appears in MO2. Defaults to the source repo's folder
+    # name so the link is obviously a dev checkout rather than an installed copy.
+    [string]$Name,
 
     # Remove the junction instead of creating it
     [switch]$Remove
@@ -35,6 +36,12 @@ $ErrorActionPreference = "Stop"
 if (-not $SourceRepo) {
     $siblings = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
     $SourceRepo = Join-Path $siblings "Universal-Stalker-Anomaly-Data-Export"
+}
+
+# Derived here rather than in param() because it follows $SourceRepo, which is
+# itself only resolved above.
+if (-not $Name) {
+    $Name = "[DEBUG] $(Split-Path $SourceRepo.TrimEnd('\') -Leaf)"
 }
 
 $source = Join-Path $SourceRepo "gamedata"
