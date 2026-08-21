@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-08-21",
+    "entries": [
+      { "type": "fixed", "text": "Max Upgraded Stats now follows the \"Show computed upgrade values\" toggle and matches the upgrade tree. It was summing the game's own numbers, which overshoot: a fully upgraded AK-74 claimed 116% reliability, not 94.5%." }
+    ]
+  },
+  {
     "date": "2026-08-07",
     "entries": [
       { "type": "added", "text": "Guns now show their fire modes — SEMI, burst and AUTO badges on the table, tiles and item pages, plus a Fire Mode filter." },
