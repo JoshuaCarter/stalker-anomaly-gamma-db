@@ -291,6 +291,10 @@
                             :resolve-full="resolveFull"
                             :drag-item="loadoutDragItem"
                             :manual="!!parseResult.manual"
+                            :plate-mitigation="plateMitigation"
+                            :hit-zone="hitZone"
+                            :zone-split-active="zoneSplitActive"
+                            @set-hit-zone="$emit('setHitZone', $event)"
                             @equip-loadout="$emit('equipLoadout', $event)"
                             @set-ammo="$emit('setLoadoutAmmo', $event)"
                             @close="activeDrawer = null"
@@ -435,8 +439,13 @@ export default {
         // Global catalog filters (hide unobtainable / tactical-kit weapons)
         hideNoDrop: { type: Boolean, default: false },
         hideTacticalKit: { type: Boolean, default: false },
+        // Ballistic hit-zone split, passed straight through to LoadoutDrawer.
+        plateMitigation: { type: Object, default: () => ({ body: {}, head: {} }) },
+        hitZone: { type: String, default: 'body' },
+        zoneSplitActive: { type: Boolean, default: false },
     },
     emits: [
+        'setHitZone',
         'parseSave', 'clearSave', 'dismissError',
         'startBlank', 'adjustItem', 'equipLoadout', 'setLoadoutAmmo',
         'navigateToItem',
@@ -569,10 +578,12 @@ export default {
         },
         fullById() {
             // section id → full item object, built once per data change.
-            // Scoped to categories actually present in the inventory so it
-            // covers exactly the items resolveFull is asked for.
+            // Scoped to categories actually present in the inventory, plus the two
+            // the loadout drawer's belt and backpack slots pick from: those slots
+            // offer gear the player doesn't own yet, and their accepts() rules need
+            // the full item to tell a backpack from a plate.
             const map = new Map();
-            for (const cat of this.presentCategories) {
+            for (const cat of [...this.presentCategories, CAT.BELT_ATTACHMENTS, CAT.ARTEFACTS]) {
                 for (const it of this.categoryItems[categorySlug(cat)] || []) map.set(it.id, it);
             }
             return map;

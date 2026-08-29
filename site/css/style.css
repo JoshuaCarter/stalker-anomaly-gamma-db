@@ -6375,6 +6375,62 @@ kbd {
     font-style: italic;
     opacity: 0.5;
 }
+/* An off-zone piece still lists so the tile doesn't look like it dropped the
+   item, but reads as not counting toward the total. */
+.build-breakdown-inactive {
+    opacity: 0.4;
+}
+.build-breakdown-inactive > span:last-child {
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+/* Hit zone selector */
+.build-hitzone-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    padding: 0.25rem 0 0.3rem;
+    border-bottom: 1px solid var(--color-overlay-border-50);
+}
+.build-hitzone-label {
+    color: var(--text-secondary);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    cursor: help;
+}
+.build-hitzone-btns {
+    display: flex;
+    gap: 2px;
+}
+.build-hitzone-btn {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 2px;
+    cursor: pointer;
+}
+.build-hitzone-btn:hover {
+    background: var(--color-overlay-white-2);
+}
+.build-hitzone-btn.active {
+    background: var(--color-overlay-white-2);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+/* Marks a tile whose value depends on the selected hit zone. */
+.build-zone-tag {
+    font-size: 0.45rem;
+    opacity: 0.6;
+    margin-left: 0.25rem;
+    letter-spacing: 0;
+}
 /* Stacked bar segments */
 .build-stat-row-wrap {
     padding: 0.15rem 0;

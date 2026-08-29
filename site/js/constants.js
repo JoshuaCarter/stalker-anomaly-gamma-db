@@ -93,6 +93,24 @@ export const RESTORATION_FIELDS = [
     "st_prop_restore_health", "st_prop_restore_bleeding", "st_data_export_restore_radiation", "ui_inv_outfit_power_restore",
 ];
 export const BASE_RESIST_CAP = 65;
+
+// Hit-zone split. ADB zeroes the outfit's contribution on a headshot and the
+// helmet's on a body shot (grok_actor_damage_balancer.script:468) -- but only
+// when `elemental == 0`, which get_adb_constants leaves unset for FireWound and
+// Wound alone. Strike, Explosion, Burn, LightBurn, Shock, ChemicalBurn and
+// Telepatic all set elemental = 1 and genuinely stack outfit + helmet, so only
+// these two fields split by zone. Radiation never reaches get_protection at all
+// (it's a separate grace-period mechanic at script:884), so it stays merged too.
+export const ZONE_SPLIT_FIELDS = new Set([
+    "ui_inv_outfit_fire_wound_protection",
+    "ui_inv_outfit_wound_protection",
+]);
+// Absolute ceiling on either mitigation bucket, above the artefact-raised
+// limiter (script:450 for protection, script:510 for premitigation).
+export const PROTECTION_HARD_CAP = 90;
+// Flat reduction applied when a bullet fails to penetrate (script:491 / 502).
+export const BASE_PREMITIGATION = 40;
+
 export const CAP_FIELD_MAP = {
     "ui_inv_outfit_fire_wound_protection": "gamma_fire_wound_cap",
     "ui_inv_outfit_wound_protection": "gamma_wound_cap",

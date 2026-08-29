@@ -8,6 +8,7 @@ import {
     LOWER_IS_BETTER, HIGHER_IS_WORSE, NO_HIGHLIGHT, BIPOLAR, POSITIVE_IS_GOOD,
     HEAL_GROUPS, HEAL_FIELDS, RANGE_EXCLUDE, TILE_HIDE, KIT_HIDE_FIELDS, UNITS,
     PROTECTION_FIELDS, RESTORATION_FIELDS, BASE_RESIST_CAP, CAP_FIELD_MAP,
+    ZONE_SPLIT_FIELDS, PROTECTION_HARD_CAP, BASE_PREMITIGATION,
     CAT, BUILD_SLOT_CATEGORIES, isBackpack, MAX_SAVED_BUILDS,
     WEAPON_STAT_FIELDS, AMMO_MULTIPLIER_FIELDS, AMMO_ONLY_FIELDS, GRENADE_STAT_FIELDS,
     PACKS_HIDE_GUN_DAMAGE_RANGE, HIDDEN_GUN_DAMAGE_RANGE_FIELDS, GLOBAL_HIDDEN_WEAPON_STAT_FIELDS,
@@ -109,6 +110,7 @@ export const appDefinition = {
             npcArmorProfilesCache: null,
             gboConstantsCache: null,
             pbaConstantsCache: null,
+            plateMitigationCache: null,
             ballisticRangesCache: null,
             upgradesCache: null,
 
@@ -249,6 +251,10 @@ export const appDefinition = {
             buildPickerQuery: "",
             buildPickerFuse: null,
             buildExpandedStats: {},
+            // Which hit zone the ballistic stats are shown for. Outfit + body
+            // plates defend the body, headgear defends the head, and the two are
+            // never both in play on a single bullet -- see ZONE_SPLIT_FIELDS.
+            buildHitZone: (() => { try { return localStorage.getItem("buildHitZone") === "head" ? "head" : "body"; } catch { return "body"; } })(),
             buildHideGearStats: false,
             buildHideWeaponStats: false,
             buildRadarVisible: false,
@@ -1594,17 +1600,30 @@ export const appDefinition = {
                 return parseFloat(String(v).replace(/%$/, "")) || 0;
             };
 
+            // Which slots are in play for the selected hit zone. Only meaningful
+            // for ZONE_SPLIT_FIELDS and BR Class; everything else stays merged.
+            const zone = this.buildHitZone;
+            const zoneInactiveSlot = zone === "head" ? "outfit" : "helmet";
+
             // Sum protections with per-slot-type segments
             const protections = {};
             for (const f of PROTECTION_FIELDS) {
                 const slotTotals = { outfit: 0, helmet: 0, backpack: 0, belt: 0, artifact: 0 };
+                const split = this.buildZoneSplitActive && ZONE_SPLIT_FIELDS.has(f);
                 const breakdown = [];
                 for (const { item, slot } of all) {
+                    if (!(slot in slotTotals)) continue;
                     const v = parseNum(item[f]);
-                    if (v !== 0) breakdown.push({ name: item.pda_encyclopedia_name || item.id, value: v, slot });
-                    slotTotals[slot] += v;
+                    // A split field's off-zone piece contributes nothing at all --
+                    // ADB zeroes it outright rather than weighting it down -- but
+                    // it still lists, greyed, so the tile doesn't look like it
+                    // silently dropped the item.
+                    const inactive = split && slot === zoneInactiveSlot;
+                    if (v !== 0) breakdown.push({ name: item.pda_encyclopedia_name || item.id, value: v, slot, inactive });
+                    if (!inactive) slotTotals[slot] += v;
                 }
-                // Apply overall resist cap: base 65% + sum of gamma_*_cap from all items
+                // Apply overall resist cap: base 65% + sum of gamma_*_cap from all
+                // items, then ADB's absolute 90% ceiling on top of that.
                 const capField = CAP_FIELD_MAP[f];
                 let total = slotTotals.outfit + slotTotals.helmet + slotTotals.belt + slotTotals.artifact + slotTotals.backpack;
                 let capped = false;
@@ -1613,7 +1632,7 @@ export const appDefinition = {
                     for (const { item } of all) {
                         capSum += parseNum(item[capField]);
                     }
-                    const maxResist = BASE_RESIST_CAP + capSum;
+                    const maxResist = Math.min(BASE_RESIST_CAP + capSum, PROTECTION_HARD_CAP);
                     if (total > maxResist) {
                         const ratio = maxResist / total;
                         slotTotals.outfit *= ratio;
@@ -1625,7 +1644,7 @@ export const appDefinition = {
                         capped = true;
                     }
                 }
-                protections[f] = { total, breakdown, capped, segments: slotTotals };
+                protections[f] = { total, breakdown, capped, split, segments: slotTotals };
             }
 
             // Sum a field across items, returning { total, breakdown, segments }
@@ -1655,32 +1674,107 @@ export const appDefinition = {
             const { total: carryWeight, breakdown: carryBreakdown, segments: carrySegments } = sumField("ui_inv_outfit_additional_weight");
             const baseCarryWeight = (this.activePack && this.activePack.baseCarryWeight) || 0;
             const totalCarryCapacity = baseCarryWeight + carryWeight;
-            const { total: armorPoints, breakdown: armorBreakdown, segments: armorSegments } = sumField("ui_inv_ap_res", s => s === "outfit" || s === "helmet" || s === "belt");
+            // BR Class -- the penetration gate, not a damage reduction. `ui_inv_ap_res`
+            // is (1 - hit_fraction_actor) * cond * 100 and lives on outfits and helmets
+            // only; belt items contribute through ADB's mitigation table instead, whose
+            // apRes is the same scale as a fraction. Ballistic plates have no head-table
+            // entry at all (they do nothing for a helmet), which is why this reads the
+            // per-zone table rather than the body-only item column.
+            const beltMit = this.buildPlateMitigation;
+            const armorBreakdown = [];
+            const armorSegments = { outfit: 0, helmet: 0, backpack: 0, belt: 0, artifact: 0 };
+            let armorPoints = 0;
+            const otherZone = zone === "body" ? "head" : "body";
+            for (const { item, slot } of all) {
+                if (slot !== "outfit" && slot !== "helmet" && slot !== "belt" && slot !== "artifact") continue;
+                // One rule for both kinds of off-zone piece: an armour piece is
+                // zeroed by the zone it doesn't guard, and a ballistic plate simply
+                // has no head-table entry. Either way it contributes nothing here
+                // but does in the other zone, so it lists greyed rather than
+                // vanishing -- which would read as the item having been dropped.
+                const apResIn = (z) => Math.round((beltMit[z]?.[item.id]?.apRes || 0) * 1000) / 10;
+                let v, elsewhere;
+                if (slot === "outfit" || slot === "helmet") {
+                    elsewhere = parseNum(item["ui_inv_ap_res"]);
+                    v = (this.buildZoneSplitActive && slot === zoneInactiveSlot) ? 0 : elsewhere;
+                } else {
+                    v = apResIn(zone);
+                    elsewhere = apResIn(otherZone);
+                }
+                const inactive = v === 0 && elsewhere !== 0;
+                if (v === 0 && !inactive) continue;
+                armorBreakdown.push({ name: item.pda_encyclopedia_name || item.id, value: inactive ? elsewhere : v, slot, inactive });
+                if (inactive) continue;
+                armorPoints += v;
+                armorSegments[slot] += v;
+            }
+
+            // Stopped-round premitigation. A flat 40% the moment a bullet fails to
+            // penetrate, plus each belt item's own bonus, hard-capped at 90%. This
+            // multiplies with the flat protection above rather than adding to it.
+            // Nothing is ever stopped without a BR Class to stop it with, so the
+            // whole bucket stays absent until there is one -- keeping this the
+            // single condition the tile and "expand all" both key off.
+            const stoppedBreakdown = [];
+            let stoppedBonus = BASE_PREMITIGATION;
+            if (this.buildZoneSplitActive && armorPoints > 0) {
+                stoppedBreakdown.push({ name: "app_build_stopped_base", value: BASE_PREMITIGATION, slot: "base", inactive: false });
+                for (const { item, slot } of all) {
+                    if (slot !== "belt" && slot !== "artifact") continue;
+                    const v = Math.round((beltMit[zone]?.[item.id]?.premitigation || 0) * 1000) / 10;
+                    if (v === 0) continue;
+                    stoppedBreakdown.push({ name: item.pda_encyclopedia_name || item.id, value: v, slot, inactive: false });
+                    stoppedBonus += v;
+                }
+            }
+            const stoppedCapped = stoppedBonus > PROTECTION_HARD_CAP;
+            if (stoppedCapped) stoppedBonus = PROTECTION_HARD_CAP;
 
             // Speed (outfit-only)
             const speed = this.buildOutfit ? parseNum(this.buildOutfit["ui_inv_outfit_speed"]) : null;
 
-            // Sort breakdowns descending by value
-            const sortDesc = arr => arr.sort((a, b) => b.value - a.value);
+            // Sort breakdowns descending by value, with off-zone rows last so the
+            // contributing items read as a block.
+            const sortDesc = arr => arr.sort((a, b) => (a.inactive === b.inactive ? b.value - a.value : (a.inactive ? 1 : -1)));
             sortDesc(weightBreakdown);
             sortDesc(carryBreakdown);
             sortDesc(armorBreakdown);
+            // The base row is the bucket's floor, not a contribution, so it stays
+            // pinned at the top and only the item rows below it sort.
+            if (stoppedBreakdown.length > 1) {
+                const [base, ...items] = stoppedBreakdown;
+                stoppedBreakdown.splice(0, stoppedBreakdown.length, base, ...sortDesc(items));
+            }
             for (const f of PROTECTION_FIELDS) sortDesc(protections[f].breakdown);
             for (const f of RESTORATION_FIELDS) sortDesc(restorations[f].breakdown);
 
-            return { protections, restorations, totalWeight, weightBreakdown, weightSegments, carryWeight, carryBreakdown, carrySegments, baseCarryWeight, totalCarryCapacity, armorPoints, armorBreakdown, armorSegments, speed };
+            return { protections, restorations, totalWeight, weightBreakdown, weightSegments, carryWeight, carryBreakdown, carrySegments, baseCarryWeight, totalCarryCapacity, armorPoints, armorBreakdown, armorSegments, stoppedBonus, stoppedBreakdown, stoppedCapped, speed };
+        },
+
+        // The body/head split only makes sense where ADB's per-zone mitigation
+        // table shipped with the pack -- plain Anomaly and pre-0.9.5 GAMMA extracts
+        // have no such data, so those packs keep the old merged totals.
+        buildPlateMitigation() {
+            const mit = this.plateMitigationCache;
+            return (mit && mit.body && mit.head) ? mit : { body: {}, head: {} };
+        },
+
+        buildZoneSplitActive() {
+            const mit = this.plateMitigationCache;
+            return !!(mit && mit.body && mit.head);
         },
 
         factionList() { return FACTION_LIST.map(id => ({ id, label: this.t(id) || id })); },
 
         buildAllExpanded() {
             const stats = this.buildCombinedStats;
-            const allFields = ["weight", "carry", "armor", ...PROTECTION_FIELDS, ...RESTORATION_FIELDS];
+            const allFields = ["weight", "carry", "armor", "stopped", ...PROTECTION_FIELDS, ...RESTORATION_FIELDS];
             const wpnFields = this.buildWeaponStats ? this.buildWeaponStats.stats.filter(s => s.modifier != null).map(s => "wpn_" + s.field) : [];
             const expandable = allFields.filter(f => {
                 if (f === "weight") return stats.weightBreakdown.length > 0;
                 if (f === "carry") return stats.carryBreakdown.length > 0;
                 if (f === "armor") return stats.armorBreakdown.length > 0;
+                if (f === "stopped") return stats.stoppedBreakdown.length > 0;
                 if (PROTECTION_FIELDS.includes(f)) return stats.protections[f].breakdown.length > 0;
                 if (RESTORATION_FIELDS.includes(f)) return stats.restorations[f].breakdown.length > 0;
                 return false;
@@ -2111,6 +2205,26 @@ export const appDefinition = {
             return this.fetchJsonCached("pbaConstantsCache", "pba-constants.json");
         },
 
+        // ADB's per-belt-item ballistic contribution, split into body/head tables
+        // (mitigation_table_body / mitigation_table_head in the ADB script). The
+        // item columns carry the body numbers only, so the head half has to come
+        // from here. Absent on non-GAMMA packs -- see buildPlateMitigation.
+        fetchPlateMitigation() {
+            return this.fetchJsonCached("plateMitigationCache", "adb-plate-mitigation.json");
+        },
+
+        // Everything the save-import loadout drawer needs beyond the save's own
+        // categories: the ballistic mitigation table, plus the two belt categories
+        // so its picker can offer plates and artefacts the player doesn't own yet
+        // (and so resolveFull can tell a backpack from a plate).
+        ensureLoadoutData() {
+            return Promise.all([
+                this.fetchPlateMitigation(),
+                this.ensureCategoryLoaded("belt-attachments"),
+                this.ensureCategoryLoaded("artefacts"),
+            ]);
+        },
+
 
         findItemByName(name) {
             return this.index.find(i => i.name === name || i.displayName === name || i.pda_encyclopedia_name === name);
@@ -2232,6 +2346,7 @@ export const appDefinition = {
                     } else if (urlCat === "inventory" || pathParsed.playerInventory) {
                         this.playerInventoryActive = true;
                         this.playerInventoryMounted = true;
+                        this.ensureLoadoutData();
                         this.activeCategory = null;
                         this.loadPlayerInventoryFromStorage();
                     } else if (urlCat === "version-compare" || pathParsed.versionCompare) {
@@ -2304,6 +2419,7 @@ export const appDefinition = {
             this.weaponAddonsCache = null;
             this.weaponMagazinesCache = null;
             this.kitWeaponsCache = null;
+            this.plateMitigationCache = null;
             this.outfitExchange = null;
             this.startingLoadoutsCache = null;
             this.displayLabels = {};
@@ -3318,6 +3434,7 @@ export const appDefinition = {
             this.resetViewState();
             this.playerInventoryActive = true;
             this.playerInventoryMounted = true;
+            this.ensureLoadoutData();
             if (!this.playerInventoryParseResult) this.loadPlayerInventoryFromStorage();
             this.pushUrlState(true);
         },
@@ -5358,6 +5475,7 @@ export const appDefinition = {
             } else if (parsed.playerInventory || legacyCat === "inventory") {
                 this.playerInventoryActive = true;
                 this.playerInventoryMounted = true;
+                this.ensureLoadoutData();
                 this.activeCategory = null;
                 this.loadPlayerInventoryFromStorage();
             } else if (parsed.versionCompare || legacyCat === "version-compare") {
@@ -5544,6 +5662,9 @@ export const appDefinition = {
 
             // Load equipment category data
             const cats = ["outfits", "helmets", "belt-attachments", "artefacts", ...WEAPON_CATEGORY_SLUGS, GRENADE_SLUG, "ammo"];
+            // Category data is loaded by the loop below, which also builds the
+            // per-category Fuse index -- only the mitigation table is needed here.
+            const plateMitigationLoad = this.fetchPlateMitigation();
             await Promise.all(cats.map(async (slug) => {
                 if (this.categoryItems[slug]) return;
                 try {
@@ -5564,6 +5685,7 @@ export const appDefinition = {
                     this.categoryHeaders[slug] = [];
                 }
             }));
+            await plateMitigationLoad;
 
             this.loadBuildFromStorage();
             this.loadInventoryFromStorage();
@@ -6979,6 +7101,11 @@ export const appDefinition = {
         setWeaponCompareSlot(slot) {
             this.buildWeaponCompareSlot = slot;
             try { localStorage.setItem("buildWeaponCompareSlot", slot); } catch (e) { /* quota */ }
+        },
+
+        setBuildHitZone(zone) {
+            this.buildHitZone = zone === "head" ? "head" : "body";
+            try { localStorage.setItem("buildHitZone", this.buildHitZone); } catch (e) { /* quota */ }
         },
 
         cycleInventorySort() {

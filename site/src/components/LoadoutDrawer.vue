@@ -108,7 +108,15 @@
         </div>
 
         <!-- Statistics: full gear + protection + restoration set (mirrors the Build Planner) -->
-        <div class="ld-sect"><span>{{ t('app_build_statistics') }}</span></div>
+        <div class="ld-sect">
+            <span>{{ t('app_build_statistics') }}</span>
+            <!-- Ballistic stats are per hit zone; elemental ones ignore this. -->
+            <span v-if="zoneSplitActive" class="ld-hitzone">
+                <span class="ld-hitzone-label" v-tooltip="t('app_build_hitzone_help')">{{ t('app_build_hitzone') }}</span>
+                <button class="ld-hitzone-btn" :class="{ active: hitZone === 'body' }" @click="$emit('setHitZone', 'body')">{{ t('app_build_hitzone_body') }}</button>
+                <button class="ld-hitzone-btn" :class="{ active: hitZone === 'head' }" @click="$emit('setHitZone', 'head')">{{ t('app_build_hitzone_head') }}</button>
+            </span>
+        </div>
         <div class="ld-stats-grid">
             <div
                 v-for="tile in statTiles"
@@ -116,7 +124,7 @@
                 class="ld-stat-tile"
                 :class="{ 'ld-stat-zero': tile.zero }"
             >
-                <span class="ld-stat-name">{{ tile.label }}</span>
+                <span class="ld-stat-name" v-tooltip="tile.hint || ''">{{ tile.label }}<span v-if="tile.split" class="build-zone-tag">{{ hitZone === 'head' ? t('app_build_hitzone_head') : t('app_build_hitzone_body') }}</span></span>
                 <span class="ld-stat-val" :class="{ 'ld-stat-neg': tile.negative }">
                     <span v-if="tile.capped" class="ld-cap" v-tooltip="t('app_build_capped')">CAP</span>
                     {{ tile.value }}
@@ -150,7 +158,8 @@
 </template>
 
 <script>
-import { PRIMARY_WEAPON_SLUGS, SIDEARM_SLUGS, CAT, isBackpack, BASE_RESIST_CAP, CAP_FIELD_MAP } from '../../js/constants.js';
+import { PRIMARY_WEAPON_SLUGS, SIDEARM_SLUGS, CAT, isBackpack, BASE_RESIST_CAP, CAP_FIELD_MAP,
+         ZONE_SPLIT_FIELDS, PROTECTION_HARD_CAP, BASE_PREMITIGATION } from '../../js/constants.js';
 import { categorySlug } from '../../js/utils.js';
 import ItemPickerModal from './modals/ItemPickerModal.vue';
 
@@ -213,8 +222,13 @@ export default {
         // Blank-stash mode: slot edits write back to the saved inventory instead
         // of staying as a local what-if experiment.
         manual: { type: Boolean, default: false },
+        // ADB's per-belt-item ballistic contribution, split body/head. Empty on
+        // packs that ship no such table, which also disables the zone split.
+        plateMitigation: { type: Object, default: () => ({ body: {}, head: {} }) },
+        hitZone: { type: String, default: 'body' },
+        zoneSplitActive: { type: Boolean, default: false },
     },
-    emits: ['close', 'showItemHover', 'moveItemHover', 'hideItemHover', 'equipLoadout', 'setAmmo'],
+    emits: ['close', 'showItemHover', 'moveItemHover', 'hideItemHover', 'equipLoadout', 'setAmmo', 'setHitZone'],
     inject: ['t', 'tItemName', 'tCat', 'headerLabel', 'buildStatFormatted'],
     data() {
         return {
@@ -249,7 +263,15 @@ export default {
                 const slug = categorySlug(cat);
                 if (cat === CAT.HELMETS) { if (!saved.helmet) saved.helmet = id; }
                 else if (cat === CAT.OUTFITS) { if (!saved.outfit) saved.outfit = id; }
-                else if (cat === CAT.BELT_ATTACHMENTS) { if (!saved.backpack && isBackpack(this.resolveFull(id))) saved.backpack = id; }
+                else if (cat === CAT.BELT_ATTACHMENTS) {
+                    // Skip until the category resolves rather than guessing: an
+                    // unresolved item reads as "not a backpack" and would land a
+                    // backpack in a belt slot. This recomputes once the data lands.
+                    const full = this.resolveFull(id);
+                    if (!full) continue;
+                    if (isBackpack(full)) { if (!saved.backpack) saved.backpack = id; }
+                    else if (saved.belt.length < BELT_MAX) saved.belt.push(id);
+                }
                 else if (cat === CAT.ARTEFACTS) { if (saved.belt.length < BELT_MAX) saved.belt.push(id); }
                 else if (PRIMARY_WEAPON_SLUGS.includes(slug)) {
                     if (!saved.primary) saved.primary = id;
@@ -300,27 +322,64 @@ export default {
                 return total;
             };
 
+            // A bullet hits one zone: the outfit and body plates defend the body,
+            // headgear defends the head. ADB zeroes the off-zone piece outright,
+            // but only for FireWound and Wound -- everything else is elemental and
+            // genuinely stacks. See ZONE_SPLIT_FIELDS.
+            const zone = this.hitZone === 'head' ? 'head' : 'body';
+            const offZone = zone === 'head' ? 'outfit' : 'helmet';
+            const inZone = slot => !(this.zoneSplitActive && slot === offZone);
+            const mit = this.plateMitigation?.[zone] || {};
+
             const protections = {};
             for (const f of PROT_FIELDS) {
-                let total = sumField(f);
+                const split = this.zoneSplitActive && ZONE_SPLIT_FIELDS.has(f);
+                let total = sumField(f, split ? inZone : null);
                 let capped = false;
                 const capField = CAP_FIELD_MAP[f];
                 if (capField && total > 0) {
                     let capSum = 0;
                     for (const { item } of all) capSum += parseNum(item[capField]);
-                    const maxResist = BASE_RESIST_CAP + capSum;
+                    const maxResist = Math.min(BASE_RESIST_CAP + capSum, PROTECTION_HARD_CAP);
                     if (total > maxResist) { total = maxResist; capped = true; }
                 }
-                protections[f] = { total, capped };
+                protections[f] = { total, capped, split };
             }
 
             const restorations = {};
             for (const f of REST_FIELDS) restorations[f] = sumField(f);
 
+            // BR Class -- the penetration gate. `ui_inv_ap_res` lives on outfits and
+            // helmets only; belt items contribute through ADB's per-zone mitigation
+            // table instead (plates have no head entry, so they defend the body only).
+            let armor = 0;
+            for (const { item, slot } of all) {
+                if (!inZone(slot)) continue;
+                if (slot === 'outfit' || slot === 'helmet') armor += parseNum(item['ui_inv_ap_res']);
+                else if (slot === 'artifact') armor += Math.round((mit[item.id]?.apRes || 0) * 1000) / 10;
+            }
+
+            // Stopped-round premitigation: a flat 40% whenever BR Class clears the
+            // round's AP, plus each belt item's bonus. Multiplies with the flat
+            // protection above rather than adding to it.
+            let stopped = null;
+            let stoppedCapped = false;
+            if (this.zoneSplitActive && armor > 0) {
+                stopped = BASE_PREMITIGATION;
+                for (const { item, slot } of all) {
+                    if (slot !== 'artifact') continue;
+                    stopped += Math.round((mit[item.id]?.premitigation || 0) * 1000) / 10;
+                }
+                stoppedCapped = stopped > PROTECTION_HARD_CAP;
+                if (stoppedCapped) stopped = PROTECTION_HARD_CAP;
+            }
+
             return {
                 weight: sumField('st_prop_weight'),
                 carry: sumField('ui_inv_outfit_additional_weight'),
-                armor: sumField('ui_inv_ap_res', s => s === 'outfit' || s === 'helmet' || s === 'belt'),
+                armor,
+                stopped,
+                stoppedCapped,
                 speed: this.slots.outfit ? parseNum(this.resolveFull(this.slots.outfit)?.['ui_inv_outfit_speed']) : null,
                 protections,
                 restorations,
@@ -335,12 +394,15 @@ export default {
                 { key: 'carry', label: this.t('ui_inv_outfit_additional_weight'), value: fmt('ui_inv_outfit_additional_weight', s.carry), zero: s.carry === 0 },
                 { key: 'armor', label: this.t('ui_inv_ap_res'), value: fmt('ui_inv_ap_res', s.armor), zero: s.armor === 0 },
             ];
+            if (s.stopped !== null) {
+                tiles.push({ key: 'stopped', label: this.t('app_build_stopped'), hint: this.t('app_build_stopped_help'), value: s.stopped.toFixed(1) + '%', zero: false, capped: s.stoppedCapped });
+            }
             if (s.speed !== null) {
                 tiles.push({ key: 'speed', label: this.t('ui_inv_outfit_speed'), value: fmt('ui_inv_outfit_speed', s.speed), zero: s.speed === 0, negative: s.speed < 0 });
             }
             for (const f of PROT_FIELDS) {
                 const p = s.protections[f];
-                tiles.push({ key: f, label: this.headerLabel(f), value: fmt(f, p.total), zero: p.total === 0, negative: p.total < 0, capped: p.capped });
+                tiles.push({ key: f, label: this.headerLabel(f), value: fmt(f, p.total), zero: p.total === 0, negative: p.total < 0, capped: p.capped, split: p.split });
             }
             for (const f of REST_FIELDS) {
                 const v = s.restorations[f];
@@ -459,7 +521,18 @@ export default {
                 case 'secondary': return PRIMARY_WEAPON_SLUGS.includes(slug);
                 case 'sidearm': return SIDEARM_SLUGS.includes(slug);
                 case 'grenade': return cat === CAT.EXPLOSIVES;
-                case 'belt': return cat === CAT.ARTEFACTS;
+                // Ballistic plates and mutant pelts are belt-attachments, not
+                // artefacts, but they occupy belt slots and feed the same armour
+                // maths -- excluding them dropped them from imported saves.
+                case 'belt': {
+                    if (cat === CAT.ARTEFACTS) return true;
+                    if (cat !== CAT.BELT_ATTACHMENTS) return false;
+                    // Reject rather than accept when the category hasn't loaded --
+                    // an unresolved item would read as "not a backpack" and let
+                    // backpacks into belt slots.
+                    const full = this.resolveFull(id);
+                    return !!full && !isBackpack(full);
+                }
                 default: return false;
             }
         },
@@ -861,6 +934,40 @@ export default {
     color: var(--text-secondary);
     font-weight: 400;
     letter-spacing: 0;
+}
+
+/* Hit-zone selector, pushed to the right of its section heading */
+.ld-hitzone {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+}
+.ld-hitzone-label {
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-right: 0.25rem;
+    cursor: help;
+}
+.ld-hitzone-btn {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 0.05rem 0.35rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 2px;
+    cursor: pointer;
+}
+.ld-hitzone-btn:hover {
+    background: var(--color-overlay-white-2);
+}
+.ld-hitzone-btn.active {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--color-overlay-white-2);
 }
 
 .ld-sect::after {

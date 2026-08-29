@@ -334,6 +334,17 @@
                 </div>
             </div>
 
+            <!-- Hit zone. A bullet hits one zone: the outfit and body plates defend
+                 the body, headgear defends the head, and artefacts/pelts defend both.
+                 Drives BR Class, Stopped Bonus and the two non-elemental protections. -->
+            <div v-if="buildZoneSplitActive" class="build-hitzone-toggle">
+                <span class="build-hitzone-label" v-tooltip="t('app_build_hitzone_help')">{{ t('app_build_hitzone') }}</span>
+                <div class="build-hitzone-btns">
+                    <button class="build-hitzone-btn" :class="{ active: buildHitZone === 'body' }" @click="$emit('setBuildHitZone', 'body')">{{ t('app_build_hitzone_body') }}</button>
+                    <button class="build-hitzone-btn" :class="{ active: buildHitZone === 'head' }" @click="$emit('setBuildHitZone', 'head')">{{ t('app_build_hitzone_head') }}</button>
+                </div>
+            </div>
+
             <div class="build-tile-wrap">
                 <div class="build-tile-stat build-prot-expandable" :class="{ 'build-prot-low': buildCombinedStats.armorPoints === 0 }" @click="$emit('toggleBuildStatExpand', 'armor')">
                     <span class="build-prot-chevron" :class="{ 'build-prot-chevron-open': buildExpandedStats.armor }"></span>
@@ -342,8 +353,26 @@
                 </div>
                 <div v-if="buildExpandedStats.armor" class="build-stat-breakdown">
                     <div v-if="buildCombinedStats.armorBreakdown.length === 0" class="build-breakdown-row build-breakdown-none">{{ t('app_build_no_items') }}</div>
-                    <div v-for="b in buildCombinedStats.armorBreakdown" :key="b.name" class="build-breakdown-row">
-                        <span><span class="build-breakdown-dot" :style="{ background: buildSlotColor(b.slot) }"></span>{{ t(b.name) }}</span><span>{{ b.value }} <span class="build-breakdown-arrow" :class="b.value > 0 ? 'arrow-up' : 'arrow-down'">{{ b.value > 0 ? '\u25B2' : '\u25BC' }}</span></span>
+                    <div v-for="b in buildCombinedStats.armorBreakdown" :key="b.name" class="build-breakdown-row" :class="{ 'build-breakdown-inactive': b.inactive }">
+                        <span><span class="build-breakdown-dot" :style="{ background: buildSlotColor(b.slot) }"></span>{{ t(b.name) }}</span><span v-if="b.inactive" v-tooltip="t('app_build_offzone_help')">{{ t('app_build_offzone') }}</span><span v-else>{{ b.value }} <span class="build-breakdown-arrow" :class="b.value > 0 ? 'arrow-up' : 'arrow-down'">{{ b.value > 0 ? '\u25B2' : '\u25BC' }}</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stopped-round premitigation. Applies only when BR Class clears the
+                 round's AP, and multiplies with Ballistic Res rather than adding. -->
+            <div v-if="buildCombinedStats.stoppedBreakdown.length > 0" class="build-tile-wrap">
+                <div class="build-tile-stat build-prot-expandable" @click="$emit('toggleBuildStatExpand', 'stopped')">
+                    <span class="build-prot-chevron" :class="{ 'build-prot-chevron-open': buildExpandedStats.stopped }"></span>
+                    <span class="build-tile-label" v-tooltip="t('app_build_stopped_help')">{{ t('app_build_stopped') }}</span>
+                    <span class="build-tile-value">
+                        <span v-if="buildCombinedStats.stoppedCapped" class="build-capped-badge" v-tooltip="t('app_build_capped')">CAP</span>
+                        {{ buildCombinedStats.stoppedBonus.toFixed(1) }}%
+                    </span>
+                </div>
+                <div v-if="buildExpandedStats.stopped" class="build-stat-breakdown">
+                    <div v-for="b in buildCombinedStats.stoppedBreakdown" :key="b.name" class="build-breakdown-row">
+                        <span><span class="build-breakdown-dot" :style="{ background: buildSlotColor(b.slot) }"></span>{{ t(b.name) }}</span><span>{{ b.value }}% <span class="build-breakdown-arrow arrow-up">&#x25B2;</span></span>
                     </div>
                 </div>
             </div>
@@ -364,7 +393,7 @@
                 <div class="build-tile-wrap">
                     <div class="build-tile-stat build-prot-expandable" :class="{ 'build-prot-low': buildCombinedStats.protections[f].total === 0 }" @click="$emit('toggleBuildStatExpand', f)">
                         <span class="build-prot-chevron" :class="{ 'build-prot-chevron-open': buildExpandedStats[f] }"></span>
-                        <span class="build-tile-label">{{ headerLabel(f) }}</span>
+                        <span class="build-tile-label">{{ headerLabel(f) }}<span v-if="buildCombinedStats.protections[f].split" class="build-zone-tag">{{ buildHitZone === 'head' ? t('app_build_hitzone_head') : t('app_build_hitzone_body') }}</span></span>
                         <span class="build-tile-value" :class="{ 'build-prot-negative': buildCombinedStats.protections[f].total < 0 }">
                             <span v-if="buildCombinedStats.protections[f].capped" class="build-capped-badge" v-tooltip="t('app_build_capped')">CAP</span>
                             {{ buildCombinedStats.protections[f].total.toFixed(1) }}%
@@ -372,8 +401,8 @@
                     </div>
                     <div v-if="buildExpandedStats[f]" class="build-stat-breakdown">
                         <div v-if="buildCombinedStats.protections[f].breakdown.length === 0" class="build-breakdown-row build-breakdown-none">{{ t('app_build_no_items') }}</div>
-                        <div v-for="b in buildCombinedStats.protections[f].breakdown" :key="b.name" class="build-breakdown-row">
-                            <span><span class="build-breakdown-dot" :style="{ background: buildSlotColor(b.slot) }"></span>{{ t(b.name) }}</span><span>{{ b.value }}% <span class="build-breakdown-arrow" :class="b.value > 0 ? 'arrow-up' : 'arrow-down'">{{ b.value > 0 ? '\u25B2' : '\u25BC' }}</span></span>
+                        <div v-for="b in buildCombinedStats.protections[f].breakdown" :key="b.name" class="build-breakdown-row" :class="{ 'build-breakdown-inactive': b.inactive }">
+                            <span><span class="build-breakdown-dot" :style="{ background: buildSlotColor(b.slot) }"></span>{{ t(b.name) }}</span><span v-if="b.inactive" v-tooltip="t('app_build_offzone_help')">{{ t('app_build_offzone') }}</span><span v-else>{{ b.value }}% <span class="build-breakdown-arrow" :class="b.value > 0 ? 'arrow-up' : 'arrow-down'">{{ b.value > 0 ? '\u25B2' : '\u25BC' }}</span></span>
                         </div>
                     </div>
                 </div>
@@ -538,8 +567,11 @@ export default {
         favoriteIds: { type: Array, default: () => [] },
         factionList: { type: Array, default: () => [] },
         weaponCompareSlotCount: { type: Number, default: 0 },
+        buildHitZone: { type: String, default: 'body' },
+        buildZoneSplitActive: { type: Boolean, default: false },
     },
     emits: [
+        'setBuildHitZone',
         'update:buildPlayerName',
         'update:buildPlayerFaction',
         'update:buildSaveModalOpen',
