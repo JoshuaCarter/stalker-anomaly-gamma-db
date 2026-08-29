@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-08-29",
+    "entries": [
+      { "type": "fixed", "text": "The Build Planner was adding your outfit and headgear together for Ballistic Res and BR Class. Only one of them takes a given bullet, so a Nosorog under a Spartan helmet claimed a BR Class of 134 instead of 79 to the body and 69 to the head. There's now a Body/Head toggle, and belt plates and pelts count toward the zones they actually cover.", "credits": [{ "name": "Wille", "role": "bug" }], "action": "buildPlanner" }
+    ]
+  },
+  {
     "date": "2026-08-21",
     "entries": [
       { "type": "fixed", "text": "Max Upgraded Stats now follows the \"Show computed upgrade values\" toggle and matches the upgrade tree. It was summing the game's own numbers, which overshoot: a fully upgraded AK-74 claimed 116% reliability, not 94.5%." }
