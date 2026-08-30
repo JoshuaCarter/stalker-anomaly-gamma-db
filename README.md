@@ -55,7 +55,7 @@ npm run pack-mod -- --check
 npm run pack-mod -- --release --out dist/mod
 ```
 
-CI publishes `StalkerDB_{pack}_{yyyy-mm-dd-hhmm}.zip` when the in-game loader or pack script changes (not on site JSON-only commits). See [mod/README.md](mod/README.md).
+CI publishes `StalkerDB_{pack}_{yyyy.mm.dd-hhmm}.zip` when the in-game loader or pack script changes (not on site JSON-only commits). See [mod/README.md](mod/README.md).
 
 ## Acknowledgements
 

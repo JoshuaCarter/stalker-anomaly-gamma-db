@@ -45,9 +45,10 @@ function verParts(version) {
   return [m[1], m[2].padStart(2, "0"), m[3].padStart(2, "0"), m[4].padStart(4, "0")];
 }
 
+// MO2 VersionInfo eats ^\d+ then dotted minors. 2026-08-30-0708 becomes 2026.0.0.0-08-30-0708.
 function modVer(version) {
   const p = verParts(version);
-  return p ? p.join("-") : String(version);
+  return p ? `${p[0]}.${p[1]}.${p[2]}-${p[3]}` : String(version);
 }
 
 function copyPackJson(id, dest) {
@@ -246,10 +247,10 @@ if 'source="gamedata"' not in cfg or 'source="fomod/lang/en"' not in cfg:
 if folder + "/gamedata" in cfg:
     raise SystemExit("fomod still prefixes the wrapper folder")
 meta = z.read(folder + "/meta.ini").decode()
-if "version=2026-08-30-0651" not in meta or "newestVersion=2026-08-30-0651" not in meta:
-    raise SystemExit("meta.ini must be yyyy-mm-dd-hhmm, got:\\n" + meta)
-if not sys.argv[1].replace("\\\\", "/").endswith("2026-08-30-0651.zip"):
-    raise SystemExit("zip name must be yyyy-mm-dd-hhmm")
+if "version=2026.08.30-0651" not in meta or "newestVersion=2026.08.30-0651" not in meta:
+    raise SystemExit("meta.ini must be yyyy.mm.dd-hhmm, got:\\n" + meta)
+if not sys.argv[1].replace("\\\\", "/").endswith("2026.08.30-0651.zip"):
+    raise SystemExit("zip name must be yyyy.mm.dd-hhmm")
 print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
 `;
   let r;
