@@ -1,7 +1,9 @@
 --[[
-    Item catalog: gamedata/configs/db/*.json
-    Missing files are empty groups. craft-recipes.json is a recipe index, not an item cat.
-    db/lang picks the translations table (en/ru/fr).
+    Item catalog: gamedata/configs/db/*.json (site pack dump).
+    Item groups use the site file slug (pistols, artefacts, ...).
+    Unions: weapons, weapon-attach, armor.
+    Missing files are empty. craft-recipes.json is a recipe index.
+    db/lang picks translations (en/ru/fr). Raw JSON keys are kept.
 ]]
 
 local ROOT = "db\\"
@@ -15,72 +17,60 @@ local list_sorted = {}
 local recipes = {}
 local by_name = {}
 
--- keep in sync with scripts/pack-mod.mjs FILES
-local FILES = {
-    weapons_pistols = "pistols.json",
-    weapons_smgs = "smgs.json",
-    weapons_rifles = "rifles.json",
-    weapons_snipers = "snipers.json",
-    weapons_shotguns = "shotguns.json",
-    weapons_melee = "melee.json",
-    weapons_launchers = "launchers.json",
-    weapon_attach_scopes = "scopes.json",
-    weapon_attach_silencers = "silencers.json",
-    weapon_attach_gls = "grenade-launchers.json",
-    weapon_upgrade_kits = "tactical-kits.json",
-    weapon_parts = "weapon-parts.json",
-    armor_outfits = "outfits.json",
-    armor_helmets = "helmets.json",
-    ammo = "ammo.json",
-    mutant_parts = "mutant-parts.json",
-    outfit_parts = "outfit-parts.json",
-    medicine = "medicine.json",
-    food = "food.json",
-    artifacts = "artefacts.json",
-    explosives = "explosives.json",
-    belt_attachments = "belt-attachments.json",
-    misc = "misc.json",
+-- site slugs; misc last so a real cat wins on duplicate id
+local ITEM_FILES = {
+    "pistols.json",
+    "smgs.json",
+    "rifles.json",
+    "snipers.json",
+    "shotguns.json",
+    "melee.json",
+    "launchers.json",
+    "scopes.json",
+    "silencers.json",
+    "grenade-launchers.json",
+    "tactical-kits.json",
+    "weapon-parts.json",
+    "outfits.json",
+    "helmets.json",
+    "ammo.json",
+    "mutant-parts.json",
+    "outfit-parts.json",
+    "medicine.json",
+    "food.json",
+    "artefacts.json",
+    "explosives.json",
+    "belt-attachments.json",
+    "magazines.json",
+    "misc.json",
 }
 
 local UNIONS = {
     weapons = {
-        "weapons_pistols", "weapons_smgs", "weapons_rifles", "weapons_snipers",
-        "weapons_shotguns", "weapons_melee", "weapons_launchers",
+        "pistols", "smgs", "rifles", "snipers", "shotguns", "melee", "launchers",
     },
-    weapon_attach = {
-        "weapon_attach_scopes",
-        "weapon_attach_silencers",
-        "weapon_attach_gls",
-    },
-    armor = { "armor_outfits", "armor_helmets" },
+    ["weapon-attach"] = { "scopes", "silencers", "grenade-launchers" },
+    armor = { "outfits", "helmets" },
 }
 
-local LOAD_ORDER = {
-    "weapons_pistols", "weapons_smgs", "weapons_rifles", "weapons_snipers",
-    "weapons_shotguns", "weapons_melee", "weapons_launchers",
-    "weapon_attach_scopes", "weapon_attach_silencers",
-    "weapon_attach_gls", "weapon_upgrade_kits",
-    "armor_outfits", "armor_helmets",
-    "ammo", "mutant_parts", "outfit_parts",
-    "medicine", "food", "artifacts", "explosives", "belt_attachments",
-    "weapon_parts",
-    "misc",
-}
-
-local try_read_text = function(getFS, rel)
+local try_read_path = function(getFS, rel)
     return getFS():update_path("$game_config$", rel)
+end
+
+local try_open = function(abs)
+    return io.open(abs, "r")
 end
 
 local function read_text(rel)
     if not (getFS and getFS().update_path) then
         return nil
     end
-    local ok, abs = pcall(try_read_text, getFS, rel)
+    local ok, abs = pcall(try_read_path, getFS, rel)
     if not (ok and abs and abs ~= "") then
         return nil
     end
-    local f = io.open(abs, "r")
-    if not f then
+    local okf, f = pcall(try_open, abs)
+    if not (okf and f) then
         return nil
     end
     local s = f:read("*a")
@@ -92,6 +82,7 @@ local function read_text(rel)
 end
 
 local function decode_file(file)
+    file = file:gsub("/", "\\")
     local text = read_text(ROOT .. file)
     if not text then
         return nil, "missing"
@@ -113,30 +104,43 @@ local function read_lang()
     return "en"
 end
 
+local function tr(s)
+    if type(s) ~= "string" or s == "" then
+        return s
+    end
+    return names[string.lower(s)] or s
+end
+
 local function decorate(row)
     local key = row.displayName or row.pda_encyclopedia_name
-    row.name = (key and names[key]) or key or row.id or ""
+    row.name = key and tr(key) or (row.id or "")
+    if row.st_data_export_description then
+        row.descr = tr(row.st_data_export_description)
+    end
     return row
 end
 
 local function add_row(typ, row)
     if not (row and row.id) then
-        return
+        return false
     end
     if by_id[row.id] then
         printf("STALKER_DB: skip duplicate id %s", row.id)
-        return
+        return false
     end
-    decorate(row)
-    by_id[row.id] = row
     if row.displayName then
         by_name[row.displayName] = row.id
+        by_name[string.lower(row.displayName)] = row.id
     end
     if row.pda_encyclopedia_name then
         by_name[row.pda_encyclopedia_name] = row.id
+        by_name[string.lower(row.pda_encyclopedia_name)] = row.id
     end
+    decorate(row)
+    by_id[row.id] = row
     local g = groups[typ]
     g[#g + 1] = row
+    return true
 end
 
 local function concat(types)
@@ -201,6 +205,7 @@ local function load_recipes()
     if not data then
         return
     end
+    local missed = 0
     for _, cat in pairs(data) do
         local items = cat and cat.items
         if items then
@@ -211,9 +216,12 @@ local function load_recipes()
                     for j = 1, #it.ingredients do
                         local ing = it.ingredients[j]
                         local key = ing and ing.name
-                        local sec = key and (by_name[key] or (by_id[key] and key))
+                        local sec = key and (by_name[key] or by_name[string.lower(key)] or (by_id[key] and key))
                         if sec then
                             parts[#parts + 1] = { sec, parse_amount(ing.amount) }
+                        else
+                            missed = missed + 1
+                            printf("STALKER_DB: craft miss %s ingredient %s", it.id, tostring(key))
                         end
                     end
                     recipes[it.id] = parts
@@ -221,6 +229,13 @@ local function load_recipes()
             end
         end
     end
+    if missed > 0 then
+        printf("STALKER_DB: craft unmatched ingredients %s", missed)
+    end
+end
+
+local function slug(file)
+    return file:sub(1, #file - 5)
 end
 
 local function load_all()
@@ -236,22 +251,21 @@ local function load_all()
     local ok_files = 0
     local miss_files = 0
     local n_items = 0
-    for i = 1, #LOAD_ORDER do
-        local typ = LOAD_ORDER[i]
+    for i = 1, #ITEM_FILES do
+        local file = ITEM_FILES[i]
+        local typ = slug(file)
         groups[typ] = {}
-        local file = FILES[typ]
-        if file then
-            local data, err = decode_file(file)
-            local items = data and data.items
-            if items then
-                ok_files = ok_files + 1
-                for j = 1, #items do
-                    add_row(typ, items[j])
+        local data, err = decode_file(file)
+        local items = data and data.items
+        if items then
+            ok_files = ok_files + 1
+            for j = 1, #items do
+                if add_row(typ, items[j]) then
+                    n_items = n_items + 1
                 end
-                n_items = n_items + #items
-            elseif err == "missing" then
-                miss_files = miss_files + 1
             end
+        elseif err == "missing" then
+            miss_files = miss_files + 1
         end
     end
     for name, types in pairs(UNIONS) do
@@ -327,46 +341,18 @@ function is_any(id, types)
     return false
 end
 
-function is_weapon(id) return is(id, "weapons") end
-function is_pistol(id) return is(id, "weapons_pistols") end
-function is_smg(id) return is(id, "weapons_smgs") end
-function is_rifle(id) return is(id, "weapons_rifles") end
-function is_sniper(id) return is(id, "weapons_snipers") end
-function is_shotgun(id) return is(id, "weapons_shotguns") end
-function is_melee(id) return is(id, "weapons_melee") end
-function is_launcher(id) return is(id, "weapons_launchers") end
-function is_attach(id) return is(id, "weapon_attach") end
-function is_scope(id) return is(id, "weapon_attach_scopes") end
-function is_silencer(id) return is(id, "weapon_attach_silencers") end
-function is_gl(id) return is(id, "weapon_attach_gls") end
-function is_upgrade_kit(id) return is(id, "weapon_upgrade_kits") end
-function is_weapon_part(id) return is(id, "weapon_parts") end
-function is_armor(id) return is(id, "armor") end
-function is_outfit(id) return is(id, "armor_outfits") end
-function is_helmet(id) return is(id, "armor_helmets") end
-function is_ammo(id) return is(id, "ammo") end
-function is_medicine(id) return is(id, "medicine") end
-function is_food(id) return is(id, "food") end
-function is_artifact(id) return is(id, "artifacts") end
-function is_explosive(id) return is(id, "explosives") end
-function is_belt_attachment(id) return is(id, "belt_attachments") end
-function is_misc(id) return is(id, "misc") end
-function is_mutant_part(id) return is(id, "mutant_parts") end
-function is_outfit_part(id) return is(id, "outfit_parts") end
+function translate(key)
+    ensure()
+    return tr(key)
+end
 
-function cost(id)
-    local row = get(id)
-    if not row then
+function json(file)
+    ensure()
+    if not file then
         return nil
     end
-    local v = row.st_upgr_cost
-    if v == nil or v == "" then
-        return nil
-    end
-    if type(v) == "number" then
-        return v
-    end
-    return tonumber(tostring(v):gsub("%%$", ""))
+    local data = decode_file(file)
+    return data
 end
 
 function craft(id)
@@ -396,43 +382,6 @@ function list(typ, sort, dir)
     list_sorted[key] = out
     return out
 end
-
-local function wrap(typ)
-    return function(sort, dir)
-        return list(typ, sort, dir)
-    end
-end
-
-weapons = wrap("weapons")
-weapons_pistols = wrap("weapons_pistols")
-weapons_smgs = wrap("weapons_smgs")
-weapons_rifles = wrap("weapons_rifles")
-weapons_snipers = wrap("weapons_snipers")
-weapons_shotguns = wrap("weapons_shotguns")
-weapons_melee = wrap("weapons_melee")
-weapons_launchers = wrap("weapons_launchers")
-
-weapon_attach = wrap("weapon_attach")
-weapon_attach_scopes = wrap("weapon_attach_scopes")
-weapon_attach_silencers = wrap("weapon_attach_silencers")
-weapon_attach_gls = wrap("weapon_attach_gls")
-
-weapon_upgrade_kits = wrap("weapon_upgrade_kits")
-weapon_parts = wrap("weapon_parts")
-
-armor = wrap("armor")
-armor_outfits = wrap("armor_outfits")
-armor_helmets = wrap("armor_helmets")
-
-ammo = wrap("ammo")
-mutant_parts = wrap("mutant_parts")
-outfit_parts = wrap("outfit_parts")
-medicine = wrap("medicine")
-food = wrap("food")
-artifacts = wrap("artifacts")
-explosives = wrap("explosives")
-belt_attachments = wrap("belt_attachments")
-misc = wrap("misc")
 
 function on_game_start()
     load_all()

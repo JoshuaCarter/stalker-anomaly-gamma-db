@@ -2,12 +2,10 @@ name: Release in-game mod
 
 on:
   push:
-    branches: [main, feat/in-game-mod]
+    branches: [main]
     paths:
       - mod/**
       - scripts/pack-mod.mjs
-      - site/public/data/packs.json
-      - site/public/data/*/*.json
       - .github/workflows/release-mod.yml
   workflow_dispatch:
 
@@ -22,11 +20,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: node scripts/pack-mod.mjs --check
       - run: node scripts/pack-mod.mjs --release --out dist/mod
       - env:
           GH_TOKEN: ${{ github.token }}
         run: |
           VER=$(tr -d '[:space:]' < dist/mod/VERSION)
+          gh release delete "v$VER" --yes --cleanup-tag || true
           gh release create "v$VER" dist/mod/*.zip \
             --target "${{ github.sha }}" \
             --title "Stalker DB $VER" \
