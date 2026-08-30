@@ -1,0 +1,63 @@
+name: Release in-game mod
+
+on:
+  push:
+    branches: [main, feat/in-game-mod]
+    paths:
+      - data/**
+      - mod/**
+      - scripts/generate-index.mjs
+      - scripts/generate-traders.mjs
+      - scripts/pack-mod.mjs
+      - site/public/data/packs.json
+      - .github/workflows/release-mod.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Last release
+        id: last
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=$(gh release list --json tagName --jq '[.[] | select(.tagName | test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))][0].tagName // empty')
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if [ -n "$TAG" ]; then
+            echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+            mkdir -p prev
+            gh release download "$TAG" --dir prev || true
+          else
+            echo "version=" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Pack
+        id: pack
+        run: |
+          set +e
+          node scripts/pack-mod.mjs --release --out dist/mod --prev prev --last-version "${{ steps.last.outputs.version }}"
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+      - name: Fail on pack error
+        if: steps.pack.outputs.code != '0' && steps.pack.outputs.code != '2'
+        run: exit 1
+      - name: Skip (unchanged)
+        if: steps.pack.outputs.code == '2'
+        run: echo "fingerprints match last release"
+      - name: Publish
+        if: steps.pack.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VER=$(tr -d '[:space:]' < dist/mod/VERSION)
+          NOTES=$(cat dist/mod/NOTES)
+          gh release create "v$VER" dist/mod/*.zip dist/mod/fingerprints.json \
+            --title "Stalker DB v$VER" \
+            --notes "$NOTES"
