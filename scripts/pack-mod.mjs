@@ -258,9 +258,11 @@ listed = __import__("json").loads(z.read(folder + "/gamedata/configs/db/pack-fil
 if "pistols.json" not in listed:
     raise SystemExit("pack-files.json missing pistols.json")
 lua = z.read(folder + "/gamedata/scripts/stalker_db.script").decode()
-for s in ("function open(", "can_open", "seal_one", "make_handle"):
+for s in ("function open(", "app_ready", "make_handle"):
     if s not in lua:
         raise SystemExit("stalker_db.script missing " + s)
+if "seal_one" in lua or "function get(" in lua:
+    raise SystemExit("stalker_db.script must expose open only")
 print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
 `;
   let r;

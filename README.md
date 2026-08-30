@@ -48,7 +48,7 @@ This starts a local dev server on port 3000.
 
 ## In-game mod
 
-A self-contained Anomaly/GAMMA mod that loads pack JSON and exposes `STALKER_DB` to other scripts. See [mod/README.md](mod/README.md).
+A self-contained Anomaly/GAMMA mod that loads pack JSON. Other scripts call `STALKER_DB.open` at load and keep the handle. See [mod/README.md](mod/README.md).
 
 ```bash
 npm run pack-mod -- --check
