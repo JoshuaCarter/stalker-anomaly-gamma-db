@@ -77,6 +77,28 @@ function copyWhitelist(id, destDb) {
   return n;
 }
 
+function xml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+const LANG_LABEL = { en: "English", ru: "Russian", fr: "French" };
+
+function packLocales(id) {
+  const path = join(DATA, id, "translations.json");
+  if (!existsSync(path)) {
+    return ["en"];
+  }
+  const t = JSON.parse(readFileSync(path, "utf8"));
+  if (Array.isArray(t.locales) && t.locales.length) {
+    return t.locales.filter((k) => t[k]);
+  }
+  return ["en", "ru", "fr"].filter((k) => t[k]);
+}
+
 function stampMeta(dest, version, pack) {
   const ver = String(version).replaceAll("-", ".");
   writeFileSync(
@@ -95,23 +117,75 @@ notes=
   );
 }
 
+function writeFomod(dest, version, pack, locales) {
+  const name = `Stalker DB - ${pack.name}`;
+  const ver = String(version).replaceAll("-", ".");
+  mkdirSync(join(dest, "fomod", "lang"), { recursive: true });
+  const plugins = locales
+    .map((lang, i) => {
+      writeFileSync(join(dest, "fomod", "lang", lang), lang + "\n");
+      const rec = i === 0 ? "\n              <typeDescriptor><type name=\"Recommended\"/></typeDescriptor>" : "";
+      return `            <plugin name="${xml(LANG_LABEL[lang] || lang)}">
+              <description>Item names.</description>
+              <files>
+                <file source="fomod/lang/${lang}" destination="gamedata/configs/db/lang" />
+              </files>${rec}
+            </plugin>`;
+    })
+    .join("\n");
+  writeFileSync(
+    join(dest, "fomod", "info.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>
+<fomod>
+  <Name>${xml(name)}</Name>
+  <Version>${xml(ver)}</Version>
+  <Author>Stalker DB</Author>
+  <Description>Item catalog for other mods.</Description>
+</fomod>
+`,
+  );
+  writeFileSync(
+    join(dest, "fomod", "ModuleConfig.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+  <moduleName>${xml(name)}</moduleName>
+  <requiredInstallFiles>
+    <folder source="gamedata" destination="gamedata" />
+    <file source="meta.ini" destination="meta.ini" />
+  </requiredInstallFiles>
+  <installSteps order="Explicit">
+    <installStep name="Language">
+      <optionalFileGroups order="Explicit">
+        <group name="Language" type="SelectExactlyOne">
+          <plugins order="Explicit">
+${plugins}
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+  </installSteps>
+</config>
+`,
+  );
+}
+
 const ZIP_PY = `
 import sys, zipfile
 from pathlib import Path
-parent, folder, out = Path(sys.argv[1]), sys.argv[2], Path(sys.argv[3])
+stage, out = Path(sys.argv[1]), Path(sys.argv[2])
 if out.exists():
     out.unlink()
 with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
-    for path in sorted((parent / folder).rglob("*")):
+    for path in sorted(stage.rglob("*")):
         if path.is_file():
-            zf.write(path, path.relative_to(parent).as_posix())
+            zf.write(path, path.relative_to(stage).as_posix())
 `;
 
-function zipFolder(parent, folder, zipPath) {
+function zipStage(stage, zipPath) {
   const attempts =
     process.platform === "win32" ? [["py", "-3"], ["python"], ["python3"]] : [["python3"], ["python"]];
   for (const [cmd, ...pre] of attempts) {
-    const r = spawnSync(cmd, [...pre, "-c", ZIP_PY, parent, folder, zipPath], { stdio: "inherit" });
+    const r = spawnSync(cmd, [...pre, "-c", ZIP_PY, stage, zipPath], { stdio: "inherit" });
     if (r.status === 0) {
       return;
     }
@@ -120,17 +194,18 @@ function zipFolder(parent, folder, zipPath) {
 }
 
 function buildZip(pack, version, outDir) {
-  const folder = `Stalker DB - ${pack.name}`;
-  const zip = `StalkerDB_${pack.id}_${version}.zip`;
-  const stage = join(outDir, folder);
+  const zip = `StalkerDB_${pack.id}_${String(version).replaceAll("-", ".")}.zip`;
+  const stage = join(outDir, `_stage_${pack.id}`);
   rmSync(stage, { recursive: true, force: true });
   mkdirSync(join(stage, "gamedata", "scripts"), { recursive: true });
   for (const f of SCRIPTS) {
     copyFileSync(join(MOD, "gamedata", "scripts", f), join(stage, "gamedata", "scripts", f));
   }
   const n = copyWhitelist(pack.id, join(stage, "gamedata", "configs", "db"));
+  writeFileSync(join(stage, "gamedata", "configs", "db", "lang"), "en\n");
   stampMeta(stage, version, pack);
-  zipFolder(outDir, folder, join(outDir, zip));
+  writeFomod(stage, version, pack, packLocales(pack.id));
+  zipStage(stage, join(outDir, zip));
   rmSync(stage, { recursive: true, force: true });
   return n;
 }

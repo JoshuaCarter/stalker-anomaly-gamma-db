@@ -1,6 +1,7 @@
 --[[
     Item catalog: gamedata/configs/db/*.json
     Missing files are empty groups. craft-recipes.json is a recipe index, not an item cat.
+    db/lang picks the translations table (en/ru/fr).
 ]]
 
 local ROOT = "db\\"
@@ -60,7 +61,7 @@ local LOAD_ORDER = {
     "weapon_attach_scopes", "weapon_attach_silencers",
     "weapon_attach_gls", "weapon_upgrade_kits",
     "armor_outfits", "armor_helmets",
-    "ammo", "ammo_parts", "mutant_parts", "outfit_parts",
+    "ammo", "mutant_parts", "outfit_parts",
     "medicine", "food", "artifacts", "explosives", "belt_attachments",
     "weapon_parts",
     "misc",
@@ -103,39 +104,18 @@ local function decode_file(file)
     return nil, "bad"
 end
 
-local function num(v)
-    if v == nil or v == "" then
-        return 0
+local function read_lang()
+    local text = read_text(ROOT .. "lang")
+    local lang = text and text:match("[A-Za-z]+")
+    if lang then
+        return string.lower(lang)
     end
-    if type(v) == "number" then
-        return v
-    end
-    local s = tostring(v):gsub("%%$", "")
-    return tonumber(s) or 0
+    return "en"
 end
 
-local function decorate(row, typ)
-    row.type = typ
-    row.cost = num(row.st_upgr_cost)
-    row.weight = num(row.st_prop_weight)
+local function decorate(row)
     local key = row.displayName or row.pda_encyclopedia_name
     row.name = (key and names[key]) or key or row.id or ""
-    row.damage = num(row.ui_inv_damage)
-    row.ap = num(row.st_data_export_ap)
-    row.k_ap = num(row.st_data_export_k_ap)
-    row.box = num(row.st_data_export_ammo_box_size)
-    row.br = num(row.brClass)
-    row.ballistic = num(row.ui_inv_outfit_fire_wound_protection)
-    row.rad = num(row.ui_inv_outfit_radiation_protection)
-    row.slots = num(row.ui_inv_outfit_artefact_count)
-    row.carry = num(row.ui_inv_outfit_additional_weight)
-    row.hit = num(row.st_data_export_hit_power)
-    row.rof = num(row.ui_inv_rate_of_fire)
-    row.mag = num(row.base_mag_size)
-    row.recoil = num(row.ui_inv_recoil)
-    row.accuracy = num(row.ui_inv_accuracy)
-    row.handling = num(row.ui_inv_handling)
-    row.zoom = num(row.st_data_export_zoom_factor)
     return row
 end
 
@@ -143,10 +123,12 @@ local function add_row(typ, row)
     if not (row and row.id) then
         return
     end
-    decorate(row, typ)
-    if not by_id[row.id] then
-        by_id[row.id] = row
+    if by_id[row.id] then
+        printf("STALKER_DB: skip duplicate id %s", row.id)
+        return
     end
+    decorate(row)
+    by_id[row.id] = row
     if row.displayName then
         by_name[row.displayName] = row.id
     end
@@ -170,40 +152,6 @@ local function concat(types)
     return out
 end
 
-local function starts(id, pfx)
-    return id:sub(1, #pfx) == pfx
-end
-
-local function build_subs()
-    groups.weapon_cleaning_kits = {}
-    groups.weapon_repair_kits = {}
-    local misc = groups.misc or {}
-    for i = 1, #misc do
-        local row = misc[i]
-        local id = row.id
-        if starts(id, "cleaning_kit_") and id ~= "cleaning_kit_u" then
-            groups.weapon_cleaning_kits[#groups.weapon_cleaning_kits + 1] = row
-        elseif starts(id, "toolkit_") then
-            groups.weapon_repair_kits[#groups.weapon_repair_kits + 1] = row
-        end
-    end
-    groups.ammo_casings = {}
-    groups.ammo_powder = {}
-    groups.ammo_bullets = {}
-    local parts = groups.ammo_parts or {}
-    for i = 1, #parts do
-        local row = parts[i]
-        local id = row.id
-        if starts(id, "casing_") then
-            groups.ammo_casings[#groups.ammo_casings + 1] = row
-        elseif starts(id, "powder_") then
-            groups.ammo_powder[#groups.ammo_powder + 1] = row
-        elseif starts(id, "bullet_") then
-            groups.ammo_bullets[#groups.ammo_bullets + 1] = row
-        end
-    end
-end
-
 local function index_all()
     in_group = {}
     for typ, rows in pairs(groups) do
@@ -220,9 +168,23 @@ end
 
 local function load_names()
     local data = decode_file("translations.json")
-    if data and type(data.en) == "table" then
-        names = data.en
+    names = {}
+    if not data then
+        printf("STALKER_DB: names missing")
+        return
     end
+    local lang = read_lang()
+    if type(data[lang]) == "table" then
+        names = data[lang]
+        printf("STALKER_DB: names %s", lang)
+        return
+    end
+    if type(data.en) == "table" then
+        names = data.en
+        printf("STALKER_DB: names en (no %s)", lang)
+        return
+    end
+    printf("STALKER_DB: names missing")
 end
 
 local function parse_amount(s)
@@ -295,7 +257,6 @@ local function load_all()
     for name, types in pairs(UNIONS) do
         groups[name] = concat(types)
     end
-    build_subs()
     index_all()
     load_recipes()
     printf("STALKER_DB: loaded %s items from %s files (%s missing)", n_items, ok_files, miss_files)
@@ -379,17 +340,11 @@ function is_scope(id) return is(id, "weapon_attach_scopes") end
 function is_silencer(id) return is(id, "weapon_attach_silencers") end
 function is_gl(id) return is(id, "weapon_attach_gls") end
 function is_upgrade_kit(id) return is(id, "weapon_upgrade_kits") end
-function is_repair_kit(id) return is(id, "weapon_repair_kits") end
-function is_cleaning_kit(id) return is(id, "weapon_cleaning_kits") end
 function is_weapon_part(id) return is(id, "weapon_parts") end
 function is_armor(id) return is(id, "armor") end
 function is_outfit(id) return is(id, "armor_outfits") end
 function is_helmet(id) return is(id, "armor_helmets") end
 function is_ammo(id) return is(id, "ammo") end
-function is_ammo_part(id) return is(id, "ammo_parts") end
-function is_ammo_casing(id) return is(id, "ammo_casings") end
-function is_ammo_powder(id) return is(id, "ammo_powder") end
-function is_ammo_bullet(id) return is(id, "ammo_bullets") end
 function is_medicine(id) return is(id, "medicine") end
 function is_food(id) return is(id, "food") end
 function is_artifact(id) return is(id, "artifacts") end
@@ -401,7 +356,17 @@ function is_outfit_part(id) return is(id, "outfit_parts") end
 
 function cost(id)
     local row = get(id)
-    return (row and row.cost) or 0
+    if not row then
+        return nil
+    end
+    local v = row.st_upgr_cost
+    if v == nil or v == "" then
+        return nil
+    end
+    if type(v) == "number" then
+        return v
+    end
+    return tonumber(tostring(v):gsub("%%$", ""))
 end
 
 function craft(id)
@@ -453,8 +418,6 @@ weapon_attach_silencers = wrap("weapon_attach_silencers")
 weapon_attach_gls = wrap("weapon_attach_gls")
 
 weapon_upgrade_kits = wrap("weapon_upgrade_kits")
-weapon_repair_kits = wrap("weapon_repair_kits")
-weapon_cleaning_kits = wrap("weapon_cleaning_kits")
 weapon_parts = wrap("weapon_parts")
 
 armor = wrap("armor")
@@ -462,10 +425,6 @@ armor_outfits = wrap("armor_outfits")
 armor_helmets = wrap("armor_helmets")
 
 ammo = wrap("ammo")
-ammo_parts = wrap("ammo_parts")
-ammo_casings = wrap("ammo_casings")
-ammo_powder = wrap("ammo_powder")
-ammo_bullets = wrap("ammo_bullets")
 mutant_parts = wrap("mutant_parts")
 outfit_parts = wrap("outfit_parts")
 medicine = wrap("medicine")

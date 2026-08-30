@@ -2,7 +2,7 @@
 
 Item catalog for other Anomaly / GAMMA mods. One zip per game pack. No extra mods required.
 
-Install with MO2. The folder name stays `Stalker DB - GAMMA 0.9.5` (or Anomaly / Grim Raid). Zip files are `StalkerDB_{pack}_{version}.zip`. Version is in the zip name and `meta.ini` only, so MO2 treats updates as the same mod.
+Install with MO2. The installer asks for a language (English, Russian, French). Item names come from that locale. Folder name stays `Stalker DB - GAMMA 0.9.5` (or Anomaly / Grim Raid).
 
 ## Use
 
@@ -10,8 +10,9 @@ Install with MO2. The folder name stays `Stalker DB - GAMMA 0.9.5` (or Anomaly /
 local row = STALKER_DB.get("wpn_ak74")
 if STALKER_DB.is_weapon(sec) then
 end
-local pistols = STALKER_DB.list("weapons_pistols", "cost", "desc")
+local pistols = STALKER_DB.list("weapons_pistols", "st_upgr_cost", "desc")
 local parts = STALKER_DB.craft(sec) -- { { sec, amount }, ... } or nil
+-- row is the JSON item plus name (translated)
 ```
 
 Short name in your own script:
@@ -33,6 +34,6 @@ npm run pack-mod -- --release --out dist/mod
 
 ## Version
 
-UTC stamp `yyyy-mm-dd-hhmm` when CI publishes (example `2026-08-30-2214`). Zip and GitHub tag use hyphens. `meta.ini` uses dots (`2026.08.30.2214`) so MO2 can compare versions.
+UTC stamp when CI publishes. GitHub tag is `v2026-08-30-2214`. Zip and `meta.ini` use dots (`StalkerDB_gamma-0.9.5_2026.08.30.2214.zip`) so MO2 does not treat the date as a short `yyyy-mm` and drop day/time.
 
 JSON comes from committed `site/public/data/<pack>/` (same files the website already built with `generate-index.mjs`). Pack does not regenerate.
