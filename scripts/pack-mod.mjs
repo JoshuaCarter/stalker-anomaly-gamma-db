@@ -8,7 +8,6 @@ import {
   readdirSync,
   readFileSync,
   rmSync,
-  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
@@ -87,7 +86,11 @@ function folderName(pack) {
 }
 
 function zipName(pack, version) {
-  return `${folderName(pack)} - ${version}.zip`;
+  return `StalkerDB_${pack.id}_${version}.zip`;
+}
+
+function installName(pack) {
+  return `StalkerDB_${pack.id}.zip`;
 }
 
 function luaHash() {
@@ -140,113 +143,50 @@ function copyWhitelist(id, destDb) {
   return n;
 }
 
-function stampMeta(dest, version, zip) {
+function dateVersion(now = new Date()) {
+  const p = (n) => String(n).padStart(2, "0");
+  return `${now.getUTCFullYear()}-${p(now.getUTCMonth() + 1)}-${p(now.getUTCDate())}-${p(now.getUTCHours())}${p(now.getUTCMinutes())}`;
+}
+
+function metaVersion(version) {
+  // MO2 VersionInfo only splits on dots. 2026-08-30-2214 would show as 2026.0-08-30-2214.
+  return String(version).replaceAll("-", ".");
+}
+
+function stampMeta(dest, version, pack) {
+  const ver = metaVersion(version);
   const text = readFileSync(join(MOD, "meta.ini"), "utf8")
-    .replace(/^version=.*$/m, `version=${version}`)
-    .replace(/^newestVersion=.*$/m, `newestVersion=${version}`)
-    .replace(/^installationFile=.*$/m, `installationFile=${zip}`);
+    .replace(/^version=.*$/m, `version=${ver}`)
+    .replace(/^newestVersion=.*$/m, `newestVersion=${ver}`)
+    .replace(/^installationFile=.*$/m, `installationFile=${installName(pack)}`)
+    .replace(/^comments=.*$/m, `comments=Stalker DB - ${pack.name}`);
   writeFileSync(join(dest, "meta.ini"), text);
 }
 
-function u16(n) {
-  const b = Buffer.alloc(2);
-  b.writeUInt16LE(n);
-  return b;
-}
-
-function u32(n) {
-  const b = Buffer.alloc(4);
-  b.writeUInt32LE(n);
-  return b;
-}
-
-function crc32(buf) {
-  let c = ~0;
-  for (const x of buf) {
-    c ^= x;
-    for (let i = 0; i < 8; i++) {
-      c = (c >>> 1) ^ (0xedb88320 & -(c & 1));
-    }
-  }
-  return ~c >>> 0;
-}
-
-function walkFiles(dir, prefix, out) {
-  for (const name of readdirSync(dir)) {
-    const p = join(dir, name);
-    const rel = prefix ? `${prefix}/${name}` : name;
-    if (statSync(p).isDirectory()) {
-      walkFiles(p, rel, out);
-    } else {
-      out.push({ rel, data: readFileSync(p) });
-    }
-  }
-}
+// same method as DOGMA dev/package-fomod.sh: Python zipfile ZIP_DEFLATED
+const ZIP_PY = `
+import sys, zipfile
+from pathlib import Path
+parent, folder, out = Path(sys.argv[1]), sys.argv[2], Path(sys.argv[3])
+stage = parent / folder
+if out.exists():
+    out.unlink()
+with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
+    for path in sorted(stage.rglob("*")):
+        if path.is_file():
+            zf.write(path, path.relative_to(parent).as_posix())
+`;
 
 function zipFolder(parent, folder, zipPath) {
-  if (existsSync(zipPath)) {
-    rmSync(zipPath);
+  const attempts =
+    process.platform === "win32" ? [["py", "-3"], ["python"], ["python3"]] : [["python3"], ["python"]];
+  for (const [cmd, ...pre] of attempts) {
+    const r = spawnSync(cmd, [...pre, "-c", ZIP_PY, parent, folder, zipPath], { stdio: "inherit" });
+    if (r.status === 0) {
+      return;
+    }
   }
-  const files = [];
-  walkFiles(join(parent, folder), folder, files);
-  const chunks = [];
-  const central = [];
-  let offset = 0;
-  for (const f of files) {
-    const name = Buffer.from(f.rel, "utf8");
-    const crc = crc32(f.data);
-    const local = Buffer.concat([
-      Buffer.from("PK\x03\x04"),
-      u16(20),
-      u16(0),
-      u16(0),
-      u16(0),
-      u16(0),
-      u32(crc),
-      u32(f.data.length),
-      u32(f.data.length),
-      u16(name.length),
-      u16(0),
-      name,
-      f.data,
-    ]);
-    chunks.push(local);
-    central.push(
-      Buffer.concat([
-        Buffer.from("PK\x01\x02"),
-        u16(20),
-        u16(20),
-        u16(0),
-        u16(0),
-        u16(0),
-        u16(0),
-        u32(crc),
-        u32(f.data.length),
-        u32(f.data.length),
-        u16(name.length),
-        u16(0),
-        u16(0),
-        u16(0),
-        u16(0),
-        u32(0),
-        u32(offset),
-        name,
-      ]),
-    );
-    offset += local.length;
-  }
-  const cd = Buffer.concat(central);
-  const eocd = Buffer.concat([
-    Buffer.from("PK\x05\x06"),
-    u16(0),
-    u16(0),
-    u16(files.length),
-    u16(files.length),
-    u32(cd.length),
-    u32(offset),
-    u16(0),
-  ]);
-  writeFileSync(zipPath, Buffer.concat([...chunks, cd, eocd]));
+  throw new Error("python required to zip (same as DOGMA package-fomod.sh)");
 }
 
 function buildZip(pack, version, outDir) {
@@ -260,18 +200,10 @@ function buildZip(pack, version, outDir) {
     copyFileSync(join(MOD, "gamedata", "scripts", f), join(stage, "gamedata", "scripts", f));
   }
   const n = copyWhitelist(pack.id, join(stage, "gamedata", "configs", "db"));
-  stampMeta(stage, version, zip);
+  stampMeta(stage, version, pack);
   zipFolder(outDir, folder, join(outDir, zip));
   rmSync(stage, { recursive: true, force: true });
   return { zip, files: n };
-}
-
-function bump(last) {
-  const m = String(last || "").match(/^(\d+)\.(\d+)\.(\d+)$/);
-  if (!m) {
-    return "1.0.0";
-  }
-  return `${m[1]}.${m[2]}.${Number(m[3]) + 1}`;
 }
 
 function fingerprints() {
@@ -280,6 +212,56 @@ function fingerprints() {
     packs[p.id] = { hash: packHash(p.id) };
   }
   return { lua: luaHash(), packs };
+}
+
+function loadPrevFp(prevDir) {
+  if (!prevDir) {
+    return null;
+  }
+  const fpPath = join(prevDir, "fingerprints.json");
+  if (existsSync(fpPath)) {
+    return readJson(fpPath);
+  }
+  const bodyPath = join(prevDir, "BODY");
+  if (!existsSync(bodyPath)) {
+    return null;
+  }
+  const m = readFileSync(bodyPath, "utf8").match(/<!-- fingerprints\n([\s\S]*?)\n-->/);
+  return m ? JSON.parse(m[1]) : null;
+}
+
+function findPrevZip(prevDir, pack, old) {
+  if (!prevDir || !existsSync(prevDir)) {
+    return "";
+  }
+  const names = readdirSync(prevDir);
+  const want = [];
+  if (old && old.zip) {
+    want.push(old.zip, old.zip.replaceAll(" ", "."));
+  }
+  for (const n of want) {
+    if (names.includes(n)) {
+      return join(prevDir, n);
+    }
+  }
+  const prefix = `StalkerDB_${pack.id}_`;
+  const hit = names.find((n) => n.startsWith(prefix) && n.endsWith(".zip"));
+  if (hit) {
+    return join(prevDir, hit);
+  }
+  const folder = folderName(pack);
+  const dotted = folder.replaceAll(" ", ".");
+  const oldHit = names.find((n) => n.endsWith(".zip") && (n.includes(folder) || n.includes(dotted)));
+  return oldHit ? join(prevDir, oldHit) : "";
+}
+
+function copiedZipName(pack, src) {
+  const base = src.replace(/.*[/\\]/, "");
+  if (base.startsWith("StalkerDB_")) {
+    return base;
+  }
+  const m = base.match(/(\d{4}-\d{2}-\d{2}-\d{4}|\d+\.\d+\.\d+)/);
+  return zipName(pack, m ? m[1] : dateVersion());
 }
 
 function runCheck() {
@@ -312,8 +294,7 @@ function runRelease(opt) {
     }
   }
   const next = fingerprints();
-  const prevPath = opt.prev ? join(opt.prev, "fingerprints.json") : "";
-  const prev = prevPath && existsSync(prevPath) ? readJson(prevPath) : null;
+  const prev = loadPrevFp(opt.prev);
   const luaChanged = !prev || prev.lua !== next.lua;
   const changed = [];
   for (const p of activePacks()) {
@@ -326,7 +307,7 @@ function runRelease(opt) {
     console.log("unchanged");
     process.exit(2);
   }
-  const version = opt.version || bump(opt["last-version"]);
+  const version = opt.version || dateVersion();
   const rebuilt = [];
   const copied = [];
   for (const p of activePacks()) {
@@ -336,23 +317,23 @@ function runRelease(opt) {
       next.packs[p.id].zip = zip;
       rebuilt.push(`${p.id} (${files} files)`);
     } else {
-      const src = [old.zip, old.zip.replaceAll(" ", ".")].map((n) => join(opt.prev, n)).find(existsSync);
+      const src = findPrevZip(opt.prev, p, old);
       if (!src) {
         const { zip, files } = buildZip(p, version, outDir);
         next.packs[p.id].zip = zip;
         rebuilt.push(`${p.id} (${files} files, prev zip missing)`);
       } else {
-        copyFileSync(src, join(outDir, old.zip));
-        next.packs[p.id].zip = old.zip;
+        const dest = copiedZipName(p, src);
+        copyFileSync(src, join(outDir, dest));
+        next.packs[p.id].zip = dest;
         copied.push(p.id);
       }
     }
   }
-  writeFileSync(join(outDir, "fingerprints.json"), JSON.stringify(next, null, 2) + "\n");
   writeFileSync(join(outDir, "VERSION"), version + "\n");
   writeFileSync(
     join(outDir, "NOTES"),
-    `rebuilt: ${rebuilt.join(", ") || "none"}\ncopied: ${copied.join(", ") || "none"}\n`,
+    `rebuilt: ${rebuilt.join(", ") || "none"}\ncopied: ${copied.join(", ") || "none"}\n\n<!-- fingerprints\n${JSON.stringify(next)}\n-->\n`,
   );
   console.log(`version ${version}`);
   console.log(`rebuilt: ${rebuilt.join(", ") || "none"}`);
@@ -388,6 +369,6 @@ if (opt.check) {
   }
   writeFileSync(join(outDir, "fingerprints.json"), JSON.stringify(fp, null, 2) + "\n");
 } else {
-  console.error("usage: pack-mod.mjs --check | --fingerprints-only | --release | --version X.Y.Z");
+  console.error("usage: pack-mod.mjs --check | --fingerprints-only | --release | --version YYYY-MM-DD-HHMM");
   process.exit(1);
 }

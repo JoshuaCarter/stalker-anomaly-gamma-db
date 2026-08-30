@@ -55,7 +55,7 @@ npm run pack-mod -- --check
 npm run pack-mod -- --release --out dist/mod
 ```
 
-CI publishes one zip per pack on GitHub Releases when shipped data or the Lua changes.
+CI publishes `StalkerDB_{pack}_{yyyy-mm-dd-hhmm}.zip` per pack on GitHub Releases when shipped data or the Lua changes. See [mod/README.md](mod/README.md).
 
 ## Acknowledgements
 
