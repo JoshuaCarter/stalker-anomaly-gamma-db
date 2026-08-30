@@ -32,8 +32,9 @@ function activePacks() {
 }
 
 function dateVersion(now = new Date()) {
-  const p = (n) => String(n).padStart(2, "0");
-  return `${now.getUTCFullYear()}-${p(now.getUTCMonth() + 1)}-${p(now.getUTCDate())}-${p(now.getUTCHours())}${p(now.getUTCMinutes())}`;
+  const p2 = (n) => String(n).padStart(2, "0");
+  const hhmm = String(now.getUTCHours() * 100 + now.getUTCMinutes()).padStart(4, "0");
+  return `${now.getUTCFullYear()}-${p2(now.getUTCMonth() + 1)}-${p2(now.getUTCDate())}-${hhmm}`;
 }
 
 function copyPackJson(id, dest) {
@@ -190,6 +191,10 @@ function buildZip(pack, version, outDir) {
 }
 
 function runCheck() {
+  const stamped = dateVersion(new Date(Date.UTC(2026, 7, 30, 6, 51)));
+  if (stamped !== "2026-08-30-0651") {
+    throw new Error(`dateVersion must zero-pad hhmm, got ${stamped}`);
+  }
   const id = "gamma-0.9.5";
   const pistols = join(DATA, id, "pistols.json");
   const data = JSON.parse(readFileSync(pistols, "utf8"));
