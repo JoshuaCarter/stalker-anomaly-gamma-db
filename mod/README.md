@@ -42,4 +42,4 @@ CI publishes when `mod/` or `pack-mod.mjs` changes, or via workflow_dispatch. It
 
 ## Version
 
-UTC stamp. Tag `v2026-08-30-2214`. Zip uses dots (`StalkerDB_gamma-0.9.5_2026.08.30.2214.zip`). `meta.ini` is `2026.08.30-2214` so MO2 does not strip the hhmm zero.
+UTC stamp `yyyy-mm-dd-hhmm` (hhmm is four digits). Tag `v2026-08-30-2214`. Zip and `meta.ini` use the same stamp (`StalkerDB_gamma-0.9.5_2026-08-30-2214.zip`).
