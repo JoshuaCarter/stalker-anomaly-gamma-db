@@ -13,22 +13,20 @@ local ROOT = "db\\"
 local loaded = false
 local names = {}
 local by_id = {}
-local by_id_raw = {}
 local groups = {}
-local groups_raw = {}
 local in_group = {}
-local EMPTY = {}
+local list_pub = {}
 local list_sorted = {}
 local recipes = {}
-local recipes_raw = {}
 local json_raw = {}
-local json_sealed = {}
 local views = {}
 local view_n = 0
 local can_open = true
 local raw_of = {}
 local proxy_of = {}
 local write_warned = {}
+local NONE = {}
+local cbs_bound = false
 
 local UNIONS = {
     weapons = {
@@ -76,6 +74,8 @@ local function norm_file(file)
     return file:gsub("/", "\\")
 end
 
+-- ponytail: 5.1 empty proxy. pairs() is empty; field / ipairs(list) only.
+-- list() arrays stay writable (existing keys skip __newindex). upgrade: copy the array.
 local RO = { __metatable = false }
 
 local function seal_one(raw)
@@ -90,11 +90,6 @@ local function seal_one(raw)
     proxy_of[raw] = p
     raw_of[p] = raw
     setmetatable(p, RO)
-    for _, v in pairs(raw) do
-        if type(v) == "table" then
-            seal_one(v)
-        end
-    end
     return p
 end
 
@@ -116,9 +111,10 @@ function RO.__newindex(p, k)
     end
     write_warned[p] = true
     local raw = raw_of[p]
-    local id = raw and raw.id or "?"
-    printf("STALKER_DB: ignore write id=%s key=%s", tostring(id), tostring(k))
+    printf("STALKER_DB: ignore write id=%s key=%s", tostring(raw and raw.id or "?"), tostring(k))
 end
+
+local EMPTY = seal_one({})
 
 local function decode_file(file)
     file = norm_file(file)
@@ -236,7 +232,7 @@ local function pack_file_list()
     end
     local man = decode_file("manifest.json")
     if type(man) ~= "table" then
-        return EMPTY
+        return NONE
     end
     local out = {}
     for k in pairs(man) do
@@ -294,50 +290,13 @@ local function load_recipes()
     printf("STALKER_DB: craft recipes %s", n)
 end
 
-local function seal_public()
-    by_id_raw = by_id
-    local by_p = {}
-    for id, row in pairs(by_id) do
-        by_p[id] = seal_one(row)
-    end
-    by_id = by_p
-    groups_raw = groups
-    local groups_p = {}
-    for typ, rows in pairs(groups) do
-        local arr = {}
-        for i = 1, #rows do
-            arr[i] = seal_one(rows[i])
-        end
-        groups_p[typ] = arr
-    end
-    groups = groups_p
-    recipes_raw = recipes
-    local rec_p = {}
-    for id, rec in pairs(recipes) do
-        rec_p[id] = seal_one(rec)
-    end
-    recipes = rec_p
-    json_sealed = {}
-    for file, data in pairs(json_raw) do
-        if data == false then
-            json_sealed[file] = false
-        elseif type(data) == "table" then
-            json_sealed[file] = seal_one(data)
-        else
-            json_sealed[file] = data
-        end
-    end
-    EMPTY = seal_one({})
-    printf("STALKER_DB: sealed")
-end
-
 local function load_all()
     loaded = true
     by_id = {}
     groups = {}
     recipes = {}
     json_raw = {}
-    json_sealed = {}
+    list_pub = {}
     list_sorted = {}
     load_names()
     local files = pack_file_list()
@@ -384,7 +343,6 @@ local function load_all()
     end
     index_all()
     load_recipes()
-    seal_public()
     printf("STALKER_DB: loaded %s items from %s groups, %s files (%s missing)", n_items, #item_files, ok_files, miss_files)
 end
 
@@ -414,6 +372,41 @@ local function cmp(key, desc)
     end
 end
 
+local function sorted_list(src, typ, sort, dir, cache)
+    if not sort then
+        return src
+    end
+    local key = typ .. "\0" .. sort .. "\0" .. (dir or "")
+    local hit = cache[key]
+    if hit then
+        return hit
+    end
+    local out = {}
+    for i = 1, #src do
+        out[i] = src[i]
+    end
+    table.sort(out, cmp(sort, dir == "desc"))
+    cache[key] = out
+    return out
+end
+
+local function pub_rows(typ)
+    local raw = typ and groups[typ]
+    if not raw then
+        return nil
+    end
+    local src = list_pub[typ]
+    if src then
+        return src
+    end
+    src = {}
+    for i = 1, #raw do
+        src[i] = seal_one(raw[i])
+    end
+    list_pub[typ] = src
+    return src
+end
+
 function get(id, typ)
     init()
     if not id then
@@ -423,13 +416,10 @@ function get(id, typ)
     if not row then
         return nil
     end
-    if typ then
-        local idx = in_group[typ]
-        if not (idx and idx[id]) then
-            return nil
-        end
+    if typ and not (in_group[typ] and in_group[typ][id]) then
+        return nil
     end
-    return row
+    return seal_one(row)
 end
 
 function is(id, typ)
@@ -463,50 +453,25 @@ function json(file)
     if not file then
         return nil
     end
-    file = norm_file(file)
-    local s = json_sealed[file]
-    if s ~= nil then
-        if s == false then
-            return nil
-        end
-        return s
-    end
     local data = decode_file(file)
     if not data then
-        json_sealed[file] = false
         return nil
     end
-    s = seal_one(data)
-    json_sealed[file] = s
-    return s
+    return seal_one(data)
 end
 
 function craft(id)
     init()
-    return id and recipes[id] or nil
+    return id and seal_one(recipes[id]) or nil
 end
 
 function list(typ, sort, dir)
     init()
-    local src = typ and groups[typ]
+    local src = pub_rows(typ)
     if not src then
         return EMPTY
     end
-    if not sort then
-        return src
-    end
-    local key = typ .. "\0" .. sort .. "\0" .. (dir or "")
-    local hit = list_sorted[key]
-    if hit then
-        return hit
-    end
-    local out = {}
-    for i = 1, #src do
-        out[i] = src[i]
-    end
-    table.sort(out, cmp(sort, dir == "desc"))
-    list_sorted[key] = out
-    return out
+    return sorted_list(src, typ, sort, dir, list_sorted)
 end
 
 local function dcopy(v, seen)
@@ -526,81 +491,53 @@ local function dcopy(v, seen)
 end
 
 local function make_handle()
-    local h_by_id = {}
-    local h_groups = {}
-    local h_json = {}
-    local h_recipes = {}
-    local h_sorted = {}
-    local h = {}
-
-    function h.init()
-        init()
-    end
+    local hid, hgrp, hjson, hrec, hsort = {}, {}, {}, {}, {}
+    local h = { is = is, is_any = is_any, translate = translate }
 
     function h.get(id, typ)
         init()
         if not id then
             return nil
         end
-        local row = h_by_id[id]
+        local row = hid[id]
         if not row then
-            local raw = by_id_raw[id]
+            local raw = by_id[id]
             if not raw then
                 return nil
             end
             row = dcopy(raw, {})
-            h_by_id[id] = row
+            hid[id] = row
         end
-        if typ then
-            local idx = in_group[typ]
-            if not (idx and idx[id]) then
-                return nil
-            end
+        if typ and not (in_group[typ] and in_group[typ][id]) then
+            return nil
         end
         return row
     end
 
     function h.list(typ, sort, dir)
         init()
-        if not typ then
+        local raw = typ and groups[typ]
+        if not raw then
             return EMPTY
         end
-        local src = h_groups[typ]
+        local src = hgrp[typ]
         if not src then
-            local raw = groups_raw[typ]
-            if not raw then
-                return EMPTY
-            end
             src = {}
             for i = 1, #raw do
                 local r = raw[i]
                 local id = r.id
-                local row = id and h_by_id[id]
+                local row = id and hid[id]
                 if not row then
                     row = dcopy(r, {})
                     if id then
-                        h_by_id[id] = row
+                        hid[id] = row
                     end
                 end
                 src[i] = row
             end
-            h_groups[typ] = src
+            hgrp[typ] = src
         end
-        if not sort then
-            return src
-        end
-        local key = typ .. "\0" .. sort .. "\0" .. (dir or "")
-        local hit = h_sorted[key]
-        if hit then
-            return hit
-        end
-        local out = {}
-        for i = 1, #src do
-            out[i] = src[i]
-        end
-        table.sort(out, cmp(sort, dir == "desc"))
-        h_sorted[key] = out
-        return out
+        return sorted_list(src, typ, sort, dir, hsort)
     end
 
     function h.json(file)
@@ -609,21 +546,17 @@ local function make_handle()
             return nil
         end
         file = norm_file(file)
-        local cached = h_json[file]
-        if cached ~= nil then
-            if cached == false then
-                return nil
-            end
-            return cached
+        local hit = hjson[file]
+        if hit then
+            return hit
         end
         local data = decode_file(file)
         if not data then
-            h_json[file] = false
             return nil
         end
-        local copy = dcopy(data, {})
-        h_json[file] = copy
-        return copy
+        hit = dcopy(data, {})
+        hjson[file] = hit
+        return hit
     end
 
     function h.craft(id)
@@ -631,26 +564,19 @@ local function make_handle()
         if not id then
             return nil
         end
-        local cached = h_recipes[id]
-        if cached ~= nil then
-            if cached == false then
-                return nil
-            end
-            return cached
+        local hit = hrec[id]
+        if hit then
+            return hit
         end
-        local raw = recipes_raw[id]
+        local raw = recipes[id]
         if not raw then
-            h_recipes[id] = false
             return nil
         end
-        local copy = dcopy(raw, {})
-        h_recipes[id] = copy
-        return copy
+        hit = dcopy(raw, {})
+        hrec[id] = hit
+        return hit
     end
 
-    h.is = is
-    h.is_any = is_any
-    h.translate = translate
     return h
 end
 
@@ -678,33 +604,20 @@ function open(mod_id)
     return h
 end
 
-local function allow_open()
-    can_open = true
-end
-
-local function deny_open()
-    if can_open then
-        printf("STALKER_DB: open closed")
-    end
-    can_open = false
-end
-
-function on_game_load()
-    allow_open()
-end
-
-function actor_on_first_update()
-    deny_open()
-end
-
-local cbs_bound = false
-
 function on_game_start()
     init()
+    -- ponytail: window re-opens here. an earlier on_game_load after save may see nil. stash from on_game_start.
     if RegisterScriptCallback and not cbs_bound then
         cbs_bound = true
-        RegisterScriptCallback("on_game_load", allow_open)
-        RegisterScriptCallback("actor_on_first_update", deny_open)
+        RegisterScriptCallback("on_game_load", function()
+            can_open = true
+        end)
+        RegisterScriptCallback("actor_on_first_update", function()
+            if can_open then
+                printf("STALKER_DB: open closed")
+            end
+            can_open = false
+        end)
     end
 end
 

@@ -257,6 +257,10 @@ if not sys.argv[1].replace("\\\\", "/").endswith("2026.08.30-0651.zip"):
 listed = __import__("json").loads(z.read(folder + "/gamedata/configs/db/pack-files.json"))
 if "pistols.json" not in listed:
     raise SystemExit("pack-files.json missing pistols.json")
+lua = z.read(folder + "/gamedata/scripts/stalker_db.script").decode()
+for s in ("function open(", "can_open", "seal_one", "make_handle"):
+    if s not in lua:
+        raise SystemExit("stalker_db.script missing " + s)
 print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
 `;
   let r;

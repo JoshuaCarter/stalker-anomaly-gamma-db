@@ -25,12 +25,12 @@ local rec = STALKER_DB.craft(sec) -- raw recipe plus name/descr, or nil
 -- STALKER_DB.json("traders/stalker_sidorovich.json")
 ```
 
-Need a working copy? `open` once at load, stash the handle. Same methods as `STALKER_DB` (no `open`). First `get`/`list`/`json`/`craft` on the handle copies from the master and caches. Later calls reuse that copy. `open` after the game is running (`actor_on_first_update`) returns `nil`. Same id during load returns the same handle. Do not invent a new id every call.
+Need a working copy? `open` once at `on_game_start`, stash the handle. Same methods as `STALKER_DB` (no `open`). First `get`/`list`/`json`/`craft` on the handle copies from the master and caches. Later calls reuse that copy. `open` after the game is running (`actor_on_first_update`) returns `nil`. Same id during load returns the same handle. Do not invent a new id every call.
 
 ```lua
 local db
 
-function on_game_load()
+function on_game_start()
     db = STALKER_DB.open("cool_mod")
 end
 
