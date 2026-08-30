@@ -115,7 +115,7 @@ function generate(id) {
     stdio: "inherit",
   });
   if (r.status !== 0) {
-    throw new Error(`generate-index failed for ${id}`);
+    throw new Error(`generate-index failed for ${id} (status=${r.status} error=${r.error || ""})`);
   }
 }
 
@@ -149,22 +149,11 @@ function zipFolder(parent, folder, zipPath) {
   if (existsSync(zipPath)) {
     rmSync(zipPath);
   }
-  if (process.platform === "win32") {
-    const r = spawnSync(
-      "powershell",
-      [
-        "-NoProfile",
-        "-Command",
-        `Compress-Archive -Path ${JSON.stringify(join(parent, folder))} -DestinationPath ${JSON.stringify(zipPath)} -Force`,
-      ],
-      { stdio: "inherit" },
-    );
-    if (r.status !== 0) {
-      throw new Error(`zip failed: ${zipPath}`);
-    }
-    return;
-  }
-  const r = spawnSync("zip", ["-r", zipPath, folder], { cwd: parent, stdio: "inherit" });
+  const py = process.platform === "win32" ? "python" : "python3";
+  const r = spawnSync(py, ["-m", "zipfile", "-c", zipPath, folder], {
+    cwd: parent,
+    stdio: "inherit",
+  });
   if (r.status !== 0) {
     throw new Error(`zip failed: ${zipPath}`);
   }

@@ -43,16 +43,19 @@ jobs:
         run: |
           set +e
           node scripts/pack-mod.mjs --release --out dist/mod --prev prev --last-version "${{ steps.last.outputs.version }}"
-          echo "code=$?" >> "$GITHUB_OUTPUT"
+          CODE=$?
           set -e
-      - name: Fail on pack error
-        if: steps.pack.outputs.code != '0' && steps.pack.outputs.code != '2'
-        run: exit 1
-      - name: Skip (unchanged)
-        if: steps.pack.outputs.code == '2'
-        run: echo "fingerprints match last release"
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          if [ "$CODE" -eq 2 ]; then
+            echo "fingerprints match last release"
+            exit 0
+          fi
+          if [ "$CODE" -ne 0 ]; then
+            echo "pack-mod failed ($CODE)"
+            exit "$CODE"
+          fi
       - name: Publish
-        if: steps.pack.outputs.code == '0'
+        if: success() && steps.pack.outputs.code == '0'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
