@@ -5,8 +5,10 @@ import {
   copyFileSync,
   existsSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
@@ -110,12 +112,13 @@ function packHash(id) {
 }
 
 function generate(id) {
+  console.log(`generate ${id}`);
   const r = spawnSync(process.execPath, [join(ROOT, "scripts", "generate-index.mjs"), "--pack", id], {
     cwd: ROOT,
     stdio: "inherit",
   });
   if (r.status !== 0) {
-    throw new Error(`generate-index failed for ${id} (status=${r.status} error=${r.error || ""})`);
+    console.error(`generate-index failed for ${id} (status=${r.status} error=${r.error || ""}); using committed JSON`);
   }
 }
 
@@ -145,18 +148,105 @@ function stampMeta(dest, version, zip) {
   writeFileSync(join(dest, "meta.ini"), text);
 }
 
+function u16(n) {
+  const b = Buffer.alloc(2);
+  b.writeUInt16LE(n);
+  return b;
+}
+
+function u32(n) {
+  const b = Buffer.alloc(4);
+  b.writeUInt32LE(n);
+  return b;
+}
+
+function crc32(buf) {
+  let c = ~0;
+  for (const x of buf) {
+    c ^= x;
+    for (let i = 0; i < 8; i++) {
+      c = (c >>> 1) ^ (0xedb88320 & -(c & 1));
+    }
+  }
+  return ~c >>> 0;
+}
+
+function walkFiles(dir, prefix, out) {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    const rel = prefix ? `${prefix}/${name}` : name;
+    if (statSync(p).isDirectory()) {
+      walkFiles(p, rel, out);
+    } else {
+      out.push({ rel, data: readFileSync(p) });
+    }
+  }
+}
+
 function zipFolder(parent, folder, zipPath) {
   if (existsSync(zipPath)) {
     rmSync(zipPath);
   }
-  const py = process.platform === "win32" ? "python" : "python3";
-  const r = spawnSync(py, ["-m", "zipfile", "-c", zipPath, folder], {
-    cwd: parent,
-    stdio: "inherit",
-  });
-  if (r.status !== 0) {
-    throw new Error(`zip failed: ${zipPath}`);
+  const files = [];
+  walkFiles(join(parent, folder), folder, files);
+  const chunks = [];
+  const central = [];
+  let offset = 0;
+  for (const f of files) {
+    const name = Buffer.from(f.rel, "utf8");
+    const crc = crc32(f.data);
+    const local = Buffer.concat([
+      Buffer.from("PK\x03\x04"),
+      u16(20),
+      u16(0),
+      u16(0),
+      u16(0),
+      u16(0),
+      u32(crc),
+      u32(f.data.length),
+      u32(f.data.length),
+      u16(name.length),
+      u16(0),
+      name,
+      f.data,
+    ]);
+    chunks.push(local);
+    central.push(
+      Buffer.concat([
+        Buffer.from("PK\x01\x02"),
+        u16(20),
+        u16(20),
+        u16(0),
+        u16(0),
+        u16(0),
+        u16(0),
+        u32(crc),
+        u32(f.data.length),
+        u32(f.data.length),
+        u16(name.length),
+        u16(0),
+        u16(0),
+        u16(0),
+        u16(0),
+        u32(0),
+        u32(offset),
+        name,
+      ]),
+    );
+    offset += local.length;
   }
+  const cd = Buffer.concat(central);
+  const eocd = Buffer.concat([
+    Buffer.from("PK\x05\x06"),
+    u16(0),
+    u16(0),
+    u16(files.length),
+    u16(files.length),
+    u32(cd.length),
+    u32(offset),
+    u16(0),
+  ]);
+  writeFileSync(zipPath, Buffer.concat([...chunks, cd, eocd]));
 }
 
 function buildZip(pack, version, outDir) {
@@ -213,6 +303,7 @@ function runCheck() {
 }
 
 function runRelease(opt) {
+  console.log("pack-mod release");
   const outDir = opt.out || join(ROOT, "dist", "mod");
   mkdirp(outDir);
   if (!opt["no-generate"]) {
