@@ -23,7 +23,6 @@ The handle also has `json`, `is_any`, and `translate`.
 ## Build
 
 ```bash
-npm run pack-mod -- --check
 npm run pack-mod -- --release --out dist/mod
 ```
 

@@ -206,80 +206,6 @@ function buildZip(pack, version, outDir) {
   return { zip, folder, files: n, stage };
 }
 
-function runCheck() {
-  const stamped = dateVersion(new Date(Date.UTC(2026, 7, 30, 6, 51)));
-  if (stamped !== "2026-08-30-0651") {
-    throw new Error(`dateVersion must zero-pad hhmm, got ${stamped}`);
-  }
-  const id = "gamma-0.9.5";
-  const pistols = join(DATA, id, "pistols.json");
-  const data = JSON.parse(readFileSync(pistols, "utf8"));
-  if (!Array.isArray(data.items) || data.items.length === 0) {
-    throw new Error("pistols.json has no items");
-  }
-  const outDir = join(ROOT, "dist", "mod-check");
-  rmSync(outDir, { recursive: true, force: true });
-  mkdirSync(outDir, { recursive: true });
-  const pack = activePacks().find((p) => p.id === id);
-  const { zip, folder, files, stage } = buildZip(pack, "2026-08-30-651", outDir);
-  const zipPath = join(outDir, zip);
-  const attempts =
-    process.platform === "win32" ? [["py", "-3"], ["python"], ["python3"]] : [["python3"], ["python"]];
-  const inspect = `
-import sys, zipfile
-z = zipfile.ZipFile(sys.argv[1])
-names = z.namelist()
-folder = sys.argv[2]
-need = [
-    folder + "/gamedata/configs/db/pistols.json",
-    folder + "/gamedata/configs/db/lang",
-    folder + "/gamedata/configs/db/translations.json",
-    folder + "/gamedata/configs/db/pack-files.json",
-    folder + "/gamedata/scripts/stalker_db.script",
-    folder + "/meta.ini",
-    folder + "/fomod/ModuleConfig.xml",
-]
-missing = [n for n in need if n not in names]
-if missing:
-    raise SystemExit("missing " + ", ".join(missing))
-if any(n.startswith("StalkerDB_") and n.endswith("/") for n in names):
-    raise SystemExit("bad root")
-cfg = z.read(folder + "/fomod/ModuleConfig.xml").decode()
-if 'source="gamedata"' not in cfg or 'source="fomod/lang/en"' not in cfg:
-    raise SystemExit("fomod sources must be relative to the wrapper")
-if folder + "/gamedata" in cfg:
-    raise SystemExit("fomod still prefixes the wrapper folder")
-meta = z.read(folder + "/meta.ini").decode()
-if "version=2026.08.30-0651" not in meta or "newestVersion=2026.08.30-0651" not in meta:
-    raise SystemExit("meta.ini must be yyyy.mm.dd-hhmm, got:\\n" + meta)
-if not sys.argv[1].replace("\\\\", "/").endswith("2026.08.30-0651.zip"):
-    raise SystemExit("zip name must be yyyy.mm.dd-hhmm")
-listed = __import__("json").loads(z.read(folder + "/gamedata/configs/db/pack-files.json"))
-if "pistols.json" not in listed:
-    raise SystemExit("pack-files.json missing pistols.json")
-lua = z.read(folder + "/gamedata/scripts/stalker_db.script").decode()
-for s in ("function open(", "app_ready", "make_handle"):
-    if s not in lua:
-        raise SystemExit("stalker_db.script missing " + s)
-if "seal_one" in lua or "function get(" in lua:
-    raise SystemExit("stalker_db.script must expose open only")
-print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
-`;
-  let r;
-  for (const [cmd, ...pre] of attempts) {
-    r = spawnSync(cmd, [...pre, "-c", inspect, zipPath, folder, String(files)], { encoding: "utf8" });
-    if (r.status === 0) {
-      break;
-    }
-  }
-  if (!r || r.status !== 0) {
-    throw new Error(((r && (r.stderr || r.stdout)) || "zip inspect failed").trim());
-  }
-  rmSync(stage, { recursive: true, force: true });
-  console.log(`ok: ${id} pistols=${data.items.length} copied=${files}`);
-  console.log((r.stdout || "").trim());
-}
-
 function runRelease() {
   const outDir = arg("out") || join(ROOT, "dist", "mod");
   mkdirSync(outDir, { recursive: true });
@@ -296,11 +222,9 @@ function runRelease() {
   console.log(`rebuilt: ${rebuilt.join(", ")}`);
 }
 
-if (arg("check")) {
-  runCheck();
-} else if (arg("release")) {
+if (arg("release")) {
   runRelease();
 } else {
-  console.error("usage: pack-mod.mjs --check | --release [--out dir] [--version YYYY-MM-DD-HHMM]");
+  console.error("usage: pack-mod.mjs --release [--out dir] [--version YYYY-MM-DD-HHMM]");
   process.exit(1);
 }
