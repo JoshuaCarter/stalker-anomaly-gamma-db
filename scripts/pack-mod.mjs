@@ -107,7 +107,7 @@ function writeFomod(stage, folder, version, pack, locales) {
       return `            <plugin name="${xml(LANG_LABEL[lang] || lang)}">
               <description>Item names.</description>
               <files>
-                <file source="${xml(folder)}/fomod/lang/${lang}" destination="gamedata/configs/db/lang" />
+                <file source="fomod/lang/${lang}" destination="gamedata/configs/db/lang" />
               </files>${rec}
             </plugin>`;
     })
@@ -129,8 +129,8 @@ function writeFomod(stage, folder, version, pack, locales) {
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
   <moduleName>${xml(name)}</moduleName>
   <requiredInstallFiles>
-    <folder source="${xml(folder)}/gamedata" destination="gamedata" />
-    <file source="${xml(folder)}/meta.ini" destination="meta.ini" />
+    <folder source="gamedata" destination="gamedata" />
+    <file source="meta.ini" destination="meta.ini" />
   </requiredInstallFiles>
   <installSteps order="Explicit">
     <installStep name="Language">
@@ -222,6 +222,11 @@ if missing:
     raise SystemExit("missing " + ", ".join(missing))
 if any(n.startswith("StalkerDB_") and n.endswith("/") for n in names):
     raise SystemExit("bad root")
+cfg = z.read(folder + "/fomod/ModuleConfig.xml").decode()
+if 'source="gamedata"' not in cfg or 'source="fomod/lang/en"' not in cfg:
+    raise SystemExit("fomod sources must be relative to the wrapper")
+if folder + "/gamedata" in cfg:
+    raise SystemExit("fomod still prefixes the wrapper folder")
 print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
 `;
   let r;
