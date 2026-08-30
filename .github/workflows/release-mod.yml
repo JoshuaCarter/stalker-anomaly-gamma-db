@@ -62,5 +62,6 @@ jobs:
           VER=$(tr -d '[:space:]' < dist/mod/VERSION)
           NOTES=$(cat dist/mod/NOTES)
           gh release create "v$VER" dist/mod/*.zip dist/mod/fingerprints.json \
+            --target "${{ github.sha }}" \
             --title "Stalker DB v$VER" \
             --notes "$NOTES"

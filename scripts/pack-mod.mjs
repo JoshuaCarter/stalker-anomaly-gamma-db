@@ -336,8 +336,8 @@ function runRelease(opt) {
       next.packs[p.id].zip = zip;
       rebuilt.push(`${p.id} (${files} files)`);
     } else {
-      const src = join(opt.prev, old.zip);
-      if (!existsSync(src)) {
+      const src = [old.zip, old.zip.replaceAll(" ", ".")].map((n) => join(opt.prev, n)).find(existsSync);
+      if (!src) {
         const { zip, files } = buildZip(p, version, outDir);
         next.packs[p.id].zip = zip;
         rebuilt.push(`${p.id} (${files} files, prev zip missing)`);
