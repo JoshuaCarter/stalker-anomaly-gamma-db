@@ -53,22 +53,24 @@ function modVer(version) {
 
 function copyPackJson(id, dest) {
   mkdirSync(dest, { recursive: true });
-  let n = 0;
-  const walk = (from, to) => {
+  const files = [];
+  const walk = (from, to, rel) => {
     mkdirSync(to, { recursive: true });
     for (const name of readdirSync(from)) {
       const src = join(from, name);
       const out = join(to, name);
+      const relName = rel ? `${rel}/${name}` : name;
       if (statSync(src).isDirectory()) {
-        walk(src, out);
+        walk(src, out, relName);
       } else if (name.endsWith(".json")) {
         copyFileSync(src, out);
-        n++;
+        files.push(relName.replaceAll("\\", "/"));
       }
     }
   };
-  walk(join(DATA, id), dest);
-  return n;
+  walk(join(DATA, id), dest, "");
+  writeFileSync(join(dest, "pack-files.json"), `${JSON.stringify(files)}\n`);
+  return files.length;
 }
 
 function xml(s) {
@@ -232,6 +234,7 @@ need = [
     folder + "/gamedata/configs/db/pistols.json",
     folder + "/gamedata/configs/db/lang",
     folder + "/gamedata/configs/db/translations.json",
+    folder + "/gamedata/configs/db/pack-files.json",
     folder + "/gamedata/scripts/stalker_db.script",
     folder + "/meta.ini",
     folder + "/fomod/ModuleConfig.xml",
@@ -251,6 +254,9 @@ if "version=2026.08.30-0651" not in meta or "newestVersion=2026.08.30-0651" not 
     raise SystemExit("meta.ini must be yyyy.mm.dd-hhmm, got:\\n" + meta)
 if not sys.argv[1].replace("\\\\", "/").endswith("2026.08.30-0651.zip"):
     raise SystemExit("zip name must be yyyy.mm.dd-hhmm")
+listed = __import__("json").loads(z.read(folder + "/gamedata/configs/db/pack-files.json"))
+if "pistols.json" not in listed:
+    raise SystemExit("pack-files.json missing pistols.json")
 print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
 `;
   let r;

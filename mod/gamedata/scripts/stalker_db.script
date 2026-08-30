@@ -1,8 +1,9 @@
 --[[
     Item catalog: gamedata/configs/db/*.json (site pack dump).
-    Item groups use the site file slug (pistols, artefacts, ...).
+    init() loads every shipped JSON. Item groups are top-level files with items[].id
+    (materials skipped: ids collide with medicine; misc last).
     Unions: weapons, weapon-attach, armor.
-    Missing files are empty. craft-recipes.json is a recipe index.
+    craft() returns the raw recipe plus name/descr.
     db/lang picks translations (en/ru/fr). Raw JSON keys are kept.
 ]]
 
@@ -15,35 +16,7 @@ local in_group = {}
 local EMPTY = {}
 local list_sorted = {}
 local recipes = {}
-local by_name = {}
-
--- site slugs; misc last so a real cat wins on duplicate id
-local ITEM_FILES = {
-    "pistols.json",
-    "smgs.json",
-    "rifles.json",
-    "snipers.json",
-    "shotguns.json",
-    "melee.json",
-    "launchers.json",
-    "scopes.json",
-    "silencers.json",
-    "grenade-launchers.json",
-    "tactical-kits.json",
-    "weapon-parts.json",
-    "outfits.json",
-    "helmets.json",
-    "ammo.json",
-    "mutant-parts.json",
-    "outfit-parts.json",
-    "medicine.json",
-    "food.json",
-    "artefacts.json",
-    "explosives.json",
-    "belt-attachments.json",
-    "magazines.json",
-    "misc.json",
-}
+local json_cache = {}
 
 local UNIONS = {
     weapons = {
@@ -51,6 +24,12 @@ local UNIONS = {
     },
     ["weapon-attach"] = { "scopes", "silencers", "grenade-launchers" },
     armor = { "outfits", "helmets" },
+}
+
+local SKIP_GROUP = {
+    ["materials.json"] = true,
+    ["pack-files.json"] = true,
+    ["translations.json"] = true,
 }
 
 local try_read_path = function(getFS, rel)
@@ -81,16 +60,27 @@ local function read_text(rel)
     return nil
 end
 
+local function norm_file(file)
+    return file:gsub("/", "\\")
+end
+
 local function decode_file(file)
-    file = file:gsub("/", "\\")
+    file = norm_file(file)
+    local hit = json_cache[file]
+    if hit ~= nil then
+        return hit
+    end
     local text = read_text(ROOT .. file)
     if not text then
+        json_cache[file] = false
         return nil, "missing"
     end
     local ok, data = pcall(stalker_db_json.decode, text)
     if ok then
+        json_cache[file] = data
         return data
     end
+    json_cache[file] = false
     printf("STALKER_DB: failed to decode %s", file)
     return nil, "bad"
 end
@@ -127,14 +117,6 @@ local function add_row(typ, row)
     if by_id[row.id] then
         printf("STALKER_DB: skip duplicate id %s", row.id)
         return false
-    end
-    if row.displayName then
-        by_name[row.displayName] = row.id
-        by_name[string.lower(row.displayName)] = row.id
-    end
-    if row.pda_encyclopedia_name then
-        by_name[row.pda_encyclopedia_name] = row.id
-        by_name[string.lower(row.pda_encyclopedia_name)] = row.id
     end
     decorate(row)
     by_id[row.id] = row
@@ -191,81 +173,115 @@ local function load_names()
     printf("STALKER_DB: names missing")
 end
 
-local function parse_amount(s)
-    if type(s) == "number" then
-        return math.floor(s)
+local function pack_file_list()
+    local listed = decode_file("pack-files.json")
+    if type(listed) == "table" and listed[1] then
+        return listed
     end
-    local n = tostring(s or ""):match("(%d+)")
-    return tonumber(n) or 0
+    local man = decode_file("manifest.json")
+    if type(man) ~= "table" then
+        return EMPTY
+    end
+    local out = {}
+    for k in pairs(man) do
+        if type(k) == "string" and string.sub(k, -5) == ".json" then
+            out[#out + 1] = k
+        end
+    end
+    return out
+end
+
+local function basename(file)
+    return file:match("([^/\\]+)$") or file
+end
+
+local function slug(file)
+    local base = basename(file)
+    if base:sub(-5) ~= ".json" then
+        return nil
+    end
+    return base:sub(1, #base - 5)
+end
+
+local function is_item_file(file, data)
+    local base = basename(file)
+    if SKIP_GROUP[base] then
+        return false
+    end
+    if file:find("[/\\]") then
+        return false
+    end
+    local items = data and data.items
+    return items and items[1] and items[1].id
 end
 
 local function load_recipes()
     recipes = {}
     local data = decode_file("craft-recipes.json")
-    if not data then
+    if type(data) ~= "table" then
         return
     end
-    local missed = 0
+    local n = 0
     for _, cat in pairs(data) do
         local items = cat and cat.items
         if items then
             for i = 1, #items do
                 local it = items[i]
-                if it and it.id and it.ingredients then
-                    local parts = {}
-                    for j = 1, #it.ingredients do
-                        local ing = it.ingredients[j]
-                        local key = ing and ing.name
-                        local sec = key and (by_name[key] or by_name[string.lower(key)] or (by_id[key] and key))
-                        if sec then
-                            parts[#parts + 1] = { sec, parse_amount(ing.amount) }
-                        else
-                            missed = missed + 1
-                            printf("STALKER_DB: craft miss %s ingredient %s", it.id, tostring(key))
-                        end
-                    end
-                    recipes[it.id] = parts
+                if it and it.id then
+                    decorate(it)
+                    recipes[it.id] = it
+                    n = n + 1
                 end
             end
         end
     end
-    if missed > 0 then
-        printf("STALKER_DB: craft unmatched ingredients %s", missed)
-    end
-end
-
-local function slug(file)
-    return file:sub(1, #file - 5)
+    printf("STALKER_DB: craft recipes %s", n)
 end
 
 local function load_all()
-    if loaded then
-        return
-    end
     loaded = true
     by_id = {}
     groups = {}
     recipes = {}
-    by_name = {}
+    json_cache = {}
     load_names()
+    local files = pack_file_list()
     local ok_files = 0
     local miss_files = 0
-    local n_items = 0
-    for i = 1, #ITEM_FILES do
-        local file = ITEM_FILES[i]
-        local typ = slug(file)
-        groups[typ] = {}
+    local item_files = {}
+    local misc_file = nil
+    for i = 1, #files do
+        local file = files[i]
         local data, err = decode_file(file)
-        local items = data and data.items
-        if items then
+        if data then
             ok_files = ok_files + 1
+            if is_item_file(file, data) then
+                if slug(file) == "misc" then
+                    misc_file = file
+                else
+                    item_files[#item_files + 1] = file
+                end
+            end
+        elseif err == "missing" then
+            miss_files = miss_files + 1
+        end
+    end
+    if misc_file then
+        item_files[#item_files + 1] = misc_file
+    end
+    local n_items = 0
+    for i = 1, #item_files do
+        local file = item_files[i]
+        local typ = slug(file)
+        local data = decode_file(file)
+        local items = type(data) == "table" and data.items
+        if typ and items then
+            groups[typ] = {}
             for j = 1, #items do
                 if add_row(typ, items[j]) then
                     n_items = n_items + 1
                 end
             end
-        elseif err == "missing" then
-            miss_files = miss_files + 1
         end
     end
     for name, types in pairs(UNIONS) do
@@ -273,10 +289,10 @@ local function load_all()
     end
     index_all()
     load_recipes()
-    printf("STALKER_DB: loaded %s items from %s files (%s missing)", n_items, ok_files, miss_files)
+    printf("STALKER_DB: loaded %s items from %s groups, %s files (%s missing)", n_items, #item_files, ok_files, miss_files)
 end
 
-local function ensure()
+function init()
     if not loaded then
         load_all()
     end
@@ -303,7 +319,7 @@ local function cmp(key, desc)
 end
 
 function get(id, typ)
-    ensure()
+    init()
     if not id then
         return nil
     end
@@ -321,7 +337,7 @@ function get(id, typ)
 end
 
 function is(id, typ)
-    ensure()
+    init()
     if not (id and typ) then
         return false
     end
@@ -342,26 +358,29 @@ function is_any(id, types)
 end
 
 function translate(key)
-    ensure()
+    init()
     return tr(key)
 end
 
 function json(file)
-    ensure()
+    init()
     if not file then
         return nil
     end
     local data = decode_file(file)
+    if data == false then
+        return nil
+    end
     return data
 end
 
 function craft(id)
-    ensure()
+    init()
     return id and recipes[id] or nil
 end
 
 function list(typ, sort, dir)
-    ensure()
+    init()
     local src = typ and groups[typ]
     if not src then
         return EMPTY
@@ -384,7 +403,7 @@ function list(typ, sort, dir)
 end
 
 function on_game_start()
-    load_all()
+    init()
 end
 
 rawset(_G, "STALKER_DB", stalker_db)
