@@ -2,11 +2,9 @@ name: Release in-game mod
 
 on:
   push:
-    branches: [main]
+    branches: [main, feat/in-game-mod]
     paths:
-      - mod/**
-      - scripts/pack-mod.mjs
-      - .github/workflows/release-mod.yml
+      - site/public/data/**
   workflow_dispatch:
 
 permissions:
@@ -17,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -25,6 +25,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           VER=$(tr -d '[:space:]' < dist/mod/VERSION)
+          LAST=$(gh release view --json targetCommitish --jq -r .targetCommitish || true)
+          if [ -n "$LAST" ] && git cat-file -e "$LAST^{commit}" && git diff --quiet "$LAST" HEAD -- site/public/data; then
+            echo "site/public/data unchanged since $LAST, skip"
+            exit 0
+          fi
           gh release create "v$VER" dist/mod/*.zip \
             --target "${{ github.sha }}" \
             --title "Stalker DB $VER" \

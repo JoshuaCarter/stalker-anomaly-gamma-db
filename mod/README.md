@@ -26,7 +26,7 @@ The handle also has `json`, `is_any`, and `translate`.
 npm run pack-mod -- --release --out dist/mod
 ```
 
-CI publishes when `mod/` or `pack-mod.mjs` changes, or via workflow_dispatch.
+CI publishes when `site/public/data/` changes. Same data as the last release is a no-op.
 
 ## Version
 

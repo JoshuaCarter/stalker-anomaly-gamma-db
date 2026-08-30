@@ -54,7 +54,7 @@ A self-contained Anomaly/GAMMA mod that loads pack JSON. Other scripts call `STA
 npm run pack-mod -- --release --out dist/mod
 ```
 
-CI publishes `StalkerDB_{pack}_{yyyy.mm.dd-hhmm}.zip` when the in-game loader or pack script changes (not on site JSON-only commits). See [mod/README.md](mod/README.md).
+CI publishes `StalkerDB_{pack}_{yyyy.mm.dd-hhmm}.zip` when committed `site/public/data/` changes. Same data as the last release is a no-op. See [mod/README.md](mod/README.md).
 
 ## Acknowledgements
 
