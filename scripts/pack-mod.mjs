@@ -37,6 +37,25 @@ function dateVersion(now = new Date()) {
   return `${now.getUTCFullYear()}-${p2(now.getUTCMonth() + 1)}-${p2(now.getUTCDate())}-${hhmm}`;
 }
 
+function verParts(version) {
+  const m = String(version).match(/^(\d{4})[-.](\d{1,2})[-.](\d{1,2})[-.](\d{1,4})$/);
+  if (!m) {
+    return null;
+  }
+  return [m[1], m[2].padStart(2, "0"), m[3].padStart(2, "0"), m[4].padStart(4, "0")];
+}
+
+function dottedVer(version) {
+  const p = verParts(version);
+  return p ? p.join(".") : String(version).replaceAll("-", ".");
+}
+
+// hyphen before hhmm: MO2 VersionInfo toInt() would turn .0658 into 658
+function metaVer(version) {
+  const p = verParts(version);
+  return p ? `${p[0]}.${p[1]}.${p[2]}-${p[3]}` : dottedVer(version);
+}
+
 function copyPackJson(id, dest) {
   mkdirSync(dest, { recursive: true });
   let n = 0;
@@ -80,7 +99,7 @@ function packLocales(id) {
 }
 
 function stampMeta(dest, version, pack) {
-  const ver = String(version).replaceAll("-", ".");
+  const ver = metaVer(version);
   writeFileSync(
     join(dest, "meta.ini"),
     `[General]
@@ -99,7 +118,7 @@ notes=
 
 function writeFomod(stage, folder, version, pack, locales) {
   const name = folder;
-  const ver = String(version).replaceAll("-", ".");
+  const ver = metaVer(version);
   mkdirSync(join(stage, "fomod", "lang"), { recursive: true });
   const plugins = locales
     .map((lang, i) => {
@@ -175,7 +194,7 @@ function zipFolder(parent, folder, zipPath) {
 
 function buildZip(pack, version, outDir) {
   const folder = `Stalker DB - ${pack.name}`;
-  const zip = `StalkerDB_${pack.id}_${String(version).replaceAll("-", ".")}.zip`;
+  const zip = `StalkerDB_${pack.id}_${dottedVer(version)}.zip`;
   const stage = join(outDir, folder);
   rmSync(stage, { recursive: true, force: true });
   mkdirSync(join(stage, "gamedata", "scripts"), { recursive: true });
@@ -205,7 +224,7 @@ function runCheck() {
   rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
   const pack = activePacks().find((p) => p.id === id);
-  const { zip, folder, files, stage } = buildZip(pack, "2026-08-30-0000", outDir);
+  const { zip, folder, files, stage } = buildZip(pack, "2026-08-30-651", outDir);
   const zipPath = join(outDir, zip);
   const attempts =
     process.platform === "win32" ? [["py", "-3"], ["python"], ["python3"]] : [["python3"], ["python"]];
@@ -232,6 +251,11 @@ if 'source="gamedata"' not in cfg or 'source="fomod/lang/en"' not in cfg:
     raise SystemExit("fomod sources must be relative to the wrapper")
 if folder + "/gamedata" in cfg:
     raise SystemExit("fomod still prefixes the wrapper folder")
+meta = z.read(folder + "/meta.ini").decode()
+if "version=2026.08.30-0651" not in meta or "newestVersion=2026.08.30-0651" not in meta:
+    raise SystemExit("meta.ini hhmm must be 0651, got:\\n" + meta)
+if not sys.argv[1].replace("\\\\", "/").endswith("2026.08.30.0651.zip"):
+    raise SystemExit("zip name must keep 0651")
 print("zip-ok files=%s entries=%s" % (sys.argv[3], len(names)))
 `;
   let r;
