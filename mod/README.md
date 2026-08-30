@@ -26,7 +26,7 @@ The handle also has `json`, `is_any`, and `translate`.
 npm run pack-mod -- --release --out dist/mod
 ```
 
-CI publishes when `site/public/data/` changes. Same data as the last release is a no-op.
+CI opens a draft when `site/public/data/` changes. Publish it by hand. Same data as the last draft or release is a no-op.
 
 ## Version
 

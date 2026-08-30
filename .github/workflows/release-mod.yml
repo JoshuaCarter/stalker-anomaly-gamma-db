@@ -31,6 +31,7 @@ jobs:
           fi
           { echo "data $DATA"; cat dist/mod/NOTES; } > dist/mod/NOTES.release
           gh release create "v$VER" dist/mod/*.zip \
+            --draft \
             --target "${{ github.sha }}" \
             --title "Stalker DB $VER" \
             --notes-file dist/mod/NOTES.release
