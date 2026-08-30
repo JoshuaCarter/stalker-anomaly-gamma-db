@@ -39,6 +39,7 @@
                         <a :href="itemHref(item.id)" @click.prevent.stop="$emit('navigateToItem', item.id)">{{ tItemName(item) }}</a>
                         <span v-if="item.unobtainable === true" class="badge-no-drop" v-tooltip="t('app_tooltip_not_dropped')">{{ t('app_badge_no_drop') }}</span>
                         <span v-if="item.tacticalKit === true" class="badge-tactical-kit" v-tooltip="t('app_tooltip_tactical_kit')">{{ t('app_badge_tactical_kit') }}</span>
+                        <span v-if="item.integralOnly === true" class="badge-flag badge-integral-only" v-tooltip="t('app_tooltip_integral_only')">{{ t('app_badge_integral_only') }}</span>
                         <span v-if="item.nimble === true" class="badge-flag badge-nimble" v-tooltip="t('app_tooltip_nimble')">{{ t('app_badge_nimble') }}</span>
                         <span v-if="isUnusedAmmo(item)" class="badge-unused" v-tooltip="t('app_tooltip_unused_ammo')">{{ t('app_badge_unused') }}</span>
                         <div v-if="activeNameTags.some(tag => item[tag] === 'Y')" class="name-tags">

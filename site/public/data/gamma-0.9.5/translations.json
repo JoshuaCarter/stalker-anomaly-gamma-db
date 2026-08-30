@@ -5292,7 +5292,11 @@
     "renegade_patch": "Renegade Patch",
     "stalker_patch": "Loner Patch",
     "swiss_knife": "Swiss Knife",
-    "wpn_binoc_inv": "Binoculars"
+    "wpn_binoc_inv": "Binoculars",
+    "st_gdb_addon_silencer_integral": "Integrated Suppressor",
+    "st_gdb_addon_silencer_integral_descr": "Not a separate item. This is the suppressor already built into the weapons below, and the game needs a section for it, so it sits in this list next to the real ones. You cannot buy or fit it.\\n \\n MOUNTED ON:\\n  •  VAL variants\\n  •  Vintorez variants\\n  •  AMB-17\\n  •  DVL-10 M1\\n",
+    "st_gdb_addon_scope_integral": "Integrated Scope",
+    "st_gdb_addon_scope_integral_descr": "Not a separate item. This is the scope already built into the weapons below, and the game needs a section for it, so it sits in this list next to the real ones. You cannot buy or fit it.\\n \\n MOUNTED ON:\\n  •  Gauss Rifle variants\\n  •  L96A1 and AWSM\\n  •  M24 SWS\\n  •  Barrett M82 and M98B\\n  •  Walther WA 2000\\n"
   },
   "ru": {
     "\"vog-25\"": "\"VOG-25\"",
@@ -9904,7 +9908,11 @@
     "renegade_patch": "Нашивка ренегатов",
     "stalker_patch": "Нашивка одиночек",
     "swiss_knife": "Швейцарский нож",
-    "wpn_binoc_inv": "Бинокль"
+    "wpn_binoc_inv": "Бинокль",
+    "st_gdb_addon_silencer_integral": "Встроенный глушитель",
+    "st_gdb_addon_silencer_integral_descr": "Не отдельный предмет. Это глушитель, уже встроенный в оружие из списка ниже, и игре нужна секция для него, поэтому он оказывается в этом списке рядом с настоящими. Купить или установить его нельзя.\\n \\n УСТАНОВЛЕН НА:\\n  •  Варианты ВСС\\n  •  Варианты Винтореза\\n  •  АМБ-17\\n  •  DVL-10 M1\\n",
+    "st_gdb_addon_scope_integral": "Встроенный прицел",
+    "st_gdb_addon_scope_integral_descr": "Не отдельный предмет. Это прицел, уже встроенный в оружие из списка ниже, и игре нужна секция для него, поэтому он оказывается в этом списке рядом с настоящими. Купить или установить его нельзя.\\n \\n УСТАНОВЛЕН НА:\\n  •  Варианты Gauss Rifle\\n  •  L96A1 и AWSM\\n  •  M24 SWS\\n  •  Barrett M82 и M98B\\n  •  Walther WA 2000\\n"
   },
   "fr": {
     "st_data_export_outfit_artefact_count_max": "Emplacements de ceinture maximum",

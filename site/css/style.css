@@ -2523,10 +2523,23 @@ input.range-input {
     margin: 0 0 0.5rem 0;
     display: flex;
     flex-wrap: wrap;
+    /* The badges here are two sizes (.badge-flag is larger than .badge-no-drop and
+       friends); without this they stretch to the row height and their text sits at
+       the top of the box instead of lining up with the taller badges. */
+    align-items: center;
     gap: 0.35rem;
 }
-.modal-badges .badge-flag {
+/* Spacing comes from the flex gap — drop the inline-context margin every badge
+   carries, not just .badge-flag. The size normalisation is scoped to the modal
+   because .badge-no-drop / .badge-tactical-kit / .badge-unused are standalone
+   rules a size smaller than .badge-flag, which suits the dense list and table
+   rows but reads as a mismatch next to them in this row. */
+.modal-badges > * {
     margin-left: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.1rem 0.45rem;
 }
 .name-tags {
     display: flex;
@@ -2550,6 +2563,7 @@ input.range-input {
     vertical-align: middle;
 }
 .badge-nimble { background: var(--color-purple-tint-18); color: var(--color-purple-light); }
+.badge-integral-only { background: var(--color-grey-blue-tint-12); color: var(--color-blue-grey-soft); }
 .badge-perk { background: var(--color-accent-tint-18); color: var(--color-accent-gold); }
 .badge-junk { background: var(--color-grey-tint-12); color: var(--color-text-tertiary); }
 .badge-craftable { background: var(--color-green-mid-tint-15); color: var(--color-green-positive); }

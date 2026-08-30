@@ -1639,13 +1639,7 @@
     "id": "ps01",
     "name": "st_addon_scope",
     "category": "Scopes",
-    "displayName": "st_addon_scope [ps01]"
-  },
-  {
-    "id": "wpn_addon_scope",
-    "name": "st_addon_scope",
-    "category": "Scopes",
-    "displayName": "st_addon_scope [wpn_addon_scope]"
+    "displayName": "st_addon_scope"
   },
   {
     "id": "0kp2",
@@ -2769,12 +2763,6 @@
     "name": "st_addon_sil_vihr",
     "category": "Silencers",
     "displayName": "st_addon_sil_vihr"
-  },
-  {
-    "id": "wpn_addon_silencer",
-    "name": "st_addon_silencer",
-    "category": "Silencers",
-    "displayName": "st_addon_silencer"
   },
   {
     "id": "vorkuta",
@@ -4423,6 +4411,22 @@
     "name": "st_gas_tube_9",
     "category": "Weapon Parts",
     "displayName": "st_gas_tube_9"
+  },
+  {
+    "id": "wpn_addon_scope",
+    "name": "st_gdb_addon_scope_integral",
+    "category": "Scopes",
+    "unobtainable": true,
+    "integralOnly": true,
+    "displayName": "st_gdb_addon_scope_integral"
+  },
+  {
+    "id": "wpn_addon_silencer",
+    "name": "st_gdb_addon_silencer_integral",
+    "category": "Silencers",
+    "unobtainable": true,
+    "integralOnly": true,
+    "displayName": "st_gdb_addon_silencer_integral"
   },
   {
     "id": "detector_geiger",

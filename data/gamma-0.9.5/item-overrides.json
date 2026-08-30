@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "purpose": "Field overrides for exporter rows that are vestigial or mis-described in the game config. Unlike synthetic-items.json (which only ADDS items the exporter never emits), this shallow-merges over rows the exporter DID emit. Kept separate from the CSVs because import-game-exports.mjs overwrites those wholesale.",
+    "schema": "items: { <itemId>: { <field>: <value>, ... } }. Fields are merged over the exporter row wherever that ID appears. Use `unobtainable: true` to hide the item behind the existing 'Show unobtainable' filter, and `integralOnly: true` to badge it as a built-in-only addon section."
+  },
+  "items": {
+    "wpn_addon_silencer": {
+      "_why": "Vestigial base section inherited from vanilla Anomaly. Eleven integrally suppressed weapons (the VAL and Vintorez families, AMB-17, DVL-10 M1, all silencer_status 1) point at it for their built-in can, but no trader sells it, nothing drops it, and no recipe, disassembly or upgrade touches it. Its inv_grid coords (950,350) also collide with wpn_sil_9mm, so it renders the 9mm suppressor icon, and GAMMA's text pass mislabelled it as a 5.56x45mm US Army suppressor.",
+      "unobtainable": true,
+      "integralOnly": true,
+      "pda_encyclopedia_name": "st_gdb_addon_silencer_integral",
+      "st_data_export_description": "st_gdb_addon_silencer_integral_descr",
+      "st_upgr_cost": "0"
+    },
+    "wpn_addon_scope": {
+      "_why": "The scope counterpart of wpn_addon_silencer, and the same vestigial base section from vanilla Anomaly. All nine weapons that mount it (Gauss variants, L96A1, AWSM, M24 SWS, Barrett M82 and M98B, WA 2000) have scope_status 1, so it is their fixed optic rather than an item: no trader, drop, craft, disassembly or upgrade reaches it. It also resolves to the same st_addon_scope name as the real PSO-1 (ps01), which put two identical 'PSO-1' rows in the Scopes list and forced the [id] disambiguation suffix onto both.",
+      "unobtainable": true,
+      "integralOnly": true,
+      "pda_encyclopedia_name": "st_gdb_addon_scope_integral",
+      "st_data_export_description": "st_gdb_addon_scope_integral_descr",
+      "st_upgr_cost": "0"
+    }
+  }
+}

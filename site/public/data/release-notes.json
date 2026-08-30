@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-08-30",
+    "entries": [
+      { "type": "fixed", "text": "Two leftover sections from the base game were listed as real items: a suppressor under Silencers carrying the 9mm suppressor's icon, and a scope that duplicated the PSO-1. Both are the fixed suppressor or optic on weapons like the VAL, Vintorez and Gauss Rifle, so they're now labelled as built-in and hidden behind the unobtainable filter.", "credits": [{ "name": "Dorn", "role": "bug" }] }
+    ]
+  },
+  {
     "date": "2026-08-29",
     "entries": [
       { "type": "fixed", "text": "The Build Planner was adding your outfit and headgear together for Ballistic Res and BR Class. Only one of them takes a given bullet, so a Nosorog under a Spartan helmet claimed a BR Class of 134 instead of 79 to the body and 69 to the head. There's now a Body/Head toggle, and belt plates and pelts count toward the zones they actually cover.", "credits": [{ "name": "Wille", "role": "bug" }], "action": "buildPlanner" }

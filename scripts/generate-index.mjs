@@ -340,6 +340,28 @@ const magazineRows = new Map(); // id -> base fields (from items_common_data)
 }
 const magazineIds = new Set(magazineRows.keys());
 
+// ── Curated field overrides for exporter rows ───────────────────────────────
+// Shallow-merged over any item with a matching ID, in every category it appears
+// in. This is the counterpart to synthetic-items.json: that file only ADDS rows
+// the exporter never emits, and skips on ID collision, so it can't correct a row
+// the exporter DID emit. Used for vestigial sections the game config still
+// carries — e.g. wpn_addon_silencer, the built-in suppressor that integrally
+// suppressed weapons point at, which is not an obtainable item.
+// Underscore-prefixed keys (_why) are documentation and are not merged.
+const itemOverrides = new Map();
+{
+  const overridesPath = join(CSV_DIR, "item-overrides.json");
+  if (existsSync(overridesPath)) {
+    const parsed = JSON.parse(readFileSync(overridesPath, "utf-8"));
+    for (const [id, fields] of Object.entries(parsed.items ?? {})) {
+      const clean = Object.fromEntries(Object.entries(fields).filter(([k]) => !k.startsWith("_")));
+      itemOverrides.set(id, clean);
+    }
+    console.log(`Loaded ${itemOverrides.size} item overrides from ${overridesPath}`);
+  }
+}
+const overriddenIds = new Set();
+
 for (const file of files) {
   if (SKIP_FILES.has(file)) continue;
 
@@ -375,6 +397,13 @@ for (const file of files) {
 
   for (const item of items) {
     if (magazineIds.has(item.id)) continue; // magazines get their own category, not Ammo
+    // Applied before the `seen` dedupe so every copy of the row is corrected,
+    // not just the first category that happens to claim the ID.
+    const override = itemOverrides.get(item.id);
+    if (override) {
+      Object.assign(item, override);
+      overriddenIds.add(item.id);
+    }
     if (!seen.has(item.id)) {
       seen.add(item.id);
       index.push({ id: item.id, name: item.pda_encyclopedia_name || item[headers[config.nameCol ?? 1]], category: config.category });
@@ -383,6 +412,23 @@ for (const file of files) {
   }
 
   console.log(`${file}: ${items.length} items (${config.category})`);
+}
+
+// Mirror the override flag fields onto index entries so global search applies the
+// same filtering, and warn about overrides that matched nothing — a stale entry
+// after a pack update would otherwise fail silently.
+{
+  const FLAG_FIELDS = ["unobtainable", "integralOnly"];
+  for (const entry of index) {
+    const override = itemOverrides.get(entry.id);
+    if (!override) continue;
+    for (const f of FLAG_FIELDS) {
+      if (override[f] !== undefined) entry[f] = override[f];
+    }
+  }
+  for (const id of itemOverrides.keys()) {
+    if (!overriddenIds.has(id)) console.warn(`Item override for "${id}" matched no exporter row — stale?`);
+  }
 }
 
 // ── Merge synthetic (hand-authored) items into category data + index ─────────

@@ -946,7 +946,7 @@
       "st_upgr_cost": "9500",
       "st_data_export_zoom_factor": "",
       "st_data_export_magnifications": "4",
-      "displayName": "st_addon_scope [ps01]",
+      "displayName": "st_addon_scope",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
@@ -1283,13 +1283,15 @@
     },
     {
       "id": "wpn_addon_scope",
-      "pda_encyclopedia_name": "st_addon_scope",
-      "st_data_export_description": "st_addon_scope_descr",
+      "pda_encyclopedia_name": "st_gdb_addon_scope_integral",
+      "st_data_export_description": "st_gdb_addon_scope_integral_descr",
       "st_prop_weight": "0.62",
-      "st_upgr_cost": "1860",
+      "st_upgr_cost": "0",
       "st_data_export_zoom_factor": "24",
       "st_data_export_magnifications": "",
-      "displayName": "st_addon_scope [wpn_addon_scope]",
+      "unobtainable": true,
+      "integralOnly": true,
+      "displayName": "st_gdb_addon_scope_integral",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [

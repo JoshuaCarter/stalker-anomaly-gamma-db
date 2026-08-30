@@ -10,11 +10,13 @@
   "items": [
     {
       "id": "wpn_addon_silencer",
-      "pda_encyclopedia_name": "st_addon_silencer",
-      "st_data_export_description": "st_addon_silencer_descr",
+      "pda_encyclopedia_name": "st_gdb_addon_silencer_integral",
+      "st_data_export_description": "st_gdb_addon_silencer_integral_descr",
       "st_prop_weight": "0.20",
-      "st_upgr_cost": "400",
-      "displayName": "st_addon_silencer",
+      "st_upgr_cost": "0",
+      "unobtainable": true,
+      "integralOnly": true,
+      "displayName": "st_gdb_addon_silencer_integral",
       "hasStashDrop": false,
       "hasDisassemble": false,
       "factions": [
