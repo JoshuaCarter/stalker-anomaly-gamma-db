@@ -5,18 +5,30 @@
     Unions: weapons, weapon-attach, armor.
     craft() returns the raw recipe plus name/descr.
     db/lang picks translations (en/ru/fr). Raw JSON keys are kept.
+    Default get/list/json/craft return sealed proxies (writes logged and ignored).
+    open(mod_id) during load returns a handle with a private deep-copy cache.
 ]]
 
 local ROOT = "db\\"
 local loaded = false
 local names = {}
 local by_id = {}
+local by_id_raw = {}
 local groups = {}
+local groups_raw = {}
 local in_group = {}
 local EMPTY = {}
 local list_sorted = {}
 local recipes = {}
-local json_cache = {}
+local recipes_raw = {}
+local json_raw = {}
+local json_sealed = {}
+local views = {}
+local view_n = 0
+local can_open = true
+local raw_of = {}
+local proxy_of = {}
+local write_warned = {}
 
 local UNIONS = {
     weapons = {
@@ -64,23 +76,67 @@ local function norm_file(file)
     return file:gsub("/", "\\")
 end
 
+local RO = { __metatable = false }
+
+local function seal_one(raw)
+    if type(raw) ~= "table" then
+        return raw
+    end
+    local p = proxy_of[raw]
+    if p then
+        return p
+    end
+    p = {}
+    proxy_of[raw] = p
+    raw_of[p] = raw
+    setmetatable(p, RO)
+    for _, v in pairs(raw) do
+        if type(v) == "table" then
+            seal_one(v)
+        end
+    end
+    return p
+end
+
+function RO.__index(p, k)
+    local raw = raw_of[p]
+    if not raw then
+        return nil
+    end
+    local v = raw[k]
+    if type(v) == "table" then
+        return seal_one(v)
+    end
+    return v
+end
+
+function RO.__newindex(p, k)
+    if write_warned[p] then
+        return
+    end
+    write_warned[p] = true
+    local raw = raw_of[p]
+    local id = raw and raw.id or "?"
+    printf("STALKER_DB: ignore write id=%s key=%s", tostring(id), tostring(k))
+end
+
 local function decode_file(file)
     file = norm_file(file)
-    local hit = json_cache[file]
+    local hit = json_raw[file]
     if hit ~= nil then
         return hit
     end
     local text = read_text(ROOT .. file)
     if not text then
-        json_cache[file] = false
+        json_raw[file] = false
         return nil, "missing"
     end
     local ok, data = pcall(stalker_db_json.decode, text)
     if ok then
-        json_cache[file] = data
+        json_raw[file] = data
         return data
     end
-    json_cache[file] = false
+    json_raw[file] = false
     printf("STALKER_DB: failed to decode %s", file)
     return nil, "bad"
 end
@@ -238,12 +294,51 @@ local function load_recipes()
     printf("STALKER_DB: craft recipes %s", n)
 end
 
+local function seal_public()
+    by_id_raw = by_id
+    local by_p = {}
+    for id, row in pairs(by_id) do
+        by_p[id] = seal_one(row)
+    end
+    by_id = by_p
+    groups_raw = groups
+    local groups_p = {}
+    for typ, rows in pairs(groups) do
+        local arr = {}
+        for i = 1, #rows do
+            arr[i] = seal_one(rows[i])
+        end
+        groups_p[typ] = arr
+    end
+    groups = groups_p
+    recipes_raw = recipes
+    local rec_p = {}
+    for id, rec in pairs(recipes) do
+        rec_p[id] = seal_one(rec)
+    end
+    recipes = rec_p
+    json_sealed = {}
+    for file, data in pairs(json_raw) do
+        if data == false then
+            json_sealed[file] = false
+        elseif type(data) == "table" then
+            json_sealed[file] = seal_one(data)
+        else
+            json_sealed[file] = data
+        end
+    end
+    EMPTY = seal_one({})
+    printf("STALKER_DB: sealed")
+end
+
 local function load_all()
     loaded = true
     by_id = {}
     groups = {}
     recipes = {}
-    json_cache = {}
+    json_raw = {}
+    json_sealed = {}
+    list_sorted = {}
     load_names()
     local files = pack_file_list()
     local ok_files = 0
@@ -289,6 +384,7 @@ local function load_all()
     end
     index_all()
     load_recipes()
+    seal_public()
     printf("STALKER_DB: loaded %s items from %s groups, %s files (%s missing)", n_items, #item_files, ok_files, miss_files)
 end
 
@@ -367,11 +463,22 @@ function json(file)
     if not file then
         return nil
     end
+    file = norm_file(file)
+    local s = json_sealed[file]
+    if s ~= nil then
+        if s == false then
+            return nil
+        end
+        return s
+    end
     local data = decode_file(file)
-    if data == false then
+    if not data then
+        json_sealed[file] = false
         return nil
     end
-    return data
+    s = seal_one(data)
+    json_sealed[file] = s
+    return s
 end
 
 function craft(id)
@@ -402,8 +509,203 @@ function list(typ, sort, dir)
     return out
 end
 
+local function dcopy(v, seen)
+    if type(v) ~= "table" then
+        return v
+    end
+    local hit = seen[v]
+    if hit then
+        return hit
+    end
+    local o = {}
+    seen[v] = o
+    for k, x in pairs(v) do
+        o[k] = dcopy(x, seen)
+    end
+    return o
+end
+
+local function make_handle()
+    local h_by_id = {}
+    local h_groups = {}
+    local h_json = {}
+    local h_recipes = {}
+    local h_sorted = {}
+    local h = {}
+
+    function h.init()
+        init()
+    end
+
+    function h.get(id, typ)
+        init()
+        if not id then
+            return nil
+        end
+        local row = h_by_id[id]
+        if not row then
+            local raw = by_id_raw[id]
+            if not raw then
+                return nil
+            end
+            row = dcopy(raw, {})
+            h_by_id[id] = row
+        end
+        if typ then
+            local idx = in_group[typ]
+            if not (idx and idx[id]) then
+                return nil
+            end
+        end
+        return row
+    end
+
+    function h.list(typ, sort, dir)
+        init()
+        if not typ then
+            return EMPTY
+        end
+        local src = h_groups[typ]
+        if not src then
+            local raw = groups_raw[typ]
+            if not raw then
+                return EMPTY
+            end
+            src = {}
+            for i = 1, #raw do
+                local r = raw[i]
+                local id = r.id
+                local row = id and h_by_id[id]
+                if not row then
+                    row = dcopy(r, {})
+                    if id then
+                        h_by_id[id] = row
+                    end
+                end
+                src[i] = row
+            end
+            h_groups[typ] = src
+        end
+        if not sort then
+            return src
+        end
+        local key = typ .. "\0" .. sort .. "\0" .. (dir or "")
+        local hit = h_sorted[key]
+        if hit then
+            return hit
+        end
+        local out = {}
+        for i = 1, #src do
+            out[i] = src[i]
+        end
+        table.sort(out, cmp(sort, dir == "desc"))
+        h_sorted[key] = out
+        return out
+    end
+
+    function h.json(file)
+        init()
+        if not file then
+            return nil
+        end
+        file = norm_file(file)
+        local cached = h_json[file]
+        if cached ~= nil then
+            if cached == false then
+                return nil
+            end
+            return cached
+        end
+        local data = decode_file(file)
+        if not data then
+            h_json[file] = false
+            return nil
+        end
+        local copy = dcopy(data, {})
+        h_json[file] = copy
+        return copy
+    end
+
+    function h.craft(id)
+        init()
+        if not id then
+            return nil
+        end
+        local cached = h_recipes[id]
+        if cached ~= nil then
+            if cached == false then
+                return nil
+            end
+            return cached
+        end
+        local raw = recipes_raw[id]
+        if not raw then
+            h_recipes[id] = false
+            return nil
+        end
+        local copy = dcopy(raw, {})
+        h_recipes[id] = copy
+        return copy
+    end
+
+    h.is = is
+    h.is_any = is_any
+    h.translate = translate
+    return h
+end
+
+function open(mod_id)
+    if not can_open then
+        printf("STALKER_DB: open refused (game running)")
+        return nil
+    end
+    if type(mod_id) ~= "string" or mod_id == "" then
+        printf("STALKER_DB: open refused (empty id)")
+        return nil
+    end
+    init()
+    local h = views[mod_id]
+    if h then
+        return h
+    end
+    view_n = view_n + 1
+    h = make_handle()
+    views[mod_id] = h
+    printf("STALKER_DB: open %s views=%s", mod_id, view_n)
+    if view_n > 16 then
+        printf("STALKER_DB: open warn many views")
+    end
+    return h
+end
+
+local function allow_open()
+    can_open = true
+end
+
+local function deny_open()
+    if can_open then
+        printf("STALKER_DB: open closed")
+    end
+    can_open = false
+end
+
+function on_game_load()
+    allow_open()
+end
+
+function actor_on_first_update()
+    deny_open()
+end
+
+local cbs_bound = false
+
 function on_game_start()
     init()
+    if RegisterScriptCallback and not cbs_bound then
+        cbs_bound = true
+        RegisterScriptCallback("on_game_load", allow_open)
+        RegisterScriptCallback("actor_on_first_update", deny_open)
+    end
 end
 
 rawset(_G, "STALKER_DB", stalker_db)

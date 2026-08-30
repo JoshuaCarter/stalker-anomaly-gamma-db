@@ -10,6 +10,8 @@ Unions: `weapons` (guns + melee + launchers), `weapon-attach` (scopes, silencers
 
 ## Use
 
+Default API is shared and readonly. Writes are ignored (one log per row). `list()` is a real array of those rows; do not insert or swap slots. `pairs` on a sealed table (row or `json()` tree) is empty; use fields, `ipairs(list)`, or `open` if you need to walk a copy.
+
 ```lua
 STALKER_DB.init() -- optional; on_game_start and every API call also init
 local row = STALKER_DB.get("wpn_ak74")
@@ -21,6 +23,19 @@ local rec = STALKER_DB.craft(sec) -- raw recipe plus name/descr, or nil
 -- row is the JSON item plus name and descr (keys kept)
 -- STALKER_DB.json("calibers.json")
 -- STALKER_DB.json("traders/stalker_sidorovich.json")
+```
+
+Need a working copy? `open` once at load, stash the handle. Same methods as `STALKER_DB` (no `open`). First `get`/`list`/`json`/`craft` on the handle copies from the master and caches. Later calls reuse that copy. `open` after the game is running (`actor_on_first_update`) returns `nil`. Same id during load returns the same handle. Do not invent a new id every call.
+
+```lua
+local db
+
+function on_game_load()
+    db = STALKER_DB.open("cool_mod")
+end
+
+local row = db.get("wpn_ak74")
+row.cost = 1 -- only this handle
 ```
 
 ```lua
