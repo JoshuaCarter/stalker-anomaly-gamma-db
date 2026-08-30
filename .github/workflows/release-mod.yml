@@ -4,12 +4,10 @@ on:
   push:
     branches: [main, feat/in-game-mod]
     paths:
-      - data/**
       - mod/**
-      - scripts/generate-index.mjs
-      - scripts/generate-traders.mjs
       - scripts/pack-mod.mjs
       - site/public/data/packs.json
+      - site/public/data/*/*.json
       - .github/workflows/release-mod.yml
   workflow_dispatch:
 
@@ -24,38 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Last release
-        id: last
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          TAG=$(gh release list --json tagName --jq '[.[] | select(.tagName | test("^v([0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{4}|[0-9]+\\.[0-9]+\\.[0-9]+)$"))][0].tagName // empty')
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          if [ -n "$TAG" ]; then
-            mkdir -p prev
-            gh release download "$TAG" --dir prev --pattern "*.zip" || true
-            gh release download "$TAG" --dir prev --pattern "fingerprints.json" || true
-            gh release view "$TAG" --json body --jq .body > prev/BODY || true
-          fi
-      - name: Pack
-        id: pack
-        run: |
-          set +e
-          node scripts/pack-mod.mjs --release --out dist/mod --prev prev
-          CODE=$?
-          set -e
-          echo "code=$CODE" >> "$GITHUB_OUTPUT"
-          if [ "$CODE" -eq 2 ]; then
-            echo "fingerprints match last release"
-            exit 0
-          fi
-          if [ "$CODE" -ne 0 ]; then
-            echo "pack-mod failed ($CODE)"
-            exit "$CODE"
-          fi
-      - name: Publish
-        if: success() && steps.pack.outputs.code == '0'
-        env:
+      - run: node scripts/pack-mod.mjs --release --out dist/mod
+      - env:
           GH_TOKEN: ${{ github.token }}
         run: |
           VER=$(tr -d '[:space:]' < dist/mod/VERSION)

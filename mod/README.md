@@ -33,6 +33,6 @@ npm run pack-mod -- --release --out dist/mod
 
 ## Version
 
-UTC stamp `yyyy-mm-dd-hhmm` when CI actually publishes (example `2026-08-30-2214`). Zip and GitHub tag use hyphens. `meta.ini` uses dots (`2026.08.30.2214`) so MO2 can compare versions.
+UTC stamp `yyyy-mm-dd-hhmm` when CI publishes (example `2026-08-30-2214`). Zip and GitHub tag use hyphens. `meta.ini` uses dots (`2026.08.30.2214`) so MO2 can compare versions.
 
-No patch/minor/major. Unchanged packs keep their old zip.
+JSON comes from committed `site/public/data/<pack>/` (same files the website already built with `generate-index.mjs`). Pack does not regenerate.
