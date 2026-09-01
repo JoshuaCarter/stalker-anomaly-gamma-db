@@ -100,7 +100,7 @@ function stampMeta(dest, version, pack) {
   writeFileSync(
     join(dest, "meta.ini"),
     `[General]
-gameName=Anomaly
+gameName=
 modid=0
 version=${ver}
 newestVersion=${ver}
