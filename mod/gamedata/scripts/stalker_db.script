@@ -24,6 +24,7 @@ local recipes = {}
 local json_raw = {}
 local views = {}
 local view_n = 0
+local name_miss = 0
 
 local UNIONS = {
     weapons = {
@@ -108,10 +109,12 @@ local function read_lang()
     return "en"
 end
 
+-- Site displayName may carry " [1]" uniqueness junk. Never look that up.
 local function tr(s, lang)
     if type(s) ~= "string" or s == "" then
         return nil
     end
+    s = s:gsub("%s+%[.-%]$", "")
     local tab = names
     if lang and lang ~= "" then
         lang = string.lower(lang)
@@ -127,10 +130,18 @@ local function tr(s, lang)
     return tab[string.lower(s)]
 end
 
--- Master only: name + descr from translations. Raw JSON keys stay.
+-- Master only: stamp translated name + descr. Raw JSON keys stay.
 local function decorate(row)
-    local key = row.displayName or row.pda_encyclopedia_name
-    row.name = key and tr(key) or (row.id or "")
+    local key = row.pda_encyclopedia_name or row.displayName
+    local name = key and tr(key)
+    if name then
+        row.name = name
+    else
+        row.name = row.id or ""
+        if key then
+            name_miss = name_miss + 1
+        end
+    end
     if row.st_data_export_description then
         row.descr = tr(row.st_data_export_description)
     end
@@ -273,6 +284,7 @@ local function load_all()
     groups = {}
     recipes = {}
     json_raw = {}
+    name_miss = 0
     load_names()
     local files = pack_file_list()
     local ok_files = 0
@@ -319,7 +331,7 @@ local function load_all()
     end
     index_all()
     load_recipes()
-    printf("STALKER_DB: loaded %s items from %s groups, %s files (%s missing)", n_items, #item_files, ok_files, miss_files)
+    printf("STALKER_DB: loaded %s items from %s groups, %s files (%s missing), name_miss %s", n_items, #item_files, ok_files, miss_files, name_miss)
 end
 
 local function init()
